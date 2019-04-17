@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- template에 최상위 페이지명 -->
+	<definition name="layouts" template="/WEB-INF/template/Layouts.jsp">
+		<put-attribute name="Top" value="/WEB-INF/template/Top.jsp" />
+		<!-- 내용은 동적으로 변하기때문에 value에 ""지정 -->
+		<put-attribute name="Body" value="" />
+		<put-attribute name="Footer" value="/WEB-INF/template/Footer.jsp" />
+	</definition>
+	
+	<!-- template에 최상위 페이지명 -->
+	<definition name="admin_layouts" template="/WEB-INF/template/Admin_Layouts.jsp">
+		<put-attribute name="Admin_Top" value="/WEB-INF/template/Admin_Top.jsp" />
+		<!-- 내용은 동적으로 변하기때문에 value에 ""지정 -->
+		<put-attribute name="Admin_Body" value="" />
+		<put-attribute name="Admin_Footer" value="/WEB-INF/template/Admin_Footer.jsp" />
+	</definition>
+	
+	<definition name="*.tiles" extends="layouts">		
+		<put-attribute name="Body" value="/WEB-INF/views/{1}.jsp" />		
+	</definition>
+	<!-- /*/*.tiles 는 불가 즉 *앞에 /를 붙이지 않는다 -->
+	
+	<definition name="*/*.tiles" extends="layouts">
+		<put-attribute name="Body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	<definition name="*/*/*.tiles" extends="layouts">
+		<put-attribute name="Body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+	<definition name="*/*/*/*.tiles" extends="layouts">
+		<put-attribute name="Body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+	</definition>
+	
+	<!-- admin -->
+	<definition name="*.admin" extends="admin_layouts">		
+		<put-attribute name="Admin_Body" value="/WEB-INF/views/{1}.jsp" />		
+	</definition>
+	<!-- /*/*.tiles 는 불가 즉 *앞에 /를 붙이지 않는다 -->
+	
+	<definition name="*/*.admin" extends="admin_layouts">
+		<put-attribute name="Admin_Body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	<definition name="*/*/*.admin" extends="admin_layouts">
+		<put-attribute name="Admin_Body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+	<definition name="*/*/*/*.admin" extends="admin_layouts">
+		<put-attribute name="Admin_Body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+	</definition>
+
+</tiles-definitions>
