@@ -5,10 +5,8 @@
 <link href="<c:url value='/css/Sec_1.css'/>" rel="stylesheet">
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
-<<<<<<< HEAD
-퉤 침이나 드세요
-				<span id="body"></span>
-
+	<span id="body"></span>
+ddd
 				<div class="checked">
 					<a><img src="<c:url value='/resources/images/bookMark_icon_.png' />" class="checked_img"></a>
 					<div class="checked_menu">
