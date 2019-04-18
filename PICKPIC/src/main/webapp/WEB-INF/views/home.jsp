@@ -5,7 +5,7 @@
 <link href="<c:url value='/css/Sec_1.css'/>" rel="stylesheet">
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
-
+퉤 침이나 드세요
 				<span id="body"></span>
 
 				<div class="checked">
