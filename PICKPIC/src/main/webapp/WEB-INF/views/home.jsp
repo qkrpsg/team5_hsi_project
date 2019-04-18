@@ -7,7 +7,7 @@
 <script src="<c:url value='/js/Main.js'/>"></script>
 
 				<span id="body"></span>
-
+ㅇ
 				<div class="checked">
 					<a><img src="<c:url value='/resources/images/bookMark_icon_.png' />" class="checked_img"></a>
 					<div class="checked_menu">
