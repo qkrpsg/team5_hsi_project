@@ -43,8 +43,8 @@
 								 
 									 <li class="l_menu_li"><a href="#">피크픽 스토리</a>
 											 <ul class="m_sub" >
-													 <li><a href="#">개발배경</a></li>
-													 <li><a href="#">피크픽 문화</a></li>
+													 <li><a href="<c:url value='/PICKPIC/story/back.pic'/> "> 개발배경</a></li>
+													 <li><a href="<c:url value='/PICKPIC/story/culture.pic'/> ">피크픽 문화</a></li>
 													 <li><a href="#">팀원소개</a></li>
 													 <li><a href="#">앞으로의 행보</a></li>
 											 </ul>
@@ -95,8 +95,8 @@
 						 <div class="nav_wrap_main">
 									 <div class="nav_wrap">
 											<ul class="ul_submenu">
-												 <li><a href="#">개발배경</a></li>
-												 <li><a href="#">피크픽 문화</a></li>
+											 <li><a href="<c:url value='/PICKPIC/story/back.pic'/> "> 개발배경</a></li>
+													 <li><a href="<c:url value='/PICKPIC/story/culture.pic'/> ">피크픽 문화</a></li>
 												 <li><a href="#">팀원소개</a></li>
 												 <li><a href="#">앞으로의 행보</a></li>
 											</ul>
