@@ -125,14 +125,14 @@
 				</div>
 				
 				<!-- Analytics 추적 코드 -->
-  <!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138587279-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'GA_TRACKING_ID');
+  gtag('config', 'UA-138587279-1');
 </script>
 			</header>
 				
