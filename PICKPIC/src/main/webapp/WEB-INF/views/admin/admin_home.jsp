@@ -61,7 +61,7 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+            <span class="info-box-icon bg-yellow"><i class="fa fa-newspaper-o"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">신규 게시물</span>
@@ -79,7 +79,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Monthly Recap Report</h3>
+              <h3 class="box-title">사이트 접속자 수</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -103,7 +103,7 @@
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
-                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                    <strong>2019-04-19(현재 날짜)</strong>
                   </p>
 
                   <div class="chart">
@@ -115,12 +115,12 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                   <p class="text-center">
-                    <strong>Goal Completion</strong>
+                    <strong>목표 할당량</strong>
                   </p>
 
                   <div class="progress-group">
-                    <span class="progress-text">Add Products to Cart</span>
-                    <span class="progress-number"><b>160</b>/200</span>
+                    <span class="progress-text">신규 픽수</span>
+                    <span class="progress-number"><b>10</b>/200</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
