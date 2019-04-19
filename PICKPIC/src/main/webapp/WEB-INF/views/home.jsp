@@ -8,6 +8,7 @@
 <!-- 브랜치 병합전!!!!! -->
 				<span id="body"></span>
 	<span id="body"></span>
+				<span id="body"></span>
 				<div class="checked">
 					<a><img src="<c:url value='/resources/images/bookMark_icon_.png' />" class="checked_img"></a>
 					<div class="checked_menu">
