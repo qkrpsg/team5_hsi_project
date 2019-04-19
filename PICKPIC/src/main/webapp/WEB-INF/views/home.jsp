@@ -5,9 +5,14 @@
 <link href="<c:url value='/css/Sec_1.css'/>" rel="stylesheet">
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
+<<<<<<< HEAD
 
 				<span id="body"></span>
+=======
+>>>>>>> refs/remotes/origin/K
 
+				<span id="body"></span>
+ㅇdd
 				<div class="checked">
 					<a><img src="<c:url value='/resources/images/bookMark_icon_.png' />" class="checked_img"></a>
 					<div class="checked_menu">
