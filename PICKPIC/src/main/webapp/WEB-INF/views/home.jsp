@@ -7,6 +7,11 @@
 <script src="<c:url value='/js/Main.js'/>"></script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+팀장님 바보ssssssdddd
+				<span id="body"></span>
+>>>>>>> refs/remotes/origin/qq
 
 				<span id="body"></span>
 =======
