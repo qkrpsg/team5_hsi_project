@@ -6,6 +6,7 @@
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 				<span id="body"></span>
 =======
@@ -13,6 +14,10 @@
 
 				<span id="body"></span>
 ㅇdd
+=======
+	<span id="body"></span>
+ddd
+>>>>>>> refs/remotes/origin/L
 				<div class="checked">
 					<a><img src="<c:url value='/resources/images/bookMark_icon_.png' />" class="checked_img"></a>
 					<div class="checked_menu">
