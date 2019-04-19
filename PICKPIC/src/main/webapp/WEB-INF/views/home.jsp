@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false" contentType="text/html; charset=UTF-8"%>
+<%@ page session="true" contentType="text/html; charset=UTF-8"%>
 <link href="<c:url value='/css/Main.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/Sec_1_m.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/Sec_1.css'/>" rel="stylesheet">

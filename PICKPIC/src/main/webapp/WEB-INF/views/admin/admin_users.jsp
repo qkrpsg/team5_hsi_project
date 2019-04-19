@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false" contentType="text/html; charset=UTF-8"%>
+<%@ page session="true" contentType="text/html; charset=UTF-8"%>
     
 <!-- 여기서부터 사용자 관리 페이지 시작 -->
   <!-- Content Wrapper. Contains page content -->
