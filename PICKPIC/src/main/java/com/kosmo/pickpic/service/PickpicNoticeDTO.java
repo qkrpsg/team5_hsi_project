@@ -1,7 +1,7 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicNoticeDTO {
-	
+	//
 	private String noticeNo;
 	private String noticeTitle;
 	private String noticeContent;

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
-
+<!--  -->
  <link href="<c:url value='/css/Login.css' />" rel="stylesheet">  
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> 
 

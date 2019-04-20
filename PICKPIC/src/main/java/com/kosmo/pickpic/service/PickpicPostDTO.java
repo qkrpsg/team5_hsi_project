@@ -1,7 +1,7 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicPostDTO {
-	
+	//
 	private String id;
 	private String posts;
 	private String postNo;

@@ -13,7 +13,7 @@ import com.kosmo.pickpic.service.PickpicQnAService;
 
 @Repository
 public class PickpicQnADAO implements PickpicQnAService {
-	
+	//
 	//SqlSessionTemplate객체 주입]
 	@Resource(name="template")
 	private SqlSessionTemplate template;

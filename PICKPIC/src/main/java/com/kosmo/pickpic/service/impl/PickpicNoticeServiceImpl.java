@@ -14,7 +14,7 @@ import com.kosmo.pickpic.service.PickpicNoticeService;
 //@Service("commentService")
 
 public class PickpicNoticeServiceImpl implements PickpicNoticeService {
-
+//
 	//MemoCommentDAO주입]
 	@Resource(name="pickpicNoticeDAO")
 	private PickpicPostDAO dao;

@@ -8,7 +8,7 @@
 	<select id="PickpicUserIsMember" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM PICKPIC_USER WHERE PPU_ID=#{id} AND PPU_PASSWORD=#{pwd}
 	</select>
-	 <!--
+	 <!--s
 	
 	<select id="PickpicUserSelectList" parameterType="java.util.Map" resultType="PickpicUserDTO">
 		SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,name,(SELECT COUNT(*) FROM MemoComment WHERE no=O.no ) commentCount

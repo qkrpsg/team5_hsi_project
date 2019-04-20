@@ -12,7 +12,7 @@ import com.kosmo.pickpic.service.PickpicPostService;
 
 @Service("commentService")
 public class PickpicPostServiceImpl implements PickpicPostService {
-
+//
 	//MemoCommentDAO주입]
 	@Resource(name="pickpicPostDAO")
 	private PickpicPostDAO dao;

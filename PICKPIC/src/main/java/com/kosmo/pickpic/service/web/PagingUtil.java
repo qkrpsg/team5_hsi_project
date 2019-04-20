@@ -4,7 +4,7 @@ public class PagingUtil {
 
 	public static String pagingText(int totalRecordCount,int pageSize,int blockPage,int nowPage,String page){
 		String pagingStr="";
-		
+		//
 		//1.전체 페이지 구하기
 		int totalPage= (int)(Math.ceil(((double)totalRecordCount/pageSize)));
 		

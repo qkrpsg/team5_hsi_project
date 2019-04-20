@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kosmo.pickpic.service.PickpicUserDTO;
 import com.kosmo.pickpic.service.PickpicUserService;
 
-
+//
 @Service("pickpicService")
 public class PickpicUserServiceImpl implements PickpicUserService {
 

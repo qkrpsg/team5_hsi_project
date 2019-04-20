@@ -1,7 +1,7 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicAdminDTO {
-	
+	//
 	private String adminNo;
 	private String adminType;
 	private String id;

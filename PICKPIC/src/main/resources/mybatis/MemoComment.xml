@@ -8,7 +8,7 @@
 	<!-- 
 	resultType을 Map으로 지정시
 	키값(대문자)은 컬럼명이고
-	밸류값 컬럼에 저장된 값
+	밸류값 컬럼에 저장된 값s
 	 -->
 	<!----> <select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT M.*,name FROM memocomment M	JOIN onemember O ON M.ID=O.ID WHERE M.no=#{no}

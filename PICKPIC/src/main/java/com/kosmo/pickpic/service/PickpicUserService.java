@@ -3,7 +3,7 @@ package com.kosmo.pickpic.service;
 import java.util.List;
 import java.util.Map;
 
-
+//
 public interface PickpicUserService {
 	//로그인 용]
 		boolean isMember(Map map);

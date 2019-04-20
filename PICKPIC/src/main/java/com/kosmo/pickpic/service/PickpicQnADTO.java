@@ -1,7 +1,7 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicQnADTO {
-	
+	//
 	private String qnaNo;
 	private String oftenquestion;
 	private String myqna;

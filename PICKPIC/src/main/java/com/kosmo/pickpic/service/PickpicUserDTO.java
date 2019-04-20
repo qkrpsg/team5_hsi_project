@@ -1,7 +1,7 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicUserDTO {
-	
+	//
 	private String addr;
 	private java.sql.Date regidate;
 	private String id;

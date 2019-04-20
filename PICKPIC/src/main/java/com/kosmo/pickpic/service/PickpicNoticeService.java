@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface PickpicNoticeService {
-
+//
 	//목록용]
 	//레코드를 DTO가 아닌 맵에 담아보자
 	List<Map> selectList(Map map);

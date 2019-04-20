@@ -5,7 +5,7 @@
 	<a href="http://developers.kakao.com/logout">
 </a>
 		 		
-		 		
+	<!--  -->	 		
 <script type='text/javascript'>
   	//<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.

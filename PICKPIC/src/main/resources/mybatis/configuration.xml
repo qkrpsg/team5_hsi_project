@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="PickpicNoticeDTO" type="com.kosmo.pickpic.service.PickpicNoticeDTO"/>
 		<typeAlias alias="PickpicQnADTO" type="com.kosmo.pickpic.service.PickpicQnADTO"/>
 	<!--  	
-	
+	s
 		
 		
 		ㅇㅇ

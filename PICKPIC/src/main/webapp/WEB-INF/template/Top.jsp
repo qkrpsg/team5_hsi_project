@@ -27,7 +27,7 @@
 								
 								<div class="login_wrap">
 									<ul>
-										<li><a href="#">LOGIN<span></span></a>
+										<li><a href="<c:url value='/PickPic/login/Login.bbs'/>">LOGIN<span></span></a>
 										<li><a href="#">SING UP</a>
 									</ul>
 								</div>
@@ -54,7 +54,7 @@
 									 <li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 										 <ul class="m_sub" style="display: none;">
 													 <li><a href="#">필터링</a></li>
-													 <li><a href="#">명소찾아주기</a></li>
+													 <li><a href="<c:url value='/PickPic/friends/Place.bbs'/>">명소찾아주기</a></li>
 													 <li><a href="#">피크픽추천</a></li>
 											 </ul>
 									 </li>
@@ -105,7 +105,7 @@
 									 <div class="nav_wrap">
 											<ul class="ul_submenu" >
 												 <li><a href="#">필터링</a></li>
-												 <li><a href="#">명소찾아주기</a></li>
+												 <li><a href="<c:url value='/PickPic/friends/Place.bbs'/>">명소찾아주기</a></li>
 												 <li><a href="#">피크픽추천</a></li>
 											</ul>
 									 </div>

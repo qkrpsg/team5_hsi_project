@@ -13,7 +13,7 @@ import com.kosmo.pickpic.service.PickpicNoticeService;
 
 @Repository
 public class PickpicNoticeDAO implements PickpicNoticeService {
-	
+	//
 	//SqlSessionTemplate객체 주입]
 	@Resource(name="template")
 	private SqlSessionTemplate template;
