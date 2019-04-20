@@ -69,8 +69,11 @@ a{
 /* 선택 부분 */
 .l_place_selector_wrap{overflow: hidden;}
 .l_place_selector_wrap p{float:left;width:40px;height:20px; display:block;text-align: center;margin-left:10px;cursor: pointer;}
-.l_place_selector_span{width:0%;height: 3px;background:red;display:block;}
 
+.l_place_selector_span{width:0%;height: 3px;background:#aaa;display:block;}
+.l_place_selector_wrap p:first-child span{
+	width:100%;
+}
 
 /* 키워드 쪽 */
 
