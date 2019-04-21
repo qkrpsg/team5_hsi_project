@@ -39,4 +39,16 @@ public class AdminController {
 		map.put("admin", "게시글관리");
 		return "admin/admin_post.admin";
 	}
+	
+	@RequestMapping(value = "/PICKPIC/admin/trashcan.pic")
+	public String trashcan(@RequestParam Map map) {
+		map.put("admin", "휴지통");
+		return "admin/admin_trashcan.admin";
+	}
+	
+	@RequestMapping(value = "/PICKPIC/admin/report.pic")
+	public String report(@RequestParam Map map) {
+		map.put("admin", "신고함");
+		return "admin/admin_report.admin";
+	}
 }
