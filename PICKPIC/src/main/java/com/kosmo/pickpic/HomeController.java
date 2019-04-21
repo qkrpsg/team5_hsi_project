@@ -47,5 +47,13 @@ public class HomeController {
 		
 		return "story/back.tiles";
 	}
+	@RequestMapping("/PICKPIC/friends/picpic.pic")
+	public String picpic() {
+		
+		return "friends/picpic";
+	}
+	
+	
+	
 	
 }

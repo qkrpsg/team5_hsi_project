@@ -63,7 +63,7 @@
 									 <li class="l_menu_li"><a href="#">고객센터</a>
 										 <ul class="m_sub" style="display: none;">
 													 <li><a href="#">피크픽 이렇게 활용하세요</a></li>
-													 <li><a href="#">피크픽's Pick!</a></li>
+													 <li><a href="<c:url value='/PICKPIC/friends/picpic.pic'/>">피크픽's Pick!</a></li>
 													 <li><a href="#">베스트 픽</a></li>
 													 <li><a href="#">피크픽 명소찾기</a></li>
 											 </ul>
@@ -113,7 +113,7 @@
 									 <div class="nav_wrap">
 											<ul class="ul_submenu" >
 												 <li><a href="#">피크픽 이렇게 활용하세요</a></li>
-												 <li><a href="#">피크픽's Pick!</a></li>
+												 <li><a href="<c:url value='/PICKPIC/friends/picpic.pic'/> ">피크픽's Pick!</a></li>
 												 <li><a href="#">베스트 픽</a></li>
 												 <li><a href="#">피크픽 명소찾기</a></li>
 											</ul>
