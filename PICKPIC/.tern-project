@@ -1,0 +1,18 @@
+{
+  "ecmaVersion": 5,
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "plugins": {
+    "browser-extension": {
+      
+    },
+    "jquery-ui1-12": {
+      
+    },
+    "jquery-extension": {
+      
+    }
+  }
+}
