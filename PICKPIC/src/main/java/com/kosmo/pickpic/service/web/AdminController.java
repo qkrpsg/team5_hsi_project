@@ -1,4 +1,4 @@
-package com.kosmo.pickpic;
+package com.kosmo.pickpic.service.web;
 
 import java.util.Locale;
 import java.util.Map;
