@@ -33,10 +33,18 @@ img{
 	
 
 }
+
 .logo{
 	margin-left:10px;
 	float:left;
 }
+
+.logo > a > img{
+	width: 50%;
+	height: 50%;
+	margin: 10px;
+}
+
 .menu_login_wrap{
 	width:100%;
 }
@@ -288,7 +296,6 @@ img{
 	font-size:.9em !important;
 }
 .pic_gifadd{
-	margin-top:170px;
 }
 .scroll_login{
 	color:#00AEEA !important;
