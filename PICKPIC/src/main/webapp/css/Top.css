@@ -1,349 +1,350 @@
-*{
-	padding:0px;
-    margin:0;
+* {
+	padding: 0px;
+	margin: 0;
 	box-sizing: border-box;
 }
-li{
-	list-style:none;
+
+li {
+	list-style: none;
 }
-a{
-	text-decoration:none !important;
+
+a {
+	text-decoration: none !important;
 	color: #000;
 }
-img{
+
+img {
 	display: block;
 }
-.header_top{
-	position:fixed;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:80px;
-	padding:0px;
-	z-index:1;
-}	
-.menu_all_wrap_position{
-	
-	position:relative;
-	top:15px;
-	left:0;
-	width:100%;
-	height:50px;/*이게없으면 서브 메뉴가 아예 안보임 수정*/
-	overflow:hidden;
 
+.header_top {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 80px;
+	padding: 0px;
+	z-index: 1;
 }
 
-.logo{
-	margin-left:10px;
-	float:left;
+.menu_all_wrap_position {
+	position: relative;
+	top: 15px;
+	left: 0;
+	width: 100%;
+	height: 50px; /*이게없으면 서브 메뉴가 아예 안보임 수정*/
+	overflow: hidden;
 }
 
-.logo > a > img{
-	width: 50%;
-	height: 50%;
+.main_menu_wrap {
+	display: block;
+}
+
+.logo {
+	float: left;
+}
+
+.logo>a>img {
+	width: 140px;
+	height: 25px;
 	margin: 10px;
 }
 
-.menu_login_wrap{
-	width:100%;
+.menu_login_wrap {
+	display: inline;
 }
-.menu_login_in{
-	text-align:center;
-	width:100%;
+
+.menu_login_in {
+	text-align: center;
+	width: 100%;
 }
-.menu_wrap{
-	display:inline-block;
-	margin-top:10px;
+
+.menu_wrap {
+	display: inline-block;
+	margin-top: 15px;
 }
-.menu_wrap li:first-child{
-	margin-left:60px;
+
+.menu_wrap li {
+	display: inline;
 }
-.menu_wrap li{
-	display:inline-block;
-	margin-right:100px;
-}
-.menu_wrap a{
+
+.menu_wrap a {
 	font-family: 나눔스퀘어라운드;
-	font-weight:bold;
-	color:white;
+	font-weight: bold;
 	font-size: 1.2em;
+	color: white;
 }
-.login_wrap{
- float: right;
- margin-top:10px;
+
+.login_wrap {
+	margin-top: 15px;
 }
-.login_wrap ul{
-	overflow:hidden;
+
+.login_wrap ul {
+	overflow: hidden;
+	float: right;
 }
-.login_wrap ul li{
-	overflow:hidden;
-	margin-right:20px;
-	float:left;
+
+.login_wrap ul li {
+	overflow: hidden;
+	margin-right: 20px;
+	float: left;
 }
-.login_wrap ul li a{
+
+.login_wrap ul li a {
 	font-family: 나눔스퀘어라운드;
-	font-weight:bold;
-	color:#7DA7D9;
-	float:left;
+	font-weight: bold;
+	float: left;
+	color: #7DA7D9;
 }
-.login_wrap ul li a span{
-	float:right;
-	width:2px; 
-	height:16px;
-	margin-top:2px;
-	margin-left:20px;
-	display:block;
+
+.login_wrap ul li a span {
+	float: right;
+	width: 2px;
+	height: 16px;
+	margin-top: 2px;
+	margin-left: 20px;
+	display: block;
 	background: #7DA7D9;
 }
 /* 여기서 부터 서브 메뉴*/
-.nav_wrap_top_position{
-	display:none;
-	position:absolute;
-	top:60px;
-	left:0;
-	width:100%;
+.nav_wrap_top_position {
+	display: none;
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	width: 100%;
 }
-.nav_wrap_main{
-	width:750px;
-	margin:0 auto;
+
+.nav_wrap_main {
+	width: 100%;
+	margin: 0 auto;
 }
-.nav_wrap{
-	margin-top:20px;
-	margin-bottom:20px;
-	margin-left:110px;
-	float:left;
+
+.nav_wrap {
+	margin-bottom: 20px;
+	margin-left:2.5%;
+	float: left;
 }
-.nav_wrap:first-child {
-	margin-left:120px;
-}
+
 .ul_submenu li {
-	margin-top:10px;
+	margin-top: 10px;
 }
-.ul_submenu li a{
-	font-size:1em;
-	font-weight:bold;
-	font-family: 김남윤체;
-	color:white;
+
+.ul_submenu li a {
+	font-size: 1em;
+	font-weight: bold;
+	font-family: 나눔스퀘어라운드;
+	text-align: center;
+	display: block;
+	color: white;
 }
 
 /* 버튼  효과 */
-.button-container-1 { 
-  display:none;
-  position: relative;
-  width: 100px;
-  height: 50px;
-  margin-left: auto;
-  margin-right:20px;
-  overflow: hidden;
-  border: 1px solid;
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  transition: 0.5s;
-  letter-spacing: 1px;
+.button-container-1 {
+	display: none;
+	position: relative;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-right: 20px;
+	float:right;
+	/*
+	width: 100px;
+	height: 50px;
+	margin-left: auto;
+	border: 1px solid;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	*/
+	transition: 0.5s;
+	letter-spacing: 1px;
 }
+
 .button-container-1 button {
- 
-  width: 101%;
-  height: 100%;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 25px;
-  letter-spacing: 1px;
-  background: #000;/* 색 바꾸기 */
-  -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
-  mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
-  -webkit-mask-size: 2300% 100%;
-  mask-size: 2300% 100%;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  -webkit-animation: ani2 0.7s steps(22) forwards;
-  animation: ani2 0.7s steps(22) forwards;
+	width: 101%;
+	height: 100%;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	letter-spacing: 1px;
+	background: #fff;  /*색 바꾸기 */
+	outline: none;
+	-webkit-mask:
+		url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+	mask:
+		url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+	-webkit-mask-size: 2300% 100%;
+	mask-size: 2300% 100%;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	-webkit-animation: ani2 0.7s steps(22) forwards;
+	animation: ani2 0.7s steps(22) forwards;
 }
 
 .button-container-1 button:hover {
-  -webkit-animation: ani 0.7s steps(22) forwards;
-  animation: ani 0.7s steps(22) forwards;
+	-webkit-animation: ani 0.7s steps(22) forwards;
+	animation: ani 0.7s steps(22) forwards;
+}
+
+.button-container-1 button img {
+	width:30px;
+	height: 30px;
 }
 
 .mas {
-  position: absolute;
-  color: #000;
-  text-align: center;
-  width: 101%;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  position: absolute;
-  font-size: 20px;
-  margin-top: 10px;
-  overflow: hidden;
+	position: absolute;
+	color: #000;
+	text-align: center;
+	width: 101%;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	position: absolute;
+	font-size: 20px;
+	margin-top: 10px;
+	overflow: hidden;
 }
 
-@-webkit-keyframes ani {
-  from {
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
-  }
-  to {
-    -webkit-mask-position: 100% 0;
-    mask-position: 100% 0;
-  }
-}
-@keyframes ani {
-  from {
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
-  }
-  to {
-    -webkit-mask-position: 100% 0;
-    mask-position: 100% 0;
-  }
-}
-@-webkit-keyframes ani2 {
-  from {
-    -webkit-mask-position: 100% 0;
-    mask-position: 100% 0;
-  }
-  to {
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
-  }
-}
-@keyframes ani2 {
-  from {
-    -webkit-mask-position: 100% 0;
-    mask-position: 100% 0;
-  }
-  to {
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
-  }
+@
+-webkit-keyframes ani {from { -webkit-mask-position:00;
+	mask-position: 0 0;
 }
 
+to {
+	-webkit-mask-position: 100% 0;
+	mask-position: 100% 0;
+}
 
+}
+@
+keyframes ani {from { -webkit-mask-position:00;
+	mask-position: 0 0;
+}
+
+to {
+	-webkit-mask-position: 100% 0;
+	mask-position: 100% 0;
+}
+
+}
+@
+-webkit-keyframes ani2 {from { -webkit-mask-position:100%0;
+	mask-position: 100% 0;
+}
+
+to {
+	-webkit-mask-position: 0 0;
+	mask-position: 0 0;
+}
+
+}
+@
+keyframes ani2 {from { -webkit-mask-position:100%0;
+	mask-position: 100% 0;
+}
+
+to {
+	-webkit-mask-position: 0 0;
+	mask-position: 0 0;
+}
+
+}
 
 /*    모바일용 메뉴 창      */
-#mobile-nav{
-	display:none;
-	margin-top:60px;
-	position:absolute;
-	width:500px;
-	height:999px;
+#mobile-nav {
+	margin-top:65px;
+	display: none;
+	position: absolute;
+	width: 500px;
+	height: 999px;
 	background: #fff;
-	left:-500px;  
-	
+	left: -500px;
 }
-#mobile-nav nav{
-	
+
+#mobile-nav nav {
+	margin:20px;
 }
-#mobile-nav nav ul{
-	padding: 25px;
-	padding-top:10px;
-}
-.menu li{
+
+.menu li {
 	display: block;
-	width:100%;
-	height:100%;
-	line-height:50px;
-	border:1px black solid;
-	margin-top:20px;
-	
+	width: 100%;
+	height: 100%;
+	line-height: 50px;
+	margin-bottom: 20px;
 	text-align: center;
 }
 
-.menu li a{
-	font-family: 김남윤체;
-	color:#5a5a5a;
+.menu li a {
+	font-family: 나눔스퀘어라운드;
+	font-weight: bold;
+	font-size:1.3em;
+	color: #404040;
 	font-weight: bolder;
 }
 
-
 /*    모바일용 서브 메뉴 창      */
-.m_sub{
+.m_sub {
 	display: none;
 }
-.m_sub li{
+
+.m_sub li {
+	display:inline-block;
 	border: none;
-	margin:0;
-	height:30px;
-}
-.m_sub li a{
-	font-family: 김남윤체;
-	color:#00AddA;
-	font-weight: normal;
+	margin: 0px;
 }
 
-
-
-
+.m_sub li a {
+	font-family: 나눔스퀘어라운드;
+	font-size: 1em;
+	color: #7DA7D9;
+	font-weight: bold;
+}
 
 /* addClass  */
-.scroll{
-	opacity:1;
-	background:white;
-	border-bottom:1px #ccc solid;
+.scroll {
+	opacity: 1;
+	background: white;
+	border-bottom: 1px #ccc solid;
 }
-.scroll_color{
-	color:#404040 !important;
+
+.scroll_color {
+	color: #404040 !important;
 }
-.scroll_color2{
-	color:#5a5a5a !important;
+
+.scroll_color2 {
+	color: #5a5a5a !important;
 	font-weight: normal !important;
-	font-size:.9em !important;
-}
-.pic_gifadd{
+	font-size: .9em !important;
 }
 
-
-
-
-
+.pic_gifadd {
+	
+}
 
 /*미디어 쿼리*/
-@media screen and (max-width:1000px) and (min-width:0px){
-	.menu_login_wrap{
-	display:none;
+@media screen and (max-width:1000px) and (min-width:0px) {
+	.menu_login_wrap {
+		display: none;
 	}
-	.button-container-1{
-		display:block;
+	.button-container-1 {
+		display: block;
 	}
-	#mobile-nav{
-	display: block;
+	#mobile-nav {
+		display: block;
 	}
-	.header_top{
-	background: white;
-	border-bottom: 1px black solid;
+	.header_top {
+		background: white;
+		border-bottom: 1px black solid;
 	}
-	.pic_gif{
-	
-		margin-top:70px;
+	.pic_gif {
+		margin-top: 70px;
 	}
-	.checked{
-		top:450px;
+	.checked {
+		top: 450px;
 	}
 
 	/* .menu_all_wrap_position{
 		height:900px;
 		
 	} */
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    	

@@ -3,8 +3,19 @@ $(function() {
 	var l_masonry_wrap = document.getElementsByClassName("l_masonry_wrap");
 	var grid = document.getElementsByClassName("grid");
 	var grid_item = document.getElementsByClassName("grid-item");
+	var nowPage = $(location).attr('pathname').slice($(location).attr('pathname').indexOf('admin/')+6, -4);
+	var innerWidth = window.innerWidth;
 	l_masonry_wrap.innerHTML = '';
 
+	if(nowPage != ""){
+		$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
+	}
+	
+	if(innerWidth <= 1000){
+		$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
+	}
+	
+	$('#mobile-nav').css("width", innerWidth+"px");
 	/*
 	 * for(var i=0;i<17;i++){ grid_item[i].innerHTML = '<img
 	 * src="img/'+i+1+'.jpg" >'; }
@@ -88,24 +99,42 @@ $(function() {
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > "0") {
 			fn_addFunction();
-		} else {
+		} else if($(this).scrollTop() == "0"&& $('.button-container-1').css("display") == "none"){
 			fn_removeFunction();
 		}
 	});
 	
 	$('.header_top').mouseenter(function() {
-		fn_addFunction();
+		if(nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+			fn_addFunction();
 	});
 	
 	$('.header_top').mouseleave(function() {
-		fn_removeFunction();
+		if(nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+			fn_removeFunction();
+	});
+	
+	$(window).resize(function(){
+		innerWidth = window.innerWidth;
+		$('#mobile-nav').css("width", innerWidth+"px");
+		if(nowPage == ""){
+			if(innerWidth <= 1000){
+				$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
+			}else{
+				$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_white.png");
+			}
+		}else{
+			if(innerWidth <= 1000){
+				$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
+			}
+		}
 	});
 
 	$('.button-container-1').click(function(e) {
 		if ($('#mobile-nav').css("left") == "0px") {
 
 			$('#mobile-nav').stop().animate({
-				left : "-500px"
+				left : "-"+innerWidth+"px"
 			}, 500, function() {
 				$('.menu_all_wrap_position').css({
 					height : "50px"
