@@ -73,9 +73,8 @@ $(function() {
 		$(".nav_wrap_top_position").addClass('scroll');
 		$(".menu_wrap a").addClass('scroll_color');
 		$(".ul_submenu li a").addClass('scroll_color2');
-		$(".login_wrap ul li a").addClass('scroll_login');
-		$(".login_wrap ul li a span").addClass('scroll_span');
-//		$("#top_logo").
+		$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png")
+		
 	};
 	var fn_removeFunction = function() {
 		$(".pic_gif").removeClass('pic_gifadd');
@@ -83,8 +82,7 @@ $(function() {
 		$(".nav_wrap_top_position").removeClass('scroll');
 		$(".menu_wrap a").removeClass('scroll_color');
 		$(".ul_submenu li a").removeClass('scroll_color2');
-		$(".login_wrap ul li a").removeClass('scroll_login');
-		$(".login_wrap ul li a span").removeClass('scroll_span');
+		$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_white.png")
 	};
 
 	$(window).scroll(function() {

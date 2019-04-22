@@ -18,19 +18,18 @@ img{
 	top:0px;
 	left:0px;
 	width:100%;
-	height:70px;
+	height:80px;
 	padding:0px;
 	z-index:1;
 }	
 .menu_all_wrap_position{
 	
 	position:relative;
-	top:10px;
+	top:15px;
 	left:0;
 	width:100%;
 	height:50px;/*이게없으면 서브 메뉴가 아예 안보임 수정*/
 	overflow:hidden;
-	
 
 }
 
@@ -64,8 +63,8 @@ img{
 	margin-right:100px;
 }
 .menu_wrap a{
-	
-	font-family: 맑은고딕;
+	font-family: 나눔스퀘어라운드;
+	font-weight:bold;
 	color:white;
 	font-size: 1.2em;
 }
@@ -78,12 +77,13 @@ img{
 }
 .login_wrap ul li{
 	overflow:hidden;
-	margin-right:30px;
+	margin-right:20px;
 	float:left;
 }
 .login_wrap ul li a{
-	font-family: 김남윤체;
-	color:#fff;
+	font-family: 나눔스퀘어라운드;
+	font-weight:bold;
+	color:#7DA7D9;
 	float:left;
 }
 .login_wrap ul li a span{
@@ -93,7 +93,7 @@ img{
 	margin-top:2px;
 	margin-left:20px;
 	display:block;
-	background: #fff;
+	background: #7DA7D9;
 }
 /* 여기서 부터 서브 메뉴*/
 .nav_wrap_top_position{
@@ -286,9 +286,7 @@ img{
 	border-bottom:1px #ccc solid;
 }
 .scroll_color{
-	color:#5a5a5a !important;
-	font-weight: normal !important;
-	font-size:1.1em !important;
+	color:#404040 !important;
 }
 .scroll_color2{
 	color:#5a5a5a !important;
@@ -296,12 +294,6 @@ img{
 	font-size:.9em !important;
 }
 .pic_gifadd{
-}
-.scroll_login{
-	color:#00AEEA !important;
-}
-.scroll_span{
-	background:#00AEEA !important;
 }
 
 
