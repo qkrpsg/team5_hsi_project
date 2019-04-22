@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+
+<mapper namespace="mybatis.MemoComment">
+	<!-- 
+	resultType을 Map으로 지정시
+	키값(대문자)은 컬럼명이고
+	밸류값 컬럼에 저장된 값s
+	 -->
+	<!----> <select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT M.*,name FROM memocomment M	JOIN onemember O ON M.ID=O.ID WHERE M.no=#{no}
+		ORDER BY cno DESC
+	</select>
+	
+	
+	<insert id="commentInsert" parameterType="java.util.Map">
+		INSERT INTO memocomment VALUES(SEQ_MEMOCOMMENT.NEXTVAL,#{linecomment},DEFAULT,#{no},#{id})
+	</insert>
+	
+	
+	<update id="commentUpdate" parameterType="java.util.Map">
+		UPDATE memocomment SET linecomment=#{linecomment} WHERE cno =#{cno}	
+	</update>
+	
+	
+	<delete id="commentDelete" parameterType="java.util.Map">
+		DELETE memocomment WHERE cno =#{cno}	
+	</delete> 
+	
+</mapper>
