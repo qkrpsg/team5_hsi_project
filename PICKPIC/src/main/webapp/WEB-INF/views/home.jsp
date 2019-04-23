@@ -34,7 +34,7 @@
 			<div class="right_"></div>
 			<div class="bottom_"></div>
 			<div class="left_"></div>
-		</div>
+		</div><!-- fdsfsddd -->
 		<div class="gif_innerText">
 			내일이 아닌 '지금'<br />어딘가가 아닌 '이곳'<br />행복이 가득한 '일상'
 		</div>
@@ -42,7 +42,7 @@
 </div>
 
 
-<!-- <div style="width:2000px;height:1000px; background: red;background: url('/pickpic/resources/images/gren.jpg')"></div> -->
+<!-- <div style="width:2000px;height:1000px; background: red;background: url('/pickpic/resources/images/gren.jpg')"></div>dd -->
 
 
 
@@ -58,47 +58,60 @@
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image1.jpg'/>" />
 			<div class="innerText">
-            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
-                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            	<p class="gallery-board-caption-title" ><span style="font-size: 20px; width:100%;">TITLE</span></p>
+                <p class="gallery-board-caption-description" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
             </div>
 		</div>
     	<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image2.jpg'/>" />
 			<div class="innerText">
-            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
-                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            	<p class="gallery-board-caption-title" ><span >TITLE</span></p>
+                <p class="gallery-board-caption-description" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
             </div>
 		</div>
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image3.jpg'/>" />
 			<div class="innerText">
-            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
-                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            	<p class="gallery-board-caption-title" ><span >TITLE</span></p>
+                <p class="gallery-board-caption-description" ><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
             </div>
 		</div>
+		
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image4.jpg'/>" />
 			<div class="innerText">
-            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
-                <p class="gallery-board-caption-description" style="width:90%;">
-                	<span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisidddddsadddddddddddddddddddddddddipisidddddsaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddfffffffffffffffffffffffffffffffddddddddddcing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                </p>
+            	<p class="gallery-board-caption-title" ><span >TITLE</span></p>
+                <p class="gallery-board-caption-description" ><span >aliqua212d1.</span> </p>
             </div>
 		</div>
+		<!-- 
+		<div class="main_image col-md-4 col-xs-12">
+			<img src="<c:url value='/resources/images/main_image4.jpg'/>" />
+			<div class="innerText">
+            	<p class="gallery-board-caption-title" ><span >TITLE</span></p>
+                <p class="gallery-board-caption-description" ><span >aliqua.</span></p>
+            </div>
+		</div>
+		 -->
+		 
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image5.jpg'/>" />
 			<div class="innerText">
-            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
-                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            	<p class="gallery-board-caption-title" ><span >TITLE</span></p>
+                <p class="gallery-board-caption-description" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
             </div>
 		</div>
+		
+		
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image6.jpg'/>" />
 			<div class="innerText">
-            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
-                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            	<p class="gallery-board-caption-title" ><span >TITLE</span></p>
+                <p class="gallery-board-caption-description" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
             </div>
 		</div>
+		
+		
       </div>
 	<!-- gallery-1YzKzk -->
 </section>
