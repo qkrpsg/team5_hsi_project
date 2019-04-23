@@ -34,7 +34,7 @@
 			<div class="right_"></div>
 			<div class="bottom_"></div>
 			<div class="left_"></div>
-		</div>
+		</div><!-- fdsfs -->
 		<div class="gif_innerText">
 			내일이 아닌 '지금'<br />어딘가가 아닌 '이곳'<br />행복이 가득한 '일상'
 		</div>
