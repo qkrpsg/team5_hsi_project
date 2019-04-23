@@ -110,12 +110,12 @@ $(function() {
 	});
 	
 	$('.header_top').mouseenter(function() {
-		if(nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+		if(window.scrollTop() > "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
 			fn_addFunction();
 	});
 	
 	$('.header_top').mouseleave(function() {
-		if(nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+		if(window.scrollTop() > "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
 			fn_removeFunction();
 	});
 	
@@ -123,7 +123,7 @@ $(function() {
 		innerWidth = window.innerWidth;
 		$('#mobile-nav').css("width", innerWidth+"px");
 		if(nowPage == ""){
-			if(innerWidth <= 1000){
+			if(innerWidth <= 1000 || $(window).scrollTop() > "0"){
 				$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
 			}else{
 				$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_white.png");

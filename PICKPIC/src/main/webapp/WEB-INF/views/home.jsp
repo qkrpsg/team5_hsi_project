@@ -54,84 +54,51 @@
 		<h2 class="best_pick">#BEST PICK</h2>
 	</div>
 
-	<div style="width: 100%;" >
-       
-         <div class="gallery-board-box grid-3 grid-m-1" data-link="" data-target="self" style="width:400px; height: 400px;">
-            <a target="_blank" onclick="viewGalleryBoardImageFullSize(this)" data-sortorder="0">
-               <div class="gallery-board-image-layer-1" style="  margin:3px;">
-                  <div class="gallery-board-image" style="background: url('/pickpic/resources/images/gren.jpg') 50% 50% / cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
-                  <div class="gallery-board-caption-layer-1">
-                     <p class="gallery-board-caption-title"><span style="font-size: 20px;">TITLE</span></p>
-                     <p class="gallery-board-caption-description"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-                  </div>
-               </div>
-            </a>
-         </div>
-            
-         <div class="gallery-board-box grid-3 grid-m-1" data-link="" data-target="self" style="width:400px; height: 400px;" >
-            <a target="_blank" onclick="viewGalleryBoardImageFullSize(this)" data-sortorder="0">
-               <div class="gallery-board-image-layer-1" style=" margin:3px;">
-                  <div class="gallery-board-image" style="background: url('/pickpic/resources/images/gren.jpg') 50% 50% / cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
-                  <div class="gallery-board-caption-layer-1">
-                     <p class="gallery-board-caption-title"><span style="font-size: 20px;">TITLE</span></p>
-                     <p class="gallery-board-caption-description"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-                  </div>
-               </div>
-            </a>
-         </div>
-         
-         <div class="gallery-board-box grid-3 grid-m-1" data-link="" data-target="self" style="width:400px; height: 400px;" >
-            <a target="_blank" onclick="viewGalleryBoardImageFullSize(this)" data-sortorder="0">
-               <div class="gallery-board-image-layer-1" style="margin:3px;">
-                  <div class="gallery-board-image" style="background: url('/pickpic/resources/images/gren.jpg') 50% 50% / cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
-                  <div class="gallery-board-caption-layer-1">
-                     <p class="gallery-board-caption-title"><span style="font-size: 20px;">TITLE</span></p>
-                     <p class="gallery-board-caption-description"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-                  </div>
-               </div>
-            </a>
-         </div>
-         
-         
-         <!-- 
-         <div class="gallery-board-box grid-3 grid-m-1" data-link="" data-target="self">
-            <a target="_blank" onclick="viewGalleryBoardImageFullSize(this)" data-sortorder="0">
-               <div class="gallery-board-image-layer-1" style="height:360px; margin:3px;">
-                  <div class="gallery-board-image" style="background: url('/pickpic/resources/images/gren.jpg') 50% 50% / cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
-                  <div class="gallery-board-caption-layer-1">
-                     <p class="gallery-board-caption-title"><span style="font-size: 20px;">TITLE</span></p>
-                     <p class="gallery-board-caption-description"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-                  </div>
-               </div>
-            </a>
-         </div>
-         
-         <div class="gallery-board-box grid-3 grid-m-1" data-link="" data-target="self">
-            <a target="_blank" onclick="viewGalleryBoardImageFullSize(this)" data-sortorder="0">
-               <div class="gallery-board-image-layer-1" style="height:360px; margin:3px;">
-                  <div class="gallery-board-image" style="background: url('/pickpic/resources/images/gren.jpg') 50% 50% / cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
-                  <div class="gallery-board-caption-layer-1">
-                     <p class="gallery-board-caption-title"><span style="font-size: 20px;">TITLE</span></p>
-                     <p class="gallery-board-caption-description"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-                  </div>
-               </div>
-            </a>
-         </div>
-         
-         <div class="gallery-board-box grid-3 grid-m-1" data-link="" data-target="self">
-            <a target="_blank" onclick="viewGalleryBoardImageFullSize(this)" data-sortorder="0">
-               <div class="gallery-board-image-layer-1" style="height:360px; margin:3px;">
-                  <div class="gallery-board-image" style="background: url('/pickpic/resources/images/gren.jpg') 50% 50% / cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
-                  <div class="gallery-board-caption-layer-1">
-                     <p class="gallery-board-caption-title"><span style="font-size: 20px;">TITLE</span></p>
-                     <p class="gallery-board-caption-description"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-                  </div>
-               </div>
-            </a>
-         </div>
-
- -->
-
+	<div style="width: 80%; margin: 0px auto;" >
+		<div class="main_image col-md-4 col-xs-12">
+			<img src="<c:url value='/resources/images/main_image1.jpg'/>" />
+			<div class="innerText">
+            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
+                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            </div>
+		</div>
+    	<div class="main_image col-md-4 col-xs-12">
+			<img src="<c:url value='/resources/images/main_image2.jpg'/>" />
+			<div class="innerText">
+            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
+                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            </div>
+		</div>
+		<div class="main_image col-md-4 col-xs-12">
+			<img src="<c:url value='/resources/images/main_image3.jpg'/>" />
+			<div class="innerText">
+            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
+                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            </div>
+		</div>
+		<div class="main_image col-md-4 col-xs-12">
+			<img src="<c:url value='/resources/images/main_image4.jpg'/>" />
+			<div class="innerText">
+            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
+                <p class="gallery-board-caption-description" style="width:90%;">
+                	<span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisidddddsadddddddddddddddddddddddddipisidddddsaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddfffffffffffffffffffffffffffffffddddddddddcing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                </p>
+            </div>
+		</div>
+		<div class="main_image col-md-4 col-xs-12">
+			<img src="<c:url value='/resources/images/main_image5.jpg'/>" />
+			<div class="innerText">
+            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
+                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            </div>
+		</div>
+		<div class="main_image col-md-4 col-xs-12">
+			<img src="<c:url value='/resources/images/main_image6.jpg'/>" />
+			<div class="innerText">
+            	<p class="gallery-board-caption-title" style="width:95%;"><span style="font-size: 20px; width:100%;">TITLE</span></p>
+                <p class="gallery-board-caption-description" style="width:95%;"><span style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+            </div>
+		</div>
       </div>
 	<!-- gallery-1YzKzk -->
 </section>
