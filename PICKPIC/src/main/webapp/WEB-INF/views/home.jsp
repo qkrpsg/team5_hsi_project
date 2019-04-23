@@ -42,7 +42,7 @@
 </div>
 
 
-<!-- <div style="width:2000px;height:1000px; background: red;background: url('/pickpic/resources/images/gren.jpg')"></div> -->
+<!-- <div style="width:2000px;height:1000px; background: red;background: url('/pickpic/resources/images/gren.jpg')"></div>dd -->
 
 
 
