@@ -24,7 +24,7 @@
 		 			</div>
 		 			
 		 			<div class="l_login_left_form_wrap">
-		 				<form action="<c:url value='/PickPic/login/loginProcess.bbs'/>"  method="post">
+		 				<form action="<c:url value='/PickPic/login/loginProcess.pic'/>"  method="post">
 		 				<c:if test="${! empty sessionScope.id }" var="isLogin">
 								<div class="alert alert-success col-md-12">${sessionScope.id}님
 									환영합니다

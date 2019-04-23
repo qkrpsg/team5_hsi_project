@@ -22,7 +22,7 @@ public class PickPicController {
 	
 	
 	//로그인 폼으로 이동]
-	@RequestMapping("/PickPic/login/Login.bbs")
+	@RequestMapping("/PickPic/login/Login.pic")
 	public String login(HttpSession session,Model model) throws Exception{
 		
 		
@@ -36,7 +36,7 @@ public class PickPicController {
 	}
 	
 	/* 로그인 프로세스 */
-	@RequestMapping("/PickPic/login/loginProcess.bbs")
+	@RequestMapping("/PickPic/login/loginProcess.pic")
 	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
 		//서비스 호출]
 		
@@ -77,7 +77,7 @@ public class PickPicController {
 		}
 	
 	// 플레이스 로 이동
-	@RequestMapping("/PickPic/friends/Place.bbs")
+	@RequestMapping("/PickPic/friends/Place.pic")
 	public String Place() throws Exception{
 		return "friends/Place.tiles";
 	}
