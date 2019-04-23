@@ -110,21 +110,23 @@
 	display: none;
 }
 
-.innerText p span{
-	border:red 1px solid;
+.innerText p{
 	color: #fff;
 	font-family: 나눔스퀘어라운드;
 	overflow:hidden;
+}
+.innerText p:first-child{
+	
 	word-wrap:break-word;
+	font-size: 20px; 
+	width:100%;
 }
 
-.innerText p:last-child span{
-	height:40%;
-	width:97%;
-	display: inline-block;
-	text-overflow:ellipsis;
-	white-space:pre-wrap;
-	word-wrap:none;
+.innerText p:last-child{
+	border:1px blue solid;
+	font-size: 14px; 
+	height:140px;
+	
 }
 
 /* 책갈피  */
