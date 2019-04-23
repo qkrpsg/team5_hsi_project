@@ -22,8 +22,9 @@
 	</div>
 </div>
 <div class="pic_gif" style="width: 100%;">
-	<img src="/pickpic/resources/images/Main_Video.gif"
-		style="width: 100%;">
+	<span class="gif_cell">
+		<img src="/pickpic/resources/images/Main_Video.gif">
+	</span>
 </div>
 
 
@@ -37,9 +38,8 @@
 <section id="sec_0" class="sec_wrap">
 
 
-	<div
-		style="font-size: 3.5em; width: 600px; margin: 0 auto; margin-top: 100px; margin-bottom: 100px; text-align: center;">
-		<h2>#Best Pick</h2>
+	<div>
+		<h2 style="font-size: 300%; width: 600px; margin: 0 auto; margin-top: 100px; margin-bottom: 100px; text-align: center; font-family: Calibri;">#BEST PICK</h2>
 	</div>
 
 	<div style="width: 1600px; margin: 0 auto;">
@@ -52,9 +52,9 @@
 			<a target="_blank" onclick="viewGalleryBoardImageFullSize(this)"
 				data-sortorder="0">
 				<div class="gallery-board-image-layer-1"
-					style="height: 360px; margin: 3px;">
+					style="height: 400px; width: 400px; margin: 3px;">
 					<div class="gallery-board-image"
-						style="background: url('/pickpic/resources/images/gren.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
+						style="background: url('/pickpic/resources/images/main_image1.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
 					<div class="gallery-board-caption-layer-1">
 						<p class="gallery-board-caption-title">
 							<span style="font-size: 20px;">TITLE</span>
@@ -74,9 +74,9 @@
 			<a target="_blank" onclick="viewGalleryBoardImageFullSize(this)"
 				data-sortorder="0">
 				<div class="gallery-board-image-layer-1"
-					style="height: 360px; margin: 3px;">
+					style="height: 400px; width: 400px; margin: 3px;">
 					<div class="gallery-board-image"
-						style="background: url('/pickpic/resources/images/gren.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
+						style="background: url('/pickpic/resources/images/main_image2.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
 					<div class="gallery-board-caption-layer-1">
 						<p class="gallery-board-caption-title">
 							<span style="font-size: 20px;">TITLE</span>
@@ -96,9 +96,9 @@
 			<a target="_blank" onclick="viewGalleryBoardImageFullSize(this)"
 				data-sortorder="0">
 				<div class="gallery-board-image-layer-1"
-					style="height: 360px; margin: 3px;">
+					style="height: 400px; width: 400px; margin: 3px;">
 					<div class="gallery-board-image"
-						style="background: url('/pickpic/resources/images/gren.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
+						style="background: url('/pickpic/resources/images/main_image3.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
 					<div class="gallery-board-caption-layer-1">
 						<p class="gallery-board-caption-title">
 							<span style="font-size: 20px;">TITLE</span>
@@ -117,31 +117,9 @@
 			<a target="_blank" onclick="viewGalleryBoardImageFullSize(this)"
 				data-sortorder="0">
 				<div class="gallery-board-image-layer-1"
-					style="height: 360px; margin: 3px;">
+					style="height: 400px; width: 400px; margin: 3px;">
 					<div class="gallery-board-image"
-						style="background: url('/pickpic/resources/images/gren.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
-					<div class="gallery-board-caption-layer-1">
-						<p class="gallery-board-caption-title">
-							<span style="font-size: 20px;">TITLE</span>
-						</p>
-						<p class="gallery-board-caption-description">
-							<span style="font-size: 14px;">Lorem ipsum dolor sit amet,
-								consectetur adipisicing elit, sed do eiusmod tempor incididunt
-								ut labore et dolore magna aliqua.</span>
-						</p>
-					</div>
-				</div>
-			</a>
-		</div>
-
-		<div class="gallery-board-box grid-3 grid-m-1" data-link=""
-			data-target="self">
-			<a target="_blank" onclick="viewGalleryBoardImageFullSize(this)"
-				data-sortorder="0">
-				<div class="gallery-board-image-layer-1"
-					style="height: 360px; margin: 3px;">
-					<div class="gallery-board-image"
-						style="background: url('/pickpic/resources/images/gren.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
+						style="background: url('/pickpic/resources/images/main_image4.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
 					<div class="gallery-board-caption-layer-1">
 						<p class="gallery-board-caption-title">
 							<span style="font-size: 20px;">TITLE</span>
@@ -161,9 +139,31 @@
 			<a target="_blank" onclick="viewGalleryBoardImageFullSize(this)"
 				data-sortorder="0">
 				<div class="gallery-board-image-layer-1"
-					style="height: 360px; margin: 3px;">
+					style="height: 400px; width: 400px; margin: 3px;">
 					<div class="gallery-board-image"
-						style="background: url('/pickpic/resources/images/gren.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
+						style="background: url('/pickpic/resources/images/main_image5.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
+					<div class="gallery-board-caption-layer-1">
+						<p class="gallery-board-caption-title">
+							<span style="font-size: 20px;">TITLE</span>
+						</p>
+						<p class="gallery-board-caption-description">
+							<span style="font-size: 14px;">Lorem ipsum dolor sit amet,
+								consectetur adipisicing elit, sed do eiusmod tempor incididunt
+								ut labore et dolore magna aliqua.</span>
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="gallery-board-box grid-3 grid-m-1" data-link=""
+			data-target="self">
+			<a target="_blank" onclick="viewGalleryBoardImageFullSize(this)"
+				data-sortorder="0">
+				<div class="gallery-board-image-layer-1"
+					style="height: 400px; width: 400px; margin: 3px;">
+					<div class="gallery-board-image"
+						style="background: url('/pickpic/resources/images/main_image6.jpg') 50% 50%/cover repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></div>
 					<div class="gallery-board-caption-layer-1">
 						<p class="gallery-board-caption-title">
 							<span style="font-size: 20px;">TITLE</span>

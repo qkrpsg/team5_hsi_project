@@ -1,5 +1,26 @@
 
 $(function(){
+	var outerHeight = 900;
+	$('.pic_gif').css("height", outerHeight+"px");
+	
+	$('.pic_gif span img').css("width", "100%");
+	if(window.innerWidth >= 1500){
+		$('.pic_gif span img').css("height", window.innerHeight+"px");
+	}else if(window.innerWidth <= 1000){
+		$('.pic_gif span img').css("src", "");
+	}
+	
+	$(window).resize(function(){
+		if(window.innerWidth >= 1500){
+			$('.pic_gif span img').css("height", window.innerHeight+"px");
+			$('.pic_gif span img').css("display", "inline");
+		}else if(window.innerWidth <= 1000){
+			$('.pic_gif span img').css("display", "none");
+		}else{
+			$('.pic_gif span img').css("height", "");
+			$('.pic_gif span img').css("display", "inline");
+		}
+	});
 	
 	$('.checked > a').click(function(){
    	 if($('.checked_menu').css("width") == "250px"){
