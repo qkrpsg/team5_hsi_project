@@ -15,7 +15,7 @@ import com.kosmo.pickpic.service.impl.PickpicUserServiceImpl;
 
 //
 @Controller
-public class PickPicController {
+public class PickPicUserController {
 //	//서비스 주입]
 	@Resource(name="pickpicService")
 	private PickpicUserServiceImpl pickpicService;
