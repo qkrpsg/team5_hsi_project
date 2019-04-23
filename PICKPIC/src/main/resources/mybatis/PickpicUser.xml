@@ -8,6 +8,11 @@
 	<select id="PickpicUserIsMember" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM PICKPIC_USER WHERE PPU_ID=#{id} AND PPU_PASSWORD=#{pwd}
 	</select>
+	
+	<insert id="PickpicUserInsert" parameterType="java.util.Map">
+		INSERT INTO PICKPIC_USER(PPU_ID,PPU_PASSWORD,PPU_NAME,PPU_TETEPHONE,PPU_ADDRESS,PPU_AGE,PPU_GENDER,PPU_PROFILE_PATH) 
+		VALUES(#{ppu_id},#{ppu_password},#{ppu_name},#{ppu_tetephone},#{ppu_address},#{ppu_age},#{ppu_gender},#{ppu_profile_path})
+	</insert>
 	 <!--s
 	
 	<select id="PickpicUserSelectList" parameterType="java.util.Map" resultType="PickpicUserDTO">

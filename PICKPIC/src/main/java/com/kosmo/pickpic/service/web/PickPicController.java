@@ -35,7 +35,7 @@ public class PickPicController {
 		return "login/Test";
 	}
 	
-	/**/
+	/* 로그인 프로세스 */
 	@RequestMapping("/PickPic/login/loginProcess.bbs")
 	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
 		//서비스 호출]
@@ -55,6 +55,29 @@ public class PickPicController {
 				return "login/Login.tiles";
 	}
 	
+	//회원가입 폼
+		@RequestMapping("/PickPic/login/Sign_Up.pic")
+		public String sign_up() throws Exception{
+			
+			return "login/Sign_Up.tiles";
+		}
+		
+		
+		//회원가입 프로세스
+		@RequestMapping("/PICKPIC/Sign_Up/sign_process.pic")
+		public String sign_up_process(@RequestParam Map map,Map map2) throws Exception{
+			
+			pickpicService.insert(map);
+
+			/*
+			
+			7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
+			*/
+			
+			return "login/Login.tiles";
+		}
+	
+	// 플레이스 로 이동
 	@RequestMapping("/PickPic/friends/Place.bbs")
 	public String Place() throws Exception{
 		return "friends/Place.tiles";
