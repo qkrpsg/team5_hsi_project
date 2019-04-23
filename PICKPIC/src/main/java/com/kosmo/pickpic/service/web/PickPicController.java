@@ -70,7 +70,6 @@ public class PickPicController {
 			pickpicService.insert(map);
 
 			/*
-			
 			7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 			*/
 			
