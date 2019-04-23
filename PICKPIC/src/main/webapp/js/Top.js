@@ -110,12 +110,12 @@ $(function() {
 	});
 	
 	$('.header_top').mouseenter(function() {
-		if(window.scrollTop() > "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+		if($(window).scrollTop() == "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
 			fn_addFunction();
 	});
 	
 	$('.header_top').mouseleave(function() {
-		if(window.scrollTop() > "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+		if($(window).scrollTop() == "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
 			fn_removeFunction();
 	});
 	

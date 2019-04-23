@@ -1,3 +1,8 @@
+@font-face{
+	font-family: NANUMSQUAREROUNDB;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
 * {
 	padding: 0px;
 	margin: 0;
@@ -69,8 +74,7 @@ img {
 }
 
 .menu_wrap a {
-	font-family: 나눔스퀘어라운드;
-	font-weight: bold;
+	font-family: NANUMSQUAREROUNDB;
 	font-size: 1.2em;
 	color: white;
 }
@@ -91,8 +95,7 @@ img {
 }
 
 .login_wrap ul li a {
-	font-family: 나눔스퀘어라운드;
-	font-weight: bold;
+	font-family: NANUMSQUAREROUNDB;
 	float: left;
 	color: #7DA7D9;
 }
@@ -132,8 +135,7 @@ img {
 
 .ul_submenu li a {
 	font-size: 1em;
-	font-weight: bold;
-	font-family: 나눔스퀘어라운드;
+	font-family: NANUMSQUAREROUNDB;
 	text-align: center;
 	display: block;
 	color: white;
@@ -275,8 +277,7 @@ to {
 }
 
 .menu li a {
-	font-family: 나눔스퀘어라운드;
-	font-weight: bold;
+	font-family: NANUMSQUAREROUNDB;
 	font-size:1.3em;
 	color: #404040;
 	font-weight: bolder;
@@ -294,10 +295,9 @@ to {
 }
 
 .m_sub li a {
-	font-family: 나눔스퀘어라운드;
+	font-family: NANUMSQUAREROUNDB;
 	font-size: 1em;
 	color: #7DA7D9;
-	font-weight: bold;
 }
 
 /* addClass  */
