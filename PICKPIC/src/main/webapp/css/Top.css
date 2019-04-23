@@ -334,7 +334,7 @@ to {
 	}
 	.header_top {
 		background: white;
-		border-bottom: 1px black solid;
+		border-bottom: 1px #ccc solid;
 	}
 	.pic_gif {
 		margin-top: 70px;
