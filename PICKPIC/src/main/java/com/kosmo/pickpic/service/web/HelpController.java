@@ -8,10 +8,10 @@ public class HelpController {
 	//서비스 주입
 
 	//픽크픽TIP
-//	@RequestMapping("/help/tip.pic")
-//	public String tip() throws Exception{
-//		return "help/tip.tiles";
-//	}//tip
+	@RequestMapping("/help/tip.pic")
+	public String tip() throws Exception{
+		return "help/tip.tiles";
+	}//tip
 
 	//공지사항
 //	@RequestMapping("/help/notice.pic")
@@ -26,8 +26,8 @@ public class HelpController {
 //	}//qna
 
 	//초보자가이드
-//	@RequestMapping("/help/guide.pic")
-//	public String guide() throws Exception{
-//		return "help/guide.tiles";
-//	}//guide
+	@RequestMapping("/help/guide.pic")
+	public String guide() throws Exception{
+		return "help/guide.tiles";
+	}//guide
 }//helpController
