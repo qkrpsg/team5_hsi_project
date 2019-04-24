@@ -30,7 +30,6 @@ public class UserController {
 	@RequestMapping("/user/loginProcess.pic")
 	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
 		boolean flag = userService.isMember(map);
-		
 		if(flag) {
 			session.setAttribute("id", map.get("id"));
 		}
@@ -39,10 +38,36 @@ public class UserController {
 			//회원 정보가 일치하지 않는경우 로그인페이지로 재이동
 			return "login/Login.tiles";
 		}//비회원이거나 아이디가 틀린경우
-		
 		//로그인 성공시 메인화면으로 이동
 		return "home.tiles";
 	}//loginProcess
+	
+	//home
+	
+	
+	@RequestMapping("/user/home.pic")
+	public String home() throws Exception{
+		
+		return "/home.tiles";
+	}//login
+	//회원가입 
+	@RequestMapping("/user/sign_up.pic")
+	public String sign_up() throws Exception{
+		
+		return "login/Sign_Up.tiles";
+	}//login
+	
+	
+	//회원가입 프로세스
+	@RequestMapping("/user/sign_process.pic")
+	public String sign_up_process(@RequestParam Map map) throws Exception{
+		userService.insert(map);
+		/*
+		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
+		*/
+		return "login/Login.tiles";
+	}
+	
 	
 	//내정보
 //	@RequestMapping("/user/myPage.pic")
