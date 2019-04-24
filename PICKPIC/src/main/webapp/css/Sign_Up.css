@@ -1,0 +1,29 @@
+.header_top{
+	background: white !important;
+	opacity:1;
+	background:white;
+	border-bottom:1px #ccc solid;
+}
+.menu_wrap a{
+	color:#5a5a5a !important;
+	font-weight: normal !important;
+	font-size:1.1em !important;
+}
+.ul_submenu li a{
+	color:#5a5a5a !important;
+	font-weight: normal !important;
+	font-size:.9em !important;
+}
+
+.login_wrap ul li a{
+	color:#00AEEA !important;	
+}
+.login_wrap ul li a span{
+	background:#00AEEA !important;
+}
+.nav_wrap_top_position{
+	opacity:1;
+	background:white;
+	border-bottom:1px #ccc solid;
+}
+/* 메인 페이지 이외에 페이지에서 넣어야 하는 속성 */
