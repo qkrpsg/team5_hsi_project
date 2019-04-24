@@ -4,7 +4,7 @@
 <div class="content-wrapper">
 	<!-- 콘텐츠 헤더 시작 -->
 	<section class="content-header">
-		<h1>필터<small>20개의 필터</small></h1>
+		<h1>필터 <small>20개의 필터</small></h1>
 	</section>
 	<!-- 콘텐츠 헤더 끝 -->
 	

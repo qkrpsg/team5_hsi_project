@@ -25,7 +25,7 @@
 							<i class="fa fa-square-o"> 전체 선택</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-trash"> 삭제</i>
+							<i class="fa fa-trash"> 영구 삭제</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<i class="fa fa-reply"> 복원</i>
@@ -95,7 +95,7 @@
 							<i class="fa fa-square-o"> 전체 선택</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-trash"> 삭제</i>
+							<i class="fa fa-trash"> 영구 삭제</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<i class="fa fa-reply"> 복원</i>
