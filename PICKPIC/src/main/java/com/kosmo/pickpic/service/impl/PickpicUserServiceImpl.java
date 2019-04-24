@@ -11,7 +11,7 @@ import com.kosmo.pickpic.service.PickpicUserDTO;
 import com.kosmo.pickpic.service.PickpicUserService;
 
 //
-@Service("pickpicService")
+@Service("userService")
 public class PickpicUserServiceImpl implements PickpicUserService {
 
 	//OneMemoDAO객체 주입]
