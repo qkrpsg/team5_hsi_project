@@ -118,6 +118,7 @@
 				</p>
 			</div>
 			<div class="l__keyword_left_down_text">
+			
 				<p>
 					구도를 몰라도 사진사가 없어도 괜찮습니다.<br />
 					키워드로 원하는 필터를 고르고<br />
