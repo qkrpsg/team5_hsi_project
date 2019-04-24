@@ -21,8 +21,12 @@ public class HelpController {
 
 	//문의사항
 	@RequestMapping("/help/qna/List.pic")
-	public String qna() throws Exception{
+	public String qna_list() throws Exception{
 		return "help/qna/List.tiles";
+	}//qna
+	@RequestMapping("/help/qna/Write.pic")
+	public String qna_write() throws Exception{
+		return "help/qna/Write.tiles";
 	}//qna
 
 	//초보자가이드
