@@ -4,7 +4,7 @@
 <div class="content-wrapper">
 	<!-- 콘텐츠 헤더 시작 -->
 	<section class="content-header">
-		<h1>앨범다운 <small>56 개의 게시물</small></h1>
+		<h1>앨범다운 <small>56 개의 다운 기록</small></h1>
 	</section>
 	<!-- 콘텐츠 헤더 끝 -->
 	
@@ -14,7 +14,7 @@
 	    	<div class="col-md-12">
 	    		<div class="box">
 					<div class="box-header">
-						<h3 class="box-title">게시물 목록</h3>
+						<h3 class="box-title">앨범 다운 기록</h3>
 					</div>
 					
 					<div class="box-body table-responsive">
@@ -42,34 +42,26 @@
 							<tr>
 								<th></th>
 								<th>번호</th>
-								<th class="col-md-3">제목</th>
-								<th>내용</th>
 								<th>사용자</th>
-								<th>등록일</th>
+								<th>다운로드일</th>
 							</tr>
 							<tr>
 								<td><input type="checkbox"></td>
 								<td>1</td>
-								<td>제목1</td>
-								<td>내용1</td>
 								<td>사용자명1</td>
-								<td>등록일1</td>
+								<td>다운로드일1</td>
 							</tr>
 							<tr>
 								<td><input type="checkbox"></td>
 								<td>2</td>
-								<td>제목2</td>
-								<td>내용2</td>
 								<td>사용자명2</td>
-								<td>등록일2</td>
+								<td>다운로드일2</td>
 							</tr>
 							<tr>
 								<td><input type="checkbox"></td>
 								<td>3</td>
-								<td>제목3</td>
-								<td>내용3</td>
 								<td>사용자명3</td>
-								<td>등록일3</td>
+								<td>다운로드일3</td>
 							</tr>
 						</table>
 					</div>
