@@ -1,11 +1,21 @@
-@font-face{
+@font-face {
 	font-family: A옛날사진관2;
 	src: url("/pickpic/css/fonts/A옛날사진관2.TTF");
 }
 
-@font-face{
+@font-face {
 	font-family: NANUMSQUAREROUNDB;
 	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDR;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDR.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDL;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDL.TTF");
 }
 
 .pic_gif {
@@ -98,6 +108,12 @@
 	font-family: Calibri;
 }
 
+.main_image_wrap {
+	padding: 20px 20% 20px 20%;
+	position: relative;
+	display: block;
+}
+
 .main_image {
 	padding: 5px;
 	position: relative;
@@ -118,22 +134,37 @@
 	display: none;
 }
 
-.innerText p{
+.innerText p {
 	color: #fff;
 	font-family: NANUMSQUAREROUNDB;
-	overflow:hidden;
-}
-.innerText p:first-child{
-	
-	word-wrap:break-word;
-	font-size: 20px; 
-	width:100%;
+	overflow: hidden;
 }
 
-.innerText p:last-child{
-	font-size: 14px; 
-	height:120px;
-	
+.innerText p:first-child {
+	word-wrap: break-word;
+	font-size: 20px;
+	width: 100%;
+}
+
+.innerText p:last-child {
+	font-size: 14px;
+	height: 120px;
+}
+
+.icon_wrap {
+	width:50px;
+	margin:0px auto;
+}
+
+.more_icon {
+	width: 50px;
+	height: 50px;
+	margin:0px auto;
+}
+
+.icon_wrap p {
+	width: 50px;
+	text-align: center;
 }
 
 /* 책갈피  */
@@ -229,11 +260,13 @@
 
 .l__keyword_left_up_text p {
 	font-size: 2.5em;
+	font-family: NANUMSQUAREROUNDL;
 	font-weight: 100;
 }
 
-.l__keyword_left_up_text span {
-	font-weight: 600;
+.l__keyword_left_up_text p span {
+	font-family: NANUMSQUAREROUNDR;
+	font-weight: 300;
 }
 
 /* l__keyword_left_down_text */
@@ -243,6 +276,7 @@
 
 .l__keyword_left_down_text p {
 	font-size: 1.5em;
+	font-family: NANUMSQUAREROUNDL;
 }
 
 .l_keyword_right_wrap {
@@ -276,13 +310,13 @@
 }
 
 .l_masonry_margin_wrap {
-	width: 1600px;
+	width: 90%;
 	margin: 0 auto;
 	overflow: hidden;
 }
 
 .l_masonry_text_wrap {
-	width: 40%;
+	width: 45%;
 	float: left;
 	margin-top: 200px;
 }
@@ -293,10 +327,13 @@
 
 .l_masonry_text_wrap div:first-child p {
 	font-size: 2.0em;
+	font-family: NANUMSQUAREROUNDL;
+	font-weight: 100;
 }
 
-.l_masonry_text_wrap div:first-child span {
-	font-weight: bold;
+.l_masonry_text_wrap div:first-child p span {
+	font-weight: 300;
+	font-family: NANUMSQUAREROUNDR;
 }
 
 .l_masonry_text_wrap div:last-child {
@@ -306,10 +343,11 @@
 
 .l_masonry_text_wrap div:last-child p {
 	font-size: 1.5em;
+	font-family: NANUMSQUAREROUNDL;
 }
 
 .l_masonry_wrap {
-	width: 60%;
+	width: 55%;
 	height: 100%;
 	float: left;
 }
@@ -431,6 +469,9 @@
 		width: 100%;
 		clear: both;
 	}
+	
+	
+	
 	.l_masonry_wrap {
 		width: 100%;
 		margin-left: 20px;

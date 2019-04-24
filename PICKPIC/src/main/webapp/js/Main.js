@@ -46,17 +46,20 @@ $(function(){
 	 if(innerWidth > 1000){
 		$('.anim_box').css("top", (window.innerHeight/2-250)+"px")
 		.css("left", (innerWidth/2-250)+"px");
+		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2+50+"px");
 	 }else{
 		 $('.anim_box').css("top", (window.innerHeight/2-175)+"px")
 			.css("left", (innerWidth/2-175)+"px");
 		 $('.anim_box').css("width", "350px")
 			.css("height", "350px");
+		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*6+20+"px");
 	 }
 	
 //	 베스트픽 이미지 조정
 	 $('.main_image img').css("height", $('.main_image').css("width"));
 	 $('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
 	 $('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
+	
 	 
 //	 베스트픽 이미지 마우스이벤트
 	 $('.main_image').mouseenter(function(){
