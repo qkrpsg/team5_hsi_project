@@ -41,17 +41,15 @@
 	</span>
 </div>
 
-
-<!-- <div style="width:2000px;height:1000px; background: red;background: url('/pickpic/resources/images/gren.jpg')"></div>dd -->
-
-
-
-
 <section id="sec_0" class="sec_wrap">
-
 
 	<div>
 		<h2 class="best_pick">#BEST PICK</h2>
+	</div>
+	
+	<div class="line_box">
+		<div class="edge"></div>
+		<div class="edge"></div>
 	</div>
 
 	<div class="main_image_wrap">
@@ -93,7 +91,6 @@
             </div>
 		</div>
 		
-		
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image6.jpg'/>" />
 			<div class="innerText">
@@ -107,7 +104,6 @@
       	<p>more</p>
       </div>
 </section>
-
 
 <section id="sec_1" class="sec_wrap l_keyword_all_wrap">
 	<div class="l_keyword_margin_wrap">

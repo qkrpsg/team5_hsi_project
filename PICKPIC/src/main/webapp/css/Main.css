@@ -18,6 +18,11 @@
 	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDL.TTF");
 }
 
+@font-face {
+	font-family: NANUMSQUARER;
+	src: url("/pickpic/css/fonts/NANUMSQUARER.TTF");
+}
+
 .pic_gif {
 	background-color: #000;
 	display: table;
@@ -108,6 +113,36 @@
 	font-family: Calibri;
 }
 
+.line_box{
+	position: absolute;
+	left: 19%;
+	top: 150px;
+	height: 75%;
+	width: 62%;
+}
+
+.edge:first-child{
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    top:0px;
+    right:0px;
+    border-right:#7F7F7F 1px solid;
+    border-top: #7F7F7F 1px solid;
+}
+
+.edge:last-child{
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    bottom:0px;
+    left:0px;
+    border-left:#7F7F7F 1px solid;
+    border-bottom: #7F7F7F 1px solid;
+}
+
 .main_image_wrap {
 	padding: 20px 20% 20px 20%;
 	position: relative;
@@ -154,6 +189,7 @@
 .icon_wrap {
 	width:50px;
 	margin:0px auto;
+	margin-top: 20px;
 }
 
 .more_icon {
@@ -164,7 +200,10 @@
 
 .icon_wrap p {
 	width: 50px;
+	margin-top: 5px;
 	text-align: center;
+	font-weight: NANUMSQUARER;
+	color: #7F7F7F;
 }
 
 /* 책갈피  */

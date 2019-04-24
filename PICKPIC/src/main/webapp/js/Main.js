@@ -18,16 +18,23 @@ $(function(){
 		$('.gif_innerText').css("left", window.innerWidth/2-250+"px");
 		$('.main_image img').css("height", $('.main_image').css("width"));
 		$('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
-		 $('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
+		$('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
+		$('.line_box').css("top", "150px");
 		if(window.innerWidth >= 1500){
 			$('.pic_gif span img').css("height", window.innerHeight+"px");
 			$('.pic_gif span img').css("display", "inline");
+			$('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2.1+"px");
 		}else if(window.innerWidth <= 1000){
 			$('.pic_gif span img').css("display", "none");
+			$('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*6+12+"px");
+			$('.line_box').css("top", "160px");
 		}else{
 			$('.pic_gif span img').css("height", "");
 			$('.pic_gif span img').css("display", "inline");
+			$('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2.1+3+"px");
+			$('.line_box').css("top", "155px");
 		}
+		$('.line_box').css("height", $('.main_image_wrap').css("height"));
 	});
 	
 	 $(function(){
@@ -41,26 +48,26 @@ $(function(){
          });
 
       });
-
+//	 베스트픽 이미지 조정
+	 $('.main_image img').css("height", $('.main_image').css("width"));
+	 $('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
+	 $('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
+	 
 //	 네모난거 사라지는거 위치잡기
 	 if(innerWidth > 1000){
 		$('.anim_box').css("top", (window.innerHeight/2-250)+"px")
 		.css("left", (innerWidth/2-250)+"px");
-		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2+50+"px");
+		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2.1+"px");
 	 }else{
 		 $('.anim_box').css("top", (window.innerHeight/2-175)+"px")
 			.css("left", (innerWidth/2-175)+"px");
 		 $('.anim_box').css("width", "350px")
 			.css("height", "350px");
-		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*6+20+"px");
+		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*6+12+"px");
+		 $('.line_box').css("top", "160px");
 	 }
+	 $('.line_box').css("height", $('.main_image_wrap').css("height"));
 	
-//	 베스트픽 이미지 조정
-	 $('.main_image img').css("height", $('.main_image').css("width"));
-	 $('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
-	 $('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
-	
-	 
 //	 베스트픽 이미지 마우스이벤트
 	 $('.main_image').mouseenter(function(){
 		 $(this).find('div').css("display", "inline");
@@ -101,8 +108,5 @@ $(function(){
 		}
 		
 	});
-	
-	
-	       
 	       
    });
