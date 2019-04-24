@@ -57,19 +57,18 @@
 						<ul class="m_sub" style="display: none;">
 							<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
 							<li><a href="<c:url value='/friends/filter.pic'/>">필터</a></li>
-							<li><a href="<c:url value='#'/>">픽로드</a></li>
+							<li><a href="<c:url value='/friends/route.pic'/> ">픽로드</a></li>
 							<li><a href="<c:url value='#'/>">앨범다운</a></li>
 						</ul>
 					</li>
 
 					<li class="l_menu_li"><a href="#">고객센터</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="<c:url value='#'/>">피크픽TIP</a></li>
-							<li><a href="<c:url value='#'/>">공지사항</a></li>
-							<li><a href="<c:url value='#'/>">문의사항</a></li>
-							<li><a href="<c:url value='#'/>">초보자가이드</a></li>
-						</ul>
-					</li>
+							<li><a href="<c:url value='/help/tip.pic'/>">피크픽TIP</a></li>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">문의사항</a></li>
+							<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
+						</ul></li>
 
 					<li><a href="<c:url value='/user/Login.pic'/>">LOGIN</a>
 					<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a>
@@ -100,17 +99,17 @@
 					<ul class="ul_submenu">
 						<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
-						<li><a href="<c:url value='#'/> ">픽로드</a></li>
+						<li><a href="<c:url value='/friends/route.pic'/>">픽로드</a></li>
 						<li><a href="<c:url value='#'/> ">앨범다운</a></li>
 					</ul>
 				</div>
             
 				<div class="nav_wrap col-md-2">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='#'/> ">피크픽TIP</a></li>
-						<li><a href="<c:url value='#'/> ">공지사항</a></li>
-						<li><a href="<c:url value='#'/> ">문의사항</a></li>
-						<li><a href="<c:url value='#'/> ">초보자가이드</a></li>
+					    <li><a href="<c:url value='/help/tip.pic'/>">피크픽TIP</a></li>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">문의사항</a></li>
+						<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
 					</ul>
 				</div>
 			</div>
