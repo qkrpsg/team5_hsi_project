@@ -136,12 +136,12 @@
 
 
 <section id="sec_2" class="sec_wrap l_keyword_all_wrap2">
-	<div class="l_keyword_margin_wrap l_keyword_margin_wrap2">
-		<div class="l_keyword_left_wrap l_keyword_left_wrap2">
+	<div class="l_keyword_margin_wrap">
+		<div class="l_keyword_left_wrap col-md-5 col-sm-12">
 			<img src="<c:url value='/resources/images/cellphone_image.gif' />">
 			<!--<img src="images/Honeycam 2019-03-26 13-02-57.gif" >-->
 		</div>
-		<div class="l_keyword_right_wrap l_keyword_right_wrap2">
+		<div class="l_keyword_right_wrap col-md-7">
 			<div class="l__keyword_left_up_text">
 				<p>
 					<span>모바일</span>에서도 간편하게
