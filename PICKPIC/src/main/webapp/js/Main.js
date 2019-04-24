@@ -15,12 +15,13 @@ $(function(){
 	$('.gif_innerText').css("left", window.innerWidth/2-250+"px");
 	
 	$(window).resize(function(){
-		$('.gif_innerText').css("left", window.innerWidth/2-250+"px");
 		$('.main_image img').css("height", $('.main_image').css("width"));
 		$('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
 		$('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
 		$('.line_box').css("top", "150px");
 		if(window.innerWidth >= 1500){ //1500보다 사이즈 클 경우(피씨)
+			$('.gif_innerText').css("left", "40%").css("width", "500px");
+			$('.gif_innerText').css("left", window.innerWidth/2-250+"px");
 			$('.pic_gif span img').css("height", window.innerHeight+"px");
 			$('.pic_gif span img').css("display", "inline");
 			$('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2.1+"px");
@@ -35,7 +36,15 @@ $(function(){
 			$('.l_keyword_right_wrap div').css("margin-top", "30px !important");
 			$('.l_keyword_right_wrap .l__keyword_left_down_text').css("margin-bottom", "0px");
 			$('.l__keyword_left_up_text').css("margin-top", "150px");
+			//섹션3
+			$('.l_masonry_text_wrap').css("margin-top", "270px");
+			 $('.l_masonry_text_wrap div:first-child').css("text-align", "right");
+			 $('.l_masonry_text_wrap div:last-child').css("text-align", "right").css("margin-bottom", "0px");
+			 $('#sec_3').css("height", "600px");
+			 $('.l_masonry_wrap').css("margin-bottom", "0px");
+			 $('l_masonry_margin_wrap').css("height", "600px");
 		}else if(window.innerWidth <= 1000){ //1000보다 사이즈 작을 경우(모바일)
+			$('.gif_innerText').css("width", "80%").css("left","10%");
 			$('.pic_gif span img').css("display", "none");
 			$('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*6+12+"px");
 			$('.line_box').css("top", "160px");
@@ -50,7 +59,16 @@ $(function(){
 			 $('.l_keyword_left_wrap img').css("float", "none");
 			 $('.l_keyword_right_wrap div').css("margin-top", "50px");
 			 $('.l_keyword_right_wrap .l__keyword_left_down_text').css("margin-bottom", "100px");
+			 ////섹션3
+			 $('.l_masonry_text_wrap').css("margin-top", "150px");
+			 $('.l_masonry_text_wrap div:first-child').css("text-align", "center");
+			 $('.l_masonry_text_wrap div:last-child').css("text-align", "center").css("margin-bottom", "100px");
+			 $('#sec_3').css("height", "100%");
+			 $('.l_masonry_wrap').css("margin-bottom", "150px");
+			 $('l_masonry_margin_wrap').css("height", "100%");
 		}else{ //1000~1500 사이(태블릿)
+			$('.gif_innerText').css("left", "40%").css("width", "500px");
+			$('.gif_innerText').css("left", window.innerWidth/2-250+"px");
 			$('.pic_gif span img').css("height", "");
 			$('.pic_gif span img').css("display", "inline");
 			$('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2.1+3+"px");
@@ -66,6 +84,13 @@ $(function(){
 			$('.l_keyword_right_wrap div').css("margin-top", "30px !important");
 			$('.l_keyword_right_wrap .l__keyword_left_down_text').css("margin-bottom", "0px");
 			$('.l__keyword_left_up_text').css("margin-top", "150px");
+			//섹션3
+			$('.l_masonry_text_wrap').css("margin-top", "270px");
+			 $('.l_masonry_text_wrap div:first-child').css("text-align", "right");
+			 $('.l_masonry_text_wrap div:last-child').css("text-align", "right").css("margin-bottom", "0px");
+			 $('#sec_3').css("height", "600px");
+			 $('.l_masonry_wrap').css("margin-bottom", "0px");
+			 $('l_masonry_margin_wrap').css("height", "600px");
 		}
 		$('.line_box').css("height", $('.main_image_wrap').css("height"));
 	});
@@ -92,6 +117,7 @@ $(function(){
 		.css("left", (innerWidth/2-250)+"px");
 		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*2.1+"px");
 	 }else{
+		 $('.gif_innerText').css("width", "80%").css("left","10%");
 		 $('.anim_box').css("top", (window.innerHeight/2-175)+"px")
 			.css("left", (innerWidth/2-175)+"px");
 		 $('.anim_box').css("width", "350px")
@@ -109,6 +135,12 @@ $(function(){
 		 $('.l_keyword_left_wrap img').css("float", "none");
 		 $('.l_keyword_right_wrap div').css("margin-top", "50px");
 		 $('.l_keyword_right_wrap .l__keyword_left_down_text').css("margin-bottom", "100px");
+		 //////섹션3
+		 $('.l_masonry_text_wrap').css("margin-top", "150px");
+		 $('.l_masonry_text_wrap div:first-child').css("text-align", "center");
+		 $('.l_masonry_text_wrap div:last-child').css("text-align", "center").css("margin-bottom", "100px");
+		 $('#sec_3').css("height", "100%");
+		 $('.l_masonry_wrap').css("margin-bottom", "150px");
 	 }
 	 $('.line_box').css("height", $('.main_image_wrap').css("height"));
 	

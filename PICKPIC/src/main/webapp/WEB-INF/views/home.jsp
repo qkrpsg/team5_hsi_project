@@ -5,6 +5,7 @@
 <link href="<c:url value='/css/Sec_1.css'/>" rel="stylesheet">
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
+<script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
 <!-- asddddssddf ss-->
 <span id="body"></span>
 <div class="checked">
@@ -105,6 +106,10 @@
       </div>
 </section>
 
+<div>
+	<h2 class="about_pickpic">#ABOUT PICKPIC</h2>
+</div>
+	
 <section id="sec_1" class="sec_wrap l_keyword_all_wrap">
 	<div class="l_keyword_margin_wrap">
 		<div class="l_keyword_left_wrap col-md-7">
@@ -160,8 +165,9 @@
 </section>
 
 <section id="sec_3" class="sec_wrap">
+	
 	<div class="l_masonry_margin_wrap">
-		<div class="l_masonry_text_wrap">
+		<div class="l_masonry_text_wrap col-md-4">
 			<div>
 				<p>
 					<span>다양한</span>종류의 필터들
@@ -173,7 +179,7 @@
 		</div>
 
 
-		<div class="l_masonry_wrap">
+		<div class="l_masonry_wrap col-md-8 col-sm-12">
 			<div class="grid">
 				<div class="grid-item">
 					<img src="<c:url value='/resources/images/1.jpg' />">
@@ -223,24 +229,17 @@
 				<div class="grid-item">
 					<img src="<c:url value='/resources/images/16.jpg' />">
 				</div>
+				<div class="grid-item">
+					<img src="<c:url value='/resources/images/17.jpg' />">
+				</div>
 			</div>
 		</div>
-
-
-
-
 	</div>
-
-
-
 
 </section>
 <script type="text/javascript">
 	$('.grid').isotope({
 		itemSelector : '.grid-item',
-		masonry : {
-		/*columnWidth: 10,
-		gutter: 10*/
-		}
+		masonry : {}
 	});
 </script>
