@@ -4,10 +4,10 @@
 <div class="content-wrapper">
 	<!-- 콘텐츠 헤더 시작 -->
 	<section class="content-header">
-		<h1>신고함<small>20 개의 신고 접수</small></h1>
+		<h1>휴지통<small>30개 삭제된 게시물</small></h1>	
 	</section>
 	<!-- 콘텐츠 헤더 끝 -->
-
+	
 	<!-- 콘텐츠 시작 -->
     <section class="content">
 	    <div class="row">
@@ -15,7 +15,7 @@
 				<div class="box box-primary">
 					<!-- 박스 헤더 시작 -->
 					<div class="box-header with-border">
-			        	<h3 class="box-title">신고 게시글 목록</h3>	
+			        	<h3 class="box-title">삭제된 게시글 목록</h3>	
 					</div>
 					<!-- 박스 헤더 끝 -->
 					
@@ -25,7 +25,7 @@
 							<i class="fa fa-square-o"> 전체 선택</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-ban"> 차단</i>
+							<i class="fa fa-trash"> 삭제</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<i class="fa fa-reply"> 복원</i>
@@ -44,6 +44,7 @@
 								</button>
 							</div>
 						</div>
+						
 						<div class="table-responsive">
 							<table class="table table-hover">
 								<thead>
@@ -52,47 +53,36 @@
 										<th>번호</th>
 										<th class="col-md-3">제목</th>
 										<th>게시판 분류</th>
-										<th>신고내용</th>
-										<th>신고된 사용자</th>
-										<th>신고한 사용자</th>
-										<th>신고일</th>
-										<th>처리 상태</th>
+										<th>사용자</th>
+										<th>삭제일</th>
 									</tr>
 								</thead>
+								<!-- 데이터를 받아오는 부분 -->
 								<tbody>
 									<tr>
 										<td><input type="checkbox"></td>
-										<td>3</td>
-										<td>제목3</td>
+										<td>1</td>
+										<td>제목1</td>
 										<td>게시판1</td>
-										<td>신고내용2</td>
-										<td>신고된 사용자명1</td>
-										<td>신고한 사용자명2</td>
-										<td>2019/03/12</td>
-										<td>처리중</td>
+										<td>사용자명1</td>
+										<td>2019/12/34</td>
 									</tr>
 									<tr>
 										<td><input type="checkbox"></td>
 										<td>2</td>
 										<td>제목2</td>
 										<td>게시판2</td>
-										<td>신고내용2</td>
-										<td>신고된 사용자명2</td>
-										<td>신고한 사용자명2</td>
+										<td>사용자명2</td>
 										<td>2019/04/21</td>
-										<td>처리중</td>
 									</tr>
 									<tr>
 										<td><input type="checkbox"></td>
-										<td>1</td>
-										<td>제목1</td>
+										<td>3</td>
+										<td>제목3</td>
 										<td>게시판1</td>
-										<td>신고내용1</td>
-										<td>신고된 사용자명1</td>
-										<td>신고한 사용자명1</td>
-										<td>2019/12/34</td>
-										<td>처리완료</td>
-									</tr>	
+										<td>사용자명3</td>
+										<td>2019/03/12</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -105,7 +95,7 @@
 							<i class="fa fa-square-o"> 전체 선택</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-ban"> 차단</i>
+							<i class="fa fa-trash"> 삭제</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<i class="fa fa-reply"> 복원</i>

@@ -13,7 +13,7 @@
 	<div class="menu_all_wrap_position">
 		<div class="main_menu_wrap">
 			<div class="logo col-md-2">
-				<a href="<c:url value='/PICKPIC/admin/home.pic'/>"> 
+				<a href="<c:url value='/admin/home.pic'/>"> 
 					<img id="top_logo" src="<c:url value='/resources/images/pickpic_logo_white.png'/>" />
 				</a>
 			</div>
