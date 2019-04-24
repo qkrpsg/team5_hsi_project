@@ -65,8 +65,8 @@
 					<li class="l_menu_li"><a href="#">고객센터</a>
 						<ul class="m_sub" style="display: none;">
 							<li><a href="<c:url value='/help/tip.pic'/>">피크픽TIP</a></li>
-							<li><a href="#">공지사항</a></li>
-							<li><a href="#">문의사항</a></li>
+							<li><a href="<c:url value='/help/notice/List.pic'/>">공지사항</a></li>
+							<li><a href="<c:url value='/help/qna/List.pic'/>">문의사항</a></li>
 							<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
 						</ul></li>
 
@@ -107,8 +107,8 @@
 				<div class="nav_wrap col-md-2">
 					<ul class="ul_submenu">
 					    <li><a href="<c:url value='/help/tip.pic'/>">피크픽TIP</a></li>
-						<li><a href="#">공지사항</a></li>
-						<li><a href="#">문의사항</a></li>
+						<li><a href="<c:url value='/help/notice/List.pic'/> ">공지사항</a></li>
+						<li><a href="<c:url value='/help/qna/List.pic'/>">문의사항</a></li>
 						<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
 					</ul>
 				</div>

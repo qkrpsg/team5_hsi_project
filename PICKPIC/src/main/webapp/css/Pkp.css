@@ -1,0 +1,64 @@
+.header_top {
+	background: white !important;
+	opacity: 1;
+	background: white;
+	border-bottom: 1px #ccc solid;
+}
+
+.menu_wrap a {
+	color: #5a5a5a !important;
+	font-weight: normal !important;
+	font-size: 1.1em !important;
+}
+
+.ul_submenu li a {
+	color: #5a5a5a !important;
+	font-weight: normal !important;
+	font-size: .9em !important;
+}
+
+.login_wrap ul li a {
+	color: #00AEEA !important;
+}
+
+.login_wrap ul li a span {
+	background: #00AEEA !important;
+}
+
+.nav_wrap_top_position {
+	opacity: 1;
+	background: white;
+	border-bottom: 1px #ccc solid;
+}
+/* 메인 페이지 이외에 페이지에서 넣어야 하는 속성 */
+.l_pkp_all_wrap {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 897px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: 80px;
+}
+
+.l_pkp_sub_wrap {
+	position: relative;
+	top: 0;
+	left: 0;
+	/* width: 1400px; */
+	height: 100%;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding: 0;
+}
+
+/* 미디어 쿼리 */
+@media screen and (max-width:1000px) and (min-width:0px) {
+	.l_pkp_all_wrap {
+		
+	}
+	.l_pkp_sub_wrap {
+		
+	}
+}
