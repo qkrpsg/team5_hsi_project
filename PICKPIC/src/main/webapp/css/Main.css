@@ -1,11 +1,26 @@
-@font-face{
+@font-face {
 	font-family: A옛날사진관2;
 	src: url("/pickpic/css/fonts/A옛날사진관2.TTF");
 }
 
-@font-face{
+@font-face {
 	font-family: NANUMSQUAREROUNDB;
 	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDR;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDR.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDL;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDL.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUARER;
+	src: url("/pickpic/css/fonts/NANUMSQUARER.TTF");
 }
 
 .pic_gif {
@@ -98,6 +113,42 @@
 	font-family: Calibri;
 }
 
+.line_box{
+	position: absolute;
+	left: 19%;
+	top: 150px;
+	height: 75%;
+	width: 62%;
+}
+
+.edge:first-child{
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    top:0px;
+    right:0px;
+    border-right:#7F7F7F 1px solid;
+    border-top: #7F7F7F 1px solid;
+}
+
+.edge:last-child{
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    bottom:0px;
+    left:0px;
+    border-left:#7F7F7F 1px solid;
+    border-bottom: #7F7F7F 1px solid;
+}
+
+.main_image_wrap {
+	padding: 20px 20% 20px 20%;
+	position: relative;
+	display: block;
+}
+
 .main_image {
 	padding: 5px;
 	position: relative;
@@ -118,22 +169,41 @@
 	display: none;
 }
 
-.innerText p{
+.innerText p {
 	color: #fff;
 	font-family: NANUMSQUAREROUNDB;
-	overflow:hidden;
-}
-.innerText p:first-child{
-	
-	word-wrap:break-word;
-	font-size: 20px; 
-	width:100%;
+	overflow: hidden;
 }
 
-.innerText p:last-child{
-	font-size: 14px; 
-	height:120px;
-	
+.innerText p:first-child {
+	word-wrap: break-word;
+	font-size: 20px;
+	width: 100%;
+}
+
+.innerText p:last-child {
+	font-size: 14px;
+	height: 120px;
+}
+
+.icon_wrap {
+	width:50px;
+	margin:0px auto;
+	margin-top: 20px;
+}
+
+.more_icon {
+	width: 50px;
+	height: 50px;
+	margin:0px auto;
+}
+
+.icon_wrap p {
+	width: 50px;
+	margin-top: 5px;
+	text-align: center;
+	font-weight: NANUMSQUARER;
+	color: #7F7F7F;
 }
 
 /* 책갈피  */
@@ -197,6 +267,7 @@
 /* sec_1 sec_2 */
 #sec_1 {
 	background: white;
+	margin-top:100px;
 }
 
 #sec_2 {
@@ -206,50 +277,50 @@
 
 .l_keyword_all_wrap {
 	width: 100%;
-	height: 750px;
+	height: 600px;
 	overflow: hidden;
+	padding-top: 120px;
 }
 
 .l_keyword_margin_wrap {
-	width: 1600px;
+	width: 80%;
 	margin: 0 auto;
 	overflow: hidden;
-	padding: 50px;
 }
 
 .l_keyword_left_wrap {
-	text-align: center;
-	width: 45%;
+	height:100%;
 	float: left;
+	text-align: center;
 }
 
 .l__keyword_left_up_text {
-	margin-top: 100px;
+	margin-top: 150px;
 }
 
 .l__keyword_left_up_text p {
 	font-size: 2.5em;
+	font-family: NANUMSQUAREROUNDL;
 	font-weight: 100;
 }
 
-.l__keyword_left_up_text span {
-	font-weight: 600;
+.l__keyword_left_up_text p span {
+	font-family: NANUMSQUAREROUNDR;
+	font-weight: 300;
 }
 
 /* l__keyword_left_down_text */
 .l__keyword_left_down_text {
-	margin-top: 100px;
+	margin-top: 30px;
 }
 
 .l__keyword_left_down_text p {
 	font-size: 1.5em;
+	font-family: NANUMSQUAREROUNDL;
 }
 
 .l_keyword_right_wrap {
-	width: 45%;
-	padding: 30px;
-	float: left;
-	margin-left: 50px;
+	float: right;
 	overflow: hidden;
 }
 
@@ -276,13 +347,13 @@
 }
 
 .l_masonry_margin_wrap {
-	width: 1600px;
+	width: 90%;
 	margin: 0 auto;
 	overflow: hidden;
 }
 
 .l_masonry_text_wrap {
-	width: 40%;
+	width: 45%;
 	float: left;
 	margin-top: 200px;
 }
@@ -293,10 +364,13 @@
 
 .l_masonry_text_wrap div:first-child p {
 	font-size: 2.0em;
+	font-family: NANUMSQUAREROUNDL;
+	font-weight: 100;
 }
 
-.l_masonry_text_wrap div:first-child span {
-	font-weight: bold;
+.l_masonry_text_wrap div:first-child p span {
+	font-weight: 300;
+	font-family: NANUMSQUAREROUNDR;
 }
 
 .l_masonry_text_wrap div:last-child {
@@ -306,10 +380,11 @@
 
 .l_masonry_text_wrap div:last-child p {
 	font-size: 1.5em;
+	font-family: NANUMSQUAREROUNDL;
 }
 
 .l_masonry_wrap {
-	width: 60%;
+	width: 55%;
 	height: 100%;
 	float: left;
 }
@@ -396,7 +471,7 @@
 	}
 	.l_keyword_right_wrap {
 		width: 100%;
-		margin: 0;
+		margin: 0 auto;
 	}
 	/* sec_2 */
 	#sec_2 {
@@ -431,6 +506,9 @@
 		width: 100%;
 		clear: both;
 	}
+	
+	
+	
 	.l_masonry_wrap {
 		width: 100%;
 		margin-left: 20px;
