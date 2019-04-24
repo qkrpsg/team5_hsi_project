@@ -41,20 +41,18 @@
 	</span>
 </div>
 
-
-<!-- <div style="width:2000px;height:1000px; background: red;background: url('/pickpic/resources/images/gren.jpg')"></div>dd -->
-
-
-
-
 <section id="sec_0" class="sec_wrap">
-
 
 	<div>
 		<h2 class="best_pick">#BEST PICK</h2>
 	</div>
+	
+	<div class="line_box">
+		<div class="edge"></div>
+		<div class="edge"></div>
+	</div>
 
-	<div style="width: 80%; margin: 0px auto;" >
+	<div class="main_image_wrap">
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image1.jpg'/>" />
 			<div class="innerText">
@@ -84,15 +82,6 @@
                 <p class="gallery-board-caption-description" ><span >aliqua212d1.</span> </p>
             </div>
 		</div>
-		<!-- 
-		<div class="main_image col-md-4 col-xs-12">
-			<img src="<c:url value='/resources/images/main_image4.jpg'/>" />
-			<div class="innerText">
-            	<p class="gallery-board-caption-title" ><span >TITLE</span></p>
-                <p class="gallery-board-caption-description" ><span >aliqua.</span></p>
-            </div>
-		</div>
-		 -->
 		 
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image5.jpg'/>" />
@@ -102,7 +91,6 @@
             </div>
 		</div>
 		
-		
 		<div class="main_image col-md-4 col-xs-12">
 			<img src="<c:url value='/resources/images/main_image6.jpg'/>" />
 			<div class="innerText">
@@ -110,30 +98,32 @@
                 <p class="gallery-board-caption-description" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
             </div>
 		</div>
-		
-		
       </div>
-	<!-- gallery-1YzKzk -->
+      <div class="icon_wrap">
+      	<img class="more_icon" alt="more" src="<c:url value='/resources/images/more_icon.png' />"/>
+      	<p>more</p>
+      </div>
 </section>
-
 
 <section id="sec_1" class="sec_wrap l_keyword_all_wrap">
 	<div class="l_keyword_margin_wrap">
-		<div class="l_keyword_left_wrap">
+		<div class="l_keyword_left_wrap col-md-7">
 			<div class="l__keyword_left_up_text">
 				<p>
-					<span>ㅋㅇㄷ</span>ㄹ ㄴㄱㄴ ㅅㄱ <br />ㅍㅌㅈㅇㅇ ㄱㄴㅎㄴㄷ
+					<span>키워드</span>로 누구나 쉽게 <br />필터적용이 가능합니다.
 				</p>
 			</div>
 			<div class="l__keyword_left_down_text">
 				<p>
-					ㄱㄷㄴㅇㅁㄴㅇ.<br /> ㅇㅁㄴㅇㅁㄴ <br /> ㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㄴㅁㄴㅁㅇ
+					구도를 몰라도 사진사가 없어도 괜찮습니다.<br />
+					키워드로 원하는 필터를 고르고<br />
+					사진에 적용만 하면 됩니다.
 				</p>
 			</div>
 		</div>
 
-		<div class="l_keyword_right_wrap">
-			<img src="<c:url value='/resources/images/Main_Video.gif' />">
+		<div class="l_keyword_right_wrap col-md-5 col-sm-12">
+			<img src="<c:url value='/resources/images/keyword_video.gif' />">
 		</div>
 
 	</div>
@@ -154,12 +144,13 @@
 		<div class="l_keyword_right_wrap l_keyword_right_wrap2">
 			<div class="l__keyword_left_up_text">
 				<p>
-					<span>ㅇㄴㅁㅇㅁ</span>ㅇㅁㄴㅇ ㅇㅁㄴㅇㅁㄴ
+					<span>모바일</span>에서도 간편하게
 				</p>
 			</div>
 			<div class="l__keyword_left_down_text">
 				<p>
-					ㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅁ<br /> ㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅁㄴ.
+					사진을 찍은 후 바로바로 필터를 적용해보세요<br />
+					장소와 날씨에 따라 필터를 추천해줍니다.
 				</p>
 			</div>
 		</div>
@@ -173,11 +164,11 @@
 		<div class="l_masonry_text_wrap">
 			<div>
 				<p>
-					<span>dasdas</span>다양ㅇ하ㅏ난
+					<span>다양한</span>종류의 필터들
 				</p>
 			</div>
 			<div>
-				<p>alala미미미미ㅣ미미미미미미미ㅣ미미미</p>
+				<p>장소, 상황에 맞게 필터를 적용해 보세요!</p>
 			</div>
 		</div>
 
@@ -232,7 +223,6 @@
 				<div class="grid-item">
 					<img src="<c:url value='/resources/images/16.jpg' />">
 				</div>
-				<!-- <div class="grid-item" ><img src="img/17.jpg"></div> -->
 			</div>
 		</div>
 
