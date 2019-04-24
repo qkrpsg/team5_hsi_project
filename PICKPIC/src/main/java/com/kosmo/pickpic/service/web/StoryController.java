@@ -8,26 +8,26 @@ public class StoryController {
 	//서비스 주입
 	
 	//비전
-	@RequestMapping("/PICKPIC/story/vision.pic")
+	@RequestMapping("/story/vision.pic")
 	public String vision() {
 		return "story/vision.tiles";
 	}//vision
 
 	//크루소개
-	@RequestMapping("/PICKPIC/story/crewIntro.pic")
+	@RequestMapping("/story/crewIntro.pic")
 	public String crewIntro() {
 		return "story/crewIntro.tiles";
 	}//crewIntro
 
 	//사용기술
-	@RequestMapping("/PICKPIC/story/tech.pic")
-	public String tech() {
-		return "story/tech.tiles";
-	}//tech
+//	@RequestMapping("/story/tech.pic")
+//	public String tech() {
+//		return "story/tech.tiles";
+//	}//tech
 
 	//다운로드
-	@RequestMapping("/PICKPIC/story/appDown.pic")
-	public String appDown() {
-		return "story/appDown.tiles";
-	}//appDown
+//	@RequestMapping("/story/appDown.pic")
+//	public String appDown() {
+//		return "story/appDown.tiles";
+//	}//appDown
 }//StoryController
