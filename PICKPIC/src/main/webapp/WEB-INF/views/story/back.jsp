@@ -39,7 +39,7 @@ a{
 }
 
 .login_wrap ul li a{
-   color:#00AEEA !important;   
+   color:#7DA7D9 !important;   
 }
 .login_wrap ul li a span{
    background:#00AEEA !important;

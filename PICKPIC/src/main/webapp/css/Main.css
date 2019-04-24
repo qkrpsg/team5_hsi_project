@@ -1,3 +1,13 @@
+@font-face{
+	font-family: A옛날사진관2;
+	src: url("/pickpic/css/fonts/A옛날사진관2.TTF");
+}
+
+@font-face{
+	font-family: NANUMSQUAREROUNDB;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
 .pic_gif {
 	background-color: #000;
 	display: table;
@@ -41,10 +51,10 @@
 	height: 500px;
 	color: #fff;
 	top: 37%;
-	left: 40%; line-height : 80px; font-family : a옛날사진관2;
-	font-size: 2.5em;
-	font-family: a옛날사진관2;
+	left: 40%;
 	line-height: 80px;
+	font-family: A옛날사진관2;
+	font-size: 2.5em;
 }
 
 .top_ {
@@ -86,6 +96,44 @@
 	margin-bottom: 100px;
 	text-align: center;
 	font-family: Calibri;
+}
+
+.main_image {
+	padding: 5px;
+	position: relative;
+}
+
+.main_image img {
+	width: 100%;
+}
+
+.innerText {
+	background-color: #000;
+	position: absolute;
+	opacity: .6;
+	left: 5px;
+	top: 5px;
+	height: 100%;
+	width: 100%;
+	display: none;
+}
+
+.innerText p{
+	color: #fff;
+	font-family: NANUMSQUAREROUNDB;
+	overflow:hidden;
+}
+.innerText p:first-child{
+	
+	word-wrap:break-word;
+	font-size: 20px; 
+	width:100%;
+}
+
+.innerText p:last-child{
+	font-size: 14px; 
+	height:120px;
+	
 }
 
 /* 책갈피  */

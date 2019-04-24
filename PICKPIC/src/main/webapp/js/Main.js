@@ -16,6 +16,9 @@ $(function(){
 	
 	$(window).resize(function(){
 		$('.gif_innerText').css("left", window.innerWidth/2-250+"px");
+		$('.main_image img').css("height", $('.main_image').css("width"));
+		$('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
+		 $('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
 		if(window.innerWidth >= 1500){
 			$('.pic_gif span img').css("height", window.innerHeight+"px");
 			$('.pic_gif span img').css("display", "inline");
@@ -50,6 +53,19 @@ $(function(){
 			.css("height", "350px");
 	 }
 	
+//	 베스트픽 이미지 조정
+	 $('.main_image img').css("height", $('.main_image').css("width"));
+	 $('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
+	 $('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
+	 
+//	 베스트픽 이미지 마우스이벤트
+	 $('.main_image').mouseenter(function(){
+		 $(this).find('div').css("display", "inline");
+	 });
+	 $('.innerText').mouseleave(function(){
+		 $('.innerText').css("display", "none");
+	 });
+	 
 	 
 	$('.checked > a').click(function(){
    	 if($('.checked_menu').css("width") == "250px"){

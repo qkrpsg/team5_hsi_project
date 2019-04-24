@@ -34,26 +34,5 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home.tiles";
-	}
-	@RequestMapping("/PICKPIC/story/culture.pic")
-	public String culture() {
-	
-		
-		return "story/culture.tiles";
-	}
-	
-	@RequestMapping("/PICKPIC/story/back.pic")
-	public String back() {
-		
-		return "story/back.tiles";
-	}
-	@RequestMapping("/PICKPIC/friends/picpic.pic")
-	public String picpic() {
-		
-		return "friends/picpic";
-	}
-	
-	
-	
-	
-}
+	}//home
+}//HomeController
