@@ -14,15 +14,15 @@ public class HelpController {
 	}//tip
 
 	//공지사항
-	@RequestMapping("/PICKPIC/help/notice.pic")
+	@RequestMapping("/help/notice/List.pic")
 	public String notice() throws Exception{
-		return "friends/notice.tiles";
+		return "help/notice/List.tiles";
 	}//notice
 
 	//문의사항
-	@RequestMapping("/PICKPIC/help/qna.pic")
+	@RequestMapping("/help/qna/List.pic")
 	public String qna() throws Exception{
-		return "friends/qna.tiles";
+		return "help/qna/List.tiles";
 	}//qna
 
 	//초보자가이드
