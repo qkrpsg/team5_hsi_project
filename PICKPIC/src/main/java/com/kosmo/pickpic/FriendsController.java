@@ -1,0 +1,41 @@
+package com.kosmo.pickpic;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class FriendsController {
+	//서비스 주입
+
+	//픽플레이스
+	@RequestMapping("/PICKPIC/friends/place.pic")
+	public String place() throws Exception{
+		return "friends/place.tiles";
+	}//place
+	
+	//필터정보
+	@RequestMapping("/PICKPIC/friends/filter.pic")
+	public String filter() throws Exception{
+		return "friends/filter.tiles";
+	}//filter
+	
+	//픽로드
+	@RequestMapping("/PICKPIC/friends/route.pic")
+	public String route() throws Exception{
+		return "friends/route.tiles";
+	}//filter
+	
+	//앨범다운
+	@RequestMapping("/PICKPIC/friends/albumDown.pic")
+	public String albumDown() throws Exception{
+		return "friends/albumDown.tiles";
+	}//albumDown
+	
+	
+	//피크픽's 픽(삭제된 게시판)
+	@RequestMapping("/PICKPIC/friends/picpic.pic")
+	public String picpic() {
+		return "friends/picpic";
+	}//picpic
+}//friendsController
