@@ -33,8 +33,8 @@
 
 					<div class="login_wrap col-md-3">
 						<ul>
-							<li><a href="<c:url value='/PickPic/login/Login.pic'/>">LOGIN<span></span></a>
-							<li><a href="<c:url value='/PickPic/login/Sign_Up.pic'/>">SING
+							<li><a href="<c:url value='/PICKPIC/login/Login.pic'/>">LOGIN<span></span></a>
+							<li><a href="<c:url value='/PICKPIC/login/Sign_Up.pic'/>">SING
 									UP</a>
 						</ul>
 					</div>
@@ -50,33 +50,33 @@
 						<ul class="m_sub">
 							<li><a href="<c:url value='/PICKPIC/story/back.pic'/> ">
 									비전</a></li>
-							<li><a href="<c:url value='/PICKPIC/story/culture.pic'/> ">크루소개</a></li>
+							<li><a href="#">크루소개</a></li>
 							<li><a href="#">사용기술</a></li>
 							<li><a href="#">다운로드</a></li>
 						</ul></li>
 
 					<li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="#">픽플레이스</a></li>
-							<li><a href="<c:url value='/PickPic/friends/Place.pic'/>">필터</a></li>
-							<li><a href="#">픽로드</a></li>
+						
+	     					<li><a href="<c:url value='/PICKPIC/friends/Place.pic'/>">픽플레이스</a></li>
+							<li><a href="<c:url value='/PICKPIC/friends/picpic.pic'/>">필터</a></li> 
+							<li><a href="<c:url value='/PICKPIC/friends/route.pic'/> ">픽로드</a></li>
 							<li><a href="#">앨범다운</a></li>
 						</ul></li>
 
 
 					<li class="l_menu_li"><a href="#">고객센터</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="#">피크픽TIP</a></li>
-							<li><a href="<c:url value='/PICKPIC/friends/picpic.pic'/>">공지사항</a></li>
+							<li><a href="<c:url value='/PICKPIC/help/picktip.pic'/>">피크픽TIP</a></li>
+							<li><a href="#">공지사항</a></li>
 							<li><a href="#">문의사항</a></li>
-							<li><a href="#">초보자가이드</a></li>
+							<li><a href="<c:url value='/PICKPIC/help/guide.pic'/>">초보자가이드</a></li>
 						</ul></li>
 
+                       
 
-
-					<li><a href="<c:url value='/PickPic/login/Login.pic'/>">LOGIN</a>
-					<li><a href="<c:url value='/PickPic/login/Sign_Up.pic'/>">SING
-							UP</a>
+					<li><a href="<c:url value='/PICKPIC/login/Login.pic'/>">LOGIN</a>
+					<li><a href="<c:url value='/PICKPIC/login/Sign_Up.pic'/>">SING UP</a>
 				</ul>
 			</nav>
 			<!-- 모바일 용 서브 메뉴 창 -->
@@ -97,7 +97,7 @@
 					<ul class="ul_submenu">
 						<li><a href="<c:url value='/PICKPIC/story/back.pic'/> ">
 								비전</a></li>
-						<li><a href="<c:url value='/PICKPIC/story/culture.pic'/> ">크루소개</a></li>
+						<li><a href=" ">크루소개</a></li>
 						<li><a href="#">사용기술</a></li>
 						<li><a href="#">다운로드</a></li>
 					</ul>
@@ -105,19 +105,19 @@
 
 				<div class="nav_wrap col-md-1">
 					<ul class="ul_submenu">
-						<li><a href="#">픽플레이스</a></li>
-						<li><a href="<c:url value='/PickPic/friends/Place.pic'/>">필터</a></li>
-						<li><a href="#">픽로드</a></li>
+						<li><a href="<c:url value='/PICKPIC/friends/Place.pic'/>">픽플레이스</a></li>
+						<li><a href="<c:url value='/PICKPIC/friends/picpic.pic'/>">필터</a></li>
+						<li><a href="<c:url value='/PICKPIC/friends/route.pic'/>">픽로드</a></li>
 						<li><a href="#">앨범다운</a></li>
 					</ul>
 				</div>
-
+            
 				<div class="nav_wrap col-md-2">
 					<ul class="ul_submenu">
-						<li><a href="#">피크픽TIP</a></li>
-						<li><a href="<c:url value='/PICKPIC/friends/picpic.pic'/> ">공지사항</a></li>
+					    <li><a href="<c:url value='/PICKPIC/help/picktip.pic'/>">피크픽TIP</a></li>
+						<li><a href="#">공지사항</a></li>
 						<li><a href="#">문의사항</a></li>
-						<li><a href="#">초보자가이드</a></li>
+						<li><a href="<c:url value='/PICKPIC/help/guide.pic'/>">초보자가이드</a></li>
 					</ul>
 				</div>
 
