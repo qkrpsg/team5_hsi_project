@@ -42,7 +42,7 @@ public class UserController {
 		return "home.tiles";
 	}//loginProcess
 	
-	//home
+	//homed
 	
 	
 	@RequestMapping("/user/home.pic")
