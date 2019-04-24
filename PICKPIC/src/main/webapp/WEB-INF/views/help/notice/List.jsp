@@ -45,11 +45,11 @@
 			<div class="row_list">
 				<table class="table table-hover table-responsive">
 					<tr>
-						<th>번호</th>
-						<th>최신</th>
+						<th class="text-center">번호</th>
+						<th class="text-center">최신</th>
 						<th>제목</th>
 						<th>날짜</th>
-						<th>조회수</th>
+						<th class="text-center">조회수</th>
 					</tr>
 					<tr>
 						<td>1</td>
@@ -110,19 +110,16 @@
 				</table>
 			</div>
 		</div>
-		<div class="l_help_button_wrap">
-			<div>
-				<ul class="pagination pagination-md justify-content-center">
-					<li class="page-item">
-					<a class="page-link" href="#" aria-label="Previous"> 
-						<span aria-hidden="true">&laquo;</span>
-						<span class="sr-only">Previous</span>
+		<div class="row">
+			<div class="text-center">
+				<ul class="pagination pagination-md d-flex">
+					<li class="page-item"><a class="page-link" href="#"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
 					</a></li>
 					<li class="page-item"><a class="page-link" href="#">1</a></li>
 					<li class="page-item"><a class="page-link" href="#">2</a></li>
 					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">4</a></li>
-					<li class="page-item"><a class="page-link" href="#">5</a></li>
 					<li class="page-item"><a class="page-link" href="#"
 						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 							class="sr-only">Next</span>
