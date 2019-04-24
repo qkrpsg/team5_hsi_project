@@ -53,7 +53,7 @@ $(function(){
 	 $('.innerText').css("height", parseInt($('.main_image').css("height"))-10+"px");
 	 $('.innerText').css("width", parseInt($('.main_image').css("width"))-10+"px");
 	 
-//	 네모난거 사라지는거 위치잡기
+//	 페이지 로딩시 초기 위치잡기
 	 if(innerWidth > 1000){
 		$('.anim_box').css("top", (window.innerHeight/2-250)+"px")
 		.css("left", (innerWidth/2-250)+"px");
@@ -65,6 +65,11 @@ $(function(){
 			.css("height", "350px");
 		 $('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*6+12+"px");
 		 $('.line_box').css("top", "160px");
+		 ///////섹션
+		 $('.l_keyword_all_wrap').css("padding-top", "0px");
+		 $('#sec_1').css("margin-top", "0px");
+		 $('.l_keyword_right_wrap').css("margin-top", "50px");
+		 $('.l_keyword_right_wrap img').css("margin", "0px auto");
 	 }
 	 $('.line_box').css("height", $('.main_image_wrap').css("height"));
 	

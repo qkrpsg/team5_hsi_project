@@ -107,14 +107,13 @@
 
 <section id="sec_1" class="sec_wrap l_keyword_all_wrap">
 	<div class="l_keyword_margin_wrap">
-		<div class="l_keyword_left_wrap">
+		<div class="l_keyword_left_wrap col-md-7">
 			<div class="l__keyword_left_up_text">
 				<p>
 					<span>키워드</span>로 누구나 쉽게 <br />필터적용이 가능합니다.
 				</p>
 			</div>
 			<div class="l__keyword_left_down_text">
-			
 				<p>
 					구도를 몰라도 사진사가 없어도 괜찮습니다.<br />
 					키워드로 원하는 필터를 고르고<br />
@@ -123,8 +122,8 @@
 			</div>
 		</div>
 
-		<div class="l_keyword_right_wrap">
-			<img src="<c:url value='/resources/images/keyword_image.png' />">
+		<div class="l_keyword_right_wrap col-md-5 col-sm-12">
+			<img src="<c:url value='/resources/images/keyword_video.gif' />">
 		</div>
 
 	</div>
