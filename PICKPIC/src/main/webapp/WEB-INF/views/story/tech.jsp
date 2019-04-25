@@ -64,6 +64,11 @@ margin-left: 5%;
 
 
 }
+.protext1{
+font-size: 40px;
+font-weight:bold;
+}
+
 .probutton{
 width:100px;
 height:40px;
@@ -91,13 +96,21 @@ border-radius: 20px;
 	margin-left: 10%;
 	margin-top: 3%;
 }
+@media screen and (max-width:1000px) and (min-width:0px) {
+.routeimg3{
+width:80%;
+}
+.protext1{
+margin-top: 5%;
+}
 
+}
 </style>
 <body>
 <div class="row" style="margin-top:4%">
 <div class="col-md-12" style="background-color:#4aa8d8;padding-top: 7%; ">
 <div class="col-md-7" style="padding-top:5%; padding-left: 15%;">
-<p style="font-size: 40px;font-weight:bold">Kosmo</p>
+<p class="protext1">Kosmo</p>
 <p style="font-size: 25px;">♥ 갯수 &ngb;게시글 수 @</p>
 </div>
 <div class="col-md-5"> 
