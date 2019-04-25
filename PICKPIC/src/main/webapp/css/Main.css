@@ -416,7 +416,6 @@
 /* sec_4*/
 #sec_4 {
 	overflow: hidden;
-	width: 100%;
 }
 
 .img-holder{
@@ -450,6 +449,7 @@
 	font-family: NANUMSQUAREROUNDR;
 	font-size: 2.5em;
 	color:white;
+	z-index: 2;
 }
 
 .sec_4_content{

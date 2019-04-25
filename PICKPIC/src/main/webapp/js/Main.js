@@ -52,6 +52,10 @@ $(function(){
 			 //섹션5
 			 $('#sec_5').css("padding-top", "170px");
 		}else if(window.innerWidth <= 1000){ //1000보다 사이즈 작을 경우(모바일)
+			$('.anim_box').css("top","30%")
+			.css("left", "10%");
+			$('.anim_box').css("width", "350px")
+			.css("height", "350px");
 			$('.gif_innerText').css("width", "80%").css("left","10%");
 			$('.pic_gif span img').css("display", "none");
 			$('.main_image_wrap').css("height", parseInt($('.main_image').css("height"))*6+12+"px");
@@ -77,15 +81,16 @@ $(function(){
 			//섹션4
 			 $('.sec_4_content:odd').addClass("col-md-offset-1");
 			 $('.sec_4_content:even').addClass("col-md-5").removeClass("col-md-6");
-			 $('.sec_4_mobile_img').css("display", "block");
+			 $('.sec_4_mobile_img').css("display", "inline-block");
 			 $('.sec_4_title').css("z-index", "1");
 			 $('.sec_4_content').css("z-index", "1");
 			 $('.sec_4_title p').css("text-align", "center");
 			 $('.sec_4_content p:first-child').css("text-align", "center");
 			 $('.sec_4_content p:last-child').css("text-align", "center").css("margin-bottom", "100px");
-			 $('.img-holder').imageScroll({
-				 touch:true
-			 });
+			 $('.imageHolder').css("width","400px");
+			 $('.img-holder').css("width","400px");
+			 $('.sec_4_mobile_img').css("width","innerWidth"+"px");
+			 ('.sec_4_mobile_img img').css("width","innerWidth"+"px");
 			 //섹션5
 			 $('#sec_5').css("padding-top", "80px");
 		}else{ //1000~1500 사이(태블릿)
@@ -178,7 +183,7 @@ $(function(){
 		 $('#sec_3').css("height", "100%");
 		 $('.l_masonry_wrap').css("margin-bottom", "150px");
 		 //////섹션4
-		 $('.sec_4_mobile_img').css("display", "block");
+		 $('.sec_4_mobile_img').css("display", "inline-block");
 		 $('.sec_4_title').css("z-index", "1");
 		 $('.sec_4_content').css("z-index", "1");
 		 $('.sec_4_title p').css("text-align", "center");
