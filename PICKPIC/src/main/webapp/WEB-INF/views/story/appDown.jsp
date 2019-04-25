@@ -87,8 +87,8 @@ margin-right: 2%;
 </div>
 </div>
 <div class="col-md-12" style="background-color: #00ffff;padding: 1%;padding-left: 30%">
-<div class="col-md-2" id="app1">피크픽 시작하기</div>
-<div class="col-md-10" >
+<div class="col-md-3" id="app1">피크픽 시작하기</div>
+<div class="col-md-9" >
 <button class="appbutton"><img src="<c:url value='/resources/images/app1.jpg'/>" style="border-radius: 20px;"></button>
 <button class="appbutton"><img src="<c:url value='/resources/images/app2.jpg'/>" style="border-radius: 20px;"></button>
 <button class="appbutton"><img src="<c:url value='/resources/images/app3.jpg'/>" style="border-radius: 20px;"></button>
