@@ -241,7 +241,7 @@
 <section id="sec_4" class="sec_wrap" style="overflow: hidden;">
 
 	<div class="sec_4_title col-md-12">
-		<p class="col-md-offset-1">PICKPIC's Spaciality</p>
+		<p class="col-md-offset-1">PICKPIC's Speciality</p>
 	</div>
 	<div class="sec_4_content col-md-offset-1 col-md-5">
 		<p>어디서 찍어야 잘나올까?</p>
