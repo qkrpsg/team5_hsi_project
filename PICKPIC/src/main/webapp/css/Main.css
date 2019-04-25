@@ -209,12 +209,48 @@
 /* 책갈피  */
 .checked {
 	position: fixed;
+	width:110px;
+	height: 430px;  /* 여기 조정해주세요  over 히든 높이값 바꿔주세요*/
 	top: 240px;
 	right: 0px;
 	z-index: 3;
 	overflow: hidden;
 	float: left;
+	
 }
+.book{
+	position: absolute;
+	right: 50px;
+}
+.books{
+	position: absolute;
+	right:0;
+	margin:0;
+	padding: 0;
+}
+.books img{  /* 책갈피 사진 사이즈 조정해주세요 */
+	margin:0;
+	padding: 0;	
+}
+.books_menu{
+	position: absolute;
+	top:15px;
+	right: 15px;
+	height:10px;
+}
+.books_menu li {
+	
+	margin-top:15px;
+	
+	/* display: block;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px black solid;
+	margin-top: 5px; */
+}
+
 
 .checked>a {
 	float: left;
@@ -226,7 +262,7 @@
 }
 
 .checked_menu {
-	float: left;
+	/* float: left; */
 	/*width: 0px; 나중에 0으로 만들기*/
 }
 
@@ -234,19 +270,6 @@
 	cursor: pointer;
 }
 
-.checked_menu ul {
-	padding: 25px;
-}
-
-.checked_menu ul li {
-	display: block;
-	width: 100%;
-	height: 30px;
-	text-align: center;
-	line-height: 30px;
-	border: 1px black solid;
-	margin-top: 5px;
-}
 
 .checked_img {
 	width: 50px;
@@ -260,6 +283,11 @@
 	text-align: center;
 	font-family: Calibri;
 }
+
+
+
+
+
 
 /* sec_all */
 .sec_wrap {
