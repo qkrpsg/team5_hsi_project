@@ -20,14 +20,14 @@ public class StoryController {
 	}//crewIntro
 
 	//사용기술
-//	@RequestMapping("/story/tech.pic")
-//	public String tech() {
-//		return "story/tech.tiles";
-//	}//tech
+	@RequestMapping("/story/tech.pic")
+	public String tech() {
+		return "story/tech.tiles";
+	}//tech
 
 	//다운로드
-//	@RequestMapping("/story/appDown.pic")
-//	public String appDown() {
-//		return "story/appDown.tiles";
-//	}//appDown
+	@RequestMapping("/story/appDown.pic")
+	public String appDown() {
+		return "story/appDown.tiles";
+	}//appDown
 }//StoryController
