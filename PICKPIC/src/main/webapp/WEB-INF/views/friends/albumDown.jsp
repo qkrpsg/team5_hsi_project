@@ -42,7 +42,7 @@
 		</ul>
 	</div>
 
-	<div id="services" class="section-cotent">
+	<%-- <div id="services" class="section-cotent">
 		<div class="container">
 			<div class="title-section text-center">
 				<h2>Our Services</h2>
@@ -280,7 +280,7 @@
 		</div>
 		<!-- /.container -->
 	</div>
-	<!-- /#portfolio -->
+	<!-- /#portfolio --> --%>
 
 
 	<script src="bootstrap/js/bootstrap.min.js"></script>
