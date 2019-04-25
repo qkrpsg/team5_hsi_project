@@ -6,7 +6,6 @@
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
 <script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
-<!-- asddddssddf ss-->
 <span id="body"></span>
 <div class="checked">
 	<a><img
@@ -237,9 +236,53 @@
 	</div>
 
 </section>
+<section id="sec_4" class="sec_wrap">
+
+	<div class="sec_4_title col-md-12">
+		<p class="col-md-offset-1">PICKPIC's Spaciality</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>어디서 찍어야 잘나올까?</p>
+		<p>더이상 어느 장소에서 찍어야 할지 고민하지 마세요.<br/>인생사진을 위한 사진 명소!<br/>피크픽에서 모두 알려드립니다.</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>무슨 필터를 적용해야 하지?</p>
+		<p>사진은 잘 찍었는데... 2% 부족한 느낌?<br/>이제는 피크픽만 믿으세요.<br/>장소, 시간에 알맞게 필터를 추천해드립니다.</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>다른 사람들은 어떻게 찍었을까?</p>
+		<p>사진을 찍을 때 무슨 포즈를 취해야할지,<br/>어떤 표정을 지어야할지 고민이었다구요?<br/>지금 바로 피크픽에서 다른 사람들의 사진을 확인하세요!</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>나만의 필터를 만들어서 저장하고싶어!</p>
+		<p>필터를 적용하는건 좋은데... 매번 귀찮으셨죠?<br/>나만의 필터를 만들어서 저장하세요.<br/>터치 한번으로 자주 사용하던 필터를 즉시 적용시킬 수 있습니다.</p>
+	</div>
+	<div class="sec_4_mobile_img">
+		<img alt="섹션4이미지" src="<c:url value='/resources/images/main_section_image.jpg'/>"/>
+	</div>
+	
+	<div class="img-holder" data-image="<c:url value='/resources/images/main_section_image.jpg'/>">
+	</div>
+</section>
+<section id="sec_5">
+	<div class="col-md-12">
+		<p>지금 바로 시작하세요</p>
+	</div>
+	<div>
+		<img alt="플레이스토어" src="<c:url value='/resources/images/playstrore_icon.png'/>"/>
+	</div>
+	<div>
+		<button>어플리케이션 다운로드</button>
+	</div>
+</section>
 <script type="text/javascript">
 	$('.grid').isotope({
 		itemSelector : '.grid-item',
 		masonry : {}
+	});
+</script>
+<script>
+	$('.img-holder').imageScroll({
+		parallax: true
 	});
 </script>
