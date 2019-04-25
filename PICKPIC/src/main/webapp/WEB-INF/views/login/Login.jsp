@@ -24,9 +24,9 @@
 		 			</div>
 		 			
 		 			<div class="l_login_left_form_wrap">
-		 				<form action="<c:url value='/PickPic/login/loginProcess.bbs'/>"  method="post">
-		 				<c:if test="${! empty sessionScope.id }" var="isLogin">
-								<div class="alert alert-success col-md-12">${sessionScope.id}님
+		 				<form action="<c:url value='/user/loginProcess.pic'/>"  method="post">
+		 				<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
+								<div class="alert alert-success col-md-12">${sessionScope.ppu_id}님
 									환영합니다
 								</div>
 							</c:if>	
@@ -34,8 +34,8 @@
 		 				<div>
 		 						
 		 					
-		 					<input type="text" id="id" name="id"   value="" placeholder="아이디" >
-		 					<input type="text" id="pwd" name="pwd" value="" placeholder="비밀번호">
+		 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
+		 					<input type="text" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
 		 				
 		 				</div>
 		 				

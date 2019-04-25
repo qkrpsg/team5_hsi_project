@@ -6,6 +6,7 @@
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
 <script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
+
 <span id="body"></span>
 <div class="checked">
 	<a><img
@@ -279,10 +280,11 @@
 	$('.grid').isotope({
 		itemSelector : '.grid-item',
 		masonry : {}
+
 	});
 </script>
 <script>
-	$('.img-holder').imageScroll({
-		parallax: true
-	});
+$('.img-holder').imageScroll({
+	container: $('#sec_4')
+}).$('.imageHolder').css("z-index","1");
 </script>

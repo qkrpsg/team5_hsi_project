@@ -126,6 +126,20 @@ body{font-family: A옛날사진관2;}
 	width:100%;
 	cursor: pointer;
 }
+.hi{
+	width:100px;height:100px;
+	background:white;
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:1;
+	text-align: center;
+	line-height: 100px;
+	display: none;
+	border-radius: 25px;
+}
+
+
 
 
 /* 사진 마우스 오버시 보이는 텍스트 */

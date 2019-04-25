@@ -29,13 +29,29 @@
 							<li class="col-md-1"></li>
 						</ul>
 					</nav>
-
+					
+					<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
+								
+								<div class="login_wrap col-md-3">
+									<ul>
+										<li><a href="#">${sessionScope.ppu_id} 님 <span></span></a>
+										<li><a href="#">My Page</a>
+									</ul>
+								</div>
+								
+							</c:if>	
+							<c:if test="${not isLogin }">
 					<div class="login_wrap col-md-3">
 						<ul>
 							<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a>
 							<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a>
 						</ul>
 					</div>
+					</c:if>
+					
+					
+					
+					
 				</div>
 			</div>
 		</div>
