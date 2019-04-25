@@ -23,7 +23,8 @@ public class FriendsController {
 	@RequestMapping("/friends/route.pic")
 	public String route() throws Exception{
 		return "friends/route.tiles";
-	}//filter
+	}//route
+	
 	
 	//앨범다운
 //	@RequestMapping("/friends/albumDown.pic")

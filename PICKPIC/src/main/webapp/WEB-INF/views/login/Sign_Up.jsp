@@ -1,6 +1,7 @@
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="<c:url value='/css/Login.css' />" rel="stylesheet">  
+<link href="<c:url value='/css/Login.css' />" rel="stylesheet">
+<link href="<c:url value='/css/Pkp.css' />" rel="stylesheet">
 
 <script>
 $(document).ready(function(){
@@ -118,103 +119,125 @@ $(function(){
 
 </script>
 <style>
-.filebox input[type="file"] 
-{
-position: absolute; 
-width: 1px; 
-height: 1px; 
-padding: 0; 
-margin: -1px; 
-overflow: hidden; clip:rect(0,0,0,0); border: 0; } 
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
 
-
-   
-   .filebox .upload-name { 
-   display: inline-block; padding: .5em .75em; /* label의 패딩값과 일치 */ 
-   font-size: inherit; font-family: inherit; 
-   line-height: normal;
-   border-radius: .25em;  vertical-align: middle; 
-    border: 1px solid #ebebeb;
-    border-bottom-color: #e2e2e2; 
-     }
- 
-
+.filebox .upload-name {
+	display: inline-block;
+	padding: .5em .75em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	border-radius: .25em;
+	vertical-align: middle;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+}
 </style>
-<article class="container" style="margin-top:100px;">
-		<div class="page-header">
-				<div class="col-md-6 col-md-offset-3">
-				<h3>회원가입 Form</h3>
-				</div>
+
+<div class="l_pkp_all_wrap">
+	<div class="l_pkp_sub_wrap">
+		<div class="row text-center">
+			<div class="section-header col-md-12"
+				style="margin-top: 4%; margin-bottom: 4%">
+				<h2>회원가입</h2>
+				<span>아래 폼을 작성하세요.</span>
+			</div>
+			<!-- /.section-header -->
 		</div>
-		
-		<div class="col-sm-6 col-md-offset-3">
-				<form role="form" action='<c:url value="/PICKPIC/Sign_Up/sign_process.pic"/>' method="POST">
-						
-						
-						<div class="form-group">
-								<label for="ppu_id">아이디</label>
-								<input type="text" class="form-control" name="ppu_id" id="ppu_id" placeholder="아이디를 입력해 주세요">
-						</div>
-						
-						<div class="form-group">
-								<label for="ppu_password">비밀번호</label>
-								<input type="password" class="form-control" name="ppu_password" id="ppu_password" placeholder="비밀번호를 입력해주세요">
-						</div>
-						<div class="form-group">
-								<label for="ppu_passwordCheck">비밀번호 확인</label>
-								<input type="password" class="form-control" name="ppu_passwordCheck" id="ppu_passwordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
-						</div>
-						<div class="form-group">
-								<label for="ppu_name">이름</label>
-								<input type="text" class="form-control" name="ppu_name" id="ppu_name" placeholder="이름 입력해 주세요">
-						</div>
-						
-						<div class="form-group">
-								<label for="ppu_tetephone">휴대폰 번호</label>
-								<input type="tel" class="form-control" name="ppu_tetephone" id="ppu_tetephone" placeholder="-를 뺀 휴대폰번호를 입력해 주세요">
-						</div>
-						<div class="form-group">
-								<label for="ppu_address">주소</label>
-								<input type="text" class="form-control" name="ppu_address" id="ppu_address" placeholder="주소를 입력해 주세요">
-						</div>
-						
-						<!-- 가입일 -->
-						<input type="hidden" name="ppu_register_date" />
-						
-						<!-- 
+		<!-- /.row -->
+
+		<div class="l_help_list_wrap">
+			<div class="row" style="margin-left: 20%; margin-right: 20%;">
+				<form role="form"
+					action='<c:url value="/PICKPIC/Sign_Up/sign_process.pic"/>'
+					method="POST">
+
+
+					<div class="form-group">
+						<label for="ppu_id">아이디</label> <input type="text"
+							class="form-control" name="ppu_id" id="ppu_id"
+							placeholder="아이디를 입력해 주세요">
+					</div>
+
+					<div class="form-group">
+						<label for="ppu_password">비밀번호</label> <input type="password"
+							class="form-control" name="ppu_password" id="ppu_password"
+							placeholder="비밀번호를 입력해주세요">
+					</div>
+					<div class="form-group">
+						<label for="ppu_passwordCheck">비밀번호 확인</label> <input
+							type="password" class="form-control" name="ppu_passwordCheck"
+							id="ppu_passwordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
+					</div>
+					<div class="form-group">
+						<label for="ppu_name">이름</label> <input type="text"
+							class="form-control" name="ppu_name" id="ppu_name"
+							placeholder="이름 입력해 주세요">
+					</div>
+
+					<div class="form-group">
+						<label for="ppu_tetephone">휴대폰 번호</label> <input type="tel"
+							class="form-control" name="ppu_tetephone" id="ppu_tetephone"
+							placeholder="-를 뺀 휴대폰번호를 입력해 주세요">
+					</div>
+					<div class="form-group">
+						<label for="ppu_address">주소</label> <input type="text"
+							class="form-control" name="ppu_address" id="ppu_address"
+							placeholder="주소를 입력해 주세요">
+					</div>
+
+					<!-- 가입일 -->
+					<input type="hidden" name="ppu_register_date" />
+
+					<!-- 
 						<div class="form-group">
 								<label for="InputEmail">이메일 주소</label>
 								<input type="email" class="form-control" name="InputEmail" id="InputEmail" placeholder="이메일 주소를 입력해주세요">
 						</div> -->
-						
-						<div class="form-group">
-								<label for="ppu_age">나이</label>
-								<input type="number" class="form-control" name="ppu_age" id="ppu_age" placeholder="(숫자)나이를 입력해 주세요">
-						</div>
-						
-						
-						<div class="form-group">
-								<label for="ppu_gender" >성별</label>
-								
-								<input type="radio" style="margin-left:10px;" name="ppu_gender" id="ppu_gender" class="ppu_gender" value="m" checked />남자
-								<input type="radio"  name="ppu_gender"  class="ppu_gender" value="f" />여자
-						</div>
-						
-						
-						<div class="filebox"> 
-							<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled">
-							<label for="ppu_profile_path" class="btn btn-warning" name="ppu_profile_path">업로드</label> 
-							<input type="file" id="ppu_profile_path" class="upload-hidden" name="ppu_profile_path"> 
-						</div>
 
-						
-						
-						
-						<div class="form-group" style="overflow: hidden;">
-							<input  type="checkbox" name="ppu_agree" value="이용약관" id="ppu_agree"  value="ok" style="float: left;margin-right:10px;" /><p style="float: left;">이용약관에 동의합니다.</p>
-						</div>
+					<div class="form-group">
+						<label for="ppu_age">나이</label> <input type="number"
+							class="form-control" name="ppu_age" id="ppu_age"
+							placeholder="(숫자)나이를 입력해 주세요">
+					</div>
 
-<!-- 
+
+					<div class="form-group">
+						<label for="ppu_gender">성별</label> <input type="radio"
+							style="margin-left: 10px;" name="ppu_gender" id="ppu_gender"
+							class="ppu_gender" value="m" checked />남자 <input type="radio"
+							name="ppu_gender" class="ppu_gender" value="f" />여자
+					</div>
+
+
+					<div class="filebox">
+						<input class="upload-name  btn-default" value="프로필 사진을 올려주세요"
+							disabled="disabled"> <label for="ppu_profile_path"
+							class="btn btn-warning" name="ppu_profile_path">업로드</label> <input
+							type="file" id="ppu_profile_path" class="upload-hidden"
+							name="ppu_profile_path">
+					</div>
+
+
+
+
+					<div class="form-group" style="overflow: hidden;">
+						<input type="checkbox" name="ppu_agree" value="이용약관"
+							id="ppu_agree" value="ok"
+							style="float: left; margin-right: 10px;" />
+						<p style="float: left;">이용약관에 동의합니다.</p>
+					</div>
+
+					<!-- 
 						<div class="form-group">
 						<label>약관 동의</label>
 						<div data-toggle="buttons">
@@ -229,16 +252,17 @@ overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 						</div>
 						</div>
 -->
-						<div class="form-group text-center">
-								<button type="submit" id="join-submit" class="btn btn-primary">
-										회원가입<i class="fa fa-check spaceLeft"></i>
-								</button>
-								
-								<button type="submit" class="btn btn-warning">
-										가입취소<i class="fa fa-times spaceLeft"></i>
-								</button>
-						</div>
-				</form>
-		</div>
+					<div class="form-group text-center">
+						<button type="submit" id="join-submit" class="btn btn-primary">
+							회원가입<i class="fa fa-check spaceLeft"></i>
+						</button>
 
-</article>
+						<button type="submit" class="btn btn-warning">
+							가입취소<i class="fa fa-times spaceLeft"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
