@@ -5,7 +5,7 @@
 <link href="<c:url value='/css/Sec_1.css'/>" rel="stylesheet">
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
-<!-- asddddssddf ss-->
+<script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
 <span id="body"></span>
 <div class="checked">
 	<a><img
@@ -105,6 +105,10 @@
       </div>
 </section>
 
+<div>
+	<h2 class="about_pickpic">#ABOUT PICKPIC</h2>
+</div>
+	
 <section id="sec_1" class="sec_wrap l_keyword_all_wrap">
 	<div class="l_keyword_margin_wrap">
 		<div class="l_keyword_left_wrap col-md-7">
@@ -136,12 +140,12 @@
 
 
 <section id="sec_2" class="sec_wrap l_keyword_all_wrap2">
-	<div class="l_keyword_margin_wrap l_keyword_margin_wrap2">
-		<div class="l_keyword_left_wrap l_keyword_left_wrap2">
+	<div class="l_keyword_margin_wrap">
+		<div class="l_keyword_left_wrap col-md-5 col-sm-12">
 			<img src="<c:url value='/resources/images/cellphone_image.gif' />">
 			<!--<img src="images/Honeycam 2019-03-26 13-02-57.gif" >-->
 		</div>
-		<div class="l_keyword_right_wrap l_keyword_right_wrap2">
+		<div class="l_keyword_right_wrap col-md-7">
 			<div class="l__keyword_left_up_text">
 				<p>
 					<span>모바일</span>에서도 간편하게
@@ -160,8 +164,9 @@
 </section>
 
 <section id="sec_3" class="sec_wrap">
+	
 	<div class="l_masonry_margin_wrap">
-		<div class="l_masonry_text_wrap">
+		<div class="l_masonry_text_wrap col-md-4">
 			<div>
 				<p>
 					<span>다양한</span>종류의 필터들
@@ -173,7 +178,7 @@
 		</div>
 
 
-		<div class="l_masonry_wrap">
+		<div class="l_masonry_wrap col-md-8 col-sm-12">
 			<div class="grid">
 				<div class="grid-item">
 					<img src="<c:url value='/resources/images/1.jpg' />">
@@ -223,24 +228,61 @@
 				<div class="grid-item">
 					<img src="<c:url value='/resources/images/16.jpg' />">
 				</div>
+				<div class="grid-item">
+					<img src="<c:url value='/resources/images/17.jpg' />">
+				</div>
 			</div>
 		</div>
-
-
-
-
 	</div>
 
+</section>
+<section id="sec_4" class="sec_wrap">
 
-
-
+	<div class="sec_4_title col-md-12">
+		<p class="col-md-offset-1">PICKPIC's Spaciality</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>어디서 찍어야 잘나올까?</p>
+		<p>더이상 어느 장소에서 찍어야 할지 고민하지 마세요.<br/>인생사진을 위한 사진 명소!<br/>피크픽에서 모두 알려드립니다.</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>무슨 필터를 적용해야 하지?</p>
+		<p>사진은 잘 찍었는데... 2% 부족한 느낌?<br/>이제는 피크픽만 믿으세요.<br/>장소, 시간에 알맞게 필터를 추천해드립니다.</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>다른 사람들은 어떻게 찍었을까?</p>
+		<p>사진을 찍을 때 무슨 포즈를 취해야할지,<br/>어떤 표정을 지어야할지 고민이었다구요?<br/>지금 바로 피크픽에서 다른 사람들의 사진을 확인하세요!</p>
+	</div>
+	<div class="sec_4_content col-md-offset-1 col-md-5">
+		<p>나만의 필터를 만들어서 저장하고싶어!</p>
+		<p>필터를 적용하는건 좋은데... 매번 귀찮으셨죠?<br/>나만의 필터를 만들어서 저장하세요.<br/>터치 한번으로 자주 사용하던 필터를 즉시 적용시킬 수 있습니다.</p>
+	</div>
+	<div class="sec_4_mobile_img">
+		<img alt="섹션4이미지" src="<c:url value='/resources/images/main_section_image.jpg'/>"/>
+	</div>
+	
+	<div class="img-holder" data-image="<c:url value='/resources/images/main_section_image.jpg'/>">
+	</div>
+</section>
+<section id="sec_5">
+	<div class="col-md-12">
+		<p>지금 바로 시작하세요</p>
+	</div>
+	<div>
+		<img alt="플레이스토어" src="<c:url value='/resources/images/playstrore_icon.png'/>"/>
+	</div>
+	<div>
+		<button>어플리케이션 다운로드</button>
+	</div>
 </section>
 <script type="text/javascript">
 	$('.grid').isotope({
 		itemSelector : '.grid-item',
-		masonry : {
-		/*columnWidth: 10,
-		gutter: 10*/
-		}
+		masonry : {}
+	});
+</script>
+<script>
+	$('.img-holder').imageScroll({
+		parallax: true
 	});
 </script>

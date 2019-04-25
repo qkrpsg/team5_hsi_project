@@ -11,91 +11,108 @@
     <section class="content">
 	    <div class="row">
 	    	<div class="col-md-12">
-				<!-- 박스 시작 -->
-				<div class="box box-primary">
+		    	<div class="box box-primary">
 					<!-- 박스 헤더 시작 -->
 					<div class="box-header with-border">
-						<h3 class="box-title">글번호</h3>
+			        	<h3 class="box-title">문의 목록</h3>	
 					</div>
-					<!-- 박스 헤더 시작 -->
+					<!-- 박스 헤더 끝 -->
 					
 					<!-- 박스 바디 시작 -->
 					<div class="box-body">
-						<div class="mailbox-read-info">
-							<h3>제목</h3>
-							<h5>
-								아이디 <span class="mailbox-read-time pull-right">작성일/시간</span>
-							</h5>
-						</div>
-						<div class="mailbox-read-message">
-							<p>Hello John,</p>
-							<p>Keffiyeh blog actually fashion axe vegan, irony biodiesel.
-								Cold-pressed hoodie chillwave put a bird on it aesthetic, bitters
-								brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk.
-								Ethical master cleanse Bushwick, occupy Thundercats banjo cliche
-								ennui farm-to-table mlkshk fanny pack gluten-free. Marfa butcher
-								vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3
-								wolf moon asymmetrical taxidermy pour-over. Quinoa tote bag
-								fashion axe, Godard disrupt migas church-key tofu blog locavore.
-								Thundercats cronut polaroid Neutra tousled, meh food truck selfies
-								narwhal American Apparel.</p>
-						</div>
+						
+			    		<!-- Post -->
+		                <div class="post clearfix">
+		                  <div class="user-block">
+		                    <img class="img-circle img-bordered-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
+		                        <span class="username">
+		                          <a href="#">Sarah Ross</a>
+		                        </span>
+		                    <span class="description">Sent you a message - 3 days ago</span>
+		                  </div>
+		                  <!-- /.user-block -->
+		                  <p>
+		                    Lorem ipsum represents a long-held tradition for designers,
+		                    typographers and the like. Some people hate it and argue for
+		                    its demise, but others ignore the hate as they create awesome
+		                    tools to help create filler text for everyone from bacon lovers
+		                    to Charlie Sheen fans.
+		                  </p>
+		
+		                  <form class="form-horizontal">
+		                    <div class="form-group margin-bottom-none">
+		                      <div class="col-sm-9">
+		                        <input class="form-control input-sm" placeholder="Response">
+		                      </div>
+		                      <div class="col-sm-3">
+		                        <button type="submit" class="btn btn-primary pull-right btn-block btn-sm">Send</button>
+		                      </div>
+		                    </div>
+		                  </form>
+		                </div>
+		                <!-- /.post -->
+			    		<!-- Post -->
+		                <div class="post clearfix">
+		                  <div class="user-block">
+		                    <img class="img-circle img-bordered-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
+		                        <span class="username">
+		                          <a href="#">Sarah Ross</a>
+		                        </span>
+		                    <span class="description">Sent you a message - 3 days ago</span>
+		                  </div>
+		                  <!-- /.user-block -->
+		                  <p>
+		                    Lorem ipsum represents a long-held tradition for designers,
+		                    typographers and the like. Some people hate it and argue for
+		                    its demise, but others ignore the hate as they create awesome
+		                    tools to help create filler text for everyone from bacon lovers
+		                    to Charlie Sheen fans.
+		                  </p>
+		
+		                  <form class="form-horizontal">
+		                    <div class="form-group margin-bottom-none">
+		                      <div class="col-sm-9">
+		                        <input class="form-control input-sm" placeholder="Response">
+		                      </div>
+		                      <div class="col-sm-3">
+		                        <button type="submit" class="btn btn-primary pull-right btn-block btn-sm">Send</button>
+		                      </div>
+		                    </div>
+		                  </form>
+		                </div>
+		                <!-- /.post -->
+			    		<!-- Post -->
+		                <div class="post clearfix">
+		                  <div class="user-block">
+		                    <img class="img-circle img-bordered-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
+		                        <span class="username">
+		                          <a href="#">Sarah Ross</a>
+		                        </span>
+		                    <span class="description">Sent you a message - 3 days ago</span>
+		                  </div>
+		                  <!-- /.user-block -->
+		                  <p>
+		                    Lorem ipsum represents a long-held tradition for designers,
+		                    typographers and the like. Some people hate it and argue for
+		                    its demise, but others ignore the hate as they create awesome
+		                    tools to help create filler text for everyone from bacon lovers
+		                    to Charlie Sheen fans.
+		                  </p>
+		
+		                  <form class="form-horizontal">
+		                    <div class="form-group margin-bottom-none">
+		                      <div class="col-sm-9">
+		                        <input class="form-control input-sm" placeholder="Response">
+		                      </div>
+		                      <div class="col-sm-3">
+		                        <button type="submit" class="btn btn-primary pull-right btn-block btn-sm">Send</button>
+		                      </div>
+		                    </div>
+		                  </form>
+		                </div>
+		                <!-- /.post -->
 					</div>
 					<!-- 박스 바디 끝 -->
-			
-					<!-- 박스 푸터 시작 -->
-					<div class="box-footer">
-						<div class="pull-right">
-							<button type="button" class="btn btn-default">
-								<i class="fa fa-share"> 답장</i>
-							</button>
-						</div>
-						<button type="button" class="btn btn-default">
-							<i class="fa fa-trash-o"> 삭제</i>
-						</button>
-					</div>
-					<!-- 박스 푸터 끝 -->
-				</div>
-				<!-- 박스 끝 -->
-				
-				<div class="box box-primary">
-					<div class="box-header with-border">
-						<h3 class="box-title">글번호</h3>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-						<div class="mailbox-read-info">
-							<h3>제목</h3>
-							<h5>
-								아이디 <span class="mailbox-read-time pull-right">작성일/시간</span>
-							</h5>
-						</div>
-						<div class="mailbox-read-message">
-							<p>Hello John,</p>
-							<p>Keffiyeh blog actually fashion axe vegan, irony biodiesel.
-								Cold-pressed hoodie chillwave put a bird on it aesthetic, bitters
-								brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk.
-								Ethical master cleanse Bushwick, occupy Thundercats banjo cliche
-								ennui farm-to-table mlkshk fanny pack gluten-free. Marfa butcher
-								vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3
-								wolf moon asymmetrical taxidermy pour-over. Quinoa tote bag
-								fashion axe, Godard disrupt migas church-key tofu blog locavore.
-								Thundercats cronut polaroid Neutra tousled, meh food truck selfies
-								narwhal American Apparel.</p>
-						</div>
-					</div>
-			
-					<div class="box-footer">
-						<div class="pull-right">
-			
-							<button type="button" class="btn btn-default">
-								<i class="fa fa-share"></i> 답장
-							</button>
-						</div>
-						<button type="button" class="btn btn-default">
-							<i class="fa fa-trash-o"></i> 삭제
-						</button>
-					</div>
 				</div>
 			</div>
 		</div>

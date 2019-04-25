@@ -120,7 +120,7 @@
 			<!-- 검색용 UI -->
 			<div class="row">
 				<div class="text-center">
-					<form class="form-inline" method="post" action="<c:url value='/OneMemo/Memo/List.bbs'/>">
+					<form class="form-inline" method="post" action="<c:url value='#'/>">
 						<div class="form-group">
 							<select name="searchColumn" class="form-control">
 								<option value="title">제목</option>

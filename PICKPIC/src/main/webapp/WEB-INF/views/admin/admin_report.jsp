@@ -4,7 +4,7 @@
 <div class="content-wrapper">
 	<!-- 콘텐츠 헤더 시작 -->
 	<section class="content-header">
-		<h1>신고함<small>20 개의 신고 접수</small></h1>
+		<h1>신고함 <small>20 개의 신고 접수</small></h1>
 	</section>
 	<!-- 콘텐츠 헤더 끝 -->
 

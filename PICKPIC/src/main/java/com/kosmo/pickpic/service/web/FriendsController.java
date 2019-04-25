@@ -14,16 +14,17 @@ public class FriendsController {
 	}//place
 	
 	//필터정보
-//	@RequestMapping("/friends/filter.pic")
-//	public String filter() throws Exception{
-//		return "friends/filter.tiles";
-//	}//filter
+	@RequestMapping("/friends/filter.pic")
+	public String filter() throws Exception{
+		return "friends/filter.tiles";
+	}//filter
 	
 	//픽로드
 	@RequestMapping("/friends/route.pic")
 	public String route() throws Exception{
 		return "friends/route.tiles";
-	}//filter
+	}//route
+	
 	
 	//앨범다운
 //	@RequestMapping("/friends/albumDown.pic")
