@@ -66,8 +66,8 @@
 					<!--  -->
 
 					<div class="form-group text-center">
-						<button type="submit" id="join-submit" class="btn btn-primary">
-							작성완료<i class="fa fa-check spaceLeft"></i>
+						<button type="submit" id="join-submit" class="btn btn-primary" >
+							<a style="color: white;" href="<c:url value='/help/qna/List.pic'/>" >작성완료</a><i class="fa fa-check spaceLeft"></i>
 						</button>
 
 						<button type="submit" class="btn btn-warning">
