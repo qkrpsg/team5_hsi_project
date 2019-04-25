@@ -211,7 +211,7 @@ $(function(){
    		$('.checked_menu').stop().animate({width:"250px"},500);
    	}
    });
-	
+	//
 	$('.book').click(function(){
 		$('.checked').stop().animate({right:"-54px"},500);
 		
