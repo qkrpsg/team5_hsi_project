@@ -2,7 +2,7 @@ package com.kosmo.pickpic.service.web;
 
 import java.util.List;
 import java.util.Map;
-
+//
 public interface PickpicPlaceStorageService {
     
 	//목록용]
