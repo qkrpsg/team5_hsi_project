@@ -23,19 +23,35 @@
 					<nav class="menu_wrap col-md-9">
 						<ul>
 							<li class="col-md-2"></li>
-							<li class="col-md-3"><a href="#">피크픽 스토리</a></li>
+							<li class="col-md-3"><a href="<c:url value='/user/home.pic'/>">피크픽 스토리</a></li>
 							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
 							<li class="col-md-3"><a href="#">고객센터</a></li>
 							<li class="col-md-1"></li>
 						</ul>
 					</nav>
-
+					
+					<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
+								
+								<div class="login_wrap col-md-3">
+									<ul>
+										<li><a href="#">${sessionScope.ppu_id} 님 <span></span></a>
+										<li><a href="#">My Page</a>
+									</ul>
+								</div>
+								
+							</c:if>	
+							<c:if test="${not isLogin }">
 					<div class="login_wrap col-md-3">
 						<ul>
 							<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a>
-							<li><a href="<c:url value='#'/>">SIGN UP</a>
+							<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a>
 						</ul>
 					</div>
+					</c:if>
+					
+					
+					
+					
 				</div>
 			</div>
 		</div>
@@ -48,31 +64,30 @@
 						<ul class="m_sub">
 							<li><a href="<c:url value='/story/back.pic'/> "> 비전</a></li>
 							<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
-							<li><a href="<c:url value='#'/>">사용기술</a></li>
-							<li><a href="<c:url value='#'/>">다운로드</a></li>
+							<li><a href="<c:url value='/story/tech.pic'/>">사용기술</a></li>
+							<li><a href="<c:url value='/story/appDown.pic'/>">다운로드</a></li>
 						</ul>
 					</li>
 
 					<li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 						<ul class="m_sub" style="display: none;">
 							<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
-							<li><a href="<c:url value='#'/>">필터</a></li>
-							<li><a href="<c:url value='#'/>">픽로드</a></li>
-							<li><a href="<c:url value='#'/>">앨범다운</a></li>
+							<li><a href="<c:url value='/friends/filter.pic'/>">필터</a></li>
+							<li><a href="<c:url value='/friends/route.pic'/> ">픽로드</a></li>
+							<li><a href="<c:url value='/friends/albumDown.pic'/>">앨범다운</a></li>
 						</ul>
 					</li>
 
 					<li class="l_menu_li"><a href="#">고객센터</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="<c:url value='#'/>">피크픽TIP</a></li>
-							<li><a href="<c:url value='#'/>">공지사항</a></li>
-							<li><a href="<c:url value='#'/>">문의사항</a></li>
-							<li><a href="<c:url value='#'/>">초보자가이드</a></li>
-						</ul>
-					</li>
+							<li><a href="<c:url value='/help/tip.pic'/>">피크픽TIP</a></li>
+							<li><a href="<c:url value='/help/notice/List.pic'/>">공지사항</a></li>
+							<li><a href="<c:url value='/help/qna/List.pic'/>">문의사항</a></li>
+							<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
+						</ul></li>
 
 					<li><a href="<c:url value='/user/Login.pic'/>">LOGIN</a>
-					<li><a href="<c:url value='#'/>">SIGN UP</a>
+					<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a>
 				</ul>
 			</nav>
 			<!-- 모바일 용 서브 메뉴 창 -->
@@ -91,26 +106,26 @@
 					<ul class="ul_submenu">
 						<li><a href="<c:url value='/story/vision.pic'/> "> 비전</a></li>
 						<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
-						<li><a href="<c:url value='#'/> ">사용기술</a></li>
-						<li><a href="<c:url value='#'/> ">다운로드</a></li>
+						<li><a href="<c:url value='/story/tech.pic'/> ">사용기술</a></li>
+						<li><a href="<c:url value='/story/appDown.pic'/> ">다운로드</a></li>
 					</ul>
 				</div>
 
 				<div class="nav_wrap col-md-1">
 					<ul class="ul_submenu">
 						<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
-						<li><a href="<c:url value='#'/> ">필터</a></li>
-						<li><a href="<c:url value='#'/> ">픽로드</a></li>
-						<li><a href="<c:url value='#'/> ">앨범다운</a></li>
+						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
+						<li><a href="<c:url value='/friends/route.pic'/>">픽로드</a></li>
+						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>
 					</ul>
 				</div>
-
+            
 				<div class="nav_wrap col-md-2">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='#'/> ">피크픽TIP</a></li>
-						<li><a href="<c:url value='#'/> ">공지사항</a></li>
-						<li><a href="<c:url value='#'/> ">문의사항</a></li>
-						<li><a href="<c:url value='#'/> ">초보자가이드</a></li>
+					    <li><a href="<c:url value='/help/tip.pic'/>">피크픽TIP</a></li>
+						<li><a href="<c:url value='/help/notice/List.pic'/> ">공지사항</a></li>
+						<li><a href="<c:url value='/help/qna/List.pic'/>">문의사항</a></li>
+						<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
 					</ul>
 				</div>
 			</div>
