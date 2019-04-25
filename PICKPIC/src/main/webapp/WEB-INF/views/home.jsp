@@ -237,7 +237,7 @@
 	</div>
 
 </section>
-<section id="sec_4" class="sec_wrap">
+<section id="sec_4" class="sec_wrap" style="overflow: hidden;">
 
 	<div class="sec_4_title col-md-12">
 		<p class="col-md-offset-1">PICKPIC's Spaciality</p>
@@ -258,7 +258,7 @@
 		<p>나만의 필터를 만들어서 저장하고싶어!</p>
 		<p>필터를 적용하는건 좋은데... 매번 귀찮으셨죠?<br/>나만의 필터를 만들어서 저장하세요.<br/>터치 한번으로 자주 사용하던 필터를 즉시 적용시킬 수 있습니다.</p>
 	</div>
-	<div class="sec_4_mobile_img">
+	<div class="sec_4_mobile_img" style="overflow: hidden;">
 		<img alt="섹션4이미지" src="<c:url value='/resources/images/main_section_image.jpg'/>"/>
 	</div>
 	
