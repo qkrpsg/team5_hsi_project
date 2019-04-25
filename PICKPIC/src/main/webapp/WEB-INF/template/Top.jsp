@@ -58,7 +58,7 @@
 							<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
 							<li><a href="<c:url value='/friends/filter.pic'/>">필터</a></li>
 							<li><a href="<c:url value='/friends/route.pic'/> ">픽로드</a></li>
-							<li><a href="<c:url value='#'/>">앨범다운</a></li>
+							<li><a href="<c:url value='/friends/albumDown.pic'/>">앨범다운</a></li>
 						</ul>
 					</li>
 
@@ -100,7 +100,7 @@
 						<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
 						<li><a href="<c:url value='/friends/route.pic'/>">픽로드</a></li>
-						<li><a href="<c:url value='#'/> ">앨범다운</a></li>
+						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>
 					</ul>
 				</div>
             
