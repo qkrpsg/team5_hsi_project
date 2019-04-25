@@ -65,30 +65,32 @@
 						<!-- 목록데이터 : 사용자 아이디 입력 부분 -->
 						<div class="table-responsive mailbox-messages">
 							<table class="table table-hover table-striped">
+								<thead>
+									<tr>
+										<th></th>
+										<th class="">사용자</th>
+										<th class="">별명</th>
+										<th class="">최종로그인</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr>
 										<td><input type="checkbox"></td>
-										<td class=""><a href="#"><i class="fa fa-ban text-red"></i></a></td>
-										<td class=""><a href="read-mail.html">로그인계정(user_id)</a></td>
-										<td class=""><b>별명(user_nickname)</b></td>
-										<td class="mailbox-attachment"></td>
-										<td class="">최종로그인(last_login)</td>
+										<td class=""><a href="#">사용자1</a></td>
+										<td class="">별명1</td>
+										<td class="">차단 됨</td>
 									</tr>
 									<tr>
 										<td><input type="checkbox"></td>
-										<td class=""><a href="#"><i class="fa-circle-o text-yellow"></i></a></td>
-										<td class=""><a href="read-mail.html">로그인계정(user_id)</a></td>
-										<td class=""><b>별명(user_nickname)</b></td>
-										<td class="mailbox-attachment"></td>
-										<td class="">활동 중...</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td class=""><a href="#"><i class="fa-circle-o text-green"></i></a></td>
-										<td class=""><a href="read-mail.html">로그인계정(user_id)</a></td>
-										<td class=""><b>별명(user_nickname)</b></td>
-										<td class="mailbox-attachment"></td>
+										<td class=""><a href="#">사용자2</a></td>
+										<td class="">별명2</td>
 										<td class="">2019.03.25</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox"></td>
+										<td class=""><a href="#">사용자3</a></td>
+										<td class="">별명3</td>
+										<td class="">활동 중...</td>
 									</tr>
 								</tbody>
 							</table>
@@ -149,15 +151,24 @@
 				<!-- 활동정보 시작 -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">활동 정보</h3>
+						<h3 class="box-title">사용자 정보</h3>
 					</div>
 					<div class="box-body">
+						<strong><i class="fa fa-info margin-r-5"></i> 상세정보</strong>
+						<ul class="list-group">
+							<li class="list-group-item"><b>id</b><a class="pull-right">사용자id</a></li>
+							<li class="list-group-item"><b>이름</b><a class="pull-right">사용자이름</a></li>
+							<li class="list-group-item"><b>별명</b><a class="pull-right">사용자별명</a></li>
+							<li class="list-group-item"><b>성별</b><a class="pull-right">남</a></li>
+							<li class="list-group-item"><b>가입일</b><a class="pull-right">2019/02/02</a></li>
+						</ul>
+						<hr>
+						
 						<strong><i class="fa fa-book margin-r-5"></i> 작성</strong>
 						<ul class="list-group">
 							<li class="list-group-item"><b>누적 픽</b><a class="pull-right">56개</a></li>
-							<li class="list-group-item"><b>게시물</b><a class="pull-right">10개</a></li>
-							<li class="list-group-item"><b>구매</b><a class="pull-right">45개</a></li>
-							<li class="list-group-item"><b>댓글</b><a class="pull-right">52개</a></li>
+							<li class="list-group-item"><b>게시글</b><a class="pull-right">10개</a></li>
+							<li class="list-group-item"><b>보유 필터</b><a class="pull-right">45개</a></li>
 							<li class="list-group-item"><b>문의</b><a class="pull-right">2개</a></li>
 						</ul>
 						<hr>
