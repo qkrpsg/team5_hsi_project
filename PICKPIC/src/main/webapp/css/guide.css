@@ -324,7 +324,7 @@ Portfolio Projects
 }
 .cd-3d-portfolio .projects .row > li.project-1 .project-image::before {
   /* set project background image */
-  background-image:url('/pickpic/resources/images/1.jpg') ;
+  background-image:url('/pickpic/resources/images/gren6.jpg') ;
   
   
 }
@@ -332,10 +332,10 @@ Portfolio Projects
    background-image: url('/pickpic/resources/images/gren.jpg') ;
 }
 .cd-3d-portfolio .projects .row > li.project-3 .project-image::before {
-   background-image: url('/pickpic/resources/images/2.jpg') ;
+   background-image: url('/pickpic/resources/images/gren1.jpg') ;
 }
 .cd-3d-portfolio .projects .row > li.project-4 .project-image::before {
-   background-image: url('/pickpic/resources/images/3.jpg') ;
+   background-image: url('/pickpic/resources/images/gren4.jpg') ;
 }
 .cd-3d-portfolio .projects .row > li.project-5 .project-image::before {
   background-image: url('/pickpic/resources/images/4.jpg') ;

@@ -55,16 +55,21 @@
 .appbutton {
 	margin-right: 2%;
 }
+@media screen and (max-width:1000px) and (min-width:0px) {
+.appsa{
+width:100%
 
+}
+}
 /* 메인 페이지 이외에 페이지에서 넣어야 하는 속성 */
 </style>
-
+ 
 <body style="background-color: #f3f2f0">
-	<div class="row"
-		style="margin-top: 5%; margin-left: 20%; margin-right: 20%">
+	<div class="row" 
+		style="margin-top: 5%; ">
 		<div class="col-md-12"
-			style="padding-left: 7%; padding-top: 7%; padding-right: 20%">
-			<div class="col-md-7" style="padding-top: 8%;">
+			style=" padding-top: 5%; ">
+			<div class="col-md-offset-3 col-md-3" style="padding-top: 8%;text-align: center">
 				<p style="font-size: 40px;">썸이 끝났다</p>
 				<p class="text1">싸움의 시작, 피크픽</p>
 				<p style="font-size: 20px;">
@@ -74,7 +79,7 @@
 
 			</div>
 			<div class="col-md-5">
-				<img src="<c:url value='/resources/images/down1.JPG'/> ">
+				<img src="<c:url value='/resources/images/down1.JPG'/>" class="appsa">
 
 			</div>
 
