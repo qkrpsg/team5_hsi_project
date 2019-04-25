@@ -98,87 +98,76 @@ margin-top: 7%;
 /* 메인 페이지 이외에 페이지에서 넣어야 하는 속성 */
 </style>
 
-	<div class="row" >
-		<div class="col-md-12" style="background-color: #aad4b5">
-			<p class="guidetitle">피크픽과 함께하는</p>
-			<p class="guidetext1">피크픽 입문 1 to 4</p>
+<div class="row" >
+	<div class="col-md-12" style="background-color: #aad4b5">
+		<p class="guidetitle">피크픽과 함께하는</p>
+		<p class="guidetext1">피크픽 입문 1 to 4</p>
+	</div>
+	<div class="col-md-12"
+		style="background-color: #7badbc; border-bottom: white solid 2px; border-top: white solid 2px">
+		<div class="col-md-4">
+			<p class="guidetext2">STEP 1</p>
 		</div>
-		<div class="col-md-12"
-			style="background-color: #7badbc; border-bottom: white solid 2px; border-top: white solid 2px">
-			<div class="col-md-4">
-				<p class="guidetext2">STEP 1</p>
-			</div>
-			<div class="col-md-7" style="margin: 3%;">
-				<p class="guidetext3">aaaaaaaa</p>
-				<p class="guidetext4">vvvvvvvvvv</p>
-			</div>
+		<div class="col-md-7" style="margin: 3%;">
+			<p class="guidetext3">어디서 찍어야 잘나올까?</p>
+			<p class="guidetext4">
+				더이상 어느 장소에서 찍어야 할지 고민하지 마세요.
+				인생사진을 위한 사진 명소!
+				피크픽에서 모두 알려드립니다
+			</p>
 		</div>
-		<div class="col-md-12"
-			style="background-color: #7badbc; border-bottom: white solid 2px;">
-			<div class="col-md-4">
-				<p class="guidetext2">STEP 2</p>
-			</div>
-			<div class="col-md-7" style="margin: 3%;">
-				<p class="guidetext3">aaaaaaaa</p>
-				<p class="guidetext4">vvvvvvvvvv</p>
-			</div>
+	</div>
+	<div class="col-md-12"
+		style="background-color: #7badbc; border-bottom: white solid 2px;">
+		<div class="col-md-4">
+			<p class="guidetext2">STEP 2</p>
 		</div>
-		<div class="col-md-12"
-			style="background-color: #7badbc; border-bottom: white solid 2px;">
-			<div class="col-md-4">
-				<p class="guidetext2">STEP 3</p>
-			</div>
-			<div class="col-md-7" style="margin: 3%;">
-				<p class="guidetext3">aaaaaaaa</p>
-				<p class="guidetext4">vvvvvvvvvv</p>
-			</div>
-
+		<div class="col-md-7" style="margin: 3%;">
+			<p class="guidetext3">무슨 필터를 적용해야 하지?</p>
+			<p class="guidetext4">
+				사진은 잘 찍었는데... 2% 부족한 느낌?
+				이제는 피크픽만 믿으세요.
+				장소, 시간에 알맞게 필터를 추천해드립니다.
+			</p>
 		</div>
-		<div class="col-md-12"
-			style="background-color: #7badbc; border-bottom: white solid 2px;">
-			<div class="col-md-4">
-				<p class="guidetext2">STEP 3</p>
-			</div>
-			<div class="col-md-7" style="margin: 3%;">
-				<p class="guidetext3">aaaaaaaa</p>
-				<p class="guidetext4">vvvvvvvvvv</p>
-			</div>
-
+	</div>
+	<div class="col-md-12"
+		style="background-color: #7badbc; border-bottom: white solid 2px;">
+		<div class="col-md-4">
+			<p class="guidetext2">STEP 3</p>
 		</div>
-		<div class="col-md-12">
-			<div class="col-md-10">
-				<p class="arrowtext">피크픽 하러가기!</p>
-				<!-- 어플 다운로드로 이동  -->
-			</div>
-			<div clas="col-md-2">
-				<img src="<c:url value='/resources/images/r3.jpg' />" class="arrow">
-			</div>
-
-
-
+		<div class="col-md-7" style="margin: 3%;">
+			<p class="guidetext3">다른 사람들은 어떻게 찍었을까?</p>
+			<p class="guidetext4">
+				사진을 찍을 때 무슨 포즈를 취해야할지,
+				어떤 표정을 지어야할지 고민이었다구요?
+				지금 바로 피크픽에서 다른 사람들의 사진을 확인하세요!
+			</p>
 		</div>
-
 
 	</div>
+	<div class="col-md-12"
+		style="background-color: #7badbc; border-bottom: white solid 2px;">
+		<div class="col-md-4">
+			<p class="guidetext2">STEP 4</p>
+		</div>
+		<div class="col-md-7" style="margin: 3%;">
+			<p class="guidetext3">나만의 필터를 만들어서 저장하고싶어!</p>
+			<p class="guidetext4">
+				필터를 적용하는건 좋은데... 매번 귀찮으셨죠?
+				나만의 필터를 만들어서 저장하세요.
+				터치 한번으로 자주 사용하던 필터를 즉시 적용시킬 수 있습니다.
+			</p>
+		</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	</div>
+	<div class="col-md-12">
+		<div class="col-md-10">
+			<p class="arrowtext">피크픽 하러가기!</p>
+			<!-- 어플 다운로드로 이동  -->
+		</div>
+		<div clas="col-md-2">
+			<img src="<c:url value='/resources/images/r3.jpg' />" class="arrow">
+		</div>
+	</div>
+</div>

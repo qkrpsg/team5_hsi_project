@@ -35,7 +35,7 @@
 		 						
 		 					
 		 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
-		 					<input type="text" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
+		 					<input type="password" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
 		 				
 		 				</div>
 		 				
