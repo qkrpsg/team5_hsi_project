@@ -211,6 +211,23 @@ $(function(){
    		$('.checked_menu').stop().animate({width:"250px"},500);
    	}
    });
+	//
+	$('.book').click(function(){
+		$('.checked').stop().animate({right:"-54px"},500);
+		
+		console.log();
+		if($('.checked').css("right") == '-54px'){
+			$('.checked').stop().animate({right:"0"},500);
+		}
+		
+		
+	});
+	
+	
+	
+	
+	
+	
    
 	$('.checked_menu a').click(function(){
 		var taget = $(this).attr('data-target');
