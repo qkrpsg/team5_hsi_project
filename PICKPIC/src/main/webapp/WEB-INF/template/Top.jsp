@@ -49,7 +49,7 @@
 							<li><a href="<c:url value='/story/back.pic'/> "> 비전</a></li>
 							<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
 							<li><a href="<c:url value='/story/tech.pic'/>">사용기술</a></li>
-							<li><a href="<c:url value='#'/>">다운로드</a></li>
+							<li><a href="<c:url value='/story/appDown.pic'/>">다운로드</a></li>
 						</ul>
 					</li>
 
@@ -92,7 +92,7 @@
 						<li><a href="<c:url value='/story/vision.pic'/> "> 비전</a></li>
 						<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
 						<li><a href="<c:url value='/story/tech.pic'/> ">사용기술</a></li>
-						<li><a href="<c:url value='#'/> ">다운로드</a></li>
+						<li><a href="<c:url value='/story/appDown.pic'/> ">다운로드</a></li>
 					</ul>
 				</div>
 

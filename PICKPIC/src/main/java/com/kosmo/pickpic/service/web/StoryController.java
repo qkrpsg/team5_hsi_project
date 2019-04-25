@@ -26,8 +26,8 @@ public class StoryController {
 	}//tech
 
 	//다운로드
-//	@RequestMapping("/story/appDown.pic")
-//	public String appDown() {
-//		return "story/appDown.tiles";
-//	}//appDown
+	@RequestMapping("/story/appDown.pic")
+	public String appDown() {
+		return "story/appDown.tiles";
+	}//appDown
 }//StoryController
