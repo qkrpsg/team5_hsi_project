@@ -27,10 +27,11 @@ public class FriendsController {
 	
 	
 	//픽로드
-//	@RequestMapping("/friends/route.pic")
-//	public String route() throws Exception{
-//		return "friends/route.tiles";
-//	}//filter
+	@RequestMapping("/friends/route.pic")
+	public String route() throws Exception{
+		return "friends/route.tiles";
+	}//route
+	
 	
 	//앨범다운
 //	@RequestMapping("/friends/albumDown.pic")

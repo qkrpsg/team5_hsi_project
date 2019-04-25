@@ -1,31 +1,107 @@
-.header_top{
+.header_top {
 	background: white !important;
-	opacity:1;
-	background:white;
-	border-bottom:1px #ccc solid;
-}
-.menu_wrap a{
-	color:#5a5a5a !important;
-	font-weight: normal !important;
-	font-size:1.1em !important;
-}
-.ul_submenu li a{
-	color:#5a5a5a !important;
-	font-weight: normal !important;
-	font-size:.9em !important;
+	opacity: 1;
+	background: white;
+	border-bottom: 1px #ccc solid;
 }
 
-.login_wrap ul li a{
-	color:#00AEEA !important;	
+.menu_wrap a {
+	color: #5a5a5a !important;
+	font-weight: normal !important;
+	font-size: 1.1em !important;
 }
-.login_wrap ul li a span{
-	background:#00AEEA !important;
+
+.ul_submenu li a {
+	color: #5a5a5a !important;
+	font-weight: normal !important;
+	font-size: .9em !important;
 }
-.nav_wrap_top_position{
-	opacity:1;
-	background:white;
-	border-bottom:1px #ccc solid;
+
+.login_wrap ul li a {
+	color: #00AEEA !important;
+}
+
+.login_wrap ul li a span {
+	background: #00AEEA !important;
+}
+
+.nav_wrap_top_position {
+	opacity: 1;
+	background: white;
+	border-bottom: 1px #ccc solid;
 }
 /* 메인 페이지 이외에 페이지에서 넣어야 하는 속성 */
+.l_pkp_all_wrap {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 897px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: 80px;
+}
+
+.l_pkp_sub_wrap {
+	position: relative;
+	top: 0;
+	left: 0;
+	/* width: 1400px; */
+	
+	margin-left: 20%;
+	margin-right: 20%;
+	padding: 0;
+}
+
+.l_pkp_title_wrap {
+	position: relative;
+	width: 100%;
+	
+	padding: 0;
+	margin: 0;
+}
 
 
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.filebox .upload-name {
+	display: inline-block;
+	padding: .5em .75em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	border-radius: .25em;
+	vertical-align: middle;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+}
+
+.section-header{
+	margin-top: 4%; 
+	margin-bottom: 4%;
+	
+}
+.row{
+	margin-left: 20%; 
+	margin-right: 20%;
+}
+/* 미디어 쿼리 */
+@media screen and (max-width:1000px) and (min-width:0px) {
+	.l_pkp_sub_wrap{
+	margin-left: 0;
+	margin-right: 0;
+	}
+	.row{
+	margin-left: 5%; 
+	margin-right: 5%;
+}
+}

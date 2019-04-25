@@ -8,51 +8,51 @@
 
 
 <div class="l_all_wrap">
-	<div class="top_wrap">
-		<div class="left_wrap">
-			<h2>필터</h2>
-			<p>사진 명소에 필요한 필터를 빠르게 검색하세요</p>
-			<ul class="l_selector">
-				<li>장소</li>
-				<li>필터</li>
-				<li>루트</li>
-			</ul>
-			<form action="" class="l_search">
-				<input type="text" name="a" placeholder="키워드를 검색하세요" />
-				<input type="text" name="b" placeholder="필터명" />
-				<button  class="btn btn-info">검색</button>	<!-- type="submit" -->
-			</form>
-		</div><!-- 왼쪽 위 끝 -->
-		
-		<div class="right_wrap">
-			<ul class="l_selector2">
-				<li>베스트 필터</li>
-				<li>새로운 필터</li>
-			</ul>
-			<div class="col-xs-4 img_wrap">
-				<img src="<c:url value='/resources/images/main_image1.jpg' />" alt="안나와"/>
-			</div>
-			<div class="col-xs-4 img_wrap">
-				<img src="<c:url value='/resources/images/main_image2.jpg' />" alt="안나와"/>
-			</div>
-			<div class="col-xs-4 img_wrap">
-				<img src="<c:url value='/resources/images/main_image3.jpg' />" alt="안나와"/>
-			</div>
-			
-			<div class="col-xs-4 img_wrap">
-				<img src="<c:url value='/resources/images/main_image4.jpg' />" alt="안나와"/>
-			</div>
-			<div class="col-xs-4 img_wrap">
-				<img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
-			</div>
-			<div class="col-xs-4 img_wrap">
-				<img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
-			</div>
-			
-			
-		</div><!--위 오른쪽 끝-->
-		
-	</div>
+   <div class="top_wrap">
+      <div class="left_wrap">
+         <h2>필터</h2>
+         <p>사진 명소에 필요한 필터를 빠르게 검색하세요</p>
+         <ul class="l_selector">
+            <li>장소</li>
+            <li>필터</li>
+            <li>루트</li>
+         </ul>
+         <form action="" class="l_search">
+            <input type="text" name="a" placeholder="키워드를 검색하세요" />
+            <input type="text" name="b" placeholder="필터명" />
+            <button  class="btn btn-info">검색</button>   <!-- type="submit" -->
+         </form>
+      </div><!-- 왼쪽 위 끝 -->
+      
+      <div class="right_wrap">
+         <ul class="l_selector2">
+            <li>베스트 필터</li>
+            <li>새로운 필터</li>
+         </ul>
+         <div class="col-xs-4 img_wrap">
+            <img src="<c:url value='/resources/images/main_image1.jpg' />" alt="안나와"/>
+         </div>
+         <div class="col-xs-4 img_wrap">
+            <img src="<c:url value='/resources/images/main_image2.jpg' />" alt="안나와"/>
+         </div>
+         <div class="col-xs-4 img_wrap">
+            <img src="<c:url value='/resources/images/main_image3.jpg' />" alt="안나와"/>
+         </div>
+         
+         <div class="col-xs-4 img_wrap">
+            <img src="<c:url value='/resources/images/main_image4.jpg' />" alt="안나와"/>
+         </div>
+         <div class="col-xs-4 img_wrap">
+            <img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
+         </div>
+         <div class="col-xs-4 img_wrap">
+            <img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
+         </div>
+         
+         
+      </div><!--위 오른쪽 끝-->
+      
+   </div>
 </div>
 
 
@@ -91,62 +91,62 @@
   
   
   <div class="grid">
-	<div class="col-xs-3 element-item img_wrap2 ko">
-		<img src="<c:url value='/resources/images/main_image1.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   <div class="col-xs-3 element-item img_wrap2 ko">
+      <img src="<c:url value='/resources/images/main_image1.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 am">
-		<img src="<c:url value='/resources/images/main_image2.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   </div>
+   <div class="col-xs-3 element-item img_wrap2 am">
+      <img src="<c:url value='/resources/images/main_image2.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ni">
-		<img src="<c:url value='/resources/images/main_image3.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   </div>
+   <div class="col-xs-3 element-item img_wrap2 ni">
+      <img src="<c:url value='/resources/images/main_image3.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 cha">
-		<img src="<c:url value='/resources/images/main_image4.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   </div>
+   <div class="col-xs-3 element-item img_wrap2 cha">
+      <img src="<c:url value='/resources/images/main_image4.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ho">
-		<img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   </div>
+   <div class="col-xs-3 element-item img_wrap2 ho">
+      <img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ap">
-		<img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   </div>
+   <div class="col-xs-3 element-item img_wrap2 ap">
+      <img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ko">
-		<img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   </div>
+   <div class="col-xs-3 element-item img_wrap2 ko">
+      <img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ap">
-		<img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
+   </div>
+   <div class="col-xs-3 element-item img_wrap2 ap">
+      <img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
+      <div class="innerText">
+              <p class="Text_title" ><span >TITLE</span></p>
             <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
        </div>
-	</div>
+   </div>
   </div>
   
   

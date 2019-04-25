@@ -32,6 +32,7 @@ img {
 	z-index: 2;
 }
 
+
 .menu_all_wrap_position {
 	position: relative;
 	top: 15px;
@@ -336,6 +337,7 @@ to {
 		background: white;
 		border-bottom: 1px #ccc solid;
 	}
+	
 	.pic_gif {
 		margin-top: 70px;
 	}

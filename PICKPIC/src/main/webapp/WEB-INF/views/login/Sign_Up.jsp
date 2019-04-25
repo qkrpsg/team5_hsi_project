@@ -1,6 +1,7 @@
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="<c:url value='/css/Login.css' />" rel="stylesheet">  
+<link href="<c:url value='/css/Sign_Up.css' />" rel="stylesheet">
+
 
 <script>
 $(document).ready(function(){
@@ -110,40 +111,31 @@ $(function(){
 
 </script>
 <style>
-.filebox input[type="file"] 
-{
-position: absolute; 
-width: 1px; 
-height: 1px; 
-padding: 0; 
-margin: -1px; 
-overflow: hidden; clip:rect(0,0,0,0); border: 0; } 
 
-
-   
-   .filebox .upload-name { 
-   display: inline-block; padding: .5em .75em; /* label의 패딩값과 일치 */ 
-   font-size: inherit; font-family: inherit; 
-   line-height: normal;
-   border-radius: .25em;  vertical-align: middle; 
-    border: 1px solid #ebebeb;
-    border-bottom-color: #e2e2e2; 
-     }
- 
 
 </style>
-<article class="container" style="margin-top:100px;">
-		<div class="page-header">
-				<div class="col-md-6 col-md-offset-3">
-				<h3>회원가입 Form</h3>
-				</div>
+
+<div class="l_pkp_all_wrap">
+	<div class="l_pkp_sub_wrap" >
+		<div class="row text-center">
+			<div class="section-header col-md-12"  ><!--  -->
+				<h2>회원가입</h2>
+				<span>아래 폼을 작성하세요.</span>
+			</div>
+			<!-- /.section-header -->
 		</div>
+	
 		
-		<div class="col-sm-6 col-md-offset-3" style="boder:1px red solid;">
-				<form role="form" action='<c:url value="/user/sign_process.pic"/>' method="POST">
-						
-						
-						<div class="form-group">
+		<!-- /.row -->
+
+		<!-- <div class="l_help_list_wrap"> -->
+			<div class="row" ><!--  -->
+				<form role="form"
+					action='<c:url value="/user/sign_process.pic"/>'
+					method="POST">
+
+
+					<div class="form-group">
 								<label for="ppu_id">아이디</label>
 								<input type="text" class="form-control" name="ppu_id" id="ppu_id" placeholder="아이디를 입력해 주세요">
 						</div>
@@ -191,38 +183,32 @@ overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 							<input type="file" id="ppu_profile_path" class="upload-hidden" name="ppu_profile_path"> 
 						</div>
 
-						
-						
-						
-						<div class="form-group" style="overflow: hidden;">
-							<input  type="checkbox" name="ppu_agree" value="이용약관" id="ppu_agree"  value="ok" style="float: left;margin-right:10px;" /><p style="float: left;">이용약관에 동의합니다.</p>
-						</div>
 
-<!-- 
-						<div class="form-group">
-						<label>약관 동의</label>
-						<div data-toggle="buttons">
-						<label class="btn btn-primary active" for="inputAgree">
-							이용야야양
-						<span class="fa fa-check">ds</span> autocomplete="on" checked
-							
-						</label> 
-						
-						<input  type="checkbox" name="inputAgree" value="이용약관" id="inputAgree" /><p>이용약관에 동의합니다.</p>
-						
-						</div>
-						</div>
--->
-						<div class="form-group text-center">
-								<button type="submit" id="join-submit" class="btn btn-primary">
-										회원가입<i class="fa fa-check spaceLeft"></i>
-								</button>
-								
-								<button type="submit" class="btn btn-warning">
-										가입취소<i class="fa fa-times spaceLeft"></i>
-								</button>
-						</div>
+					<div class="form-group" style="overflow: hidden;">
+						<input type="checkbox" name="ppu_agree" value="이용약관"
+							id="ppu_agree" value="ok"
+							style="float: left; margin-right: 10px;" />
+						<p style="float: left;">이용약관에 동의합니다.</p>
+					</div>
+
+					
+					
+					
+					<div class="form-group text-center">
+						<button type="submit" id="join-submit" class="btn btn-primary">
+							회원가입<i class="fa fa-check spaceLeft"></i>
+						</button>
+
+						<button type="submit" class="btn btn-warning">
+							가입취소<i class="fa fa-times spaceLeft"></i>
+						</button>
+					</div>
+					
+					
+					
+					
 				</form>
-		</div>
-
-</article>
+			</div>
+		<!-- </div> -->
+	</div>
+</div>

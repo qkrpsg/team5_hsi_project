@@ -104,7 +104,7 @@ $(function() {
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > "0") {
 			fn_addFunction();
-		} else if($(this).scrollTop() == "0"&& $('.button-container-1').css("display") == "none"){
+		} else if($(this).scrollTop() == "0"&& $('.button-container-1').css("display") == "none" && nowPage == ""){
 			fn_removeFunction();
 		}
 	});
