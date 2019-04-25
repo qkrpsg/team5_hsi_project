@@ -1,4 +1,4 @@
-@font-face{
+@font-face {
 	font-family: NANUMSQUAREROUNDB;
 	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
 }
@@ -29,13 +29,8 @@ img {
 	width: 100%;
 	height: 80px;
 	padding: 0px;
-<<<<<<< HEAD
-	z-index: 2;
-=======
 	z-index: 3;
->>>>>>> branch 'master' of https://github.com/qkrpsg/team5_hsi_project.git
 }
-
 
 .menu_all_wrap_position {
 	position: relative;
@@ -130,7 +125,7 @@ img {
 
 .nav_wrap {
 	margin-bottom: 20px;
-	margin-left:2.5%;
+	margin-left: 2.5%;
 	float: left;
 }
 
@@ -153,7 +148,7 @@ img {
 	overflow: hidden;
 	margin-top: 10px;
 	margin-right: 20px;
-	float:right;
+	float: right;
 	/*
 	width: 100px;
 	height: 50px;
@@ -174,7 +169,7 @@ img {
 	font-weight: 400;
 	font-size: 25px;
 	letter-spacing: 1px;
-	background: #fff;  /*색 바꾸기 */
+	background: #fff; /*색 바꾸기 */
 	outline: none;
 	-webkit-mask:
 		url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
@@ -195,7 +190,7 @@ img {
 }
 
 .button-container-1 button img {
-	width:30px;
+	width: 30px;
 	height: 30px;
 }
 
@@ -259,7 +254,7 @@ to {
 
 /*    모바일용 메뉴 창      */
 #mobile-nav {
-	margin-top:65px;
+	margin-top: 65px;
 	display: none;
 	position: absolute;
 	width: 500px;
@@ -269,7 +264,7 @@ to {
 }
 
 #mobile-nav nav {
-	margin:20px;
+	margin: 20px;
 }
 
 .menu li {
@@ -283,7 +278,7 @@ to {
 
 .menu li a {
 	font-family: NANUMSQUAREROUNDB;
-	font-size:1.3em;
+	font-size: 1.3em;
 	color: #404040;
 	font-weight: bolder;
 }
@@ -294,7 +289,7 @@ to {
 }
 
 .m_sub li {
-	display:inline-block;
+	display: inline-block;
 	border: none;
 	margin: 0px;
 }
@@ -341,7 +336,6 @@ to {
 		background: white;
 		border-bottom: 1px #ccc solid;
 	}
-	
 	.pic_gif {
 		margin-top: 70px;
 	}

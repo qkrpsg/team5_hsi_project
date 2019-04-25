@@ -227,8 +227,7 @@
 
 .checked_menu {
 	float: left;
-	width: 0px; /*나중에 0으로 만들기*/
-	background: white;
+	/*width: 0px; 나중에 0으로 만들기*/
 }
 
 .checked_menu a {

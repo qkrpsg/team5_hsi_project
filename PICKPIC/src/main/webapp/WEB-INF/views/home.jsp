@@ -13,12 +13,13 @@
 		src="<c:url value='/resources/images/bookMark_icon_.png' />"
 		class="checked_img"></a>
 	<div class="checked_menu">
+		<img alt="포인트" src="<c:url value='/resources/images/bookMarkBody.png'/>"/>
 		<ul>
-			<li><a data-target="body"># HOME 바로가기</a></li>
-			<li><a data-target="sec_0"># HOME0 바로가기</a></li>
-			<li><a data-target="sec_1"># HOME1 바로가기</a></li>
-			<li><a data-target="sec_2"># HOME2 바로가기</a></li>
-			<li><a data-target="sec_3"># HOME3 바로가기</a></li>
+			<li><a data-target="body">HOME</a></li>
+			<li><a data-target="sec_0">BEST</a></li>
+			<li><a data-target="sec_1">INTRODUCE</a></li>
+			<li><a data-target="sec_2">SPACIALITY</a></li>
+			<li><a data-target="sec_3">BOTTOM</a></li>
 		</ul>
 	</div>
 </div>
