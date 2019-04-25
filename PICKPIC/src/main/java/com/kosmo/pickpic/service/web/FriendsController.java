@@ -19,6 +19,13 @@ public class FriendsController {
 		return "friends/filter.tiles";
 	}//filter
 	
+	//Pay test
+	@RequestMapping("/pay/pay.pic")
+	public String pay() throws Exception{
+		return "test/Pay.tiles";
+	}//pay
+	
+	
 	//픽로드
 //	@RequestMapping("/friends/route.pic")
 //	public String route() throws Exception{

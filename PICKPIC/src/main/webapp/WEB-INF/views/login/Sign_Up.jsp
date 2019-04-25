@@ -21,9 +21,11 @@ fileTarget.on('change', function(){ // 값이 변경되면
     	    var pwd = document.getElementById("ppu_password");
     	    var pwdChk = document.getElementById("ppu_passwordCheck");
     	    var name = document.getElementById("ppu_name");
-    	    var phone = document.getElementById("ppu_tetephone");
-    	    var address = document.getElementById("ppu_address");
-    	    var age = document.getElementById("ppu_age");
+    	    var nickname = document.getElementById("ppu_nickname");
+    	    
+    	  //  var phone = document.getElementById("ppu_tetephone");
+    	   // var address = document.getElementById("ppu_address");
+    	   // var age = document.getElementById("ppu_age");
     	    var gender = document.getElementById("ppu_gender");
     	    var profile = document.getElementById("ppu_profile_path");
     	    var agree = document.getElementById("ppu_agree");
@@ -34,7 +36,7 @@ fileTarget.on('change', function(){ // 값이 변경되면
     	
     	jo.onclick = function() {
         	if(id.value == ''){
-        		alert('이름을 입력하세요');
+        		alert('아이디를 입력하세요');
         		id.focus();
                 return false;
        		}
@@ -43,6 +45,7 @@ fileTarget.on('change', function(){ // 값이 변경되면
         		pwd.focus();
                 return false;
        		}
+        	
         	if(pwdChk.value == ''){
         		alert('비밀번호를 확인해주세요');
         		pwdChk.focus();
@@ -52,29 +55,18 @@ fileTarget.on('change', function(){ // 값이 변경되면
        			pwdChk.focus();
                 return false;
        		}
-        	console.log('a',pwd.value)
-        	console.log('b',pwdChk.value)
-       		if(name.value == ''){
+        	
+        	if(name.value == ''){
         		alert('이름을 입력하세요');
         		name.focus();
                 return false;
        		}
-        	if(phone.value == ''){
-        		alert('전화번호를 입력하세요');
-        		phone.focus();
-                return false;
-       		}
-        	if(address.value == ''){
-        		alert('주소를 입력하세요');
-        		address.focus();
-                return false;
-       		}
-        	if(age.value == ''){
-        		alert('나이를 입력하세요');
-        		age.focus();
-                return false;
-       		}
         	
+        	if(nickname.value == ''){
+        		alert('닉네임을 입력하세요');
+        		nickname.focus();
+                return false;
+       		}
         	
         	
         	if(profile.value == ''){
@@ -103,14 +95,14 @@ $(document).ready(function(){
 });
 
 $(function(){
-	$('#ppu_tetephone').keypress(function(evt){
+	/* $('#ppu_tetephone').keypress(function(evt){
 	    var code = evt.which?evt.whichl:event.keyCode;
 	    var code2 =  evt.keyCode;
 	   	
 	    if(code2 < 48 || code2 > 57){
 	       return false;
 	    }
-	});
+	}); */
 	
 	
 	
@@ -147,8 +139,8 @@ overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 				</div>
 		</div>
 		
-		<div class="col-sm-6 col-md-offset-3">
-				<form role="form" action='<c:url value="/PICKPIC/Sign_Up/sign_process.pic"/>' method="POST">
+		<div class="col-sm-6 col-md-offset-3" style="boder:1px red solid;">
+				<form role="form" action='<c:url value="/user/sign_process.pic"/>' method="POST">
 						
 						
 						<div class="form-group">
@@ -169,28 +161,17 @@ overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 								<input type="text" class="form-control" name="ppu_name" id="ppu_name" placeholder="이름 입력해 주세요">
 						</div>
 						
-						<div class="form-group">
-								<label for="ppu_tetephone">휴대폰 번호</label>
-								<input type="tel" class="form-control" name="ppu_tetephone" id="ppu_tetephone" placeholder="-를 뺀 휴대폰번호를 입력해 주세요">
-						</div>
-						<div class="form-group">
-								<label for="ppu_address">주소</label>
-								<input type="text" class="form-control" name="ppu_address" id="ppu_address" placeholder="주소를 입력해 주세요">
-						</div>
-						
-						<!-- 가입일 -->
-						<input type="hidden" name="ppu_register_date" />
-						
-						<!-- 
-						<div class="form-group">
-								<label for="InputEmail">이메일 주소</label>
-								<input type="email" class="form-control" name="InputEmail" id="InputEmail" placeholder="이메일 주소를 입력해주세요">
-						</div> -->
 						
 						<div class="form-group">
-								<label for="ppu_age">나이</label>
-								<input type="number" class="form-control" name="ppu_age" id="ppu_age" placeholder="(숫자)나이를 입력해 주세요">
+								<label for="ppu_nickname">닉네임</label>
+								<input type="text" class="form-control" name="ppu_nickname" id="ppu_nickname" placeholder="닉네임을 입력해 주세요">
 						</div>
+						
+						
+						
+						
+						
+						
 						
 						
 						<div class="form-group">
@@ -199,6 +180,9 @@ overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 								<input type="radio" style="margin-left:10px;" name="ppu_gender" id="ppu_gender" class="ppu_gender" value="m" checked />남자
 								<input type="radio"  name="ppu_gender"  class="ppu_gender" value="f" />여자
 						</div>
+						
+						
+						
 						
 						
 						<div class="filebox"> 

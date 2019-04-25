@@ -5,6 +5,7 @@
 <link href="<c:url value='/css/Sec_1.css'/>" rel="stylesheet">
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
+<script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
 <!-- asddddssddf ss-->
 <span id="body"></span>
 <div class="checked">
@@ -239,8 +240,8 @@
 	$('.grid').isotope({
 		itemSelector : '.grid-item',
 		masonry : {
-		/*columnWidth: 10,
-		gutter: 10*/
+		columnWidth: 10,
+		gutter: 10
 		}
 	});
 </script>
