@@ -282,8 +282,7 @@
 	});
 </script>
 <script>
-	$('.img-holder').imageScroll({
-		parallax: true,
-		touch: true;
-	});
+$('.img-holder').imageScroll({
+	container: $('#sec_4')
+}).$('.imageHolder').css("z-index","1");
 </script>

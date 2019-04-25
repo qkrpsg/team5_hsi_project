@@ -416,12 +416,17 @@
 /* sec_4*/
 #sec_4 {
 	overflow: hidden;
+	width: 100%;
 }
 
 .img-holder{
 	position: absolute;
     top: 0;
     left: 0;
+}
+
+.imageHolder{
+	width: 1000px;
 }
 
 .sec_4_title {
@@ -431,7 +436,6 @@
 .sec_4_mobile_img{
 	display: none;
 	height: 1600px;
-	width:1600px%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -450,6 +454,11 @@
 
 .sec_4_content{
 	margin-top: 50px;
+	z-index: 2;
+}
+
+.sec_4_title{
+	z-index: 2;
 }
 
 .sec_4_content p:first-child{
@@ -468,7 +477,7 @@
 #sec_5{
 	height: 600px;
 	background: white;
-	padding-top: 150px;
+	padding-top: 170px;
 }
 
 #sec_5 div p{
