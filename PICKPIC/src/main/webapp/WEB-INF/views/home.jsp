@@ -283,6 +283,7 @@
 </script>
 <script>
 	$('.img-holder').imageScroll({
-		parallax: true
+		parallax: true,
+		touch: true;
 	});
 </script>
