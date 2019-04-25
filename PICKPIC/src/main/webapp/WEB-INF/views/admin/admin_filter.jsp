@@ -53,7 +53,6 @@
 									<th>번호</th>
 									<th>필터명</th>
 									<th>가격</th>
-									<th>등록일</th>
 									<th>상태</th>
 									<th>이벤트 여부</th>
 								</tr>
@@ -64,7 +63,6 @@
 									<td>1</td>
 									<td><a href="#">필터명1</a></td>
 									<td>3,000</td>
-									<td>2019/03/24</td>
 									<td>판매중</td>
 									<td><i class="fa fa-circle text-red"></i></td>
 								<tr>
@@ -72,7 +70,6 @@
 									<td>2</td>
 									<td><a href="#">필터명2</a></td>
 									<td>2,500</td>
-									<td>2019/03/30</td>
 									<td>판매중</td>
 									<td><i class="fa fa-circle text-green"></i></td>
 								<tr>
@@ -80,7 +77,6 @@
 									<td>3</td>
 									<td><a href="#">필터명3</a></td>
 									<td>3,900</td>
-									<td>2019/04/15</td>
 									<td>판매중</td>
 									<td><i class="fa fa-circle text-red"></i></td>
 								</tr>
@@ -140,7 +136,7 @@
 							<li class="list-group-item"><b>현재가</b><a class="pull-right">3,000</a></li>
 							<li class="list-group-item"><b>판매수</b><a class="pull-right">45개</a></li>
 							<li class="list-group-item"><b>등록일</b><a class="pull-right">2019/03/24</a></li>
-							<li class="list-group-item"><b>최근 가격 변경일</b><a class="pull-right">2019/03/24</a></li>
+							<li class="list-group-item"><b>가격 변경일</b><a class="pull-right">2019/03/24</a></li>
 						</ul>
 						<hr>
 						

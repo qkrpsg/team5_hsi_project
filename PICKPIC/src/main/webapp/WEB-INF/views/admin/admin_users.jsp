@@ -40,12 +40,6 @@
 								<i class="fa fa-ban"> 차단</i>
 							</button>
 							<button type="button" class="btn btn-default btn-sm">
-								<i class="fa fa-reply"></i>
-							</button>
-							<button type="button" class="btn btn-default btn-sm">
-								<i class="fa fa-share"></i>
-							</button>
-							<button type="button" class="btn btn-default btn-sm">
 								<i class="fa fa-refresh"> 새로 고침</i>
 							</button>
 							<div class="pull-right">
@@ -68,6 +62,7 @@
 								<thead>
 									<tr>
 										<th></th>
+										<th>번호</th>
 										<th class="">사용자</th>
 										<th class="">별명</th>
 										<th class="">최종로그인</th>
@@ -76,18 +71,21 @@
 								<tbody>
 									<tr>
 										<td><input type="checkbox"></td>
+										<td>1</td>
 										<td class=""><a href="#">사용자1</a></td>
 										<td class="">별명1</td>
 										<td class="">차단 됨</td>
 									</tr>
 									<tr>
 										<td><input type="checkbox"></td>
+										<td>2</td>
 										<td class=""><a href="#">사용자2</a></td>
 										<td class="">별명2</td>
 										<td class="">2019.03.25</td>
 									</tr>
 									<tr>
 										<td><input type="checkbox"></td>
+										<td>3</td>
 										<td class=""><a href="#">사용자3</a></td>
 										<td class="">별명3</td>
 										<td class="">활동 중...</td>
@@ -105,12 +103,6 @@
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<i class="fa fa-ban"> 차단</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-reply"></i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-share"></i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<i class="fa fa-refresh"> 새로 고침</i>
@@ -139,10 +131,6 @@
 						<img class="profile-user-img img-responsive img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User profile picture">
 						<h3 class="profile-username text-center">로그인계정</h3>
 						<p class="text-muted text-center">별명</p>
-						<ul class="list-group list-group-unbordered">
-							<li class="list-group-item"><b>가입일 </b> <a class="pull-right">2018-02-12</a></li>
-							<li class="list-group-item"><b>최종 로그인 날짜</b> <a class="pull-right">2019-04-03</a></li>
-						</ul>
 						<a href="#" class="btn btn-primary btn-block"><b>사용자 페이지로 이동</b></a>
 					</div>
 				</div>
@@ -161,6 +149,7 @@
 							<li class="list-group-item"><b>별명</b><a class="pull-right">사용자별명</a></li>
 							<li class="list-group-item"><b>성별</b><a class="pull-right">남</a></li>
 							<li class="list-group-item"><b>가입일</b><a class="pull-right">2019/02/02</a></li>
+							<li class="list-group-item"><b>최종로그인</b><a class="pull-right">2019/03/24</a></li>
 						</ul>
 						<hr>
 						
