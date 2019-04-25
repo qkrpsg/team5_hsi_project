@@ -491,6 +491,7 @@
 	display: block;
 	border:1px #7DA7D9 solid;
 	background-color: white;
+	outline: none;
 }
 
 /* 미디어쿼리 시작 */
