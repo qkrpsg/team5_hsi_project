@@ -1,8 +1,10 @@
 
 /* Drop Tables */
 
+DROP TABLE album_down CASCADE CONSTRAINTS;
 DROP TABLE board_recyclebin CASCADE CONSTRAINTS;
 DROP TABLE filter_history CASCADE CONSTRAINTS;
+DROP TABLE filter_stop_sale CASCADE CONSTRAINTS;
 DROP TABLE filter_storage CASCADE CONSTRAINTS;
 DROP TABLE pay_cancel CASCADE CONSTRAINTS;
 DROP TABLE pay CASCADE CONSTRAINTS;
@@ -12,9 +14,7 @@ DROP TABLE place_storage CASCADE CONSTRAINTS;
 DROP TABLE route_place CASCADE CONSTRAINTS;
 DROP TABLE place_board CASCADE CONSTRAINTS;
 DROP TABLE filter CASCADE CONSTRAINTS;
-DROP TABLE general_recyclebin CASCADE CONSTRAINTS;
-DROP TABLE general_report CASCADE CONSTRAINTS;
-DROP TABLE general_board CASCADE CONSTRAINTS;
+DROP TABLE login_history CASCADE CONSTRAINTS;
 DROP TABLE pickpic_connect CASCADE CONSTRAINTS;
 DROP TABLE login_service CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
@@ -32,6 +32,15 @@ DROP TABLE pickpic_user CASCADE CONSTRAINTS;
 
 
 /* Create Tables */
+
+CREATE TABLE album_down
+(
+	ad_id nvarchar2(20) NOT NULL,
+	ad_down_date date DEFAULT SYSDATE NOT NULL,
+	pb_id nvarchar2(20) NOT NULL,
+	PRIMARY KEY (ad_id)
+);
+
 
 CREATE TABLE board_recyclebin
 (
@@ -67,6 +76,15 @@ CREATE TABLE filter_history
 );
 
 
+CREATE TABLE filter_stop_sale
+(
+	fss_id nvarchar2(20) NOT NULL,
+	fss_sale_yn char(1) NOT NULL CHECK(fss_sale_yn IN('Y', 'N')),
+	f_id nvarchar2(20) NOT NULL,
+	PRIMARY KEY (fss_id)
+);
+
+
 CREATE TABLE filter_storage
 (
 	fs_id nvarchar2(20) NOT NULL,
@@ -76,37 +94,12 @@ CREATE TABLE filter_storage
 );
 
 
-CREATE TABLE general_board
+CREATE TABLE login_history
 (
-	gb_id nvarchar2(20) NOT NULL,
-	gb_title nvarchar2(30) NOT NULL,
-	gb_content nvarchar2(500) NOT NULL,
-	gb_post_date date DEFAULT SYSDATE,
-	gb_count number,
-	gb_pick number,
-	gb_image_path nvarchar2(30),
+	lh_id nvarchar2(20) NOT NULL,
+	lh_login_date date DEFAULT SYSDATE NOT NULL,
 	ppu_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (gb_id)
-);
-
-
-CREATE TABLE general_recyclebin
-(
-	grb_id nvarchar2(20) NOT NULL,
-	grb_delete_date date DEFAULT SYSDATE NOT NULL,
-	gb_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (grb_id)
-);
-
-
-CREATE TABLE general_report
-(
-	gr_id nvarchar2(20) NOT NULL,
-	gr_report_date date DEFAULT SYSDATE NOT NULL,
-	gr_cause nvarchar2(200) NOT NULL,
-	ppu_id nvarchar2(20) NOT NULL,
-	gb_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (gr_id)
+	PRIMARY KEY (lh_id)
 );
 
 
@@ -325,6 +318,12 @@ ALTER TABLE filter_history
 ;
 
 
+ALTER TABLE filter_stop_sale
+	ADD FOREIGN KEY (f_id)
+	REFERENCES filter (f_id)
+;
+
+
 ALTER TABLE filter_storage
 	ADD FOREIGN KEY (f_id)
 	REFERENCES filter (f_id)
@@ -340,18 +339,6 @@ ALTER TABLE pay
 ALTER TABLE place_board
 	ADD FOREIGN KEY (f_id)
 	REFERENCES filter (f_id)
-;
-
-
-ALTER TABLE general_recyclebin
-	ADD FOREIGN KEY (gb_id)
-	REFERENCES general_board (gb_id)
-;
-
-
-ALTER TABLE general_report
-	ADD FOREIGN KEY (gb_id)
-	REFERENCES general_board (gb_id)
 ;
 
 
@@ -391,13 +378,7 @@ ALTER TABLE filter_storage
 ;
 
 
-ALTER TABLE general_board
-	ADD FOREIGN KEY (ppu_id)
-	REFERENCES pickpic_user (ppu_id)
-;
-
-
-ALTER TABLE general_report
+ALTER TABLE login_history
 	ADD FOREIGN KEY (ppu_id)
 	REFERENCES pickpic_user (ppu_id)
 ;
@@ -460,6 +441,12 @@ ALTER TABLE route_report
 ALTER TABLE route_storage
 	ADD FOREIGN KEY (ppu_id)
 	REFERENCES pickpic_user (ppu_id)
+;
+
+
+ALTER TABLE album_down
+	ADD FOREIGN KEY (pb_id)
+	REFERENCES place_board (pb_id)
 ;
 
 

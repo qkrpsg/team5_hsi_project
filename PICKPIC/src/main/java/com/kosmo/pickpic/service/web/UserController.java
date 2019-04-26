@@ -60,7 +60,7 @@ public class UserController {
 		return "login/Sign_Up.tiles";
 	}//login
 	
-	
+
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map) throws Exception{
@@ -71,12 +71,20 @@ public class UserController {
 		return "login/Login.tiles";
 	}
 	
+	//로그아웃 프로세스  
+	@RequestMapping("/user/logout.pic")
+	public String logoutProcess(HttpSession session,@RequestParam Map map) throws Exception{
+		session.setAttribute("ppu_id", "");
+		
+		return "home.tiles";
+	}//logoutProcess
+	
 	
 	//내정보
-//	@RequestMapping("/user/myPage.pic")
-//	public String myPage() throws Exception{
-//		return "user/myPage.tiles";
-//	}//myPage
+	@RequestMapping("/user/myPage.pic")
+	public String myPage() throws Exception{
+		return "login/MyPage.tiles";
+	}//myPage
 	
 	//정보수정
 //	@RequestMapping("/user/changeInfo.pic")
