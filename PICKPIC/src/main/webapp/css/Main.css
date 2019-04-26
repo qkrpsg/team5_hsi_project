@@ -212,7 +212,7 @@
 	width:110px;
 	height: 430px;  /* 여기 조정해주세요  over 히든 높이값 바꿔주세요*/
 	top: 240px;
-	right: 0px;
+	right: -54px;
 	z-index: 3;
 	overflow: hidden;
 	float: left;
