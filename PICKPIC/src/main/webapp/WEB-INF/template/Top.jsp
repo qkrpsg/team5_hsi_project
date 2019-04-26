@@ -24,7 +24,7 @@
 						<ul>
 							<li class="col-md-2"></li>
 							<li class="col-md-3"><a
-								href="<c:url value='/user/home.pic'/>">피크픽 스토리</a></li>
+								href="<c:url value='/'/>">피크픽 스토리</a></li>
 							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
 							<li class="col-md-3"><a href="#">고객센터</a></li>
 							<li class="col-md-1"></li>
@@ -35,7 +35,7 @@
 						<div class="login_wrap col-md-3">
 							<ul>
 								<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppu_id} 님 <span></span></a></li>
-								<li><a href="<c:url value='/user/logout.pic'/>">Logout<span></span></a></li>
+								<li><a href="<c:url value='/user/logout.pic'/>">Logout</a></li>
 							</ul>
 						</div>
 					</c:if>
