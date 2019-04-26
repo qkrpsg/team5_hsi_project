@@ -18,11 +18,10 @@
 			<img alt="포인트" src="<c:url value='/resources/images/bookMarkBody.png'/>"/>
 		</div>
 		 <ul class="books_menu">
-			<li><a data-target="body"> <img src="<c:url value='/resources/images/text_home.png'/>"/> </a></li>
-			<li><a data-target="sec_0"><img src="<c:url value='/resources/images/text_best.png'/>"/></a></li>
-			<li><a data-target="sec_1"><img src="<c:url value='/resources/images/text_introduce.png'/>"/></a></li>
-			<li><a data-target="sec_2"><img src="<c:url value='/resources/images/text_specialty.png'/>"/></a></li>
-			
+			<li><a data-target="body"> <img src="<c:url value='/resources/images/home/text_home.png'/>"/> </a></li>
+			<li><a data-target="sec_0"><img src="<c:url value='/resources/images/home/text_best.png'/>"/></a></li>
+			<li><a data-target="sec_1"><img src="<c:url value='/resources/images/home/text_introduce.png'/>"/></a></li>
+			<li><a data-target="sec_2"><img src="<c:url value='/resources/images/home/text_specialty.png'/>"/></a></li>
 		</ul> 
 	</div><!-- checked_menu -->
 </div>
