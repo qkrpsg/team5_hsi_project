@@ -36,10 +36,4 @@ public class FriendsController {
 	public String albumDown() throws Exception {
 		return "friends/albumDown.tiles";
 	}
-	
-	//피크픽's 픽(삭제된 게시판)
-	@RequestMapping("/friends/picpic.pic")
-	public String picpic() {
-		return "friends/picpic";
-	}//picpic
 }//FriendsController

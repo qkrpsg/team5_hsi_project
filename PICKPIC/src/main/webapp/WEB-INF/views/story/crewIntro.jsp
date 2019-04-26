@@ -75,23 +75,20 @@ body {
 			<img src="<c:url value='/resources/images/crew1.jpg'/>"
 				class="crewsa">
 			<p class="text1">박슬기(25)</p>
-			<p class="text1">aaaaaaa</p>
-			<p class="text2">내용</p>
+			<p class="text2">팀장</p>
 		</div>
 		<div class="col-md-12">
 			<div class="col-md-6"">
 				<img src="<c:url value='/resources/images/crew7.jpg'/>"
 					class="crewsa">
 				<p class="text1">고우진(32)</p>
-				<p class="text1">bbbbbb</p>
-				<p class="text2">내용</p>
+				<p class="text2">팀원</p>
 			</div>
 			<div class="col-md-6">
 				<img src="<c:url value='/resources/images/crew3.jpg'/>"
 					class="crewsa">
 				<p class="text1">김용강(28)</p>
-				<p class="text1">cccc</p>
-				<p class="text2">내용</p>
+				<p class="text2">팀원</p>
 			</div>
 		</div>
 		<div class="col-md-12">
@@ -99,15 +96,13 @@ body {
 				<img src="<c:url value='/resources/images/crew4.jpg'/>"
 					class="crewsa">
 				<p class="text1">이용수(27)</p>
-				<p class="text1">bbbbbb</p>
-				<p class="text2">내용</p>
+				<p class="text2">팀원</p>
 			</div>
 			<div class="col-md-6">
 				<img src="<c:url value='/resources/images/crew5.jpg'/>"
 					class="crewsa">
 				<p class="text1">최명범(26)</p>
-				<p class="text1">cccc</p>
-				<p class="text2">내용</p>
+				<p class="text2">팀원</p>
 			</div>
 		</div>
 		<div class="col-md-12">
@@ -115,15 +110,13 @@ body {
 				<img src="<c:url value='/resources/images/crew6.jpg'/>"
 					class="crewsa">
 				<p class="text1">한주영(26)</p>
-				<p class="text1">bbbbbb</p>
-				<p class="text2">내용</p>
+				<p class="text2">팀원</p>
 			</div>
 			<div class="col-md-6">
 				<img src="<c:url value='/resources/images/crew2.jpg'/>"
 					class="crewsa">
 				<p class="text1">정영욱(23)</p>
-				<p class="text1">cccc</p>
-				<p class="text2">내용</p>
+				<p class="text2">팀원</p>
 			</div>
 		</div>
 	</div>

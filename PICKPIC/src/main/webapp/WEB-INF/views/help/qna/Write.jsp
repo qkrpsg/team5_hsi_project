@@ -66,20 +66,12 @@
 					<!--  -->
 
 					<div class="form-group text-center">
-						<button type="submit" id="join-submit" class="btn btn-primary">
-							작성완료<i class="fa fa-check spaceLeft"></i>
-						</button>
-
-						<button type="submit" class="btn btn-warning">
-							취소<i class="fa fa-times spaceLeft"></i>
-						</button>
+						<input type="button" id="join-submit" class="btn btn-primary" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="작성완료" >
+						<input type="button" id="join-submit" class="btn btn-warning" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="취소" >
 					</div>
 				</form>
 			</div>
 		</div>
-
-
-
 	</div>
 	<!-- l_pkp_sub_wrap -->
 </div>

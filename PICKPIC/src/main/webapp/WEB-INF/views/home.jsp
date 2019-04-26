@@ -9,18 +9,22 @@
 
 <span id="body"></span>
 <div class="checked">
-	<a><img
-		src="<c:url value='/resources/images/bookMark_icon_.png' />"
-		class="checked_img"></a>
+	
 	<div class="checked_menu">
-		<ul>
-			<li><a data-target="body"># HOME 바로가기</a></li>
-			<li><a data-target="sec_0"># HOME0 바로가기</a></li>
-			<li><a data-target="sec_1"># HOME1 바로가기</a></li>
-			<li><a data-target="sec_2"># HOME2 바로가기</a></li>
-			<li><a data-target="sec_3"># HOME3 바로가기</a></li>
-		</ul>
-	</div>
+		<div class="book">
+			<a><img src="<c:url value='/resources/images/bookMark_icon_.png' />" class="checked_img"></a>
+		</div>
+		<div class="books">
+			<img alt="포인트" src="<c:url value='/resources/images/bookMarkBody.png'/>"/>
+		</div>
+		 <ul class="books_menu">
+			<li><a data-target="body"> <img src="<c:url value='/resources/images/text_home.png'/>"/> </a></li>
+			<li><a data-target="sec_0"><img src="<c:url value='/resources/images/text_best.png'/>"/></a></li>
+			<li><a data-target="sec_1"><img src="<c:url value='/resources/images/text_introduce.png'/>"/></a></li>
+			<li><a data-target="sec_2"><img src="<c:url value='/resources/images/text_specialty.png'/>"/></a></li>
+			
+		</ul> 
+	</div><!-- checked_menu -->
 </div>
 
 <div class="pic_gif">
@@ -240,7 +244,7 @@
 <section id="sec_4" class="sec_wrap" style="overflow: hidden;">
 
 	<div class="sec_4_title col-md-12">
-		<p class="col-md-offset-1">PICKPIC's Spaciality</p>
+		<p class="col-md-offset-1">PICKPIC's Speciality</p>
 	</div>
 	<div class="sec_4_content col-md-offset-1 col-md-5">
 		<p>어디서 찍어야 잘나올까?</p>

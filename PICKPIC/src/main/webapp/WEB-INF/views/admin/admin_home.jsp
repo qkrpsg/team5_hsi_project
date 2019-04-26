@@ -4,7 +4,7 @@
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-		<h1>Home <small></small></h1>
+		<h1>관리자 페이지 <small>HOME</small></h1>
 	</section>
 
 	<section class="content">
@@ -54,153 +54,147 @@
 		</div>
 		<!-- 대시보드 끝 -->
 		
-		
-	</section>
-</div>
-
-		<!-- 목록 바디 시작 -->
+		<!-- 1행 시작 -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="col-md-6">
-					<h4 class="box-title">유저 목록</h4>
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">사이트 통계</h3>
+					</div>
+					<!-- /.box-header -->
 					<div class="box-body">
-						<!-- 목록 버튼 시작 -->
-						<div class="userbox-controls">
-							<button type="button"
-								class="btn btn-default btn-sm checkbox-toggle">
-								<i class="fa fa-square-o"> 전체 선택</i>
-							</button>
-							<button type="button" class="btn btn-default btn-sm">
-								<i class="fa fa-ban"> 차단</i>
-							</button>
-							<button type="button" class="btn btn-default btn-sm">
-								<i class="fa fa-refresh"> 새로 고침</i>
-							</button>
-							<div class="pull-right">
-								1-50/200
-								<div class="btn-group">
-									<button type="button" class="btn btn-default btn-sm">
-										<i class="fa fa-chevron-left"></i>
-									</button>
-									<button type="button" class="btn btn-default btn-sm">
-										<i class="fa fa-chevron-right"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-						<!-- 목록 버튼 끝 -->
+						<div class="row">
+							<div class="col-md-8">
+								<p class="text-center">
+									<strong>접속자 통계 : 2019/03/01 ~ 2019/04/01</strong>
+								</p>
 
+								<div class="chart">
+									<!-- Sales Chart Canvas -->
+									<canvas id="salesChart" style="height: 180px;"></canvas>
+								</div>
+								<!-- /.chart-responsive -->
+							</div>
+							<!-- /.col -->
+							<div class="col-md-4">
+								<p class="text-center">
+									<strong>컨텐츠 이용 빈도</strong>
+								</p>
+
+								<div class="progress-group">
+									<span class="progress-text">픽플레이스</span> 
+									<span class="progress-number"><b>33</b>/100</span>
+									<div class="progress sm">
+										<div class="progress-bar progress-bar-aqua" style="width: 33%"></div>
+									</div>
+								</div>
+								<!-- /.progress-group -->
+								<div class="progress-group">
+									<span class="progress-text">필터</span> 
+									<span class="progress-number"><b>21</b>/100</span>
+									<div class="progress sm">
+										<div class="progress-bar progress-bar-red" style="width: 21%"></div>
+									</div>
+								</div>
+								<!-- /.progress-group -->
+								<div class="progress-group">
+									<span class="progress-text">픽루트</span> 
+									<span class="progress-number"><b>28</b>/100</span>
+									<div class="progress sm">
+										<div class="progress-bar progress-bar-green" style="width: 28%"></div>
+									</div>
+								</div>
+								<!-- /.progress-group -->
+								<div class="progress-group">
+									<span class="progress-text">앨범다운</span> 
+									<span class="progress-number"><b>18</b>/100</span>
+									<div class="progress sm">
+										<div class="progress-bar progress-bar-yellow" style="width: 18%"></div>
+									</div>
+								</div>
+								<!-- /.progress-group -->
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- ./box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- 1행 끝 -->
+
+		<!-- 2행 시작 -->
+		<div class="row">
+			<!-- 유저 시작 -->
+			<div class="col-md-6">
+				<div class="box box-primary">
+					<!-- 목록 헤더 시작 -->
+					<div class="box-header with-border">
+						<h3 class="box-title">사용자 목록</h3>
+						<div class="box-tools pull-right">
+							<a href="<c:url value='/admin/users.pic'/>">더보기</a>
+						</div>
+					</div>
+					<!-- 목록 헤더 끝-->
+
+					<!-- 목록 바디 시작 -->
+					<div class="box-body">
 						<!-- 목록데이터 : 사용자 아이디 입력 부분 -->
 						<div class="table-responsive mailbox-messages">
 							<table class="table table-hover table-striped">
 								<thead>
 									<tr>
-										<th></th>
 										<th>번호</th>
-										<th class="">사용자</th>
-										<th class="">별명</th>
-										<th class="">최종로그인</th>
+										<th>사용자</th>
+										<th>별명</th>
+										<th>최종로그인</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td><input type="checkbox"></td>
 										<td>1</td>
-										<td class=""><a href="#">사용자1</a></td>
-										<td class="">별명1</td>
-										<td class="">차단 됨</td>
+										<td>사용자1</td>
+										<td>별명1</td>
+										<td>차단 됨</td>
 									</tr>
 									<tr>
-										<td><input type="checkbox"></td>
 										<td>2</td>
-										<td class=""><a href="#">사용자2</a></td>
-										<td class="">별명2</td>
-										<td class="">2019.03.25</td>
+										<td><a href="#">사용자2</a></td>
+										<td>별명2</td>
+										<td>2019.03.25</td>
 									</tr>
 									<tr>
-										<td><input type="checkbox"></td>
 										<td>3</td>
-										<td class=""><a href="#">사용자3</a></td>
-										<td class="">별명3</td>
-										<td class="">활동 중...</td>
+										<td>사용자3</td>
+										<td>별명3</td>
+										<td>활동 중...</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
 					<!-- 목록 바디 끝 -->
-
-					<!-- 목록 풋터 시작 -->
-					<div class="box-footer">
-						<button type="button"
-							class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-ban"> 차단</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로 고침</i>
-						</button>
-						<div class="pull-right">
-							1-50/200
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-left"></i>
-								</button>
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-right"></i>
-								</button>
-							</div>
-						</div>
-						<!-- 목록 풋터 끝 -->
-					</div>
 				</div>
-
-
-
-				<!-- 유저끝 -->
-				<div class="col-md-6">
-
+			</div>
+			<!-- 유저 끝 -->
+			
+			<!-- 필터 시작 -->
+			<div class="col-md-6">
+	    		<div class="box">
 					<div class="box-header">
 						<h3 class="box-title">필터 목록</h3>
-
-
 						<div class="box-tools pull-right">
-							<div class="has-feedback">
-								<input type="text" class="form-control input-sm"
-									placeholder="Search Filter"> <span
-									class="glyphicon glyphicon-search form-control-feedback"></span>
-							</div>
+							<a href="<c:url value='/admin/filter.pic'/>">더보기</a>
 						</div>
 					</div>
-
+					
 					<div class="box-body table-responsive">
-						<button type="button"
-							class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-spinner"> 활성/비활성</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로고침</i>
-						</button>
-						<div class="pull-right">
-							1-50/200
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-left"></i>
-								</button>
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-right"></i>
-								</button>
-							</div>
-						</div>
-						<table class="table table-hover table-striped">
+						<table class="table table-hover table-striped" >
 							<thead>
 								<tr>
-									<th></th>
 									<th>번호</th>
 									<th>필터명</th>
 									<th>가격</th>
@@ -210,23 +204,20 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><input type="checkbox"></td>
 									<td>1</td>
-									<td><a href="#">필터명1</a></td>
+									<td>>필터명1</td>
 									<td>3,000</td>
 									<td>판매중</td>
 									<td><i class="fa fa-circle text-red"></i></td>
 								<tr>
-									<td><input type="checkbox"></td>
 									<td>2</td>
-									<td><a href="#">필터명2</a></td>
+									<td>필터명2</td>
 									<td>2,500</td>
 									<td>판매중</td>
 									<td><i class="fa fa-circle text-green"></i></td>
 								<tr>
-									<td><input type="checkbox"></td>
 									<td>3</td>
-									<td><a href="#">필터명3</a></td>
+									<td>필터명3</td>
 									<td>3,900</td>
 									<td>판매중</td>
 									<td><i class="fa fa-circle text-red"></i></td>
@@ -234,30 +225,217 @@
 							</tbody>
 						</table>
 					</div>
-
-					<div class="box-footer">
-						<button type="button"
-							class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-spinner"> 활성/비활성</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로고침</i>
-						</button>
-						<div class="pull-right">
-							1-50/200
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-left"></i>
-								</button>
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-right"></i>
-								</button>
-							</div>
+				</div>
+			</div>
+			<!-- 필터 끝 -->
+		</div>
+		<!-- 2행 끝 -->
+		
+		<!-- 3행 시작 -->
+		<div class="row">
+			<!-- 픽로드 시작 -->
+			<div class="col-md-6">
+				<div class="box">
+					<div class="box-header">
+						<h3 class="box-title">픽로드 목록</h3>
+						<div class="box-tools pull-right">
+							<a href="<c:url value='/admin/pickRoad.pic'/>">더보기</a>
+						</div>
+					</div>
+					
+					<div class="box-body table-responsive">
+						<table class="table table-hover" >
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>내용</th>
+								<th>사용자</th>
+								<th>등록일</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>제목1</td>
+								<td>내용1</td>
+								<td>사용자명1</td>
+								<td>등록일1</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>제목2</td>
+								<td>내용2</td>
+								<td>사용자명2</td>
+								<td>등록일2</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>제목3</td>
+								<td>내용3</td>
+								<td>사용자명3</td>
+								<td>등록일3</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- 픽로드 끝 -->
+			
+			<!-- 앨범다운 시작 -->
+			<div class="col-md-6">
+	    		<div class="box box-primary">
+					<div class="box-header">
+						<h3 class="box-title">앨범 다운 기록</h3>
+						<div class="box-tools pull-right">
+							<a href="<c:url value='/admin/albumDown.pic'/>">더보기</a>
+						</div>
+					</div>
+					
+					<div class="box-body table-responsive">
+						<table class="table table-hover" >
+							<tr>
+								<th>번호</th>
+								<th>사용자</th>
+								<th>다운로드일</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>사용자명1</td>
+								<td>2019/02/22</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>사용자명2</td>
+								<td>2019/03/04</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>사용자명3</td>
+								<td>2019/04/25</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- 앨범다운 끝 -->
+		</div>
+		<!-- 3행 끝 -->
+		
+		<!-- 4행 시작 -->
+		<div class="row">
+			<!-- 신고함 시작 -->
+			<div class="col-md-6">
+				<div class="box box-primary">
+					<!-- 박스 헤더 시작 -->
+					<div class="box-header with-border">
+			        	<h3 class="box-title">신고 게시글 목록</h3>	
+						<div class="box-tools pull-right">
+							<a href="<c:url value='/admin/report.pic'/>">더보기</a>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>제목</th>
+										<th>게시판 분류</th>
+										<th>신고된 사용자</th>
+										<th>신고한 사용자</th>
+										<th>신고일</th>
+										<th>처리 상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>3</td>
+										<td>제목3</td>
+										<td>게시판1</td>
+										<td>신고된 사용자명1</td>
+										<td>신고한 사용자명2</td>
+										<td>2019/03/12</td>
+										<td>처리중</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>제목2</td>
+										<td>게시판2</td>
+										<td>신고된 사용자명2</td>
+										<td>신고한 사용자명2</td>
+										<td>2019/04/21</td>
+										<td>처리중</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>제목1</td>
+										<td>게시판1</td>
+										<td>신고된 사용자명1</td>
+										<td>신고한 사용자명1</td>
+										<td>2019/12/34</td>
+										<td>처리완료</td>
+									</tr>	
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- 신고함 끝 -->
+			<!-- 휴지통 시작 -->
+			<div class="col-md-6">
+				<div class="box">
+					<div class="box-header with-border">
+			        	<h3 class="box-title">삭제된 게시글 목록</h3>	
+						<div class="box-tools pull-right">
+							<a href="<c:url value='/admin/recyclebin.pic'/>">더보기</a>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>제목</th>
+										<th>게시판 분류</th>
+										<th>사용자</th>
+										<th>삭제일</th>
+									</tr>
+								</thead>
+								<!-- 데이터를 받아오는 부분 -->
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>제목1</td>
+										<td>게시판1</td>
+										<td>사용자명1</td>
+										<td>2019/12/34</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>제목2</td>
+										<td>게시판2</td>
+										<td>사용자명2</td>
+										<td>2019/04/21</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>제목3</td>
+										<td>게시판1</td>
+										<td>사용자명3</td>
+										<td>2019/03/12</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 휴지통 끝 -->
 		</div>
+		<!-- 4행 끝 -->
+	</section>
+</div>
+
+
+<!-- ChartJS -->
+<script src="<c:url value='/js/Chart.js'/>"></script>
