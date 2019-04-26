@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* html */
+/* 
+<div class="thumbnail-wrapper"> 
+<div class="thumbnail"> 
+<div class="centered"> 
+<img src="xxxx"> 
+</div> 
+</div> 
+</div>
+ */
+/* 비율 */
+/* 
+2:1 : padding-top: 50%
+1:2 : padding-top: 200%
+4:3 : padding-top: 75%
+16:9 : padding-top: 56.25%
+*/
+.thumbnail-wrappper {
+	width: 25%;
+}
+
+.thumbnail {
+	position: relative;
+	padding-top: 50%; /* 2:1 ratio */
+	overflow: hidden;
+}
+
+.thumbnail .centered {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	-webkit-transform: translate(50%, 50%);
+	-ms-transform: translate(50%, 50%);
+	transform: translate(50%, 50%);
+}
+
+.thumbnail .centered img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	max-width: 100%;
+	height: auto;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+/* html */
+/* 
+<h2>center and crop thumbnail</h2>
+<div class="thumb-crop">
+<img src="http://cfile7.uf.tistory.com/image/2207833E564DA651207486">
+</div>
+
+<div class="thumb-crop">
+<img src="http://cfile29.uf.tistory.com/image/2679483E564DA6502925FA">
+</div>
+
+<h2>center and crop portrait thumbnail</h2>
+<div class="thumb-crop">
+<img src="http://cfile29.uf.tistory.com/image/2679483E564DA6502925FA" class="portrait">
+</div>
+
+<h2>center and crop auto thumbnail</h2>
+<div class="thumb-crop">
+<img src="http://cfile7.uf.tistory.com/image/2207833E564DA651207486" class="auto">
+</div>
+ */
+.thumb-crop {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	height: 879px;
+	width: 1903px;
+}
+
+.thumb-crop img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.thumb-crop .auto {
+	width: auto;
+	height: auto;
+}
+
+.thumb-crop .portrait {
+	width: 100%;
+	height: auto;
+}
