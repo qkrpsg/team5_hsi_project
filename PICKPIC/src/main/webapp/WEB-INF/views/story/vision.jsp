@@ -62,7 +62,7 @@ a{
 		<div class="img-holder" data-image="<c:url value='/resources/images/e1.jpg'/>" data-width="1600"
 			data-height="900" data-extra-height="50"></div>
 		<section style="margin:8%">
-			<p style="font-size: 3.0em; font-weight: bold">이것 때문에 만들었다?</p>
+			<p style="font-size: 3.0em; font-weight: bold">이것 때문에 만들었다.</p>
 			<p style="font-size: 2.3em">원하는 장소에서 멋진 사진을 찍기 위해 사진명소를 공유한다.</p>
 
 		</section>
@@ -86,7 +86,7 @@ a{
 		<div class="img-holder" data-image="<c:url value='/resources/images/e3.jpg'/>"></div>
 
 		<section style="margin:8%">
-			<p style="font-size: 3.0em; font-weight: bold">앞으로 이렇게 할 것이다?(비전)</p>
+			<p style="font-size: 3.0em; font-weight: bold">앞으로 이렇게 할 것이다!</p>
 			<p style="font-size: 2.3em">
 				피크픽은 멋진 사진을 위해 더 편리한 환경을 제공하는 것을 꿈꿉니다. <br />어제보다 더 나은 곳으로 만글기 위해
 				노력합니다.

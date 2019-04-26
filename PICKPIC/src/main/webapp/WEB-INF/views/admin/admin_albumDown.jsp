@@ -49,19 +49,19 @@
 								<td><input type="checkbox"></td>
 								<td>1</td>
 								<td>사용자명1</td>
-								<td>다운로드일1</td>
+								<td>2019/02/22</td>
 							</tr>
 							<tr>
 								<td><input type="checkbox"></td>
 								<td>2</td>
 								<td>사용자명2</td>
-								<td>다운로드일2</td>
+								<td>2019/03/04</td>
 							</tr>
 							<tr>
 								<td><input type="checkbox"></td>
 								<td>3</td>
 								<td>사용자명3</td>
-								<td>다운로드일3</td>
+								<td>2019/04/25</td>
 							</tr>
 						</table>
 					</div>

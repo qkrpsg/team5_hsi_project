@@ -1,6 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false" contentType="text/html; charset=UTF-8"%>
 
+<link rel="stylesheet" href="<c:url value='/css/daterangepicker.css'/>">
+<!-- date-range-picker -->
+<script src="<c:url value='/js/moment.min.js'/>"></script>
+<script src="<c:url value='/js/daterangepicker.js'/>"></script>
+
+<script>
+	$(function(){
+		$('#datepick').daterangepicker();
+	})
+</script>
+
+
 <!-- 여기서부터 사용자 관리 페이지 시작 -->
 <div class="content-wrapper">
 	<section class="content-header">
@@ -30,11 +42,14 @@
 									<label>사용자ID</label> 
 									<input type="text" name="search_name" placeholder="사용자ID를 입력하세요." class="form-control">
 								</div>
+								<!-- Date range -->
 								<div class="form-group">
 									<label>등록일자</label>
 									<div class="input-group">
-										<div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
-										
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepick" type="text" class="form-control pull-right">
 									</div>
 								</div>
 								<div class="form-group">
