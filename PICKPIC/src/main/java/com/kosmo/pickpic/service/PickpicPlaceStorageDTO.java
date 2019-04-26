@@ -1,4 +1,4 @@
-package com.kosmo.pickpic.service.web;
+package com.kosmo.pickpic.service;
 
 public class PickpicPlaceStorageDTO {
 	//객체들]

@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import com.kosmo.pickpic.service.web.PickpicPlaceStorageService;
+import com.kosmo.pickpic.service.PickpicPlaceStorageService;
 
 public class PickpicPlaceStorageDAO implements PickpicPlaceStorageService {
 	//SqlSessionTemplate객체 주입]

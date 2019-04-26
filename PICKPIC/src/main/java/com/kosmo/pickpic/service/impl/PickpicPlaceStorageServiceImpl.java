@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import com.kosmo.pickpic.service.web.PickpicPlaceStorageService;
+import com.kosmo.pickpic.service.PickpicPlaceStorageService;
 
 public class PickpicPlaceStorageServiceImpl implements PickpicPlaceStorageService {
 

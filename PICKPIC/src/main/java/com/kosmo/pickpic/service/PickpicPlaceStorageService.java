@@ -1,4 +1,4 @@
-package com.kosmo.pickpic.service.web;
+package com.kosmo.pickpic.service;
 
 import java.util.List;
 import java.util.Map;
