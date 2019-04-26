@@ -7,7 +7,7 @@
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/js/mostrar_nav.js'/>"></script>
 <script src="<c:url value='/js/Top.js'/>"></script>
-<!--  -->
+
 <header class="container-fluid header_top ">
 
 	<div class="menu_all_wrap_position">
