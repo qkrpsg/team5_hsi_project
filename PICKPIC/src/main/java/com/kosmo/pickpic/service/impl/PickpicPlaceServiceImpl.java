@@ -10,7 +10,7 @@ import com.kosmo.pickpic.service.PickpicPlaceService;
 public class PickpicPlaceServiceImpl implements PickpicPlaceService{
 
 	//MemoCommentDAO주입]
-	@Resource(name="pickpicAdminDAO")
+	@Resource(name="PickpicPlaceDAO")
 	private PickpicPlaceDAO dao;
 
 	@Override

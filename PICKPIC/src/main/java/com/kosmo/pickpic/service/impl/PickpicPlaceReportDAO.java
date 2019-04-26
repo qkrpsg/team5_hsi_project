@@ -7,34 +7,32 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import com.kosmo.pickpic.service.PickpicPlaceService;
+import com.kosmo.pickpic.service.PickpicPlaceReportService;
 
-public class PickpicPlaceDAO implements PickpicPlaceService {
+public class PickpicPlaceReportDAO implements PickpicPlaceReportService {
 
 	//SqlSessionTemplate객체 주입]
     @Resource(name="template")
     private SqlSessionTemplate template;
-    //현재 글번에 따른 모든 댓글 목록]
 
 	@Override
 	public List<Map> selectList(Map map) {
-	    return template.selectList("PlaceSelectList",map); 
-	}
+		return template.selectList("ReportSelectList",map);
+	}//selectList
 
 	@Override
 	public void insert(Map map) {
-		template.insert("PlaceInsert",map);
+		template.insert("ReportInsert",map);
 	}//insert
 
 	@Override
 	public void delete(Map map) {
-		template.delete("PlaceDelete",map);
+		template.delete("ReportDelete",map);
 	}//delete
 
 	@Override
 	public void update(Map map) {
-		template.update("PlaceUpdate",map);
+		template.update("ReportUpdate",map);
 	}//update
     
-   
 }
