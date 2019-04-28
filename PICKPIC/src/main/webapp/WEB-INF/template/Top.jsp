@@ -34,9 +34,8 @@
 					<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
 						<div class="login_wrap col-md-3">
 							<ul>
-								<li><a href="#">${sessionScope.ppu_id} 님 <span></span></a></li>
+								<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppu_id} 님 <span></span></a></li>
 								<li><a href="<c:url value='/user/logout.pic'/>">Logout<span></span></a></li>
-								<li><a href="<c:url value='/user/myPage.pic'/>">My Page</a></li>
 							</ul>
 						</div>
 					</c:if>
