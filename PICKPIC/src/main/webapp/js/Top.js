@@ -1,12 +1,22 @@
 $(function() {
-
 	var l_masonry_wrap = document.getElementsByClassName("l_masonry_wrap");
 	var grid = document.getElementsByClassName("grid");
 	var grid_item = document.getElementsByClassName("grid-item");
 	var nowPage = $(location).attr('pathname').slice($(location).attr('pathname').indexOf('admin/')+6, -4);
 	var innerWidth = window.innerWidth;
 	l_masonry_wrap.innerHTML = '';
-
+	
+	var isHome = false;
+	switch(nowPage){
+		case "": 
+		case "pic/user/loginProcess":
+		case "pic/user/logout":
+			isHome = true;
+			break;
+		default :
+			isHome = false;
+	}
+	
 	var fn_addFunction = function() {
 		$(".pic_gif").addClass('pic_gifadd');
 		$(".header_top").addClass('scroll');
@@ -25,7 +35,7 @@ $(function() {
 		$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_white.png")
 	};
 	
-	if(nowPage != ""){
+	if(!isHome){//홈이 아닐 때
 		$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
 	}
 	
@@ -33,8 +43,11 @@ $(function() {
 		$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
 	}
 	
-	if($(this).scrollTop() > "0"){
+	if($(this).scrollTop() > "0" || !isHome){
 		fn_addFunction();
+		if(!isHome){
+			$('.header_top').css("position", "static");
+		}
 	}
 	
 	$('#mobile-nav').css("width", innerWidth+"px");
@@ -104,25 +117,25 @@ $(function() {
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > "0") {
 			fn_addFunction();
-		} else if($(this).scrollTop() == "0"&& $('.button-container-1').css("display") == "none" && nowPage == ""){
+		} else if($(this).scrollTop() == "0"&& $('.button-container-1').css("display") == "none" && isHome){
 			fn_removeFunction();
 		}
 	});
 	
 	$('.header_top').mouseenter(function() {
-		if($(window).scrollTop() == "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+		if($(window).scrollTop() == "0" && isHome && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
 			fn_addFunction();
 	});
 	
 	$('.header_top').mouseleave(function() {
-		if($(window).scrollTop() == "0" && nowPage == "" && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
+		if($(window).scrollTop() == "0" && isHome && window.innerWidth > 1000 && $('.button-container-1').css("display") == "none")
 			fn_removeFunction();
 	});
 	
 	$(window).resize(function(){
 		innerWidth = window.innerWidth;
 		$('#mobile-nav').css("width", innerWidth+"px");
-		if(nowPage == ""){
+		if(isHome){
 			if(innerWidth <= 1000 || $(window).scrollTop() > "0"){
 				$("#top_logo").attr("src","/pickpic/resources/images/pickpic_logo_rgb.png");
 			}else{
