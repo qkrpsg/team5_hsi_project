@@ -159,10 +159,9 @@ public class FriendsController {
 	public String albumDown() throws Exception {
 		return "friends/albumDown.tiles";
 	}
-	
-	//피크픽's 픽(삭제된 게시판)
-	@RequestMapping("/friends/picpic.pic")
-	public String picpic() {
-		return "friends/picpic";
-	}//picpic
+	//앨범다운-팝업
+	@RequestMapping("/friends/editor_popup.pic")
+	public String albumOption() throws Exception {
+		return "friends/editor_popup";
+	}
 }//FriendsController

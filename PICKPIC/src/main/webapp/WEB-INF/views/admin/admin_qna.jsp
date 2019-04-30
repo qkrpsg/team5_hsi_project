@@ -27,47 +27,54 @@
 								<img class="img-circle img-bordered-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
 								<span class="username"> 
 									<a href="#">사용자1</a>
+                          			<div class="pull-right text-sm">처리 완료</div>
 								</span> 
 								<span class="description">2019/03/24 17:33</span>
 							</div>
 							<p>
-								내용1
+								문의내용1
 							</p>
-							<form class="form-horizontal">
-								<div class="form-group margin-bottom-none">
-									<div class="col-sm-9">
-										<input class="form-control input-sm" placeholder="Response">
-									</div>
-									<div class="col-sm-3">
-										<button type="submit" class="btn btn-primary pull-right btn-block btn-sm">Send</button>
-									</div>
-								</div>
-							</form>
+<!-- 							<form class="form-horizontal"> -->
+<!-- 								<div class="form-group margin-bottom-none"> -->
+<!-- 									<div class="col-sm-10"> -->
+<!-- 										<input class="form-control input-sm" placeholder="등록"> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-sm-2"> -->
+<!-- 										<button type="submit" class="btn btn-primary pull-right btn-block btn-sm">보내기</button> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</form> -->
+							<hr>
+							<button type="button" class="btn btn-default btn-sm pull-right">
+								<i class="fa fa-eraser">수정</i>
+							</button>
+							<p>
+								답변내용1
+							</p>
 						</div>
 						<!-- /.post -->
 						<!-- Post -->
 						<div class="post clearfix">
 							<div class="user-block">
-								<img class="img-circle img-bordered-sm"
-									src="<c:url value='/resources/admin_images/user_icon.png'/>"
-									alt="User Image"> <span class="username"> <a
-									href="#">Sarah Ross</a>
-								</span> <span class="description">Sent you a message - 3 days
-									ago</span>
+								<img class="img-circle img-bordered-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image"> 
+								<span class="username"> 
+									<a href="#">사용자2</a>
+                          			<div class="pull-right text-sm">처리 중</div>
+								</span> 
+								<span class="description">2019/04/01 19:44 </span>
 							</div>
 							<!-- /.user-block -->
 							<p>
-								내용
+								문의내용2
 							</p>
 
 							<form class="form-horizontal">
 								<div class="form-group margin-bottom-none">
-									<div class="col-sm-9">
-										<input class="form-control input-sm" placeholder="Response">
+									<div class="col-sm-10">
+										<input class="form-control input-sm" placeholder="등록">
 									</div>
-									<div class="col-sm-3">
-										<button type="submit"
-											class="btn btn-primary pull-right btn-block btn-sm">Send</button>
+									<div class="col-sm-2">
+										<button type="submit" class="btn btn-primary pull-right btn-block btn-sm">보내기</button>
 									</div>
 								</div>
 							</form>
@@ -76,28 +83,25 @@
 						<!-- Post -->
 						<div class="post clearfix">
 							<div class="user-block">
-								<img class="img-circle img-bordered-sm"
-									src="<c:url value='/resources/admin_images/user_icon.png'/>"
-									alt="User Image"> <span class="username"> <a
-									href="#">Sarah Ross</a>
-								</span> <span class="description">Sent you a message - 3 days
-									ago</span>
+								<img class="img-circle img-bordered-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image"> 
+								<span class="username"> 
+									<a href="#">사용자3</a>
+                          			<div class="pull-right text-sm">처리 중</div>
+								</span> 
+								<span class="description">2019/04/13 21:39</span>
 							</div>
 							<!-- /.user-block -->
-							<p>Lorem ipsum represents a long-held tradition for
-								designers, typographers and the like. Some people hate it and
-								argue for its demise, but others ignore the hate as they create
-								awesome tools to help create filler text for everyone from bacon
-								lovers to Charlie Sheen fans.</p>
+							<p>
+								문의내용3
+							</p>
 
 							<form class="form-horizontal">
 								<div class="form-group margin-bottom-none">
-									<div class="col-sm-9">
-										<input class="form-control input-sm" placeholder="Response">
+									<div class="col-sm-10">
+										<input class="form-control input-sm" placeholder="등록">
 									</div>
-									<div class="col-sm-3">
-										<button type="submit"
-											class="btn btn-primary pull-right btn-block btn-sm">Send</button>
+									<div class="col-sm-2">
+										<button type="submit" class="btn btn-primary pull-right btn-block btn-sm">보내기</button>
 									</div>
 								</div>
 							</form>

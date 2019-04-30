@@ -1,8 +1,9 @@
 
 /* Drop Tables */
 
-DROP TABLE board_recyclebin CASCADE CONSTRAINTS;
+DROP TABLE album_down CASCADE CONSTRAINTS;
 DROP TABLE filter_history CASCADE CONSTRAINTS;
+DROP TABLE filter_stop_sale CASCADE CONSTRAINTS;
 DROP TABLE filter_storage CASCADE CONSTRAINTS;
 DROP TABLE pay_cancel CASCADE CONSTRAINTS;
 DROP TABLE pay CASCADE CONSTRAINTS;
@@ -12,17 +13,14 @@ DROP TABLE place_storage CASCADE CONSTRAINTS;
 DROP TABLE route_place CASCADE CONSTRAINTS;
 DROP TABLE place_board CASCADE CONSTRAINTS;
 DROP TABLE filter CASCADE CONSTRAINTS;
-DROP TABLE general_recyclebin CASCADE CONSTRAINTS;
-DROP TABLE general_report CASCADE CONSTRAINTS;
-DROP TABLE general_board CASCADE CONSTRAINTS;
+DROP TABLE login_history CASCADE CONSTRAINTS;
 DROP TABLE pickpic_connect CASCADE CONSTRAINTS;
 DROP TABLE login_service CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE pay_cancel_complete CASCADE CONSTRAINTS;
-DROP TABLE pay_way CASCADE CONSTRAINTS;
-DROP TABLE pickpic_admin CASCADE CONSTRAINTS;
 DROP TABLE QNA_answer CASCADE CONSTRAINTS;
 DROP TABLE QNA CASCADE CONSTRAINTS;
+DROP TABLE rotue_recyclebin CASCADE CONSTRAINTS;
 DROP TABLE route_report CASCADE CONSTRAINTS;
 DROP TABLE route_storage CASCADE CONSTRAINTS;
 DROP TABLE route_board CASCADE CONSTRAINTS;
@@ -33,12 +31,12 @@ DROP TABLE pickpic_user CASCADE CONSTRAINTS;
 
 /* Create Tables */
 
-CREATE TABLE board_recyclebin
+CREATE TABLE album_down
 (
-	brb_id nvarchar2(20) NOT NULL,
-	brb_delete_date date DEFAULT SYSDATE,
-	rb_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (brb_id)
+	ad_id nvarchar2(20) NOT NULL,
+	ad_down_date date DEFAULT SYSDATE NOT NULL,
+	pb_id nvarchar2(20) NOT NULL,
+	PRIMARY KEY (ad_id)
 );
 
 
@@ -67,6 +65,15 @@ CREATE TABLE filter_history
 );
 
 
+CREATE TABLE filter_stop_sale
+(
+	fss_id nvarchar2(20) NOT NULL,
+	fss_sale_yn char(1) NOT NULL CHECK(fss_sale_yn IN('Y', 'N')),
+	f_id nvarchar2(20) NOT NULL,
+	PRIMARY KEY (fss_id)
+);
+
+
 CREATE TABLE filter_storage
 (
 	fs_id nvarchar2(20) NOT NULL,
@@ -76,37 +83,12 @@ CREATE TABLE filter_storage
 );
 
 
-CREATE TABLE general_board
+CREATE TABLE login_history
 (
-	gb_id nvarchar2(20) NOT NULL,
-	gb_title nvarchar2(30) NOT NULL,
-	gb_content nvarchar2(500) NOT NULL,
-	gb_post_date date DEFAULT SYSDATE,
-	gb_count number,
-	gb_pick number,
-	gb_image_path nvarchar2(30),
+	lh_id nvarchar2(20) NOT NULL,
+	lh_login_date date DEFAULT SYSDATE NOT NULL,
 	ppu_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (gb_id)
-);
-
-
-CREATE TABLE general_recyclebin
-(
-	grb_id nvarchar2(20) NOT NULL,
-	grb_delete_date date DEFAULT SYSDATE NOT NULL,
-	gb_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (grb_id)
-);
-
-
-CREATE TABLE general_report
-(
-	gr_id nvarchar2(20) NOT NULL,
-	gr_report_date date DEFAULT SYSDATE NOT NULL,
-	gr_cause nvarchar2(200) NOT NULL,
-	ppu_id nvarchar2(20) NOT NULL,
-	gb_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (gr_id)
+	PRIMARY KEY (lh_id)
 );
 
 
@@ -137,7 +119,6 @@ CREATE TABLE pay
 	p_accept_yn char(1) NOT NULL CHECK(p_accept_yn IN('Y', 'N')),
 	ppu_id nvarchar2(20) NOT NULL,
 	f_id nvarchar2(20) NOT NULL,
-	pw_id nvarchar2(20) NOT NULL,
 	PRIMARY KEY (p_id)
 );
 
@@ -160,25 +141,7 @@ CREATE TABLE pay_cancel_complete
 	pcc_date date NOT NULL,
 	pcc_price number NOT NULL,
 	pcc_bank_info nvarchar2(20),
-	pw_id nvarchar2(20) NOT NULL,
 	PRIMARY KEY (pcc_id)
-);
-
-
-CREATE TABLE pay_way
-(
-	pw_id nvarchar2(20) NOT NULL,
-	pw_name nvarchar2(20),
-	PRIMARY KEY (pw_id)
-);
-
-
-CREATE TABLE pickpic_admin
-(
-	pa_id nvarchar2(20) NOT NULL,
-	pa_class nvarchar2(5),
-	ppu_id nvarchar2(20) NOT NULL,
-	PRIMARY KEY (pa_id)
 );
 
 
@@ -200,6 +163,7 @@ CREATE TABLE pickpic_user
 	ppu_nickname nvarchar2(10) NOT NULL,
 	ppu_register_date date DEFAULT SYSDATE,
 	ppu_profile_path nvarchar2(50),
+	ppu_class nvarchar2(5) DEFAULT '일반' NOT NULL,
 	PRIMARY KEY (ppu_id)
 );
 
@@ -273,6 +237,15 @@ CREATE TABLE QNA_answer
 );
 
 
+CREATE TABLE rotue_recyclebin
+(
+	rrb_id nvarchar2(20) NOT NULL,
+	rrb_delete_date date DEFAULT SYSDATE,
+	rb_id nvarchar2(20) NOT NULL,
+	PRIMARY KEY (rrb_id)
+);
+
+
 CREATE TABLE route_board
 (
 	rb_id nvarchar2(20) NOT NULL,
@@ -325,6 +298,12 @@ ALTER TABLE filter_history
 ;
 
 
+ALTER TABLE filter_stop_sale
+	ADD FOREIGN KEY (f_id)
+	REFERENCES filter (f_id)
+;
+
+
 ALTER TABLE filter_storage
 	ADD FOREIGN KEY (f_id)
 	REFERENCES filter (f_id)
@@ -340,18 +319,6 @@ ALTER TABLE pay
 ALTER TABLE place_board
 	ADD FOREIGN KEY (f_id)
 	REFERENCES filter (f_id)
-;
-
-
-ALTER TABLE general_recyclebin
-	ADD FOREIGN KEY (gb_id)
-	REFERENCES general_board (gb_id)
-;
-
-
-ALTER TABLE general_report
-	ADD FOREIGN KEY (gb_id)
-	REFERENCES general_board (gb_id)
 ;
 
 
@@ -373,43 +340,19 @@ ALTER TABLE pay_cancel
 ;
 
 
-ALTER TABLE pay
-	ADD FOREIGN KEY (pw_id)
-	REFERENCES pay_way (pw_id)
-;
-
-
-ALTER TABLE pay_cancel_complete
-	ADD FOREIGN KEY (pw_id)
-	REFERENCES pay_way (pw_id)
-;
-
-
 ALTER TABLE filter_storage
 	ADD FOREIGN KEY (ppu_id)
 	REFERENCES pickpic_user (ppu_id)
 ;
 
 
-ALTER TABLE general_board
-	ADD FOREIGN KEY (ppu_id)
-	REFERENCES pickpic_user (ppu_id)
-;
-
-
-ALTER TABLE general_report
+ALTER TABLE login_history
 	ADD FOREIGN KEY (ppu_id)
 	REFERENCES pickpic_user (ppu_id)
 ;
 
 
 ALTER TABLE pay
-	ADD FOREIGN KEY (ppu_id)
-	REFERENCES pickpic_user (ppu_id)
-;
-
-
-ALTER TABLE pickpic_admin
 	ADD FOREIGN KEY (ppu_id)
 	REFERENCES pickpic_user (ppu_id)
 ;
@@ -463,6 +406,12 @@ ALTER TABLE route_storage
 ;
 
 
+ALTER TABLE album_down
+	ADD FOREIGN KEY (pb_id)
+	REFERENCES place_board (pb_id)
+;
+
+
 ALTER TABLE place_recyclebin
 	ADD FOREIGN KEY (pb_id)
 	REFERENCES place_board (pb_id)
@@ -493,7 +442,7 @@ ALTER TABLE QNA_answer
 ;
 
 
-ALTER TABLE board_recyclebin
+ALTER TABLE rotue_recyclebin
 	ADD FOREIGN KEY (rb_id)
 	REFERENCES route_board (rb_id)
 ;
