@@ -39,7 +39,7 @@
 							<button type="button" class="btn btn-default btn-sm">
 								<i class="fa fa-ban"> 차단</i>
 							</button>
-							<button type="button" class="btn btn-default btn-sm">
+							<button id="refresh" type="button" class="btn btn-default btn-sm">
 								<i class="fa fa-refresh"> 새로 고침</i>
 							</button>
 							<div class="pull-right">
@@ -183,3 +183,13 @@
 	<!-- 프로필사진+목록 통합 끝 -->
 </div>
 <!-- 여기까지 사용자 관리 페이지 끝 -->
+
+<script>
+	$(function() {
+		$('#refresh').click(function() {
+			
+		})
+		
+	})
+
+</script>

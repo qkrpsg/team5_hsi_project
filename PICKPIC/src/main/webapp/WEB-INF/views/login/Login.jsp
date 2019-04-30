@@ -71,11 +71,10 @@
 	 			<div class="l_login_right_form_wrap">
 	 				<form action="">
 						<ul>												
-							<li><a href="#"></a><input type="image" src="<c:url value='/resources/images/facebook.png'/>"  ></a></li>
-							<li><a id="kakao-login-btn"></a><a href="http://developers.kakao.com/logout"></a>
-							</li>
-							<li><a href="#"><input type="image" src="<c:url value='/resources/images/naver.png'/>"  ></a></li>
-							<li></li>
+							<li><a href="#"></a><input type="image" src="<c:url value='/resources/images/login/facebook_login.png'/>"  ></a></li>
+							<li><a id="kakao-login-btn"></a><a href="http://developers.kakao.com/logout"></a></li>
+							<li><a href="#"><input type="image" src="<c:url value='/resources/images/login/naver_login.png'/>"  ></a></li>
+							<li><a href="#"><input type="image" src="<c:url value='/resources/images/login/google_login.png'/>"  ></a></li>
 						</ul>
 					</form>
 	 			</div>
@@ -106,7 +105,6 @@
          alert(JSON.stringify(err));
       }
     });
-    
     
     /* Kakao.Auth.createLoginButton({
     	container: '#kakao-login-btn',
