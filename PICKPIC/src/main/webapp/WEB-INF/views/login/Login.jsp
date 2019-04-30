@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!--  -->
  <link href="<c:url value='/css/Login.css' />" rel="stylesheet">  
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> 
@@ -23,6 +24,12 @@
 	 					<div><p>피크픽 커뮤니티에 오신것을 환영합니다.</p></div>
 		 			</div>
 		 			
+		 			<!-- 스프링 씨큐러티 사용 -->
+					<!-- 인증된 사용자라면 -->
+					<sec:authorize access="isAuthenticated()">
+						<div class="alert alert-success col-md-5"><sec:authentication property="principal.username" />님 즐감하세요</div>
+					</sec:authorize> 
+		 			
 		 			<div class="l_login_left_form_wrap">
 		 				<form action="<c:url value='/user/loginProcess.pic'/>"  method="post">
 		 				<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
@@ -33,7 +40,7 @@
 							<c:if test="${not isLogin }">
 		 				<div>
 		 						
-		 					
+		 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
 		 					<input type="text" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
 		 				
@@ -100,10 +107,10 @@
     Kakao.Auth.createLoginButton({
     	container: '#kakao-login-btn',
       success: function(authObj) {
-        alert(JSON.stringify(authObj));
+       // alert(JSON.stringify(authObj));
       },
       fail: function(err) {
-         alert(JSON.stringify(err));
+         //alert(JSON.stringify(err));
       }
     });
     

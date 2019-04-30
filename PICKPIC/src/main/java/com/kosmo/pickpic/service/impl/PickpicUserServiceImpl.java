@@ -23,6 +23,10 @@ public class PickpicUserServiceImpl implements PickpicUserService {
 			return dao.isMember(map);
 		}
 		@Override
+		public boolean isMember2(Map map) {
+			return dao.isMember2(map);
+		}
+		@Override
 		public List<PickpicUserDTO> selectList(Map map) {		
 			return dao.selectList(map);
 		}
@@ -35,6 +39,7 @@ public class PickpicUserServiceImpl implements PickpicUserService {
 		public PickpicUserDTO selectOne(Map map) {
 			return dao.selectOne(map);
 		}
+		
 		@Override
 		public int delete(Map map) {		
 			return dao.delete(map);

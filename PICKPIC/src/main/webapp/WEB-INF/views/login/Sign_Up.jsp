@@ -1,18 +1,20 @@
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link href="<c:url value='/css/Sign_Up.css' />" rel="stylesheet">
-
+<script src="<c:url value='/js_api/jquery.form-validator.js'/>"></script>
 
 <script>
 $(document).ready(function(){
+	//사진 값 넣어주기  파일이름
 	var fileTarget = $('.filebox .upload-hidden'); 
-fileTarget.on('change', function(){ // 값이 변경되면 
+	fileTarget.on('change', function(){ // 값이 변경되면 
 	if(window.FileReader){ // modern browser 
 		var filename = $(this)[0].files[0].name; } else { // old IE 
 			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
 			} // 추출한 파일명 삽입
 			$(this).siblings('.upload-name').val(filename); }); }); 
-
+	
 		
    
     $(document).ready(function(){
@@ -32,11 +34,51 @@ fileTarget.on('change', function(){ // 값이 변경되면
     	    var agree = document.getElementById("ppu_agree");
     	
     	
+    	    
+    	    $('.id_check').click(function(){
+    	    	$.ajax({
+      				url:'<c:url value="/validator/id_check.do"/>',
+      				dataType:'json',
+      				data:{ppu_id:$('#ppu_id').val()}, 
+      				success:function(data){
+    					console.log('aaaaaaaaaaaaa');	
+    					console.log(data['flag']);
+    					console.log(data['error']);
+    					$('.id_check').html(data['error']);
+    				}
+      				,
+      				error:function(request,error){
+      					console.log('상태코드111:',request.status);
+      					console.log('서버로부터 받은 HTML데이타 222:',request.responseText);
+      					console.log('에러333:',error);					
+      				}				
+      			});	//ajax 끝	
+    	    });
+    	    
+    	    $('.id_check2').click(function(){
+    	    	$.ajax({
+      				url:'<c:url value="/validator/id_check.do"/>',
+      				dataType:'json',
+      				data:{ppu_id:$('#ppu_id').val()}
+      				, 
+      				success:function(data){
+    					console.log(data['flag']);
+    				}
+      				,
+      				error:function(request,error){
+      					
+      				}				
+      			});	//ajax 끝
+    	    });
+    	    
     	var jo = document.getElementById("join-submit");
         
-    	
+    	$(function() {
+    	    // setup validate
+    	    $.validate();
+    	  });
     	jo.onclick = function() {
-        	if(id.value == ''){
+        	/* if(id.value == ''){
         		alert('아이디를 입력하세요');
         		id.focus();
                 return false;
@@ -51,12 +93,13 @@ fileTarget.on('change', function(){ // 값이 변경되면
         		alert('비밀번호를 확인해주세요');
         		pwdChk.focus();
                 return false;
-       		}else if(pwd.value != pwdChk.value){
+       		} */
+        	if(pwd.value != pwdChk.value){
        			alert('비밀번호를 확인해주세요');
        			pwdChk.focus();
                 return false;
        		}
-        	
+        	/* 
         	if(name.value == ''){
         		alert('이름을 입력하세요');
         		name.focus();
@@ -74,12 +117,14 @@ fileTarget.on('change', function(){ // 값이 변경되면
         		alert('사진을 업로드 해주세요');
         		profile.focus();
                 return false;
-       		}
-        	if(!agree.checked){
+       		} */
+        	
+       		
+       		/* if(!agree.checked){
         		alert('이용약관에 동의 해주세요');
         		agree.focus();
                 return false;
-       		}
+       		} */
         	
         	
         	
@@ -90,24 +135,21 @@ fileTarget.on('change', function(){ // 값이 변경되면
     
 
    
- 
+    /*
 $(document).ready(function(){
 	
 });
 
 $(function(){
-	/* $('#ppu_tetephone').keypress(function(evt){
+ $('#ppu_tetephone').keypress(function(evt){
 	    var code = evt.which?evt.whichl:event.keyCode;
 	    var code2 =  evt.keyCode;
 	   	
 	    if(code2 < 48 || code2 > 57){
 	       return false;
 	    }
-	}); */
-	
-	
-	
-});
+	}); 
+});*/
 
 </script>
 <style>
@@ -121,6 +163,7 @@ $(function(){
 			<div class="section-header col-md-12"  ><!--  -->
 				<h2>회원가입</h2>
 				<span>아래 폼을 작성하세요.</span>
+				<button class="id_check2">중복체크  </button>
 			</div>
 			<!-- /.section-header -->
 		</div>
@@ -132,12 +175,16 @@ $(function(){
 			<div class="row" ><!--  -->
 				<form role="form"
 					action='<c:url value="/user/sign_process.pic"/>'
-					method="POST">
+					method="post">
 
 
 					<div class="form-group">
+					
 								<label for="ppu_id">아이디</label>
-								<input type="text" class="form-control" name="ppu_id" id="ppu_id" placeholder="아이디를 입력해 주세요">
+								<input type="text" class="form-control" name="ppu_id" id="ppu_id" placeholder="아이디를 입력해 주세요" data-validation="required">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								<a href="#" class="id_check">중복체크  </a><span style="color:red;">${error} </span>
+								
 						</div>
 						
 						<div class="form-group">

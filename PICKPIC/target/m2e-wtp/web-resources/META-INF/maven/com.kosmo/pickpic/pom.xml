@@ -182,6 +182,13 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.2.8.RELEASE</version>
 		</dependency>
+		<!-- 밸리데이터
+		<dependency>
+		  <groupId>commons-validator</groupId>
+		  <artifactId>commons-validator</artifactId>
+		  <version>1.6</version>
+		</dependency>	
+		 -->
 		
 	</dependencies>
     <build>
