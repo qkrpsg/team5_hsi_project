@@ -4,45 +4,61 @@
 
 <!-- css&js -->
 <link href="<c:url value='/css/Pkp.css' />" rel="stylesheet">
-<link href="<c:url value='/css/Help.css' />" rel="stylesheet">
 
 <!-- CSS Bootstrap & Custom -->
 <link rel="stylesheet" href="<c:url value='/css/templatemo-misc.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/animate.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/templatemo-main.css'/>">
 
-<!--  <!-- Favicons -->
-<link rel="shortcut icon"
-	href="<c:url value='/resources/images/ico/favicon.ico'/>">
 
-<!-- JavaScripts -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/modernizr.js"></script>
 
-<!-- 바디 시작 -->
-<body style="">
+<div style="height: 80px"></div>
+<!-- /#home -->
+<div class="flexslider">
+	<ul class="slides">
+		<li class="flex-active-slide"
+			style="float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
 
-	<div id="home" style="height: 80px"></div>
-	<!-- /#home -->
+			<img src="<c:url value='/resources/images/banner01.jpg'/>" alt=""
+			draggable="false">
 
-	<div class="flexslider">
-		<ul class="slides">
-			<li class="flex-active-slide"
-				style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
-				<img src="<c:url value='/resources/images/banner01.jpg'/>" alt=""
-				draggable="false">
-				<div class="flex-caption animated bounceInDown">
-					<h2>앨범다운</h2>
-					<button class="btn btn-primary btn-lg" style="margin-bottom: 40px" >사진 옵션 선택하기</button>
-					<p>
-						내 픽크픽 사진들을 한꺼번에 파일로 저장하세요.<br>또 다른 사진에 내가 가지고 있는 필터를 적용해보세요.
-					</p>
-				</div>
-			</li>
-		</ul>
-	</div>
+			<div class="flex-caption animated bounceInDown">
+				<h2>앨범다운</h2>
+				<%-- <button class="btn btn-primary btn-lg" style="margin-bottom: 40px"
+					id="btn_option"
+					onclick="location.href='<c:url value="/friends/albumDown_option.pic"/>' ">사진
+					옵션 선택하기</button> --%>
+				<button class="btn btn-info btn-lg" style="margin-bottom: 40px"
+					data-toggle="modal" data-target="#myModal">사진 옵션 선택하기</button>
+				<p>
+					내 픽크픽 사진들을 한꺼번에 파일로 저장하세요.<br>또 다른 사진에 내가 가지고 있는 필터를 적용해보세요.
+				</p>
+			</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<!-- Modal -->
+				<div id="myModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
 
-	<%-- <div id="services" class="section-cotent">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Modal Header</h4>
+							</div>
+							<div class="modal-body">
+								<p>Some text in the modal.</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+
+<%-- <div id="services" class="section-cotent">
 		<div class="container">
 			<div class="title-section text-center">
 				<h2>Our Services</h2>
@@ -282,22 +298,8 @@
 	</div>
 	<!-- /#portfolio --> --%>
 
-
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/jquery.lightbox.js"></script>
-	<script src="js/custom.js"></script>
-
-	<div id="lightbox" style="display: none;">
-		<a href="#" class="lightbox-close lightbox-button"></a>
-		<div class="lightbox-nav">
-			<a href="#" class="lightbox-previous lightbox-button"></a> <a
-				href="#" class="lightbox-next lightbox-button"></a>
-		</div>
-		<div href="#" class="lightbox-caption">
-			<p></p>
-		</div>
-	</div>
-
-	<!-- AdminLTE App -->
-	<script src="../../dist/js/adminlte.min.js"></script>
+<script>
+	function showPopup() {
+		window.open("/pickpic/friends/editor_popup.pic", "피크픽 포토에디터");
+	}
+</script>

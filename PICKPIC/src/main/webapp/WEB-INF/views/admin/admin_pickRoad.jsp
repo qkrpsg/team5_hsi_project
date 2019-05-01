@@ -1,6 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false" contentType="text/html; charset=UTF-8"%>
 
+<link rel="stylesheet" href="<c:url value='/css/daterangepicker.css'/>">
+<!-- date-range-picker -->
+<script src="<c:url value='/js/moment.min.js'/>"></script>
+<script src="<c:url value='/js/daterangepicker.js'/>"></script>
+
+<script>
+	$(function(){
+		$('#datepick').daterangepicker();
+	})
+</script>
+
+
 <!-- 여기서부터 사용자 관리 페이지 시작 -->
 <div class="content-wrapper">
 	<section class="content-header">
@@ -37,7 +49,7 @@
 										<div class="input-group-addon">
 											<i class="fa fa-calendar"></i>
 										</div>
-										<input type="text" class="form-control pull-right" id="reservation">
+										<input id="datepick" type="text" class="form-control pull-right">
 									</div>
 								</div>
 								<div class="form-group">
@@ -180,17 +192,3 @@
 	<!-- 메인 끝 -->
 </div>
 <!-- 여기까지 사용자 관리 페이지 끝 -->
-
-<!-- date-range-picker -->
-<script src="<c:url value='/js/moment.min.js'/>"></script>
-<script src="<c:url value='/js/daterangepicker.js'/>"></script>
-<!-- bootstrap datepicker -->
-<script src="<c:url value='/js/bootstrap-datepicker.min.js'/>"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-<script>
-	$(function(){
-		$('#reservation').daterangepicker()
-	})
-</script>
-

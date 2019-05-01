@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!--  -->
  <link href="<c:url value='/css/Login.css' />" rel="stylesheet">  
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> 
@@ -25,25 +26,32 @@
 		 			
 		 			<div class="l_login_left_form_wrap">
 		 				<form action="<c:url value='/user/loginProcess.pic'/>"  method="post">
-		 				<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
-								<div class="alert alert-success col-md-12">${sessionScope.ppu_id}님
+		 				
+								
+							
+							
+		 				
+	 						<sec:authorize access="isAuthenticated()">
+	 						<div>
+								<div class="alert alert-success col-md-12" style="width:500px;border: 1px red solid;"><sec:authentication property="principal.username" />님
 									환영합니다
 								</div>
-							</c:if>	
-							<c:if test="${not isLogin }">
-		 				<div>
-		 						
+							</div>
+							</sec:authorize>
+						
+							<sec:authorize access="isAnonymous()">
+			 				<div>
+			 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
+			 					<input type="password" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
 		 					
-		 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
-		 					<input type="password" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
-		 				
-		 				</div>
+		 					</div>
 		 				
 		 				
 		 				<div>
 		 					<input type="submit" value="로그인" class="btn btn-info">
 		 				</div>
-		 					</c:if>
+		 					</sec:authorize>
 		 				
 		 				
 		 				
@@ -71,11 +79,10 @@
 	 			<div class="l_login_right_form_wrap">
 	 				<form action="">
 						<ul>												
-							<li><a href="#"></a><input type="image" src="<c:url value='/resources/images/facebook.png'/>"  ></a></li>
-							<li><a id="kakao-login-btn"></a><a href="http://developers.kakao.com/logout"></a>
-							</li>
-							<li><a href="#"><input type="image" src="<c:url value='/resources/images/naver.png'/>"  ></a></li>
-							<li></li>
+							<li><a href="#"></a><input type="image" src="<c:url value='/resources/images/login/facebook_login.png'/>"  ></a></li>
+							<li><a id="kakao-login-btn"></a><a href="http://developers.kakao.com/logout"></a></li>
+							<li><a href="#"><input type="image" src="<c:url value='/resources/images/login/naver_login.png'/>"  ></a></li>
+							<li><a href="#"><input type="image" src="<c:url value='/resources/images/login/google_login.png'/>"  ></a></li>
 						</ul>
 					</form>
 	 			</div>
@@ -106,7 +113,6 @@
          alert(JSON.stringify(err));
       }
     });
-    
     
     /* Kakao.Auth.createLoginButton({
     	container: '#kakao-login-btn',
