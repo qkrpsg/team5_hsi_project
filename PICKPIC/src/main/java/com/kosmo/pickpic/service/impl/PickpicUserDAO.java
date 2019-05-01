@@ -23,6 +23,10 @@ public class PickpicUserDAO implements PickpicUserService {
 		public boolean isMember(Map map) {		
 			return (Integer)template.selectOne("PickpicUserIsMember",map)==0?false:true;
 		}
+		@Override
+		public boolean isMember2(Map map) {		
+			return (Integer)template.selectOne("PickpicUserIsMember2",map)==0?false:true;
+		}
 		//전체 목록용]
 		@Override
 		public List<PickpicUserDTO> selectList(Map map) {		

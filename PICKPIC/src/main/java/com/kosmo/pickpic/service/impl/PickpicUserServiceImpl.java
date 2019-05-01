@@ -23,6 +23,10 @@ public class PickpicUserServiceImpl implements PickpicUserService {
 			return dao.isMember(map);
 		}
 		@Override
+		public boolean isMember2(Map map) {		
+			return dao.isMember2(map);
+		}
+		@Override
 		public List<PickpicUserDTO> selectList(Map map) {		
 			return dao.selectList(map);
 		}

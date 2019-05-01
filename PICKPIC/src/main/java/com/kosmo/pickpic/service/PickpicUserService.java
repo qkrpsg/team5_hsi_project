@@ -7,6 +7,7 @@ import java.util.Map;
 public interface PickpicUserService {
 	//로그인 용]
 		boolean isMember(Map map);
+		boolean isMember2(Map map);
 		//목록용]
 		List<PickpicUserDTO> selectList(Map map);
 		//전체 레코드 수]
