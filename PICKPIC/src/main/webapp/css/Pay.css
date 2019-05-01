@@ -1,0 +1,103 @@
+@font-face{
+	font-family: A옛날사진관2;
+	src: url("/pickpic/css/fonts/A옛날사진관2.TTF");
+}
+
+@font-face{
+	font-family: NANUMSQUAREROUNDB;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
+*{	margin:0;
+	padding:0;
+	border:0;
+	box-sizing: border-box;
+}
+img{display: block;}
+a{
+	text-decoration: none;
+	
+}
+
+.header_top{
+	background: white !important;
+	opacity:1;
+	background:white;
+	border-bottom:1px #ccc solid;
+}
+.menu_wrap a{
+	color:#5a5a5a !important;
+	font-weight: normal !important;
+	font-size:1.1em !important;
+}
+.ul_submenu li a{
+	color:#5a5a5a !important;
+	font-weight: normal !important;
+	font-size:.9em !important;
+}
+
+.login_wrap ul li a{
+	color:#00AEEA !important;	
+}
+.login_wrap ul li a span{
+	background:#00AEEA !important;
+}
+.nav_wrap_top_position{
+	opacity:1;
+	background:white;
+	border-bottom:1px #ccc solid;
+}
+/* 메인 페이지 이외에 페이지에서 넣어야 하는 s속성 */
+.line-title{display:inline-block;width:90px;font-size:12px;font-weight:bold;margin:0;vertical-align:middle}
+.line-title:before{content:"";position:relative;display:inline-block;width:3px;height:3px;margin-left:8px;margin-right:4px;vertical-align:middle;}
+.line-title .line-data{display:table-cell}
+.line-title{width:80px;padding-left:5px;font-size:13px;font-weight:bold;line-height:34px;color:#333}
+
+.line-data{display:inline}
+
+
+.table tr:last-child{
+	height:130px;
+}
+.table{
+	border-bottom: 3px #777 solid;
+}
+#paymentBtn{
+	float: right;
+}	
+	
+/*          */
+
+
+.cellphone-payment{padding-left:7px;text-indent:-7px}
+.pay-type-content{display:none;margin-top:-2px;padding:10px;border:2px solid #c5c7cd;background-color:#f4f6fa}
+.pay-type-content .validate-message{margin-top:10px;padding-bottom:0}
+.pay-type-content{padding:10px}
+
+
+.middle{width:900px;margin:0 auto;}
+.row{margin-top:50px;}
+/* 상단 주문 */
+.ordTitle{height:70px;overflow:hidden;border-bottom:3px solid #777}
+.ordTitle .title{float:left;margin-top:5px;padding-left:0;line-height:70px;font-size:30px;color:#111}
+.ordTitle .steps{float:right;padding-right:5px;margin-top:20px;line-height:50px;font-size:15px;color:#bbb;font-weight:bold}
+.ordTitle .steps em{font-weight:bold;color:#346aff}
+
+li{list-style: none;}
+.check{overflow: hidden;}
+.type-selector-li{float:left;margin-left:8px;}
+.wrap{
+clear: both;
+}
+.cell_label{margin-left:20px;}
+.payment-cellphone__select{boder:1px #eee solid; width:100px;}
+
+
+@media screen and (max-width:1000px) and (min-width:0px){
+	.middle{width:100%;margin:0 auto;}
+}
+
+@media screen and (max-width:500px) and (min-width:0px){
+	.middle{width:100%;margin:0 auto;}
+}
+

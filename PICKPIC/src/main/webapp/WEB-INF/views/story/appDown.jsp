@@ -70,8 +70,7 @@ width:100%
 		<div class="col-md-12"
 			style=" padding-top: 5%; ">
 			<div class="col-md-offset-3 col-md-3" style="padding-top: 8%;text-align: center">
-				<p style="font-size: 40px;">썸이 끝났다</p>
-				<p class="text1">싸움의 시작, 피크픽</p>
+				<p class="text1">내가선택해서 PICK! 하고싶은대로 PIC!</p>
 				<p style="font-size: 20px;">
 					지금 사진 혼자 찍고 계신가요? <br /> 피크픽을 시작하세요!<br /> 피크픽은 연인과 더 사직을 찍을 수 있고 <br />
 					손쉽게 저장할수 있는 어플이다.
@@ -92,19 +91,7 @@ width:100%
 		<div class="col-md-2" id="app1">피크픽 시작하기</div>
 		<div class="col-md-10">
 			<button class="appbutton">
-				<img src="<c:url value='/resources/images/app1.jpg'/>"
-					style="border-radius: 20px;">
-			</button>
-			<button class="appbutton">
 				<img src="<c:url value='/resources/images/app2.jpg'/>"
-					style="border-radius: 20px;">
-			</button>
-			<button class="appbutton">
-				<img src="<c:url value='/resources/images/app3.jpg'/>"
-					style="border-radius: 20px;">
-			</button>
-			<button class="appbutton">
-				<img src="<c:url value='/resources/images/app4.jpg'/>"
 					style="border-radius: 20px;">
 			</button>
 		</div>

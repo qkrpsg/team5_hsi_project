@@ -7,6 +7,25 @@
 	</section>
 
 	<section class="content container-fluid" style="overflow: hidden">
+		<!-- 검색용 UI -->
+		<div class="row">
+			<div class="pull-right table-responsive">
+				<form class="form-inline" method="post" action="<c:url value='#'/>">
+					<div class="form-group">
+						<select name="searchColumn" class="form-control">
+							<option value="title">제목</option>
+							<option value="name">작성자</option>
+							<option value="content">내용</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input type="text" name="searchWord" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-primary">검색</button>
+				</form>
+			</div>
+		</div>
+		<!-- 실제내용 시작 -->
 		<div class="box-body_wrap col-md-6">
 			<div class="box-body">
 				<img class="img-responsive pad" src="<c:url value='/resources/images/13.jpg'/>" alt="Photo">
@@ -20,18 +39,20 @@
 			</div>
 			<div class="box-footer box-comments">
 				<div class="box-comment">
-					<img class="img-circle img-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-					<div class="comment-text">
-						<span class="username"> id:를 넣어주세요 Maria Gonzales 
-							<span class="text-muted pull-right">작성일 ㅇㅇㅇ</span>
-						</span>
-						상세 글을 넣어주세요 It is a long established fact that a reader will be
-						distracted by the readable content of a page when looking at its
-						layout.
+					<div class="user-block">
+						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
+						<span class="username"> 
+							<a href="#">사용자1</a>
+						</span> 
+						<span class="description">2019/03/24 17:33</span>
 					</div>
+					<p>
+						내용1
+					</p>
 				</div>
 			</div>
 		</div>
+		<!-- 실제내용 끝 -->
 
 		<div class="box-body_wrap col-md-6">
 			<div class="box-body">
@@ -46,15 +67,16 @@
 			</div>
 			<div class="box-footer box-comments">
 				<div class="box-comment">
-					<img class="img-circle img-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-					<div class="comment-text">
-						<span class="username"> id:를 넣어주세요 Maria Gonzales 
-							<span class="text-muted pull-right">작성일 ㅇㅇㅇ</span>
-						</span>
-						상세 글을 넣어주세요 It is a long established fact that a reader will be
-						distracted by the readable content of a page when looking at its
-						layout.
+					<div class="user-block">
+						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
+						<span class="username"> 
+							<a href="#">사용자2</a>
+						</span> 
+						<span class="description">2019/04/10 15:03</span>
 					</div>
+					<p>
+						내용2
+					</p>
 				</div>
 			</div>
 		</div>
@@ -72,15 +94,16 @@
 			</div>
 			<div class="box-footer box-comments">
 				<div class="box-comment">
-					<img class="img-circle img-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-					<div class="comment-text">
-						<span class="username"> id:를 넣어주세요 Maria Gonzales <span
-							class="text-muted pull-right">작성일 ㅇㅇㅇ</span>
-						</span>
-						상세 글을 넣어주세요 It is a long established fact that a reader will be
-						distracted by the readable content of a page when looking at its
-						layout.
+					<div class="user-block">
+						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
+						<span class="username"> 
+							<a href="#">사용자3</a>
+						</span> 
+						<span class="description">2019/04/20 21:47</span>
 					</div>
+					<p>
+						내용3
+					</p>
 				</div>
 			</div>
 		</div>
@@ -98,42 +121,36 @@
 			</div>
 			<div class="box-footer box-comments">
 				<div class="box-comment">
-					<img class="img-circle img-sm" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-					<div class="comment-text">
-						<span class="username"> id:를 넣어주세요 Maria Gonzales 
-							<span class="text-muted pull-right">작성일 ㅇㅇㅇ</span>
-						</span>
-						상세 글을 넣어주세요 It is a long established fact that a reader will be
-						distracted by the readable content of a page when looking at its
-						layout.
+					<div class="user-block">
+						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
+						<span class="username"> 
+							<a href="#">사용자4</a>
+						</span> 
+						<span class="description">2019/04/25 20:00</span>
 					</div>
+					<p>
+						내용4
+					</p>
 				</div>
 			</div>
 		</div>
 
 		<div style="clear: both;">
 			<!-- 페이징 -->
-			<div class="row" style="margin-top: 30px; margin-bottom: 30px;">
-				<!-- 페이지네이션 가운데 배치:text-center -->
-				<div class="col-md-12 text-center">${pagingString}</div>
-			</div>
-			<!-- 검색용 UI -->
+<!-- 			<div class="row" style="margin-top: 30px; margin-bottom: 30px;"> -->
+<!-- 				페이지네이션 가운데 배치:text-center -->
+<%-- 				<div class="col-md-12 text-center">${pagingString}</div> --%>
+<!-- 			</div> -->
 			<div class="row">
-				<div class="text-center">
-					<form class="form-inline" method="post" action="<c:url value='#'/>">
-						<div class="form-group">
-							<select name="searchColumn" class="form-control">
-								<option value="title">제목</option>
-								<option value="name">작성자</option>
-								<option value="content">내용</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<input type="text" name="searchWord" class="form-control" />
-						</div>
-						<button type="submit" class="btn btn-primary">검색</button>
-					</form>
-				</div>
+				<div class="clearfix text-center">
+	              <ul class="pagination pagination-sm">
+	                <li><a href="#">&laquo;</a></li>
+	                <li><a href="#">1</a></li>
+	                <li><a href="#">2</a></li>
+	                <li><a href="#">3</a></li>
+	                <li><a href="#">&raquo;</a></li>
+	              </ul>
+	            </div>
 			</div>
 		</div>
 	</section>

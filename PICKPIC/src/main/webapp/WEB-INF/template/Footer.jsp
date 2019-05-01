@@ -5,9 +5,9 @@
 https://mdbootstrap.com/components/bootstrap-footer/
  -->
  
-<footer class="page-footer font-small special-color-dark pt-4 " style="background-color: #4C4C4C; height:100px; vertical-align: center;">   
+<footer class="page-footer font-small special-color-dark pt-4 " style="background-color: #4C4C4C; height:100px; vertical-align: center; bottom: 0;">   
       
-    <div class="footer-copyright text-center py-3" >
+    <div class="footer-copyright text-center py-3 " >
       <p style="margin:0px auto; line-height: 100px; color: white;">© 2018 Copyright : <a style="color:white;" href="<c:url value='http://www.ikosmo.co.kr/'/>">한국소스프웨어 인재개발원</a></p>
     </div>
 

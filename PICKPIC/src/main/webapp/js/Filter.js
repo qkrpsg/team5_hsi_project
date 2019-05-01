@@ -29,6 +29,8 @@ $(document).ready(function(){
 		
 	});
 	
+
+		
 	
 	
 		$('.img_wrap2').mouseenter(function(){
@@ -37,7 +39,6 @@ $(document).ready(function(){
 		});
 		
 		$('.innerText').mouseleave(function(){
-			
 			$(this).css('display','none');	
 		});
 	
@@ -78,9 +79,37 @@ $(document).ready(function(){
 			});
 		  });
 		
+		  $('.img_wrap2').click(function(event){
+			  var innerTextW =   $('.innerText').css('width').replace('px','');
+			  var innerTextH =   $('.innerText').css('height').replace('px','');
+				 console.log(innerTextW);
+				 
+			  $(this).find('.hi').css("display","block");
+			  $('.hi').css("left",innerTextW/2 -50 +"px");
+			  $('.hi').css("top", innerTextH/2 -50 +"px");
+			 /*$(window).mousemove(function(event){
+				  
+			  });*/
+		  });
+		  
+		  	$('.img_wrap2').mouseleave(function(){
+		  		$('.hi').css("display","none");
+			});
 		
-		
-		
+		  /*$(window).mousemove(function(event){
+			  cursorX = event.pageX;
+			  cursorY = event.pageY;
+			  var coords3 = "cursorX - X: " + cursorX + ", Y cursorY: " + cursorY;
+			  document.getElementById("hi").innerHTML = coords3;
+			  $('.hi').css("left",cursorX);
+			  $('.hi').css("top",cursorY - 1400);
+			  //innerText
+		  });*/
+		 
+		  
+		  
+		 
+
 		
 		
 		

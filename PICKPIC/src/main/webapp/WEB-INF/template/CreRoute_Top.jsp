@@ -11,6 +11,7 @@
 <!-- CreRoot_Top.jsp -->
 <%-- <header class="container-fluid header_top">
 
+<<<<<<< HEAD
    <div class="menu_all_wrap_position">
       <div class="main_menu_wrap">
          <div class="logo col-md-2">
@@ -20,13 +21,36 @@
          </div>
       </div>
    </div>
+=======
+	<div class="menu_all_wrap_position">
+		<div class="main_menu_wrap">
+			<div class="logo col-md-2">
+				<a href="<c:url value='/'/>"> <img id="top_logo"
+					src="<c:url value='/resources/images/pickpic_logo_white.png'/>" />
+				</a>
+			</div>
+		</div>
+	</div>
+>>>>>>> branch 'han' of https://github.com/qkrpsg/team5_hsi_project.git
 
 </header> --%>
+<<<<<<< HEAD
 <style>
 #top_logo{
 padding-top:6%;
 width:100%;
+=======
+<div class="container-fluid header_top" id="header"  style="background-color: red;">
+	<div class="menu_all_wrap_position">
+		<div class="main_menu_wrap">
+			<div class="logo col-md-2">
+				<a href="<c:url value='/'/>"> 
+					<img id="top_logo" src="<c:url value='/resources/images/pickpic_logo_white.png'/>" />
+				</a>
+			</div>
+>>>>>>> branch 'han' of https://github.com/qkrpsg/team5_hsi_project.git
 
+<<<<<<< HEAD
 }
 .find{
 border:1px solid #de5151;
@@ -38,7 +62,15 @@ width: 460px;
 width:80px;
 height:40px;
 border-radius: 10px;
+=======
 
+
+		</div>
+		
+	</div>
+>>>>>>> branch 'han' of https://github.com/qkrpsg/team5_hsi_project.git
+
+<<<<<<< HEAD
 color:white;
 background-color: #de5151;
 font-weight: bold;
@@ -111,3 +143,6 @@ float: left;
    </div>
 
 </div>
+=======
+</div>
+>>>>>>> branch 'han' of https://github.com/qkrpsg/team5_hsi_project.git

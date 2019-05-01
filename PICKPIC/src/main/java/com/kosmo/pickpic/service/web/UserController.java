@@ -30,8 +30,10 @@ public class UserController {
 	@RequestMapping("/user/loginProcess.pic")
 	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
 		boolean flag = userService.isMember(map);
+		
 		if(flag) {
-			session.setAttribute("id", map.get("id"));
+			session.setAttribute("ppu_id", map.get("ppu_id"));
+			
 		}
 		else{
 			model.addAttribute("errorMsg", "회원 정보가 일치하지 않습니다");
@@ -39,6 +41,7 @@ public class UserController {
 			return "login/Login.tiles";
 		}//비회원이거나 아이디가 틀린경우
 		//로그인 성공시 메인화면으로 이동
+		
 		return "home.tiles";
 	}//loginProcess
 	
@@ -48,7 +51,7 @@ public class UserController {
 	@RequestMapping("/user/home.pic")
 	public String home() throws Exception{
 		
-		return "/home.tiles";
+		return "/home.tiles"; 
 	}//login
 	//회원가입 
 	@RequestMapping("/user/sign_up.pic")
@@ -57,8 +60,8 @@ public class UserController {
 		return "login/Sign_Up.tiles";
 	}//login
 	
-	
-	//회원가입 프로세스
+
+	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map) throws Exception{
 		userService.insert(map);
@@ -68,12 +71,20 @@ public class UserController {
 		return "login/Login.tiles";
 	}
 	
+	//로그아웃 프로세스  
+	@RequestMapping("/user/logout.pic")
+	public String logoutProcess(HttpSession session,@RequestParam Map map) throws Exception{
+		session.setAttribute("ppu_id", "");
+		
+		return "home.tiles";
+	}//logoutProcess
+	
 	
 	//내정보
-//	@RequestMapping("/user/myPage.pic")
-//	public String myPage() throws Exception{
-//		return "user/myPage.tiles";
-//	}//myPage
+	@RequestMapping("/user/myPage.pic")
+	public String myPage() throws Exception{
+		return "login/MyPage.tiles";
+	}//myPage
 	
 	//정보수정
 //	@RequestMapping("/user/changeInfo.pic")

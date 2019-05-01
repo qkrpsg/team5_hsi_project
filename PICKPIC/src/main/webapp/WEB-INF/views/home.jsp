@@ -6,20 +6,25 @@
 <script src="<c:url value='/js_api/jquery.imageScroll.min.js'/>"></script>
 <script src="<c:url value='/js/Main.js'/>"></script>
 <script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
+
 <span id="body"></span>
 <div class="checked">
-	<a><img
-		src="<c:url value='/resources/images/bookMark_icon_.png' />"
-		class="checked_img"></a>
+	
 	<div class="checked_menu">
-		<ul>
-			<li><a data-target="body"># HOME 바로가기</a></li>
-			<li><a data-target="sec_0"># HOME0 바로가기</a></li>
-			<li><a data-target="sec_1"># HOME1 바로가기</a></li>
-			<li><a data-target="sec_2"># HOME2 바로가기</a></li>
-			<li><a data-target="sec_3"># HOME3 바로가기</a></li>
-		</ul>
-	</div>
+		<div class="book">
+			<a><img src="<c:url value='/resources/images/bookMark_icon_.png' />" class="checked_img"></a>
+		</div>
+		<div class="books">
+			<img alt="포인트" src="<c:url value='/resources/images/bookMarkBody.png'/>"/>
+		</div>
+		 <ul class="books_menu">
+			<li><a data-target="body"> <img src="<c:url value='/resources/images/text_home.png'/>"/> </a></li>
+			<li><a data-target="sec_0"><img src="<c:url value='/resources/images/text_best.png'/>"/></a></li>
+			<li><a data-target="sec_1"><img src="<c:url value='/resources/images/text_introduce.png'/>"/></a></li>
+			<li><a data-target="sec_2"><img src="<c:url value='/resources/images/text_specialty.png'/>"/></a></li>
+			
+		</ul> 
+	</div><!-- checked_menu -->
 </div>
 
 <div class="pic_gif">
@@ -236,10 +241,10 @@
 	</div>
 
 </section>
-<section id="sec_4" class="sec_wrap">
+<section id="sec_4" class="sec_wrap" style="overflow: hidden;">
 
 	<div class="sec_4_title col-md-12">
-		<p class="col-md-offset-1">PICKPIC's Spaciality</p>
+		<p class="col-md-offset-1">PICKPIC's Speciality</p>
 	</div>
 	<div class="sec_4_content col-md-offset-1 col-md-5">
 		<p>어디서 찍어야 잘나올까?</p>
@@ -257,7 +262,7 @@
 		<p>나만의 필터를 만들어서 저장하고싶어!</p>
 		<p>필터를 적용하는건 좋은데... 매번 귀찮으셨죠?<br/>나만의 필터를 만들어서 저장하세요.<br/>터치 한번으로 자주 사용하던 필터를 즉시 적용시킬 수 있습니다.</p>
 	</div>
-	<div class="sec_4_mobile_img">
+	<div class="sec_4_mobile_img" style="overflow: hidden;">
 		<img alt="섹션4이미지" src="<c:url value='/resources/images/main_section_image.jpg'/>"/>
 	</div>
 	
@@ -279,10 +284,11 @@
 	$('.grid').isotope({
 		itemSelector : '.grid-item',
 		masonry : {}
+
 	});
 </script>
 <script>
-	$('.img-holder').imageScroll({
-		parallax: true
-	});
+$('.img-holder').imageScroll({
+	container: $('#sec_4')
+}).$('.imageHolder').css("z-index","1");
 </script>

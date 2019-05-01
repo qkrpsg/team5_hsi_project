@@ -1,72 +1,63 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicUserDTO {
-	//
-	private String addr;
-	private java.sql.Date regidate;
-	private String id;
-	//프로그램 효율성을 위한 속성 추가]
-	private String name;
-	private String age;
-	private String pwd;
-	private String mfm;
-	private String socialnumber;
-	private String profilepicture;
-	//게터/세터]
-	public String getAddr() {
-		return addr;
+	//ppu_id},#{ppu_password},#{ppu_name},#{ppu_gender},#{ppu_nickname},#{ppu_profile_path}
+	private String ppu_id;
+	private String ppu_password;
+	private String ppu_name;
+	private String ppu_gender;
+	private String ppu_nickname;
+	private java.sql.Date ppu_register_date; 
+	private String ppu_profile_path;
+	public String getPpu_id() {
+		return ppu_id;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setPpu_id(String ppu_id) {
+		this.ppu_id = ppu_id;
 	}
-	public java.sql.Date getRegidate() {
-		return regidate;
+	public String getPpu_password() {
+		return ppu_password;
 	}
-	public void setRegidate(java.sql.Date regidate) {
-		this.regidate = regidate;
+	public void setPpu_password(String ppu_password) {
+		this.ppu_password = ppu_password;
 	}
-	public String getId() {
-		return id;
+	public String getPpu_name() {
+		return ppu_name;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setPpu_name(String ppu_name) {
+		this.ppu_name = ppu_name;
 	}
-	public String getName() {
-		return name;
+	public String getPpu_gender() {
+		return ppu_gender;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPpu_gender(String ppu_gender) {
+		this.ppu_gender = ppu_gender;
 	}
-	public String getAge() {
-		return age;
+	public String getPpu_nickname() {
+		return ppu_nickname;
 	}
-	public void setAge(String age) {
-		this.age = age;
+	public void setPpu_nickname(String ppu_nickname) {
+		this.ppu_nickname = ppu_nickname;
 	}
-	public String getPwd() {
-		return pwd;
+	public java.sql.Date getPpu_register_date() {
+		return ppu_register_date;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPpu_register_date(java.sql.Date ppu_register_date) {
+		this.ppu_register_date = ppu_register_date;
 	}
-	public String getMfm() {
-		return mfm;
+	public String getPpu_profile_path() {
+		return ppu_profile_path;
 	}
-	public void setMfm(String mfm) {
-		this.mfm = mfm;
+	public void setPpu_profile_path(String ppu_profile_path) {
+		this.ppu_profile_path = ppu_profile_path;
 	}
-	public String getSocialnumber() {
-		return socialnumber;
-	}
-	public void setSocialnumber(String socialnumber) {
-		this.socialnumber = socialnumber;
-	}
-	public String getProfilepicture() {
-		return profilepicture;
-	}
-	public void setProfilepicture(String profilepicture) {
-		this.profilepicture = profilepicture;
-	}
+	
+	
+	//get set
+	
+	
+	
+	
 	
 	
 }

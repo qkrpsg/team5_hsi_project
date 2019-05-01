@@ -9,70 +9,85 @@
 	
 	<!-- 메인 시작 -->
 	<section class="content">
-		<!-- 상세 검색 시작 -->
-		<div class="box box-default">
-			<div class="box-header with-border">
-				<h3 class="box-title">상세검색</h3>
-				<div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool"
-						data-widget="collapse">
-						<i class="fa fa-minus"></i>
-					</button>
-				</div>
-			</div>
-			
-			<div class="box-body">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>사용자ID</label> 
-							<input type="text" name="search_name" placeholder="사용자ID를 입력하세요." class="form-control">
-						</div>
-						<div class="form-group">
-							<label>등록일자</label>
-							<div class="input-group">
-								<div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
-								<input type="text" class="form-control pull-right" id="reservationtime">
+		<div class="row">
+			<!-- 상세 검색 시작 -->
+			<div class="col-md-3">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<h3 class="box-title">상세검색</h3>
+<!-- 						<div class="box-tools pull-right"> -->
+<!-- 							<button type="button" class="btn btn-box-tool" -->
+<!-- 								data-widget="collapse"> -->
+<!-- 								<i class="fa fa-minus"></i> -->
+<!-- 							</button> -->
+<!-- 						</div> -->
+					</div>
+					
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>사용자ID</label> 
+									<input type="text" name="search_name" placeholder="사용자ID를 입력하세요." class="form-control">
+								</div>
+								<!-- Date range -->
+								<div class="form-group">
+									<label>등록일자</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input type="text" class="form-control pull-right" id="reservation">
+									</div>
+								</div>
+								<div class="form-group">
+									<label>국가</label> 
+									<select class="form-control select2" data-placeholder="Select a State" style="width: 100%;">
+										<option></option>
+										<option>한국</option>
+										<option>미국</option>
+										<option>영국</option>
+										<option>일본</option>
+										<option>필리핀</option>
+										<option>중국</option>
+										<option>프랑스</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>도시</label> 
+									<select class="form-control select2" style="width: 100%;">
+										<option></option>
+										<option>서울</option>
+										<option>대전</option>
+										<option>대구</option>
+										<option>부산</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>지역</label> 
+									<select class="form-control select2" style="width: 100%;">
+										<option></option>
+										<option>강남구</option>
+										<option>영등포구</option>
+										<option>마포구</option>
+										<option>종로구</option>
+										<option>강북구</option>
+										<option>송파구</option>
+									</select>
+								</div>
+								<a href="#" class="btn btn-primary btn-block"><b>검색</b></a>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Multiple</label> 
-							<select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-								<option>Alabama</option>
-								<option>Alaska</option>
-								<option>California</option>
-								<option>Delaware</option>
-								<option>Tennessee</option>
-								<option>Texas</option>
-								<option>Washington</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Disabled Result</label> 
-							<select class="form-control select2" style="width: 100%;">
-								<option selected="selected">Alabama</option>
-								<option>Alaska</option>
-								<option disabled="disabled">California (disabled)</option>
-								<option>Delaware</option>
-								<option>Tennessee</option>
-								<option>Texas</option>
-								<option>Washington</option>
-							</select>
-						</div>
+					
+					<div class="box-footer">
 					</div>
 				</div>
 			</div>
-			
-			<div class="box-footer">
-			</div>
-		</div>
-		<!-- 상세 검색 끝 -->
-
-		<!-- 게시물 목록 시작 -->
-		<div class="row">
-			<div class="col-xs-12">
+			<!-- 상세 검색 끝 -->
+	
+			<!-- 게시물 목록 시작 -->
+			<div class="col-md-9">
 				<div class="box">
 					<div class="box-header">
 						<h3 class="box-title">게시물 목록</h3>
@@ -159,9 +174,23 @@
 					</div>
 				</div>
 			</div>
+			<!-- 게시물 목록 끝 -->
 		</div>
-		<!-- 게시물 목록 끝 -->
 	</section>
 	<!-- 메인 끝 -->
 </div>
 <!-- 여기까지 사용자 관리 페이지 끝 -->
+
+<!-- date-range-picker -->
+<script src="<c:url value='/js/moment.min.js'/>"></script>
+<script src="<c:url value='/js/daterangepicker.js'/>"></script>
+<!-- bootstrap datepicker -->
+<script src="<c:url value='/js/bootstrap-datepicker.min.js'/>"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<script>
+	$(function(){
+		$('#reservation').daterangepicker()
+	})
+</script>
+
