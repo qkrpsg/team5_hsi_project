@@ -185,7 +185,7 @@
 	   					console.log('에러333:',error);					
 	   				}				
 	   			});	//ajax 끝 
-	    	});
+	    	});//ㄴ
         
       	 $('#coffeeMenu').click(function(){
       		var contenttypeid = 39;
