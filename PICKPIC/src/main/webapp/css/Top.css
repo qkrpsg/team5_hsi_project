@@ -116,6 +116,7 @@ img {
 	top: 60px;
 	left: 0px;
 	width: 100%;
+	z-index:99;
 }
 
 .nav_wrap_main {
