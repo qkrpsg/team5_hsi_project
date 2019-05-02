@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>"
 	rel="stylesheet">
 <link href="<c:url value='/css/Top.css'/>" rel="stylesheet">
@@ -31,22 +32,22 @@
 						</ul>
 					</nav>
 
-					<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
+					
+					
 						<div class="login_wrap col-md-3">
 							<ul>
-								<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppu_id} 님 <span></span></a></li>
-								<li><a href="<c:url value='/user/logout.pic'/>">Logout</a></li>
-							</ul>
-						</div>
-					</c:if>
-					<c:if test="${not isLogin }">
-						<div class="login_wrap col-md-3">
-							<ul>
+							<sec:authorize access="isAnonymous()">
 								<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a></li>
 								<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a></li>
+							</sec:authorize>	
+								<sec:authorize access="isAuthenticated()">
+									<li><a href="<c:url value='/user/myPage.pic'/>"><sec:authentication property="principal.username" /> 님 <span></span></a></li>
+									<li><a href="javascript:logout()">Logout</a></li><%-- <c:url value='/user/logout.pic'/> --%>
+								</sec:authorize>
+								
 							</ul>
 						</div>
-					</c:if>
+					
 				</div>
 			</div>
 		</div>
@@ -140,3 +141,15 @@
 		gtag('config', 'UA-138587279-1');
 	</script>
 </header>
+
+<script>
+	//csrf사용시에만 아래 함수 필요
+	function logout(){		
+		$('#logoutForm').submit();
+	}
+</script>
+<!-- action 은 스프링 씨큐리티의 디폴트 로그아웃 URL지정(/logout) -->
+<form id="logoutForm" method="post" action="<c:url value='/logout'/>">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
+
