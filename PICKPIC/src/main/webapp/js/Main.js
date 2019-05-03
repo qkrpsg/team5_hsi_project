@@ -223,9 +223,14 @@ $(function(){
 		
 	});
 	
-	
-	
-	
+	/*
+	$(window).scroll(function(){
+
+		  if($(this).scrollTop() >= "200"){
+			  $('.베스트픽').stop().animate({opacity:"0"},500); 
+		  }
+			 
+	});*/
 	
 	
    

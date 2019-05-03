@@ -1,7 +1,8 @@
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link href="<c:url value='/css/Sign_Up.css' />" rel="stylesheet">
-
+<script src="<c:url value='/js_api/jquery.form-validator.js'/>"></script>
 
 <script>
 $(document).ready(function(){
@@ -35,8 +36,36 @@ fileTarget.on('change', function(){ // 값이 변경되면
     	var jo = document.getElementById("join-submit");
         
     	
+    	
+    	 $('.id_check').click(function(){
+    		 
+    		 
+ 	    	$.ajax({
+   				url:'<c:url value="/validator/id_check.do"/>',
+   				dataType:'json',
+   				data:{ppu_id:$('#ppu_id').val()}, 
+   				success:function(data){
+ 					console.log('aaaaaaaaaaaaa');	
+ 					console.log(data['flag']);
+ 					console.log(data['error']);
+ 					$('#hi').html(data['error']);
+ 				}
+   				,
+   				error:function(request,error){
+   					console.log('상태코드111:',request.status);
+   					console.log('서버로부터 받은 HTML데이타 222:',request.responseText);
+   					console.log('에러333:',error);					
+   				}				
+   			});	//ajax 끝	
+ 	    });
+    	
+    	
+    	$(function() {
+    	    // setup validate
+    	    $.validate();
+    	  });
     	jo.onclick = function() {
-        	if(id.value == ''){
+        	/* if(id.value == ''){
         		alert('아이디를 입력하세요');
         		id.focus();
                 return false;
@@ -51,13 +80,25 @@ fileTarget.on('change', function(){ // 값이 변경되면
         		alert('비밀번호를 확인해주세요');
         		pwdChk.focus();
                 return false;
-       		}else if(pwd.value != pwdChk.value){
+       		} */
+        	if(pwd.value != pwdChk.value){
        			alert('비밀번호를 확인해주세요');
        			pwdChk.focus();
                 return false;
        		}
-        	
-        	if(name.value == ''){
+       		if($('#hi').html() !="아이디 사용가능"){
+       			alert('아이디 중복체크를 해주세요');
+    			id.focus();
+    			return false;
+    	 	}
+       		
+       		
+        	/* if(!agree.checked){
+        		alert('이용약관에 동의 해주세요');
+        		agree.focus();
+                return false;
+       		} */
+        	/* if(name.value == ''){
         		alert('이름을 입력하세요');
         		name.focus();
                 return false;
@@ -74,12 +115,8 @@ fileTarget.on('change', function(){ // 값이 변경되면
         		alert('사진을 업로드 해주세요');
         		profile.focus();
                 return false;
-       		}
-        	if(!agree.checked){
-        		alert('이용약관에 동의 해주세요');
-        		agree.focus();
-                return false;
-       		}
+       		} */
+        	
         	
         	
         	
@@ -91,9 +128,6 @@ fileTarget.on('change', function(){ // 값이 변경되면
 
    
  
-$(document).ready(function(){
-	
-});
 
 $(function(){
 	/* $('#ppu_tetephone').keypress(function(evt){
@@ -137,26 +171,30 @@ $(function(){
 
 					<div class="form-group">
 								<label for="ppu_id">아이디</label>
-								<input type="text" class="form-control" name="ppu_id" id="ppu_id" placeholder="아이디를 입력해 주세요">
+								<input type="text" class="form-control" name="ppu_id" id="ppu_id" placeholder="아이디를 입력해 주세요" data-validation="required">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								
+								<a  class="id_check btn btn-info" style="margin-top:10px;">중복체크</a><span id="hi" style="color:red;"></span>
+								
 						</div>
 						
 						<div class="form-group">
 								<label for="ppu_password">비밀번호</label>
-								<input type="password" class="form-control" name="ppu_password" id="ppu_password" placeholder="비밀번호를 입력해주세요">
+								<input type="password" class="form-control" name="ppu_password" id="ppu_password" placeholder="비밀번호를 입력해주세요" data-validation="required">
 						</div>
 						<div class="form-group">
 								<label for="ppu_passwordCheck">비밀번호 확인</label>
-								<input type="password" class="form-control" name="ppu_passwordCheck" id="ppu_passwordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
+								<input type="password" class="form-control" name="ppu_passwordCheck" id="ppu_passwordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요" data-validation="required">
 						</div>
 						<div class="form-group">
 								<label for="ppu_name">이름</label>
-								<input type="text" class="form-control" name="ppu_name" id="ppu_name" placeholder="이름 입력해 주세요">
+								<input type="text" class="form-control" name="ppu_name" id="ppu_name" placeholder="이름 입력해 주세요" data-validation="required">
 						</div>
 						
 						
 						<div class="form-group">
 								<label for="ppu_nickname">닉네임</label>
-								<input type="text" class="form-control" name="ppu_nickname" id="ppu_nickname" placeholder="닉네임을 입력해 주세요">
+								<input type="text" class="form-control" name="ppu_nickname" id="ppu_nickname" placeholder="닉네임을 입력해 주세요" data-validation="required">
 						</div>
 						
 						
@@ -178,14 +216,14 @@ $(function(){
 						
 						
 						<div class="filebox"> 
-							<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled">
+							<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled" >
 							<label for="ppu_profile_path" class="btn btn-warning" name="ppu_profile_path">업로드</label> 
-							<input type="file" id="ppu_profile_path" class="upload-hidden" name="ppu_profile_path"> 
+							<input type="file" id="ppu_profile_path" class="upload-hidden" name="ppu_profile_path" data-validation="required"> 
 						</div>
 
 
 					<div class="form-group" style="overflow: hidden;">
-						<input type="checkbox" name="ppu_agree" value="이용약관"
+						<input type="checkbox" name="ppu_agree" value="이용약관" data-validation="required"
 							id="ppu_agree" value="ok"
 							style="float: left; margin-right: 10px;" />
 						<p style="float: left;">이용약관에 동의합니다.</p>

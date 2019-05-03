@@ -5,10 +5,12 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosmo.pickpic.service.impl.PickpicUserServiceImpl;
@@ -30,10 +32,10 @@ public class UserController {
 	@RequestMapping("/user/loginProcess.pic")
 	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
 		boolean flag = userService.isMember(map);
-		
 		if(flag) {
 			session.setAttribute("ppu_id", map.get("ppu_id"));
-			
+			//return "home.tiles";
+			return "login/Login.tiles";
 		}
 		else{
 			model.addAttribute("errorMsg", "회원 정보가 일치하지 않습니다");
@@ -42,12 +44,36 @@ public class UserController {
 		}//비회원이거나 아이디가 틀린경우
 		//로그인 성공시 메인화면으로 이동
 		
-		return "home.tiles";
+		
 	}//loginProcess
 	
-	//homed
+
+	@ResponseBody
+	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
+	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
+										//맵에는 아이디 값만 담겨있다
+		
+		
+		
+		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
+		System.out.println(flag);
+		
+		
+		JSONObject json=new JSONObject();
+		if(map.get("ppu_id") == "") {
+			json.put("error", "아이디를 입력해주세요");
+			return json.toJSONString();
+		}
+		if(flag) {
+			json.put("error", "아이디가 중복 됩니다.");
+			return json.toJSONString();
+		}
+		json.put("error", "아이디 사용가능");
+		return json.toJSONString();
+	}
 	
 	
+	//home
 	@RequestMapping("/user/home.pic")
 	public String home() throws Exception{
 		
@@ -74,7 +100,7 @@ public class UserController {
 	//로그아웃 프로세스  
 	@RequestMapping("/user/logout.pic")
 	public String logoutProcess(HttpSession session,@RequestParam Map map) throws Exception{
-		session.setAttribute("ppu_id", "");
+		session.invalidate();
 		
 		return "home.tiles";
 	}//logoutProcess

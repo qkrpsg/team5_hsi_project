@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>"
 	rel="stylesheet">
 <link href="<c:url value='/css/Top.css'/>" rel="stylesheet">
@@ -23,21 +24,45 @@
 					<nav class="menu_wrap col-md-9">
 						<ul>
 							<li class="col-md-2"></li>
-							<li class="col-md-3"><a
-								href="<c:url value='/'/>">피크픽 스토리</a></li>
-							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
+
+							<li class="col-md-3"><a href="<c:url value='/user/home.pic'/>">피크픽 스토리</a></li>
+							<li class="col-md-3"><a href="<c:url value='/user/map.pic'/>">피크픽 프렌즈</a></li>
+
 							<li class="col-md-3"><a href="#">고객센터</a></li>
 							<li class="col-md-1"></li>
 						</ul>
 					</nav>
 
-					<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
+					<%-- <c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
+
+								
+								<div class="login_wrap col-md-3">
+									<ul>
+										<li><a href="#">${sessionScope.ppu_id} 님 <span></span></a>
+										<li><a href="#">My Page</a>
+									</ul>
+								</div>
+								
+							</c:if>	 --%>
+							
+							<c:if test="${not isLogin }">
+					<div class="login_wrap col-md-3">
+						<ul>
+							<sec:authorize access="isAnonymous()"> 
+								<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a>
+							</sec:authorize>
+							<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a>
+						</ul>
+					</div>
+
 						<div class="login_wrap col-md-3">
 							<ul>
 								<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppu_id} 님 <span></span></a></li>
 								<li><a href="<c:url value='/user/logout.pic'/>">Logout</a></li>
 							</ul>
 						</div>
+
+
 					</c:if>
 					<c:if test="${not isLogin }">
 						<div class="login_wrap col-md-3">
