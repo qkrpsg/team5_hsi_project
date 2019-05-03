@@ -141,8 +141,8 @@ public class FriendsController {
 		return "friends/albumDown.tiles";
 	}
 	//앨범다운-팝업
-	@RequestMapping("/friends/editor_popup.pic")
+	@RequestMapping("/friends/albumEditor.pic")
 	public String albumOption() throws Exception {
-		return "friends/editor_popup";
+		return "friends/albumEditor.tiles";
 	}
 }//FriendsController
