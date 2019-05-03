@@ -42,6 +42,54 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	
+	
+	
+	<!-- 사용자 요청을 처리할 빈 등록
+	<bean class="com.kosmo.pickpic.service.web.UserController"/>
+	-->
+	<!-- 위 컨트롤러에 내가 만든 Validator를 주입하기 위한 빈 등록 -->
+ 	<!-- 
+ 	실제 유효성 검증을 하는 빈 객체:Validator
+ 	 -->
+	<bean id="validator" class="com.kosmo.pickpic.service.impl.FormValidator"/>
+	<!-- 유효성 검증을 위한 스프링에서 제공하는 빈 등록(에러메시지 출력하기위함) -->
+	<!-- id값은 내부적으로 프렘임워크가 
+         messageSource으로 
+               사용함으로
+               반드시 id에 messageSource값으로 설정
+ 	-->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		
+ 	 
+		<!-- 
+ 		 src 밑이나 WEB-INF 밑에 에러메시지를 저장한 
+		 properties파일명(확장자를 생략한) 
+		 키값=에러메시지
+		 키값은   에러코드.커맨드객체명.속성 = 에러 내용    단,커맨드 객체명은 소문자로
+		 에러코드는 rejectValue("속성","에러코드")에 설정한  에러코드값
+		 예]nameError.formCommand.name
+		 -->
+		<property name="basenames">
+			<list>			
+				<!-- <value>controller/validation/ErrorMessage</value> -->
+				
+				<!-- <value>classpath:validator/ErrorMessage</value> -->
+				<value>/WEB-INF/classes/validator/ErrorMessage</value>
+				<value>/WEB-INF/classes/validator/ErrorMessage.properties</value>
+				<value>classpath:validator/ErrorMessage.properties</value>	
+				<value>classpath:validator/ErrorMessage</value>
+				<!-- <value>/WEB-INF/spring/ErrorMessage.properties</value> -->
+				<!-- <value>classpath:com/kosmo/pickpic/service/web/ErrorMessage</value> -->
+			</list>		
+		</property>  
+	</bean>
+	
+	 <!-- 리소스파일(.properties) 사용을 위한 설정 --> 
+	 <context:property-placeholder location="classpath:validator/ErrorMessage.properties"/>
+	
+	
+	
 	<context:component-scan base-package="com.kosmo.pickpic" />
 	
 	

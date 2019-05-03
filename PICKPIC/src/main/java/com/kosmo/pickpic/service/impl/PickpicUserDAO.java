@@ -23,6 +23,11 @@ public class PickpicUserDAO implements PickpicUserService {
 		public boolean isMember(Map map) {		
 			return (Integer)template.selectOne("PickpicUserIsMember",map)==0?false:true;
 		}
+		@Override
+		public boolean isMember2(Map map) {
+			return (Integer)template.selectOne("PickpicUserIsMember2",map)==0?false:true;
+		}
+		
 		//전체 목록용]
 		@Override
 		public List<PickpicUserDTO> selectList(Map map) {		
@@ -36,7 +41,7 @@ public class PickpicUserDAO implements PickpicUserService {
 		public PickpicUserDTO selectOne(Map map) {		
 			return template.selectOne("PickpicUserSelectOne",map);
 		}
-
+		
 		@Override
 		public int delete(Map map) {
 			/*메모 삭제-프로그래밍적으로 혹은 
