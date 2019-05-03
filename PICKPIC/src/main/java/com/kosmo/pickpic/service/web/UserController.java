@@ -60,9 +60,53 @@ public class UserController {
 		//return "home.tiles";
 	}//loginProcess
 	
-	//homed
+
+	@ResponseBody
+	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
+	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
+										//맵에는 아이디 값만 담겨있다
+		
+		
+		
+		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
+		System.out.println(flag);
+		
+		
+		JSONObject json=new JSONObject();
+		if(map.get("ppu_id") == "") {
+			json.put("error", "아이디를 입력해주세요");
+			return json.toJSONString();
+		}
+		if(flag) {
+			json.put("error", "아이디가 중복 됩니다.");
+			return json.toJSONString();
+		}
+		json.put("error", "아이디 사용가능");
+		return json.toJSONString();
+	}
+//	@ResponseBody
+//	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
+//	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
+//										//맵에는 아이디 값만 담겨있다
+//		
+//		System.out.println("::::::::::"+map.get("ppu_id"));
+//		
+//		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
+//		System.out.println(flag);
+//		JSONObject json=new JSONObject();
+//		if(flag) {
+//			json.put("flag", flag ? "Y":"N");
+//			return json.toJSONString();
+//		}
+//		json.put("error", "아이디가 중복 됩니다.");
+//		//model.addAttribute("error","아이디가 중복 됩니다.");
+//		map2.put("error","아이디가 중복 됩니다.");
+//		System.out.println(map2.get("error"));
+//		return json.toJSONString();
+//	}
 	
 	
+	//home
 	@RequestMapping("/user/home.pic")
 	public String home() throws Exception{
 		
@@ -113,26 +157,6 @@ public class UserController {
 		
 		return "login/Login.tiles";
 	}
-	@ResponseBody
-	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
-	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
-										//맵에는 아이디 값만 담겨있다
-		
-		System.out.println("::::::::::"+map.get("ppu_id"));
-		
-		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
-		System.out.println(flag);
-		JSONObject json=new JSONObject();
-		if(flag) {
-			json.put("flag", flag ? "Y":"N");
-			return json.toJSONString();
-		}
-		json.put("error", "아이디가 중복 됩니다.");
-		//model.addAttribute("error","아이디가 중복 됩니다.");
-		map2.put("error","아이디가 중복 됩니다.");
-		System.out.println(map2.get("error"));
-		return json.toJSONString();
-	}
 	
 	@ResponseBody
 	@RequestMapping("/va/id.do")
@@ -152,7 +176,7 @@ public class UserController {
 	//로그아웃 프로세스  
 	@RequestMapping("/user/logout.pic")
 	public String logoutProcess(HttpSession session,@RequestParam Map map) throws Exception{
-		session.setAttribute("ppu_id", "");
+		session.invalidate();
 		
 		return "home.tiles";
 	}//logoutProcess

@@ -65,12 +65,6 @@
 	     왜냐하면 springSecurityFilterChain 이 시큐러티 관련 설정파일을 찾음
      -->
 	
-	
-	
-	
-	
-	
-	
 	<welcome-file-list>
 		<welcome-file>home.bbs</welcome-file>	
 	</welcome-file-list>

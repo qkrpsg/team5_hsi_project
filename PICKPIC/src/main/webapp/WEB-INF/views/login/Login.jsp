@@ -32,25 +32,32 @@
 		 			
 		 			<div class="l_login_left_form_wrap">
 		 				<form action="<c:url value='/user/loginProcess.pic'/>"  method="post">
-		 				<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
-								<div class="alert alert-success col-md-12">${sessionScope.ppu_id}님
+		 				
+								
+							
+							
+		 				
+	 						<sec:authorize access="isAuthenticated()">
+	 						<div>
+								<div class="alert alert-success col-md-12" style="width:500px;border: 1px red solid;"><sec:authentication property="principal.username" />님
 									환영합니다
 								</div>
-							</c:if>	
-							<c:if test="${not isLogin }">
-		 				<div>
-		 						
-		 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
-		 					<input type="password" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
-		 				
-		 				</div>
+							</div>
+							</sec:authorize>
+						
+							<sec:authorize access="isAnonymous()">
+			 				<div>
+			 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
+			 					<input type="password" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
+		 					
+		 					</div>
 		 				
 		 				
 		 				<div>
 		 					<input type="submit" value="로그인" class="btn btn-info">
 		 				</div>
-		 					</c:if>
+		 					</sec:authorize>
 		 				
 		 				
 		 				
