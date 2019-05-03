@@ -4,7 +4,6 @@
 DROP TABLE album_down CASCADE CONSTRAINTS;
 DROP TABLE answer_question CASCADE CONSTRAINTS;
 DROP TABLE auth_security CASCADE CONSTRAINTS;
-DROP TABLE connection_status CASCADE CONSTRAINTS;
 DROP TABLE filter_storage CASCADE CONSTRAINTS;
 DROP TABLE refund CASCADE CONSTRAINTS;
 DROP TABLE payment CASCADE CONSTRAINTS;
@@ -62,17 +61,6 @@ CREATE TABLE auth_security
 );
 
 
-CREATE TABLE connection_status
-(
-	cs_id nvarchar2(12) NOT NULL,
-	cs_name nvarchar2(10) NOT NULL,
-	cs_connect_date date DEFAULT SYSDATE NOT NULL,
-	cs_service_token nvarchar2(30) NOT NULL,
-	ppa_id nvarchar2(12) NOT NULL,
-	PRIMARY KEY (cs_id)
-);
-
-
 CREATE TABLE filter
 (
 	f_id nvarchar2(12) NOT NULL,
@@ -81,7 +69,7 @@ CREATE TABLE filter
 	f_post_date date DEFAULT SYSDATE NOT NULL,
 	f_change_date date DEFAULT SYSDATE NOT NULL,
 	f_reason nvarchar2(30) NOT NULL,
-	f_sale_yn char(1) DEFAULT 'N' NOT NULL CHECK(f_sale_yn IN('Y', 'N')),
+	f_sale_yn char(1) DEFAULT 'Y' NOT NULL CHECK(f_sale_yn IN('Y', 'N')),
 	f_event_yn char(1) DEFAULT 'N' NOT NULL CHECK(f_event_yn IN('Y', 'N')),
 	f_index number NOT NULL,
 	PRIMARY KEY (f_id)
@@ -135,13 +123,14 @@ CREATE TABLE payment
 CREATE TABLE pickpic_account
 (
 	ppa_id nvarchar2(12) NOT NULL,
-	ppa_user_id nvarchar2(20) NOT NULL,
+	ppa_email nvarchar2(30) NOT NULL,
 	ppa_password varchar2(15) NOT NULL,
 	ppa_name nvarchar2(5) NOT NULL,
 	ppa_nickname nvarchar2(10) NOT NULL,
-	ppa_gender nvarchar2(1) NOT NULL,
-	ppa_register_date date DEFAULT SYSDATE NOT NULL,
-	ppa_profile_path nvarchar2(50),
+	ppa_join_date date DEFAULT SYSDATE NOT NULL,
+	ppa_type nvarchar2(10) DEFAULT 'pickpic' NOT NULL,
+	ppa_token nvarchar2(100) DEFAULT 'pickpic' NOT NULL,
+	ppa_profile_path nvarchar2(100) DEFAULT '/resources/images/defaultProfile.jpg' NOT NULL,
 	ppa_index number NOT NULL,
 	PRIMARY KEY (ppa_id)
 );
@@ -159,7 +148,7 @@ CREATE TABLE pickplace_board
 	ppb_city nvarchar2(20) NOT NULL,
 	ppb_area nvarchar2(20) NOT NULL,
 	ppb_detail_location nvarchar2(20),
-	ppb_image_path nvarchar2(30) NOT NULL,
+	ppb_image_path nvarchar2(100) DEFAULT '/resources/images/defaultImage.jpg' NOT NULL,
 	ppb_index number NOT NULL,
 	f_id nvarchar2(12) NOT NULL,
 	ppa_id nvarchar2(12) NOT NULL,
@@ -314,12 +303,6 @@ ALTER TABLE album_down
 
 
 ALTER TABLE auth_security
-	ADD FOREIGN KEY (ppa_id)
-	REFERENCES pickpic_account (ppa_id)
-;
-
-
-ALTER TABLE connection_status
 	ADD FOREIGN KEY (ppa_id)
 	REFERENCES pickpic_account (ppa_id)
 ;
