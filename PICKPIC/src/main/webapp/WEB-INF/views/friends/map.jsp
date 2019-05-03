@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Marker Clustering</title>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<title>Marker Clustering</title>
 <style>
-      /* Always set the map height explicitly to define the size of the div
+/* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 100%;
@@ -34,14 +34,9 @@
 	.category .ico_carpark {background-position:-10px -72px;} 
 </style>
     
-   
-    
-    
   </head>
   <body>
       
-  	
-  		 	
   		<!--<div style="width:200px;height:100%;background:white;position:absolute;top:0;left:0;z-index:1;border:1px red solid;">
   			<input type="button" id="btnAjaxJson" name="btnAjaxJson" class="like_conbini" value="음식점" style="margin-top:300px;"/>
   			<input type="button" id="btnAjaxJson2" name="btnAjaxJson2" class="like_conbini2" value="음식점2" style="margin-top:300px;"/>
@@ -77,10 +72,8 @@
         </ul>
     </div>
     
-    
 </div>
 
-	    
 	    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=750e581d29f9f411452640632fee1ead"></script>
     <script> 
       var map;
@@ -198,6 +191,7 @@
   				data:{contenttypeid:contenttypeid,areacode:areacode,numOfRows:numOfRows}, 
   				success:function(data){
 					successAjax(data);					
+
 				}
   				,
   				error:function(request,error){
@@ -362,46 +356,13 @@
     	    }    
 	} 
 	}///////////////// 함수 편의점
-    	
-    	
-    	
-    	
-    	
     </script>
-    <script type="text/javascript">
-    /*  var map;
-	function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 2,
-        center: new google.maps.LatLng(2.8,-187.3),
-        mapTypeId: 'terrain'
-      });
-
-      // Create a <script> tag and set the USGS URL as the source.
-      var script = document.createElement('script');
-      // This example uses a local copy of the GeoJSON stored at
-      // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-      script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-      document.getElementsByTagName('head')[0].appendChild(script);
-    }//////////////
-	
-	 window.eqfeed_callback = function(results) {
-          for (var i = 0; i < results.features.length; i++) {
-            var coords = results.features[i].geometry.coordinates;
-            var latLng = new google.maps.LatLng(coords[1],coords[0]);
-            var marker = new google.maps.Marker({
-              position: latLng,
-              map: map
-            });
-          }
-        } *///구글 맵 나중에 해보자
-    </script>
-    <!-- <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap"
-    async defer></script> -->
-  </body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap" async defer>
+    </script> 
+    -->
+</body>
 </html>
 
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap"
-    async defer></script> -->
+<!-- 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap" async defer></script> 
+-->
