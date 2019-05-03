@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<meta charset="utf-8">
-<title>Marker Clustering</title>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Marker Clustering</title>
 <style>
-/* Always set the map height explicitly to define the size of the div
+      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 100%;
@@ -34,9 +34,14 @@
 	.category .ico_carpark {background-position:-10px -72px;} 
 </style>
     
+   
+    
+    
   </head>
   <body>
       
+  	
+  		 	
   		<!--<div style="width:200px;height:100%;background:white;position:absolute;top:0;left:0;z-index:1;border:1px red solid;">
   			<input type="button" id="btnAjaxJson" name="btnAjaxJson" class="like_conbini" value="음식점" style="margin-top:300px;"/>
   			<input type="button" id="btnAjaxJson2" name="btnAjaxJson2" class="like_conbini2" value="음식점2" style="margin-top:300px;"/>
@@ -72,8 +77,10 @@
         </ul>
     </div>
     
+    
 </div>
 
+	    
 	    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=750e581d29f9f411452640632fee1ead"></script>
     <script> 
       var map;
@@ -146,9 +153,15 @@
 	   				dataType:'json',//json
 	   				data:{contenttypeid:contenttypeid,areacode:areacode,numOfRows:numOfRows}, 
 	   				success:function(data){
-	 					successAjax2(data);					
+	 					successAjax(data);					
 	 				}
-	   				,
+	   				/* success:function(data){
+	   					//console.log("data111:"+data);
+	   					$.each(data,function(key,value){
+	   						mapy.push(value['mapy']);
+	   						mapx.push(value['mapx']);
+	   					});
+	   				} */,
 	   				error:function(request,error){
 	   					console.log('상태코드111:',request.status);
 	   					console.log('서버로부터 받은 HTML데이타 222:',request.responseText);
@@ -171,14 +184,20 @@
 	   				success:function(data){
 	 					successAjax(data);					
 	 				}
-	   				,
+	   				/* success:function(data){
+	   					//console.log("data111:"+data);
+	   					$.each(data,function(key,value){
+	   						mapy.push(value['mapy']);
+	   						mapx.push(value['mapx']);
+	   					});
+	   				} */,
 	   				error:function(request,error){
 	   					console.log('상태코드111:',request.status);
 	   					console.log('서버로부터 받은 HTML데이타 222:',request.responseText);
 	   					console.log('에러333:',error);					
 	   				}				
 	   			});	//ajax 끝 
-	    	});//ㄴ
+	    	});
         
       	 $('#coffeeMenu').click(function(){
       		var contenttypeid = 39;
@@ -191,9 +210,14 @@
   				data:{contenttypeid:contenttypeid,areacode:areacode,numOfRows:numOfRows}, 
   				success:function(data){
 					successAjax(data);					
-
 				}
-  				,
+  				/* success:function(data){
+  					//console.log("data111:"+data);
+  					$.each(data,function(key,value){
+  						mapy.push(value['mapy']);
+  						mapx.push(value['mapx']);
+  					});
+  				} */,
   				error:function(request,error){
   					console.log('상태코드111:',request.status);
   					console.log('서버로부터 받은 HTML데이타 222:',request.responseText);
@@ -204,8 +228,7 @@
         
   		
   		
-  		var storePositions =[];
-  		var carparkPositions = [];
+  		
   		var coffeePositions =[];
   		var mapy=[]; //lat
   		var mapx=[];//lng
@@ -222,50 +245,170 @@
     			//coffeePositions.push("new daum.maps.LatLng("+mapy[i]+","+mapx[i]+")");
     			coffeePositions.push(new daum.maps.LatLng(mapy[i],mapx[i]));
 	        }
-    		/* coffeePositions = [];   */
-   		var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
-   	    coffeeMarkers = []; // 커피숍 마커 객체를 가지고 있을 배열입니다
+    	
+    		
+    		
+    		
+	
+    		
+    		/* coffeePositions = [
+         	    new daum.maps.LatLng(37.499590490909185, 127.0263723554437),
+         	    new daum.maps.LatLng(37.499427948430814, 127.02794423197847),
+         	    new daum.maps.LatLng(37.498553760499505, 127.02882598822454),
+         	    new daum.maps.LatLng(37.497625593121384, 127.02935713582038),
+         	    new daum.maps.LatLng(37.49646391248451, 127.02675574250912),
+         	    new daum.maps.LatLng(37.49629291770947, 127.02587362608637),
+         	    new daum.maps.LatLng(37.49754540521486, 127.02546694890695)                
+         	];   */
+             
+        	// 편의점 마커가 표시될 좌표 배열입니다
+        	var storePositions = [
+        	    new daum.maps.LatLng(37.497535461505684, 127.02948149502778),
+        	    new daum.maps.LatLng(37.49671536281186, 127.03020491448352),
+        	    new daum.maps.LatLng(37.496201943633714, 127.02959405469642),
+        	    new daum.maps.LatLng(37.49640072567703, 127.02726459882308),
+        	    new daum.maps.LatLng(37.49640098874988, 127.02609983175294),
+        	    new daum.maps.LatLng(37.49932849491523, 127.02935780247945),
+        	    new daum.maps.LatLng(37.49996818951873, 127.02943721562295)
+        	];
+
+        	// 주차장 마커가 표시될 좌표 배열입니다
+        	var carparkPositions = [
+        	    new daum.maps.LatLng(37.49966168796031, 127.03007039430118),
+        	    new daum.maps.LatLng(37.499463762912974, 127.0288828824399),
+        	    new daum.maps.LatLng(37.49896834100913, 127.02833986892401),
+        	    new daum.maps.LatLng(37.49893267508434, 127.02673400572665),
+        	    new daum.maps.LatLng(37.49872543597439, 127.02676785815386),
+        	    new daum.maps.LatLng(37.49813096097184, 127.02591949495914),
+        	    new daum.maps.LatLng(37.497680616783086, 127.02518427952202)                       
+        	];    
+
+        	
+         
+        	
+
+    		var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+    	    coffeeMarkers = []; // 커피숍 마커 객체를 가지고 있을 배열입니다
+    	    storeMarkers = []; // 편의점 마커 객체를 가지고 있을 배열입니다
+    	    carparkMarkers = []; // 주차장 마커 객체를 가지고 있을 배열입니다
+
+    	    
     	createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
-    	changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다   
+    	createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+    	createCarparkMarkers(); // 주차장 마커를 생성하고 주차장 마커 배열에 추가합니다
+
+    	changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+
+
     	// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
     	function createMarkerImage(src, size, options) {
     	    var markerImage = new daum.maps.MarkerImage(src, size, options);
     	    return markerImage;            
     	}
+
     	// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
     	function createMarker(position, image) {
     	    var marker = new daum.maps.Marker({
     	        position: position,
     	        image: image
     	    });
+    	    
     	    return marker;  
     	}   
+    	
+    	
+    	
+    	
+    	   
     	// 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
     	function createCoffeeMarkers() {
-    	    for (var i = 0; i < coffeePositions.length; i++) { 
+    	    
+    	    for (var i = 0; i < coffeePositions.length; i++) {  
+    	        
     	        var imageSize = new daum.maps.Size(22, 26),
     	            imageOptions = {  
     	                spriteOrigin: new daum.maps.Point(10, 0),    
     	                spriteSize: new daum.maps.Size(36, 98)  
-    	            };   
+    	            };     
+    	        
     	        // 마커이미지와 마커를 생성합니다
     	        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
     	            marker = createMarker(coffeePositions[i], markerImage);  
+    	        
     	        // 생성된 마커를 커피숍 마커 배열에 추가합니다
     	        coffeeMarkers.push(marker);
     	    }     
     	}
+
     	// 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
     	function setCoffeeMarkers(map) {        
     	    for (var i = 0; i < coffeeMarkers.length; i++) {  
     	        coffeeMarkers[i].setMap(map);
     	    }        
     	}
+
+    	// 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
+    	function createStoreMarkers() {
+    	    for (var i = 0; i < storePositions.length; i++) {
+    	        
+    	        var imageSize = new daum.maps.Size(22, 26),
+    	            imageOptions = {   
+    	                spriteOrigin: new daum.maps.Point(10, 36),    
+    	                spriteSize: new daum.maps.Size(36, 98)  
+    	            };       
+    	     
+    	        // 마커이미지와 마커를 생성합니다
+    	        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+    	            marker = createMarker(storePositions[i], markerImage);  
+
+    	        // 생성된 마커를 편의점 마커 배열에 추가합니다
+    	        storeMarkers.push(marker);    
+    	    }        
+    	}
+
+    	// 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
+    	function setStoreMarkers(map) {        
+    	    for (var i = 0; i < storeMarkers.length; i++) {  
+    	        storeMarkers[i].setMap(map);
+    	    }        
+    	}
+
+    	// 주차장 마커를 생성하고 주차장 마커 배열에 추가하는 함수입니다
+    	function createCarparkMarkers() {
+    	    for (var i = 0; i < carparkPositions.length; i++) {
+    	        
+    	        var imageSize = new daum.maps.Size(22, 26),
+    	            imageOptions = {   
+    	                spriteOrigin: new daum.maps.Point(10, 72),    
+    	                spriteSize: new daum.maps.Size(36, 98)  
+    	            };       
+    	     
+    	        // 마커이미지와 마커를 생성합니다
+    	        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+    	            marker = createMarker(carparkPositions[i], markerImage);  
+
+    	        // 생성된 마커를 주차장 마커 배열에 추가합니다
+    	        carparkMarkers.push(marker);        
+    	    }                
+    	}
+
+    	// 주차장 마커들의 지도 표시 여부를 설정하는 함수입니다
+    	function setCarparkMarkers(map) {        
+    	    for (var i = 0; i < carparkMarkers.length; i++) {  
+    	        carparkMarkers[i].setMap(map);
+    	    }        
+    	}
+
     	// 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
     	function changeMarker(type){
+    	    
     	    var coffeeMenu = document.getElementById('coffeeMenu');
+    	    var storeMenu = document.getElementById('storeMenu');
+    	    var carparkMenu = document.getElementById('carparkMenu');
+    	    
     	    // 커피숍 카테고리가 클릭됐을 때
     	    if (type === 'coffee') {
+    	    
     	        // 커피숍 카테고리를 선택된 스타일로 변경하고
     	        coffeeMenu.className = 'menu_selected';
     	        
@@ -277,92 +420,107 @@
     	        setCoffeeMarkers(map);
     	        setStoreMarkers(null);
     	        setCarparkMarkers(null);
-    	    }    
-    	} 
-   	}///////////////// 함수 커피!
-        
-    	
-   	var successAjax2= function(data){
-  		mapy = [];
-  		mapx = [];
-		$.each(data,function(key,value){
-				mapy.push(value['mapy']);
-				mapx.push(value['mapx']);
-		});
-		storePositions.length = 0;
-		for(var i=0;i<mapy.length;i++){
-			//coffeePositions.push("new daum.maps.LatLng("+mapy[i]+","+mapx[i]+")");
-			storePositions.push(new daum.maps.LatLng(mapy[i],mapx[i]));
-        }
-		/* coffeePositions = [];   */
-		var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
-		storeMarkers = []; // 커피숍 마커 객체를 가지고 있을 배열입니다
-		createStoreMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
-		//changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다   
-	// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
-	function createMarkerImage(src, size, options) {
-	    var markerImage = new daum.maps.MarkerImage(src, size, options);
-	    return markerImage;            
-	}
-	// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
-	function createMarker(position, image) {
-	    var marker = new daum.maps.Marker({
-	        position: position,
-	        image: image
-	    });
-	    return marker;  
-	}   
-    // 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
-	function createStoreMarkers() {
-	    for (var i = 0; i < storePositions.length; i++) {
-	        
-	        var imageSize = new daum.maps.Size(22, 26),
-	            imageOptions = {   
-	                spriteOrigin: new daum.maps.Point(10, 36),    
-	                spriteSize: new daum.maps.Size(36, 98)  
-	            };       
-	     
-	        // 마커이미지와 마커를 생성합니다
-	        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-	            marker = createMarker(storePositions[i], markerImage);  
-
-	        // 생성된 마커를 편의점 마커 배열에 추가합니다
-	        storeMarkers.push(marker);    
-	    }        
-	}
-
-	// 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
-	function setStoreMarkers(map) {        
-	    for (var i = 0; i < storeMarkers.length; i++) {  
-	        storeMarkers[i].setMap(map);
-	    }        
-	}
-	// 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
-	function changeMarker(type){
-		var storeMenu = document.getElementById('storeMenu');
-	    // 커피숍 카테고리가 클릭됐을 때
-	   if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
+    	        
+    	    } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
     	    
     	        // 편의점 카테고리를 선택된 스타일로 변경하고
     	        coffeeMenu.className = '';
     	        storeMenu.className = 'menu_selected';
-    	        //carparkMenu.className = '';
+    	        carparkMenu.className = '';
     	        
     	        // 편의점 마커들만 지도에 표시하도록 설정합니다
     	        setCoffeeMarkers(null);
     	        setStoreMarkers(map);
-    	        //setCarparkMarkers(null);
+    	        setCarparkMarkers(null);
     	        
+    	    } else if (type === 'carpark') { // 주차장 카테고리가 클릭됐을 때
+    	     
+    	        // 주차장 카테고리를 선택된 스타일로 변경하고
+    	        coffeeMenu.className = '';
+    	        storeMenu.className = '';
+    	        carparkMenu.className = 'menu_selected';
+    	        
+    	        // 주차장 마커들만 지도에 표시하도록 설정합니다
+    	        setCoffeeMarkers(null);
+    	        setStoreMarkers(null);
+    	        setCarparkMarkers(map);  
     	    }    
-	} 
-	}///////////////// 함수 편의점
+    	} 
+    		
+    		
+    		
+    		
+    		
+    	}/////////////////
+        
+    	$('#map').click(function(){
+    		console.log(mapy.length);
+    		
+    		console.log("asdsad"+coffeePositions);
+        		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    	});
+    	
+    	$('#Menu').click(function(){
+    		//console.log("asdsad::::::::::"+coffeePositions);
+        	
+    		
+    	});
+    	
+    	
+    	 /*$('#carparkMenu').click(function(){
+     		console.log("asdsad::::::::::"+coffeePositions);
+     	}); */
+		 
+     	
+		
+    	
+    	
+    	
+    	
+    	
+    	
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap" async defer>
-    </script> 
-    -->
-</body>
+    <script type="text/javascript">
+    /*  var map;
+	function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 2,
+        center: new google.maps.LatLng(2.8,-187.3),
+        mapTypeId: 'terrain'
+      });
+
+      // Create a <script> tag and set the USGS URL as the source.
+      var script = document.createElement('script');
+      // This example uses a local copy of the GeoJSON stored at
+      // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+      script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }//////////////
+	
+	 window.eqfeed_callback = function(results) {
+          for (var i = 0; i < results.features.length; i++) {
+            var coords = results.features[i].geometry.coordinates;
+            var latLng = new google.maps.LatLng(coords[1],coords[0]);
+            var marker = new google.maps.Marker({
+              position: latLng,
+              map: map
+            });
+          }
+        } *///구글 맵 나중에 해보자
+    </script>
+    <!-- <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap"
+    async defer></script> -->
+  </body>
 </html>
 
-<!-- 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap" async defer></script> 
--->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap"
+    async defer></script> -->
