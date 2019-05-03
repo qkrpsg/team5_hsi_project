@@ -7,53 +7,16 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <style>
-.header_top {
-	background: white !important;
-	opacity: 1;
-	background: white;
-	border-bottom: 1px #ccc solid;
-}
 
-.menu_wrap a {
-	color: #5a5a5a !important;
-	font-weight: normal !important;
-	font-size: 1.1em !important;
-}
-
-.ul_submenu li a {
-	color: #5a5a5a !important;
-	font-weight: normal !important;
-	font-size: .9em !important;
-}
-
-.login_wrap ul li a {
-	color: #00AEEA !important;
-}
-
-.login_wrap ul li a span {
-	background: #00AEEA !important;
-}
-
-.nav_wrap_top_position {
-	opacity: 1;
-	background: white;
-	border-bottom: 1px #ccc solid;
-}
-
-body {
-	margin-left: 10%;
-	margin-top: 9%;
-	margin-right: 10%;
-}
 
 .routeok {
-	width: 150px;
+	width: 105px;
 	height: 40px;
 	background-color: #f8585b;
 	text-align: center;
 	border-radius: 10px;
 	margin-top: 3%;
-	margin-left: 55%;
+	margin-left: 62%;
 	color:white;
 }
 .placebutton{
@@ -77,25 +40,26 @@ body {
 width:100%;
 height:250px;
 margin-top: 1%;
+margin-right: 1%;
 float: left;
 
 }
 
 
 .bestbutton {
-	width: 200px;
+	width: 180px;
 	height: 40px;
 	background-color: #4b9ae4;
 	text-align: center;
 	border-radius: 10px;
-	margin-right: 1%;
+	
 	margin-left: 1%;
 	margin-bottom: 1%;
 	color:white;
 }
 
 .routesa {
-	width: 210px;
+	width: 180px;
 	height: 180px;
 	margin-top: 1%;
 	margin-right: 1%;
@@ -147,6 +111,7 @@ font-size:25px;
 position: absolute;
 weight:bold;
 float:left;
+z-index: 3;
 
 }
 
@@ -156,9 +121,13 @@ input {
 	height: 40px;
 	width: 400px;
 }
+
+
+
+
 </style>
 <body>
-	<div class="row">
+	<div class="row" style="margin-left: 17%;margin-right: 17%;margin-top: 5%;">
 		<div class="col-md-12"
 			style="background-color: #fbceb1; padding-top: 5%; padding-left: 7%; padding-bottom: 3%;">
 			<div class="col-md-4">
@@ -171,7 +140,7 @@ input {
 				<button class="routebutton">장소</button>
 				<button class="routebutton">필터</button>
 				<button class="routebutton">루트</button>
-				<input type="text">
+				<input type="text" style="width:90%">
 				<button class="routeok">검색</button>
 			</div>
 			<div class="md-8">
@@ -186,7 +155,7 @@ input {
 					<img src="<c:url value='/resources/images/route5.jpg'/>"
 						class="routesa">
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<img src="<c:url value='/resources/images/route6.jpg'/>"
 						class="routesa">
 				</div>
@@ -208,22 +177,23 @@ input {
 		</div>
 	</div>
 <!--  -->
-<div class="row">
+<div class="row" >
 
-<div class=" col-md-12" style="margin-bottom: 1%">
+<div class=" col-md-offset-2 col-md-10" style="margin-bottom: 1%">
 <button class="placebutton">터키일주</button><button class="placebutton">터키일주2</button><button class="placebutton">터키일주3</button><button class="placebutton">터키일주4</button>
 <button class="placebutton">터키일주5</button><button class="placebutton">터키일주6</button><button class="placebutton">터키일주7</button>
 </div>
 </div>
-<div class="row">
 <div class="col-md-12">
-<div class="col-md-10">총 게시물 10</div>
-<div class="col-md-1">인기 순 </div>
-<div class="col-md-1">최신 순 </div>
+<div class="col-md-offset-2 col-md-6" >총게시물수</div>
+
+<div class=" col-md-1" style="text-align: center">인기 순 </div>
+<div class="col-md-1" style="text-align: center">최신 순 </div>
 </div>
-</div>
-<div class="row"">
-<div class="col-md-12" style="position:relative;" >
+
+
+<div class="row" style="margin-bottom: 5%">
+<div class="col-md-offset-2 col-md-8" style="position:relative;" >
 <img src="<c:url value='/resources/images/gren3.jpg'/>" class="bestsa">
 <div class="shadow1"><p>타이틀</p>
 <br/>
@@ -235,7 +205,7 @@ input {
 </div>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-offset-2 col-md-8">
 <img src="<c:url value='/resources/images/gren4.jpg'/>" class="bestsa">
 <div class="shadow1"><p>타이틀</p>
 <br/>
@@ -246,7 +216,8 @@ input {
 <p>필터</p>
 </div>
 </div>
-<div class="col-md-12">
+
+<div class="col-md-offset-2 col-md-8">
 <img src="<c:url value='/resources/images/gren6.jpg'/>"class="bestsa" >
 <div class="shadow1"><p>타이틀</p>
 <br/>
@@ -258,8 +229,8 @@ input {
 </div>
 </div>
 
-
 </div>
+
 
 
 
