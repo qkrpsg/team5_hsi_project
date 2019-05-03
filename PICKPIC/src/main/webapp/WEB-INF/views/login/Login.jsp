@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!--  -->
  <link href="<c:url value='/css/Login.css' />" rel="stylesheet">  
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> 
+<script src="<c:url value='/js/sly.min.js'/>"></script>
 
  <section class="l_login_all_wrap">
  	
