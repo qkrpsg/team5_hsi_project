@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicUserServiceImpl;
 
 
 @Controller
 public class UserController {
 	//서비스 주입
-	@Resource(name="userService")
-	private PickpicUserServiceImpl userService;
+	@Resource(name="accountService")
+	private PickpicAccountServiceImpl accountService;
 	
 	//로그인
 	@RequestMapping("/user/Login.pic")
@@ -31,7 +32,7 @@ public class UserController {
 	//로그인 처리 로직
 	@RequestMapping("/user/loginProcess.pic")
 	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
-		boolean flag = userService.isMember(map);
+		boolean flag = accountService.isMember(map);
 		if(flag) {
 			session.setAttribute("ppu_id", map.get("ppu_id"));
 			//return "home.tiles";
@@ -43,34 +44,29 @@ public class UserController {
 			return "login/Login.tiles";
 		}//비회원이거나 아이디가 틀린경우
 		//로그인 성공시 메인화면으로 이동
-		
-		
 	}//loginProcess
 	
-
+	//이메일 중보 체크
 	@ResponseBody
-	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
+	@RequestMapping(value="/validator/signUpEmailCheck.do",produces="text/html; charset=UTF-8")
 	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
 										//맵에는 아이디 값만 담겨있다
-		
-		
-		
-		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
+		boolean flag = accountService.isEmail(map);//이걸 좀 바꿔줘야 한다
 		System.out.println(flag);
 		
 		
 		JSONObject json=new JSONObject();
-		if(map.get("ppu_id") == "") {
-			json.put("error", "아이디를 입력해주세요");
+		if(map.get("ppa_email") == "") {
+			json.put("error", "이메일를 입력해주세요");
 			return json.toJSONString();
 		}
 		if(flag) {
-			json.put("error", "아이디가 중복 됩니다.");
+			json.put("error", "이메일가 중복 됩니다.");
 			return json.toJSONString();
 		}
-		json.put("error", "아이디 사용가능");
+		json.put("error", "이메일 사용가능");
 		return json.toJSONString();
-	}
+	}//check
 //	@ResponseBody
 //	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
 //	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
@@ -92,25 +88,26 @@ public class UserController {
 //		return json.toJSONString();
 //	}
 	
-	
 	//home
 	@RequestMapping("/user/home.pic")
 	public String home() throws Exception{
 		
 		return "/home.tiles"; 
 	}//login
+	
 	//회원가입 
 	@RequestMapping("/user/sign_up.pic")
 	public String sign_up() throws Exception{
 		
 		return "login/Sign_Up.tiles";
 	}//login
-	
 
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map) throws Exception{
-		userService.insert(map);
+		System.out.println(map.get("ppa_name"));
+		System.out.println(map.get("ppa_email"));
+		accountService.insert(map);
 		/*
 		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 		*/
