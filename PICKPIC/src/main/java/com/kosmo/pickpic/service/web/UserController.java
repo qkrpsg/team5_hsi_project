@@ -9,12 +9,12 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
-import com.kosmo.pickpic.service.impl.PickpicUserServiceImpl;
 
 
 @Controller
@@ -30,15 +30,17 @@ public class UserController {
 	}//login
 	
 	//로그인 처리 로직
-	@RequestMapping("/user/loginProcess.pic")
+	@RequestMapping(value="/user/loginProcess.pic", method=RequestMethod.POST)
 	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
 		boolean flag = accountService.isMember(map);
 		if(flag) {
-			session.setAttribute("ppu_id", map.get("ppu_id"));
-			//return "home.tiles";
-			return "login/Login.tiles";
+			System.out.println("로그인 성공!");
+			session.setAttribute("ppa_email", map.get("ppa_email"));
+			return "home.tiles";
+//			return "login/Login.tiles";
 		}
 		else{
+			System.out.println("로그인 실패 ㅠ");
 			model.addAttribute("errorMsg", "회원 정보가 일치하지 않습니다");
 			//회원 정보가 일치하지 않는경우 로그인페이지로 재이동
 			return "login/Login.tiles";
@@ -53,7 +55,6 @@ public class UserController {
 										//맵에는 아이디 값만 담겨있다
 		boolean flag = accountService.isEmail(map);//이걸 좀 바꿔줘야 한다
 		System.out.println(flag);
-		
 		
 		JSONObject json=new JSONObject();
 		if(map.get("ppa_email") == "") {
@@ -108,6 +109,8 @@ public class UserController {
 		System.out.println(map.get("ppa_name"));
 		System.out.println(map.get("ppa_email"));
 		accountService.insert(map);
+		
+		
 		/*
 		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 		*/

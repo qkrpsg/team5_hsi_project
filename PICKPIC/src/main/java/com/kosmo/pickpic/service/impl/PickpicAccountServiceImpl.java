@@ -8,8 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.kosmo.pickpic.service.PickpicAccountService;
-import com.kosmo.pickpic.service.PickpicUserDTO;
-import com.kosmo.pickpic.service.PickpicUserService;
 
 //
 @Service("accountService")

@@ -55,18 +55,18 @@ public class FormValidator implements Validator {
 		  에러코드(중복 불가능)는 임의로.........
 		*/ 
 		FormCommand cmd=(FormCommand)command;
-		if(cmd.getPpu_id().trim().equals("")) {//아이디 체크요 길이체크
-			error.rejectValue("ppu_id", "ppu_idError");
+		if(cmd.getPpa_id().trim().equals("")) {//아이디 체크요 길이체크
+			error.rejectValue("ppu_email", "ppa_emailError");
 		}
 		System.out.println(error.getErrorCount());
 
 		System.out.println(error.getFieldErrorCount());
-		System.out.println("이거 같은데"+error.getFieldValue("ppu_id"));
+		System.out.println("이거 같은데"+error.getFieldValue("ppu_email"));
 		System.out.println(error.getGlobalErrorCount());
 		System.out.println(error.getNestedPath());
 		System.out.println(error.getFieldError());
-		System.out.println(error.getFieldError("ppu_id"));
-		System.out.println(error.getFieldType("ppu_id"));
+		System.out.println(error.getFieldError("ppu_email"));
+		System.out.println(error.getFieldType("ppu_email"));
 		System.out.println(error.getObjectName());
 		System.out.println(error.getAllErrors());
 		/*
@@ -88,7 +88,6 @@ public class FormValidator implements Validator {
 			try {Integer.parseInt(cmd.getYears());}
 			catch(Exception e) {
 				error.rejectValue("years", "yearsNotNumber");
-				
 			}		
 		}
 		if(cmd.gender == null) {  //체크박스 같은 배열 같은건 이런걸로
@@ -112,8 +111,5 @@ public class FormValidator implements Validator {
 		if(cmd.getSelf().trim().length()==0) { //텍스트에어리얼
 			error.rejectValue("self", "selfError");			
 		}*/
-		
-		
 	}////////////////////
-
 }

@@ -26,12 +26,8 @@
 		var pwdChk = document.getElementById("ppa_passwordCheck");
 		var name = document.getElementById("ppa_name");
 		var nickname = document.getElementById("ppa_nickname");
-// 		var phone = document.getElementById("ppu_tetephone");
-// 		var address = document.getElementById("ppu_address");
-// 		var age = document.getElementById("ppu_age");
-// 		var gender = document.getElementById("ppu_gender");
 		var profile = document.getElementById("ppa_profile_path");
-		var agree = document.getElementById("ppu_agree");
+		var agree = document.getElementById("ppa_agree");
 
 		var jo = document.getElementById("join-submit");
 

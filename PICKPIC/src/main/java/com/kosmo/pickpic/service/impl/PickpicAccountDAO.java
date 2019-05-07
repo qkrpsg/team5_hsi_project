@@ -9,8 +9,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kosmo.pickpic.service.PickpicAccountService;
-import com.kosmo.pickpic.service.PickpicUserDTO;
-import com.kosmo.pickpic.service.PickpicUserService;
 
 //
 
