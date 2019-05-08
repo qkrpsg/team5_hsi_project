@@ -71,6 +71,26 @@ public class UserController {
 		json.put("error", "아이디 사용가능");
 		return json.toJSONString();
 	}
+//	@ResponseBody
+//	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
+//	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
+//										//맵에는 아이디 값만 담겨있다
+//		
+//		System.out.println("::::::::::"+map.get("ppu_id"));
+//		
+//		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
+//		System.out.println(flag);
+//		JSONObject json=new JSONObject();
+//		if(flag) {
+//			json.put("flag", flag ? "Y":"N");
+//			return json.toJSONString();
+//		}
+//		json.put("error", "아이디가 중복 됩니다.");
+//		//model.addAttribute("error","아이디가 중복 됩니다.");
+//		map2.put("error","아이디가 중복 됩니다.");
+//		System.out.println(map2.get("error"));
+//		return json.toJSONString();
+//	}
 	
 	
 	//home
@@ -95,6 +115,20 @@ public class UserController {
 		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 		*/
 		return "login/Login.tiles";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/va/id.do")
+	public String check2(@RequestParam Map map,Model model) throws Exception{
+										//맵에는 아이디 값만 담겨있다
+		
+		
+		System.out.println("코치코치");
+		JSONObject json=new JSONObject();
+		//JSON객체의 put("키값","값")메소드로 저장하면
+		//{"키값":"값"} JSON형태의 데이타로 저장됨.
+		json.put("flag", "Y");
+		return json.toJSONString();
 	}
 	
 	//로그아웃 프로세스  

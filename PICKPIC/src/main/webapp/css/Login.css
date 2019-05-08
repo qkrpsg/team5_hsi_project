@@ -3,28 +3,6 @@
 	src: url("/pickpic/css/fonts/NANUMSQUAREB.TTF");
 }
 
-.header_top{
-	background: white !important;
-	opacity:1;
-	background:white;
-	border-bottom:1px #ccc solid;
-}
-.menu_wrap a{
-	color:#5a5a5a !important;
-	font-weight: normal !important;
-	font-size:1.1em !important;
-}
-.ul_submenu li a{
-	color:#5a5a5a !important;
-	font-weight: normal !important;
-	font-size:.9em !important;
-}
-
-.nav_wrap_top_position{
-	opacity:1;
-	background:white;
-	border-bottom:1px #ccc solid;
-}
 /* 메인 페이지 이외에 페이지에서 넣어야 하는 속성 */
 
 .l_login_all_wrap{
@@ -32,7 +10,7 @@
 	top:0;
 	left:0;
 	width:100%;
-	height:897px;;
+	height:897px;
 	background-image: url("/pickpic/resources/images/login_background.jpg");
 	background-repeat: no-repeat;	
 	background-size: cover;
@@ -46,7 +24,6 @@
 	width:1400px;
 	height:100%;
 	margin:0 auto;
-	
 	
 }
 .l_login_p_wrap{
@@ -124,7 +101,7 @@ background: red;
 	margin-top:10px;
 	color:#aaa;
 	height: 50px; 
-	
+	padding-left: 20px;
 	
 }
 .l_login_left_form_wrap div:first-child{
@@ -143,7 +120,7 @@ background: red;
 	width:130px;
 	height:110px !important;
 	margin-top:10px;
-	
+	padding-left: 20px;
 	height: 50px;
 }
 .l_login_left_form_wrap input:last-child{

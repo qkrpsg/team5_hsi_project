@@ -1,6 +1,6 @@
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link href="<c:url value='/css/Sign_Up.css' />" rel="stylesheet">
 <script src="<c:url value='/js_api/jquery.form-validator.js'/>"></script>
 
@@ -117,20 +117,13 @@ fileTarget.on('change', function(){ // 값이 변경되면
                 return false;
        		} */
         	
-        	
-        	
-        	
-        	
         }//onclick	
     	
     });
-    
-
-   
- 
 
 $(function(){
 	/* $('#ppu_tetephone').keypress(function(evt){
+
 	    var code = evt.which?evt.whichl:event.keyCode;
 	    var code2 =  evt.keyCode;
 	   	
@@ -138,28 +131,23 @@ $(function(){
 	       return false;
 	    }
 	}); */
-	
-	
-	
 });
 
 </script>
 <style>
-
-
 </style>
 
 <div class="l_pkp_all_wrap">
-	<div class="l_pkp_sub_wrap" >
+	<div class="l_pkp_sub_wrap">
 		<div class="row text-center">
-			<div class="section-header col-md-12"  ><!--  -->
+			<div class="section-header col-md-12">
+				<!--  -->
 				<h2>회원가입</h2>
 				<span>아래 폼을 작성하세요.</span>
 			</div>
 			<!-- /.section-header -->
 		</div>
-	
-		
+
 		<!-- /.row -->
 
 		<!-- <div class="l_help_list_wrap"> -->
@@ -167,8 +155,6 @@ $(function(){
 				<form role="form"
 					action='<c:url value="/user/sign_process.pic"/>'
 					method="POST">
-
-
 					<div class="form-group">
 								<label for="ppu_id">아이디</label>
 								<input type="text" class="form-control" name="ppu_id" id="ppu_id" placeholder="아이디를 입력해 주세요" data-validation="required">
@@ -197,56 +183,58 @@ $(function(){
 								<input type="text" class="form-control" name="ppu_nickname" id="ppu_nickname" placeholder="닉네임을 입력해 주세요" data-validation="required">
 						</div>
 						
-						
-						
-						
-						
-						
-						
-						
 						<div class="form-group">
 								<label for="ppu_gender" >성별</label>
 								
 								<input type="radio" style="margin-left:10px;" name="ppu_gender" id="ppu_gender" class="ppu_gender" value="m" checked />남자
 								<input type="radio"  name="ppu_gender"  class="ppu_gender" value="f" />여자
 						</div>
-						
-						
-						
-						
-						
 						<div class="filebox"> 
 							<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled" >
 							<label for="ppu_profile_path" class="btn btn-warning" name="ppu_profile_path">업로드</label> 
 							<input type="file" id="ppu_profile_path" class="upload-hidden" name="ppu_profile_path" data-validation="required"> 
 						</div>
-
-
 					<div class="form-group" style="overflow: hidden;">
 						<input type="checkbox" name="ppu_agree" value="이용약관" data-validation="required"
 							id="ppu_agree" value="ok"
 							style="float: left; margin-right: 10px;" />
 						<p style="float: left;">이용약관에 동의합니다.</p>
 					</div>
+				<div class="form-group">
+					<label for="ppu_gender">성별</label> <input type="radio"
+						style="margin-left: 10px;" name="ppu_gender" id="ppu_gender"
+						class="ppu_gender" value="m" checked />남자 <input type="radio"
+						name="ppu_gender" class="ppu_gender" value="f" />여자
+				</div>
 
-					
-					
-					
-					<div class="form-group text-center">
-						<button type="submit" id="join-submit" class="btn btn-primary">
-							회원가입<i class="fa fa-check spaceLeft"></i>
-						</button>
+				<div class="filebox">
+					<input class="upload-name  btn-default" value="프로필 사진을 올려주세요"
+						disabled="disabled"> <label for="ppu_profile_path"
+						class="btn btn-warning" name="ppu_profile_path">업로드</label> <input
+						type="file" id="ppu_profile_path" class="upload-hidden"
+						name="ppu_profile_path" data-validation="required">
+				</div>
 
-						<button type="submit" class="btn btn-warning">
-							가입취소<i class="fa fa-times spaceLeft"></i>
-						</button>
-					</div>
-					
-					
-					
-					
-				</form>
-			</div>
+
+				<div class="form-group" style="overflow: hidden;">
+					<input type="checkbox" name="ppu_agree" value="이용약관"
+						data-validation="required" id="ppu_agree" value="ok"
+						style="float: left; margin-right: 10px;" />
+					<p style="float: left;">이용약관에 동의합니다.</p>
+				</div>
+
+				<div class="form-group text-center">
+					<button type="submit" id="join-submit" class="btn btn-primary">
+						회원가입<i class="fa fa-check spaceLeft"></i>
+					</button>
+
+					<button type="submit" class="btn btn-warning">
+						가입취소<i class="fa fa-times spaceLeft"></i>
+					</button>
+				</div>
+
+			</form>
+		</div>
 		<!-- </div> -->
 	</div>
 </div>

@@ -40,10 +40,7 @@
 	border-bottom: 1px #ccc solid;
 }
 
-body {
-	margin-left: 20%;
-	margin-right: 20%;
-}
+
 
 .crewsa {
 	width: 300px;
@@ -62,12 +59,20 @@ body {
 
 .text2 {
 	font-size: 18px;
+
+}
+@media screen and (max-width:1000px) and (min-width:0px) {
+
+.crewsa{
+width:100%;
+height:200px;
+}
 }
 
 /* 메인 페이지 이외에 페이지에서 넣어야 하는 속성 */
 </style>
 <body style="background-color: #fbceb1";>
-	<div class="row" style="margin-top: 15%;">
+	<div class="row" style="margin-top: 6%;margin-left: 20%;margin-right: 20%">
 		<div class="col-md-12">
 			<p style="font-size: 40px; weight: bold; color: #5c5ed3; margin-bottom: 7%; margin-left: 3%;">크루 소개</p>
 		</div>
@@ -89,6 +94,7 @@ body {
 					class="crewsa">
 				<p class="text1">김용강(28)</p>
 				<p class="text2">팀원</p>
+				<p class="text2">adsasdsdadasd</p>
 			</div>
 		</div>
 		<div class="col-md-12">

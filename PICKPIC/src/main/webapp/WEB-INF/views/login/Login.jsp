@@ -1,9 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<!--  -->
  <link href="<c:url value='/css/Login.css' />" rel="stylesheet">  
-<script src="<c:url value='/js/sly.min.js'/>"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> 
+<script src="<c:url value='/js/Login.js'/>"></script>
 
  <section class="l_login_all_wrap">
  	
@@ -26,32 +25,25 @@
 		 			
 		 			<div class="l_login_left_form_wrap">
 		 				<form action="<c:url value='/user/loginProcess.pic'/>"  method="post">
-		 				
-								
-							
-							
-		 				
-	 						<sec:authorize access="isAuthenticated()">
-	 						<div>
-								<div class="alert alert-success col-md-12" style="width:500px;border: 1px red solid;"><sec:authentication property="principal.username" />님
+		 				<c:if test="${! empty sessionScope.ppu_id }" var="isLogin">
+								<div class="alert alert-success col-md-12">${sessionScope.ppu_id}님
 									환영합니다
 								</div>
-							</div>
-							</sec:authorize>
-						
-							<sec:authorize access="isAnonymous()">
-			 				<div>
-			 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
-			 					<input type="password" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
+							</c:if>	
+							<c:if test="${not isLogin }">
+		 				<div>
+		 						
 		 					
-		 					</div>
+		 					<input type="text" id="id" name="ppu_id"   value="" placeholder="아이디" >
+		 					<input type="password" id="pwd" name="ppu_password" value="" placeholder="비밀번호">
+		 				
+		 				</div>
 		 				
 		 				
 		 				<div>
 		 					<input type="submit" value="로그인" class="btn btn-info">
 		 				</div>
-		 					</sec:authorize>
+		 					</c:if>
 		 				
 		 				
 		 				
@@ -156,4 +148,4 @@
       }; */
     
   //]]>
-</script>		
+</script>
