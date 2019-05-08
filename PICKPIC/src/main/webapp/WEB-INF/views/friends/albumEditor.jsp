@@ -1,3 +1,5 @@
+
+<%@page import="org.springframework.web.multipart.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -5,15 +7,16 @@
 <!-- css&js -->
 <link href="<c:url value='/css/Navbar.css' />" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value='/css/Modal.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/templatemo-main.css'/>">
 
 
 <!-- albumEditor.jsp -->
 <!-- 상단 바 -->
 <div class="topnav" id="myTopnav" style="background-color: #e3f2fd;">
 
-	<a href="#" class="btncolor">되돌리기</a>
-	 <a onclick="myFunc('Demo3')" href="#">내 필터 보관함</a> 
-	 <a class="btn" data-toggle="modal" id="option_btn">가져오기</a>
+	<a href="#" class="btncolor">되돌리기</a> <a onclick="myFunc('Demo3')"
+		href="#">내 필터 보관함</a> <a class="btn" data-toggle="modal"
+		id="option_btn">가져오기</a>
 
 	<!-- <form class="form-inline">
 		<input class="form-control" type="search" placeholder="필터명을 입력하세요."
@@ -33,28 +36,73 @@
 
 </div>
 
-<div class="row" >
-<div class="row" style="height: 500px;background-color:gray;">
+<div class="row" id="preview">
+	<!-- <div id="uploaded_images"></div> -->
 
+	<div class="col-md-3 col-sm-6">
+		<div class="portfolio-thumb">
+			<!-- <div class="overlay" >
+				<div class="inner">
+					<h4>
+						<a data-rel="lightbox" href="http://placehold.it/180">파일이름</a>
+					</h4>
+					<span>날짜</span>
+				</div>
+			</div> -->
+			<!-- /.overlay -->
+		</div>
+		<!-- /.portfolio-thumb -->
+	</div>
+	<!-- /.col-md-3 -->
 </div>
 
+<!-- bootstrap 3 horizontalscroll fixed bottom -->
+<div class="navbar navbar-default navbar-fixed-bottom">
+	<div class="container-fluid">
+		<div class="nav navbar-nav">
+			<!-- 필터 띄우기 -->
+			<div class="scrollmenu squares">
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					1</div>
+				<div
+					style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
+					8</div>
 
-<!-- 필터 띄우기 -->
-<div class="scrollmenu squares">
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 1</div>
-	<div style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item 8</div>
-	  
-</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <script>
@@ -76,7 +124,6 @@
 			}
 		}
 	} */
-	
 </script>
 
 <!-- 모달 -->
@@ -99,10 +146,11 @@
 				</div>
 
 				<div class="col-xs-3 btn btn-file">
-					<input type="file" name="attachedFile1"> 
-					<img class="img-circle img_100"
+					<input type="file" name="img_mypc[]" id="img_mypc" multiple
+						accept=".jpg, .jpeg, .png"> <img
+						class="img-circle img_100"
 						src="<c:url value='/resources/images/sns/P.png'/>" alt="image">
-						<h5>내 PC</h5>
+					<h5>내 PC</h5>
 				</div>
 
 				<div class="col-xs-3 btn">
@@ -115,15 +163,11 @@
 						src="<c:url value='/resources/images/sns/F.png'/>" alt="image">
 					<h5>페이스북</h5>
 				</div>
-
 			</div>
 
 		</div>
 	</div>
 </div>
-
-
-
 
 
 <script>
@@ -133,15 +177,15 @@
 	// Get the button that opens the modal
 	var btn = document.getElementById("option_btn");
 
-	// Get the <span> element that closes the modal
+	// Get the _$tag_ element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 
 	// When the user clicks on the button, open the modal 
 	btn.onclick = function() {
 		modal.style.display = "block";
-	} 
+	}
 
-	// When the user clicks on <span> (x), close the modal
+	// When the user clicks on _$tag_ (x), close the modal
 	span.onclick = function() {
 		modal.style.display = "none";
 	}
@@ -151,13 +195,104 @@
 		if (event.target == modal) {
 			modal.style.display = "none";
 		}
-	} 
-	
-	 $(window).load(function(){
-	        $('#option_modal').modal('show');
-	    });
+	}
 
+	$(window).load(function() {
+		$('#option_modal').modal('show');
+	});
 </script>
+
+<script type="text/javascript">
+	/* 멀티완료  */
+	var fileCollection = new Array();
+	$('#img_mypc').on(
+			'change',
+			function(e) {
+				var files = e.target.files;
+				$.each(files, function(i, file) {
+					fileCollection.push(file);
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+					reader.onload = function(e) {
+						var template = '<div class="col-md-3 col-sm-6">'
+								+ '<div class="portfolio-thumb">'
+								+ '<img src="'+e.target.result+'"/>'
+								+ '</div></div>';
+
+						$('#preview').append(template);
+					};
+				});
+			});
+
+	/*  // 등록 이미지 삭제 ( input file reset )
+	function resetInputFile($input, $preview) {
+	var agent = navigator.userAgent.toLowerCase();
+	if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)) {
+	    // ie 일때
+	    $input.replaceWith($input.clone(true));
+	    $preview.empty();
+	} else {
+	    //other
+	    $input.val("");
+	    $preview.empty();
+	}        
+	}
+	
+	$(".btn-delete").click(function(event) {
+	var $input = $("#inp-img");
+	var $preview = $('#preview');
+	resetInputFile($input, $preview);
+	});  */
+
+	/* 테스트 */
+
+	/* $('#img_mypc').change(function(){
+		  var files = $('#img_mypc')[0].files;
+		  var error = '';
+		  var form_data = new FormData();
+		  for(var count = 0; count<files.length; count++)
+		  {
+		   var name = files[count].name;
+		   var extension = name.split('.').pop().toLowerCase();
+		   if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
+		   {
+		    error += "Invalid " + count + " Image File"
+		   }
+		   else
+		   {
+		    form_data.append("files[]", files[count]);
+		   }
+		  }
+		  if(error == '')
+		  {
+		   $.ajax({
+		    url:"<?php echo base_url(); ?>upload_multiple/upload", //base_url() return http://localhost/tutorial/codeigniter/
+		    method:"POST",
+		    data:form_data,
+		    contentType:false,
+		    cache:false,
+		    processData:false,
+		    beforeSend:function()
+		    {
+		     $('#uploaded_images').html("<label class='text-success'>Uploading...</label>");
+		    },
+		    success:function(data)
+		    {
+		     $('#uploaded_images').html(data);
+		     $('#img_mypc').val('');
+		    }
+		   })
+		  }
+		  else
+		  {
+		   alert(error);
+		  }
+		 });
+	 */
+</script>
+
+
+
 
 
 
