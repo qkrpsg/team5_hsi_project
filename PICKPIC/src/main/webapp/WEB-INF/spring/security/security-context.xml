@@ -7,13 +7,12 @@
 	<!-- 보안과 관련된 설정파일 -->
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/**" access="permitAll" />
-		<security:intercept-url pattern="/pickpic/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/pickpic/**" access="hasRole('GUEST')" />
 		<security:form-login
 			login-page="/user/Login.pic" 
-			default-target-url="/user/Login.pic"
-			always-use-default-target="true"
-			authentication-failure-url="/user/Login.pic?error=true"
 			login-processing-url="/user/loginProcess.pic"
+			default-target-url="/"
+			authentication-failure-url="/user/Login.pic?error=true"
 			username-parameter="ppa_email" 
 			password-parameter="ppa_password" />
 		<security:csrf disabled="false" />

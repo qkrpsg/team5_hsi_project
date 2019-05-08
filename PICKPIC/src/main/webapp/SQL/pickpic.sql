@@ -52,7 +52,7 @@ CREATE TABLE answer_question
 CREATE TABLE auth_security
 (
 	as_id nvarchar2(12) NOT NULL,
-	as_enabled_yn char(1) DEFAULT 'N' NOT NULL CHECK(as_enabled_yn IN('Y', 'N')),
+	as_enabled_flag number DEFAULT 0 NOT NULL CHECK (as_enabled_flag IN(1, 0)),
 	as_class nvarchar2(10) DEFAULT 'GUEST' NOT NULL,
 	as_date date DEFAULT SYSDATE NOT NULL,
 	as_index number NOT NULL,

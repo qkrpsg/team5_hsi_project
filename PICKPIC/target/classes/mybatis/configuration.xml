@@ -20,8 +20,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑) 정보 설정 -->	
 	<mappers>
-		<mapper resource="mybatis/MemoComment.xml" />
-		
 		<mapper resource="mybatis/PickpicAccount.xml" />
 	</mappers>
 	

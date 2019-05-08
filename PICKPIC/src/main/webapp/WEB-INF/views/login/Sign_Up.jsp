@@ -39,9 +39,6 @@
 					ppa_email : $('#ppa_email').val()
 				},
 				success : function(data) {
-					console.log('aaaaaaaaaaaaa');
-					console.log(data['flag']);
-					console.log(data['error']);
 					$('#hi').html(data['error']);
 				},
 				error : function(request, error) {
@@ -57,56 +54,16 @@
 			$.validate();
 		});
 		jo.onclick = function() {
-			/* if(id.value == ''){
-				alert('아이디를 입력하세요');
-				id.focus();
-			    return false;
-			}
-			if(pwd.value == ''){
-				alert('비밀번호를 입력하세요');
-				pwd.focus();
-			    return false;
-			}
-			
-			if(pwdChk.value == ''){
-				alert('비밀번호를 확인해주세요');
-				pwdChk.focus();
-			    return false;
-			} */
 			if (pwd.value != pwdChk.value) {
 				alert('비밀번호를 확인해주세요');
 				pwdChk.focus();
 				return false;
 			}
-			if ($('#hi').html() != "이메일 사용가능") {
+			if ($('#hi').html() != "사용 가능한 이메일 입니다.") {
 				alert('이메일 중복체크를 해주세요');
 				email.focus();
 				return false;
 			}
-
-			/* if(!agree.checked){
-				alert('이용약관에 동의 해주세요');
-				agree.focus();
-			    return false;
-			} */
-			/* if(name.value == ''){
-				alert('이름을 입력하세요');
-				name.focus();
-			    return false;
-			}
-			
-			if(nickname.value == ''){
-				alert('닉네임을 입력하세요');
-				nickname.focus();
-			    return false;
-			}
-			
-			
-			if(profile.value == ''){
-				alert('사진을 업로드 해주세요');
-				profile.focus();
-			    return false;
-			} */
 
 		}//onclick	
 

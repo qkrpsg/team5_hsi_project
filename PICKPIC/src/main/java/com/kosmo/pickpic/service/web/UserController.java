@@ -23,35 +23,17 @@ public class UserController {
 	@Resource(name="accountService")
 	private PickpicAccountServiceImpl accountService;
 	
+	
 	//로그인
 	@RequestMapping("/user/Login.pic")
 	public String login(HttpSession session,Model model) throws Exception{
 		return "login/Login.tiles";
 	}//login
 	
-	//로그인 처리 로직
-	@RequestMapping(value="/user/loginProcess.pic", method=RequestMethod.POST)
-	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
-		boolean flag = accountService.isMember(map);
-		if(flag) {
-			System.out.println("로그인 성공!");
-			session.setAttribute("ppa_email", map.get("ppa_email"));
-			return "home.tiles";
-//			return "login/Login.tiles";
-		}
-		else{
-			System.out.println("로그인 실패 ㅠ");
-			model.addAttribute("errorMsg", "회원 정보가 일치하지 않습니다");
-			//회원 정보가 일치하지 않는경우 로그인페이지로 재이동
-			return "login/Login.tiles";
-		}//비회원이거나 아이디가 틀린경우
-		//로그인 성공시 메인화면으로 이동
-	}//loginProcess
-	
-	//이메일 중보 체크
+	//이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/validator/signUpEmailCheck.do",produces="text/html; charset=UTF-8")
-	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
+	public String emailCheck(@RequestParam Map map,Model model,Map map2) throws Exception{
 										//맵에는 아이디 값만 담겨있다
 		boolean flag = accountService.isEmail(map);//이걸 좀 바꿔줘야 한다
 		System.out.println(flag);
@@ -62,39 +44,12 @@ public class UserController {
 			return json.toJSONString();
 		}
 		if(flag) {
-			json.put("error", "이메일가 중복 됩니다.");
+			json.put("error", "사용 할 수 없는 이메일 입니다.");
 			return json.toJSONString();
 		}
-		json.put("error", "이메일 사용가능");
+		json.put("error", "사용 가능한 이메일 입니다.");
 		return json.toJSONString();
-	}//check
-//	@ResponseBody
-//	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
-//	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
-//										//맵에는 아이디 값만 담겨있다
-//		
-//		System.out.println("::::::::::"+map.get("ppu_id"));
-//		
-//		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
-//		System.out.println(flag);
-//		JSONObject json=new JSONObject();
-//		if(flag) {
-//			json.put("flag", flag ? "Y":"N");
-//			return json.toJSONString();
-//		}
-//		json.put("error", "아이디가 중복 됩니다.");
-//		//model.addAttribute("error","아이디가 중복 됩니다.");
-//		map2.put("error","아이디가 중복 됩니다.");
-//		System.out.println(map2.get("error"));
-//		return json.toJSONString();
-//	}
-	
-	//home
-	@RequestMapping("/user/home.pic")
-	public String home() throws Exception{
-		
-		return "/home.tiles"; 
-	}//login
+	}//emailCheck
 	
 	//회원가입 
 	@RequestMapping("/user/sign_up.pic")
@@ -108,21 +63,19 @@ public class UserController {
 	public String sign_up_process(@RequestParam Map map) throws Exception{
 		System.out.println(map.get("ppa_name"));
 		System.out.println(map.get("ppa_email"));
-		accountService.insert(map);
-		
+		accountService.accountinsert(map);
+		accountService.securityInsert(map);
 		
 		/*
 		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 		*/
 		return "login/Login.tiles";
-	}
+	}//sign_up_process
 	
 	@ResponseBody
 	@RequestMapping("/va/id.do")
 	public String check2(@RequestParam Map map,Model model) throws Exception{
 										//맵에는 아이디 값만 담겨있다
-		
-		
 		System.out.println("코치코치");
 		JSONObject json=new JSONObject();
 		//JSON객체의 put("키값","값")메소드로 저장하면
@@ -140,7 +93,7 @@ public class UserController {
 	}//logoutProcess
 	
 	
-	//내정보
+	//마이페이지
 	@RequestMapping("/user/myPage.pic")
 	public String myPage() throws Exception{
 		return "login/MyPage.tiles";
