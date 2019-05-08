@@ -141,4 +141,11 @@ public class FriendsController {
 	public String albumOption() throws Exception {
 		return "friends/albumEditor.tiles";
 	}
+	
+	//연습
+	@RequestMapping("/friends/search.pic")
+	public String search() throws Exception {
+		return "friends/search.tiles";
+	}
+	
 }//FriendsController

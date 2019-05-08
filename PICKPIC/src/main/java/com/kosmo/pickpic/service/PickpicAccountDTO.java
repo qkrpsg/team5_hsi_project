@@ -1,7 +1,6 @@
 package com.kosmo.pickpic.service;
 
-public class FormCommand {
-	//폼의 파라미터명과 같게 속성(멤버변수) 정의]
+public class PickpicAccountDTO {
 	private String ppa_id;
 	private String ppa_email;
 	private String ppa_password;
