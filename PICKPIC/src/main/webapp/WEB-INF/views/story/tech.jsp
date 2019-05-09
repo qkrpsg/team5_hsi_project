@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -27,11 +26,8 @@
 <body>
 	<div id="barba-wrapper">
 		<div class="barba-container ">
-
 			<header>
 				<div id="js-alert-touch"></div>
-
-
 				<input type="checkbox" id="toggle-menu" />
 				<nav>
 					<ul class="no-bullet">
@@ -46,7 +42,6 @@
 				</nav>
 				<label for="toggle-menu" id="overlay"></label> <a href="<c:url value='/'/>" class="namesite h5 items"># P I C K P P I C K</a>
 			</header>
-
 			<main class="cat-1 category">
 
 			<div class="title-main body--sprite">
@@ -522,11 +517,7 @@
 				</div>
 			</div>
 			</main>
-
-
 		</div>
-
-
 
 		<script src="<c:url value='/js_api/shuffle.min.js'/>"></script>
 		<script src="<c:url value='/js_api/swiper.min.js'/>"></script>
