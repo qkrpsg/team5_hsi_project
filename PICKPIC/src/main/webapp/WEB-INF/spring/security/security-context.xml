@@ -26,8 +26,8 @@
 			<security:jdbc-user-service 
 				data-source-ref="datasource" 
 				role-prefix=""
-	            users-by-username-query="select O.ppa_email as username, ppa_password as password, enabled from pickpic_account O JOIN AUTH_SECURITY2 A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
-	            authorities-by-username-query="select O.ppa_email as username, authority AS authority  from pickpic_account O JOIN AUTH_SECURITY2 A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
+	            users-by-username-query="select O.ppa_email as username, ppa_password as password, as_enabled_flag as enabled from pickpic_account O JOIN AUTH_SECURITY A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
+	            authorities-by-username-query="select O.ppa_email as username, as_class as authority from pickpic_account O JOIN AUTH_SECURITY A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
 				/>
 		</security:authentication-provider>
 	</security:authentication-manager>
