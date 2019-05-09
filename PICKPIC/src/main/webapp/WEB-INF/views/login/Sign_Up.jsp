@@ -24,7 +24,6 @@
 		var email = document.getElementById("ppa_email");
 		var pwd = document.getElementById("ppa_password");
 		var pwdChk = document.getElementById("ppa_passwordCheck");
-		var name = document.getElementById("ppa_name");
 		var nickname = document.getElementById("ppa_nickname");
 		var profile = document.getElementById("ppa_profile_path");
 		var agree = document.getElementById("ppa_agree");
@@ -103,9 +102,9 @@
 			<form role="form" action='<c:url value="/user/sign_process.pic"/>' method="POST">
 				<div class="form-group">
 					<label for="ppa_email">이메일</label> 
-					<input type="text" class="form-control" name="ppa_email" id="ppa_email" placeholder="이메일을 입력해 주세요" data-validation="required"> 
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<a class="email_check btn btn-info" style="margin-top: 10px;">중복체크</a>
+					<input type="text" class="form-control" name="ppa_email" id="ppa_email" placeholder="이메일을 입력해 주세요" data-validation="required">
+					<a class="email_check btn btn-info" style="margin-top: 10px;">중복체크</a>		
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />			
 					<span id="hi" style="color: red;"></span>
 				</div>
 				<div class="form-group">
@@ -115,10 +114,6 @@
 				<div class="form-group">
 					<label for="ppa_passwordCheck">비밀번호 확인</label> 
 					<input type="password" class="form-control" name="ppa_passwordCheck" id="ppa_passwordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요" data-validation="required">
-				</div>
-				<div class="form-group">
-					<label for="ppa_name">이름</label> 
-					<input type="text" class="form-control" name="ppa_name" id="ppa_name" placeholder="이름 입력해 주세요" data-validation="required">
 				</div>
 				<div class="form-group">
 					<label for="ppa_nickname">닉네임</label> 

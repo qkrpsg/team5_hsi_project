@@ -52,7 +52,7 @@ CREATE TABLE answer_question
 CREATE TABLE auth_security
 (
 	as_id nvarchar2(12) NOT NULL,
-	as_enabled_flag number DEFAULT 0 NOT NULL CHECK (as_enabled_flag IN(1, 0)),
+	as_enabled_flag number DEFAULT 0 NOT NULL CHECK(as_enabled_flag IN(1, 0)),
 	as_class nvarchar2(10) DEFAULT 'GUEST' NOT NULL,
 	as_date date DEFAULT SYSDATE NOT NULL,
 	as_index number NOT NULL,
@@ -125,7 +125,6 @@ CREATE TABLE pickpic_account
 	ppa_id nvarchar2(12) NOT NULL,
 	ppa_email nvarchar2(30) NOT NULL,
 	ppa_password varchar2(15) NOT NULL,
-	ppa_name nvarchar2(5) NOT NULL,
 	ppa_nickname nvarchar2(10) NOT NULL,
 	ppa_join_date date DEFAULT SYSDATE NOT NULL,
 	ppa_type nvarchar2(10) DEFAULT 'pickpic' NOT NULL,
