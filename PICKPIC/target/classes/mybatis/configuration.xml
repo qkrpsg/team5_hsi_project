@@ -10,12 +10,18 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 자바빈 별칭:매퍼파일에서 환경설정 파일로 위치됨.--> 
 	<typeAliases> 
 		<typeAlias alias="PickpicAccountDTO" type="com.kosmo.pickpic.service.PickpicAccountDTO"/>
+		<typeAlias alias="PickPlaceBoardDTO" type="com.kosmo.pickpic.service.PickPlaceBoardDTO"/>
+		<typeAlias alias="FilterDTO" type="com.kosmo.pickpic.service.FilterDTO"/>
+		<typeAlias alias="PickRoadBoardDTO" type="com.kosmo.pickpic.service.PickRoadBoardDTO"/>
 	 </typeAliases>
 	
 	
 	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑) 정보 설정 -->	
 	<mappers>
 		<mapper resource="mybatis/PickpicAccount.xml" />
+		<mapper resource="mybatis/PickPlaceBoard.xml" />
+		<mapper resource="mybatis/Filter.xml" />
+		<mapper resource="mybatis/PickRoadBoard.xml" />
 	</mappers>
 	
 </configuration>

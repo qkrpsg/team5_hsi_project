@@ -63,7 +63,7 @@ public class UserController {
 	public String sign_up_process(@RequestParam Map map) throws Exception{
 		System.out.println(map.get("ppa_name"));
 		System.out.println(map.get("ppa_email"));
-		accountService.accountinsert(map);
+		accountService.accountInsert(map);
 		accountService.securityInsert(map);
 		
 		/*

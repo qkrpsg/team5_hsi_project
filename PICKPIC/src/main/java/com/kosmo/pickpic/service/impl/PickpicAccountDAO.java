@@ -30,7 +30,7 @@ public class PickpicAccountDAO implements PickpicAccountService {
 	}
 
 	@Override
-	public void accountinsert(Map map) {
+	public void accountInsert(Map map) {
 		template.insert("PickpicAccountInsert", map);
 	}
 
