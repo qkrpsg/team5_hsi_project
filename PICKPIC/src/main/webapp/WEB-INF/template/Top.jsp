@@ -27,7 +27,7 @@
 							<li class="col-md-3"><a
 								href="<c:url value='/'/>">피크픽 스토리</a></li>
 							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
-							<li class="col-md-3"><a href="#">고객센터</a></li>
+							<li class="col-md-3"><a href="<c:url value='/friends/maptest.pic'/>">고객센터</a></li>
 							<li class="col-md-1"></li>
 						</ul>
 					</nav>
@@ -39,6 +39,7 @@
 							<sec:authorize access="isAnonymous()">
 								<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a></li>
 								<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a></li>
+								
 							</sec:authorize>	
 								<sec:authorize access="isAuthenticated()">
 									<li><a href="<c:url value='/user/myPage.pic'/>"><sec:authentication property="principal.username" /> 님 <span></span></a></li>
