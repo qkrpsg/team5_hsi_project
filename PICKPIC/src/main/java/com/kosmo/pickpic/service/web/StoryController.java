@@ -22,7 +22,7 @@ public class StoryController {
 	//사용기술
 	@RequestMapping("/story/tech.pic")
 	public String tech() {
-		return "story/tech";
+		return "story/tech.tiles";
 	}//tech
 
 	//다운로드

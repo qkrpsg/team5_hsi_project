@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+
+<mapper namespace="mybatis.PickpicAccount">
+	<select id="PickpicAccountIsMember" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM pickpic_account WHERE ppa_email=#{ppa_email} AND ppa_password=#{ppa_password}
+	</select>
+	
+	<select id="PickpicAccountIsEmail" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM pickpic_account WHERE ppa_email=#{ppa_email} 
+	</select>
+	
+	<!-- 생성된 계정 삽입 쿼리  -->
+	<insert id="PickpicAccountInsert" parameterType="java.util.Map">
+		INSERT INTO pickpic_account(ppa_id, ppa_email, ppa_password, ppa_nickname, ppa_index) 
+		VALUES(func_generator, #{ppa_email},#{ppa_password},#{ppa_nickname}, seq_ppa_index.NEXTVAL)
+	</insert>
+	<insert id="AuthSecurityInsert" parameterType="java.util.Map">
+		INSERT INTO auth_security(as_id, as_index, ppa_id)
+		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = '#{ppa_email}' AND ppa_type = '#{ppa_type}'))
+	</insert>
+</mapper>

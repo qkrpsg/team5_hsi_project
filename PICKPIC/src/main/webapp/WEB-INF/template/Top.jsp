@@ -14,7 +14,7 @@
 	<div class="menu_all_wrap_position">
 		<div class="main_menu_wrap">
 			<div class="logo col-md-2">
-				<a href="<c:url value='/admin/home.pic'/>">
+				<a href="<c:url value='/'/>">
 					<img id="top_logo" src="<c:url value='/resources/images/pickpic_logo_white.png'/>" />
 				</a>
 			</div>
@@ -38,9 +38,13 @@
 								<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">
-								<li><a href="<c:url value='/user/myPage.pic'/>"><sec:authentication property="principal.username" /> 님 <span></span></a></li>
+								<c:if test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username eq 'admin' }" var="isAdmin">
+									<li><a href="<c:url value='/admin/home.pic'/>"> 관리자 <span></span></a></li>
+								</c:if>
+								<c:if test="${not isAdmin }">
+									<li><a href="<c:url value='/user/myPage.pic'/>"><sec:authentication property="principal.username" /> 님 <span></span></a></li>
+								</c:if>
 								<li><a href="javascript:logout()">Logout</a></li>
-								<%-- <c:url value='/user/logout.pic'/> --%>
 							</sec:authorize>
 						</ul>
 					</div>
