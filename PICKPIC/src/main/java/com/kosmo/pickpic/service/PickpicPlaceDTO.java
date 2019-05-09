@@ -17,6 +17,7 @@ public class PickpicPlaceDTO {
 	private String place_image_path;
 	private String id;
 	private String filter_no;
+	
 	//게터/세터]
 	public String getPlace_no() {
 		return place_no;
