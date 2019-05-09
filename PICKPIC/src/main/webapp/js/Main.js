@@ -30,7 +30,7 @@ $(function(){
 			$('#sec_1').css("margin-top", "50px");
 			$('.l_keyword_right_wrap').css("margin-top", "0px");
 			$('.l_keyword_right_wrap img').css("margin", "0px");
-			//섹션2
+			///섹션2
 			$('.l_keyword_left_wrap img').css("margin", "0px");
 			$('.l_keyword_left_wrap img').css("float", "right");
 			$('.l_keyword_right_wrap div').css("margin-top", "30px !important");
@@ -223,9 +223,14 @@ $(function(){
 		
 	});
 	
-	
-	
-	
+	/*
+	$(window).scroll(function(){
+
+		  if($(this).scrollTop() >= "200"){
+			  $('.베스트픽').stop().animate({opacity:"0"},500); 
+		  }
+			 
+	});*/
 	
 	
    

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -61,17 +62,18 @@ public class FriendsController {
 	String key = "A2dHFUxH72X%2BT%2Br66B8tkGckWP9SAktj5ZoV43XBB2OH2T5TA6r8W9VN%2FL%2F1nIc5I3SpAuLm%2FtBIpLVGb2jfvg%3D%3D";
 	
 	String addr ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?"
-			+ "ServiceKey="+key
-			+ "&contentTypeId="+map.get("contenttypeid") // 파라미터로 받자
-			+ "&areaCode="+map.get("areacode") 	 // 파라미터로 받자
-			+ "&sigunguCode="
-			+ "&cat1=&cat2=&cat3="
-			+ "&listYN=Y"
-			+ "&MobileOS=ETC"
-			+ "&MobileApp=TourAPI3.0_Guide&arrange=A"
-			+"&_type=json"                  // 나중 에 제이슨타입으로 결과를 받아보자
-			+ "&numOfRows="+map.get("numOfRows")  // 파라미터로 받자  총 갯수
-			+ "&pageNo=1"; 
+		+ "ServiceKey="+key
+		
+		+ "&contentTypeId="+map.get("contenttypeid") // 파라미터로 받자
+		+ "&areaCode="+map.get("areacode") 	 // 파라미터로 받자
+		+ "&sigunguCode="
+		+ "&cat1=&cat2=&cat3="
+		+ "&listYN=Y"
+		+ "&MobileOS=ETC"
+		+ "&MobileApp=TourAPI3.0_Guide&arrange=A"
+		+"&_type=json"                  // 나중 에 제이슨타입으로 결과를 받아보자
+		+ "&numOfRows="+map.get("numOfRows")  // 파라미터로 받자  총 갯수
+		+ "&pageNo=1"; 
 			
 			
 //			System.out.println("hi"+map.get("contenttypeid"));
@@ -94,15 +96,13 @@ public class FriendsController {
 				URL url = new URL(addr);//jsp로 보낼 textdata
 				//System.out.println("url::::"+url.toString());
 				InputStream in = url.openStream();
-				
 				//System.out.println("inininin"+in);
-				
 				StringBuffer result = new StringBuffer();
 				BufferedReader reader = new BufferedReader(new InputStreamReader(in,"utf-8"));
 				String data;
 				while((data=reader.readLine())!=null) {
 					result.append(data);
-					//System.out.println("나오냐?:"+result.toString()+"\r\n");
+					System.out.println("나오냐?:"+result.toString()+"\r\n");
 				}
 				reader.close();
 				in.close();
@@ -194,8 +194,9 @@ public class FriendsController {
 			 * firstimage:http://tong.visitkorea.or.kr/cms/resource/34/1181034_image2_1.jpg}
 			 */
 			String[] a;
-			List<String> TitleList = new Vector<String>();
+			List<Map<String,String>> TitleList = new Vector<Map<String,String>>();
 			for(int j=1;j < map.size()+1;j++) {
+				Map<String,String> TitleList2 = new HashMap<String, String>();
 				String test = map.get("title"+j).toString();
 				test=test.replace("{","").replace("}","");
 				String[] test2=test.split(",");
@@ -216,27 +217,23 @@ public class FriendsController {
 				JSONParser jsonparser = new JSONParser();
 				JSONObject jsonobject = (JSONObject) jsonparser.parse(jsonString);
 				//System.out.println("55555:"+jsonobject.get("addr1"));
-				System.out.println("뭘까요?"+jsonobject.get("title"));
-				TitleList.add((String)jsonobject.get("title"));
+				System.out.println("뭘까요?"+jsonobject.get("title").toString());
+				TitleList2.put("title",jsonobject.get("title").toString());
+				TitleList2.put("addr",jsonobject.get("addr1").toString());
+				
+				TitleList.add(TitleList2);
+				
 			}
 			
+			
 			//jsList
-			model.addAttribute("title",TitleList);
+			model.addAttribute("data",TitleList);
+			//.addAttribute("addr1",Addr1List);
 			
-			
-			
-		
-			
-			
-		
 			
 			//return "friends/map";
 			return "friends/mapWrite.tiles";
 		}
-	
-	
-	
-	
 	
 	//픽로드
 	@RequestMapping("/friends/route.pic")
@@ -250,8 +247,15 @@ public class FriendsController {
 		return "friends/albumDown.tiles";
 	}
 	//앨범다운-팝업
-	@RequestMapping("/friends/editor_popup.pic")
+	@RequestMapping("/friends/albumEditor.pic")
 	public String albumOption() throws Exception {
-		return "friends/editor_popup";
+		return "friends/albumEditor.tiles";
 	}
+	
+	//연습
+	@RequestMapping("/friends/search.pic")
+	public String search() throws Exception {
+		return "friends/search.tiles";
+	}
+	
 }//FriendsController

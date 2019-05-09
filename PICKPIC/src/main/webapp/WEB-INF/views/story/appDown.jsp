@@ -69,7 +69,7 @@ width:100%
 		style="margin-top: 5%; ">
 		<div class="col-md-12"
 			style=" padding-top: 5%; ">
-			<div class="col-md-offset-3 col-md-3" style="padding-top: 8%;text-align: center">
+			<div class="col-md-offset-3 col-md-3" style="padding-top: 4%;text-align: center">
 				<p class="text1">내가선택해서 PICK! 하고싶은대로 PIC!</p>
 				<p style="font-size: 20px;">
 					지금 사진 혼자 찍고 계신가요? <br /> 피크픽을 시작하세요!<br /> 피크픽은 연인과 더 사직을 찍을 수 있고 <br />
@@ -100,15 +100,6 @@ width:100%
 	</div>
 
 </body>
-
-
-
-
-
-
-
-
-
 
 
 

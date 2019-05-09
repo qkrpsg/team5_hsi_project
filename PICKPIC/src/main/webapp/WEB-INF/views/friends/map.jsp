@@ -991,5 +991,6 @@
 </body>
 </html>
 
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap"
-    async defer></script> -->
+<!-- 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkhKvFtIGbYlt2lsb2uVnrSK3gWSja-S0&callback=initMap" async defer></script> 
+-->
