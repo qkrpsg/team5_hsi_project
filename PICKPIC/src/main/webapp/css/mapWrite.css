@@ -1,0 +1,35 @@
+/*  all_wrap  */
+.all_wrap{
+	width:100%;
+	height:100%;
+	
+	
+}
+.writePage{
+	width:1200px;
+	
+	margin: 0 auto;
+	border:1px blue solid;
+}
+
+.writePage h1{
+	text-align: center;
+	
+}
+.main_title_wrap{
+	overflow: hidden;
+}
+.main_title_wrap input{
+	float: right;
+	margin-right: 20px;
+}
+.main_title_wrap input:nth-child(1){
+	width:300px;
+	height:30px;
+	border-radius: 3px;
+	padding-left:10px;
+}
+.main_title_wrap input:nth-child(2){
+	margin-top:20px;
+	clear: both;
+}
