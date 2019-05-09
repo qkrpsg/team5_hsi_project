@@ -4,7 +4,7 @@
 <link href="<c:url value='/css/Map.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/Map.js'/>"></script>
 <script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=750e581d29f9f411452640632fee1ead"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=750e581d29f9f411452640632fee1ead"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,20 +32,15 @@
       -->
 	<div id="mapwrap">
 		<!-- 지도가 표시될 div -->
-		<div id="map" style="width: 100%;">
-			
-		</div>
+		<div id="map" style="width: 100%;"></div>
 		<!-- 지도 위에 표시될 마커 카테고리 -->
-		
+
 		<div class="category_wrap">
 			<div class="write">
-				<button class='btn btn-info'> 작성하러 가기1</button>
+				<button class='btn btn-info'>작성하러 가기1</button>
 			</div>
 			<div class="category_wrap2">
-				<form id="category_form">
-				
-				
-				</form>
+				<form id="category_form"></form>
 				<%--<div class="category_list">
 				 	<div class="l_f"><img src="<c:url  value='/resources/images/map/l_f.png'/>" /></div>
 					<div class="x_f">
@@ -55,23 +50,27 @@
 						<p>도보 ?분 승용차 ?분</p>
 					</div>
 				</div> --%>
-				
-				
+
+
 			</div>
-			
-			
-			
-			
+
+
+
+
 			<div class="category">
 				<ul>
-					<li id="coffeeMenu" class="f_f"><img src="<c:url value='/resources/images/map/f_f.png' />"  /><span
-						 ></span> 음식점</li>
-					<li id="storeMenu" class="k_f"><img src="<c:url value='/resources/images/map/k_f.png' />" />
-					<span ></span> 문화</li>
-					<li id="carparkMenu" class="h_f"><img src="<c:url value='/resources/images/map/h_f.png' />"  />
-					<span ></span> 숙박시설</li>
-					<li id="Menu" class="c_f"><img src="<c:url value='/resources/images/map/c_f.png' />"  />
-					<span ></span> 관광</li>
+					<li id="coffeeMenu" class="f_f"><img
+						src="<c:url value='/resources/images/map/f_f.png' />" /><span></span>
+						음식점</li>
+					<li id="storeMenu" class="k_f"><img
+						src="<c:url value='/resources/images/map/k_f.png' />" /> <span></span>
+						문화</li>
+					<li id="carparkMenu" class="h_f"><img
+						src="<c:url value='/resources/images/map/h_f.png' />" /> <span></span>
+						숙박시설</li>
+					<li id="Menu" class="c_f"><img
+						src="<c:url value='/resources/images/map/c_f.png' />" /> <span></span>
+						관광</li>
 				</ul>
 			</div>
 		</div>
@@ -79,7 +78,7 @@
 	</div>
 
 
-	
+
 	<script>
 	
 		
@@ -132,19 +131,6 @@
 			map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 			//지도에 마커 표시하기
 			//setMarker(lat, lng,"<div style='padding:5px'>현재 나의 위치</div>");
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			
 			
