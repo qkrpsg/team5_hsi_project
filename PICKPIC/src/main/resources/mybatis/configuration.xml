@@ -15,6 +15,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="PickpicAdminDTO" type="com.kosmo.pickpic.service.PickpicAdminDTO"/>
 		<typeAlias alias="PickpicNoticeDTO" type="com.kosmo.pickpic.service.PickpicNoticeDTO"/>
 		<typeAlias alias="PickpicQnADTO" type="com.kosmo.pickpic.service.PickpicQnADTO"/>
+		<typeAlias alias="PickpicPlaceDTO" type="com.kosmo.pickpic.service.PickpicPlaceDTO"/>
+		<typeAlias alias="PickpicPlaceReportDTO" type="com.kosmo.pickpic.service.PickpicPlaceReportDTO"/>
+		<typeAlias alias="PickpicPlaceStorageDTO" type="com.kosmo.pickpic.service.PickpicPlaceStorageDTO"/>
 	<!--  	
 	s
 		
