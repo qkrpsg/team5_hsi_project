@@ -37,7 +37,7 @@
 
 		<div class="category_wrap">
 			<div class="write">
-				<button class='btn btn-info'>작성하러 가기1</button>
+				<button class='btn btn-info'>작성하러 가기</button>
 			</div>
 			<div class="category_wrap2">
 				<form id="category_form"></form>
@@ -734,6 +734,7 @@
 									+'<div class="x_f">'
 									+'<img src="<c:url  value='/resources/images/map/x_f.png'/>"/>'
 									+'<input type="hidden" name="title'+index_naiyo+'" value="'+ajaxData_str+'"  style="border:none;background:none;"/>'
+									+'<div>'+title+'</div>'
 									+'<p>거리  '+ (Math.floor( distance / 1000)-old_distance)+' km</p>'//'+distance+'
 									+'<p>도보 '+walkHour1+''+walkgikan+''+walkMin1 +''+bun+'<br /> 승용차 '+bycicleHour1+''+byciclegikan+''+bycicleMin1+''+bun+'</p>'
 									+'</div>'

@@ -153,6 +153,8 @@ public class FriendsController {
 			return "friends/map3";//
 		}//map
 		
+		
+		
 		@RequestMapping("/friends/write.pic")
 		public String write(@RequestParam Map map,Model model) throws Exception{
 		
@@ -193,6 +195,7 @@ public class FriendsController {
 			 * tel:02-990-0107,
 			 * firstimage:http://tong.visitkorea.or.kr/cms/resource/34/1181034_image2_1.jpg}
 			 */
+			
 			String[] a;
 			List<Map<String,String>> TitleList = new Vector<Map<String,String>>();
 			for(int j=1;j < map.size()+1;j++) {
@@ -213,6 +216,7 @@ public class FriendsController {
 						list.add(item);	
 					}
 				}
+				
 				String jsonString=list.toString().replace("[","{").replace("]","}");
 				JSONParser jsonparser = new JSONParser();
 				JSONObject jsonobject = (JSONObject) jsonparser.parse(jsonString);
@@ -220,7 +224,16 @@ public class FriendsController {
 				System.out.println("뭘까요?"+jsonobject.get("title").toString());
 				TitleList2.put("title",jsonobject.get("title").toString());
 				TitleList2.put("addr",jsonobject.get("addr1").toString());
-				
+				if(jsonobject.get("firstimage") != null) {
+					TitleList2.put("firstimage",jsonobject.get("firstimage").toString());
+					System.out.println("이미지 원이다");
+				}else if(jsonobject.get("firstimage2") != null) {
+					TitleList2.put("firstimage",jsonobject.get("firstimage2").toString());
+					System.out.println("이미지 투다");
+				}else {
+//					TitleList2.put("firstimage", "<c:url value='/resources/images/main_image6.jpg'/>");
+					TitleList2.put("firstimage", "/pickpic/resources/images/main_image6.jpg");
+				}
 				TitleList.add(TitleList2);
 				
 			}
@@ -235,6 +248,18 @@ public class FriendsController {
 			return "friends/mapWrite.tiles";
 		}
 	
+		//notice 작성 완료 후 뿌려줄 페이지
+		@RequestMapping("/friends/notice.pic")
+		public String textarea(@RequestParam Map map) throws Exception{
+			System.out.println("아무것도 안 넣은거"+map.get("textarea"));
+			System.out.println("0번 넣은거"+map.get("textarea0"));
+			System.out.println("1번 넣은거"+map.get("textarea1"));
+			return "friends/user_end.tiles";
+		}
+		
+		
+		
+		
 	//픽로드
 	@RequestMapping("/friends/route.pic")
 	public String route() throws Exception {

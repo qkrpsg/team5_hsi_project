@@ -1,0 +1,192 @@
+@font-face {
+	font-family: A옛날사진관2;
+	src: url("/pickpic/css/fonts/A옛날사진관2.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDB;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDR;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDR.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDL;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDL.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUARER;
+	src: url("/pickpic/css/fonts/NANUMSQUARER.TTF");
+}
+
+
+/* 
+.dropdown-button {
+	background-color: #87CEEB;
+	padding: 8px;
+	font-size: 15px;
+	border: none;
+	width: 100px;
+	height: 40px;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #FFDAB9;
+	min-width: 100%;
+	padding: 5px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 8px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #4169E1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropdown-button {
+	background-color: #00BFFF;
+}
+
+.search {
+	width: 100px;
+	height: 40px;
+}
+
+.sa {
+	width: 300px;
+	height: 280px;
+	margin-bottom: 10px;
+}
+.col-md-12{
+	padding: 0px;
+} */
+/*  이용수    */
+.all_wrap{
+	
+	width:100%;
+	padding-top:40px;
+}
+.one_hr{
+	position: absolute;
+	width:100%;
+	border-top:1px #999 solid;
+	top:170px;
+}
+.wrap{
+	width:1200px;
+	margin:0 auto;
+}
+.wrap h3{
+	margin:0;
+}
+.btn-info option{
+	background: white;
+	color:black;
+}
+
+.box_wrap{
+	text-align:center;
+	margin:0 auto;
+	margin-top:100px;
+	margin-right:20px;
+}
+
+
+
+/*   user_end_wrap     */
+
+.user_end_all_wrap{
+	overflow: hidden;
+	margin-top:50px;
+	
+	
+}
+
+.user_end_wrap{
+	width:380px;
+	float:left;
+}
+.user_end_wrap {
+	margin-right:20px;
+	
+}
+.user_end_wrap:nth-child(3n +1){
+	margin-left:20px;
+}
+.user_end_wrap:nth-child(3n){
+	margin-right:0px;
+}
+
+.contents_text{
+	margin-top:10px;
+	
+	
+	
+}
+.user_title{
+	width:100%;
+	height:25px;
+	
+	overflow: hidden;
+}
+.user_contents{
+	width:100%;
+	height:100px;
+	padding-bottom:10px;
+	overflow: hidden;
+	word-break:break-all;
+}
+
+.contents_text hr{
+	border-top:1px #999 solid;
+	
+}
+.img_wrap{
+	width:100%;
+}
+.img_wrap img{
+	width:100%;
+	height: 350px;
+}
+/* 
+@media screen and (max-width:1000px) and (min-width:0px) {
+	body {overflow: hidden;
+	}
+	.col-md-12{
+	width: 100%;
+	}
+	.search {
+	width: 60px;
+	height: 30px;
+}
+	.dropdown-button {
+	width: 80px;
+	height: 30px;
+}
+.text1 {
+	font-size: 15px;
+	
+}	
+	
+	
+} */
