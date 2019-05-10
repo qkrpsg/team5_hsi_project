@@ -27,8 +27,8 @@
 		<div class="row text-center">
 			<div class="section-header col-md-12"
 				style="margin-top: 5%; margin-bottom: 4%">
-				<h2>문의 작성</h2>
-				<span>아래 폼을 작성하세요.</span>
+				<h2>공지 사항</h2>
+				<span>관리자만 작성 가능합니다.</span>
 			</div>
 			<!-- /.section-header -->
 		</div>
@@ -66,8 +66,8 @@
 					<!--  -->
 
 					<div class="form-group text-center">
-						<input type="button" id="join-submit" class="btn btn-primary" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="작성완료" >
-						<input type="button" id="join-submit" class="btn btn-warning" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="취소" >
+						<input type="button" id="join-submit" class="btn btn-primary" onclick="location.href='<c:url value="/help/notice/List.pic"/>'" value="작성완료" >
+						<input type="button" id="join-submit" class="btn btn-warning" onclick="location.href='<c:url value="/help/notice/List.pic"/>'" value="취소" >
 					</div>
 				</form>
 			</div>

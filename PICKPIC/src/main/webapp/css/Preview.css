@@ -6,7 +6,8 @@
 }
 
 .preview_container {
-	margin: 15px;
+	margin-right: 15px;
+    margin-left: 15px;
 }
 
 .preview {
@@ -16,8 +17,8 @@
 }
 
 .photo_wrap {
-	margin: 15px;
-	padding: 0;
+	margin:15px; 
+    padding: 0;/*위 오 아 왼*/
 	 border: 1px solid #e6e6e6;
 }
 .photo {

@@ -58,7 +58,7 @@
 					</tr>
 					<tr>
 						<td>1</td>
-						<td>내가 문의한 첫번째 문의사항입니다.</td>
+						<td id="title">내가 문의한 첫번째 문의사항입니다.</td>
 						<td>2019-04-22</td>
 						<td>2019-04-24</td>
 						<td><span class="label label-danger">confirm</span></td>
@@ -113,8 +113,8 @@
 						<td></td>
 					</tr>
 				</table>
+				</div>
 			</div>
-		</div>
 		<div class="row">
 			<div class="text-center">
 				<ul class="pagination pagination-md d-flex">
@@ -137,5 +137,32 @@
 </div>
 <!-- l_pkp_all_wrap -->
 
+<script>
+//Add event listener for opening and closing details
+$('#title').on('click', 'td.details-control', function () {
+    var tr = $(this).closest('tr');
+    var row = table.row( tr );
+
+    if ( row.child.isShown() ) {
+        // This row is already open - close it
+        $('div.slider', row.child()).slideUp( function () {
+            row.child.hide();
+            tr.removeClass('shown');
+        } );
+    }
+    else {
+        // Open this row
+        row.child( format(row.data()), 'no-padding' ).show();
+        tr.addClass('shown');
+
+        $('div.slider', row.child()).slideDown();
+    }
+} );
+} );
+</script>
+
+
+
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+

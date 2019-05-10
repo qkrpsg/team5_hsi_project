@@ -2,6 +2,8 @@
 	overflow: hidden;
 	position: relative;
 	font-family: NANUMSQUAREROUNDB;
+	background-color: #e3f2fd;
+	border-radius:0 !important;
 }
 
 /* .topnav form {
@@ -9,15 +11,16 @@
 	margin-top: 9px;
 	margin-left: 12px;
 } */
+
 .topnav a {
-	float: left;
+	float:left;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 }
 
-.topnav a:last-child {
-	float: right;
+.saveBtn {
+	float: right !important;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
@@ -26,6 +29,17 @@
 .btncolor {
 	background-color: #337ab7;
 	color: white;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .topnav a:hover {

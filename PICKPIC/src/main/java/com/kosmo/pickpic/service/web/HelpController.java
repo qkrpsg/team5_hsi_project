@@ -18,6 +18,14 @@ public class HelpController {
 	public String notice() throws Exception{
 		return "help/notice/List.tiles";
 	}//notice
+	@RequestMapping("/help/notice/View.pic")
+	public String notice_view() throws Exception{
+		return "help/notice/View.tiles";
+	}//notice
+	@RequestMapping("/help/notice/Write.pic")
+	public String notice_write() throws Exception{
+		return "help/notice/Write.tiles";
+	}//notice
 
 	//문의사항
 	@RequestMapping("/help/qna/List.pic")
