@@ -61,11 +61,8 @@ public class UserController {
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map) throws Exception{
-		System.out.println(map.get("ppa_name"));
-		System.out.println(map.get("ppa_email"));
 		accountService.accountInsert(map);
 		accountService.securityInsert(map);
-		
 		/*
 		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 		*/

@@ -5,21 +5,30 @@
 <!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
 
 <mapper namespace="mybatis.PickpicAccount">
+	<!-- 로그인 -->
 	<select id="PickpicAccountIsMember" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM pickpic_account WHERE ppa_email=#{ppa_email} AND ppa_password=#{ppa_password}
 	</select>
 	
+	<!-- 이메일 중복체크 -->
 	<select id="PickpicAccountIsEmail" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM pickpic_account WHERE ppa_email=#{ppa_email} 
 	</select>
 	
-	<!-- 생성된 계정 삽입 쿼리  -->
+	<!-- 계성 생성  -->
 	<insert id="PickpicAccountInsert" parameterType="java.util.Map">
 		INSERT INTO pickpic_account(ppa_id, ppa_email, ppa_password, ppa_nickname, ppa_index) 
 		VALUES(func_generator, #{ppa_email},#{ppa_password},#{ppa_nickname}, seq_ppa_index.NEXTVAL)
 	</insert>
+
+	<!-- 초기 계정정보 인증 테이블에 등록 -->
 	<insert id="AuthSecurityInsert" parameterType="java.util.Map">
 		INSERT INTO auth_security(as_id, as_index, ppa_id)
-		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = '#{ppa_email}' AND ppa_type = '#{ppa_type}'))
+		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}))
+	</insert>
+	
+	<insert id="LoginHistoryInsert" parameterType="java.util.Map">
+		INSERT INTO login_histroy(lh_id, lh_index, ppa_id) 
+		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = '#{ppa_email}' AND ppa_type = #{ppa_type}))
 	</insert>
 </mapper>

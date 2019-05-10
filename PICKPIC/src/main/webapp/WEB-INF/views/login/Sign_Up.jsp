@@ -52,9 +52,10 @@
 			// setup validate
 			$.validate();
 		});
+		
 		jo.onclick = function() {
 			if (pwd.value != pwdChk.value) {
-				alert('비밀번호를 확인해주세요');
+				alert('비밀번호가 일치하지 않습니다.');
 				pwdChk.focus();
 				return false;
 			}
@@ -63,21 +64,12 @@
 				email.focus();
 				return false;
 			}
-
+			if($('#ppa_agree').filter(':checked').length == 0){
+				alert('이용약관에 동의 해주세요');
+				agree.focus();
+				return false;
+			}
 		}//onclick	
-
-	});
-
-	$(function() {
-		/* $('#ppu_tetephone').keypress(function(evt){
-
-		    var code = evt.which?evt.whichl:event.keyCode;
-		    var code2 =  evt.keyCode;
-		   	
-		    if(code2 < 48 || code2 > 57){
-		       return false;
-		    }
-		}); */
 	});
 </script>
 <style>
@@ -102,7 +94,7 @@
 			<form role="form" action='<c:url value="/user/sign_process.pic"/>' method="POST">
 				<div class="form-group">
 					<label for="ppa_email">이메일</label> 
-					<input type="text" class="form-control" name="ppa_email" id="ppa_email" placeholder="이메일을 입력해 주세요" data-validation="required">
+					<input type="text" class="form-control" name="ppa_email" id="ppa_email" placeholder="이메일을 입력해 주세요" data-validation="required length email" data-validation-length="5-30">
 					<a class="email_check btn btn-info" style="margin-top: 10px;">중복체크</a>		
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />			
 					<span id="hi" style="color: red;"></span>
@@ -122,10 +114,10 @@
 				<div class="filebox">
 					<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled"> 
 					<label for="ppa_profile_path" class="btn btn-warning" name="ppu_profile_path">업로드</label> 
-					<input type="file" id="ppa_profile_path" class="upload-hidden" name="ppa_profile_path" data-validation="required">
+					<input type="file" id="ppa_profile_path" class="upload-hidden" name="ppa_profile_path">
 				</div>
 				<div class="form-group" style="overflow: hidden;">
-					<input type="checkbox" name="ppa_agree" value="이용약관" data-validation="required" id="ppa_agree" value="ok" style="float: left; margin-right: 10px;" />
+					<input type="checkbox" name="ppa_agree" value="이용약관" id="ppa_agree" value="ok" style="float: left; margin-right: 10px;" />
 					<p style="float: left;">이용약관에 동의합니다.</p>
 				</div>
 				
@@ -133,7 +125,6 @@
 					<button type="submit" id="join-submit" class="btn btn-primary">
 						회원가입<i class="fa fa-check spaceLeft"></i>
 					</button>
-
 					<button type="submit" class="btn btn-warning">
 						가입취소<i class="fa fa-times spaceLeft"></i>
 					</button>

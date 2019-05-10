@@ -19,9 +19,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑) 정보 설정 -->	
 	<mappers>
 		<mapper resource="mybatis/PickpicAccount.xml" />
-		<mapper resource="mybatis/PickPlaceBoard.xml" />
-		<mapper resource="mybatis/Filter.xml" />
-		<mapper resource="mybatis/PickRoadBoard.xml" />
+		<mapper resource="mybatis/Friends.xml" />
+		<mapper resource="mybatis/Help.xml" />
+		<mapper resource="mybatis/Admin.xml" />
 	</mappers>
 	
 </configuration>
