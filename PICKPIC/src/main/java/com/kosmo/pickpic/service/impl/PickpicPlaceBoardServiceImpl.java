@@ -5,13 +5,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import com.kosmo.pickpic.service.PickpicPlaceService;
+import com.kosmo.pickpic.service.PickpicPlaceBoardService;
 
-public class PickpicPlaceServiceImpl implements PickpicPlaceService{
+public class PickpicPlaceBoardServiceImpl implements PickpicPlaceBoardService{
 
 	//MemoCommentDAO주입]
 	@Resource(name="PickpicPlaceDAO")
-	private PickpicPlaceDAO dao;
+	private PickpicPlaceBoardDAO dao;
 
 	@Override
 	public List<Map> selectList(Map map) {

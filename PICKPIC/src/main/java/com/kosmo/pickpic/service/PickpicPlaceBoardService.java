@@ -3,7 +3,7 @@ package com.kosmo.pickpic.service;
 import java.util.List;
 import java.util.Map;
 
-public interface PickpicPlaceService {
+public interface PickpicPlaceBoardService {
     
 	//목록용]
 	//레코드를 DTO가 아닌 맵에 담아보자
