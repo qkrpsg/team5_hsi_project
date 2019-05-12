@@ -31,4 +31,5 @@ public class PickpicPlaceStorageDTO {
 	public void setPpa_id(String ppa_id) {
 		this.ppa_id = ppa_id;
 	}//setPpa_id
+	
 }//PickpicPlaceStorageDTO
