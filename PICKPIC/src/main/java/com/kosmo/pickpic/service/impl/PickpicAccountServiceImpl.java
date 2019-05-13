@@ -27,12 +27,17 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	}
 
 	@Override
-	public void accountInsert(Map map) {
-		dao.accountInsert(map);
+	public int accountInsert(Map map) {
+		return dao.accountInsert(map);
 	}
 
 	@Override
-	public void securityInsert(Map map) {
-		dao.securityInsert(map);
+	public int securityInsert(Map map) {
+		return dao.securityInsert(map);
+	}
+
+	@Override
+	public int loginHistoryInsert(Map map) {
+		return dao.accountInsert(map);
 	}
 }

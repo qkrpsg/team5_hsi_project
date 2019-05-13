@@ -30,13 +30,22 @@ public class UserController {
 		return "login/Login.tiles";
 	}//login
 	
+	//로그인 프로세스
+	@RequestMapping("/user/LoginProcess.pic")
+	public String loginProcess(HttpSession session, @RequestParam Map map) throws Exception{
+		accountService.accountInsert(map);
+		return "/";
+	}
+	
+	
 	//이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/validator/signUpEmailCheck.do",produces="text/html; charset=UTF-8")
 	public String emailCheck(@RequestParam Map map,Model model,Map map2) throws Exception{
 										//맵에는 아이디 값만 담겨있다
+//		System.out.println(map.get("ppa_email"));
 		boolean flag = accountService.isEmail(map);//이걸 좀 바꿔줘야 한다
-		System.out.println(flag);
+//		System.out.println(flag);
 		
 		JSONObject json=new JSONObject();
 		if(map.get("ppa_email") == "") {
@@ -51,7 +60,7 @@ public class UserController {
 		return json.toJSONString();
 	}//emailCheck
 	
-	//회원가입 
+	//회원가입 페이지 이동
 	@RequestMapping("/user/sign_up.pic")
 	public String sign_up() throws Exception{
 		
@@ -61,13 +70,14 @@ public class UserController {
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map) throws Exception{
-		accountService.accountInsert(map);
-		accountService.securityInsert(map);
+		System.out.println(accountService.accountInsert(map));
+		System.out.println(accountService.securityInsert(map));
 		/*
 		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 		*/
 		return "login/Login.tiles";
 	}//sign_up_process
+	
 	
 	@ResponseBody
 	@RequestMapping("/va/id.do")

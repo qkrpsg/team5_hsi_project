@@ -37,6 +37,7 @@
 							<div>
 								<input type="text" id="ppa_email" name="ppa_email" value="" placeholder="이메일"> 
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+								<input type="hidden" name="ppa_type" value="pickpic" /> 
 								<input type="password" id="ppa_password" name="ppa_password" value="" placeholder="비밀번호">
 							</div>
 

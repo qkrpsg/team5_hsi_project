@@ -27,6 +27,7 @@
 		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}))
 	</insert>
 	
+	<!-- 로그인 기록 등록 -->
 	<insert id="LoginHistoryInsert" parameterType="java.util.Map">
 		INSERT INTO login_histroy(lh_id, lh_index, ppa_id) 
 		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = '#{ppa_email}' AND ppa_type = #{ppa_type}))
