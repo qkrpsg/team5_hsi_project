@@ -1,5 +1,11 @@
 package com.kosmo.pickpic.service;
 
-public interface PickRoadBoardService {
+import java.util.Map;
 
+public interface PickRoadBoardService {
+	
+	int pickRoadPlaceInsert(Map map);
+	int pickroadBoardInsert(Map map);
+	
+	
 }

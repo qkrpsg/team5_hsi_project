@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>"
 	rel="stylesheet">
+	<link rel="stylesheet" href="<c:url value='/css/font-awesome.css'/>">
 <link href="<c:url value='/css/Top.css'/>" rel="stylesheet">
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/js/mostrar_nav.js'/>"></script>

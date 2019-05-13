@@ -1,5 +1,6 @@
 package com.kosmo.pickpic.service.web;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -28,6 +29,15 @@ public class UserController {
 	@RequestMapping("/user/Login.pic")
 	public String login(HttpSession session,Model model) throws Exception{
 		return "login/Login.tiles";
+	}//login
+	
+	@RequestMapping("/user/loginProcess.pic")
+	public String loginProcess(@RequestParam Map map,HttpSession session,Model model,Principal principal) throws Exception{
+		System.out.println("dddd"+principal.getName());
+		
+		session.setAttribute("ppa_email", principal.getName());
+
+		return "home.tiles";
 	}//login
 	
 	//이메일 중복 체크

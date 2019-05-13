@@ -4,4 +4,19 @@
 
 <mapper namespace="mybatis.Friends">
 
+	 <!--픽로드 게시판 등록(인설트) -->
+	<insert id="PickroadBoardInsert" parameterType="java.util.Map">
+		INSERT INTO pickroad_board(prb_id,prb_title,prb_content,prb_start_date,prb_end_date,prb_index,ppa_id) 
+		VALUES(func_generator,#{prb_title},#{prb_content},#{prb_start_date},#{prb_end_date},seq_prb_index.NEXTVAL,(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email})) 
+	</insert> 
+	
+	
+<!-- 픽로드 이정표 등록(인설트)  (SELECT prb_id FROM pickroad_board WHERE ppa_email = #{ppa_email})-->   
+	<insert id="PickRoadPlaceInsert" parameterType="java.util.Map">
+		INSERT INTO pickroad_place
+		VALUES(func_generator, #{prp_order},#{prp_contentid},#{prp_title},#{prp_image_path},
+		(SELECT prb_id FROM pickroad_board ORDER BY prb_index DESC)
+	</insert> 
+
+	
 </mapper>

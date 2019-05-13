@@ -11,14 +11,16 @@
 		<security:form-login
 			login-page="/user/Login.pic" 
 			login-processing-url="/user/loginProcess.pic"
-			default-target-url="/"
+			default-target-url="/user/loginProcess.pic"
 			authentication-failure-url="/user/Login.pic?error=true"
 			username-parameter="ppa_email" 
 			password-parameter="ppa_password" />
 		<security:csrf disabled="false" />
+		
 		<security:session-management invalid-session-url="/user/Login.pic">
 			<security:concurrency-control max-sessions="1" expired-url="/user/Login.pic" />
 		</security:session-management>
+		
 	</security:http>
 	
 	<security:authentication-manager>

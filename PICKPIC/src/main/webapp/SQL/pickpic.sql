@@ -206,10 +206,13 @@ CREATE TABLE pickroad_board
 
 CREATE TABLE pickroad_place
 (
+	prp_id nvarchar2(12) NOT NULL,
 	prp_order number NOT NULL,
 	prp_contentid nvarchar2(12) NOT NULL,
+	prp_title nvarchar2(20) NOT NULL,
 	prp_image_path nvarchar2(100) NOT NULL,
-	prb_id nvarchar2(12) NOT NULL
+	prb_id nvarchar2(12) NOT NULL,
+	PRIMARY KEY (prp_id)
 );
 
 
