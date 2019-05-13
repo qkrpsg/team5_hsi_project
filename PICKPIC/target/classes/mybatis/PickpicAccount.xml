@@ -23,9 +23,13 @@
 
 	<!-- 초기 계정정보 인증 테이블에 등록 -->
 	<insert id="AuthSecurityInsert" parameterType="java.util.Map">
-		INSERT INTO auth_security(as_id, as_index, ppa_id)
-		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}))
+		INSERT INTO auth_security(as_id, as_index, ppa_id, as_key)
+		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}), #{as_key})
 	</insert>
+	
+	<update id="AuthSecurityUpdate" parameterType="java.util.Map">
+		UPDATE auth_security SET as_enabled_flag={as_enabled_flag}
+	</update>
 	
 	<!-- 로그인 기록 등록 -->
 	<insert id="LoginHistoryInsert" parameterType="java.util.Map">

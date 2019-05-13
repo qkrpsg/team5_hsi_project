@@ -74,25 +74,22 @@ public class UserController {
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map) throws Exception{
-		System.out.println(accountService.accountInsert(map));
-		System.out.println(accountService.securityInsert(map));
+		accountService.accountInsert(map);
+		accountService.securityInsert(map);
+		
 		/*
 		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 		*/
 		return "login/Login.tiles";
 	}//sign_up_process
 	
-	
-	@ResponseBody
-	@RequestMapping("/va/id.do")
-	public String check2(@RequestParam Map map,Model model) throws Exception{
-										//맵에는 아이디 값만 담겨있다
-		System.out.println("코치코치");
-		JSONObject json=new JSONObject();
-		//JSON객체의 put("키값","값")메소드로 저장하면
-		//{"키값":"값"} JSON형태의 데이타로 저장됨.
-		json.put("flag", "Y");
-		return json.toJSONString();
+	//이메일 인증 프로세스
+	@RequestMapping("/user/joinConfirm.pic")
+	public String emailConfirm(@RequestParam Map map) throws Exception{
+		map.put("as_enabled_flag", "1");
+		accountService.securityUpdate(map);
+		
+		return "home.tiles";
 	}
 	
 	//로그아웃 프로세스  

@@ -5,7 +5,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kosmo.pickpic.service.PickpicAccountService;
 
@@ -34,6 +37,11 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	@Override
 	public int securityInsert(Map map) {
 		return dao.securityInsert(map);
+	}
+
+	@Override
+	public int securityUpdate(Map map) {
+		return dao.securityUpdate(map);
 	}
 
 	@Override
