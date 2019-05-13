@@ -1,5 +1,6 @@
 package com.kosmo.pickpic.service.web;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -32,9 +33,12 @@ public class UserController {
 	
 	//로그인 프로세스
 	@RequestMapping("/user/LoginProcess.pic")
-	public String loginProcess(HttpSession session, @RequestParam Map map) throws Exception{
-		accountService.accountInsert(map);
-		return "/";
+	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal) throws Exception{
+		session.setAttribute("ppa_email", principal.getName());
+		map.put("ppa_email", principal.getName());
+		map.put("ppa_type", "pickpic");
+		accountService.loginHistoryInsert(map);
+		return "home.tiles";
 	}
 	
 	

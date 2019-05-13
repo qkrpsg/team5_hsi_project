@@ -38,6 +38,6 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 
 	@Override
 	public int loginHistoryInsert(Map map) {
-		return dao.accountInsert(map);
+		return dao.loginHistoryInsert(map);
 	}
 }

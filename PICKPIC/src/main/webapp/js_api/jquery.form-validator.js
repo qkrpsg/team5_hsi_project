@@ -1982,7 +1982,7 @@
       notConfirmed: 'Input values could not be confirmed',
       badDomain: 'Incorrect domain value',
       badUrl: 'The input value is not a correct URL',
-      badCustomVal: 'The input value is incorrect',
+      badCustomVal: '영문, 숫자를 사용하여 10~20자 입력하세요. (특수문자 사용불가)',
       andSpaces: ' and spaces ',
       badInt: '해당 텍스트를 입력하세요',
       badSecurityNumber: 'Your social security number was incorrect',

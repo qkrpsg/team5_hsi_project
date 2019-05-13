@@ -54,14 +54,14 @@
 		});
 		
 		jo.onclick = function() {
-			if (pwd.value != pwdChk.value) {
-				alert('비밀번호가 일치하지 않습니다.');
-				pwdChk.focus();
-				return false;
-			}
 			if ($('#hi').html() != "사용 가능한 이메일 입니다.") {
 				alert('이메일 중복체크를 해주세요');
 				email.focus();
+				return false;
+			}
+			if (pwd.value != pwdChk.value) {
+				alert('비밀번호가 일치하지 않습니다.');
+				pwdChk.focus();
 				return false;
 			}
 			if($('#ppa_agree').filter(':checked').length == 0){
@@ -101,7 +101,7 @@
 				</div>
 				<div class="form-group">
 					<label for="ppa_password">비밀번호</label> 
-					<input type="password" class="form-control" name="ppa_password" id="ppa_password" placeholder="비밀번호를 입력해주세요" data-validation="required">
+					<input type="password" class="form-control" name="ppa_password" id="ppa_password" data-validation="required custom" data-validation-regexp="^(?=.*[0-9])(?=.*[a-zA-Z])(?=\w+\$)(?=\S+\$).{10,20}\$" placeholder="비밀번호를 입력해주세요">
 				</div>
 				<div class="form-group">
 					<label for="ppa_passwordCheck">비밀번호 확인</label> 
