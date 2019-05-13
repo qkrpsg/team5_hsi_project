@@ -1,0 +1,63 @@
+#filter_list {
+	display: none;
+}
+
+.scroll_inline {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	display: -webkit-inline-box;
+	background-color: #e6e6e6;
+	border-top: 1px solid black;
+	/* overflow-x: scroll;
+	overflow-y: hidden; */
+	}
+
+.box {
+	bottom: 0;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	padding-top: 5px;
+}
+
+.box::-webkit-scrollbar {
+	display: block;
+}
+
+.card-a {
+	display:inline-block;
+	height: 100%;
+	width: 180px;
+	margin: 10px 10px 0 10px;
+	
+}
+
+/* 필터명 나열 */
+/* .topnav-centered ul {
+	float: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+
+Style the search box
+#filterMenu li {
+	display: table-cell;
+}
+
+#filterMenu li a {
+	padding: 12px;
+	text-decoration: none;
+	color: black;
+}
+
+#filterMenu li a:hover {
+	
+} */
+

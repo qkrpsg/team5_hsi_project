@@ -2,6 +2,8 @@
 	overflow: hidden;
 	position: relative;
 	font-family: NANUMSQUAREROUNDB;
+	background-color: #e3f2fd;
+	margin-bottom: 0;
 }
 
 /* .topnav form {
@@ -9,104 +11,9 @@
 	margin-top: 9px;
 	margin-left: 12px;
 } */
-.topnav a {
-	float: left;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-.topnav a:last-child {
-	float: right;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-.btncolor {
-	background-color: #337ab7;
-	color: white;
-}
 
 .topnav a:hover {
 	
-}
-
-/* 필터명 나열 */
-/* .topnav-centered ul {
-	float: none;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	white-space: nowrap;
-	overflow-x: scroll;
-}
-Style the search box
-#filterMenu li {
-	display: table-cell;
-}
-#filterMenu li a {
-	padding: 12px;
-	text-decoration: none;
-	color: black;
-}
-#filterMenu li a:hover {
-	
-} */
-
-/* 필터 띄우기 */
-div.scrollmenu {
-	overflow: auto;
-	white-space: nowrap;
-	border-top: 1px #ccc solid;
-	bottom: 0;
-}
-
-div.scrollmenu>div {
-	display: inline-block;
-	text-align: center;
-	padding: 14px;
-	text-decoration: none;
-	background-size: cover;
-}
-
-div.scrollmenu a:hover {
-	/* background-color: #e3f2fd; */
-	
-}
-
-.squares {
-	padding: 6px;
-	margin-left: 15px;
-	margin-right: 15px;
-}
-
-.squares>div {
-	width: 150px;
-	height: 150px;
-	margin: 10px;
-}
-
-/* 스크롤바 디자인 */
-.scrollbar {
-	margin-left: 30px;
-	float: left;
-	height: 300px;
-	width: 65px;
-	background: #F5F5F5;
-	overflow-y: scroll;
-	margin-bottom: 25px;
-}
-
-.force-overflow {
-	min-height: 450px;
-}
-
-#wrapper {
-	text-align: center;
-	width: 500px;
-	margin: auto;
 }
 
 
