@@ -29,7 +29,7 @@
 				</div>
 
 				<div class="l_login_left_form_wrap">
-					<form action="<c:url value='/user/loginProcess.pic'/>" method="post">
+					<form action="<c:url value='/user/LoginProcess.pic'/>" method="post">
 						<c:if test="${! empty sessionScope.ppa_email }" var="isLogin">
 							<div class="alert alert-success col-md-12">${sessionScope.ppa_eamil}님 환영합니다</div>
 						</c:if>
