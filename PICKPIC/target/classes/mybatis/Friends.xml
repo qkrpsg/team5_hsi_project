@@ -15,7 +15,7 @@
 	<insert id="PickRoadPlaceInsert" parameterType="java.util.Map">
 		INSERT INTO pickroad_place
 		VALUES(func_generator, #{prp_order},#{prp_contentid},#{prp_title},#{prp_image_path},
-		(SELECT prb_id FROM pickroad_board ORDER BY prb_index DESC)
+		(SELECT prb_id FROM (SELECT * FROM pickroad_board ORDER BY prb_index DESC) WHERE ROWNUM = 1))
 	</insert> 
 
 	

@@ -92,7 +92,13 @@ $(function(){
 		</form>
 	</section> --%>
 	
+	
+	
+	
+	
 	<section class="all_wrap">
+	
+	
 		<form action="<c:url value='/friends/notice.pic'/>" method="post">
 			<div class="writePage">
 				<h1>나만의 사진여행기</h1>

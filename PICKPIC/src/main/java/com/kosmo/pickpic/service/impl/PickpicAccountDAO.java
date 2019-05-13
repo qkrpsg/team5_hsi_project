@@ -30,12 +30,17 @@ public class PickpicAccountDAO implements PickpicAccountService {
 	}
 
 	@Override
-	public void accountInsert(Map map) {
-		template.insert("PickpicAccountInsert", map);
+	public int accountInsert(Map map) {
+		return template.insert("PickpicAccountInsert", map);
 	}
 
 	@Override
-	public void securityInsert(Map map) {
-		template.insert("AuthSecurityInsert", map);
+	public int securityInsert(Map map) {
+		return template.insert("AuthSecurityInsert", map);
+	}
+
+	@Override
+	public int loginHistoryInsert(Map map) {
+		return template.insert("LoginHistoryInsert", map);
 	}
 }

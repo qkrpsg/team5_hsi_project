@@ -7,6 +7,8 @@ public interface PickpicAccountService {
 	boolean isMember(Map map);
 	boolean isEmail(Map map);
 	
-	void accountInsert(Map map);
-	void securityInsert(Map map);
+	int accountInsert(Map map);
+	int securityInsert(Map map);
+	
+	int loginHistoryInsert(Map map);
 } 

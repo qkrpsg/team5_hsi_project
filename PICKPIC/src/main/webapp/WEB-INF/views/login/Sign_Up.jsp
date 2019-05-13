@@ -18,6 +18,11 @@
 				});
 			});
 
+	$(function() {
+		// setup validate
+		$.validate();
+	});
+	
 	$(document).ready(function() {
 		var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
 		//console.log(re);
@@ -45,12 +50,7 @@
 					console.log('서버로부터 받은 HTML데이타 222:', request.responseText);
 					console.log('에러333:', error);
 				}
-			}); //ajax 끝	
-		});
-
-		$(function() {
-			// setup validate
-			$.validate();
+			}); //ajax 끝
 		});
 		
 		jo.onclick = function() {
@@ -128,9 +128,13 @@
 					<button type="submit" class="btn btn-warning">
 						가입취소<i class="fa fa-times spaceLeft"></i>
 					</button>
+					<input type="hidden" name="ppa_type" value="pickpic" />
 				</div>
 			</form>
 		</div>
 		<!-- </div> -->
 	</div>
 </div>
+
+
+
