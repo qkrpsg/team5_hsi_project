@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.PickpicAccountService;
 
 //
@@ -27,6 +28,16 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	@Override
 	public boolean isEmail(Map map) {
 		return dao.isEmail(map);
+	}
+
+	@Override
+	public boolean isAuthAbled(Map map) {
+		return dao.isAuthAbled(map);
+	}
+
+	@Override
+	public PickpicAccountDTO oneUser(Map map) {
+		return dao.oneUser(map);
 	}
 
 	@Override

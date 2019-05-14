@@ -1,9 +1,12 @@
 package com.kosmo.pickpic.service.web;
 
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 
 
@@ -27,25 +31,50 @@ public class UserController {
 	
 	//로그인
 	@RequestMapping("/user/Login.pic")
-	public String login(HttpSession session,Model model) throws Exception{
+	public String login() throws Exception{
 		return "login/Login.tiles";
 	}//login
 	
 	//로그인 프로세스
 	@RequestMapping("/user/LoginProcess.pic")
-	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal) throws Exception{
-		session.setAttribute("ppa_email", principal.getName());
+	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal, HttpServletResponse response) throws Exception{
+		//시큐리티를 통하여 저장된 이메일값 map에 저장
 		map.put("ppa_email", principal.getName());
 		map.put("ppa_type", "pickpic");
+		//lh테이블에 로그인 기록 저장
+		if(!accountService.isAuthAbled(map)) {
+			session.invalidate();
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('회원가입 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
+	        out.flush();
+	        out.close();
+	        return "login/Login.tiles";
+		}
+		//로그인 정보 저장
 		accountService.loginHistoryInsert(map);
+		//아이디와 닉네임을 세션에 저장
+		PickpicAccountDTO user = accountService.oneUser(map);
+		session.setAttribute("ppa_email", user.getPpa_id());
+		session.setAttribute("ppa_nickname", user.getPpa_nickname());
+		
 		return "home.tiles";
 	}
 	
+	//로그인 실패시 프로세스
+	@RequestMapping("/user/LoginProcessF.pic")
+    public void logiProcessF(HttpServletResponse response) throws Exception{
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+        out.flush();
+        out.close();
+    }
 	
 	//이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/validator/signUpEmailCheck.do",produces="text/html; charset=UTF-8")
-	public String emailCheck(@RequestParam Map map,Model model,Map map2) throws Exception{
+	public String emailCheck(@RequestParam Map map) throws Exception{
 										//맵에는 아이디 값만 담겨있다
 //		System.out.println(map.get("ppa_email"));
 		boolean flag = accountService.isEmail(map);//이걸 좀 바꿔줘야 한다
@@ -74,13 +103,15 @@ public class UserController {
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map) throws Exception{
-		accountService.accountInsert(map);
-		accountService.securityInsert(map);
-		
-		/*
-		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
-		*/
-		return "login/Login.tiles";
+		if(accountService.accountInsert(map) == 1 ? true : false) {
+			if(accountService.securityInsert(map) == 1 ? true : false) {
+				/*
+				7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
+				*/
+				return "home.tiles";
+			}//as테이블 insert 성공시 
+		}//ppa테이블 insert 성공시
+		return "/user/sign_up.pic";
 	}//sign_up_process
 	
 	//이메일 인증 프로세스

@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.PickpicAccountService;
 import com.kosmo.pickpic.service.web.MailUtils;
 import com.kosmo.pickpic.service.web.TempKey;
@@ -38,6 +39,16 @@ public class PickpicAccountDAO implements PickpicAccountService {
 	}
 
 	@Override
+	public boolean isAuthAbled(Map map) {
+		return (Integer)template.selectOne("AuthSecurityIsAble", map) == 0 ? false : true;
+	}
+
+	@Override
+	public PickpicAccountDTO oneUser(Map map) {
+		return template.selectOne("PickpicAccountUser", map);
+	}
+
+	@Override
 	public int accountInsert(Map map) {
 		return template.insert("PickpicAccountInsert", map);
 	}
@@ -55,7 +66,11 @@ public class PickpicAccountDAO implements PickpicAccountService {
 			MailUtils sendMail = new MailUtils(mailSender);
 
 			sendMail.setSubject("회원가입 이메일 인증");
-			sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
+			sendMail.setText(new StringBuffer()
+					.append("<div class=\"jumbotron jumbotron-fluid\">")
+					.append("<div align=\"center\" class\"container\">")
+					.append("<h1>[이메일 인증]</h1>")
+					.append("<p class=\"lead\">안녕하세요. <font size=\"5\" color=\"red\"><b>PICKPIC</b></font> 입니다.</font></p>")
 					.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
 					.append("<a href='http://localhost:8080/pickpic/user/joinConfirm.pic?ppa_email=")
 					.append(map.get("ppa_email"))
@@ -64,6 +79,7 @@ public class PickpicAccountDAO implements PickpicAccountService {
 					.append("&ppa_type=")
 					.append(map.get("ppa_type"))
 					.append("' target='_blenk'>이메일 인증 확인</a>")
+					.append("</div></div>")
 					.toString());
 			sendMail.setFrom("Pickpic ", "맹뱀");
 			sendMail.setTo((String)(map.get("ppa_email")));

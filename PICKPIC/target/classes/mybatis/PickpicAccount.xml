@@ -15,6 +15,16 @@
 		SELECT COUNT(*) FROM pickpic_account WHERE ppa_email=#{ppa_email} 
 	</select>
 	
+	<!-- 계정 인증 확인 -->
+	<select id="AuthSecurityIsAble" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM auth_security WHERE as_enabled_flag=1 AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type})
+	</select>
+	
+	<!-- 계정정보 반환 -->
+	<select id="PickpicAccountUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT * FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}
+	</select>
+	
 	<!-- 계성 생성  -->
 	<insert id="PickpicAccountInsert" parameterType="java.util.Map">
 		INSERT INTO pickpic_account(ppa_id, ppa_email, ppa_password, ppa_nickname, ppa_index) 
@@ -27,8 +37,9 @@
 		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}), #{as_key})
 	</insert>
 	
+	<!-- 인증 성공시 인증 완료상태로 전환 -->
 	<update id="AuthSecurityUpdate" parameterType="java.util.Map">
-		UPDATE auth_security SET as_enabled_flag={as_enabled_flag}
+		UPDATE auth_security SET as_enabled_flag=#{as_enabled_flag} WHERE as_key=#{as_key} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email} AND ppa_type=#{ppa_type})
 	</update>
 	
 	<!-- 로그인 기록 등록 -->

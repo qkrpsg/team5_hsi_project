@@ -12,7 +12,7 @@
 			login-page="/user/Login.pic" 
 			login-processing-url="/user/LoginProcess.pic"
 			default-target-url="/user/LoginProcess.pic"
-			authentication-failure-url="/user/Login.pic?error=true"
+			authentication-failure-url="/user/LoginProcessF.pic"
 			username-parameter="ppa_email" 
 			password-parameter="ppa_password" />
 		<security:csrf disabled="false" />

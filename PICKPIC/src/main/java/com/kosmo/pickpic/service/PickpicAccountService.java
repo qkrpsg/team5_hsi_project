@@ -5,6 +5,8 @@ import java.util.Map;
 public interface PickpicAccountService {
 	boolean isMember(Map map);
 	boolean isEmail(Map map);
+	boolean isAuthAbled(Map map);
+	PickpicAccountDTO oneUser(Map map);
 	
 	int accountInsert(Map map);
 	int securityInsert(Map map);

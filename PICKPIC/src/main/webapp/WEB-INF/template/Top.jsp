@@ -42,7 +42,7 @@
 									<li><a href="<c:url value='/admin/home.pic'/>"> 관리자 <span></span></a></li>
 								</c:if>
 								<c:if test="${not isAdmin }">
-									<li><a href="<c:url value='/user/myPage.pic'/>"><sec:authentication property="principal.username" /> 님 <span></span></a></li>
+									<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppa_nickname }님 <span></span></a></li>
 								</c:if>
 								<li><a href="javascript:logout()">Logout</a></li>
 							</sec:authorize>
