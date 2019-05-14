@@ -11,16 +11,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases> 
 		<typeAlias alias="PickpicPostDTO" type="com.kosmo.pickpic.service.PickpicPostDTO"/>
 		<typeAlias alias="PickpicAdminDTO" type="com.kosmo.pickpic.service.PickpicAdminDTO"/>
-		<typeAlias alias="PickpicNoticeDTO" type="com.kosmo.pickpic.service.PickpicNoticeDTO"/>
-		<typeAlias alias="PickpicQnADTO" type="com.kosmo.pickpic.service.PickpicQnADTO"/>
-		
 		<typeAlias alias="PickpicAccountDTO" type="com.kosmo.pickpic.service.PickpicAccountDTO"/>
+		<typeAlias alias="PickpicQnADTO" type="com.kosmo.pickpic.service.PickpicQnADTO"/>
+		<typeAlias alias="NoticeDTO" type="com.kosmo.pickpic.service.NoticeDTO"/>
 	 </typeAliases>
 	
 	
 	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑) 정보 설정 -->	
 	<mappers>
 		<mapper resource="mybatis/PickpicAccount.xml" />
+		<mapper resource="mybatis/AdminNotice.xml" />
+	
 	</mappers>
 	
 </configuration>

@@ -1,4 +1,4 @@
-package com.kosmo.pickpic.service;
+ package com.kosmo.pickpic.service;
 
 public class FormCommand {
 	//폼의 파라미터명과 같게 속성(멤버변수) 정의]
