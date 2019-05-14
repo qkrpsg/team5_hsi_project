@@ -26,20 +26,8 @@
 		<div class="l_help_list_wrap">
 			<!-- 검색용 UI -->
 			<div class="row_serch">
-				<form class="form-inline" method="post"
-					action="#">
-					<div class="form-group">
-						<select name="searchColumn" class="form-control input-sm">
-							<option value="title">제목</option>
-							<option value="date">날짜</option>
-							<option value="content">내용</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<input type="text" name="searchWord" class="form-control input-sm" />
-					</div>
-					<button type="submit" class="btn btn-primary btn-sm">검색</button>
-				</form>
+					
+						<button type="submit" class="btn btn-primary btn-sm" onclick="location.href='<c:url value="/help/notice/Write.pic"/>'">관리자 등록</button>
 			</div>
 
 			<div class="row_list">
@@ -54,7 +42,7 @@
 					<tr>
 						<td>1</td>
 						<td><span class="label label-danger">new</span></td>
-						<td>첫번째 공지사항입니다.</td>
+						<td><a href="<c:url value='/help/notice/View.pic'/>">첫번째 공지사항입니다.</a></td>
 						<td>2019-04-22</td>
 						<td>23</td>
 					</tr>

@@ -9,8 +9,7 @@
 <link href="<c:url value='/css/Modal.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/Preview.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
-<link href = "<c:url value='/css/cssco.css'/>"   rel = " stylesheet " >
-
+<link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
 <!-- albumEditor.jsp -->
 
@@ -72,8 +71,7 @@
    <div class="container-fluid">
       <ul class="nav navbar-nav">
          <li class="active btncolor"><a href="#">되돌리기</a></li>
-         <li><a id="myfilter_btn">내
-               필터 보관함</a></li>
+         <li><a id="myfilter_btn">내 필터 보관함</a></li>
          <li><a class="btn" data-toggle="modal" id="option_btn" href="#">+
                가져오기</a></li>
       </ul>
@@ -92,16 +90,15 @@
    <div class="preview_container row">
       <div class="preview" id="preview">
          <!-- 사진 리스트 들어가는 곳 -->
-         <div class="col-lg-2 col-md-4 col-sm-6 noMnP ">
+         <%-- <div class="col-lg-2 col-md-4 col-sm-6 noMnP ">
             <div class=" photo_wrap">
-               <div class="photo " >
-               <div class="photo_center_wrap">
-                  <div class="backImgDiv" style="width:100%; background-image:url('/pi  ckpic/resources/images/1vs1.png')">
-                  		<%-- <img class="backImg" src="<c:url value='/resources/images/1vs1.png'/>">--%>
-                       <img class="backImg" style="max-width:none; width:100%;" src="<c:url value='/resources/images/route3.jpg'/>" />
+               <div class="photo ">
+                  <div class="photo_center_wrap">
+                     <div class="photo_center cssco cssco--p5">
+                        <img src="<c:url value='/resources/images/cat2.jpg'/>" />
+                     </div>
                   </div>
-               </div>   
-               </div>                  
+               </div>
                <div class="menu" style="border-top: 1px solid #e6e6e6;">
                   <div class="centered">
                      <div class="btn-group item" role="group">
@@ -113,64 +110,182 @@
                </div>
             </div>
          </div>
-         
+         <div class="col-lg-2 col-md-4 col-sm-6 noMnP ">
+            <div class=" photo_wrap">
+               <div class="photo ">
+                  <div class="photo_center_wrap">
+                     <div class="photo_center ">
+                        <img src="<c:url value='/resources/images/cat3.jpg'/>"
+                           style="width: auto; height: 100%;" />
+                     </div>
+                  </div>
+               </div>
+               <div class="menu" style="border-top: 1px solid #e6e6e6;">
+                  <div class="centered">
+                     <div class="btn-group item" role="group">
+                        <button type="button" class="btn btn-default">삭제</button>
+                        <button type="button" class="btn btn-default">회전</button>
+                        <button type="button" class="btn btn-default" id="btn_select">선택</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div> --%>
+
       </div>
       <!-- preview -->
    </div>
-   <!-- preview_container -->
+   <!-- preview_container -->      
 </div>
 <!-- preview_wrap -->
-
-<!-- 하단 수평스크롤 시작-->
-<div id="filter_list" class="navbar navbar-default navbar-fixed-bottom">
-   <div class="container-fluid">
-      <div class="nav navbar-nav">
+   
+   <!-- 하단 수평스크롤 시작-->
+<div id="filter_list" >
+   <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
-         <div class="scrollmenu squares">
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')" type>B5</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               1</div>
-            <div
-               style="background-image: url('<c:url value='/resources/images/sns/P.png'/>')">item
-               8</div>
-         </div>
-         <!-- scrollmenu squares -->
+            <div class=" card-a cssco cssco--c1 ">
+               <img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+               <div class="name_text">
+                  C1
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--f2 ">
+               <img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+               <div class="name_text">
+                  F2
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--g3 ">
+               <img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  G3
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--p5 ">
+               <img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  P5
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--lv3 ">
+               <img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  LV3
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--b5 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  B5
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--a6 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  A6
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--kk2 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  KK2
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--m5 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  M5
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--m3 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  M3
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--hb1 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  HB1
+               </div>
+            </div>   
+            <div class=" card-a cssco cssco--hb2 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  HB2
+               </div>
+            </div>
+            <div class=" card-a cssco cssco--acg ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  ACG
+               </div>
+            </div>   
+            <div class=" card-a cssco cssco--x1 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  X1
+               </div>
+            </div>   
+            <div class=" card-a cssco cssco--t1 ">
+               <img
+                  src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+                  <div class="name_text">
+                  T1
+               </div>
+            </div>      
       </div>
-      <!-- nav -->
+      <!--scroll_inline box -->
    </div>
-   <!-- CON-FLU -->
-</div>
-<!-- navbar -->
+   <!--filter_list -->
+
+
+
+<%-- <div id="filter_list">
+   <div class="box">
+      <div class=" card-a cssco cssco--c1 ">
+         <img
+            src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+      </div>
+      <div class=" card-a cssco cssco--c1 ">
+         <img
+            src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+      </div>
+      <div class=" card-a cssco cssco--c1 ">
+         <img
+            src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+      </div>
+      <div class=" card-a cssco cssco--c1 ">
+         <img
+            src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+      </div>
+      <div class=" card-a cssco cssco--c1 ">
+         <img
+            src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+      </div>
+      <div class=" card-a cssco cssco--c1 ">
+         <img
+            src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+      </div>
+      <div class=" card-a cssco cssco--c1 ">
+         <img
+            src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+      </div>
+   </div>
+</div> --%>
 <!-- 하단 스크롤 끝 -->
+
+
+
 
 
 
@@ -182,6 +297,7 @@
    var btn = document.getElementById("option_btn");
    // 모달창 닫기(span) 태그요소 얻기
    var span = document.getElementsByClassName("close")[0];
+   
 
    //페이지 로드하면서 모달창 열기(띄우기)
    window.onload = function() {
@@ -215,89 +331,85 @@
 
    /* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
    var fileCollection = new Array();
-   var index=1;
-   
+   var index = 1;
    $('#img_mypc')
-         .on('change',function(e) {
+         .on(
+               'change',
+               function(e) {
                   var files = e.target.files;
-                  $.each(files,function(i, file) {
+                  $
+                        .each(
+                              files,
+                              function(i, file) {
                                  fileCollection.push(file);
                                  var reader = new FileReader();
                                  reader.readAsDataURL(file);
                                  reader.onload = function(e) {
-                                	 
-                                	 /*
-                                	 <div class="col-lg-2 col-md-4 col-sm-6 noMnP ">
-							            <div class=" photo_wrap">
-							               <div class="photo " >
-							               <div class="photo_center_wrap" >
-							                  
-							                        <img src="<c:url value='/resources/images/main_image2.jpg'/>" />
-							                  
-							               </div>   
-							               </div>                  
-							               <div class="menu" style="border-top: 1px solid #e6e6e6;">
-							                  <div class="centered">
-							                     <div class="btn-group item" role="group">
-							                        <button type="button" class="btn btn-default">삭제</button>
-							                        <button type="button" class="btn btn-default">회전</button>
-							                        <button type="button" class="btn btn-default" id="btn_select">선택</button>
-							                     </div>
-							                  </div>
-							               </div>
-							            </div>
-							         </div>
-                                	 */
-                                	 
-                                    var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div'+index+'" >'
+                                    var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
                                           + '<div class=" photo_wrap">'
                                           + '<div class="photo" >'
                                           + '<div class="photo_center_wrap" >'
-                                         
-                                          + '<img id="temp_img'+index+'" src="'+e.target.result+'"/>'
-                                          + '</div></div>'
+                                          + '<div class="photo_center" >'
+                                          + '<img id="temp_img_'
+                                          + index
+                                          + '" src="'
+                                          + e.target.result
+                                          + '" onload="resize(this)"/>'
+                                          + '</div></div></div>'
                                           + '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
                                           + '<div class="centered">'
                                           + '<div class="btn-group item" role="group">'
-                                          + '<button type="button" class="btn btn-default" id="'+index+'" onclick="javascript:deleteItem(this)">삭제</button>'
-                                          + '<button type="button" class="btn btn-default" id="'+index+'" onclick="javascript:selectItem(this)">선택</button>'
+                                          + '<button type="button" class="btn btn-default" id="'
+                                          + index
+                                          + '" onclick="javascript:deleteItem(this)">삭제</button>'
+                                          + '<button type="button" class="btn btn-default" id="'
+                                          + index
+                                          + '" onclick="javascript:selectItem(this)">선택</button>'
                                           + '</div></div></div>'
                                           + '</div></div>';
                                     index++;
                                     $('#preview').append(template);
-
+                                    console.log(e.target.result);
                                  };
                               });
                });
 
+   /* 이미지 기준 가로 또는 세로 적용 */
+   function resize(img) {
+      var width = $(img).width();
+      var height = $(img).height();
+      if (width < height) {
+         img.style.width = "auto";
+         img.style.height = "100%";
+      }
+   }
+
    /*<!-- 필터창 열고 닫기  --> */
    var filter_list = document.getElementById('filter_list');
-   $("#myfilter_btn").click(function(event) {
+   var preview_wrap = document.getElementsByClassName('preview_wrap')[0];
+   $("#myfilter_btn").click(function() {
       if (filter_list.style.display == "block") {
          filter_list.style.display = "none";
+         preview_wrap.style.paddingBottom = "0";
       } else {
          filter_list.style.display = "block";
+         preview_wrap.style.paddingBottom = "100px";
       }
    });
 
-   function selectItem(item){
+   /*<!-- 아이템 선택시 해당이미지src가져오기  --> */
+   function selectItem(item) {
       var currentIndex = $(item).attr("id");
-      var currentSrc=$("img[id=temp_img"+currentIndex+"]").attr("src");
-      console.log("currentIndex:"+currentIndex+",currentSrc:"+currentSrc);
-   } 
-   
-   function deleteItem(item){
+      var currentSrc = $("img[id=temp_img_" + currentIndex + "]").attr("src");
+      console.log("currentIndex:" + currentIndex + ",currentSrc:"
+            + currentSrc);
+   }
+
+   /*<!-- 아이템 삭제시 해당이미지 삭제  --> */
+   function deleteItem(item) {
       var currentIndex = $(item).attr("id");
-      $("div[id='div"+currentIndex+"']").remove();
-      
-   } 
-   
-   
-   ///임한결 추가 자바스크립트 2019-05-12
-	function getWidth(obj){
-	 	  var width = $(obj).attr("width");
-	 	  console.log("찍히니? : " + width);
-    }//fucntion getWidht
+      $("div[id='div_" + currentIndex + "']").remove();
+   }
 
    /* <!-- 이미지 선택 시 이미지 정보 가져오기 --> */
    /* $("#btn_select").click(
@@ -306,24 +418,4 @@
                   .querySelectorAll("div.photo_center img[id=temp_img]");
             console.log(selected);
          }); */
-
-   /*  // 등록 이미지 삭제 ( input file reset )
-   function resetInputFile($input, $preview) {
-   var agent = navigator.userAgent.toLowerCase();
-   if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)) {
-       // ie 일때
-       $input.replaceWith($input.clone(true));
-       $preview.empty();
-   } else {
-       //other
-       $input.val("");
-       $preview.empty();
-   }        
-   }
-   
-   $(".btn-delete").click(function(event) {
-   var $input = $("#inp-img");
-   var $preview = $('#preview');
-   resetInputFile($input, $preview);
-   });  */
 </script>
