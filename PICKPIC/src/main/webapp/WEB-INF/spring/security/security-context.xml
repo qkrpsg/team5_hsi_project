@@ -9,9 +9,9 @@
 		<security:intercept-url pattern="/**" access="permitAll" />
 		<security:intercept-url pattern="/pickpic/**" access="hasRole('GUEST')" />
 		<security:form-login
-			login-page="/user/Login.pic" 
-			login-processing-url="/user/loginProcess.pic"
-			default-target-url="/user/loginProcess.pic"
+			login-page="/user/Login.pic"
+			login-processing-url="/user/LoginProcess.pic"
+			default-target-url="/user/LoginProcess.pic"
 			authentication-failure-url="/user/Login.pic?error=true"
 			username-parameter="ppa_email" 
 			password-parameter="ppa_password" />

@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewRequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBodyAdvice;
 
+import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
@@ -156,11 +157,13 @@ public class FriendsController {
 			
 	
 	
-		//Map test 
-		@RequestMapping("/friends/maptest.pic")
-		public String maptest() throws Exception{
+		//UI 작업 때문에 일부러 남겨둠 ! 
+		@RequestMapping("/friends/test.pic")
+		public String user_UI() throws Exception{
 		
-			return "friends/map3";//
+			
+			
+			return "friends/user_end.tiles";//
 		}//map
 		
 		
@@ -272,78 +275,96 @@ public class FriendsController {
 		
 		//notice 작성 완료 후 뿌려줄 페이지
 		@RequestMapping("/friends/notice.pic")
-		public String textarea(@RequestParam Map map, ServletRequest request,Principal principal ) throws Exception{
-			
-			System.out.println("맵에 뭐가 ? : " + map.toString());
-			
-			List<Map<String, String>> placeList = new Vector<Map<String, String>>();
-			Map<String, String> placeMap = new HashMap<String, String>();
-			
-			Map<String, String> boardMap = new HashMap<String, String>();
-			placeMap.put("ppa_emil",principal.getName());
-			String[] strArr = map.toString().split(",");
-			boolean flag = false;
-			for(String str :  strArr) {
-				//System.out.println(str);
-				if(str.split("=").length == 3) {
-					flag = true;
-					placeMap = new HashMap<String, String>();
-					placeMap.put(str.split("=")[1].substring(1),str.split("=")[2]);
-					continue;
-				}///if
-				if(flag) {
-					if(str.split("=")[1].endsWith("}")) {
-						flag= false;
-						placeMap.put(str.split("=")[0].trim(), str.split("=")[1].substring(0, str.split("=")[1].length()-1));
-						
-						placeList.add(placeMap); continue;}
-					else {
-						placeMap.put(str.split("=")[0].trim(), str.split("=")[1]);continue;}
-				}//flag true
+		public String textarea(@RequestParam Map map, ServletRequest request,Principal principal,Model model) throws Exception{
+			System.out.println("noInsert"+map.get("noInsert"));
+			if(map.get("noInsert") == null) {
+				System.out.println("맵에 뭐가 ? : " + map.toString());
 				
-				if(str.split("=")[1].endsWith("}")){
-					boardMap.put(str.split("=")[0].trim(), str.split("=")[1].substring(0, str.split("=")[1].length()-1));
-				}else {
-					if(str.split("=")[0].trim().equals("prb_start_date")) {
-						boardMap.put(str.split("=")[0].trim(), str.split("=")[1].split(" - ")[0]);
-						boardMap.put("prb_end_date", str.split("=")[1].split(" - ")[1]);
+				List<Map<String, String>> placeList = new Vector<Map<String, String>>();
+				Map<String, String> placeMap = new HashMap<String, String>();
+				
+				Map<String, String> boardMap = new HashMap<String, String>();
+				placeMap.put("ppa_email",principal.getName());
+				String[] strArr = map.toString().split(",");
+				boolean flag = false;
+				for(String str :  strArr) {
+					//System.out.println(str);
+					if(str.split("=").length == 3) {
+						flag = true;
+						placeMap = new HashMap<String, String>();
+						placeMap.put(str.split("=")[1].substring(1),str.split("=")[2]);
 						continue;
-					}//start
-						boardMap.put(str.split("=")[0].trim(), str.split("=")[1]);
-				}//else
-			}//for
+					}///if
+					if(flag) {
+						if(str.split("=")[1].endsWith("}")) {
+							flag= false;
+							placeMap.put(str.split("=")[0].trim(), str.split("=")[1].substring(0, str.split("=")[1].length()-1));
+							
+							placeList.add(placeMap); continue;}
+						else {
+							placeMap.put(str.split("=")[0].trim(), str.split("=")[1]);continue;}
+					}//flag true
+					
+					if(str.split("=")[1].endsWith("}")){
+						boardMap.put(str.split("=")[0].trim(), str.split("=")[1].substring(0, str.split("=")[1].length()-1));
+					}else {
+						if(str.split("=")[0].trim().equals("prb_start_date")) {
+							boardMap.put(str.split("=")[0].trim(), str.split("=")[1].split(" - ")[0]);
+							boardMap.put("prb_end_date", str.split("=")[1].split(" - ")[1]);
+							continue;
+						}//start
+							boardMap.put(str.split("=")[0].trim(), str.split("=")[1]);
+					}//else
+				}//for
+				
+					boardMap.put("ppa_email",principal.getName());
+				//System.out.println("여기도 들어옵니꽈?"+principal.getName());
+				//System.out.println(" placeMap : "+ placeMap.toString());
+				
+				//System.out.println(" placeList : " + placeList.toString());
+				
+				//System.out.println(" boardMap : " + boardMap.toString());
+				
+				//System.out.println("placeMap   ddddddd" + placeMap.get("prp_title"));
+				
+				//System.out.println("placeList: " + placeList.toString());
+				
+				int prp_order = 1;
+				dao.pickroadBoardInsert(boardMap);
+				for(Map mb : placeList) {
+					mb.put("prp_order", prp_order);
+					dao.pickRoadPlaceInsert(mb);
+					prp_order++;
+				}
 			
-			boardMap.put("ppa_emil",principal.getName());
-			System.out.println("여기도 들어옵니꽈?"+principal.getName());
-			System.out.println(" placeMap : "+ placeMap.toString());
 			
-			System.out.println(" placeList : " + placeList.toString());
-			
-			System.out.println(" boardMap : " + boardMap.toString());
-			
-			System.out.println("placeMap   ddddddd" + placeMap.get("prp_title"));
-			
-			System.out.println("placeList: " + placeList.toString());
-			
+				List<Map> recode = dao.pickRoadBoardSelectAll(null);
+				System.out.println("사이즈"+recode.size());
+				model.addAttribute("recode",recode);
+				System.out.println("첫 쿼리문 성공 ~~"+recode.toString());
+				return "friends/user_end.tiles";
+			}//if 끝
+			List<Map> recode = dao.pickRoadBoardSelectAll(null);
+			System.out.println("null 값이 아닐 때"+recode.toString());
+			model.addAttribute("recode",recode);
 			/*
-			
-			prb_title=mb, 
-			prb_content=mbc,
-			 ppa_emil=admin,
-			prb_end_date=05/12/2019,
-			_csrf=dab2ea53-2cc2-4376-96d0-1612708f59be, 
-			prb_start_date=05/12/2019
+			 {
+		o	  PRB_INDEX=21,                        색인
+		o	  PRB_RECOMMEND=0,                     추천수
+			  PPA_ID=2ZORUAF7I0JW,                 사용자 고유번호 
+		o	  PRB_TITLE=qqq,                       제목
+			  PRB_END_DATE=2019-05-13 00:00:00.0,  끝나는 날짜
+		o	  PRB_POST_DATE=2019-05-13 05:30:23.0, 등록일
+			  PRB_START_DATE=2019-05-13 00:00:00.0, 시작 날짜
+		o	  PRB_VIEW=0, 						       조회수
+			  PRB_ID=WD0QW6GGM1E4,                 픽로드 고유번호
+		o	  PRB_CONTENT=qqqq},                   내용
+		o	  PRP_IMAGE_PATH=http://tong.visitkorea.or.kr/cms/resource/90/1290490_image2_1.jpg
+			  
+			  
+			  
+			 
 			*/
-			
-			
-			
-			int prp_order = 1;
-			dao.pickroadBoardInsert(boardMap);
-			for(Map mb : placeList) {
-				mb.put("prp_order", prp_order);
-				dao.pickRoadPlaceInsert(mb);
-				prp_order++;
-			}
 			
 			/*{
 				prp_title=가문, 
@@ -381,6 +402,21 @@ public class FriendsController {
 			
 			return "friends/user_end.tiles";
 		}
+		
+		
+		
+		@RequestMapping("/friends/view.pic")
+		public String view(@RequestParam Map map,Model model) throws Exception {
+			System.out.println("여기 컬럼 값 들"+map.toString());
+			
+		 	int update =  dao.pickRoadBoardUpdate(map);
+			//UPDATE 문 하고  상세보기로  SELECT ONE
+		 	
+		 	
+		 	
+			
+			return "friends/view.tiles";
+		}// 
 		
 		
 		

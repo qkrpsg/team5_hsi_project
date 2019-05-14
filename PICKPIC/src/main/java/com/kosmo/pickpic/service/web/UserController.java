@@ -37,10 +37,14 @@ public class UserController {
 	@RequestMapping("/user/LoginProcess.pic")
 	public String loginProcess(HttpSession session, @RequestParam Map map,Principal principal) throws Exception{
 		System.out.println("dsadasdas");
-		//session.setAttribute("ppa_email", principal.getName());
-		//accountService.accountInsert(map);
-		return "login/Login.tiles";
-		//return "/";
+		session.setAttribute("ppa_email", principal.getName());
+		map.put("ppa_email",  principal.getName());
+		map.put("ppa_type",  "pickpic");
+		
+		
+		accountService.loginHistoryInsert(map);
+	
+		return "home.tiles";
 	}//loginProcess
 
 	
