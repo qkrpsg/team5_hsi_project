@@ -143,66 +143,111 @@
 <div id="filter_list" >
 	<div class="container-fluid noMnP scroll_inline box" >
 			<!-- 필터 띄우기 -->
-			<div class=" card-a cssco cssco--c1 ">
-					<img
-						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
-				</div>
 				<div class=" card-a cssco cssco--c1 ">
-					<img
-						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+					<img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+					<div class="name_text">
+						C1
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
-					<img
-						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+				<div class=" card-a cssco cssco--f2 ">
+					<img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+					<div class="name_text">
+						F2
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
-					<img
-						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+				<div class=" card-a cssco cssco--g3 ">
+					<img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						G3
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
-					<img
-						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+				<div class=" card-a cssco cssco--p5 ">
+					<img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						P5
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
-					<img
-						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+				<div class=" card-a cssco cssco--lv3 ">
+					<img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						LV3
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
+				<div class=" card-a cssco cssco--b5 ">
 					<img
 						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						B5
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
+				<div class=" card-a cssco cssco--a6 ">
 					<img
 						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						A6
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
+				<div class=" card-a cssco cssco--kk2 ">
 					<img
 						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						KK2
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
+				<div class=" card-a cssco cssco--m5 ">
 					<img
 						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						M5
+					</div>
 				</div>
-				<div class=" card-a cssco cssco--c1 ">
+				<div class=" card-a cssco cssco--m3 ">
 					<img
 						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						M3
+					</div>
 				</div>
-				
-			<%-- <div class="box">
-				<div class=" card-a cssco cssco--c1 ">
+				<div class=" card-a cssco cssco--hb1 ">
 					<img
 						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
-				</div> --%>
-
-			
-			
-			<!-- scrollmenu squares -->
+						<div class="name_text">
+						HB1
+					</div>
+				</div>	
+				<div class=" card-a cssco cssco--hb2 ">
+					<img
+						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						HB2
+					</div>
+				</div>
+				<div class=" card-a cssco cssco--acg ">
+					<img
+						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						ACG
+					</div>
+				</div>	
+				<div class=" card-a cssco cssco--x1 ">
+					<img
+						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						X1
+					</div>
+				</div>	
+				<div class=" card-a cssco cssco--t1 ">
+					<img
+						src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
+						<div class="name_text">
+						T1
+					</div>
+				</div>		
 		</div>
-		<!--nav -->
+		<!--scroll_inline box -->
 	</div>
-	<!--CON-FLU -->
-</div>
-<!--navbar -->
+	<!--filter_list -->
+
 
 
 <%-- <div id="filter_list">

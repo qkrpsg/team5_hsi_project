@@ -1,5 +1,6 @@
 #filter_list {
 	display: none;
+	position: relative;
 }
 
 .scroll_inline {
@@ -10,7 +11,7 @@
 	z-index: 1030;
 	display: -webkit-inline-box;
 	background-color: #e6e6e6;
-	border-top: 1px solid black;
+	border-top: 1px solid #cccccc;
 	/* overflow-x: scroll;
 	overflow-y: hidden; */
 	}
@@ -32,7 +33,17 @@
 	height: 100%;
 	width: 180px;
 	margin: 10px 10px 0 10px;
+	vertical-align: middle;
 	
+}
+
+.name_text {
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 3%;
+	font-size: 2em;
+	color: #eeeeee;
 }
 
 /* 필터명 나열 */
