@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link href="<c:url value='/css/user_end.css'/>" rel="stylesheet"/>
 <script>
 $(function(){
@@ -31,7 +32,7 @@ $(function(){
 		<hr class='one_hr'/>
 		<div class="wrap">
 			<div>
-				<h3>PICKPIC에 등록되어 있는 사진들(총 ****개)</h3>
+				<h3>PICKPIC에 등록되어 있는 사진들(총 ${fn:length(recode) }개)</h3>
 			</div>
 			<div class="box_wrap">
 				<select class="btn btn-info">
@@ -58,136 +59,42 @@ $(function(){
 				<button class="btn btn-info">인기순</button>
 			</div><!-- 셀렉트 태그 -->
 			<div class="user_end_all_wrap">
-				<!-- forEach 넣을 곳 -->
-				<div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div><!-- 게시판 뿌려주는 곳 -->
+				
 			
-				<div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
+					<!-- forEach 넣을 곳 -->
+					<c:forEach var="recode" items="${recode }" varStatus="loop">
+						
+						
+						<div class="user_end_wrap">
+							<%-- <input type="hidden" name="prb_index" value="${recode.PRB_INDEX }">
+							<input type="hidden" name="prb_post_date" value="${recode.PRB_POST_DATE }"> --%>
+							<div>
+								<div class="contents_wrap">
+									<div class="img_wrap"><a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }'/>"><img src="${recode.PRP_IMAGE_PATH }" /></a></div>
+									<div class="contents_text">
+										<div>
+											<p>
+												<span style="font-size:.9em;color:#269abc;font-family: NANUMSQUAREROUNDB;">조회수 : ${recode.PRB_VIEW }</span>
+												&nbsp;&nbsp;
+												<span style="font-size:.9em;color:#666;font-family: NANUMSQUAREROUNDB;">추천수 : ${recode.PRB_RECOMMEND }<a href="<c:url value='/f/f.pic?prb_index=${recode.PRB_INDEX }'/>"><i class="fa fa-fw fa-thumbs-o-up" style="float: right;cursor: pointer;color:black;font-size:1.2em;"></i></a></span>
+											</p>
+											
+												
+									
 								
-							</div>
-						</div>
-					</div>
-				</div><div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
+										</div>
+										<p class="user_title">${recode.PRB_TITLE }</p>
+										
+										<hr />
+										<div class="user_contents">
+											<p>${recode.PRB_CONTENT }</p>
+										</div>
+										
+									</div>
 								</div>
-								
 							</div>
-						</div>
-					</div>
-				</div><div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div><div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div><div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div><div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div><div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div><div class="user_end_wrap">
-					<div>
-						<div class="contents_wrap">
-							<div class="img_wrap"><img src="<c:url value='/resources/images/main_image1.jpg'/>" /></div>
-							<div class="contents_text">
-								<p class="user_title">사용자가 적은 제목</p>
-								<hr />
-								<div class="user_contents">
-									<p>사용자가 적은 내용dddd</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
+						</div><!-- 게시판 뿌려주는 곳 -->
+					</c:forEach>
 				
 				
 				

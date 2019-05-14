@@ -4,11 +4,16 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
+import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -25,10 +30,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewRequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBodyAdvice;
 
+import com.kosmo.pickpic.service.PickRoadBoardDTO;
+import com.kosmo.pickpic.service.PickRoadBoardService;
+import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
+import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
+
 @Controller
 public class FriendsController {
 	// 서비스 주입
-
+	@Resource(name="prbService")
+	private PickRoadBoardServiceImpl dao;
 	// 픽플레이스
 	/*@RequestMapping("/friends/place.pic")
 	public String place() throws Exception {
@@ -146,11 +157,13 @@ public class FriendsController {
 			
 	
 	
-		//Map test 
-		@RequestMapping("/friends/maptest.pic")
-		public String maptest() throws Exception{
+		//UI 작업 때문에 일부러 남겨둠 ! 
+		@RequestMapping("/friends/test.pic")
+		public String user_UI() throws Exception{
 		
-			return "friends/map3";//
+			
+			
+			return "friends/user_end.tiles";//
 		}//map
 		
 		
@@ -196,6 +209,8 @@ public class FriendsController {
 			 * firstimage:http://tong.visitkorea.or.kr/cms/resource/34/1181034_image2_1.jpg}
 			 */
 			
+			
+			
 			String[] a;
 			List<Map<String,String>> TitleList = new Vector<Map<String,String>>();
 			for(int j=1;j < map.size()+1;j++) {
@@ -216,29 +231,36 @@ public class FriendsController {
 						list.add(item);	
 					}
 				}
-				
 				String jsonString=list.toString().replace("[","{").replace("]","}");
+				
 				JSONParser jsonparser = new JSONParser();
 				JSONObject jsonobject = (JSONObject) jsonparser.parse(jsonString);
 				//System.out.println("55555:"+jsonobject.get("addr1"));
-				System.out.println("뭘까요?"+jsonobject.get("title").toString());
-				TitleList2.put("title",jsonobject.get("title").toString());
+				//System.out.println("뭘까요?"+jsonobject.get("title").toString());
+				TitleList2.put("prp_title",jsonobject.get("title").toString());
 				TitleList2.put("addr",jsonobject.get("addr1").toString());
+				TitleList2.put("prp_contentid",jsonobject.get("contentid").toString());
+				
 				if(jsonobject.get("firstimage") != null) {
-					TitleList2.put("firstimage",jsonobject.get("firstimage").toString());
-					System.out.println("이미지 원이다");
+					TitleList2.put("prp_image_path",jsonobject.get("firstimage").toString());
+					//System.out.println("이미지 원이다");
 				}else if(jsonobject.get("firstimage2") != null) {
-					TitleList2.put("firstimage",jsonobject.get("firstimage2").toString());
+					TitleList2.put("prp_image_path",jsonobject.get("firstimage2").toString());
 					System.out.println("이미지 투다");
 				}else {
-//					TitleList2.put("firstimage", "<c:url value='/resources/images/main_image6.jpg'/>");
-					TitleList2.put("firstimage", "/pickpic/resources/images/main_image6.jpg");
+					TitleList2.put("prp_image_path", "/pickpic/resources/images/main_image6.jpg");
 				}
 				TitleList.add(TitleList2);
 				
 			}
 			
-			
+			/*int count = 1;
+			for(Map map :  TitleList) {
+				map.set("count", count);
+				serv.insert(map);
+				count++;
+			}
+			*/
 			//jsList
 			model.addAttribute("data",TitleList);
 			//.addAttribute("addr1",Addr1List);
@@ -248,14 +270,153 @@ public class FriendsController {
 			return "friends/mapWrite.tiles";
 		}
 	
+		
+		
+		
 		//notice 작성 완료 후 뿌려줄 페이지
 		@RequestMapping("/friends/notice.pic")
-		public String textarea(@RequestParam Map map) throws Exception{
-			System.out.println("아무것도 안 넣은거"+map.get("textarea"));
-			System.out.println("0번 넣은거"+map.get("textarea0"));
-			System.out.println("1번 넣은거"+map.get("textarea1"));
+		public String textarea(@RequestParam Map map, ServletRequest request,Principal principal,Model model) throws Exception{
+			System.out.println("noInsert"+map.get("noInsert"));
+			if(map.get("noInsert") == null) {
+				System.out.println("맵에 뭐가 ? : " + map.toString());
+				
+				List<Map<String, String>> placeList = new Vector<Map<String, String>>();
+				Map<String, String> placeMap = new HashMap<String, String>();
+				
+				Map<String, String> boardMap = new HashMap<String, String>();
+				placeMap.put("ppa_email",principal.getName());
+				String[] strArr = map.toString().split(",");
+				boolean flag = false;
+				for(String str :  strArr) {
+					//System.out.println(str);
+					if(str.split("=").length == 3) {
+						flag = true;
+						placeMap = new HashMap<String, String>();
+						placeMap.put(str.split("=")[1].substring(1),str.split("=")[2]);
+						continue;
+					}///if
+					if(flag) {
+						if(str.split("=")[1].endsWith("}")) {
+							flag= false;
+							placeMap.put(str.split("=")[0].trim(), str.split("=")[1].substring(0, str.split("=")[1].length()-1));
+							
+							placeList.add(placeMap); continue;}
+						else {
+							placeMap.put(str.split("=")[0].trim(), str.split("=")[1]);continue;}
+					}//flag true
+					
+					if(str.split("=")[1].endsWith("}")){
+						boardMap.put(str.split("=")[0].trim(), str.split("=")[1].substring(0, str.split("=")[1].length()-1));
+					}else {
+						if(str.split("=")[0].trim().equals("prb_start_date")) {
+							boardMap.put(str.split("=")[0].trim(), str.split("=")[1].split(" - ")[0]);
+							boardMap.put("prb_end_date", str.split("=")[1].split(" - ")[1]);
+							continue;
+						}//start
+							boardMap.put(str.split("=")[0].trim(), str.split("=")[1]);
+					}//else
+				}//for
+				
+					boardMap.put("ppa_email",principal.getName());
+				//System.out.println("여기도 들어옵니꽈?"+principal.getName());
+				//System.out.println(" placeMap : "+ placeMap.toString());
+				
+				//System.out.println(" placeList : " + placeList.toString());
+				
+				//System.out.println(" boardMap : " + boardMap.toString());
+				
+				//System.out.println("placeMap   ddddddd" + placeMap.get("prp_title"));
+				
+				//System.out.println("placeList: " + placeList.toString());
+				
+				int prp_order = 1;
+				dao.pickroadBoardInsert(boardMap);
+				for(Map mb : placeList) {
+					mb.put("prp_order", prp_order);
+					dao.pickRoadPlaceInsert(mb);
+					prp_order++;
+				}
+			
+			
+				List<Map> recode = dao.pickRoadBoardSelectAll(null);
+				System.out.println("사이즈"+recode.size());
+				model.addAttribute("recode",recode);
+				System.out.println("첫 쿼리문 성공 ~~"+recode.toString());
+				return "friends/user_end.tiles";
+			}//if 끝
+			List<Map> recode = dao.pickRoadBoardSelectAll(null);
+			System.out.println("null 값이 아닐 때"+recode.toString());
+			model.addAttribute("recode",recode);
+			/*
+			 {
+		o	  PRB_INDEX=21,                        색인
+		o	  PRB_RECOMMEND=0,                     추천수
+			  PPA_ID=2ZORUAF7I0JW,                 사용자 고유번호 
+		o	  PRB_TITLE=qqq,                       제목
+			  PRB_END_DATE=2019-05-13 00:00:00.0,  끝나는 날짜
+		o	  PRB_POST_DATE=2019-05-13 05:30:23.0, 등록일
+			  PRB_START_DATE=2019-05-13 00:00:00.0, 시작 날짜
+		o	  PRB_VIEW=0, 						       조회수
+			  PRB_ID=WD0QW6GGM1E4,                 픽로드 고유번호
+		o	  PRB_CONTENT=qqqq},                   내용
+		o	  PRP_IMAGE_PATH=http://tong.visitkorea.or.kr/cms/resource/90/1290490_image2_1.jpg
+			  
+			  
+			  
+			 
+			*/
+			
+			/*{
+				prp_title=가문, 
+				prp_contentid=1052741, 
+				addr=서울특별시 강북구 노해로 13, 
+				prp_image_path=http://tong.visitkorea.or.kr/cms/resource/34/1181034_image2_1.jpg
+			}
+			  */
+			/*
+			for(int i = 0; i < map.size()-4;i++) {
+				data_re =  map.get("data"+i).toString();
+				String a = data_re.replace("=","\":");
+				String[] h = a.split(regex)
+			}*/
+					
+			/*
+			Map<String,String> m2 = new HashMap<String,String>();
+			Set keys = map.keySet();
+			boolean flag = false;
+			for(Object key: keys) {
+				System.out.println(key.toString());
+				if(key.equals("prd_title")) {
+					flag=true;
+				};//if
+				if(flag) {
+					m2.put(key.toString(), map.get(key).toString());
+				}
+			}
+			JSONParser jsonparser = new JSONParser();
+			
+			*/
+			//JSONObject jsonobject;  
+			
+			//(JSONObject) jsonparser.parse(jsonString);
+			
 			return "friends/user_end.tiles";
 		}
+		
+		
+		
+		@RequestMapping("/friends/view.pic")
+		public String view(@RequestParam Map map,Model model) throws Exception {
+			System.out.println("여기 컬럼 값 들"+map.toString());
+			
+		 	int update =  dao.pickRoadBoardUpdate(map);
+			//UPDATE 문 하고  상세보기로  SELECT ONE
+		 	
+		 	
+		 	
+			
+			return "friends/view.tiles";
+		}// 
 		
 		
 		

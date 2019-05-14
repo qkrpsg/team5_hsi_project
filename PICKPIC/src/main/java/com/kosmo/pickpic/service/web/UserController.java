@@ -35,6 +35,8 @@ public class UserController {
 		return "login/Login.tiles";
 	}//login
 	
+
+
 	//로그인 프로세스
 	@RequestMapping("/user/LoginProcess.pic")
 	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal, HttpServletResponse response) throws Exception{

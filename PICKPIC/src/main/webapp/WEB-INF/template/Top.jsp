@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>"
 	rel="stylesheet">
+	<link rel="stylesheet" href="<c:url value='/css/font-awesome.css'/>">
 <link href="<c:url value='/css/Top.css'/>" rel="stylesheet">
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/js/mostrar_nav.js'/>"></script>
@@ -27,7 +28,7 @@
 							<li class="col-md-3"><a
 								href="<c:url value='/'/>">피크픽 스토리</a></li>
 							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
-							<li class="col-md-3"><a href="<c:url value='/friends/maptest.pic'/>">고객센터</a></li>
+							<li class="col-md-3"><a href="<c:url value='/friends/notice.pic?noInsert=hi'/>">고객센터</a></li>
 							<li class="col-md-1"></li>
 						</ul>
 					</nav>
