@@ -42,16 +42,13 @@ public class HelpController {
 		return "help/notice/View.tiles";
 	}
 	
-	
-	
-
 	//문의사항
 	@RequestMapping("/help/qna/List.pic")
 	public String qna_list() throws Exception{
-		
-		
 		return "help/qna/List.tiles";
-	}//qna
+	}
+	
+	//qna
 	@RequestMapping("/help/qna/Write.pic")
 	public String qna_write() throws Exception{
 		return "help/qna/Write.tiles";
