@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>"
 	rel="stylesheet">
+	<link rel="stylesheet" href="<c:url value='/css/font-awesome.css'/>">
 <link href="<c:url value='/css/Top.css'/>" rel="stylesheet">
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/js/mostrar_nav.js'/>"></script>
@@ -25,9 +26,9 @@
 						<ul>
 							<li class="col-md-2"></li>
 							<li class="col-md-3"><a
-								href="<c:url value='/user/home.pic'/>">피크픽 스토리</a></li>
-							<li class="col-md-3"><a href="<c:url value='/user/map.pic'/>">피크픽 프렌즈</a></li>
-							<li class="col-md-3"><a href="#">고객센터</a></li>
+								href="<c:url value='/'/>">피크픽 스토리</a></li>
+							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
+							<li class="col-md-3"><a href="<c:url value='/friends/notice.pic?noInsert=hi'/>">고객센터</a></li>
 							<li class="col-md-1"></li>
 						</ul>
 					</nav>
@@ -42,7 +43,7 @@
 									<li><a href="<c:url value='/admin/home.pic'/>"> 관리자 <span></span></a></li>
 								</c:if>
 								<c:if test="${not isAdmin }">
-									<li><a href="<c:url value='/user/myPage.pic'/>"><sec:authentication property="principal.username" /> 님 <span></span></a></li>
+									<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppa_nickname }님 <span></span></a></li>
 								</c:if>
 								<li><a href="javascript:logout()">Logout</a></li>
 							</sec:authorize>

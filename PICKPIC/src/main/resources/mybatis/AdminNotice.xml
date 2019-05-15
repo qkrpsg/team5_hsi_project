@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+
+<mapper namespace="mybatis.AdminNotice">
+<select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT N_INDEX,N_TITLE,N_POST_DATE FROM NOTICE ORDER BY N_INDEX DESC
+</select>
+<select id="commentSelectOne" parameterType="java.util.Map" resultType="NoticeDTO">
+        SELECT N_INDEX,N_TITLE,N_POST_DATE,N_CONTENT FROM NOTICE WHERE N_INDEX = #{n_index}
+        
+</select>
+	
+<insert id="commentInsert" parameterType="java.util.Map">
+INSERT INTO NOTICE(n_id,n_title,n_content,n_index) VALUES(func_generator,#{n_title},#{n_content},seq_N_index.NEXTVAL)
+</insert>	
+
+
+
+
+
+	
+</mapper>

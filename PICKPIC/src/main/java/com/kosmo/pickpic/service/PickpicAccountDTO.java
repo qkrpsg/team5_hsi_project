@@ -4,9 +4,8 @@ public class PickpicAccountDTO {
 	private String ppa_id;
 	private String ppa_email;
 	private String ppa_password;
-	private String ppa_name;
 	private String ppa_nickname;
-	private java.sql.Date ppa_join;
+	private java.sql.Date ppa_join_date;
 	private String ppa_type;
 	private String ppa_token;
 	private String ppa_profile_path;
@@ -31,12 +30,6 @@ public class PickpicAccountDTO {
 	public void setPpa_password(String ppa_password) {
 		this.ppa_password = ppa_password;
 	}
-	public String getPpa_name() {
-		return ppa_name;
-	}
-	public void setPpa_name(String ppa_name) {
-		this.ppa_name = ppa_name;
-	}
 	public String getPpa_nickname() {
 		return ppa_nickname;
 	}
@@ -44,10 +37,10 @@ public class PickpicAccountDTO {
 		this.ppa_nickname = ppa_nickname;
 	}
 	public java.sql.Date getPpa_join() {
-		return ppa_join;
+		return ppa_join_date;
 	}
 	public void setPpa_join(java.sql.Date ppa_join) {
-		this.ppa_join = ppa_join;
+		this.ppa_join_date = ppa_join;
 	}
 	public String getPpa_type() {
 		return ppa_type;
