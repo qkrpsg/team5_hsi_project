@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kosmo.pickpic.service.NoticeDTO;
 import com.kosmo.pickpic.service.NoticeService;
 
-@Service("adminService")
+@Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
 //
 	//MemoCommentDAO주입]

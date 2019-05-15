@@ -16,8 +16,8 @@ import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 @Controller
 public class HelpController {
 	//서비스 주입
-	@Resource(name="adminService")
-	private NoticeServiceImpl adminService;
+	@Resource(name="noticeService")
+	private NoticeServiceImpl noticeService;
 	
 	
 	//픽크픽TIP
@@ -29,7 +29,7 @@ public class HelpController {
 	//공지사항
 	@RequestMapping(value= "/help/notice/List.pic")
 	public String notice(Model model, @RequestParam Map map) throws Exception{
-		List<NoticeDTO> list= adminService.selectList(map);
+		List<NoticeDTO> list= noticeService.selectList(map);
 		model.addAttribute("list", list);
 		return "help/notice/List.tiles";
 	}//notice
@@ -37,7 +37,7 @@ public class HelpController {
 	//공지사항 상세 페이지
 	@RequestMapping(value= "/help/notice/View.pic")
 	public String notice_View(@RequestParam Map map,Model model) throws Exception{
-		NoticeDTO list= adminService.selectOne(map);
+		NoticeDTO list= noticeService.selectOne(map);
 		model.addAttribute("list", list);
 		return "help/notice/View.tiles";
 	}

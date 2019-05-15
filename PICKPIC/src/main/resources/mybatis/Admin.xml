@@ -3,4 +3,37 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.Admin">
+	<!-- 대시보드 -->
+	<!-- 대시보드 탑 표시 -->
+	<select id="adminNewPick" resultType="int">
+		SELECT (SELECT COUNT(*) FROM pickplace_board)+(SELECT COUNT(*) FROM pickroad_board) FROM DUAL
+	</select>
+	<select id="adminNewUser" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM pickpic_account ORDER BY ppa_index DESC) WHERE ppa_join_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	<select id="adminNewQuestion" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM question ORDER BY q_index DESC) WHERE q_post_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	<select id="adminNewSale" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM payment ORDER BY p_index DESC) WHERE p_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	
+	<!-- 대시보드 게시판 표시 -->
+	<select id="adminDashUser" resultType="PickpicAccountDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM pickpic_account ORDER BY ppa_index DESC) WHERE ROWNUM <= 3]]>
+	</select>
+	<select id="adminDashFilter" resultType="FilterDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM filter ORDER BY f_index DESC) WHERE ROWNUM <= 3]]>
+	</select>
+	<select id="adminDashPickPlace" resultType="PickPlaceBoardDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM pickplace_board ORDER BY ppb_index DESC) WHERE ROWNUM <= 3]]>
+	</select>
+	<select id="adminDashPickRoad" resultType="PickRoadBoardDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM pickroad_board ORDER BY prb_index DESC) WHERE ROWNUM <= 3]]>
+	</select>
+	<select id="adminDashReport" resultType="java.util.Map">
+	</select>
+	<select id="adminDashRecycleBin" resultType="java.util.Map">
+	</select>
+	
 </mapper>

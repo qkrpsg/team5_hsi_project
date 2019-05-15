@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.kosmo.pickpic.service.NoticeDTO;
+import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.web.PagingUtil;
@@ -27,62 +28,62 @@ import com.kosmo.pickpic.service.web.PagingUtil;
 @Controller
 public class AdminController {
 	//서비스 주입
+	@Resource(name="noticeService")
+	private NoticeServiceImpl noticeService;
+	
 	@Resource(name="adminService")
-	private NoticeServiceImpl adminService;
+	private AdminServiceImpl adminService;
 	
 	//HOME
 	@RequestMapping(value = "/admin/home.pic")
-	public String home(@RequestParam Map map) {
-		map.put("admin", "HOME");
+	public String home(@RequestParam Map map, Model model) {
+		model.addAllAttributes(adminService.dashBoardTop());
+		model.addAttribute("user",adminService.dashBoardUser());
+		model.addAttribute("filter",adminService.dashBoardFilter());
+		model.addAttribute("place", adminService.dashBoardPickPlace());
+		model.addAttribute("road", adminService.dashBoardPickRoad());
 		return "admin/admin_home.admin";
 	}//home
 	
 	//회원관리
 	@RequestMapping(value = "/admin/users.pic")
 	public String users(@RequestParam Map map) {
-		map.put("admin", "회원관리");
 		return "admin/admin_users.admin";
 	}//users
 	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")
 	public String attraction(@RequestParam Map map) {
-		map.put("admin", "픽플레이스관리");
 		return "admin/admin_pickPlace.admin";
 	}//pickPlace
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
 	public String filter(@RequestParam Map map) {
-		map.put("admin", "필터관리");
 		return "admin/admin_filter.admin";
 	}//filter
 	
 	//픽로드관리
 	@RequestMapping(value = "/admin/pickRoad.pic")
 	public String route(@RequestParam Map map) {
-		map.put("admin", "픽로드관리");
 		return "admin/admin_pickRoad.admin";
 	}//pickRoad
 	
 	//앨범다운관리
 	@RequestMapping(value = "/admin/albumDown.pic")
 	public String albumDown(@RequestParam Map map) {
-		map.put("admin", "앨범다운관리");
 		return "admin/admin_albumDown.admin";
 	}//albumDown
 	
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
 	public String qna(@RequestParam Map map) {
-		map.put("admin", "문의관리");
 		return "admin/admin_qna.admin";
 	}//qna
 	
 	//신고함
 	@RequestMapping(value = "/admin/report.pic")
 	public String report(@RequestParam Map map) {
-		map.put("admin", "게시물신고함");
 		return "admin/admin_report.admin";
 	}//report
 
@@ -95,7 +96,7 @@ public class AdminController {
 		//int totalRecordCount= adminService.getTotalRecord(map);		
 		//전체 페이지수]
 		//페이징을 위한 로직 끝]		
-		List<NoticeDTO> list= adminService.selectList(map);
+		List<NoticeDTO> list= noticeService.selectList(map);
 		//페이징 문자열을 위한 로직 호출]
 		
 		
@@ -112,17 +113,17 @@ public class AdminController {
 	
 	@RequestMapping(value= "/admin/admin_notice.pic")
 	public String notice_View(@RequestParam Map map,Model model) throws Exception{
-		NoticeDTO list= adminService.selectOne(map);
+		NoticeDTO list= noticeService.selectOne(map);
 		model.addAttribute("list", list);
 		return "/admin/admin_notice.admin";
 	}
 	
 	@RequestMapping(value="/admin/admin_view.pic")
 	public String notice_view(@RequestParam Map map,Model model) throws Exception{
-		  List<NoticeDTO> list= adminService.selectList(map);
-		  model.addAttribute("list", list);
-		 NoticeDTO list2 = adminService.selectOne(map);
-		 model.addAttribute("list2", list2);
+		List<NoticeDTO> list = noticeService.selectList(map);
+		model.addAttribute("list", list);
+		NoticeDTO list2 = noticeService.selectOne(map);
+		model.addAttribute("list2", list2);
 		return "/admin/admin_notice.admin";
 	}
 	
@@ -131,7 +132,7 @@ public class AdminController {
 	public String writeOk(@RequestParam Map map,HttpSession session) throws Exception{
 		
 		//map.put("id",session.getAttribute("id"));
-		adminService.insert(map);
+		noticeService.insert(map);
 	
 		return "forward:notice.pic";
 	}
@@ -140,7 +141,6 @@ public class AdminController {
 	//휴지통
 	@RequestMapping(value = "/admin/recyclebin.pic")
 	public String recyclebin(@RequestParam Map map) {
-		map.put("admin", "휴지통");
 		return "admin/admin_recyclebin.admin";
 	}//recyclebin
 
