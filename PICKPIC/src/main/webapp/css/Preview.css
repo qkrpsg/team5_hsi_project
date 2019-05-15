@@ -15,16 +15,17 @@
     position: relative;
 }
 
-.photo_wrap {
-   margin: 15px;
-   padding: 0;
-    border: 1px solid #e6e6e6;
-}
 .photo {
     border: 1px solid #e6e6e6;
     background-color:#eeeeee;
     margin: 15px 15px;
    }
+
+.photo_wrap {
+   margin: 15px;
+   padding: 0;
+    border: 1px solid #e6e6e6;
+}
 
 .photo_center_wrap{
    position: relative;
@@ -58,7 +59,7 @@
 
 .menu {
    width: 100%;
-}
+   }
 
 .centered {
    display: table;
@@ -70,6 +71,8 @@
 .menu .btn-group {
    width: 100%;
 }
+
+
 
 .noMnP {
    margin: 0;
