@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,16 +27,40 @@ public class HelpController {
 	public String tip() throws Exception{
 		return "help/tip.tiles";
 	}//tip
-
+	@Value("${PAGESIZE}")
+	private int pageSize;
+	@Value("${BLOCKPAGE}")
+	private int blockPage;
+	
 	//공지사항
 	@RequestMapping(value= "/help/notice/List.pic")
-	public String notice(Model model, @RequestParam Map map) throws Exception{
+	public String notice(Model model, @RequestParam Map map,
+			HttpServletRequest req,
+			@RequestParam(required=false,defaultValue="1") int nowPage
+			) throws Exception{
+		int totalRecordCount= noticeService.getTotalRecord(map);		
+		int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
+		int start =(nowPage-1)*pageSize+1;
+		int end   =nowPage*pageSize;
+	   System.out.println(totalRecordCount);
+	   System.out.println(totalPage);
+	   System.out.println(start );
+	   System.out.println( end  );
+	   
+		map.put("start",start);
+		map.put("end", end);
 		List<NoticeDTO> list= noticeService.selectList(map);
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/help/notice/List.pic?");
 		model.addAttribute("list", list);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalRecordCount", totalRecordCount);		
+		model.addAttribute("pagingString", pagingString);
 		return "help/notice/List.tiles";
 	}//notice
 	
 	//공지사항 상세 페이지
+	
 	@RequestMapping(value= "/help/notice/View.pic")
 	public String notice_View(@RequestParam Map map,Model model) throws Exception{
 		NoticeDTO list= noticeService.selectOne(map);
