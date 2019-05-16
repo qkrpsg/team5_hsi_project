@@ -10,7 +10,7 @@
 
 
 
-<select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
+<select id="questionSelectList" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT Q_TITLE,Q_CONTENT,Q_POST_DATE FROM QUESTION
 
 </select>

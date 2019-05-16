@@ -80,10 +80,10 @@ public class AdminController {
 	
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
-	public String qna(@RequestParam Map map,Model model) {
+	public String qna(@RequestParam Map map) {
 		List<QuestionDTO> list = questionService.selectList(map);
-		model.addAttribute("list",list);
-	
+		
+		map.put("admin", "문의관리");
 		return "admin/admin_qna.admin";
 	}//qna
 	

@@ -21,37 +21,37 @@ public class QuestionDAO implements QuestionService{
 	@Override
 	public List<QuestionDTO> selectList(Map map) {
 		// TODO Auto-generated method stub
-		return template.selectList("commentSelectList", map);
+		return template.selectList("questionSelectList", map);
 	}
 
 	@Override
 	public QuestionDTO selectOne(Map map) {
 		// TODO Auto-generated method stub
-		return template.selectOne("commentSelectOne",map);
+		return template.selectOne("questionSelectOne",map);
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
 		// TODO Auto-generated method stub
-		return template.selectOne("commentGetTotalCount",map);
+		return template.selectOne("questionGetTotalCount",map);
 	}
 
 	@Override
 	public int insert(Map map) {
 		// TODO Auto-generated method stub
-		return template.insert("commentInsert",map);
+		return template.insert("questionInsert",map);
 	}
 
 	@Override
 	public int delete(Map map) {
 		// TODO Auto-generated method stub
-		return template.delete("commentDelete",map);
+		return template.delete("questionDelete",map);
 	}
 
 	@Override
 	public int update(Map map) {
 		// TODO Auto-generated method stub
-		return template.update("commentUpdate",map);
+		return template.update("questionUpdate",map);
 	}
 
 }
