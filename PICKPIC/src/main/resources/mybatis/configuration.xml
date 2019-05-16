@@ -9,19 +9,24 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>	
 	<!-- 자바빈 별칭:매퍼파일에서 환경설정 파일로 위치됨.--> 
 	<typeAliases> 
-		<typeAlias alias="PickpicPostDTO" type="com.kosmo.pickpic.service.PickpicPostDTO"/>
-		<typeAlias alias="PickpicAdminDTO" type="com.kosmo.pickpic.service.PickpicAdminDTO"/>
 		<typeAlias alias="PickpicAccountDTO" type="com.kosmo.pickpic.service.PickpicAccountDTO"/>
-		<typeAlias alias="PickpicQnADTO" type="com.kosmo.pickpic.service.PickpicQnADTO"/>
+		<typeAlias alias="PickPlaceBoardDTO" type="com.kosmo.pickpic.service.PickPlaceBoardDTO"/>
+		<typeAlias alias="FilterDTO" type="com.kosmo.pickpic.service.FilterDTO"/>
+		<typeAlias alias="PickRoadBoardDTO" type="com.kosmo.pickpic.service.PickRoadBoardDTO"/>
 		<typeAlias alias="NoticeDTO" type="com.kosmo.pickpic.service.NoticeDTO"/>
+		<typeAlias alias="AuthSecurityDTO" type="com.kosmo.pickpic.service.AuthSecurityDTO"/>
+		<typeAlias alias="QuestionDTO" type="com.kosmo.pickpic.service.QuestionDTO"/>
 	 </typeAliases>
 	
 	
 	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑) 정보 설정 -->	
 	<mappers>
 		<mapper resource="mybatis/PickpicAccount.xml" />
+		<mapper resource="mybatis/Friends.xml" />
+		<mapper resource="mybatis/Help.xml" />
+		<mapper resource="mybatis/Admin.xml" />
 		<mapper resource="mybatis/AdminNotice.xml" />
-	
+	    <mapper resource="mybatis/Question.xml" />
 	</mappers>
 	
 </configuration>

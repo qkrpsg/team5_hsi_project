@@ -1,10 +1,11 @@
 ﻿package com.kosmo.pickpic.service.web;
 
+
 public class PagingUtil {
 
 	public static String pagingText(int totalRecordCount,int pageSize,int blockPage,int nowPage,String page){
 		String pagingStr="";
-		//
+		
 		//1.전체 페이지 구하기
 		int totalPage= (int)(Math.ceil(((double)totalRecordCount/pageSize)));
 		
@@ -65,7 +66,6 @@ public class PagingUtil {
 					"<span \">&lsaquo;</span>\r\n" + 
 					"</a>\r\n" + 
 					"</li>";   
-			
 		}
 		
 		//페이지 표시 제어를 위한 변수

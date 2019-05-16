@@ -9,16 +9,18 @@
 		<security:intercept-url pattern="/**" access="permitAll" />
 		<security:intercept-url pattern="/pickpic/**" access="hasRole('GUEST')" />
 		<security:form-login
-			login-page="/user/Login.pic" 
-			login-processing-url="/user/loginProcess.pic"
-			default-target-url="/"
-			authentication-failure-url="/user/Login.pic?error=true"
+			login-page="/user/Login.pic"
+			login-processing-url="/user/LoginProcess.pic"
+			default-target-url="/user/LoginProcess.pic"
+			authentication-failure-url="/user/LoginProcessF.pic"
 			username-parameter="ppa_email" 
 			password-parameter="ppa_password" />
 		<security:csrf disabled="false" />
+		
 		<security:session-management invalid-session-url="/user/Login.pic">
 			<security:concurrency-control max-sessions="1" expired-url="/user/Login.pic" />
 		</security:session-management>
+		
 	</security:http>
 	
 	<security:authentication-manager>
@@ -26,8 +28,8 @@
 			<security:jdbc-user-service 
 				data-source-ref="datasource" 
 				role-prefix=""
-	            users-by-username-query="select O.ppa_email as username, ppa_password as password, enabled from pickpic_account O JOIN AUTH_SECURITY2 A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
-	            authorities-by-username-query="select O.ppa_email as username, authority AS authority  from pickpic_account O JOIN AUTH_SECURITY2 A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
+	            users-by-username-query="select O.ppa_email as username, ppa_password as password, as_enabled_flag as enabled from pickpic_account O JOIN AUTH_SECURITY A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
+	            authorities-by-username-query="select O.ppa_email as username, as_class as authority from pickpic_account O JOIN AUTH_SECURITY A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
 				/>
 		</security:authentication-provider>
 	</security:authentication-manager>

@@ -1,0 +1,108 @@
+@font-face {
+	font-family: A옛날사진관2;
+	src: url("/pickpic/css/fonts/A옛날사진관2.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDB;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDR;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDR.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUAREROUNDL;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDL.TTF");
+}
+
+@font-face {
+	font-family: NANUMSQUARER;
+	src: url("/pickpic/css/fonts/NANUMSQUARER.TTF");
+}
+*{
+	margin:0;
+	padding:0;
+}
+
+.syasin{
+	border: solid 1px #DCDCDC;
+	overflow: hidden;
+	height:350px;
+	padding: 10px;
+}
+
+.syasins{
+	width:250px;
+	height:250px;
+	border:1px #DCDCDC solid;
+	float: left;
+	margin-left:20px;
+	padding: 20px;
+}
+.syasins_wrap{
+	width:100%;
+	height: 200px;
+}
+.syasins img{
+	width:100%;
+	height: 100%;
+}
+.text_wrap{
+	margin-top:5px;
+	width:250px;
+	overflow: hidden;
+	
+}
+.text_wrap p{
+	width:208px;
+	word-break:break-all;
+	
+	
+}
+.btns{
+	float:right;
+	margin-top:50px;
+	margin-bottom: 50px;
+}
+.right_text{
+	margin-top:20px;
+	border:1px #DCDCDC solid;
+	text-align: center;
+	margin-bottom: 50px;
+}
+.wrap_two{
+	margin-top:50px;
+}
+.bunka{
+	text-align: center;
+	font-size: 35px;
+    font-weight: bold;
+    color: #696969;
+    margin-top:100px;
+}
+.row{
+	margin:0 !important;
+}
+
+/* #DCDCDC */
+.text1 {
+	color: #00BFFF;
+	font-size: 20px;
+	font-weight: bold;
+}
+.co{
+	margin-top:20px;
+}
+.text2 {
+	font-size: 15px;
+}
+.homebtn {
+	width: 140px;
+	height: 40px;
+	background: none;
+	border:1px black solid;
+	
+}

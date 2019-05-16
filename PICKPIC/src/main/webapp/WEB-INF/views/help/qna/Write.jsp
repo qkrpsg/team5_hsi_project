@@ -26,7 +26,7 @@
 	<div class="l_pkp_sub_wrap">
 		<div class="row text-center">
 			<div class="section-header col-md-12"
-				style="margin-top: 4%; margin-bottom: 4%">
+				style="margin-top: 5%; margin-bottom: 4%">
 				<h2>문의 작성</h2>
 				<span>아래 폼을 작성하세요.</span>
 			</div>
@@ -61,7 +61,7 @@
 					</div>
 
 					<!-- 글쓰기 썸머노트 -->
-					<textarea id="summernote" name="editordata"><p>상세 내용을 작성하세요. 이미지 첨부시 끌어 올려주세요. </p></textarea>
+					<textarea id="summernote" name="editordata"><p>상세 내용을 작성하세요. </p></textarea>
 
 					<!--  -->
 

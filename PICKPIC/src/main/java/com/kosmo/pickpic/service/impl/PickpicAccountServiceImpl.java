@@ -5,8 +5,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.PickpicAccountService;
 
 //
@@ -27,12 +31,32 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	}
 
 	@Override
-	public void accountinsert(Map map) {
-		dao.accountinsert(map);
+	public boolean isAuthAbled(Map map) {
+		return dao.isAuthAbled(map);
 	}
 
 	@Override
-	public void securityInsert(Map map) {
-		dao.securityInsert(map);
+	public PickpicAccountDTO oneUser(Map map) {
+		return dao.oneUser(map);
+	}
+
+	@Override
+	public int accountInsert(Map map) {
+		return dao.accountInsert(map);
+	}
+
+	@Override
+	public int securityInsert(Map map) {
+		return dao.securityInsert(map);
+	}
+
+	@Override
+	public int securityUpdate(Map map) {
+		return dao.securityUpdate(map);
+	}
+
+	@Override
+	public int loginHistoryInsert(Map map) {
+		return dao.loginHistoryInsert(map);
 	}
 }

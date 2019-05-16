@@ -10,11 +10,11 @@ DROP TABLE payment CASCADE CONSTRAINTS;
 DROP TABLE pickplace_recycle_bin CASCADE CONSTRAINTS;
 DROP TABLE pickplace_report CASCADE CONSTRAINTS;
 DROP TABLE pickplace_storage CASCADE CONSTRAINTS;
-DROP TABLE pickroad_pickplace CASCADE CONSTRAINTS;
 DROP TABLE pickplace_board CASCADE CONSTRAINTS;
 DROP TABLE filter CASCADE CONSTRAINTS;
 DROP TABLE login_history CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
+DROP TABLE pickroad_place CASCADE CONSTRAINTS;
 DROP TABLE pickroad_recycle_bin CASCADE CONSTRAINTS;
 DROP TABLE pickroad_report CASCADE CONSTRAINTS;
 DROP TABLE pickroad_storage CASCADE CONSTRAINTS;
@@ -52,7 +52,7 @@ CREATE TABLE answer_question
 CREATE TABLE auth_security
 (
 	as_id nvarchar2(12) NOT NULL,
-	as_enabled_flag number DEFAULT 0 NOT NULL CHECK (as_enabled_flag IN(1, 0)),
+	as_enabled_flag number DEFAULT 0 NOT NULL CHECK(as_enabled_flag IN('1', '0')),
 	as_class nvarchar2(10) DEFAULT 'GUEST' NOT NULL,
 	as_date date DEFAULT SYSDATE NOT NULL,
 	as_index number NOT NULL,
@@ -125,7 +125,6 @@ CREATE TABLE pickpic_account
 	ppa_id nvarchar2(12) NOT NULL,
 	ppa_email nvarchar2(30) NOT NULL,
 	ppa_password varchar2(15) NOT NULL,
-	ppa_name nvarchar2(5) NOT NULL,
 	ppa_nickname nvarchar2(10) NOT NULL,
 	ppa_join_date date DEFAULT SYSDATE NOT NULL,
 	ppa_type nvarchar2(10) DEFAULT 'pickpic' NOT NULL,
@@ -205,11 +204,15 @@ CREATE TABLE pickroad_board
 );
 
 
-CREATE TABLE pickroad_pickplace
+CREATE TABLE pickroad_place
 (
-	prpp_order number NOT NULL,
+	prp_id nvarchar2(12) NOT NULL,
+	prp_order number NOT NULL,
+	prp_contentid nvarchar2(12) NOT NULL,
+	prp_title nvarchar2(20) NOT NULL,
+	prp_image_path nvarchar2(100) NOT NULL,
 	prb_id nvarchar2(12) NOT NULL,
-	ppb_id nvarchar2(12) NOT NULL
+	PRIMARY KEY (prp_id)
 );
 
 
@@ -386,13 +389,7 @@ ALTER TABLE pickplace_storage
 ;
 
 
-ALTER TABLE pickroad_pickplace
-	ADD FOREIGN KEY (ppb_id)
-	REFERENCES pickplace_board (ppb_id)
-;
-
-
-ALTER TABLE pickroad_pickplace
+ALTER TABLE pickroad_place
 	ADD FOREIGN KEY (prb_id)
 	REFERENCES pickroad_board (prb_id)
 ;

@@ -20,15 +20,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.kosmo.pickpic.service.NoticeDTO;
+import com.kosmo.pickpic.service.QuestionDTO;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
+import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
 import com.kosmo.pickpic.service.web.PagingUtil;
 
 @Controller
 public class AdminController {
 	//서비스 주입
-	@Resource(name="adminService")
-	private NoticeServiceImpl adminService;
+	@Resource(name="noticeService")
+	private NoticeServiceImpl noticeService;
+	
+	@Resource(name="questionService")
+	private QuestionServiceImpl questionService;
+	
 	
 	//HOME
 	@RequestMapping(value = "/admin/home.pic")
@@ -74,8 +80,10 @@ public class AdminController {
 	
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
-	public String qna(@RequestParam Map map) {
-		map.put("admin", "문의관리");
+	public String qna(@RequestParam Map map,Model model) {
+		List<QuestionDTO> list = questionService.selectList(map);
+		model.addAttribute("list",list);
+	
 		return "admin/admin_qna.admin";
 	}//qna
 	
@@ -85,43 +93,72 @@ public class AdminController {
 		map.put("admin", "게시물신고함");
 		return "admin/admin_report.admin";
 	}//report
-
+	@Value("${PAGESIZE}")
+	private int pageSize;
+	@Value("${BLOCKPAGE}")
+	private int blockPage;
 	//공지사항 List폼 뿌려주기
 	@RequestMapping(value = "/admin/notice.pic")
-	public String list(Model model, @RequestParam Map map) throws Exception{
-		//서비스 호출]
-		//페이징을 위한 로직 시작]
-		//전체 레코드수
-		//int totalRecordCount= adminService.getTotalRecord(map);		
-		//전체 페이지수]
-		//페이징을 위한 로직 끝]		
-		List<NoticeDTO> list= adminService.selectList(map);
-		//페이징 문자열을 위한 로직 호출]
+	public String notice(Model model, @RequestParam Map map,
+			HttpServletRequest req,
+			@RequestParam(required=false,defaultValue="1") int nowPage
+			) throws Exception{
+		int totalRecordCount= noticeService.getTotalRecord(map);		
+		int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
+		int start =(nowPage-1)*pageSize+1;
+		int end   =nowPage*pageSize;
+	   System.out.println(totalRecordCount);
+	   System.out.println(totalPage);
+	   System.out.println(start );
+	   System.out.println( end  );
+	   
+		map.put("start",start);
+		map.put("end", end);
+		List<NoticeDTO> list= noticeService.selectList(map);
+	
 		
-		
-		
-		//데이타 저장]
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/admin/notice.pic?");
 		model.addAttribute("list", list);
-	//	model.addAttribute("nowPage", nowPage);
-	
-    	//model.addAttribute("totalRecordCount", totalRecordCount);		
-	
-		//뷰정보 반환]
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalRecordCount", totalRecordCount);		
+		model.addAttribute("pagingString", pagingString);
+		
 		return "admin/admin_notice.admin";
 	}///////////////list()
+
 	
 	@RequestMapping(value= "/admin/admin_notice.pic")
 	public String notice_View(@RequestParam Map map,Model model) throws Exception{
-		NoticeDTO list= adminService.selectOne(map);
+		NoticeDTO list= noticeService.selectOne(map);
 		model.addAttribute("list", list);
 		return "/admin/admin_notice.admin";
 	}
 	
 	@RequestMapping(value="/admin/admin_view.pic")
-	public String notice_view(@RequestParam Map map,Model model) throws Exception{
-		  List<NoticeDTO> list= adminService.selectList(map);
-		  model.addAttribute("list", list);
-		 NoticeDTO list2 = adminService.selectOne(map);
+		public String notice_view(Model model, @RequestParam Map map,
+				HttpServletRequest req,
+				@RequestParam(required=false,defaultValue="1") int nowPage
+				) throws Exception{
+			int totalRecordCount= noticeService.getTotalRecord(map);		
+			int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
+			int start =(nowPage-1)*pageSize+1;
+			int end   =nowPage*pageSize;
+		  
+		   
+			map.put("start",start);
+			map.put("end", end);
+			List<NoticeDTO> list= noticeService.selectList(map);
+		
+		
+			String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/admin/notice.pic?");
+			model.addAttribute("list", list);
+			model.addAttribute("nowPage", nowPage);
+			model.addAttribute("pageSize", pageSize);
+			model.addAttribute("totalRecordCount", totalRecordCount);		
+			model.addAttribute("pagingString", pagingString);
+			
+		 NoticeDTO list2 = noticeService.selectOne(map);
 		 model.addAttribute("list2", list2);
 		return "/admin/admin_notice.admin";
 	}
@@ -131,10 +168,70 @@ public class AdminController {
 	public String writeOk(@RequestParam Map map,HttpSession session) throws Exception{
 		
 		//map.put("id",session.getAttribute("id"));
-		adminService.insert(map);
+		noticeService.insert(map);
 	
 		return "forward:notice.pic";
 	}
+	//수정
+	@RequestMapping("/admin/admin_edit.pic")
+	public String edit(Model model, @RequestParam Map map,
+			HttpServletRequest req,
+			@RequestParam(required=false,defaultValue="1") int nowPage) throws Exception{
+		int totalRecordCount= noticeService.getTotalRecord(map);		
+		int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
+		int start =(nowPage-1)*pageSize+1;
+		int end   =nowPage*pageSize;
+	    
+	    
+		map.put("start",start);
+		map.put("end", end);
+		List<NoticeDTO> list= noticeService.selectList(map);
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/admin/notice.pic?");
+		model.addAttribute("list", list);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalRecordCount", totalRecordCount);		
+		model.addAttribute("pagingString", pagingString);
+       
+		 
+		if(req.getMethod().equals("GET")) {//수정폼으로 이동
+			//서비스 호출]
+			NoticeDTO list2=noticeService.selectOne(map);
+			
+			//데이타 저장]
+			model.addAttribute("list2", list2);
+			//수정 폼으로 이동]
+			
+			return "/admin/admin_edit.pic";
+		}
+		
+	
+		int a = noticeService.update(map);
+		list= noticeService.selectList(map);
+		model.addAttribute("list", list);
+		
+		model.addAttribute("a", a);
+		return "/admin/admin_notice.admin";
+	}
+	
+	@RequestMapping("/admin/admin_delete.pic")
+	public String delete(@RequestParam Map map,Model model) throws Exception{
+		//서비스 호출]
+		System.out.println(map);
+		
+		//int sucFail=noticeService.delete(map);	
+		//데이타 저장]
+		//List<NoticeDTO> list= noticeService.selectList(map);
+		System.out.println("여기로 옵니다");
+		System.out.println("a 입니다::"+map.get("a"));
+		//model.addAttribute("SUCFAIL", sucFail);
+		//뷰정보 반환]
+		System.out.println("나는 뜰것이당:::"+map.get("n_index"));
+		return "/admin/admin_notice.admin";
+	}
+	
+	
+	
 	
 	//ETC
 	//휴지통
