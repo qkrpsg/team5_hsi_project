@@ -414,12 +414,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="item" items="${user }" varStatus="loop">
+									<c:forEach var="item" items="${user }" end="4" varStatus="loop">
 										<tr>
 											<td>${loop.count}</td>
 											<td>${item.ppa_email }</td>
 											<td>${item.ppa_nickname}</td>
-											<td>차단 됨</td>
+											<td>${item.lh_ld }</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -453,7 +453,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="item" items="${filter }" varStatus="loop">
+								<c:forEach var="item" items="${filter }" end="4" varStatus="loop">
 									<tr>
 										<td>${loop.count}</td>
 										<td>${item.f_name }</td>
@@ -498,7 +498,7 @@
 								<th>조회수</th>
 								<th>추천수</th>
 							</tr>
-							<c:forEach var="item" items="${place }" varStatus="loop">
+							<c:forEach var="item" items="${place }" end="4" varStatus="loop">
 								<tr>
 									<td>${loop.count}</td>
 									<td>${item.ppb_title }</td>
@@ -531,7 +531,7 @@
 								<th>조회수</th>
 								<th>추천수</th>
 							</tr>
-							<c:forEach var="item" items="${road }" varStatus="loop">
+							<c:forEach var="item" items="${road }" end="4" varStatus="loop">
 								<tr>
 									<td>${loop.count}</td>
 									<td>${item.prb_title }</td>

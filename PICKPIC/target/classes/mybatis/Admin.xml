@@ -20,16 +20,21 @@
 	
 	<!-- 대시보드 게시판 표시 -->
 	<select id="adminDashUser" resultType="PickpicAccountDTO">
-		<![CDATA[SELECT * FROM (SELECT * FROM pickpic_account ORDER BY ppa_index DESC) WHERE ROWNUM <= 3]]>
+		SELECT * FROM (
+			SELECT ppa.*, lh_ld FROM 
+			pickpic_account ppa JOIN (
+				SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
+			ON ppa.ppa_id=lh.ppa_id) 
+		ORDER BY ppa_id DESC
 	</select>
-	<select id="adminDashFilter" resultType="FilterDTO">
-		<![CDATA[SELECT * FROM (SELECT * FROM filter ORDER BY f_index DESC) WHERE ROWNUM <= 3]]>
+	<select id="adminFilter" resultType="FilterDTO">
+		SELECT * FROM filter ORDER BY f_index DESC
 	</select>
-	<select id="adminDashPickPlace" resultType="PickPlaceBoardDTO">
-		<![CDATA[SELECT * FROM (SELECT * FROM pickplace_board ORDER BY ppb_index DESC) WHERE ROWNUM <= 3]]>
+	<select id="adminPickPlace" resultType="PickPlaceBoardDTO">
+		SELECT * FROM pickplace_board ORDER BY ppb_index DESC
 	</select>
-	<select id="adminDashPickRoad" resultType="PickRoadBoardDTO">
-		<![CDATA[SELECT * FROM (SELECT * FROM pickroad_board ORDER BY prb_index DESC) WHERE ROWNUM <= 3]]>
+	<select id="adminPickRoad" resultType="PickRoadBoardDTO">
+		SELECT * FROM pickroad_board ORDER BY prb_index DESC
 	</select>
 	<select id="adminDashReport" resultType="java.util.Map">
 	</select>

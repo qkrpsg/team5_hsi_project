@@ -37,15 +37,15 @@ public class AdminDAO implements AdminService {
 	}
 	@Override
 	public List<FilterDTO> dashBoardFilter() {
-		return template.selectList("adminDashFilter");
+		return template.selectList("adminFilter");
 	}
 	@Override
 	public List<PickPlaceBoardDTO> dashBoardPickPlace() {
-		return template.selectList("adminDashPickPlace");
+		return template.selectList("adminPickPlace");
 	}
 	@Override
 	public List<PickRoadBoardDTO> dashBoardPickRoad() {
-		return template.selectList("adminDashPickRoad");
+		return template.selectList("adminPickRoad");
 	}
 	@Override
 	public List<Map> dashBoardReport() {
