@@ -6,9 +6,12 @@ import java.util.Map;
 public interface AdminService {
 	Map dashBoardTop();
 	List<PickpicAccountDTO> dashBoardUser();
-	List<FilterDTO> dashBoardFilter();
-	List<PickPlaceBoardDTO> dashBoardPickPlace();
-	List<PickRoadBoardDTO> dashBoardPickRoad();
+	List<PickpicAccountDTO> pickPicAccountAll();
+	List<FilterDTO> filterAll();
+	List<PickPlaceBoardDTO> pickPlaceAll();
+	List<PickRoadBoardDTO> pickRoadAll();
 	List<Map> dashBoardReport();
 	List<Map> dashBoardRecycleBin();
+	
+	PickpicAccountDTO oneUser(Map map);
 }

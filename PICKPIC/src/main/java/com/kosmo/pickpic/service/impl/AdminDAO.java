@@ -30,21 +30,24 @@ public class AdminDAO implements AdminService {
 		
 		return map;
 	}
-
 	@Override
 	public List<PickpicAccountDTO> dashBoardUser() {
 		return template.selectList("adminDashUser");
 	}
 	@Override
-	public List<FilterDTO> dashBoardFilter() {
+	public List<PickpicAccountDTO> pickPicAccountAll() {
+		return template.selectList("adminUser");
+	}
+	@Override
+	public List<FilterDTO> filterAll() {
 		return template.selectList("adminFilter");
 	}
 	@Override
-	public List<PickPlaceBoardDTO> dashBoardPickPlace() {
+	public List<PickPlaceBoardDTO> pickPlaceAll() {
 		return template.selectList("adminPickPlace");
 	}
 	@Override
-	public List<PickRoadBoardDTO> dashBoardPickRoad() {
+	public List<PickRoadBoardDTO> pickRoadAll() {
 		return template.selectList("adminPickRoad");
 	}
 	@Override
@@ -54,5 +57,10 @@ public class AdminDAO implements AdminService {
 	@Override
 	public List<Map> dashBoardRecycleBin() {
 		return template.selectList("adminDashRecycleBin");
+	}
+
+	@Override
+	public PickpicAccountDTO oneUser(Map map) {
+		return template.selectOne("adminOneUser", map);
 	}
 }

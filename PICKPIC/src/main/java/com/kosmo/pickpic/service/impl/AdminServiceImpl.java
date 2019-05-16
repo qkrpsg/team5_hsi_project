@@ -22,34 +22,37 @@ public class AdminServiceImpl implements AdminService {
 	public Map dashBoardTop() {
 		return dao.dashBoardTop();
 	}
-
 	@Override
 	public List<PickpicAccountDTO> dashBoardUser() {
 		return dao.dashBoardUser();
 	}
-
 	@Override
-	public List<FilterDTO> dashBoardFilter() {
-		return dao.dashBoardFilter();
+	public List<PickpicAccountDTO> pickPicAccountAll() {
+		return dao.pickPicAccountAll();
 	}
-
 	@Override
-	public List<PickPlaceBoardDTO> dashBoardPickPlace() {
-		return dao.dashBoardPickPlace();
+	public List<FilterDTO> filterAll() {
+		return dao.filterAll();
 	}
-
 	@Override
-	public List<PickRoadBoardDTO> dashBoardPickRoad() {
-		return dao.dashBoardPickRoad();
+	public List<PickPlaceBoardDTO> pickPlaceAll() {
+		return dao.pickPlaceAll();
 	}
-
+	@Override
+	public List<PickRoadBoardDTO> pickRoadAll() {
+		return dao.pickRoadAll();
+	}
 	@Override
 	public List<Map> dashBoardReport() {
 		return dao.dashBoardReport();
 	}
-
 	@Override
 	public List<Map> dashBoardRecycleBin() {
 		return dao.dashBoardRecycleBin();
+	}
+
+	@Override
+	public PickpicAccountDTO oneUser(Map map) {
+		return dao.oneUser(map);
 	}
 }

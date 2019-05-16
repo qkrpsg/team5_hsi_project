@@ -27,6 +27,9 @@
 			ON ppa.ppa_id=lh.ppa_id) 
 		ORDER BY ppa_id DESC
 	</select>
+	<select id="adminUser" resultType="PickPicAccountDTO">
+		SELECT * FROM pickpic_account ORDER BY ppa_index DESC
+	</select>
 	<select id="adminFilter" resultType="FilterDTO">
 		SELECT * FROM filter ORDER BY f_index DESC
 	</select>
@@ -41,4 +44,8 @@
 	<select id="adminDashRecycleBin" resultType="java.util.Map">
 	</select>
 	
+	<!-- 사용자 관리 -->
+	<select id="adminOneUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT * FROM pickpic_account WHERE ppa_email=#{ppa_email}
+	</select>
 </mapper>

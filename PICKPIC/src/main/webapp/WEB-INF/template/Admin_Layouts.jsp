@@ -12,6 +12,9 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
+<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
 <link href="<c:url value='/Bootstrap/css/bootstrap.css'/>"
 	rel="stylesheet">
 <!-- Font Awesome -->
