@@ -37,7 +37,7 @@
 
 		<div class="category_wrap">
 			<div class="write">
-				<button class='btn btn-info'>작성하러 가기1</button>
+				<button class='btn btn-info'>작성하러 가기</button>
 			</div>
 			<div class="category_wrap2">
 				<form id="category_form"></form>
@@ -202,7 +202,7 @@
 					//이건 음식점 받아오는 코드이다(제주도)
 					$.ajax({
 						url : '<c:url value="/tourapi/download_csv.do"/>',
-						dataType : 'json',//json
+						dataType : 'json',//json post
 						data : {
 							contenttypeid : contenttypeid,
 							areacode : areacode,
@@ -734,6 +734,7 @@
 									+'<div class="x_f">'
 									+'<img src="<c:url  value='/resources/images/map/x_f.png'/>"/>'
 									+'<input type="hidden" name="title'+index_naiyo+'" value="'+ajaxData_str+'"  style="border:none;background:none;"/>'
+									+'<div>'+title+'</div>'
 									+'<p>거리  '+ (Math.floor( distance / 1000)-old_distance)+' km</p>'//'+distance+'
 									+'<p>도보 '+walkHour1+''+walkgikan+''+walkMin1 +''+bun+'<br /> 승용차 '+bycicleHour1+''+byciclegikan+''+bycicleMin1+''+bun+'</p>'
 									+'</div>'
@@ -759,7 +760,7 @@
 						category_wrap2.innerHTML += naiyo;
 						*/
 						formSubmit(naiyo);
-						
+						infowindow.close();
 						//$('.category_form').submit();
 					});
 					
@@ -939,6 +940,28 @@
 		}
 		
 		
+		/* 
+		var form = document.createElement("form");
+		form.action="<>"
+		form.method = "post"
+		
+		documnet.body.append
+		for(){
+		var input = document.createElement("input");
+		input.type="hidden"
+		input.id = "data[i]"
+		input.value="";   여기에  C url 이런거 
+		form.appen
+		}
+		
+		$.each(data, function(index, element){
+			
+		})
+		
+		documnet.body.append\
+		form.submit();
+		
+		 */
 		
 		
 		

@@ -124,7 +124,7 @@ input {
 			<div class="col-md-4">
 				<p style="font-size: 30px; weight: bold">픽 로드</p>
 				<a class="btn btn-block btn-primary btn-lgg"
-					href="<c:url value='/creroute/route_create.pic'/>">+ 루트 생성</a> <br />
+					href="#">+ 루트 생성</a> <br />
 				<p style="font-size: 23px">사진 명소를 위한 루트를 만들어 보세요!</p>
 				<br />
 				<button class="routebutton">장소</button>

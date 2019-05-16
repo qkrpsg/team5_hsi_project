@@ -8,13 +8,15 @@
 .writePage{
 	width:1200px;
 	
+	overflow:auto;
 	margin: 0 auto;
-	border:1px blue solid;
+	background: #f9f9f9;
+	
 }
 
 .writePage h1{
 	text-align: center;
-	
+	margin-top:60px;
 }
 .main_title_wrap{
 	overflow: hidden;
@@ -23,13 +25,126 @@
 	float: right;
 	margin-right: 20px;
 }
-.main_title_wrap input:nth-child(1){
+/* .main_title_wrap input:nth-child(1){
 	width:300px;
 	height:30px;
+	border:1px #31b0d5 solid;
 	border-radius: 3px;
 	padding-left:10px;
-}
-.main_title_wrap input:nth-child(2){
+} */
+.main_title_wrap input:nth-child(1){
 	margin-top:20px;
 	clear: both;
 }
+
+
+/*   contents  */
+.contents_wrap{
+	
+	border-top:1px #999 solid;
+	margin-top:10px;
+	padding-bottom:40px;
+	
+}
+.contents{
+	
+	width:900px;
+	overflow: hidden;
+	margin:0 auto;
+	margin-top:20px;
+}
+.contents_img{
+	width:170px;
+	height:170px;
+	
+	margin-top:20px;
+}
+.contents_img img{
+	width:170px;
+	height: 170px;
+}
+.contents_right{
+	width:700px;
+	float:left;
+	margin-left:10px;
+	margin-top:10px;
+	
+	
+}
+.contents_right input{
+	width:100%;
+	border:1px #31b0d5 solid;
+	border-radius: 5px;
+	
+}
+.contents_right textarea{
+	width:100%;
+	border:1px #31b0d5 solid;
+	border-radius: 5px;
+	
+}
+.contents_title{width:80%;margin:0 auto;}
+.contents_schedule_title{width:80%;margin:0 auto;}
+.contents_schedule_naiyo{width:80%;margin:0 auto;}
+.contents_title_2 span{
+	color:#01a0d5;
+	font-size:0.8em;
+}
+
+.contents_title_2{
+	
+}
+.new_mb{
+	width:170px;
+	float: left;
+	margin-left:40px;
+}
+.contents_title_2 p{
+	display:inline-block;
+	
+	width:100%;
+	height:50px;
+	overflow:hidden;
+	
+	font-weight: bold;
+	font-size:1.1em;
+}
+
+.contents_schedule_title{
+	margin-left:180px;
+	float: left;
+	width:200px;
+}
+.contents_schedule_title p{
+	margin:0;
+}
+.contents_schedule_title input{
+	padding-left:10px;
+	height: 25px;
+	word-break:break-all;
+
+}
+
+.contents_schedule_naiyo{
+	clear:both;
+	margin-top:10px;
+	margin-left:180px;
+}
+.contents_schedule_naiyo p{
+	margin:0;
+}
+.contents_schedule_naiyo textarea{
+	padding-left:10px;
+	width:100%;
+	height: 75px;
+	word-break:break-all;
+}
+
+.form_mb{
+	margin-top:15px;
+	float:left;
+	width:200px;
+}
+.input-group{width:200px;}
+
+

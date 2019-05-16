@@ -1,13 +1,16 @@
 package com.kosmo.pickpic.service;
 
-import java.util.List;
 import java.util.Map;
 
 public interface PickpicAccountService {
-	//로그인 용]
 	boolean isMember(Map map);
 	boolean isEmail(Map map);
+	boolean isAuthAbled(Map map);
+	PickpicAccountDTO oneUser(Map map);
 	
-	void accountinsert(Map map);
-	void securityInsert(Map map);
+	int accountInsert(Map map);
+	int securityInsert(Map map);
+	int securityUpdate(Map map);
+	
+	int loginHistoryInsert(Map map);
 } 
