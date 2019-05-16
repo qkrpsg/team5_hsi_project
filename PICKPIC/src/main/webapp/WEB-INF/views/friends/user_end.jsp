@@ -63,14 +63,13 @@ $(function(){
 			
 					<!-- forEach 넣을 곳 -->
 					<c:forEach var="recode" items="${recode }" varStatus="loop">
-						
-						
+				
 						<div class="user_end_wrap">
 							<%-- <input type="hidden" name="prb_index" value="${recode.PRB_INDEX }">
 							<input type="hidden" name="prb_post_date" value="${recode.PRB_POST_DATE }"> --%>
 							<div>
 								<div class="contents_wrap">
-									<div class="img_wrap"><a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }'/>"><img src="${recode.PRP_IMAGE_PATH }" /></a></div>
+									<div class="img_wrap"><a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }&prb_id=${recode.PRB_ID }'/>"><img src="${recode.PRP_IMAGE_PATH }" /></a></div>
 									<div class="contents_text">
 										<div>
 											<p>
