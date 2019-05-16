@@ -26,6 +26,15 @@
 		SELECT prb.*,prp_image_path FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prp_order = 1 ORDER BY prb_index DESC
 	</select>
 	
+	<!-- view 페이지 상세보기  -->
+	<select id="PickRoadBoardSelectOne" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT prb.*,prp.prp_image_path,prp_title,prp_order FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prb_index = #{prb_index } AND prp.prb_id = #{prb_id } ORDER BY prb_index DESC
+	</select>
+	<!-- view 페이지 상세보기  -->
+	<select id="PickRoadBoardSelectOne2" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM pickroad_board WHERE prb_index = #{prb_index } 
+	</select>
+	
 	<!-- 픽로드 게시판에  조회수를 업데이트 할 쿼리문! --> 
 	<update id="PickRoadBoardUpdate" parameterType="java.util.Map">
 		UPDATE pickroad_board SET prb_view= prb_view +1  WHERE prb_index=#{prb_index }

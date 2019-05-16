@@ -162,7 +162,6 @@ public class FriendsController {
 		public String user_UI() throws Exception{
 		
 			
-			
 			return "friends/user_end.tiles";//
 		}//map
 		
@@ -360,10 +359,6 @@ public class FriendsController {
 			  PRB_ID=WD0QW6GGM1E4,                 픽로드 고유번호
 		o	  PRB_CONTENT=qqqq},                   내용
 		o	  PRP_IMAGE_PATH=http://tong.visitkorea.or.kr/cms/resource/90/1290490_image2_1.jpg
-			  
-			  
-			  
-			 
 			*/
 			
 			/*{
@@ -407,14 +402,12 @@ public class FriendsController {
 		
 		@RequestMapping("/friends/view.pic")
 		public String view(@RequestParam Map map,Model model) throws Exception {
-			System.out.println("여기 컬럼 값 들"+map.toString());
-			
-		 	int update =  dao.pickRoadBoardUpdate(map);
+			int update =  dao.pickRoadBoardUpdate(map);
 			//UPDATE 문 하고  상세보기로  SELECT ONE
-		 	
-		 	
-		 	
-			
+			List<Map> recode = dao.pickRoadBoardSelectOne(map);
+			List<Map> recode2 = dao.pickRoadBoardSelectOne2(map);
+			model.addAttribute("recode",recode);
+			model.addAttribute("recode2",recode2);
 			return "friends/view.tiles";
 		}// 
 		

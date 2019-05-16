@@ -33,6 +33,10 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		
+		System.out.println("home 으로 옵니까?");
+		//return "friends/user_end.tiles";
+		//.tiles
 		return "home.tiles";
 	}//home
 }//HomeController
