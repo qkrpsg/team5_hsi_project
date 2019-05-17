@@ -48,8 +48,8 @@
 
 .photo_center > img {
    position: absolute;
-   top: 0;
-   left: 0;
+   top: 50%;
+   left: 50%;
    width: 100%;
    height: auto;
    -webkit-transform: translate(-50%, -50%);
