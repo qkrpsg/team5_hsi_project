@@ -107,7 +107,8 @@ $(function(){
 					
 						<div class="contents">
 						<c:forEach var="data" items="${data }" varStatus="loop">
-					
+							
+							
 							<div class="new_mb">
 								<div class="contents_img">
 									<input type="hidden" name="data${loop.index }" value="${data }" />

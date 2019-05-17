@@ -6,7 +6,8 @@
 
 <mapper namespace="mybatis.AdminNotice">
 <select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT N_INDEX,N_TITLE,N_POST_DATE FROM NOTICE ORDER BY N_INDEX DESC
+	SELECT * FROM(SELECT CN.* ,ROWNUM R FROM(SELECT * FROM NOTICE ORDER BY N_INDEX DESC)CN) 
+WHERE R BETWEEN #{start} AND #{end}
 </select>
 <select id="commentSelectOne" parameterType="java.util.Map" resultType="NoticeDTO">
         SELECT N_INDEX,N_TITLE,N_POST_DATE,N_CONTENT FROM NOTICE WHERE N_INDEX = #{n_index}
@@ -16,10 +17,15 @@
 <insert id="commentInsert" parameterType="java.util.Map">
 INSERT INTO NOTICE(n_id,n_title,n_content,n_index) VALUES(func_generator,#{n_title},#{n_content},seq_N_index.NEXTVAL)
 </insert>	
-
-
-
-
+<select id="commentGetTotalCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM NOTICE
+ 	</select>	 
+<update id="commentUpdate" parameterType="java.util.Map"> 
+	UPDATE NOTICE SET N_TITLE= #{n_title} , N_CONTENT= #{n_content} WHERE N_INDEX= #{n_index}
+	</update> 
+<delete id="memoDelete" parameterType="java.util.Map">
+	DELETE NOTICE WHERE N_INDEX =${n_index} 
+	</delete>
 
 	
 </mapper>

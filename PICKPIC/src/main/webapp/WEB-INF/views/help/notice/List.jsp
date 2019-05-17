@@ -41,6 +41,7 @@
 					   </tr>
 					</c:if>
 					<c:if test="${not isEmpty}">
+					
 					<c:forEach var="item" items="${list}" varStatus="loop">
 						<tr>
 							<td style="text-align: center">${item.N_INDEX}</td>

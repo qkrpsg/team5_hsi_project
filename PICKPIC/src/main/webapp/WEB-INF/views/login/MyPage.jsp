@@ -39,7 +39,7 @@
 	background: white;
 	border-bottom: 1px #ccc solid;
 }
-body{
+.mainbody{
 margin-top:7%;
 margin-left:20% ;
 margin-right:20%;
@@ -107,12 +107,11 @@ margin-top: 5%;
 }
 </style>
 
-<body>
-	<div class="row" style="margin-top: 4%">
+	<div class="row mainbody" style="margin-top: 4%">
 		<div class="col-md-12"
 			style="background-color: #4aa8d8; padding-top: 7%;">
 			<div class="col-md-7" style="padding-top: 5%; padding-left: 15%;">
-				<p class="protext1">${sessionScope.ppa_email}</p>
+				<p class="protext1">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</p>
 				<p style="font-size: 20px;">누적픽 : 30개</p>
 				<p style="font-size: 20px;">게시글 : 49개</p>
 			</div>
@@ -167,4 +166,3 @@ margin-top: 5%;
 		</div>
 		<!-- 사용자 화면 끝 -->
 	</div>
-</body>
