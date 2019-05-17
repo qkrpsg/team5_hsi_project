@@ -61,6 +61,13 @@ public class AdminDAO implements AdminService {
 
 	@Override
 	public PickpicAccountDTO oneUser(Map map) {
-		return template.selectOne("adminOneUser", map);
+		PickpicAccountDTO user = template.selectOne("adminOneUser", map);
+		//////////////여기외안돼?
+		System.out.println(template.selectOne("adminUserPick", map.get("ppa_email")));
+//		user.setTotalpick(
+//				((PickpicAccountDTO)template.selectOne("adminUserPick", map)).getTotalpick()
+//				);
+//		System.out.println(user.getTotalpick());
+		return user;
 	}
 }
