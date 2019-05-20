@@ -30,6 +30,7 @@ import com.kosmo.pickpic.service.QuestionDTO;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
+import com.kosmo.pickpic.service.web.DTOUtil;
 import com.kosmo.pickpic.service.web.PagingUtil;
 
 @Controller
@@ -67,18 +68,19 @@ public class AdminController {
     @RequestMapping(value="/admin/detail.do",produces="text/html; charset=UTF-8")
     public String ttest(@RequestParam Map map,Model model) throws Exception{
        
-       System.out.println("들어옵니꽈?"+map.toString());
-       PickpicAccountDTO onePpa = adminService.oneUser(map);
+       List<Map> user = new Vector<Map>();  
+       user.add(DTOUtil.convertDTOToMap(adminService.oneUser(map)));
        
-       List<Map> user = new Vector<Map>();   
-       Map record = new HashMap();
-       record.put("ppa_profile_path", onePpa.getPpa_profile_path());
-       record.put("ppa_email", onePpa.getPpa_email());
-       record.put("ppa_nickname", onePpa.getPpa_nickname());
-       record.put("ppa_join_date", onePpa.getPpa_join_date().toString().substring(0, 10));
-       record.put("lh_ld", onePpa.getLh_ld());
-       user.add(record);
-       System.out.println(JSONArray.toJSONString(user));
+//       List<Map> user = new Vector<Map>();   
+//       Map record = new HashMap();
+//       record.put("ppa_profile_path", onePpa.getPpa_profile_path());
+//       record.put("ppa_email", onePpa.getPpa_email());
+//       record.put("ppa_nickname", onePpa.getPpa_nickname());
+//       record.put("ppa_join_date", onePpa.getPpa_join_date().toString().substring(0, 10));
+//       record.put("lh_ld", onePpa.getLh_ld());
+//       user.add(record);
+       
+       System.out.println(JSONArray.toJSONString(user).toString());
        
        return JSONArray.toJSONString(user);
     }

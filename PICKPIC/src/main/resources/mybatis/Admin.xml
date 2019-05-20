@@ -52,17 +52,17 @@
 			ON ppa.ppa_id=lh.ppa_id) 
 		WHERE ppa_email=#{ppa_email}
 	</select>
-	<select id="adminUserPick" parameterType="String" resultType="String">
+	<select id="adminUserPick" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT 
-			(SELECT SUM(ppb_pick) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
-			(SELECT SUM(prb_view) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
-		FROM dual
+			((SELECT sum(ppb_pick) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
+			(SELECT sum(prb_view) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})))
+		AS totalpick FROM dual
 	</select>
 	<select id="adminUserPost" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT 
-			(SELECT COUNT(*) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
-			(SELECT COUNT(*) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
-		totalpost FROM dual
+			((SELECT COUNT(*) FROM pickplace_board WHERE PPA_ID=(SELECT PPA_ID FROM pickpic_account WHERE PPA_EMAIL=#{ppa_email}))+
+			(SELECT COUNT(*) FROM pickroad_board WHERE PPA_ID=(SELECT PPA_ID FROM pickpic_account WHERE PPA_EMAIL=#{ppa_email}))) 
+		AS totalpost FROM dual
 	</select>
 	<select id="adminUserFilter" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT COUNT(*) totalfilter FROM filter_storage WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})

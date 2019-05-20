@@ -136,10 +136,10 @@
 						
 						<strong><i class="fa fa-book margin-r-5"></i> 작성</strong>
 						<ul class="list-group">
-							<li class="list-group-item"><b>누적 픽</b><a class="pull-right">-</a></li>
-							<li class="list-group-item"><b>게시글</b><a class="pull-right">-</a></li>
-							<li class="list-group-item"><b>보유 필터</b><a class="pull-right">-</a></li>
-							<li class="list-group-item"><b>문의</b><a class="pull-right">-</a></li>
+							<li class="list-group-item"><b>누적 픽</b><a id="d-pick" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>게시글</b><a id="d-post" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>보유 필터</b><a id="d-filter" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>문의</b><a id="d-question" class="pull-right">-</a></li>
 						</ul>
 						<hr>
 
@@ -223,8 +223,13 @@
 	                  $('#d-joindate').html(element['ppa_join_date']);
 	                  $('#d-logindate').html(element['lh_ld']);
 	                  
+	                  $('#d-pick').html(element['totalpick']);
+	                  $('#d-post').html(element['totalpost']);
+	                  $('#d-filter').html(element['totalfilter']);
+	                  $('#d-question').html(element['totalquestion']);
+	                  
 	                  console.log(element['ppa_type']);
-	                  if(element['ppa_type'] == "admin"){
+	                  if(element['as_class'] == "ADMIN"){
 	   	               console.log('넌관리자야');
 	                	  $('#d-type-admin').css('display','block');
 	                	  $('#d-type-pickpic').css('display','none');
