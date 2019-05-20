@@ -1,5 +1,6 @@
 package com.kosmo.pickpic;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -62,37 +63,26 @@ public class AdminController {
 		return "admin/admin_users.admin";
 	}//users
 	
-	//이메일 중복 체크
 	@ResponseBody
-	@RequestMapping(value="/admin/users/detail.pic",produces="text/html; charset=UTF-8")
-//	@RequestMapping("/admin/detail.pic")
-	public String userDetail(@RequestParam Map map) throws Exception{
-		PickpicAccountDTO oneUser = adminService.oneUser(map);
-		
-		List<Map> user = new Vector<Map>();	
-		Map record = new HashMap();
-		record.put("ppa_email", oneUser.getPpa_email());
-		record.put("ppa_nickname", oneUser.getPpa_nickname());
-		record.put("ppa_join_date", oneUser.getPpa_join_date().toString().substring(0, 10));
-		record.put("ppa_type", oneUser.getPpa_type());
-		record.put("ppa_profile_path", oneUser.getPpa_profile_path());
-		user.add(record);
-		System.out.println(JSONArray.toJSONString(user));
-//		
-//		JSONObject json = new JSONObject();
-//		json.put("user", record);
-//		System.out.println(json.toJSONString());
-		
-//		json = new JSONObject();
-//		json.put("ppa_email", oneUser.getPpa_email());
-//		json.put("ppa_nickname", oneUser.getPpa_nickname());
-//		json.put("ppa_join_date", oneUser.getPpa_join_date());
-//		json.put("ppa_type", oneUser.getPpa_type());
-//		json.put("ppa_profile_path", oneUser.getPpa_profile_path());
-//		System.out.println(json.toJSONString());
-		return JSONArray.toJSONString(user);
-//		return json.toJSONString();
-	}//emailCheck
+    @RequestMapping(value="/admin/detail.do",produces="text/html; charset=UTF-8")
+    public String ttest(@RequestParam Map map,Model model) throws Exception{
+       
+       System.out.println("들어옵니꽈?"+map.toString());
+       PickpicAccountDTO onePpa = adminService.oneUser(map);
+       
+       List<Map> user = new Vector<Map>();   
+       Map record = new HashMap();
+       record.put("ppa_profile_path", onePpa.getPpa_profile_path());
+       record.put("ppa_email", onePpa.getPpa_email());
+       record.put("ppa_nickname", onePpa.getPpa_nickname());
+       record.put("ppa_join_date", onePpa.getPpa_join_date().toString().substring(0, 10));
+       record.put("lh_ld", onePpa.getLh_ld());
+       user.add(record);
+       System.out.println(JSONArray.toJSONString(user));
+       
+       return JSONArray.toJSONString(user);
+    }
+	
 	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")

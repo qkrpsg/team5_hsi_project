@@ -46,6 +46,31 @@
 	
 	<!-- 사용자 관리 -->
 	<select id="adminOneUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
-		SELECT * FROM pickpic_account WHERE ppa_email=#{ppa_email}
+		SELECT * FROM (
+			SELECT ppa.*, lh_ld FROM pickpic_account ppa JOIN (
+				SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
+			ON ppa.ppa_id=lh.ppa_id) 
+		WHERE ppa_email=#{ppa_email}
+	</select>
+	<select id="adminUserPick" parameterType="String" resultType="String">
+		SELECT 
+			(SELECT SUM(ppb_pick) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
+			(SELECT SUM(prb_view) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
+		FROM dual
+	</select>
+	<select id="adminUserPost" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT 
+			(SELECT COUNT(*) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
+			(SELECT COUNT(*) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
+		totalpost FROM dual
+	</select>
+	<select id="adminUserFilter" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT COUNT(*) totalfilter FROM filter_storage WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	<select id="adminUserQuestion" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT COUNT(*) totalquestion FROM question WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	<select id="adminUserClass" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT as_class FROM auth_security WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
 	</select>
 </mapper>

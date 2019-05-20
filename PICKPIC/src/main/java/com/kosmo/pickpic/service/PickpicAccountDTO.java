@@ -1,6 +1,7 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicAccountDTO {
+	//ppa 기본 컬럼
 	private String ppa_id;
 	private String ppa_email;
 	private String ppa_password;
@@ -11,9 +12,55 @@ public class PickpicAccountDTO {
 	private String ppa_profile_path;
 	private String ppa_index;
 	
+	//편의상 제공하는 컬럼
 	private String lh_ld;
-	
+	private String totalpick;
+	private String totalpost;
+	private String totalfilter;
+	private String totalquestion;
+	private String as_class;
+
 	//getter,setter
+	public String getTotalpick() {
+		return totalpick;
+	}
+
+	public void setTotalpick(String totalpick) {
+		this.totalpick = totalpick;
+	}
+
+	public String getTotalpost() {
+		return totalpost;
+	}
+
+	public void setTotalpost(String totalpost) {
+		this.totalpost = totalpost;
+	}
+
+	public String getTotalfilter() {
+		return totalfilter;
+	}
+
+	public void setTotalfilter(String totalfilter) {
+		this.totalfilter = totalfilter;
+	}
+
+	public String getTotalquestion() {
+		return totalquestion;
+	}
+
+	public void setTotalquestion(String totalquestion) {
+		this.totalquestion = totalquestion;
+	}
+
+	public String getAs_class() {
+		return as_class;
+	}
+
+	public void setAs_class(String as_class) {
+		this.as_class = as_class;
+	}
+
 	public String getPpa_id() {
 		return ppa_id;
 	}

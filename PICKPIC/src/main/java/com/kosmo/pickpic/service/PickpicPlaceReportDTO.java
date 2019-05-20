@@ -55,5 +55,4 @@ public class PickpicPlaceReportDTO {
 		this.ppa_id = ppa_id;
 	}//setPpa_id
 	
-	
 }//PickpicPlaceReportDTO
