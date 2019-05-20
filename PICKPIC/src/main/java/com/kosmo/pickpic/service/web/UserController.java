@@ -39,20 +39,10 @@ public class UserController {
 
 	//로그인 프로세스
 	@RequestMapping("/user/LoginProcess.pic")
-	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal, HttpServletResponse response) throws Exception{
+	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal) throws Exception{
 		//시큐리티를 통하여 저장된 이메일값 map에 저장
 		map.put("ppa_email", principal.getName());
 		map.put("ppa_type", "pickpic");
-		//lh테이블에 로그인 기록 저장
-		if(!accountService.isAuthAbled(map)) {
-			session.invalidate();
-			response.setContentType("text/html; charset=UTF-8");
-	        PrintWriter out = response.getWriter();
-	        out.println("<script>alert('회원가입 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
-	        out.flush();
-	        out.close();
-	        return "login/Login.tiles";
-		}
 		//로그인 정보 저장
 		accountService.loginHistoryInsert(map);
 		//아이디와 닉네임을 세션에 저장
@@ -66,9 +56,19 @@ public class UserController {
 	
 	//로그인 실패시 프로세스
 	@RequestMapping("/user/LoginProcessF.pic")
-    public void logiProcessF(HttpServletResponse response) throws Exception{
-        response.setContentType("text/html; charset=UTF-8");
+    public void logiProcessF(HttpSession session, HttpServletResponse response, Principal principal, @RequestParam Map map) throws Exception{
+		//시큐리티를 통하여 저장된 이메일값 map에 저장
+		map.put("ppa_email", principal.getName());
+		map.put("ppa_type", "pickpic");
+		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
+
+		if(!accountService.isAuthAbled(map)) {
+			session.invalidate();
+	        out.println("<script>alert('회원가입 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
+	        out.flush();
+	        out.close();
+		}
         out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
         out.flush();
         out.close();
@@ -105,9 +105,16 @@ public class UserController {
 
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
-	public String sign_up_process(@RequestParam Map map) throws Exception{
+	public String sign_up_process(@RequestParam Map map, HttpServletResponse response) throws Exception{
 		if(accountService.accountInsert(map) == 1 ? true : false) {
 			if(accountService.securityInsert(map) == 1 ? true : false) {
+				accountService.loginHistoryInsert(map);
+				
+				response.setContentType("text/html; charset=UTF-8");
+		        PrintWriter out = response.getWriter();
+		        out.println("<script>alert('가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
+		        out.flush();
+		        out.close();
 				/*
 				7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
 				*/
@@ -119,9 +126,21 @@ public class UserController {
 	
 	//이메일 인증 프로세스
 	@RequestMapping("/user/joinConfirm.pic")
-	public String emailConfirm(@RequestParam Map map) throws Exception{
+	public String emailConfirm(@RequestParam Map map, HttpServletResponse response) throws Exception{
 		map.put("as_enabled_flag", "1");
 		accountService.securityUpdate(map);
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+		
+		if(accountService.isAuthAbled(map)) {
+	        out.println("<script>alert('이메일 인증이 완료되었습니다!');</script>");
+	        out.flush();
+	        out.close();
+			return "/user/Login.pic";
+		}
+        out.println("<script>alert('이메일 인증에 실패하였습니다.');</script>");
+        out.flush();
+        out.close();
 		
 		return "home.tiles";
 	}
