@@ -39,10 +39,10 @@
 											<img class="img-circle img-bordered-sm"
 												src="<c:url value='/resources/admin_images/user_icon.png'/>"
 												alt="User Image"> <span class="username"> <a
-												href="#">${item.Q_TITLE}</a>
+												href="#">${item.q_title}</a>
 											</span> <span class="description"><%-- ${item.Q_POST_DATE } --%></span>
 										</div>
-										<p>${item.Q_CONTENT }</p>
+										<p>${item.q_content }</p>
 										<!-- 							<form class="form-horizontal"> -->
 										<!-- 								<div class="form-group margin-bottom-none"> -->
 										<!-- 									<div class="col-sm-10"> -->

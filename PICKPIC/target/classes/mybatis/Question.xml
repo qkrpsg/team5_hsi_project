@@ -11,7 +11,10 @@
 <!-- SELECT * FROM QUESTION Q INNER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID ORDER BY Q_INDEX DESC -->
   SELECT * FROM QUESTION Q FULL OUTER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID JOIN pickpic_account ppa ON ppa.ppa_id=q.ppa_id ORDER BY Q_INDEX DESC
 </select>
-
+<select id="questionSelectOne" parameterType="java.util.Map" resultType="QuestionDTO">
+  SELECT Q_TITLE,Q_INDEX FROM QUESTION WHERE Q_INDEX = #{Q_INDEX }
+        
+</select>
 
 <insert id="questionInsert" parameterType="java.util.Map">
 INSERT INTO QUESTION VALUES(func_generator,#{Q_TITLE},#{Q_CONTENT},DEFAULT,seq_Q_index.NEXTVAL,(SELECT ppa_id FROM pickpic_account where ppa_email = #{ppa_email}))

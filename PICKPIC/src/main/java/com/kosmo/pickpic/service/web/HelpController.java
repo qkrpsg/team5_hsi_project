@@ -79,38 +79,32 @@ public class HelpController {
 	//문의사항
 	@RequestMapping("/help/qna/List.pic")///문의하기로 넘어가는 컨트롤러
 	public String qna_list(@RequestParam Map map,Model model) throws Exception{
-		System.out.println("map : " + map.toString());
 		List<QuestionDTO> list = questionService.selectList(map);
-	    
-		
-
 		model.addAttribute("list",list);
 		return "help/qna/List.tiles";
 	}
 	//문의사항 작성페이지
 	
-	@RequestMapping("/help/qna/Write2.pic")
+	@RequestMapping("/help/qna/Write.pic")
 	public String qna_write2(@RequestParam Map map,Model model,Principal principal) throws Exception {
 		map.put("ppa_email", principal.getName());
-		
-		
 		questionService.insert(map);
 		
 		List<QuestionDTO> list = questionService.selectList(map);
-		
-	
-			
-		
 		model.addAttribute("list",list);
 		return "help/qna/List.tiles";
 	}//qna_wirite2
 	
+	@RequestMapping("/help/qna/View.pic")
+	public String qna_View(@RequestParam Map map,Model model) throws Exception{
+	System.out.println(map);
 	
-	
-	//qna
-	@RequestMapping("/help/qna/Write.pic")
-	public String qna_write(@RequestParam Map params) throws Exception{
-		return "help/qna/Write.tiles";
+	QuestionDTO list = questionService.selectOne(map);
+	model.addAttribute("list",list);
+	//System.out.println(list2);
+		
+		
+		return "help/qna/View.tiles";
 	}//qna
 
 	//초보자가이드

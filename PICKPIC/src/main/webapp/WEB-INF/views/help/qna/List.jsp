@@ -66,7 +66,7 @@
 							<c:forEach var="item" items="${list}" varStatus="loop">
 					<tr>
 						<td>${item.Q_INDEX }</td>
-						<td id="title">${item.Q_TITLE }</td>
+						<td id="title"><a href="<c:url value='/help/qna/View.pic?q_index=${item.Q_INDEX }'/> ">${item.Q_TITLE }</td>
 						<td>${item.Q_POST_DATE}</td>
 						<td>${item.AQ_POST_DATE }</td>
 						<td>${item.PPA_NICKNAME }</td>

@@ -36,7 +36,7 @@
 
 		<div class="l_help_list_wrap">
 			<div class="row" style="margin-left: 20%;margin-right: 20%;">
-				<form method="post" action="<c:url value='/help/qna/Write2.pic'/>" id="kyk"> 
+				<form method="post" action="<c:url value='/help/qna/Write.pic'/>" id="kyk"> 
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 					<div class="form-group">
