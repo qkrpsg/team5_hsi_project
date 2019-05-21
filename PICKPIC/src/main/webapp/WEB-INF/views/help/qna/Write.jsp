@@ -36,38 +36,21 @@
 
 		<div class="l_help_list_wrap">
 			<div class="row" style="margin-left: 20%;margin-right: 20%;">
-				<form role="form" method="POST">
+				<form method="post" action="<c:url value='/help/qna/Write2.pic'/>" id="kyk"> 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 					<div class="form-group">
-						<label for="#">제목</label> <input type="text" class="form-control"
-							name="#" id="#" placeholder="제목을 입력해 주세요">
+						<label for="title">제목</label> 
+						<input type="text" class="form-control" name="Q_TITLE" id="Q_TITLE" placeholder="제목을 입력해 주세요">
 					</div>
-
-					<div class="form-group">
-						<label for="#">이메일</label> <input type="tel" class="form-control"
-							name="#" id="#" placeholder="답변알림을 받으실 이메일 주소를 입력하세요.">
-					</div>
-
 					<!-- 등록일 -->
-					<input type="hidden" name="ppu_register_date" />
-
-					<div class="form-group">
-						<label for="#">관련사항</label> <input type="radio"
-							style="margin-left: 10px;" name="#" id="#" class="#" value="m"
-							checked />장소 <input type="radio" name="#" class="#" value="f" />루트
-						<input type="radio" name="#" class="#" value="f" />필터 <input
-							type="radio" name="#" class="#" value="f" />결제 <input
-							type="radio" name="#" class="#" value="f" />기타
-					</div>
-
+					<input type="hidden" name="ppu_register_date" id="Q_POST_DATE"/>
 					<!-- 글쓰기 썸머노트 -->
-					<textarea id="summernote" name="editordata"><p>상세 내용을 작성하세요. </p></textarea>
-
-					<!--  -->
-
+					<textarea id="summernote" name="Q_CONTENT" id="Q_CONTENT">상세 내용을 작성하세요.</textarea>       
+					
 					<div class="form-group text-center">
-						<input type="button" id="join-submit" class="btn btn-primary" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="작성완료" >
-						<input type="button" id="join-submit" class="btn btn-warning" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="취소" >
+						<input type="button" id="join-submit" class="btn btn-primary" value="작성완료" >
+						<input type="button"  class="btn btn-warning" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="취소" >
 					</div>
 				</form>
 			</div>
@@ -77,10 +60,16 @@
 </div>
 <!-- l_pkp_all_wrap -->
 
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE App --><!-- 
+<script src="../../dist/js/adminlte.min.js"></script> -->
 <!-- summernote -->
 <script>
+$(function(){
+	$("#join-submit").click(function(){
+		console.log("hi");
+		$("#kyk").submit();
+	});
+});
 	$(document).ready(function() {
 		$('#summernote').summernote({
 			height : 300, // set editor height

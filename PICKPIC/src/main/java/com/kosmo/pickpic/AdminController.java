@@ -114,8 +114,11 @@ public class AdminController {
 	@RequestMapping(value = "/admin/qna.pic")
 	public String qna(@RequestParam Map map,Model model) {
 		List<QuestionDTO> list = questionService.selectList(map);
+		
 		model.addAttribute("list",list);
-	
+		
+		map.put("admin", "문의관리");
+		
 		return "admin/admin_qna.admin";
 	}//qna
 	
@@ -248,6 +251,11 @@ public class AdminController {
 	@RequestMapping("/admin/admin_delete.pic")
 	public String delete(@RequestParam Map map,Model model) throws Exception{
 		//서비스 호출]
+		String text = map.get("n_index").toString();
+		String text2[] = text.split(",");
+		System.out.println(text2[0]);
+		System.out.println(text2);
+		System.out.println(text2.length);
 		System.out.println(map);
 		
 		//int sucFail=noticeService.delete(map);	

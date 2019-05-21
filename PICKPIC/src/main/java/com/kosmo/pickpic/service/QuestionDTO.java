@@ -7,6 +7,36 @@ public class QuestionDTO {
     private String Q_POST_DATE;
     private String Q_INDEX;
     private String PPA_ID;
+    private String AQ_POST_DATE;
+    
+    //편의상 추가
+  
+    
+    private String ppa_email;
+    private String PPA_NICKNAME;
+    
+    
+	public String getPPA_NICKNAME() {
+		return PPA_NICKNAME;
+	}
+	public void setPPA_NICKNAME(String pPA_NICKNAME) {
+		PPA_NICKNAME = pPA_NICKNAME;
+	}
+	public String getPpa_email() {
+		return ppa_email;
+	}
+	public void setPpa_email(String ppa_email) {
+		this.ppa_email = ppa_email;
+	}
+
+	
+
+	public String getAQ_POST_DATE() {
+		return AQ_POST_DATE;
+	}
+	public void setAQ_POST_DATE(String aQ_POST_DATE) {
+		AQ_POST_DATE = aQ_POST_DATE;
+	}
 	public String getQ_ID() {
 		return Q_ID;
 	}
