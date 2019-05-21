@@ -35,8 +35,44 @@
 	margin: 10px 10px 0 10px;
 	vertical-align: middle;
 	
+	
 }
 
+/* .card-a:hover {
+	height: 100%;
+	width: 175px;
+	box-shadow: 5px 0 5px white;
+	tran
+} */
+
+
+.card_hover {
+	height: 100%;
+	width: 180px;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card_hover .ovrly {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.card_hover:hover .ovrly {
+    opacity: 1;
+}
+	
 .name_text {
 	text-align: center;
 	position: absolute;
@@ -45,6 +81,8 @@
 	font-size: 2em;
 	color: #eeeeee;
 }
+
+
 
 /* 필터명 나열 */
 /* .topnav-centered ul {

@@ -22,6 +22,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,7 @@ import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBod
 
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
+import com.kosmo.pickpic.service.impl.FilterDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 
@@ -40,6 +42,8 @@ public class FriendsController {
 	// 서비스 주입
 	@Resource(name="prbService")
 	private PickRoadBoardServiceImpl dao;
+	@Resource(name = "filterDAO")
+	private FilterDAO dao_filter;
 	// 픽플레이스
 	/*@RequestMapping("/friends/place.pic")
 	public String place() throws Exception {
@@ -423,11 +427,21 @@ public class FriendsController {
 	// 앨범다운
 	@RequestMapping("/friends/albumDown.pic")
 	public String albumDown() throws Exception {
+		
 		return "friends/albumDown.tiles";
 	}
 	//앨범다운-팝업
 	@RequestMapping("/friends/albumEditor.pic")
-	public String albumOption() throws Exception {
+	public String albumOption(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		
+		map.put("ppa_email",principal.getName());
+		
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+//		System.out.println(list_filter.toString());
+		
+		model.addAttribute("list_filter", list_filter);
+		
+//		System.out.println("ddd"+list_filter.toString());
 		return "friends/albumEditor.tiles";
 	}
 	
