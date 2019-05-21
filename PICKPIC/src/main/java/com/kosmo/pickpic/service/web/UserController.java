@@ -56,19 +56,17 @@ public class UserController {
 	
 	//로그인 실패시 프로세스
 	@RequestMapping("/user/LoginProcessF.pic")
-    public void logiProcessF(HttpSession session, HttpServletResponse response, Principal principal, @RequestParam Map map) throws Exception{
-		//시큐리티를 통하여 저장된 이메일값 map에 저장
-		map.put("ppa_email", principal.getName());
-		map.put("ppa_type", "pickpic");
+    public void logiProcessF(HttpSession session, HttpServletResponse response, @RequestParam Map map, Principal principal) throws Exception{
+		
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-		if(!accountService.isAuthAbled(map)) {
-			session.invalidate();
-	        out.println("<script>alert('회원가입 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
-	        out.flush();
-	        out.close();
-		}
+//		if(!accountService.isAuthAbled(map)) {
+//			session.invalidate();
+//	        out.println("<script>alert('회원가입 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
+//	        out.flush();
+//	        out.close();
+//		}
         out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
         out.flush();
         out.close();
