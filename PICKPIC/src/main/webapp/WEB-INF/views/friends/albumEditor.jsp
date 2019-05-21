@@ -72,8 +72,8 @@
       	<li ><a href="javascript:void(0);" onclick="selectItem(this)" class="allselect_btn">전체 선택</a></li>
       </ul>
       <ul class="nav navbar-nav" style="float: right;">
-         <li><a href="#" id="imgCount"><span class="glyphicon glyphicon-picture"></span>
-               0 / 0</a></li>
+         <li><a href="#"><span class="glyphicon glyphicon-picture">&nbsp;</span><span id="imgCount">0 / 0</span>
+              </a></li>
          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
                저장하기</a></li>
       </ul>
@@ -228,10 +228,13 @@
 												/* console.log("원:"+i,index); */
 												$('#preview').append(template);
 												/* console.log(e.target.result); */
+												$('#imgCount').html('0 / ' + idArray.length);
+												
 											};
-
+											
 										});
 						console.log(idArray);
+						
 					});
 
 	/* 이미지 기준 가로 또는 세로 적용 */
@@ -260,6 +263,7 @@
 								'5px 5px 5px #c9e3f7');
 						$("button[id=" + id + "]").eq(1).html('해제');
 					});
+					
 				} else if ($(item).html() == '전체 해제') {
 					/* 해제 후 */
 					$.each(selectArray, function(index, id) {
@@ -302,7 +306,7 @@
 			console.log("부분선택 : idArray:" + idArray + ",selectArray:"
 					+ selectArray);
 		}
-
+		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
 
 	/* <!-- 이미지 선택 시 이미지 정보 가져오기 --> */
@@ -325,6 +329,7 @@ for(var i = 0; i< ){
 			if (findIndex != -1
 					&& $("button[id=" + currentId + "]").eq(1).html() == '선택') {
 				idArray.splice(findIndex, 1);
+				$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 				if (selectArray.length == idArray.length)
 					$('.allselect_btn').html('전체 해제');
 				$("div[id='div_" + currentId + "']").remove();
@@ -343,22 +348,24 @@ for(var i = 0; i< ){
 				console.log("선택전체삭제 : idArray:" + idArray + ",selectArray:"
 						+ selectArray);
 			} else if (selectArray.length > 0 && selectArray.length != idArray.length) {/* 부분이 선택된 경우 */
-				$.each(selectArray, function(index, sel_id) {
-					$('div[id="div_' + sel_id + '"]').remove();
-				});					
-				$.each(selectArray, function(index, sel_id) {
-					idArray.splice(idArray.indexOf(sel_id),1);
-					selectArray.splice(selectArray.indexOf(sel_id), 1);
-			});
-			
 				console.log("선택부분삭제 : idArray:" + idArray + ",selectArray:"
 						+ selectArray);
-				
+			   var selectArray2=new Array();
+			   $.each(selectArray, function(index, sel_id) {
+				   selectArray2[index]=sel_id;
+			   });
+				$.each(selectArray2, function(index, sel_id) {
+					selectArray.splice(selectArray.indexOf(sel_id), 1);
+					idArray.splice(idArray.indexOf(sel_id),1);
+					$('div[id="div_' + sel_id + '"]').remove();
+				});					
+				console.log(selectArray.length +','+selectArray2.length);
 			} else if (selectArray.length == 0) {/* 선택이 없는경우 */
 				alert('선택된 사진이 없습니다.');
 			}
 			
 		}
+		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
 
 	/*<!-- 필터창 열고 닫기  --> */
