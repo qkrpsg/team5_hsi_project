@@ -35,9 +35,6 @@ var fileCollection = new Array();
 var index = 0;
 var idArray = new Array();
 
-var loadcount =  0 ; 
-var loadtotal =  0 ; 
-var preloaded =  false ;
 $('#upload-mypc').on('change',
 				function(e) {
 					var files = e.target.files;
@@ -50,18 +47,14 @@ $('#upload-mypc').on('change',
 										var reader = new FileReader();
 										reader.readAsDataURL(file);
 										reader.onload = function(e) {
-											var image =  new Image ( ) ;
-											
-											
-											image.src = e.target.result;
-											 
-											 
+											console.log(e);
+											console.log(e.target.result);
 											var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'">'
 											+'<div class=" photo_wrap" id="photo_wrap_'+index+'">'
 											+'<div class="photo">'
 											+'<div class="photo_center_wrap">'
-											+'<div class="photo_center cssco" id=set_index+>'
-											+'<canvas id="canvas"></canvas>'
+											+'<div class="photo_center" id=set_index+>'
+											+'<canvas id="canvas" onload="loadImage('+e+')"></canvas>'
 											+'</div></div></div>'
 											+'<div class="menu" style="border-top: 1px solid #e6e6e6;">'
 											+'<div class="centered">'
@@ -69,6 +62,19 @@ $('#upload-mypc').on('change',
 											+'<button type="button" class="btn btn-default dl_btn" id="'+index+'" onclick="javascript:deleteItem(this)">삭제</button>'
 											+'<button type="button" class="btn btn-default tg_btn" id="'+index+'" onclick="javascript:selectItem(this)">선택</button>'
 											+'</div></div></div></div></div>';
+											
+											
+											function lodeImage(e) {
+												console.log("55555");
+												var image =  new Image ( ) ;
+												image.src = e.target.result;
+												image.onload = function() {
+											        canvas.width = img.width;
+											        canvas.height = img.height;
+											        ctx.drawImage(img, 0, 0, image.width, image.height);
+											        canvas.removeAttribute("data-caman-id");
+											      };
+											};
 											
 											idArray[idArray.length] = index;
 											index++;

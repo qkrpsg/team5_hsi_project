@@ -58,11 +58,13 @@
 				<ul class="menu">
 					<li class="l_menu_li"><a href="#">피크픽 스토리</a>
 						<ul class="m_sub">
-							<li><a href="<c:url value='/story/back.pic'/> "> 비전</a></li>
+							<li><a href="<c:url value='/'/>#sec_4 "> 비전</a></li>
 							<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
-							<li><a href="<c:url value='/story/tech.pic'/>">사용기술</a></li>
-							<li><a href="<c:url value='/story/appDown.pic'/>">다운로드</a></li>
+							<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
+							<li><a href="<c:url value='/'/>#sec_5 ">다운로드</a></li>
 						</ul></li>
+
+
 
 					<li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 						<ul class="m_sub" style="display: none;">
@@ -101,10 +103,10 @@
 				<div class="col-md-3"></div>
 				<div class="nav_wrap col-md-2">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='/story/vision.pic'/> "> 비전</a></li>
+						<li><a href="<c:url value='/'/>#sec_4 "> 비전</a></li>
 						<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
-						<li><a href="<c:url value='/story/tech.pic'/>">사용기술</a></li>
-						<li><a href="<c:url value='/story/appDown.pic'/> ">다운로드</a></li>
+						<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
+						<li><a href="<c:url value='/'/>#sec_5" >다운로드</a></li>
 					</ul>
 				</div>
 

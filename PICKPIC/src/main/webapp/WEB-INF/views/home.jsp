@@ -160,7 +160,7 @@
 	</div>
 </section>
 
-<div>
+<div >
 	<h2 class="about_pickpic wow fadeInDown">#ABOUT PICKPIC</h2>
 </div>
 
@@ -174,7 +174,7 @@
 			</div>
 			<div class="l__keyword_left_down_text">
 				<p>
-					구도를 몰라도 사진사가 없어도 괜찮습니다.<br /> 키워드로 원하는 필터를 고르고<br /> 사진에 적용만 하면
+					사진의 색감이 마음에 안 든다고요?<br /> 키워드로 원하는 필터를 고르고<br /> 사진에 적용만 하면
 					됩니다.
 				</p>
 			</div>
@@ -207,7 +207,7 @@
 			</div>
 			<div class="l__keyword_left_down_text">
 				<p>
-					사진을 찍은 후 바로바로 필터를 적용해보세요<br /> 장소와 날씨에 따라 필터를 추천해줍니다.
+					사진을 찍은 후 바로바로 필터를 적용해보세요<br /> 장소에 따라 필터를 추천해줍니다.
 				</p>
 			</div>
 		</div>
@@ -222,14 +222,13 @@
 		<div class="l_masonry_text_wrap col-md-4">
 			<div>
 				<p>
-					<span>다양한</span>종류의 필터들
+					다양한 <span> 필터</span> 검색
 				</p>
 			</div>
-			<div>
-				<p>장소, 상황에 맞게 필터를 적용해 보세요!</p>
+			<div >
+				<p>장소에 어울리는 필터를 찾아보세요!</p>
 			</div>
 		</div>
-
 
 		<div class="l_masonry_wrap col-md-8 col-sm-12">
 			<div class="grid">
@@ -316,9 +315,9 @@
 		</p>
 	</div>
 	<div class="sec_4_content col-md-offset-1 col-md-5 wow fadeInDown">
-		<p>나만의 필터를 만들어서 저장하고싶어!</p>
+		<p>내 필터를 가지고싶어!</p>
 		<p>
-			필터를 적용하는건 좋은데... 매번 귀찮으셨죠?<br />나만의 필터를 만들어서 저장하세요.<br />터치 한번으로 자주
+			필터를 적용하는건 좋은데... 매번 귀찮으셨죠?<br /> 필터보관함에 내 필터를 보관하세요.<br />터치 한번으로 자주
 			사용하던 필터를 즉시 적용시킬 수 있습니다.
 		</p>
 	</div>
