@@ -12,11 +12,10 @@ import com.kosmo.pickpic.service.FilterService;
 @Service("fService")
 public class FilterServiceImpl implements FilterService{
 	@Resource(name = "filterDAO")
-	private FilterDAO dao_filter;
+	private FilterDAO dao;
 
 	@Override
 	public List<Map> albumDownFilterName(Map map) {
-		// TODO Auto-generated method stub
-		return dao_filter.albumDownFilterName(map);
+		return dao.albumDownFilterName(map);
 	}
 }

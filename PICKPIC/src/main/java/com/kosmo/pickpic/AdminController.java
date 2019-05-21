@@ -1,6 +1,7 @@
 package com.kosmo.pickpic;
 
 import java.net.URLEncoder;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -9,10 +10,14 @@ import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.JsonGenerationException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scripting.config.LangNamespaceHandler;
 import org.springframework.stereotype.Controller;
@@ -28,6 +33,7 @@ import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.QuestionDTO;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
+import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
 import com.kosmo.pickpic.service.web.DTOUtil;
@@ -45,9 +51,12 @@ public class AdminController {
 	@Resource(name="questionService")
 	private QuestionServiceImpl questionService;
 	
+	
+	
+	
 	//HOME
 	@RequestMapping(value = "/admin/home.pic")
-	public String home(@RequestParam Map map, Model model) {
+	public String home(@RequestParam Map map, Model model) throws Exception{
 		model.addAllAttributes(adminService.dashBoardTop());
 		model.addAttribute("user",adminService.dashBoardUser());
 		model.addAttribute("filter",adminService.filterAll());
@@ -58,7 +67,7 @@ public class AdminController {
 	
 	//회원관리
 	@RequestMapping(value = "/admin/users.pic")
-	public String users(Model model) {
+	public String users(Model model) throws Exception {
 		model.addAttribute("user", adminService.pickPicAccountAll());
 		model.addAttribute("total", adminService.pickPicAccountAll().size());
 		return "admin/admin_users.admin";
@@ -85,24 +94,187 @@ public class AdminController {
        return JSONArray.toJSONString(user);
     }
 	
+	@RequestMapping(value="/admin/deg.do",produces="text/html; charset=UTF-8")
+	//@RequestMapping("/admin/deg.pic")
+	public String userDetail(@RequestParam Map map) throws Exception{
+		System.out.println("찍히나요?"+map.toString());
+		
+		
+		
+		PickpicAccountDTO oneUser = adminService.oneUser(map);
+		
+		List<Map> user = new Vector<Map>();	
+		Map record = new HashMap();
+		record.put("ppa_email", oneUser.getPpa_email());
+		record.put("ppa_nickname", oneUser.getPpa_nickname());
+		record.put("ppa_join_date", oneUser.getPpa_join_date().toString().substring(0, 10));
+		record.put("ppa_type", oneUser.getPpa_type());
+		record.put("ppa_profile_path", oneUser.getPpa_profile_path());
+		user.add(record);
+		System.out.println(JSONArray.toJSONString(user));
+//		
+//		JSONObject json = new JSONObject();
+//		json.put("user", record);
+//		System.out.println(json.toJSONString());
+		
+//		json = new JSONObject();
+//		json.put("ppa_email", oneUser.getPpa_email());
+//		json.put("ppa_nickname", oneUser.getPpa_nickname());
+//		json.put("ppa_join_date", oneUser.getPpa_join_date());
+//		json.put("ppa_type", oneUser.getPpa_type());
+//		json.put("ppa_profile_path", oneUser.getPpa_profile_path());
+//		System.out.println(json.toJSONString());
+		return JSONArray.toJSONString(user);
+//		return json.toJSONString();
+	}//emailCheck
 	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")
-	public String attraction(@RequestParam Map map) {
+	public String attraction(@RequestParam Map map) throws Exception{
 		return "admin/admin_pickPlace.admin";
 	}//pickPlace
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
-	public String filter(@RequestParam Map map) {
+	public String filter(@RequestParam Map map) throws Exception{
 		return "admin/admin_filter.admin";
 	}//filter
 	
+	
+	
+	
+	
 	//픽로드관리
 	@RequestMapping(value = "/admin/pickRoad.pic")
-	public String route(@RequestParam Map map) {
-		return "admin/admin_pickRoad.admin";
+	public String route(@RequestParam Map map,Model model) throws Exception{
+		
+	  //System.out.println("안녕"+map.toString());
+	  List<Map> recode = adminService.pickPicAccountRoadAll();
+	  //System.out.println("전부 가져와보기"+recode.toString());
+	  model.addAttribute("recode",recode);
+		
+		
+	  return "admin/admin_pickRoad.admin";
 	}//pickRoad
+	
+	
+	@RequestMapping(value="/admin/pickRoad.do")
+	public String route_delete(@RequestParam Map map,Map map2,Model model) throws Exception{
+		System.out.println("hihihi");
+		//System.out.println("dd"+ map.toString());
+	
+		String prb_index = map.get("prb_index").toString().replaceAll("\"", "").replace("[", "").replace("]","");
+		//System.out.println("prb_index"+prb_index);
+		String[] text = prb_index.split(",");
+		for(int i=0;i<text.length;i++) {
+			map2.put("prb_index",text[i]);
+			System.out.println("map2"+map2.toString());
+			adminService.delete2(map2);
+			adminService.delete(map2);
+		}
+		
+		List<Map> recode = adminService.pickPicAccountRoadAll();
+		//System.out.println("전부 가져와보기"+recode.toString());
+		  model.addAttribute("recode",recode);
+		return "admin/admin_pickRoad.admin"; 
+	}//삭제 후 리스트 다시 뿌려주기
+	/*//픽로드관리 - 삭제 -Ajax 처리
+	@ResponseBody
+	@RequestMapping(value="/admin/pickRoad.do",produces="text/html; charset=UTF-8")
+	public String route_delete(@RequestParam Map map,Map map2) throws Exception{
+		//위 델리트 먼자 하면 좋을꺼 같다
+		String prb_index = map.get("prb_index").toString().replaceAll("\"", "").replace("[", "").replace("]","");
+		System.out.println("prb_index"+prb_index);
+		String[] text = prb_index.split(",");
+		for(int i=0;i<text.length;i++) {
+			map2.put("prb_index",text[i]);
+			//adminService.delete2(map2);
+			//adminService.delete(map2);
+		}
+		//다시 값 가져오기
+		//[{name=김길동, postDate=2019-04-22, title=n}, {name=김길동, postDate=2019-03-25, title=25}, {name=김길동, postDate=2019-03-18, title=213123}, {name=김길동, postDate=2019-03-18, title=213}, {name=김길동, postDate=2019-03-14, title=21312321312}]
+		List<Map> recode = adminService.pickPicAccountRoadAll();
+		System.out.println("recode"+recode.toString());
+		String recodeSTR = recode.toString().replace("PRB", "\"PRB").replace("PPA", "\"PPA").replace("=","\":\"").replace(",","\",").replace("}","\"}").replace("[", "").replace("]","").replace("}\",", "},");
+		String[] test = recodeSTR.split("},");
+		String test2= "";
+		for(int i=0;i<test.length;i++) {
+			System.out.println(i+" 번방 "+test[i]);
+			test2 = test[i];
+		}
+		
+		System.out.println("recodeSTR+ "+recodeSTR);
+		
+		
+		
+		 * {
+		 * "PRB_INDEX":"146",
+		 *  "PRB_RECOMMEND":"0",
+		 *   "PPA_ID":"2ZORUAF7I0JW", "PRB_TITLE":"안녕", "PRB_END_DATE":"2019-05-20 00:00:00.0", "PRB_POST_DATE":"2019-05-20 01:58:40.0", "PRB_START_DATE":"2019-05-20 00:00:00.0", "PRB_VIEW":"0", "PRB_ID":"JBQP0FPUMQVL", "PPA_EMAIL":"admin", "PRB_CONTENT":"안녕"}, {"PRB_INDEX":"145", "PRB_RECOMMEND":"0", "PPA_ID":"2ZORUAF7I0JW", "PRB_TITLE":"안녕", "PRB_END_DATE":"2019-05-20 00:00:00.0", "PRB_POST_DATE":"2019-05-20 01:47:43.0", "PRB_START_DATE":"2019-05-20 00:00:00.0", "PRB_VIEW":"0", "PRB_ID":"P206W7MKUWI0", "PPA_EMAIL":"admin", "PRB_CONTENT":"안녕"}, {"PRB_INDEX":"144", "PRB_RECOMMEND":"0", "PPA_ID":"2ZORUAF7I0JW", "PRB_TITLE":"hello", "PRB_END_DATE":"2019-05-20 00:00:00.0", "PRB_POST_DATE":"2019-05-20 01:47:25.0", "PRB_START_DATE":"2019-05-20 00:00:00.0", "PRB_VIEW":"0", "PRB_ID":"PBENSTD2JI93", "PPA_EMAIL":"admin", "PRB_CONTENT":"hello"}, {"PRB_INDEX":"143", "PRB_RECOMMEND":"0", "PPA_ID":"2ZORUAF7I0JW", "PRB_TITLE":"hi", "PRB_END_DATE":"2019-05-20 00:00:00.0", "PRB_POST_DATE":"2019-05-20 01:39:40.0", "PRB_START_DATE":"2019-05-20 00:00:00.0", "PRB_VIEW":"0", "PRB_ID":"W5A7TT3BFC9E", "PPA_EMAIL":"admin", "PRB_CONTENT":"hi"}
+		 * 		{
+		 * "readcount":"17975",
+		 *  "addr1":"서울특별시 마포구 독막로3길 6",
+		 *   "contentid":"849533",
+		 *    "firstimage2":"http",
+		 *     "title":"감싸롱",
+		 *      "areacode":"1",
+		 *       "createdtime":"20091030120628",
+		 *        "mapy":"37.5486052210",
+		 *         "contenttypeid":"39",
+		 *          "mapx":"126.9165993920",
+		 *           "zipcode":"04047",
+		 *            "cat2":"A0502",
+		 *             "cat3":"A05020900",
+		 *              "modifiedtime":"20190208105326",
+		 *               "cat1":"A05",
+		 *                "mlevel":"6",
+		 *                 "sigungucode":"13",
+		 *                  "tel":"02-337-9378",
+		 *                   "firstimage":"http://tong.visitkorea.or.kr/cms/resource/94/2025294_image2_1.jpg"
+		 *                   }
+		 * 
+		 * 
+		 
+		//String ab = "{\"hi\":\"HI\", \"Qi\":\"QI\"}";
+		JSONParser jsonparser = new JSONParser();
+		JSONObject jsonobject = (JSONObject) jsonparser.parse(test2);
+		
+		System.out.println("jsonobject"+ jsonobject.toJSONString());
+		System.out.println("jsonobject"+ jsonobject.toString());
+		System.out.println("jsonobject"+ jsonobject);
+		String[] recode_split = recode.toString().split("=");
+		
+		for(int i=0;i<recode_split.length;i++) {
+			System.out.println("???"+recode_split[i] +i+"번방");
+			//StringBuffer a= recode.toString();	
+		}
+		
+		 String Test = "[{\"TV\":\"3d tv\"}]";
+		   try {
+	            mArray = new JSONArray(Test);
+	        } catch (JsonGenerationException e) {
+	            e.printStackTrace();
+	        }
+		//여기서 에러 
+		 
+		return "[{\"url\":\"'http://192.168.0.52:9080/SpringNoMavenProj/Images/1.png',text:'1번 이미지'\"},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/2.png',text:'2번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/3.png',text:'3번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/4.png',text:'4번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/5.png',text:'5번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/6.png',text:'6번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/7.png',text:'7번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/8.png',text:'8번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/9.png',text:'9번 이미지'},"
+		+ "{url:'http://192.168.0.52:9080/SpringNoMavenProj/Images/10.png',text:'10번 이미지'}]";
+		
+		//
+		System.out.println("recode :::::"+JSONArray.toJSONString(recode));
+		return JSONArray.toJSONString(recode);//파싱이 저절로 오류가 난다 
+		//return "[{\"hi\":\"hi\"}]";
+		 
+	}//pickRoad
+		*/
 	
 	//앨범다운관리
 	@RequestMapping(value = "/admin/albumDown.pic")

@@ -3,8 +3,10 @@
 <link href="<c:url value='/css/Pay.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/Pay.js'/>"></script>
 <!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <div style="margin-top: 100px;"></div>
 <div class="middle">
 	<!-- container-fluid -->
@@ -73,8 +75,8 @@
 							<div class="wrap">
 								<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
-									<label for="cellphoneTelecom" class="cell_label">통신사
-										종류</label> <select name="cellphoneTelecom" id="cellphoneTelecom"
+									<label for="cellphoneTelecom" class="cell_label">통신사 종류</label>
+									<select name="cellphoneTelecom" id="cellphoneTelecom"
 										class="payment-cellphone__select">
 										<option value="" selected="">선택</option>
 										<option value="SKT" data-limitmsg="" data-messagecolor=""
@@ -86,6 +88,7 @@
 									</select>
 								</div>
 								<!-- 통신사 박스 -->
+
 								<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
 									<label for="depositBank" class="cell_label">입금은행</label> <select
@@ -126,9 +129,9 @@
 										<div class="line-data">
 											<span class="depositDueTxt">20</span>
 										</div></li>
+
 								</div>
 								<!-- 무통장  -->
-
 								<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
 									<label for="cardTypeSelect" class="cell_label">카드종류</label> <select
@@ -168,14 +171,14 @@
 										<option value="ETC" data-limitmsg="" data-messagecolor=""
 											data-paymentdisabled="false" data-maxinstallmentmonth="12">기타(은행/증권)카드</option>
 									</select>
+
 								</div>
 								<!-- 카드 결제 -->
-							</div>
-							<!-- wrap end -->
+							</div> <!-- wrap end -->
 						</td>
+
 					</tr>
 				</table>
-
 				<div class="form-group" style="overflow: hidden;">
 					<input type="checkbox" name="ppu_agree" value="이용약관" id="ppu_agree"
 						value="ok" style="float: left; margin-right: 10px;" />
@@ -193,6 +196,4 @@
 	</form>
 </div>
 <!-- container-fluid -->
-
-
 <div style="margin-bottom: 139px;"></div>
