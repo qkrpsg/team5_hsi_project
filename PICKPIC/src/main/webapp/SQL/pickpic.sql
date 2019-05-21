@@ -57,6 +57,7 @@ CREATE TABLE auth_security
 	as_date date DEFAULT SYSDATE NOT NULL,
 	as_index number NOT NULL,
 	ppa_id nvarchar2(12) NOT NULL,
+	as_key nvarchar2(30) NOT NULL,
 	PRIMARY KEY (as_id)
 );
 
@@ -124,11 +125,10 @@ CREATE TABLE pickpic_account
 (
 	ppa_id nvarchar2(12) NOT NULL,
 	ppa_email nvarchar2(30) NOT NULL,
-	ppa_password varchar2(15) NOT NULL,
+	ppa_password varchar2(20) NOT NULL,
 	ppa_nickname nvarchar2(10) NOT NULL,
 	ppa_join_date date DEFAULT SYSDATE NOT NULL,
 	ppa_type nvarchar2(10) DEFAULT 'pickpic' NOT NULL,
-	ppa_token nvarchar2(100) DEFAULT 'pickpic' NOT NULL,
 	ppa_profile_path nvarchar2(100) DEFAULT '/resources/images/defaultProfile.jpg' NOT NULL,
 	ppa_index number NOT NULL,
 	PRIMARY KEY (ppa_id)
@@ -206,10 +206,9 @@ CREATE TABLE pickroad_board
 
 CREATE TABLE pickroad_place
 (
-	prp_id nvarchar2(12) NOT NULL,
+	prp_id varchar2(12) NOT NULL,
 	prp_order number NOT NULL,
 	prp_contentid nvarchar2(12) NOT NULL,
-	prp_title nvarchar2(20) NOT NULL,
 	prp_image_path nvarchar2(100) NOT NULL,
 	prb_id nvarchar2(12) NOT NULL,
 	PRIMARY KEY (prp_id)

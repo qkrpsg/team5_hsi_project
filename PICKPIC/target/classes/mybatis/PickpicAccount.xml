@@ -48,3 +48,4 @@
 		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}))
 	</insert>
 </mapper>
+
