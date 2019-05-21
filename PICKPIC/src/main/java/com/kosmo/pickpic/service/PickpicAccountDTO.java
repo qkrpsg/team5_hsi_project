@@ -6,7 +6,7 @@ public class PickpicAccountDTO {
 	private String ppa_email;
 	private String ppa_password;
 	private String ppa_nickname;
-	private java.sql.Date ppa_join_date;
+	private String ppa_join_date;
 	private String ppa_type;
 	private String ppa_token;
 	private String ppa_profile_path;
@@ -93,13 +93,13 @@ public class PickpicAccountDTO {
 		this.ppa_nickname = ppa_nickname;
 	}
 
-	public java.sql.Date getPpa_join_date() {
-		return ppa_join_date;
-	}
-
-	public void setPpa_join_date(java.sql.Date ppa_join_date) {
-		this.ppa_join_date = ppa_join_date;
-	}
+//	public java.sql.Date getPpa_join_date() {
+//		return ppa_join_date;
+//	}
+//
+//	public void setPpa_join_date(java.sql.Date ppa_join_date) {
+//		this.ppa_join_date = ppa_join_date;
+//	}
 
 	public String getPpa_type() {
 		return ppa_type;
@@ -133,6 +133,14 @@ public class PickpicAccountDTO {
 		this.ppa_index = ppa_index;
 	}
 
+	public String getPpa_join_date() {
+		return ppa_join_date;
+	}
+
+	public void setPpa_join_date(String ppa_join_date) {
+		this.ppa_join_date = ppa_join_date;
+	}
+
 	public String getLh_ld() {
 		return lh_ld;
 	}
@@ -140,5 +148,13 @@ public class PickpicAccountDTO {
 	public void setLh_ld(String lh_ld) {
 		this.lh_ld = lh_ld;
 	}
+
+//	public java.sql.Date getLh_ld() {
+//		return lh_ld;
+//	}
+//
+//	public void setLh_ld(java.sql.Date lh_ld) {
+//		this.lh_ld = lh_ld;
+//	}
 	
 }

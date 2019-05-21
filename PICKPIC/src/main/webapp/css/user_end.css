@@ -85,17 +85,28 @@
 	
 	width:100%;
 	padding-top:40px;
+	
 }
 .one_hr{
 	position: absolute;
 	width:100%;
 	border-top:1px #999 solid;
+	
 	top:170px;
 }
 .wrap{
 	width:1200px;
 	margin:0 auto;
+	
+	
+	
 }
+.write_btn{
+	position:absolute;
+	top:0;
+	right: 40px;
+}
+
 .wrap h3{
 	margin:0;
 }
@@ -130,6 +141,7 @@
 }
 
 .user_end_wrap{
+	
 	width:380px;
 	float:left;
 }

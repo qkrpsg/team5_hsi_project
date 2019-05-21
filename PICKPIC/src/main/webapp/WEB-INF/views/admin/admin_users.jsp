@@ -1,6 +1,60 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 
+<script>
+
+	
+	$(function(){
+		
+
+		
+		$('.a').click(function(){
+			/* <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> */
+			console.log("hi");
+		
+			console.log("안녕하세요:"+$(".a").html());
+			var email = $(this).html();
+			console.log(typeof email);
+			
+			//header("access-control-allow-origin: *");
+			$.ajax({
+				url : '<c:url value="/mb/d.do"/>',
+				data : {
+					"ppa_email" : email,
+					 "${_csrf.parameterName}" : "${_csrf.token}" 
+				},
+				//async:false,
+				//contentType: "application/json; charset=utf-8",
+				
+				dataType : 'json',
+				type:"get",
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+					
+					//console.log(typeof(JSON.parse(data)));
+					$.each(data, function(index, element) {
+						//console.log("index",index);
+						//console.log("element",element);
+						//console.log(element["ppa_email"]);
+						//console.log(element["ppa_nickname"]);
+	// 					$('.profile-username').html(element["ppa_email"]);
+	// 					$('.profile-username').html(element["ppa_email"]);
+	// 					$('#nickname').html(element['ppa_nickname'])
+					});
+				},
+				error : function(data) {
+					console.log(data);
+					console.log('실패했습니다');
+				}
+			});
+		
+		
+		
+		});/* 클릭  */
+	});
+</script>
+
 <!-- 여기서부터 사용자 관리 페이지 시작 -->
 <div class="content-wrapper">
 	<section class="content-header">
@@ -69,7 +123,12 @@
 										<tr>
 											<td><input type="checkbox"></td>
 											<td>${loop.count}</td>
+<<<<<<< HEAD
 											<td><a href="javascript:void(0)" class="mb-detail">${item.ppa_email }</a></td>
+=======
+											<%-- <td><a href="javascript:void(0)" onclick="javascript:callUser(this)">${item.ppa_email }</a></td> --%>
+											<td><a class="a">${item.ppa_email }</a></td>
+>>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git
 											<td>${item.ppa_nickname}</td>
 											<td>로그인</td>
 										</tr>
@@ -136,10 +195,10 @@
 						
 						<strong><i class="fa fa-book margin-r-5"></i> 작성</strong>
 						<ul class="list-group">
-							<li class="list-group-item"><b>누적 픽</b><a class="pull-right">-</a></li>
-							<li class="list-group-item"><b>게시글</b><a class="pull-right">-</a></li>
-							<li class="list-group-item"><b>보유 필터</b><a class="pull-right">-</a></li>
-							<li class="list-group-item"><b>문의</b><a class="pull-right">-</a></li>
+							<li class="list-group-item"><b>누적 픽</b><a id="d-pick" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>게시글</b><a id="d-post" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>보유 필터</b><a id="d-filter" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>문의</b><a id="d-question" class="pull-right">-</a></li>
 						</ul>
 						<hr>
 
@@ -161,6 +220,7 @@
 </div>
 <!-- 여기까지 사용자 관리 페이지 끝 -->
 
+<<<<<<< HEAD
 <script>
 	$(function() {
 		$('#refresh').click(function() {
@@ -223,8 +283,13 @@
 	                  $('#d-joindate').html(element['ppa_join_date']);
 	                  $('#d-logindate').html(element['lh_ld']);
 	                  
+	                  $('#d-pick').html(element['totalpick']);
+	                  $('#d-post').html(element['totalpost']);
+	                  $('#d-filter').html(element['totalfilter']);
+	                  $('#d-question').html(element['totalquestion']);
+	                  
 	                  console.log(element['ppa_type']);
-	                  if(element['ppa_type'] == "admin"){
+	                  if(element['as_class'] == "ADMIN"){
 	   	               console.log('넌관리자야');
 	                	  $('#d-type-admin').css('display','block');
 	                	  $('#d-type-pickpic').css('display','none');
@@ -245,3 +310,5 @@
 	   });
 
 </script>
+=======
+>>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git

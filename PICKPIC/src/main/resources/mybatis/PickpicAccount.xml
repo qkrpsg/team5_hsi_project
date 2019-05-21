@@ -17,12 +17,12 @@
 	
 	<!-- 계정 인증 확인 -->
 	<select id="AuthSecurityIsAble" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(*) FROM auth_security WHERE as_enabled_flag=1 AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type})
+		SELECT COUNT(*) FROM auth_security WHERE as_enabled_flag=1 AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email})
 	</select>
 	
 	<!-- 계정정보 반환 -->
 	<select id="PickpicAccountUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
-		SELECT * FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}
+		SELECT * FROM pickpic_account WHERE ppa_email = #{ppa_email}
 	</select>
 	
 	<!-- 계성 생성  -->
@@ -34,18 +34,18 @@
 	<!-- 초기 계정정보 인증 테이블에 등록 -->
 	<insert id="AuthSecurityInsert" parameterType="java.util.Map">
 		INSERT INTO auth_security(as_id, as_index, ppa_id, as_key)
-		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}), #{as_key})
+		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}), #{as_key})
 	</insert>
 	
 	<!-- 인증 성공시 인증 완료상태로 전환 -->
 	<update id="AuthSecurityUpdate" parameterType="java.util.Map">
-		UPDATE auth_security SET as_enabled_flag=#{as_enabled_flag} WHERE as_key=#{as_key} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email} AND ppa_type=#{ppa_type})
+		UPDATE auth_security SET as_enabled_flag=#{as_enabled_flag} WHERE as_key=#{as_key} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
 	</update>
 	
 	<!-- 로그인 기록 등록 -->
 	<insert id="LoginHistoryInsert" parameterType="java.util.Map">
 		INSERT INTO login_history(lh_id, lh_index, ppa_id) 
-		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email} AND ppa_type = #{ppa_type}))
+		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
 	</insert>
 </mapper>
 

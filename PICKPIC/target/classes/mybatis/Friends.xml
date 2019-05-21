@@ -9,23 +9,16 @@
 		INSERT INTO pickroad_board(prb_id,prb_title,prb_content,prb_start_date,prb_end_date,prb_index,ppa_id) 
 		VALUES(func_generator,#{prb_title},#{prb_content},#{prb_start_date},#{prb_end_date},seq_prb_index.NEXTVAL,(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email})) 
 	</insert> 
-	
-	
-<!-- 픽로드 이정표 등록(인설트)  (SELECT prb_id FROM pickroad_board WHERE ppa_email = #{ppa_email})-->
+	<!-- 픽로드 이정표 등록(인설트)  (SELECT prb_id FROM pickroad_board WHERE ppa_email = #{ppa_email})-->
 	<insert id="PickRoadPlaceInsert" parameterType="java.util.Map">
 		INSERT INTO pickroad_place
 		VALUES(func_generator, #{prp_order},#{prp_contentid},#{prp_title},#{prp_image_path},
 		(SELECT prb_id FROM (SELECT * FROM pickroad_board ORDER BY prb_index DESC) WHERE ROWNUM = 1))
 	</insert> 
-
-	
-	
-	
 	<!-- user_end 에 뿌려줄  select 문 구현하기    PickRoadBoardSelectAll   prb.*,prp.prp_image_path-->  
 	<select id="PickRoadBoardSelectAll" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT prb.*,prp_image_path FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prp_order = 1 ORDER BY prb_index DESC
 	</select>
-	
 	<!-- view 페이지 상세보기  -->
 	<select id="PickRoadBoardSelectOne" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT prb.*,prp.prp_image_path,prp_title,prp_order FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prb_index = #{prb_index } AND prp.prb_id = #{prb_id } ORDER BY prb_index DESC
@@ -34,16 +27,21 @@
 	<select id="PickRoadBoardSelectOne2" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT * FROM pickroad_board WHERE prb_index = #{prb_index } 
 	</select>
-	
 	<!-- 픽로드 게시판에  조회수를 업데이트 할 쿼리문! --> 
 	<update id="PickRoadBoardUpdate" parameterType="java.util.Map">
 		UPDATE pickroad_board SET prb_view= prb_view +1  WHERE prb_index=#{prb_index }
 	</update>
 	
-	<!-- 
+	<!-- 필터보관함에 필터 저장 -->
+	<insert id="FilterStorageInsert" parameterType="java.util.Map">
+		INSERT INTO filter_storage VALUES(fs_id,fs_index,f_id,ppa_id)
+	</insert> 
 	
-	
-	 -->
-	
-	
+	<!-- 앨범다운 필터보관함 정보 불러오기 -->
+	<select id="AlbumDownFilterName" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM filter_storage fs 
+		JOIN filter f ON f.f_id=fs.f_id 
+		JOIN pickpic_account ac ON ac.ppa_id=fs.ppa_id 
+		WHERE ac.ppa_email=#{ppa_email }
+	</select>
 </mapper>

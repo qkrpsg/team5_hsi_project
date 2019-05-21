@@ -22,6 +22,18 @@
 		// setup validate
 		$.validate();
 	});
+	$(document).ready(function() {
+		function ch(){
+			alert('이메일 인증을 해주세요~');
+		}
+		
+		$('.submit_hi').click(function(){
+			if($('#ppa_agree').filter(':checked').length == 1){
+				alert("이메일 인증을 확인 해주세요");
+				$("#my_form").submit();
+			}
+		});
+	});
 	
 	$(document).ready(function() {
 		var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
@@ -70,6 +82,7 @@
 				return false;
 			}
 		}//onclick	
+		
 	});
 </script>
 <style>
@@ -91,7 +104,7 @@
 		<!-- <div class="l_help_list_wrap"> -->
 		<div class="row">
 			<!--  -->
-			<form role="form" action='<c:url value="/user/sign_process.pic"/>' method="POST">
+			<form role="form" action='<c:url value="/user/sign_process.pic"/>' method="POST" id="my_form">
 				<div class="form-group">
 					<label for="ppa_email">이메일</label> 
 					<input type="text" class="form-control" name="ppa_email" id="ppa_email" placeholder="이메일을 입력해 주세요" data-validation="required length email" data-validation-length="5-30">
@@ -122,15 +135,18 @@
 				</div>
 				
 				<div class="form-group text-center">
-					<button type="submit" id="join-submit" class="btn btn-primary">
+					<div id="join-submit" class="btn btn-primary submit_hi"  >
 						회원가입<i class="fa fa-check spaceLeft"></i>
-					</button>
-					<button type="submit" class="btn btn-warning">
+					</div>
+					<div class="btn btn-warning">
 						가입취소<i class="fa fa-times spaceLeft"></i>
-					</button>
+					</div>
+					
 					<input type="hidden" name="ppa_type" value="pickpic" />
+					
 				</div>
 			</form>
+			
 		</div>
 		<!-- </div> -->
 	</div>

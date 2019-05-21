@@ -42,8 +42,12 @@
 	<select id="adminDashReport" resultType="java.util.Map">
 	</select>
 	<select id="adminDashRecycleBin" resultType="java.util.Map">
-	</select>
 	
+	</select>
+	<!-- Account 조인하여 Road 픽로드 관리자게시판에 뿌려줄 List-->
+	<select id="adminPickAccountRoad" parameterType="java.util.Map" resultType="java.util.Map" >
+		SELECT prb.*,ppa_email FROM pickroad_board prb JOIN pickpic_account ppa ON prb.ppa_id = ppa.ppa_id
+	</select>
 	<!-- 사용자 관리 -->
 	<select id="adminOneUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT * FROM (
@@ -52,17 +56,17 @@
 			ON ppa.ppa_id=lh.ppa_id) 
 		WHERE ppa_email=#{ppa_email}
 	</select>
-	<select id="adminUserPick" parameterType="String" resultType="String">
+	<select id="adminUserPick" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT 
-			(SELECT SUM(ppb_pick) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
-			(SELECT SUM(prb_view) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
-		FROM dual
+			((SELECT sum(ppb_pick) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
+			(SELECT sum(prb_view) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})))
+		AS totalpick FROM dual
 	</select>
 	<select id="adminUserPost" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT 
-			(SELECT COUNT(*) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
-			(SELECT COUNT(*) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
-		totalpost FROM dual
+			((SELECT COUNT(*) FROM pickplace_board WHERE PPA_ID=(SELECT PPA_ID FROM pickpic_account WHERE PPA_EMAIL=#{ppa_email}))+
+			(SELECT COUNT(*) FROM pickroad_board WHERE PPA_ID=(SELECT PPA_ID FROM pickpic_account WHERE PPA_EMAIL=#{ppa_email}))) 
+		AS totalpost FROM dual
 	</select>
 	<select id="adminUserFilter" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT COUNT(*) totalfilter FROM filter_storage WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
@@ -73,4 +77,16 @@
 	<select id="adminUserClass" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT as_class FROM auth_security WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
 	</select>
+	
+	<!-- 관리자 픽로드 관리자게시판 삭제 부분입니다. adminPickAccountRoadDelete -->
+	<delete id="adminPickAccountRoadDelete2" parameterType="java.util.Map">
+		DELETE pickroad_place WHERE prb_id = (SELECT prb.prb_id FROM pickroad_board prb JOIN pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prb_index = #{prb_index } AND ROWNUM = 1)
+	</delete>
+	<delete id="adminPickAccountRoadDelete" parameterType="java.util.Map">
+		DELETE pickroad_board WHERE prb_index =#{prb_index }
+	</delete>
+	
+	
+	
+	
 </mapper>
