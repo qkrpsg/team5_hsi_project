@@ -15,17 +15,16 @@
     position: relative;
 }
 
-.photo {
-    border: 1px solid #e6e6e6;
-    background-color:#eeeeee;
-    margin: 15px 15px;
-   }
-
 .photo_wrap {
    margin: 15px;
    padding: 0;
     border: 1px solid #e6e6e6;
 }
+
+.photo {
+    background-color:#eeeeee;
+    margin: 15px 15px;
+   }
 
 .photo_center_wrap{
    position: relative;
@@ -79,6 +78,12 @@
    padding: 0;
 }
 
+/* 새로운 */
+#canvas {
+	margin:auto;
+	background-color: #ececec;
+	width: 100%;
+}
 
 
 @media screen and (max-width:1000px) and (min-width:0px) {
