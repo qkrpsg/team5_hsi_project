@@ -39,5 +39,13 @@ public class PickRoadBoardDAO implements PickRoadBoardService{
 		return template.update("PickRoadBoardUpdate",map);
 	}
 
+	@Override
+	public List<Map> pickRoadBoardSelectOne(Map map) {
+		return template.selectList("PickRoadBoardSelectOne",map);
+	}
+	@Override
+	public List<Map> pickRoadBoardSelectOne2(Map map) {
+		return template.selectList("PickRoadBoardSelectOne2",map);
+	}
 	
 }

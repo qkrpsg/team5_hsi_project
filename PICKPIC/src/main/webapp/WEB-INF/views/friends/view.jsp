@@ -34,30 +34,35 @@
 		<div class="col-md-12 wrap_two" >
 		
 			<div class="syasin" >
-				<div class="syasins">
-					<div class="syasins_wrap">			
-						<img src="<c:url value='/resources/images/gren1.jpg'/>" class="sa">
+				<c:forEach  var="recode" items="${recode }" varStatus="loop">
+					<div class="syasins">
+						<div class="syasins_wrap">			
+							<img src="${recode.PRP_IMAGE_PATH }" class="sa">
+						</div>
+						<div class="text_wrap">
+							<p>${recode.PRP_ORDER }.${recode.PRP_TITLE }</p>
+						</div>
 					</div>
-					<div class="text_wrap">
-						<p>1.루트</p>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			
+			
+			
 			<div class="right_text">
-				<div>
-					<p class="text1">제목</p>
-					<p class="text2">뿌려줄 내용</p>
-					<hr style="border: solid 1px #DCDCDC;width:200px;margin:0 auto;margin-top:20px;" />
-				</div>
-				
-				<div>
-					<p class="text1 co">내용</p>
-					<p class="text2">내용 뿌려줄거</p>
-				</div>
-				
+				<c:forEach  var="recode2" items="${recode2 }" varStatus="loop">
+					<div>
+						<p class="text1">제목</p>
+						<p class="text2">${recode2.PRB_TITLE }</p>
+						<hr style="border: solid 1px #DCDCDC;width:200px;margin:0 auto;margin-top:20px;" />
+					</div>
+					
+					<div>
+						<p class="text1 co">내용</p>
+						<p class="text2">${recode2.PRB_CONTENT }</p>
+					</div>
+				</c:forEach>
 				<div class="btns">
-					<button class="homebtn">이전</button>
+					<a href="<c:url value='/friends/notice.pic?noInsert=hi'/>"><button class="homebtn">이전</button></a>
 					<button class="homebtn">☆즐겨찾기추가</button>
 					<button class="homebtn">★지도</button>
 				</div>

@@ -6,7 +6,7 @@
 
 <mapper namespace="mybatis.AdminNotice">
 <select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT * FROM(SELECT CN.* ,ROWNUM R FROM(SELECT * FROM NOTICE ORDER BY N_INDEX DESC)CN)
+	SELECT * FROM(SELECT CN.* ,ROWNUM R FROM(SELECT * FROM NOTICE ORDER BY N_INDEX DESC)CN) 
 WHERE R BETWEEN #{start} AND #{end}
 </select>
 <select id="commentSelectOne" parameterType="java.util.Map" resultType="NoticeDTO">

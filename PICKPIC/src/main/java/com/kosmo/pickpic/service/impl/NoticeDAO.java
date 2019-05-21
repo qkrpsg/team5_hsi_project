@@ -23,10 +23,6 @@ public class NoticeDAO implements NoticeService {
 	public List<NoticeDTO> selectList(Map map) {	
 		return template.selectList("commentSelectList", map);
 	}//////////////////
-	
-	
-	
-	
 
 	@Override
 	public int insert(Map map) {

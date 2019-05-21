@@ -3,4 +3,49 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.Admin">
+	<!-- 대시보드 -->
+	<!-- 대시보드 탑 표시 -->
+	<select id="adminNewPick" resultType="int">
+		SELECT (SELECT COUNT(*) FROM pickplace_board)+(SELECT COUNT(*) FROM pickroad_board) FROM DUAL
+	</select>
+	<select id="adminNewUser" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM pickpic_account ORDER BY ppa_index DESC) WHERE ppa_join_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	<select id="adminNewQuestion" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM question ORDER BY q_index DESC) WHERE q_post_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	<select id="adminNewSale" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM payment ORDER BY p_index DESC) WHERE p_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	
+	<!-- 대시보드 게시판 표시 -->
+	<select id="adminDashUser" resultType="PickpicAccountDTO">
+		SELECT * FROM (
+			SELECT ppa.*, lh_ld FROM 
+			pickpic_account ppa JOIN (
+				SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
+			ON ppa.ppa_id=lh.ppa_id) 
+		ORDER BY ppa_id DESC
+	</select>
+	<select id="adminUser" resultType="PickPicAccountDTO">
+		SELECT * FROM pickpic_account ORDER BY ppa_index DESC
+	</select>
+	<select id="adminFilter" resultType="FilterDTO">
+		SELECT * FROM filter ORDER BY f_index DESC
+	</select>
+	<select id="adminPickPlace" resultType="PickPlaceBoardDTO">
+		SELECT * FROM pickplace_board ORDER BY ppb_index DESC
+	</select>
+	<select id="adminPickRoad" resultType="PickRoadBoardDTO">
+		SELECT * FROM pickroad_board ORDER BY prb_index DESC
+	</select>
+	<select id="adminDashReport" resultType="java.util.Map">
+	</select>
+	<select id="adminDashRecycleBin" resultType="java.util.Map">
+	</select>
+	
+	<!-- 사용자 관리 -->
+	<select id="adminOneUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT * FROM pickpic_account WHERE ppa_email=#{ppa_email}
+	</select>
 </mapper>

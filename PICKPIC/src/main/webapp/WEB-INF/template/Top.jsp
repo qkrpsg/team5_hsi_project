@@ -25,8 +25,7 @@
 					<nav class="menu_wrap col-md-9">
 						<ul>
 							<li class="col-md-2"></li>
-							<li class="col-md-3"><a
-								href="<c:url value='/'/>">피크픽 스토리</a></li>
+							<li class="col-md-3"><a href="<c:url value='/'/>">피크픽 스토리</a></li>
 							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
 							<li class="col-md-3"><a href="<c:url value='/friends/notice.pic?noInsert=hi'/>">고객센터</a></li>
 							<li class="col-md-1"></li>

@@ -1,26 +1,34 @@
 package com.kosmo.pickpic.service.web;
 
+import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.pickpic.service.NoticeDTO;
+import com.kosmo.pickpic.service.QuestionDTO;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
+import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
 
 @Controller
 public class HelpController {
 	//서비스 주입
 	@Resource(name="noticeService")
 	private NoticeServiceImpl noticeService;
-	
+	@Resource(name="questionService")
+	private QuestionServiceImpl questionService;
 	
 	//픽크픽TIP
 	@RequestMapping("/help/tip.pic")
@@ -69,14 +77,39 @@ public class HelpController {
 	}
 	
 	//문의사항
-	@RequestMapping("/help/qna/List.pic")
-	public String qna_list() throws Exception{
+	@RequestMapping("/help/qna/List.pic")///문의하기로 넘어가는 컨트롤러
+	public String qna_list(@RequestParam Map map,Model model) throws Exception{
+		System.out.println("map : " + map.toString());
+		List<QuestionDTO> list = questionService.selectList(map);
+	    
+		
+
+		model.addAttribute("list",list);
 		return "help/qna/List.tiles";
 	}
+	//문의사항 작성페이지
+	
+	@RequestMapping("/help/qna/Write2.pic")
+	public String qna_write2(@RequestParam Map map,Model model,Principal principal) throws Exception {
+		map.put("ppa_email", principal.getName());
+		
+		
+		questionService.insert(map);
+		
+		List<QuestionDTO> list = questionService.selectList(map);
+		
+	
+			
+		
+		model.addAttribute("list",list);
+		return "help/qna/List.tiles";
+	}//qna_wirite2
+	
+	
 	
 	//qna
 	@RequestMapping("/help/qna/Write.pic")
-	public String qna_write() throws Exception{
+	public String qna_write(@RequestParam Map params) throws Exception{
 		return "help/qna/Write.tiles";
 	}//qna
 

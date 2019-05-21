@@ -23,18 +23,18 @@
 						<!-- The user image in the navbar--> 
 						<img src="<c:url value='/resources/admin_images/user_icon.png'/>" class="user-image" alt="User Image"> 
 						<!-- hidden-xs hides the username on small devices so only the image appears. -->
-						<span class="hidden-xs">관리자 ID</span>
+						<span class="hidden-xs">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }</span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- The user image in the menu -->
 						<li class="user-header">
 							<img src="<c:url value='/resources/admin_images/user_icon.png'/>" class="img-circle" alt="User Image">
-							<p>관리자 ID <small>가입일자</small></p>
+							<p>${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username } <small>가입일자</small></p>
 						</li>
 						<!-- Menu Footer-->
 						<li class="user-footer">
-							<a href="#"><div class="btn-user-footer">마이페이지</div></a>
-							<a href="#"><div class="btn-user-footer">로그아웃</div></a>
+							<a href="<c:url value='/user/myPage.pic'/>"><div class="btn-user-footer">마이페이지</div></a>
+							<a href="<c:url value='/user/logout.pic'/>"><div class="btn-user-footer">로그아웃</div></a>
 						</li>
 					</ul>
 				</li>

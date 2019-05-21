@@ -1,5 +1,6 @@
 package com.kosmo.pickpic;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -9,6 +10,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scripting.config.LangNamespaceHandler;
 import org.springframework.stereotype.Controller;
@@ -20,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.kosmo.pickpic.service.NoticeDTO;
+import com.kosmo.pickpic.service.PickpicAccountDTO;
+import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.QuestionDTO;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
@@ -32,65 +37,102 @@ public class AdminController {
 	@Resource(name="noticeService")
 	private NoticeServiceImpl noticeService;
 	
+	@Resource(name="adminService")
+	private AdminServiceImpl adminService;
+
 	@Resource(name="questionService")
 	private QuestionServiceImpl questionService;
 	
-	
 	//HOME
 	@RequestMapping(value = "/admin/home.pic")
-	public String home(@RequestParam Map map) {
-		map.put("admin", "HOME");
+	public String home(@RequestParam Map map, Model model) {
+		model.addAllAttributes(adminService.dashBoardTop());
+		model.addAttribute("user",adminService.dashBoardUser());
+		model.addAttribute("filter",adminService.filterAll());
+		model.addAttribute("place", adminService.pickPlaceAll());
+		model.addAttribute("road", adminService.pickRoadAll());
 		return "admin/admin_home.admin";
 	}//home
 	
 	//회원관리
 	@RequestMapping(value = "/admin/users.pic")
-	public String users(@RequestParam Map map) {
-		map.put("admin", "회원관리");
+	public String users(Model model) {
+		model.addAttribute("user", adminService.pickPicAccountAll());
+		model.addAttribute("total", adminService.pickPicAccountAll().size());
 		return "admin/admin_users.admin";
 	}//users
+	
+	//이메일 중복 체크
+	@ResponseBody
+	@RequestMapping(value="/admin/users/detail.pic",produces="text/html; charset=UTF-8")
+//	@RequestMapping("/admin/detail.pic")
+	public String userDetail(@RequestParam Map map) throws Exception{
+		PickpicAccountDTO oneUser = adminService.oneUser(map);
+		
+		List<Map> user = new Vector<Map>();	
+		Map record = new HashMap();
+		record.put("ppa_email", oneUser.getPpa_email());
+		record.put("ppa_nickname", oneUser.getPpa_nickname());
+		record.put("ppa_join_date", oneUser.getPpa_join_date().toString().substring(0, 10));
+		record.put("ppa_type", oneUser.getPpa_type());
+		record.put("ppa_profile_path", oneUser.getPpa_profile_path());
+		user.add(record);
+		System.out.println(JSONArray.toJSONString(user));
+//		
+//		JSONObject json = new JSONObject();
+//		json.put("user", record);
+//		System.out.println(json.toJSONString());
+		
+//		json = new JSONObject();
+//		json.put("ppa_email", oneUser.getPpa_email());
+//		json.put("ppa_nickname", oneUser.getPpa_nickname());
+//		json.put("ppa_join_date", oneUser.getPpa_join_date());
+//		json.put("ppa_type", oneUser.getPpa_type());
+//		json.put("ppa_profile_path", oneUser.getPpa_profile_path());
+//		System.out.println(json.toJSONString());
+		return JSONArray.toJSONString(user);
+//		return json.toJSONString();
+	}//emailCheck
 	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")
 	public String attraction(@RequestParam Map map) {
-		map.put("admin", "픽플레이스관리");
 		return "admin/admin_pickPlace.admin";
 	}//pickPlace
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
 	public String filter(@RequestParam Map map) {
-		map.put("admin", "필터관리");
 		return "admin/admin_filter.admin";
 	}//filter
 	
 	//픽로드관리
 	@RequestMapping(value = "/admin/pickRoad.pic")
 	public String route(@RequestParam Map map) {
-		map.put("admin", "픽로드관리");
 		return "admin/admin_pickRoad.admin";
 	}//pickRoad
 	
 	//앨범다운관리
 	@RequestMapping(value = "/admin/albumDown.pic")
 	public String albumDown(@RequestParam Map map) {
-		map.put("admin", "앨범다운관리");
 		return "admin/admin_albumDown.admin";
 	}//albumDown
 	
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
-	public String qna(@RequestParam Map map) {
+	public String qna(@RequestParam Map map,Model model) {
 		List<QuestionDTO> list = questionService.selectList(map);
 		
+		model.addAttribute("list",list);
+		
 		map.put("admin", "문의관리");
+		
 		return "admin/admin_qna.admin";
 	}//qna
 	
 	//신고함
 	@RequestMapping(value = "/admin/report.pic")
 	public String report(@RequestParam Map map) {
-		map.put("admin", "게시물신고함");
 		return "admin/admin_report.admin";
 	}//report
 	@Value("${PAGESIZE}")
@@ -217,6 +259,11 @@ public class AdminController {
 	@RequestMapping("/admin/admin_delete.pic")
 	public String delete(@RequestParam Map map,Model model) throws Exception{
 		//서비스 호출]
+		String text = map.get("n_index").toString();
+		String text2[] = text.split(",");
+		System.out.println(text2[0]);
+		System.out.println(text2);
+		System.out.println(text2.length);
 		System.out.println(map);
 		
 		//int sucFail=noticeService.delete(map);	
@@ -237,7 +284,6 @@ public class AdminController {
 	//휴지통
 	@RequestMapping(value = "/admin/recyclebin.pic")
 	public String recyclebin(@RequestParam Map map) {
-		map.put("admin", "휴지통");
 		return "admin/admin_recyclebin.admin";
 	}//recyclebin
 

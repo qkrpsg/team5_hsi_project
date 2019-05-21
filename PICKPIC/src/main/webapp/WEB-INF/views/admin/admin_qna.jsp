@@ -40,8 +40,7 @@
 												src="<c:url value='/resources/admin_images/user_icon.png'/>"
 												alt="User Image"> <span class="username"> <a
 												href="#">${item.Q_TITLE}</a>
-												<div class="pull-right text-sm">처리 완료</div>
-											</span> <span class="description">${item.Q_POST_DATE }</span>
+											</span> <span class="description"><%-- ${item.Q_POST_DATE } --%></span>
 										</div>
 										<p>${item.Q_CONTENT }</p>
 										<!-- 							<form class="form-horizontal"> -->
@@ -54,13 +53,17 @@
 										<!-- 									</div> -->
 										<!-- 								</div> -->
 										<!-- 							</form> -->
-										<hr>
-										<button type="button"
-											class="btn btn-default btn-sm pull-right">
-											<i class="fa fa-eraser">수정</i>
-										</button>
-										<p>답변내용1</p>
+										<form class="form-horizontal">
+								<div class="form-group margin-bottom-none">
+									<div class="col-sm-10">
+										<input class="form-control input-sm" placeholder="등록">
 									</div>
+									<div class="col-sm-2">
+										<button type="submit" class="btn btn-primary pull-right btn-block btn-sm">보내기</button>
+									</div>
+								</div>
+									</div>
+									<hr style="border-bottom: solid 2px #87CEFA"> 
 								</div>
 				</form>
 				</c:forEach>
