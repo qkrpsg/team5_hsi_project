@@ -70,7 +70,7 @@ public class PickpicAccountDAO implements PickpicAccountService {
 					.append("<div class=\"jumbotron jumbotron-fluid\">")
 					.append("<div align=\"center\" class\"container\">")
 					.append("<h1>[이메일 인증]</h1>")
-					.append("<p class=\"lead\">안녕하세요. <font size=\"5\" color=\"red\"><b>PICKPIC</b></font> 입니다.</font></p>")
+					.append("<p class=\"lead\">안녕하세요. <font size=\"5\"><b>PICKPIC</b></font> 입니다.</font></p>")
 					.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
 					.append("<a href='http://localhost:8080/pickpic/user/joinConfirm.pic?ppa_email=")
 					.append(map.get("ppa_email"))

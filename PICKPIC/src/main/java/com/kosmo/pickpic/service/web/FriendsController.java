@@ -34,6 +34,9 @@ import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBod
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
 import com.kosmo.pickpic.service.impl.FilterDAO;
+import com.kosmo.pickpic.service.impl.FilterServiceImpl;
+import com.kosmo.pickpic.service.PickpicAccountDTO;
+import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 
@@ -41,9 +44,13 @@ import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 public class FriendsController {
 	// 서비스 주입
 	@Resource(name="prbService")
-	private PickRoadBoardServiceImpl dao;
-	@Resource(name = "filterDAO")
-	private FilterDAO dao_filter;
+	private PickRoadBoardServiceImpl prbService;
+	
+	@Resource(name = "fService")
+	private FilterServiceImpl dao_filter;
+	
+	@Resource(name="adminService")
+	private AdminServiceImpl adminService;
 	// 픽플레이스
 	/*@RequestMapping("/friends/place.pic")
 	public String place() throws Exception {
@@ -121,7 +128,7 @@ public class FriendsController {
 				}
 				reader.close();
 				in.close();
-				
+				System.out.println("스트링하곤 다른거냐?"+result.getClass().getSimpleName());
 				//ajax 가 아니라 오류나나보다?  
 				JSONParser jsonparser = new JSONParser();
 				//System.out.println("hello"+result.toString());  response가 달려있는 객체
@@ -135,11 +142,7 @@ public class FriendsController {
 				JSONArray list = (JSONArray) json.get("item");
 				//System.out.println("list1:"+list);//여기까진 문제가 없는듯 하다
 			
-				
-				
-				
-				
-				
+				System.out.println("json 오브젝트냐?"+json.getClass().getSimpleName());
 				/*BufferedWriter fw = new BufferedWriter(
 						new OutputStreamWriter(
 							new FileOutputStream(session.getServletContext().getRealPath("/resources/update")+File.separator+".csv"),"MS949"));
@@ -153,6 +156,10 @@ public class FriendsController {
 				//System.out.println("JSONArray.toJSONString(list)::::"+JSONArray.toJSONString(list));//여기도 문제가 없다
 				//,{mapy : \"37.485307\"}, {mapx : \"126.882129\"}
 				//return 	"[{\"mapy\" : \"37.481868\",\"mapx\" : \"126.883202\"}]"; 
+				System.out.println("list 타입이 뭐냐?"+list.getClass().getSimpleName());
+				System.out.println("list 내용물은?1"+list.toJSONString());
+				System.out.println("list 내용물은?STR::"+list.toString());
+				
 				return JSONArray.toJSONString(list);
 				
 				//return json.toJSONString();
@@ -168,6 +175,31 @@ public class FriendsController {
 			
 			return "friends/user_end.tiles";//
 		}//map
+		
+		
+		@ResponseBody
+		@RequestMapping(value="/mb/d.do",produces="text/html; charset=UTF-8")
+		//@RequestMapping("/mb/d.do")
+		public String ttest(@RequestParam Map map,Model model,HttpSession session) throws Exception{
+			
+			System.out.println("들어옵니꽈?"+map.toString());
+			PickpicAccountDTO oneUser = adminService.oneUser(map);
+			
+			List<Map> user = new Vector<Map>();	
+			Map record = new HashMap();
+			record.put("ppa_email", oneUser.getPpa_email());
+			record.put("ppa_nickname", oneUser.getPpa_nickname());
+			record.put("ppa_join_date", oneUser.getPpa_join_date().toString().substring(0, 10));
+			record.put("ppa_type", oneUser.getPpa_type());
+			record.put("ppa_profile_path", oneUser.getPpa_profile_path());
+			user.add(record);
+			System.out.println("list::"+user.toString());
+			System.out.println(JSONArray.toJSONString(user));
+			
+			return JSONArray.toJSONString(user);
+			
+		}
+		
 		
 		
 		
@@ -235,6 +267,11 @@ public class FriendsController {
 					}
 				}
 				String jsonString=list.toString().replace("[","{").replace("]","}");
+				System.out.println("jsonString::::"+ jsonString);
+				System.out.println("jsonString::::"+ jsonString.toString());
+				System.out.println("jsonString::::"+ jsonString.getClass().getSimpleName());
+				
+				
 				
 				JSONParser jsonparser = new JSONParser();
 				JSONObject jsonobject = (JSONObject) jsonparser.parse(jsonString);
@@ -277,7 +314,7 @@ public class FriendsController {
 		
 		
 		//notice 작성 완료 후 뿌려줄 페이지
-		@RequestMapping("/friends/notice.pic")
+		@RequestMapping("/friends/route.pic")
 		public String textarea(@RequestParam Map map, ServletRequest request,Principal principal,Model model) throws Exception{
 			System.out.println("noInsert"+map.get("noInsert"));
 			if(map.get("noInsert") == null) {
@@ -333,21 +370,23 @@ public class FriendsController {
 				//System.out.println("placeList: " + placeList.toString());
 				
 				int prp_order = 1;
-				dao.pickroadBoardInsert(boardMap);
+				prbService.pickroadBoardInsert(boardMap);
 				for(Map mb : placeList) {
 					mb.put("prp_order", prp_order);
-					dao.pickRoadPlaceInsert(mb);
+					prbService.pickRoadPlaceInsert(mb);
 					prp_order++;
 				}
 			
 			
-				List<Map> recode = dao.pickRoadBoardSelectAll(null);
+				List<Map> recode = prbService.pickRoadBoardSelectAll(null);
 				System.out.println("사이즈"+recode.size());
 				model.addAttribute("recode",recode);
 				System.out.println("첫 쿼리문 성공 ~~"+recode.toString());
 				return "friends/user_end.tiles";
 			}//if 끝
-			List<Map> recode = dao.pickRoadBoardSelectAll(null);
+			
+			
+			List<Map> recode = prbService.pickRoadBoardSelectAll(null);
 			System.out.println("null 값이 아닐 때"+recode.toString());
 			model.addAttribute("recode",recode);
 			/*
@@ -406,10 +445,10 @@ public class FriendsController {
 		
 		@RequestMapping("/friends/view.pic")
 		public String view(@RequestParam Map map,Model model) throws Exception {
-			int update =  dao.pickRoadBoardUpdate(map);
+			int update =  prbService.pickRoadBoardUpdate(map);
 			//UPDATE 문 하고  상세보기로  SELECT ONE
-			List<Map> recode = dao.pickRoadBoardSelectOne(map);
-			List<Map> recode2 = dao.pickRoadBoardSelectOne2(map);
+			List<Map> recode = prbService.pickRoadBoardSelectOne(map);
+			List<Map> recode2 = prbService.pickRoadBoardSelectOne2(map);
 			model.addAttribute("recode",recode);
 			model.addAttribute("recode2",recode2);
 			return "friends/view.tiles";
@@ -418,11 +457,7 @@ public class FriendsController {
 		
 		
 		
-	//픽로드
-	@RequestMapping("/friends/route.pic")
-	public String route() throws Exception {
-		return "friends/route.tiles";
-	}// route
+	
 
 	// 앨범다운
 	@RequestMapping("/friends/albumDown.pic")

@@ -1,19 +1,66 @@
 package com.kosmo.pickpic.service;
 
 public class PickpicAccountDTO {
+	//ppa 기본 컬럼
 	private String ppa_id;
 	private String ppa_email;
 	private String ppa_password;
 	private String ppa_nickname;
-	private java.sql.Date ppa_join_date;
+	private String ppa_join_date;
 	private String ppa_type;
 	private String ppa_token;
 	private String ppa_profile_path;
 	private String ppa_index;
 	
+	//편의상 제공하는 컬럼
 	private String lh_ld;
-	
+	private String totalpick;
+	private String totalpost;
+	private String totalfilter;
+	private String totalquestion;
+	private String as_class;
+
 	//getter,setter
+	public String getTotalpick() {
+		return totalpick;
+	}
+
+	public void setTotalpick(String totalpick) {
+		this.totalpick = totalpick;
+	}
+
+	public String getTotalpost() {
+		return totalpost;
+	}
+
+	public void setTotalpost(String totalpost) {
+		this.totalpost = totalpost;
+	}
+
+	public String getTotalfilter() {
+		return totalfilter;
+	}
+
+	public void setTotalfilter(String totalfilter) {
+		this.totalfilter = totalfilter;
+	}
+
+	public String getTotalquestion() {
+		return totalquestion;
+	}
+
+	public void setTotalquestion(String totalquestion) {
+		this.totalquestion = totalquestion;
+	}
+
+	public String getAs_class() {
+		return as_class;
+	}
+
+	public void setAs_class(String as_class) {
+		this.as_class = as_class;
+	}
+
 	public String getPpa_id() {
 		return ppa_id;
 	}
@@ -46,13 +93,13 @@ public class PickpicAccountDTO {
 		this.ppa_nickname = ppa_nickname;
 	}
 
-	public java.sql.Date getPpa_join_date() {
-		return ppa_join_date;
-	}
-
-	public void setPpa_join_date(java.sql.Date ppa_join_date) {
-		this.ppa_join_date = ppa_join_date;
-	}
+//	public java.sql.Date getPpa_join_date() {
+//		return ppa_join_date;
+//	}
+//
+//	public void setPpa_join_date(java.sql.Date ppa_join_date) {
+//		this.ppa_join_date = ppa_join_date;
+//	}
 
 	public String getPpa_type() {
 		return ppa_type;
@@ -86,6 +133,14 @@ public class PickpicAccountDTO {
 		this.ppa_index = ppa_index;
 	}
 
+	public String getPpa_join_date() {
+		return ppa_join_date;
+	}
+
+	public void setPpa_join_date(String ppa_join_date) {
+		this.ppa_join_date = ppa_join_date;
+	}
+
 	public String getLh_ld() {
 		return lh_ld;
 	}
@@ -93,5 +148,13 @@ public class PickpicAccountDTO {
 	public void setLh_ld(String lh_ld) {
 		this.lh_ld = lh_ld;
 	}
+
+//	public java.sql.Date getLh_ld() {
+//		return lh_ld;
+//	}
+//
+//	public void setLh_ld(java.sql.Date lh_ld) {
+//		this.lh_ld = lh_ld;
+//	}
 	
 }

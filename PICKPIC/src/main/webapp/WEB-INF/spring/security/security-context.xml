@@ -8,6 +8,9 @@
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/**" access="permitAll" />
 		<security:intercept-url pattern="/pickpic/**" access="hasRole('GUEST')" />
+		<security:intercept-url pattern="/pickpic/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/pickpic/*/*" access="hasRole('ADMIN')" />
+	
 		<security:form-login
 			login-page="/user/Login.pic"
 			login-processing-url="/user/LoginProcess.pic"
