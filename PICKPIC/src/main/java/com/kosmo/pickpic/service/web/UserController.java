@@ -57,7 +57,8 @@ public class UserController {
 		accountService.loginHistoryInsert(map);
 		//아이디와 닉네임을 세션에 저장
 		PickpicAccountDTO user = accountService.oneUser(map);
-		session.setAttribute("ppa_email", user.getPpa_id());
+		session.setAttribute("ppa_id", user.getPpa_id());
+		session.setAttribute("ppa_email", user.getPpa_email());
 		session.setAttribute("ppa_nickname", user.getPpa_nickname());
 		
 		return "home.tiles";

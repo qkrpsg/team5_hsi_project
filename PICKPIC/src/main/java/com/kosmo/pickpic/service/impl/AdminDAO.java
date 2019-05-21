@@ -63,4 +63,19 @@ public class AdminDAO implements AdminService {
 	public PickpicAccountDTO oneUser(Map map) {
 		return template.selectOne("adminOneUser", map);
 	}
+	@Override
+	public List<Map> pickPicAccountRoadAll() {
+		// TODO Auto-generated method stub
+		return template.selectList("adminPickAccountRoad");
+	}
+	@Override
+	public void delete(Map map) {
+		
+		template.delete("adminPickAccountRoadDelete",map);
+	}
+	@Override
+	public void delete2(Map map) {
+		
+		template.delete("adminPickAccountRoadDelete2",map);
+	}
 }

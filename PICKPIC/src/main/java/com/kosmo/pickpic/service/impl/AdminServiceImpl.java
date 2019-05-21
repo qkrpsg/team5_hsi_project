@@ -55,4 +55,17 @@ public class AdminServiceImpl implements AdminService {
 	public PickpicAccountDTO oneUser(Map map) {
 		return dao.oneUser(map);
 	}
+	@Override
+	public List<Map> pickPicAccountRoadAll() {
+		return dao.pickPicAccountRoadAll();
+	}
+	@Override
+	public void delete(Map map) {
+		dao.delete(map);
+	}
+	@Override
+	public void delete2(Map map) {
+		
+		dao.delete2(map);
+	}
 }

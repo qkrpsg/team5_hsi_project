@@ -12,6 +12,13 @@ public interface AdminService {
 	List<PickRoadBoardDTO> pickRoadAll();
 	List<Map> dashBoardReport();
 	List<Map> dashBoardRecycleBin();
+	//관리자 게시판 픽로드 LYS가 작업
+	List<Map> pickPicAccountRoadAll();
+	//픽로드 관리자게시판 자식 테이블 삭제 후 부모 테이블 삭제
+	
+	void delete(Map map);
+	void delete2(Map map);
 	
 	PickpicAccountDTO oneUser(Map map);
+	
 }

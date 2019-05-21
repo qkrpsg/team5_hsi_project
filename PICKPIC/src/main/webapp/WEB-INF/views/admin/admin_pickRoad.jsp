@@ -7,9 +7,103 @@
 <script src="<c:url value='/js/daterangepicker.js'/>"></script>
 
 <script>
+var delete_pram = new Array();
 	$(function(){
 		$('#datepick').daterangepicker();
-	})
+		
+	});
+	 
+	function submit2() {
+	  var form = document.createElement("form");
+	  form.setAttribute("charset", "UTF-8");
+      form.setAttribute("method", "Post");  //Post 방식
+      form.setAttribute("action", "/pickpic/admin/pickRoad.do"); //요청 보낼 주소
+      
+      
+      
+      var hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", "prb_index");
+      console.log("ok?"+delete_pram);
+      hiddenField.setAttribute("value", delete_pram);
+      form.appendChild(hiddenField);
+     
+      var hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", "${_csrf.parameterName}");
+      console.log("ok?"+delete_pram);
+      hiddenField.setAttribute("value", "${_csrf.token}");
+      
+     
+      form.appendChild(hiddenField);
+     	console.log(form.innerHTML); 
+      document.body.appendChild(form);
+      form.submit();
+	}
+	 
+	 
+	$(function(){
+		var check_box = document.getElementsByClassName('check_box');
+		var check_v = document.getElementsByClassName('check_v');
+		$('.delete_btn').click(function(){
+			if(!$('.check_box').is(":checked")){
+				alert("선택해주세요");
+				return;
+			}
+			for(var i=0;i<check_box.length;i++){
+				if(check_box[i].checked){
+					delete_pram.push(check_v[i].value);	
+				}
+			}//FOR
+			
+		console.log("delete_pram"+delete_pram);
+		
+			
+		submit2();
+		/* 
+		$.ajax({
+			url:'',
+			dataType:'json',
+			data : {
+				"prb_index" : JSON.stringify(delete_pram),
+				"${_csrf.parameterName}" : "${_csrf.token}"  
+			},
+			type: 'post',
+			success:function(data){
+				console.log("뜸?");
+				console.log(data);	
+				$.each(data,function(index,element){
+					console.log("뜸?2");
+					console.log("d"+element["PRB_INDEX"]);
+				});
+			},
+			error:function(request,error){
+				console.log('상태코드:',request.status);
+				console.log('서버로부터 받은 HTML데이타 :',request.responseText);
+				console.log('에러:',error);					
+			}
+			
+		}); */
+		
+		
+		
+		
+		
+		
+		
+			
+		});/* 삭제 버튼 클릭 */
+		
+		$('.all_check').click(function(){
+			if(!$('.check_box').is(":checked")){
+				$('.check_box').prop("checked",true);
+			}else{
+				$('.check_box').prop("checked",false);
+			}
+		});/* 클릭시 전체선택   전체해제    체크박스 */
+	});
+	
+	
 </script>
 
 
@@ -106,10 +200,10 @@
 					</div>
 					
 					<div class="box-body table-responsive">
-						<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
+						<button type="button" class="btn btn-default btn-sm checkbox-toggle all_check">
+							<i class="fa fa-square-o "> 전체 선택</i>
 						</button>
-						<button type="button" class="btn btn-default btn-sm">
+						<button type="button" class="btn btn-default btn-sm delete_btn">
 							<i class="fa fa-trash"> 삭제</i>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
@@ -135,30 +229,16 @@
 								<th>사용자</th>
 								<th>등록일</th>
 							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>1</td>
-								<td>제목1</td>
-								<td>내용1</td>
-								<td>사용자명1</td>
-								<td>등록일1</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>2</td>
-								<td>제목2</td>
-								<td>내용2</td>
-								<td>사용자명2</td>
-								<td>등록일2</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>3</td>
-								<td>제목3</td>
-								<td>내용3</td>
-								<td>사용자명3</td>
-								<td>등록일3</td>
-							</tr>
+							<c:forEach var="recode" items="${recode }" varStatus="loop">
+								<tr>
+									<td><input type="checkbox" class="check_box" ><input type="hidden" value="${recode.PRB_INDEX }" class="check_v"/></td>
+									<td>${recode.PRB_INDEX }</td>
+									<td>${recode.PRB_TITLE }</td>
+									<td>${recode.PRB_CONTENT }</td>
+									<td>${recode.PPA_EMAIL }</td>
+									<td>${recode.PRB_POST_DATE }</td>
+								</tr>
+							</c:forEach>
 						</table>
 					</div>
 					
@@ -192,3 +272,4 @@
 	<!-- 메인 끝 -->
 </div>
 <!-- 여기까지 사용자 관리 페이지 끝 -->
+

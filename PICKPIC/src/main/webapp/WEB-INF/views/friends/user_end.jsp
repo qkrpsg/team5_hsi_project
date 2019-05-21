@@ -5,8 +5,7 @@
 <link href="<c:url value='/css/user_end.css'/>" rel="stylesheet"/>
 <script>
 $(function(){
-	
-	
+	$('.write_btn').css("top",$('.wrap').height()+50);
 });
 
 /* 
@@ -77,10 +76,6 @@ $(function(){
 												&nbsp;&nbsp;
 												<span style="font-size:.9em;color:#666;font-family: NANUMSQUAREROUNDB;">추천수 : ${recode.PRB_RECOMMEND }<a href="<c:url value='/f/f.pic?prb_index=${recode.PRB_INDEX }'/>"><i class="fa fa-fw fa-thumbs-o-up" style="float: right;cursor: pointer;color:black;font-size:1.2em;"></i></a></span>
 											</p>
-											
-												
-									
-								
 										</div>
 										<p class="user_title">${recode.PRB_TITLE }</p>
 										
@@ -96,12 +91,10 @@ $(function(){
 					</c:forEach>
 				
 				
-				
-				
-				
-				
 			</div>
+			<a href="<c:url value='/friends/place.pic' />" class="btn btn-info write_btn">작성하러가기</a>
 		</div>
+		
 	</section>
 	
 	<%-- 
