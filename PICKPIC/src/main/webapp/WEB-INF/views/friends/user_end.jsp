@@ -92,7 +92,7 @@ $(function(){
 				
 				
 			</div>
-			<a href="<c:url value='/friends/place.pic' />" class="btn btn-info write_btn">작성하러가기</a>
+			<a href="<c:url value='/friends/map.pic' />" class="btn btn-info write_btn">작성하러가기</a>
 		</div>
 		
 	</section>

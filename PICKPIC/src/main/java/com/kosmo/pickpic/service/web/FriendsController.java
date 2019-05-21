@@ -45,11 +45,13 @@ public class FriendsController {
 	@Resource(name="adminService")
 	private AdminServiceImpl adminService;
 	// 픽플레이스
-	/*@RequestMapping("/friends/place.pic")
+	@RequestMapping("/friends/place.pic")
 	public String place() throws Exception {
+		//여기서 작업 시작
+		
 		return "friends/place.tiles";
 	}// place
-*/
+
 	// 필터정보
 	@RequestMapping("/friends/filter.pic")
 	public String filter() throws Exception {
@@ -63,7 +65,7 @@ public class FriendsController {
 	}//pay
 	
 	//Map 이동
-	@RequestMapping("/friends/place.pic")
+	@RequestMapping("/friends/map.pic")
 	public String map(@RequestParam Map map,Model model,HttpSession session) throws Exception{//3가지 컬럼을 만들어서 넣는다   테스트용
 	
 		return "friends/map.tiles";//
