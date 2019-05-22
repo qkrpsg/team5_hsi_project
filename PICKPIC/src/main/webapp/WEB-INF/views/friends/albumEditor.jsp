@@ -13,7 +13,6 @@
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
 <!-- albumEditor.jsp -->
-
 <!-- 모달 창 시작-->
 <div class="modal" id="option_modal">
    <div class="modal-content">
@@ -45,12 +44,13 @@
                   src="<c:url value='/resources/images/sns/P.png'/>" alt="image">
                <h5>내 PC</h5>
             </div>
-
+			
             <div class="col-xs-4 btn">
                <img class="img-circle img_100"
                   src="<c:url value='/resources/images/sns/I.PNG'/>" alt="image">
                <h5>인스타그램</h5>
             </div>
+            
          </div>
          <!-- row text-center -->
       </div>
@@ -136,7 +136,6 @@
 				<span class="name_text">${fn:toUpperCase(f_name)}</span>
 			</div>
 		</c:forEach>
-		
 		
 	</div>
       <!--scroll_inline box -->
@@ -308,7 +307,6 @@
 		}
 		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
-
 	/* <!-- 이미지 선택 시 이미지 정보 가져오기 --> */
 	/* $("#btn_select").click(
 	      function(event) {
@@ -320,6 +318,7 @@
 for(var i = 0; i< ){
 	if
 } */
+
 	/*<!-- 아이템 삭제  --> */
 	function deleteItem(item) {
 		var selectBtnClass = $(item).attr("class");
@@ -385,6 +384,7 @@ for(var i = 0; i< ){
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
+<<<<<<< HEAD
 			var set_class = $('#set_'+id).attr('class');
 			var class_length = $('#set_'+id)[0].classList.length;
 			
@@ -400,6 +400,14 @@ for(var i = 0; i< ){
 					$('div[id="set_' + id + '"]').removeClass(class_before);
 					$('div[id="set_' + id + '"]').addClass(filterName);
 				}
+=======
+			console.log('아이디는?'+id);
+			var set_class =$('#set_'+id).attr('class');
+			console.log("1: "+set_class);
+			 if(set_class.indexOf(filterName)==-1){
+				$('div[id="set_' + id + '"]').addClass(filterName);
+				console.log("2: "+set_class);
+>>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git
 			}
 				 
 		});
