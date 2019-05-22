@@ -6,5 +6,6 @@ import java.util.Map;
 public interface FilterService {
 	
 	List<Map> albumDownFilterName(Map map);
-
+	FilterDTO selectFilter_buy(Map map);
+	
 }

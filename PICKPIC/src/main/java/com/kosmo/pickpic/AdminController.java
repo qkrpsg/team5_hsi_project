@@ -166,19 +166,19 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/admin/filterPriceChange.do",produces="text/html; charset=UTF-8")
 	public String filterPriceChange(@RequestParam Map map) throws Exception{
-		System.out.println(map.toString());
 		Map result = new HashMap();
+		List<Map> filter = new Vector<Map>();  
 		
 		if(!adminService.filterChange(map)) {
 			result.put("result", "실패");
 		}
 		else {
+			result = DTOUtil.convertDTOToMap(adminService.oneFilter(map));
 			result.put("result", "성공");
 		}
 		
-		List<Map> filter = new Vector<Map>();  
 		filter.add(result);
-		
+		System.out.println(JSONArray.toJSONString(filter));
 		return JSONArray.toJSONString(filter);
 	}
 	

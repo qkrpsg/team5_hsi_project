@@ -16,31 +16,11 @@ public class FilterDTO {
 
 	private String totalFilter;
 
-	//getter,setter
-	public String getF_change() {
-		return f_change;
-	}
-	public void setF_change(String f_change) {
-		this.f_change = f_change;
-	}
-	public String getF_image_path() {
-		return f_image_path;
-	}
-	public void setF_image_path(String f_image_path) {
-		this.f_image_path = f_image_path;
-	}
-	public String getTotalFilter() {
-		return totalFilter;
-	}
-	public void setTotalFilter(String totalFilter) {
-		this.totalFilter = totalFilter;
-	}
-	public String getTotalfilter() {
-		return totalFilter;
-	}
-	public void setTotalfilter(String totalfilter) {
-		this.totalFilter = totalfilter;
-	}
+	//편의성
+	private String ppa_email;
+	private String ppa_nickname;
+	private String ppa_index;
+	
 	public String getF_id() {
 		return f_id;
 	}
@@ -94,5 +74,41 @@ public class FilterDTO {
 	}
 	public void setF_index_number(String f_index_number) {
 		this.f_index_number = f_index_number;
+	}
+	public String getF_image_path() {
+		return f_image_path;
+	}
+	public void setF_image_path(String f_image_path) {
+		this.f_image_path = f_image_path;
+	}
+	public String getF_change() {
+		return f_change;
+	}
+	public void setF_change(String f_change) {
+		this.f_change = f_change;
+	}
+	public String getTotalFilter() {
+		return totalFilter;
+	}
+	public void setTotalFilter(String totalFilter) {
+		this.totalFilter = totalFilter;
+	}
+	public String getPpa_email() {
+		return ppa_email;
+	}
+	public void setPpa_email(String ppa_email) {
+		this.ppa_email = ppa_email;
+	}
+	public String getPpa_nickname() {
+		return ppa_nickname;
+	}
+	public void setPpa_nickname(String ppa_nickname) {
+		this.ppa_nickname = ppa_nickname;
+	}
+	public String getPpa_index() {
+		return ppa_index;
+	}
+	public void setPpa_index(String ppa_index) {
+		this.ppa_index = ppa_index;
 	}
 }

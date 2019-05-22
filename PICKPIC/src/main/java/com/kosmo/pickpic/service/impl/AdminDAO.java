@@ -120,9 +120,9 @@ public class AdminDAO implements AdminService {
 	public FilterDTO oneFilter(Map map) {
 		FilterDTO filter = template.selectOne("adminOneFilter", map);
 		try {
-			filter.getTotalfilter().length();
+			filter.getTotalFilter().length();
 		}catch(Exception e) {
-			filter.setTotalfilter("0");
+			filter.setTotalFilter("0");
 		}
 		return filter;
 	}

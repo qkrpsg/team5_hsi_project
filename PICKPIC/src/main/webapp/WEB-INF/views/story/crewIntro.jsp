@@ -22,7 +22,6 @@
 .team-member{overflow: hidden;height: 550px;}
 </style>
 
-
         <div class="content-wrapper">
             <div class="inner-container container">
                 <div class="row">

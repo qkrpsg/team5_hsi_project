@@ -40,8 +40,8 @@
 									<tr>
 										<td><input type="checkbox"></td>
 										<td>${loop.count}</td>
-										<td><a href="javascript:void(0)" class="detail" value="${item.f_name }">${item.f_name }</a></td>
-										<td>${item.f_price}</td>
+										<td><a href="javascript:void(0)" class="detail" id="detail${loop.count }" value="${item.f_name }">${item.f_name }</a></td>
+										<td>${item.f_change}</td>
 										<c:if test="${item.f_sale_yn eq 'Y' }" var="isSale">
 											<td>판매중</td>
 										</c:if>
@@ -177,7 +177,7 @@
 					$.each(data, function(index, element) {
 // 						$('#d-filterImage').html(element['']);
 						$('#d-filterName').html(element['f_name']);
-						$('#d-change').attr('placeholder', element['f_price']);
+						$('#d-change').attr('placeholder', element['f_change']);
 						$('#d-change').val('');
 						$('#d-reason').val('');
 						
@@ -244,6 +244,12 @@
 					success : function(data) {
 						console.log('성공했습니다');
 						console.log(data);
+						
+						$.each(data, function(index, element) {
+							$('#d-change').val(element['f_change']);
+							$('#d-reason').val('');
+							$('#d-price').html(element['f_change']);
+						});
 					},
 					error : function(data) {
 						console.log('실패했습니다');

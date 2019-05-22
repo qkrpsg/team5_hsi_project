@@ -39,6 +39,7 @@ import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
+import com.kosmo.pickpic.util.DTOUtil;
 
 @Controller
 public class FriendsController {
@@ -51,6 +52,8 @@ public class FriendsController {
 	
 	@Resource(name="adminService")
 	private AdminServiceImpl adminService;
+	
+	
 	// 픽플레이스
 	@RequestMapping("/friends/place.pic")
 	public String place(@RequestParam Map map, Model model,Principal principal) throws Exception {
@@ -108,11 +111,28 @@ public class FriendsController {
 	@RequestMapping("/friends/filter.pic")
 	public String filter() throws Exception {
 		return "friends/filter.tiles";
+	
 	}//filter
 	
 	//Pay test
 	@RequestMapping("/pay/pay.pic")
-	public String pay() throws Exception{
+	public String pay(@RequestParam Map map,Principal principal,Model model) throws Exception{
+		//pay  SelectFilter_buy ppa_email f_name
+		map.put("ppa_email",principal.getName());
+		//나중에 map.get("f_name");
+		map.put("f_name", "vintage");
+		/*List<Map> filter = dao_filter.selectFilter_buy(map);
+		  List<Map> user = dao_filter.selectFilter_buy2(map);
+	
+		
+		System.out.println("filter"+ filter.toString());
+		System.out.println("user"+ user.toString());
+		model.addAttribute("filter",filter);
+		model.addAttribute("user",user);*/
+		
+		
+		
+		
 		return "test/Pay.tiles";
 	}//pay
 	

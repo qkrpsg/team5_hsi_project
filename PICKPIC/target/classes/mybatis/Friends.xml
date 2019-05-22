@@ -44,4 +44,18 @@
 		JOIN pickpic_account ac ON ac.ppa_id=fs.ppa_id 
 		WHERE ac.ppa_email=#{ppa_email }
 	</select>
+	
+	<!-- 필터 테이블 정보 불러오기 -->
+	<select id="SelectFilter_buy" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM filter WHERE f_name = #{f_name }
+	</select>
+	
+	<!-- 사용자 정보 불러오기 -->
+	<select id="SelectFilter_buy2" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM pickpic_account WHERE ppa_email = #{ppa_email }
+	</select>
+	
+	
+	
+	
 </mapper>
