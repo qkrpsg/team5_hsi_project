@@ -12,12 +12,6 @@
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
-
-<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
-
-
 <!-- albumEditor.jsp -->
 
 <!-- 모달 창 시작-->
@@ -412,5 +406,12 @@ for(var i = 0; i< ){
 
 	}
 	
-	
+	/* 저장하기 */
+	$("#save_btn").click(function(e) {
+		Caman(temp_img_,function(){
+			this.render(function () {
+				this.save('temp_img_0.jpg');
+			});
+		});
+	});
 </script>
