@@ -92,13 +92,13 @@ public class DTOUtil {
    }////getStringDate
    
    //필터 이름 재지정
-   public static FilterDTO reName(FilterDTO filter){
-	   if(filter.getF_name().split("--").length > 1)
-		   filter.setFilterName(filter.getF_name().split("--")[1].toUpperCase());
-	   else
-		   filter.setFilterName(filter.getF_name());
-	   
-	   return filter;
-   }
+//   public static FilterDTO reName(FilterDTO filter){
+//	   if(filter.getF_name().split("--").length > 1)
+//		   filter.setFilterName(filter.getF_name().split("--")[1].toUpperCase());
+//	   else
+//		   filter.setFilterName(filter.getF_name());
+//	   
+//	   return filter;
+//   }
 	
 }//class

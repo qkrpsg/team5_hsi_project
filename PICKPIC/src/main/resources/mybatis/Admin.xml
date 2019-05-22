@@ -122,6 +122,10 @@
 			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY f_index DESC) 
 		WHERE ROWNUM BETWEEN #{start} AND #{end}
 	</select>
+	<!-- 필터 가격 변경 -->
+	<update id="adminFilterChange" parameterType="java.util.Map">
+		UPDATE filter SET f_change=#{f_change}, f_change_date=SYSDATE, f_reason=#{f_reason} WHERE f_name=#{f_name}
+	</update>
 	
 	
 	<!-- 관리자 픽로드 관리자게시판 삭제 부분입니다. adminPickAccountRoadDelete -->

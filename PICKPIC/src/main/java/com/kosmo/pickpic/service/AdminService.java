@@ -29,4 +29,6 @@ public interface AdminService {
 	//필터관리
 	//필터+판매수
 	FilterDTO oneFilter(Map map);
+	Boolean filterChange(Map map);
+	
 }

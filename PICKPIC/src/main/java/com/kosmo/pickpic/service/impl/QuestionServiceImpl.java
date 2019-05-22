@@ -52,6 +52,18 @@ public class QuestionServiceImpl implements QuestionService{
 		// TODO Auto-generated method stub
 		return dao.update(map);	
 	}
+
+	@Override
+	public int aqinsert(Map map) {
+		// TODO Auto-generated method stub
+		return dao.aqinsert(map);
+	}
+
+	@Override
+	public int aqupdate(Map map) {
+		// TODO Auto-generated method stub
+		return dao.aqupdate(map);
+	}
 	
 
     
