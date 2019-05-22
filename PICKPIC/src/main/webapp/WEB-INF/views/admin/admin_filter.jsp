@@ -26,30 +26,10 @@
 					</div>
 					
 					<div class="box-body table-responsive">
-						<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-spinner"> 활성/비활성</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로고침</i>
-						</button>
-						<div class="pull-right">
-							1-50/200
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-left"></i>
-								</button>
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-right"></i>
-								</button>
-							</div>
-						</div>
 						<table class="table table-hover table-striped" >
 							<thead>
 								<tr>
-									<th></th>
+									<th><input type="checkbox" value="all"></th>
 									<th>번호</th>
 									<th>필터명</th>
 									<th>가격</th>
@@ -85,17 +65,9 @@
 					</div>
 					
 					<div class="box-footer">
-						<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-spinner"> 활성/비활성</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로고침</i>
-						</button>
+						<
 						<div class="pull-right">
-							1-50/200
+							1/10
 							<div class="btn-group">
 								<button type="button" class="btn btn-default btn-sm">
 									<i class="fa fa-chevron-left"></i>
@@ -114,7 +86,7 @@
 				<div class="box box-primary">
 					<div class="box-body box-profile">
 						<img class="profile-user-img img-responsive" src="<c:url value='/resources/images/route2.jpg'/>" alt="User profile picture">
-						<h3 class="profile-username text-center">필터명1</h3>
+						<h3 class="profile-username text-center">필터명</h3>
 						<ul class="list-group list-group-unbordered">
 							<li class="list-group-item"><b>가격변경 </b><input type="text" name="가격 설정" class="form-control" /></li>
 							<li class="list-group-item"><b>변경사유</b><input type="text" name="가격 설정" class="form-control" /></li>
@@ -132,11 +104,11 @@
 					<div class="box-body">
 						<strong><i class="fa fa-info margin-r-5"></i> 상세정보</strong>
 						<ul class="list-group">
-							<li class="list-group-item"><b>정가</b><a class="pull-right">3,000</a></li>
-							<li class="list-group-item"><b>현재가</b><a class="pull-right">3,000</a></li>
-							<li class="list-group-item"><b>판매수</b><a class="pull-right">45개</a></li>
-							<li class="list-group-item"><b>등록일</b><a class="pull-right">2019/03/24</a></li>
-							<li class="list-group-item"><b>가격 변경일</b><a class="pull-right">2019/03/24</a></li>
+							<li class="list-group-item"><b>정가</b><a class="pull-right">-</a></li>
+							<li class="list-group-item"><b>현재가</b><a class="pull-right">-</a></li>
+							<li class="list-group-item"><b>판매수</b><a class="pull-right">-</a></li>
+							<li class="list-group-item"><b>등록일</b><a class="pull-right">-</a></li>
+							<li class="list-group-item"><b>가격 변경일</b><a class="pull-right">-</a></li>
 						</ul>
 						<hr>
 						
