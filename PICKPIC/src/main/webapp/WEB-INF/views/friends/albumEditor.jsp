@@ -393,29 +393,6 @@ canvas {
 		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
 
-   /* 필터 선택시 이미지에 필터 적용*/
-   function filterOn(item) {
-      var filterName = $(item).attr("id");
-      $.each(selectArray, function(index, id) {
-         var set_class = $('#set_'+id).attr('class');
-         var class_length = $('#set_'+id)[0].classList.length;
-         
-         if(class_length <= 2){
-            $('div[id="set_' + id + '"]').toggleClass(filterName,true);
-         } else{
-            var class_before = $('#set_'+id)[0].classList[2];
-            if(class_before==filterName){
-               /* 이미 가지고있는경우 삭제 */
-               $('div[id="set_' + id + '"]').toggleClass(filterName,false);
-            }
-            else{
-               $('div[id="set_' + id + '"]').removeClass(class_before);
-               $('div[id="set_' + id + '"]').addClass(filterName);
-            }
-         }
-             
-      });
-
 	/* 필터 선택시 이미지에 필터 적용*/
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
@@ -499,6 +476,5 @@ canvas {
 			} */
 
 		});
-
 	}
 </script>
