@@ -34,7 +34,7 @@
 									<tr>
 										<th><input type="checkbox" value="all"></th>
 										<th>번호</th>
-										<th class="">사용자</th>
+										<th class="">아이디</th>
 										<th class="">별명</th>
 										<th class="">최종로그인</th>
 									</tr>
@@ -46,7 +46,7 @@
 											<td>${loop.count}</td>
 											<td><a href="javascript:void(0)" class="mb-detail">${item.ppa_email }</a></td>
 											<td>${item.ppa_nickname}</td>
-											<td>로그인</td>
+											<td>${item.lh_ld }</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -78,7 +78,7 @@
 				<!--프로필 사진 시작 -->
 				<div class="box box-primary detailTop">
 					<div class="box-body box-profile">
-						<img id="userimage" class="profile-user-img img-responsive img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User profile picture">
+						<img id="userimage" class="profile-user-img img-responsive img-circle" src="/pickpic/resources/images/defaultProfile.png" alt="User profile picture">
 						<h3 id="useremail" class="profile-username text-center">로그인계정</h3>
 						<p id="nickname" class="text-muted text-center">별명</p>
 					</div>
@@ -91,9 +91,9 @@
 						<h3 class="box-title">사용자 정보</h3>
 					</div>
 					<div class="box-body">
-						<strong><i class="fa fa-info margin-r-5"></i> 상세정보</strong>
+						<strong><i class="fa fa-info margin-r-5"></i> 정보</strong>
 						<ul class="list-group">
-							<li class="list-group-item"><b>id</b><a id="d-useremail" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>아이디</b><a id="d-useremail" class="pull-right">-</a></li>
 							<li class="list-group-item"><b>별명</b><a id="d-nickname" class="pull-right">-</a></li>
 							<li class="list-group-item"><b>가입일</b><a id="d-joindate" class="pull-right">-</a></li>
 							<li class="list-group-item"><b>최종로그인</b><a id="d-logindate" class="pull-right">-</a></li>
@@ -192,6 +192,7 @@
 					console.log(data);
 
 					$.each(data, function(index, element) {
+						$('#userimage').attr("src",element["ppa_profile_path"]);
 						$('#useremail').html(element["ppa_email"]);
 						$('#nickname').html(element['ppa_nickname']);
 

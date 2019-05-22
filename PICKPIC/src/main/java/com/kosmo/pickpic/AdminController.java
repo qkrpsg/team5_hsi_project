@@ -3,6 +3,7 @@ package com.kosmo.pickpic;
 import java.net.URLEncoder;
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -35,8 +36,8 @@ import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
-import com.kosmo.pickpic.service.web.DTOUtil;
-import com.kosmo.pickpic.service.web.PagingUtil;
+import com.kosmo.pickpic.util.DTOUtil;
+import com.kosmo.pickpic.util.PagingUtil;
 
 @Controller
 public class AdminController {
@@ -67,8 +68,16 @@ public class AdminController {
 	//회원관리
 	@RequestMapping(value = "/admin/users.pic")
 	public String users(Model model) throws Exception {
-		model.addAttribute("user", adminService.pickPicAccountAll());
-		model.addAttribute("total", adminService.pickPicAccountAll().size());
+		List<PickpicAccountDTO> beforeUser = adminService.pickPicAccountAll();
+		List<PickpicAccountDTO> AfterUser = new Vector<PickpicAccountDTO>();
+		
+		for(PickpicAccountDTO record : beforeUser) {
+			record.setLh_ld(DTOUtil.getStringDate(record.getLh_ld(), "yyyy-MM-dd HH:mm:ss", "yy/MM/dd"));
+			AfterUser.add(record);
+		}
+		
+		model.addAttribute("user", AfterUser);
+		model.addAttribute("total", AfterUser.size());
 		return "admin/admin_users.admin";
 	}//users
 	

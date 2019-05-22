@@ -14,6 +14,7 @@ import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.PickPlaceBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
+import com.kosmo.pickpic.util.DTOUtil;
 
 @Repository
 public class AdminDAO implements AdminService {
