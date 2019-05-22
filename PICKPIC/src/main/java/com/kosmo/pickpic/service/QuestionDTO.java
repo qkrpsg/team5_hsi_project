@@ -1,26 +1,72 @@
 package com.kosmo.pickpic.service;
 
 public class QuestionDTO {
-    private String Q_ID;
-    private String Q_TITLE;
-    private String Q_CONTNET;
-    private String Q_POST_DATE;
-    private String Q_INDEX;
-    private String PPA_ID;
-    private String AQ_POST_DATE;
+    private String q_id;
+    private String q_title;
+    private String q_content;
+    private String q_post_date;
+    private String q_index;
+    private String ppa_id;
+    private String aq_post_date;
     
     //편의상 추가
-  
-    
-    private String ppa_email;
-    private String PPA_NICKNAME;
-    
-    
-	public String getPPA_NICKNAME() {
-		return PPA_NICKNAME;
+    private String aq_content;
+    public String getAq_content() {
+		return aq_content;
 	}
-	public void setPPA_NICKNAME(String pPA_NICKNAME) {
-		PPA_NICKNAME = pPA_NICKNAME;
+	public void setAq_content(String aq_content) {
+		this.aq_content = aq_content;
+	}
+	private String ppa_index;
+    private String ppa_email;
+    private String ppa_nickname;
+	public String getQ_id() {
+		return q_id;
+	}
+	public String getPpa_index() {
+		return ppa_index;
+	}
+	public void setPpa_index(String ppa_index) {
+		this.ppa_index = ppa_index;
+	}
+	public void setQ_id(String q_id) {
+		this.q_id = q_id;
+	}
+	public String getQ_title() {
+		return q_title;
+	}
+	public void setQ_title(String q_title) {
+		this.q_title = q_title;
+	}
+	public String getQ_content() {
+		return q_content;
+	}
+	public void setQ_content(String q_content) {
+		this.q_content = q_content;
+	}
+	public String getQ_post_date() {
+		return q_post_date;
+	}
+	public void setQ_post_date(String q_post_date) {
+		this.q_post_date = q_post_date;
+	}
+	public String getQ_index() {
+		return q_index;
+	}
+	public void setQ_index(String q_index) {
+		this.q_index = q_index;
+	}
+	public String getPpa_id() {
+		return ppa_id;
+	}
+	public void setPpa_id(String ppa_id) {
+		this.ppa_id = ppa_id;
+	}
+	public String getAq_post_date() {
+		return aq_post_date;
+	}
+	public void setAq_post_date(String aq_post_date) {
+		this.aq_post_date = aq_post_date;
 	}
 	public String getPpa_email() {
 		return ppa_email;
@@ -28,54 +74,12 @@ public class QuestionDTO {
 	public void setPpa_email(String ppa_email) {
 		this.ppa_email = ppa_email;
 	}
+	public String getPpa_nickname() {
+		return ppa_nickname;
+	}
+	public void setPpa_nickname(String ppa_nickname) {
+		this.ppa_nickname = ppa_nickname;
+	}
 
-	
-
-	public String getAQ_POST_DATE() {
-		return AQ_POST_DATE;
-	}
-	public void setAQ_POST_DATE(String aQ_POST_DATE) {
-		AQ_POST_DATE = aQ_POST_DATE;
-	}
-	public String getQ_ID() {
-		return Q_ID;
-	}
-	public void setQ_ID(String q_ID) {
-		Q_ID = q_ID;
-	}
-	public String getQ_TITLE() {
-		return Q_TITLE;
-	}
-	public void setQ_TITLE(String q_TITLE) {
-		Q_TITLE = q_TITLE;
-	}
-	public String getQ_CONTNET() {
-		return Q_CONTNET;
-	}
-	public void setQ_CONTNET(String q_CONTNET) {
-		Q_CONTNET = q_CONTNET;
-	}
-	public String getQ_POST_DATE() {
-		return Q_POST_DATE;
-	}
-	public void setQ_POST_DATE(String q_POST_DATE) {
-		Q_POST_DATE = q_POST_DATE;
-	}
-	public String getQ_INDEX() {
-		return Q_INDEX;
-	}
-	public void setQ_INDEX(String q_INDEX) {
-		Q_INDEX = q_INDEX;
-	}
-	public String getPPA_ID() {
-		return PPA_ID;
-	}
-	public void setPPA_ID(String pPA_ID) {
-		PPA_ID = pPA_ID;
-	}
-	
-	
-	
-	
 	
 }

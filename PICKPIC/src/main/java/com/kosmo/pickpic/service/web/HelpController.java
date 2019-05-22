@@ -4,11 +4,13 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -79,33 +81,57 @@ public class HelpController {
 	//문의사항
 	@RequestMapping("/help/qna/List.pic")///문의하기로 넘어가는 컨트롤러
 	public String qna_list(@RequestParam Map map,Model model) throws Exception{
+		System.out.println("map : " + map.toString());
 		List<QuestionDTO> list = questionService.selectList(map);
+	    
+		
+
 		model.addAttribute("list",list);
 		return "help/qna/List.tiles";
 	}
 	//문의사항 작성페이지
 	
-	@RequestMapping("/help/qna/Write.pic")
+	@RequestMapping("/help/qna/Write2.pic")
 	public String qna_write2(@RequestParam Map map,Model model,Principal principal) throws Exception {
 		map.put("ppa_email", principal.getName());
+		
+		
 		questionService.insert(map);
 		
 		List<QuestionDTO> list = questionService.selectList(map);
+		
+	
+			
+		
 		model.addAttribute("list",list);
 		return "help/qna/List.tiles";
 	}//qna_wirite2
+	//qna
+	@RequestMapping("/help/qna/Write.pic")
+	public String qna_write(@RequestParam Map params) throws Exception{
+		return "help/qna/Write.tiles";
+	}//qna
 	
 	@RequestMapping("/help/qna/View.pic")
-	public String qna_View(@RequestParam Map map,Model model) throws Exception{
-	System.out.println(map);
+	public String qna_view(@RequestParam Map map,Model model) throws Exception{
+		System.out.println(map);
+		QuestionDTO list = questionService.selectOne(map);
+		
+//		List<Map> user = new Vector<Map>();
+//		user.add(DTOUtil.convertDTOToMap(list));
+//		
+//        System.out.println(JSONArray.toJSONString(user));
+		model.addAttribute("list",list);
 	
-	QuestionDTO list = questionService.selectOne(map);
-	model.addAttribute("list",list);
-	//System.out.println(list2);
-		
-		
 		return "help/qna/View.tiles";
-	}//qna
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	//초보자가이드
 	@RequestMapping("/help/guide.pic")
