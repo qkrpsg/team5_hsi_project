@@ -80,4 +80,8 @@ public class AdminServiceImpl implements AdminService {
 	public FilterDTO oneFilter(Map map) {
 		return dao.oneFilter(map);
 	}
+	@Override
+	public Boolean filterChange(Map map) {
+		return dao.filterChange(map);
+	}
 }

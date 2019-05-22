@@ -126,4 +126,8 @@ public class AdminDAO implements AdminService {
 		}
 		return filter;
 	}
+	@Override
+	public Boolean filterChange(Map map) {
+		return template.update("adminFilterChange", map) == 0 ? false : true ;
+	}
 }

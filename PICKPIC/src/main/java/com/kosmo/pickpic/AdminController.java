@@ -144,30 +144,42 @@ public class AdminController {
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
 	public String filter(Model model) throws Exception{
-		List<FilterDTO> BeforefilterList = adminService.filterAll();
-		List<FilterDTO> AfterfilterList = new Vector<FilterDTO>();
+		List<FilterDTO> list = adminService.filterAll();
 		
-		 for(FilterDTO record : BeforefilterList) {
-			 AfterfilterList.add(DTOUtil.reName(record));
-		 }
-		
-		model.addAttribute("filter", AfterfilterList);
-		model.addAttribute("total", AfterfilterList.size());
+		model.addAttribute("filter", list);
+		model.addAttribute("total", list.size());
 		
 		return "admin/admin_filter.admin";
 	}//filter
 	
-	//유저 상세보기 aJax
+	//필터 상세보기 aJax
 	@ResponseBody
 	@RequestMapping(value="/admin/filterDetail.do",produces="text/html; charset=UTF-8")
 	public String filterDetail(@RequestParam Map map) throws Exception{
-		FilterDTO filter = adminService.oneFilter(map);
-		filter = DTOUtil.reName(filter);
-		
 		List<Map> user = new Vector<Map>();  
-		user.add(DTOUtil.convertDTOToMap(filter));
+		user.add(DTOUtil.convertDTOToMap(adminService.oneFilter(map)));
 		
 		return JSONArray.toJSONString(user);
+	}
+	
+	//필터 가격 변경
+	@ResponseBody
+	@RequestMapping(value="/admin/filterPriceChange.do",produces="text/html; charset=UTF-8")
+	public String filterPriceChange(@RequestParam Map map) throws Exception{
+		System.out.println(map.toString());
+		Map result = new HashMap();
+		
+		if(!adminService.filterChange(map)) {
+			result.put("result", "실패");
+		}
+		else {
+			result.put("result", "성공");
+		}
+		
+		List<Map> filter = new Vector<Map>();  
+		filter.add(result);
+		
+		return JSONArray.toJSONString(filter);
 	}
 	
 	//픽로드관리

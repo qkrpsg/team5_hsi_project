@@ -13,7 +13,6 @@
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
 
-<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
 
@@ -390,7 +389,6 @@ for(var i = 0; i< ){
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
-<<<<<<< HEAD
 			var set_class = $('#set_'+id).attr('class');
 			var class_length = $('#set_'+id)[0].classList.length;
 			
@@ -406,14 +404,6 @@ for(var i = 0; i< ){
 					$('div[id="set_' + id + '"]').removeClass(class_before);
 					$('div[id="set_' + id + '"]').addClass(filterName);
 				}
-=======
-			console.log('아이디는?'+id);
-			var set_class =$('#set_'+id).attr('class');
-			console.log("1: "+set_class);
-			 if(set_class.indexOf(filterName)==-1){
-				$('div[id="set_' + id + '"]').addClass(filterName);
-				console.log("2: "+set_class);
->>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git
 			}
 				 
 		});

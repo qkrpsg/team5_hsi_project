@@ -40,7 +40,7 @@
 									<tr>
 										<td><input type="checkbox"></td>
 										<td>${loop.count}</td>
-										<td><a href="javascript:void(0)" class="detail" value="${item.f_name }">${item.filterName }</a></td>
+										<td><a href="javascript:void(0)" class="detail" value="${item.f_name }">${item.f_name }</a></td>
 										<td>${item.f_price}</td>
 										<c:if test="${item.f_sale_yn eq 'Y' }" var="isSale">
 											<td>판매중</td>
@@ -80,13 +80,13 @@
 				<!--프로필 사진 시작 -->
 				<div class="box box-primary">
 					<div class="box-body box-profile">
-						<img class="profile-user-img img-responsive" src="<c:url value='/resources/images/route2.jpg'/>" alt="User profile picture"/>
-						<h3 class="profile-username text-center">필터명</h3>
+						<img id="d-filterImage" class="profile-user-img img-responsive" src="<c:url value='/resources/images/route2.jpg'/>" alt="User profile picture"/>
+						<h3 id="d-filterName" class="profile-username text-center" fname="">필터명</h3>
 						<ul class="list-group list-group-unbordered">
-							<li class="list-group-item"><b>가격변경 </b><input type="text" id="d-change" class="form-control" /></li>
+							<li class="list-group-item"><b>가격변경 </b><input type="number" id="d-change" class="form-control" /></li>
 							<li class="list-group-item"><b>변경사유</b><input type="text" id="d-reason" class="form-control" /></li>
 						</ul> 
-						<button class="btn btn-primary btn-block">가격 설정</button>
+						<button id="priceSummit" class="btn btn-primary btn-block">가격 설정</button>
 						<div class="table-responsive">
 							<button id="d-saleStart" class="btn btn-primary col-xs-6" style='display:none'>판매시작</button>
 							<button id="d-saleStop" class="btn btn-primary col-xs-6" style='display:none'>판매중지</button>
@@ -175,6 +175,13 @@
 					console.log(data);
 
 					$.each(data, function(index, element) {
+// 						$('#d-filterImage').html(element['']);
+						$('#d-filterName').html(element['f_name']);
+						$('#d-change').attr('placeholder', element['f_price']);
+						$('#d-change').val('');
+						$('#d-reason').val('');
+						
+						
 						if (element['f_sale_yn'] == "Y") {
 							$('#d-saleStart').css('display', 'none');
 							$('#d-saleStop').css('display', 'inline');
@@ -191,7 +198,7 @@
 						}
 						
 						$('#d-priceStart').html(element['f_price']);
-						$('#d-price').html(element['f_price']);
+						$('#d-price').html(element['f_change']);
 						$('#d-saleCount').html(element['totalFilter']);
 						$('#d-postDate').html(element['f_post_date']);
 						$('#d-changeDate').html(element['f_change_date']);
@@ -219,5 +226,34 @@
 				}
 			});
 		});/* 클릭  */
+		
+		$('#priceSummit').click(function() {
+// 			console.log($('#d-change').val().length);
+// 			console.log($('#d-filterName').html().length);
+			if($('#d-change').val().length > 0 && $('#d-reason').val().length > 0){
+				$.ajax({
+					url : '<c:url value="/admin/filterPriceChange.do"/>',
+					data : {
+						"f_name" : $('#d-filterName').html(),
+						"f_change" : $('#d-change').val(),
+						"f_reason" : $('#d-reason').val(),
+						"${_csrf.parameterName}" : "${_csrf.token}"
+					},
+					dataType : 'json',
+					type : "get",
+					success : function(data) {
+						console.log('성공했습니다');
+						console.log(data);
+					},
+					error : function(data) {
+						console.log('실패했습니다');
+						console.log(data);
+					}
+				});
+			}
+			else if($('#d-change').val().length > 0 && $('#d-reason').val().length == 0){
+				alert('변경 사유를 입력해주세요');
+			}
+		});
 	});
 </script>

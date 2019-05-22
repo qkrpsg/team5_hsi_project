@@ -11,16 +11,29 @@ public class FilterDTO {
 	private String f_sale_yn;
 	private String f_event_yn;
 	private String f_index_number;
-	
+	private String f_image_path;
+	private String f_change;
+
 	private String totalFilter;
-	private String filterName;
 
 	//getter,setter
-	public String getFilterName() {
-		return filterName;
+	public String getF_change() {
+		return f_change;
 	}
-	public void setFilterName(String filterName) {
-		this.filterName = filterName;
+	public void setF_change(String f_change) {
+		this.f_change = f_change;
+	}
+	public String getF_image_path() {
+		return f_image_path;
+	}
+	public void setF_image_path(String f_image_path) {
+		this.f_image_path = f_image_path;
+	}
+	public String getTotalFilter() {
+		return totalFilter;
+	}
+	public void setTotalFilter(String totalFilter) {
+		this.totalFilter = totalFilter;
 	}
 	public String getTotalfilter() {
 		return totalFilter;
