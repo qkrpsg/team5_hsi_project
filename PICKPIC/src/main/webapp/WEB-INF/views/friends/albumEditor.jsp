@@ -197,17 +197,16 @@ canvas {
    var fileCollection = new Array();
    var index = 0;
    var idArray = new Array();
+   var fileNameMap = new Map();
    $('#img_mypc')
          .on(
                'change',
                function(e) {
                   var files = e.target.files;
-                  $
-                        .each(
-                              files,
-                              function(i, file) {
+                  $.each( files, function(i, file) {
                                  fileCollection.push(file);
                                  var reader = new FileReader();
+                                 fileNameMap.set(index, file.name);
                                  reader.readAsDataURL(file);
                                  reader.onload = function(e) {                                                      
                                     var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
@@ -476,5 +475,49 @@ canvas {
 			} */
 
 		});
+	}
+	
+	
+	
+	/* 다운로드 */	
+	$("#save_btn").on("click",
+			function(e) {//() =>
+			console.log("dfsdf");
+				fileNameMap.forEach(function(name, id) {
+					fileName = fileNameMap.get(id);
+
+					// Get ext
+					const fileExtension = fileName.slice(-4);
+
+					// Init new filename
+					var newFilename;
+
+					// Check image type
+					if (fileExtension === ".jpg" || fileExtension === ".png") {
+						// new filename
+						newFilename = fileName
+								.substring(0, fileName.length - 4)
+								+ "-edited.jpg";
+					}
+
+					// Call download
+					download(canvas, newFilename);
+				});
+			});
+	
+	// Download
+	function download(canvas, filename) {
+	  // Init event
+	  let e;
+	  // Create link
+	  const link = document.createElement("a");
+
+	  // Set props
+	  link.download = filename;
+	  link.href = canvas.toDataURL("image/jpeg", 0.8);
+	  // New mouse event
+	  e = new MouseEvent("click");
+	  // Dispatch event
+	  link.dispatchEvent(e);
 	}
 </script>
