@@ -1,60 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 
-<script>
-
-	
-	$(function(){
-		
-
-		
-		$('.a').click(function(){
-			/* <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> */
-			console.log("hi");
-		
-			console.log("안녕하세요:"+$(".a").html());
-			var email = $(this).html();
-			console.log(typeof email);
-			
-			//header("access-control-allow-origin: *");
-			$.ajax({
-				url : '<c:url value="/mb/d.do"/>',
-				data : {
-					"ppa_email" : email,
-					 "${_csrf.parameterName}" : "${_csrf.token}" 
-				},
-				//async:false,
-				//contentType: "application/json; charset=utf-8",
-				
-				dataType : 'json',
-				type:"get",
-				success : function(data) {
-					console.log('성공했습니다');
-					console.log(data);
-					
-					//console.log(typeof(JSON.parse(data)));
-					$.each(data, function(index, element) {
-						//console.log("index",index);
-						//console.log("element",element);
-						//console.log(element["ppa_email"]);
-						//console.log(element["ppa_nickname"]);
-	// 					$('.profile-username').html(element["ppa_email"]);
-	// 					$('.profile-username').html(element["ppa_email"]);
-	// 					$('#nickname').html(element['ppa_nickname'])
-					});
-				},
-				error : function(data) {
-					console.log(data);
-					console.log('실패했습니다');
-				}
-			});
-		
-		
-		
-		});/* 클릭  */
-	});
-</script>
-
 <!-- 여기서부터 사용자 관리 페이지 시작 -->
 <div class="content-wrapper">
 	<section class="content-header">
@@ -81,37 +27,12 @@
 
 					<!-- 목록 바디 시작 -->
 					<div class="box-body">
-						<!-- 목록 버튼 시작 -->
-						<div class="userbox-controls">
-							<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-								<i class="fa fa-square-o"> 전체 선택</i>
-							</button>
-							<button type="button" class="btn btn-default btn-sm">
-								<i class="fa fa-ban"> 차단</i>
-							</button>
-							<button id="refresh" type="button" class="btn btn-default btn-sm">
-								<i class="fa fa-refresh"> 새로 고침</i>
-							</button>
-							<div class="pull-right">
-								1-50/200
-								<div class="btn-group">
-									<button type="button" class="btn btn-default btn-sm">
-										<i class="fa fa-chevron-left"></i>
-									</button>
-									<button type="button" class="btn btn-default btn-sm">
-										<i class="fa fa-chevron-right"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-						<!-- 목록 버튼 끝 -->
-
 						<!-- 목록데이터 : 사용자 아이디 입력 부분 -->
 						<div class="table-responsive mailbox-messages">
 							<table class="table table-hover table-striped">
 								<thead>
 									<tr>
-										<th></th>
+										<th><input type="checkbox" value="all"></th>
 										<th>번호</th>
 										<th class="">사용자</th>
 										<th class="">별명</th>
@@ -123,12 +44,7 @@
 										<tr>
 											<td><input type="checkbox"></td>
 											<td>${loop.count}</td>
-<<<<<<< HEAD
 											<td><a href="javascript:void(0)" class="mb-detail">${item.ppa_email }</a></td>
-=======
-											<%-- <td><a href="javascript:void(0)" onclick="javascript:callUser(this)">${item.ppa_email }</a></td> --%>
-											<td><a class="a">${item.ppa_email }</a></td>
->>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git
 											<td>${item.ppa_nickname}</td>
 											<td>로그인</td>
 										</tr>
@@ -141,22 +57,13 @@
 
 					<!-- 목록 풋터 시작 -->
 					<div class="box-footer">
-						<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-ban"> 차단</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로 고침</i>
-						</button>
 						<div class="pull-right">
-							1-50/200
+							1/10
 							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm">
+								<button type="button" id="prev" class="btn btn-default btn-sm">
 									<i class="fa fa-chevron-left"></i>
 								</button>
-								<button type="button" class="btn btn-default btn-sm">
+								<button type="button" id="next" class="btn btn-default btn-sm">
 									<i class="fa fa-chevron-right"></i>
 								</button>
 							</div>
@@ -220,95 +127,101 @@
 </div>
 <!-- 여기까지 사용자 관리 페이지 끝 -->
 
-<<<<<<< HEAD
 <script>
+	
 	$(function() {
-		$('#refresh').click(function() {
-			
-		})
-		
-	})
-	
-// 	function callUser(obj) {
-// 		var action = "<c:url value='/admin/detail.pic'/>";
-// 		$.ajax({
-// 			url : action,
-// 			dataType : 'text',
-// 			data : {
-// 				ppa_email : $(obj).html(),
-// 				"${_csrf.parameterName}" : "${_csrf.token}"
-// 			},
-// 			success : function(data) {
-// 				console.log('성공했습니다');
-// 				console.log(data);
-// 				console.log(typeof(JSON.parse(data)));
-// 				$.each(JSON.parse(data), function(index, element) {
-// 					$('#username').html(element["ppa_email"]);
-// 					var nickname = decodeURIComponent(element['ppa_nickname']);
-// 					$('#nickname').html(nickname);
-// 				});
-// 			},
-// 			error : function(data) {
-// 				console.log(data);
-// 				console.log('실패했습니다');
-// 			}
+// 		var nowPage = 1;
+// 		$('#next').click(function() {
+// 			$.ajax({
+// 				url : '<c:url value="/admin/userPaging.do"/>',
+// 				data :{
+// 					"nowPage" : parseInt(nowPage),
+// 		            "${_csrf.parameterName}" : "${_csrf.token}"
+// 				},
+// 				dataType : 'json',
+// 				type : 'get',
+// 				success :function(data){
+// 					console.log('성공했습니다');
+// 					console.log(data);
+// 				},
+// 				error : function(data) {
+// 					console.log('실패했습니다');
+// 					console.log(data);
+// 				}
+// 			});
 // 		});
-// 	}
-	
-	$(function(){
-	      $('.mb-detail').click(function(){
-	         console.log("hi");
-	      
-	         console.log("안녕하세요:"+$(".a").html());
-	         var email = $(this).html();
-	         console.log(typeof email);
-	         $.ajax({
-	            url : '<c:url value="/admin/detail.do"/>',
-	            data : {
-	               "ppa_email" : email,
-	               "${_csrf.parameterName}" : "${_csrf.token}" 
-	            },
-	            dataType : 'json',
-	            type:"get",
-	            success : function(data) {
-	               console.log('성공했습니다');
-	               console.log(data);
-	               
-	               $.each(data, function(index, element) {
-	                  $('#useremail').html(element["ppa_email"]);
-	                  $('#nickname').html(element['ppa_nickname']);
-	                  
-	                  $('#d-useremail').html(element["ppa_email"]);
-	                  $('#d-nickname').html(element['ppa_nickname']);
-	                  $('#d-joindate').html(element['ppa_join_date']);
-	                  $('#d-logindate').html(element['lh_ld']);
-	                  
-	                  $('#d-pick').html(element['totalpick']);
-	                  $('#d-post').html(element['totalpost']);
-	                  $('#d-filter').html(element['totalfilter']);
-	                  $('#d-question').html(element['totalquestion']);
-	                  
-	                  console.log(element['ppa_type']);
-	                  if(element['as_class'] == "ADMIN"){
-	   	               console.log('넌관리자야');
-	                	  $('#d-type-admin').css('display','block');
-	                	  $('#d-type-pickpic').css('display','none');
-	                  }
-	                  else{
-	   	               console.log('넌사용자야');
-	                	  $('#d-type-admin').css('display','none');
-	                	  $('#d-type-pickpic').css('display','block');
-	                  }
-	               });
-	            },
-	            error : function(data) {
-	               console.log('실패했습니다');
-	               console.log(data);
-	            }
-	         });
-	      });/* 클릭  */
-	   });
 
+		$(':checkbox').click(function() {
+			if ($(this).val() == 'all') {//전체 선택 클릭
+				if ($(this).filter(':checked').length == 1) {//체크한 경우
+					$(":checkbox:gt(0)").each(function() {
+						$(this).prop("checked", true);
+					});
+				} 
+				else {//체크 해제한 경우
+					$(":checkbox:gt(0)").each(function() {
+						$(this).prop("checked", false);
+					});
+				}
+			} 
+			else {//전체 선택이 아닌 체크박스 클릭
+				if ($(this).filter(':checked').length == 1) {//체크한 경우
+					if ($(":checkbox:checked").length == $(":checkbox:gt(0)").length) {//체크시 체크된 모든 체크박스의 수와 전체선택을 제외한 체크박스의 수가 같다면 즉 모두 선택되었다면 			
+						$(":checkbox:first").prop("checked", true);
+					}
+				} 
+				else {//체크 해제한 경우
+					$(":checkbox:first").prop("checked", false);
+				}
+			}
+		});
+
+		$('.mb-detail').click(function() {
+			var email = $(this).html();
+			console.log(typeof email);
+			$.ajax({
+				url : '<c:url value="/admin/detail.do"/>',
+				data : {
+					"ppa_email" : email,
+					"${_csrf.parameterName}" : "${_csrf.token}"
+				},
+				dataType : 'json',
+				type : "get",
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+
+					$.each(data, function(index, element) {
+						$('#useremail').html(element["ppa_email"]);
+						$('#nickname').html(element['ppa_nickname']);
+
+						$('#d-useremail').html(element["ppa_email"]);
+						$('#d-nickname').html(element['ppa_nickname']);
+						$('#d-joindate').html(element['ppa_join_date']);
+						$('#d-logindate').html(element['lh_ld']);
+
+						$('#d-pick').html(element['totalpick']);
+						$('#d-post').html(element['totalpost']);
+						$('#d-filter').html(element['totalfilter']);
+						$('#d-question').html(element['totalquestion']);
+
+						console.log(element['ppa_type']);
+						if (element['as_class'] == "ADMIN") {
+							console.log('넌관리자야');
+							$('#d-type-admin').css('display', 'block');
+							$('#d-type-pickpic').css('display', 'none');
+						} else {
+							console.log('넌사용자야');
+							$('#d-type-admin').css('display', 'none');
+							$('#d-type-pickpic').css('display', 'block');
+						}
+					});
+				},
+				error : function(data) {
+					console.log('실패했습니다');
+					console.log(data);
+				}
+			});
+		});/* 클릭  */
+	});
 </script>
-=======
->>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git

@@ -34,7 +34,7 @@
 						<!-- Menu Footer-->
 						<li class="user-footer">
 							<a href="<c:url value='/user/myPage.pic'/>"><div class="btn-user-footer">마이페이지</div></a>
-							<a href="<c:url value='/user/logout.pic'/>"><div class="btn-user-footer">로그아웃</div></a>
+							<a href="javascript:logout()"><div class="btn-user-footer">로그아웃</div></a>
 						</li>
 					</ul>
 				</li>
@@ -108,4 +108,15 @@
 	</section>
 	<!-- /.sidebar -->
 </aside>
+
+<script>
+	//csrf사용시에만 아래 함수 필요
+	function logout() {
+		$('#logoutForm').submit();
+	}
+</script>
+<!-- action 은 스프링 씨큐리티의 디폴트 로그아웃 URL지정(/logout) -->
+<form id="logoutForm" method="post" action="<c:url value='/logout'/>">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
 

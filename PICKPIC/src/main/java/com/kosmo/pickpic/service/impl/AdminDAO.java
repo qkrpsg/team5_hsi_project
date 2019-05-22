@@ -95,7 +95,6 @@ public class AdminDAO implements AdminService {
 	}
 	@Override
 	public List<Map> pickPicAccountRoadAll() {
-		// TODO Auto-generated method stub
 		return template.selectList("adminPickAccountRoad");
 	}
 	@Override
@@ -107,5 +106,13 @@ public class AdminDAO implements AdminService {
 	public void delete2(Map map) {
 		
 		template.delete("adminPickAccountRoadDelete2",map);
+	}
+	@Override
+	public int userTotal() {
+		return template.selectOne("adminUserTotal");
+	}
+	@Override
+	public List<PickpicAccountDTO> selectUser(Map map) {
+		return template.selectList("adminSelectUser", map);
 	}
 }

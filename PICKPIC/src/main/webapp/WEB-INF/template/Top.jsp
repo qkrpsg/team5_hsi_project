@@ -152,7 +152,6 @@
 </script>
 <!-- action 은 스프링 씨큐리티의 디폴트 로그아웃 URL지정(/logout) -->
 <form id="logoutForm" method="post" action="<c:url value='/logout'/>">
-	<input type="hidden" name="${_csrf.parameterName}"
-		value="${_csrf.token}" />
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
 
