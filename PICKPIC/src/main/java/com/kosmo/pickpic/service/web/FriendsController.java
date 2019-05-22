@@ -22,6 +22,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,8 @@ import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBod
 
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
+import com.kosmo.pickpic.service.impl.FilterDAO;
+import com.kosmo.pickpic.service.impl.FilterServiceImpl;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
@@ -41,17 +44,66 @@ import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 public class FriendsController {
 	// 서비스 주입
 	@Resource(name="prbService")
-	private PickRoadBoardServiceImpl dao;
+	private PickRoadBoardServiceImpl prbService;
+	
+	@Resource(name = "fService")
+	private FilterServiceImpl dao_filter;
+	
 	@Resource(name="adminService")
 	private AdminServiceImpl adminService;
 	// 픽플레이스
 	@RequestMapping("/friends/place.pic")
-	public String place() throws Exception {
+	public String place(@RequestParam Map map, Model model,Principal principal) throws Exception {
 		//여기서 작업 시작
+		map.put("ppa_email",principal.getName());
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		model.addAttribute("list_filter", list_filter);
 		
-		return "friends/place.tiles";
+		//1 리스트
+		//2 맵
+		//3 맵 -> 작성 페이지
+		
+		return "friends/place_map.tiles";
+		//return "friends/place.tiles";//나중에 이걸로 바꾸자
+	}// place
+	
+	//맵 이동 페이지 추가
+	
+	
+	//맵에서 작성 페이지로 이동합니다. 값을 가지고 이동만!
+	@RequestMapping("/friends/place_write.pic")
+	public String place_write(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		//여기서 작업 시작
+		map.put("ppa_email",principal.getName());
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		model.addAttribute("list_filter", list_filter);
+		
+		System.out.println(map.toString());
+		model.addAttribute("ppb_latitude",map.get("ppb_latitude"));
+		model.addAttribute("ppb_longitude",map.get("ppb_longitude"));
+		model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
+
+		return "friends/place_write.tiles";//작성 완료 후 다시 리스트로 
+	}// place
+	
+	//이제 DB에 저장하고 리스트 페이지로 이동
+	@RequestMapping("/friends/place_wrte.pic")
+	public String place_list(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		//여기서 작업 시작
+		map.put("ppa_email",principal.getName());
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		model.addAttribute("list_filter", list_filter);
+		
+		System.out.println(map.toString());
+		model.addAttribute("ppb_latitude",map.get("ppb_latitude"));
+		model.addAttribute("ppb_longitude",map.get("ppb_longitude"));
+		model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
+
+		return "friends/place_write.tiles";//작성 완료 후 다시 리스트로 
 	}// place
 
+	
+	
 	// 필터정보
 	@RequestMapping("/friends/filter.pic")
 	public String filter() throws Exception {
@@ -365,15 +417,15 @@ public class FriendsController {
 				//System.out.println("placeList: " + placeList.toString());
 				
 				int prp_order = 1;
-				dao.pickroadBoardInsert(boardMap);
+				prbService.pickroadBoardInsert(boardMap);
 				for(Map mb : placeList) {
 					mb.put("prp_order", prp_order);
-					dao.pickRoadPlaceInsert(mb);
+					prbService.pickRoadPlaceInsert(mb);
 					prp_order++;
 				}
 			
 			
-				List<Map> recode = dao.pickRoadBoardSelectAll(null);
+				List<Map> recode = prbService.pickRoadBoardSelectAll(null);
 				System.out.println("사이즈"+recode.size());
 				model.addAttribute("recode",recode);
 				System.out.println("첫 쿼리문 성공 ~~"+recode.toString());
@@ -381,7 +433,7 @@ public class FriendsController {
 			}//if 끝
 			
 			
-			List<Map> recode = dao.pickRoadBoardSelectAll(null);
+			List<Map> recode = prbService.pickRoadBoardSelectAll(null);
 			System.out.println("null 값이 아닐 때"+recode.toString());
 			model.addAttribute("recode",recode);
 			/*
@@ -440,10 +492,10 @@ public class FriendsController {
 		
 		@RequestMapping("/friends/view.pic")
 		public String view(@RequestParam Map map,Model model) throws Exception {
-			int update =  dao.pickRoadBoardUpdate(map);
+			int update =  prbService.pickRoadBoardUpdate(map);
 			//UPDATE 문 하고  상세보기로  SELECT ONE
-			List<Map> recode = dao.pickRoadBoardSelectOne(map);
-			List<Map> recode2 = dao.pickRoadBoardSelectOne2(map);
+			List<Map> recode = prbService.pickRoadBoardSelectOne(map);
+			List<Map> recode2 = prbService.pickRoadBoardSelectOne2(map);
 			model.addAttribute("recode",recode);
 			model.addAttribute("recode2",recode2);
 			return "friends/view.tiles";
@@ -457,11 +509,21 @@ public class FriendsController {
 	// 앨범다운
 	@RequestMapping("/friends/albumDown.pic")
 	public String albumDown() throws Exception {
+		
 		return "friends/albumDown.tiles";
 	}
 	//앨범다운-팝업
 	@RequestMapping("/friends/albumEditor.pic")
-	public String albumOption() throws Exception {
+	public String albumOption(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		
+		map.put("ppa_email",principal.getName());
+		
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+//		System.out.println(list_filter.toString());
+		
+		model.addAttribute("list_filter", list_filter);
+		
+//		System.out.println("ddd"+list_filter.toString());
 		return "friends/albumEditor.tiles";
 	}
 	

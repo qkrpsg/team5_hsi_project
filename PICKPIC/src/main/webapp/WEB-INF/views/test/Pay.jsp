@@ -17,8 +17,6 @@
 	</div>
 
 	<form role="form" action='' method="POST">
-
-
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
@@ -77,8 +75,8 @@
 							<div class="wrap">
 								<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
-									<label for="cellphoneTelecom" class="cell_label">통신사
-										종류</label> <select name="cellphoneTelecom" id="cellphoneTelecom"
+									<label for="cellphoneTelecom" class="cell_label">통신사 종류</label>
+									<select name="cellphoneTelecom" id="cellphoneTelecom"
 										class="payment-cellphone__select">
 										<option value="" selected="">선택</option>
 										<option value="SKT" data-limitmsg="" data-messagecolor=""
@@ -88,9 +86,6 @@
 										<option value="LG" data-limitmsg="" data-messagecolor=""
 											data-paymentdisabled="false">LG</option>
 									</select>
-
-
-
 								</div>
 								<!-- 통신사 박스 -->
 
@@ -137,8 +132,6 @@
 
 								</div>
 								<!-- 무통장  -->
-
-
 								<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
 									<label for="cardTypeSelect" class="cell_label">카드종류</label> <select
@@ -181,60 +174,26 @@
 
 								</div>
 								<!-- 카드 결제 -->
-
-
-
-
-
-
-
-							</div>
-							<!-- wrap end -->
+							</div> <!-- wrap end -->
 						</td>
 
 					</tr>
-
-
-
-
-
-
-
-
 				</table>
-
-
 				<div class="form-group" style="overflow: hidden;">
 					<input type="checkbox" name="ppu_agree" value="이용약관" id="ppu_agree"
 						value="ok" style="float: left; margin-right: 10px;" />
 					<p style="float: left;">이용약관에 동의합니다.</p>
 				</div>
 
-
 				<button type="button" id="paymentBtn">
-					<img src="//image12.coupangcdn.com/image/rocketpay-order-image/pc/btn_payment.gif"
+					<img
+						src="//image12.coupangcdn.com/image/rocketpay-order-image/pc/btn_payment.gif"
 						type="submit" width="260" height="60" alt="결제하기">
 				</button>
 			</div>
-
-
 		</div>
 		<!-- row -->
-
 	</form>
-
 </div>
 <!-- container-fluid -->
-
-
 <div style="margin-bottom: 139px;"></div>
-
-
-
-
-
-
-
-
-
-

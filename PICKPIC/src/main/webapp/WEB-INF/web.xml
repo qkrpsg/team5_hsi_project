@@ -42,6 +42,10 @@
 			<param-name>encoding</param-name><!--setEncoding()호출 -->
 			<param-value>UTF-8</param-value>
 		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>CharacterEncoding</filter-name>
@@ -58,8 +62,8 @@
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>  
-
+	</filter-mapping>
+	
 	
 	<!-- 스프링 씨큐러티 설정 파일은 반드시 컨텍스트 초기화 파라미터로
 	     왜냐하면 springSecurityFilterChain 이 시큐러티 관련 설정파일을 찾음
@@ -67,7 +71,5 @@
 	<welcome-file-list>
 		<welcome-file>/</welcome-file>
 	</welcome-file-list>
-	
-	
 
 </web-app>

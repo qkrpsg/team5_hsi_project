@@ -123,8 +123,12 @@
 										<tr>
 											<td><input type="checkbox"></td>
 											<td>${loop.count}</td>
+<<<<<<< HEAD
+											<td><a href="javascript:void(0)" class="mb-detail">${item.ppa_email }</a></td>
+=======
 											<%-- <td><a href="javascript:void(0)" onclick="javascript:callUser(this)">${item.ppa_email }</a></td> --%>
 											<td><a class="a">${item.ppa_email }</a></td>
+>>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git
 											<td>${item.ppa_nickname}</td>
 											<td>로그인</td>
 										</tr>
@@ -168,7 +172,7 @@
 				<div class="box box-primary detailTop">
 					<div class="box-body box-profile">
 						<img id="userimage" class="profile-user-img img-responsive img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User profile picture">
-						<h3 id="username" class="profile-username text-center">로그인계정</h3>
+						<h3 id="useremail" class="profile-username text-center">로그인계정</h3>
 						<p id="nickname" class="text-muted text-center">별명</p>
 					</div>
 				</div>
@@ -182,28 +186,27 @@
 					<div class="box-body">
 						<strong><i class="fa fa-info margin-r-5"></i> 상세정보</strong>
 						<ul class="list-group">
-							<li class="list-group-item"><b>id</b><a class="pull-right">사용자id</a></li>
-							<li class="list-group-item"><b>이름</b><a class="pull-right">사용자이름</a></li>
-							<li class="list-group-item"><b>별명</b><a class="pull-right">사용자별명</a></li>
-							<li class="list-group-item"><b>가입일</b><a class="pull-right">2019/02/02</a></li>
-							<li class="list-group-item"><b>최종로그인</b><a class="pull-right">2019/03/24</a></li>
+							<li class="list-group-item"><b>id</b><a id="d-useremail" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>별명</b><a id="d-nickname" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>가입일</b><a id="d-joindate" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>최종로그인</b><a id="d-logindate" class="pull-right">-</a></li>
 						</ul>
 						<hr>
 						
 						<strong><i class="fa fa-book margin-r-5"></i> 작성</strong>
 						<ul class="list-group">
-							<li class="list-group-item"><b>누적 픽</b><a class="pull-right">56개</a></li>
-							<li class="list-group-item"><b>게시글</b><a class="pull-right">10개</a></li>
-							<li class="list-group-item"><b>보유 필터</b><a class="pull-right">45개</a></li>
-							<li class="list-group-item"><b>문의</b><a class="pull-right">2개</a></li>
+							<li class="list-group-item"><b>누적 픽</b><a id="d-pick" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>게시글</b><a id="d-post" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>보유 필터</b><a id="d-filter" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>문의</b><a id="d-question" class="pull-right">-</a></li>
 						</ul>
 						<hr>
 
 						<strong><i class="fa fa-pencil margin-r-5"></i> 권한</strong>
 						<p>
-							<span class="label label-danger">차단 계정</span> 
-							<span class="label label-warning">관리자</span> 
-							<span class="label label-primary">일반 사용자</span>
+							<span id="d-type-admin" style="display:none" class="label label-warning">관리자</span> 
+							<span id="d-type-pickpic" style="display:none" class="label label-primary">일반 사용자</span>
+							<span id="d-type-ban" style="display:none" class="label label-danger">차단 계정</span> 
 						</p>
 						<hr>
 					</div>
@@ -217,3 +220,95 @@
 </div>
 <!-- 여기까지 사용자 관리 페이지 끝 -->
 
+<<<<<<< HEAD
+<script>
+	$(function() {
+		$('#refresh').click(function() {
+			
+		})
+		
+	})
+	
+// 	function callUser(obj) {
+// 		var action = "<c:url value='/admin/detail.pic'/>";
+// 		$.ajax({
+// 			url : action,
+// 			dataType : 'text',
+// 			data : {
+// 				ppa_email : $(obj).html(),
+// 				"${_csrf.parameterName}" : "${_csrf.token}"
+// 			},
+// 			success : function(data) {
+// 				console.log('성공했습니다');
+// 				console.log(data);
+// 				console.log(typeof(JSON.parse(data)));
+// 				$.each(JSON.parse(data), function(index, element) {
+// 					$('#username').html(element["ppa_email"]);
+// 					var nickname = decodeURIComponent(element['ppa_nickname']);
+// 					$('#nickname').html(nickname);
+// 				});
+// 			},
+// 			error : function(data) {
+// 				console.log(data);
+// 				console.log('실패했습니다');
+// 			}
+// 		});
+// 	}
+	
+	$(function(){
+	      $('.mb-detail').click(function(){
+	         console.log("hi");
+	      
+	         console.log("안녕하세요:"+$(".a").html());
+	         var email = $(this).html();
+	         console.log(typeof email);
+	         $.ajax({
+	            url : '<c:url value="/admin/detail.do"/>',
+	            data : {
+	               "ppa_email" : email,
+	               "${_csrf.parameterName}" : "${_csrf.token}" 
+	            },
+	            dataType : 'json',
+	            type:"get",
+	            success : function(data) {
+	               console.log('성공했습니다');
+	               console.log(data);
+	               
+	               $.each(data, function(index, element) {
+	                  $('#useremail').html(element["ppa_email"]);
+	                  $('#nickname').html(element['ppa_nickname']);
+	                  
+	                  $('#d-useremail').html(element["ppa_email"]);
+	                  $('#d-nickname').html(element['ppa_nickname']);
+	                  $('#d-joindate').html(element['ppa_join_date']);
+	                  $('#d-logindate').html(element['lh_ld']);
+	                  
+	                  $('#d-pick').html(element['totalpick']);
+	                  $('#d-post').html(element['totalpost']);
+	                  $('#d-filter').html(element['totalfilter']);
+	                  $('#d-question').html(element['totalquestion']);
+	                  
+	                  console.log(element['ppa_type']);
+	                  if(element['as_class'] == "ADMIN"){
+	   	               console.log('넌관리자야');
+	                	  $('#d-type-admin').css('display','block');
+	                	  $('#d-type-pickpic').css('display','none');
+	                  }
+	                  else{
+	   	               console.log('넌사용자야');
+	                	  $('#d-type-admin').css('display','none');
+	                	  $('#d-type-pickpic').css('display','block');
+	                  }
+	               });
+	            },
+	            error : function(data) {
+	               console.log('실패했습니다');
+	               console.log(data);
+	            }
+	         });
+	      });/* 클릭  */
+	   });
+
+</script>
+=======
+>>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git

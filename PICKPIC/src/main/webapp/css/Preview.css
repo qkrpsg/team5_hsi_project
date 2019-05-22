@@ -15,16 +15,17 @@
     position: relative;
 }
 
-.photo_wrap {
-   margin: 15px;
-   padding: 0;
-    border: 1px solid #e6e6e6;
-}
 .photo {
     border: 1px solid #e6e6e6;
     background-color:#eeeeee;
     margin: 15px 15px;
    }
+
+.photo_wrap {
+   margin: 15px;
+   padding: 0;
+    border: 1px solid #e6e6e6;
+}
 
 .photo_center_wrap{
    position: relative;
@@ -47,8 +48,8 @@
 
 .photo_center > img {
    position: absolute;
-   top: 0;
-   left: 0;
+   top: 50%;
+   left: 50%;
    width: 100%;
    height: auto;
    -webkit-transform: translate(-50%, -50%);
@@ -58,7 +59,7 @@
 
 .menu {
    width: 100%;
-}
+   }
 
 .centered {
    display: table;
@@ -70,6 +71,8 @@
 .menu .btn-group {
    width: 100%;
 }
+
+
 
 .noMnP {
    margin: 0;

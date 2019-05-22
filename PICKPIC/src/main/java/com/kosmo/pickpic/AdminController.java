@@ -1,5 +1,6 @@
 package com.kosmo.pickpic;
 
+import java.net.URLEncoder;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +36,7 @@ import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
+import com.kosmo.pickpic.service.web.DTOUtil;
 import com.kosmo.pickpic.service.web.PagingUtil;
 
 @Controller
@@ -71,8 +73,27 @@ public class AdminController {
 		return "admin/admin_users.admin";
 	}//users
 	
-	//이메일 중복 체크
 	@ResponseBody
+    @RequestMapping(value="/admin/detail.do",produces="text/html; charset=UTF-8")
+    public String ttest(@RequestParam Map map,Model model) throws Exception{
+       
+       List<Map> user = new Vector<Map>();  
+       user.add(DTOUtil.convertDTOToMap(adminService.oneUser(map)));
+       
+//       List<Map> user = new Vector<Map>();   
+//       Map record = new HashMap();
+//       record.put("ppa_profile_path", onePpa.getPpa_profile_path());
+//       record.put("ppa_email", onePpa.getPpa_email());
+//       record.put("ppa_nickname", onePpa.getPpa_nickname());
+//       record.put("ppa_join_date", onePpa.getPpa_join_date().toString().substring(0, 10));
+//       record.put("lh_ld", onePpa.getLh_ld());
+//       user.add(record);
+       
+       System.out.println(JSONArray.toJSONString(user).toString());
+       
+       return JSONArray.toJSONString(user);
+    }
+	
 	@RequestMapping(value="/admin/deg.do",produces="text/html; charset=UTF-8")
 	//@RequestMapping("/admin/deg.pic")
 	public String userDetail(@RequestParam Map map) throws Exception{
@@ -255,17 +276,6 @@ public class AdminController {
 	}//pickRoad
 		*/
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//앨범다운관리
 	@RequestMapping(value = "/admin/albumDown.pic")
 	public String albumDown(@RequestParam Map map) {
@@ -276,8 +286,11 @@ public class AdminController {
 	@RequestMapping(value = "/admin/qna.pic")
 	public String qna(@RequestParam Map map,Model model) {
 		List<QuestionDTO> list = questionService.selectList(map);
+		
 		model.addAttribute("list",list);
-	
+		
+		map.put("admin", "문의관리");
+		
 		return "admin/admin_qna.admin";
 	}//qna
 	
@@ -410,6 +423,11 @@ public class AdminController {
 	@RequestMapping("/admin/admin_delete.pic")
 	public String delete(@RequestParam Map map,Model model) throws Exception{
 		//서비스 호출]
+		String text = map.get("n_index").toString();
+		String text2[] = text.split(",");
+		System.out.println(text2[0]);
+		System.out.println(text2);
+		System.out.println(text2.length);
 		System.out.println(map);
 		
 		//int sucFail=noticeService.delete(map);	

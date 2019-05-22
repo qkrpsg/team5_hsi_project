@@ -61,7 +61,37 @@ public class AdminDAO implements AdminService {
 
 	@Override
 	public PickpicAccountDTO oneUser(Map map) {
-		return template.selectOne("adminOneUser", map);
+		PickpicAccountDTO user = template.selectOne("adminOneUser", map);
+		PickpicAccountDTO dto = new PickpicAccountDTO();
+		
+		
+		try {
+			dto = template.selectOne("adminUserPick", map);
+			user.setTotalpick(dto.getTotalpick());
+		} catch(Exception e) {
+			user.setTotalpick("0");
+		}
+		try {
+			dto = template.selectOne("adminUserPost", map);
+			user.setTotalpost(dto.getTotalpost());
+		} catch(Exception e) {
+			user.setTotalpost("0");
+		}
+		try {
+			dto = template.selectOne("adminUserFilter", map);
+			user.setTotalfilter(dto.getTotalfilter());
+		} catch(Exception e) {
+			user.setTotalfilter("0");
+		}
+		try {
+			dto = template.selectOne("adminUserQuestion", map);
+			user.setTotalquestion(dto.getTotalquestion());
+		} catch(Exception e) {
+			user.setTotalquestion("0");
+		}
+		
+		user.setAs_class(((PickpicAccountDTO)template.selectOne("adminUserClass", map)).getAs_class());
+		return user;
 	}
 	@Override
 	public List<Map> pickPicAccountRoadAll() {
