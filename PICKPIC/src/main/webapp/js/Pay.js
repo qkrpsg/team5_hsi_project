@@ -18,6 +18,16 @@ $(document).ready(function(){
 		//val = $('.pay-type-content:eq('+a+')').find('select').val();
 	});*/
 	
+/*
+ * 결제처리 방법 UUID 클래스 
+ * java : UUID uid = UUID.randomUUID();
+ * 생성된 스트링값을 merchant_uid에 넣어준다.
+ * 
+ */
+	
+	
+	
+	
 	$('#paymentBtn').click(function(){
 		
 		console.log(val);
@@ -32,11 +42,11 @@ $(document).ready(function(){
 		    
 		    
 		   // name: "결제 테스트",
-		    amount: 1, //아마 가격     paid_amount 받을 계좌
-		    buyer_email: "dldydtnsladk@naver.com",
+		    amount: 1, //아마 가격     paid_amount 받을 계좌 /// 가격 맞다.
+		    buyer_email: "dldydtnsladk@naver.com",  //쿼리 셀렉터로 모두 값을 얻어온다.
 		    buyer_name: "이용수",
-		    buyer_tel: "010-3345-9431",
-		    buyer_addr: "서울특별시 노원구 공릉동",
+		    buyer_tel: "010-3345-9431",				///필수로 입력할 항목은 amout와 tel이므로 다른건 입력 안해도 상관없다.
+		    buyer_addr: "서울특별시 노원구 공릉동",			//참고
 		    buyer_postcode: "01181" //우편번호 ?
 		}, function (rsp) { // callback
 		    if (rsp.success) {
@@ -49,6 +59,22 @@ $(document).ready(function(){
 				console.log();
 				console.log(msg); 
 				console.log("hi");
+				
+				
+				/////결제 처리 성공했을 때 오는 지점
+				//여기에 ajax로 DB에 입력하면 된다.
+				/*
+				$.ajax({
+					url:,
+					type:,
+					data:,
+					dataType:,
+					success:,
+					error:function(error, request){
+						console.log('에러 발생~~~' + error);}
+				});
+				*/
+				
 		    } else {
 		    	 var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
