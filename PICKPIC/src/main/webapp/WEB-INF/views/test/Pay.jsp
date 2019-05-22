@@ -186,8 +186,7 @@
 				</div>
 
 				<button type="button" id="paymentBtn">
-					<img
-						src="//image12.coupangcdn.com/image/rocketpay-order-image/pc/btn_payment.gif"
+					<img src="//image12.coupangcdn.com/image/rocketpay-order-image/pc/btn_payment.gif"
 						type="submit" width="260" height="60" alt="결제하기">
 				</button>
 			</div>

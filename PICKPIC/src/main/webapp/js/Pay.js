@@ -7,6 +7,7 @@ $(document).ready(function(){
 	});
 	$('.pay-type-content:eq('+a+')').css('display','block');
 	var val = 'phone';
+	
 	$('.type-selector-li').click(function(){
 		
 		val = $(this).find('.type-selector-radio').val();
@@ -19,7 +20,7 @@ $(document).ready(function(){
 	});*/
 	$('#paymentBtn').click(function(){
 		
-		
+		console.log(val);
 		var IMP = window.IMP; // 생략해도 괜찮습니다.
 		IMP.init("imp77502296"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
 
