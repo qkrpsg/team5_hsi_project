@@ -384,22 +384,24 @@ for(var i = 0; i< ){
 	/* 필터 선택시 이미지에 필터 적용*/
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
-		var tempName;
-		var i=0;
 		$.each(selectArray, function(index, id) {
 			var set_class = $('#set_'+id).attr('class');
-			var class_length = $('#set_'+id).lenght;
-			console.log(filterName);
-			console.log(set_class);
-			console.log(class_length);
+			var class_length = $('#set_'+id)[0].classList.length;
 			
-			 /* if(set_class.indexOf(filterName)==-1){
-				$('div[id="set_' + id + '"]').addClass(filterName);
+			if(class_length <= 2){
+				$('div[id="set_' + id + '"]').toggleClass(filterName,true);
+			} else{
+				var class_before = $('#set_'+id)[0].classList[2];
+				if(class_before==filterName){
+					/* 이미 가지고있는경우 삭제 */
+					$('div[id="set_' + id + '"]').toggleClass(filterName,false);
+				}
+				else{
+					$('div[id="set_' + id + '"]').removeClass(class_before);
+					$('div[id="set_' + id + '"]').addClass(filterName);
+				}
 			}
-			else if(set_class.indexOf(filterName)!=-1){
-				$('div[id="set_' + id + '"]').removeClass(filterName);
-			} */
-			 
+				 
 		});
 
 	}
