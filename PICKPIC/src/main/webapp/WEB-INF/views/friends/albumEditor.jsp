@@ -3,7 +3,14 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
-
+<style>
+     
+ canvas {
+  margin: auto;
+  background: #fff;
+  width: 100%;
+}
+</style>
 
 <!-- css&js -->
 <link href="<c:url value='/css/Navbar.css' />" rel="stylesheet">
@@ -14,7 +21,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
+<script src="<c:url value='/js/caman.full.min.js'/>"></script>
 
 
 <!-- albumEditor.jsp -->
@@ -36,26 +43,19 @@
       <div class="modal-body">
          <div class="row text-center">
 
-            <div class="col-xs-4 btn ">
+            <div class="col-xs-6 btn ">
                <img class="img-circle img_100"
                   src="<c:url value='/resources/images/sns/M.PNG'/>" alt="image">
                <h5>내 픽보관함</h5>
             </div>
 
-            <div class="col-xs-4 btn btn-file">
+            <div class="col-xs-6 btn btn-file">
                <input type="file" name="img_mypc[]" id="img_mypc" multiple
                   accept=".jpg, .jpeg, .png"> <img
                   class="img-circle img_100"
                   src="<c:url value='/resources/images/sns/P.png'/>" alt="image">
                <h5>내 PC</h5>
             </div>
-			
-            <div class="col-xs-4 btn">
-               <img class="img-circle img_100"
-                  src="<c:url value='/resources/images/sns/I.PNG'/>" alt="image">
-               <h5>인스타그램</h5>
-            </div>
-            
          </div>
          <!-- row text-center -->
       </div>
@@ -74,7 +74,7 @@
          <li><a id="myfilter_btn">내 필터 보관함</a></li>
          <li><a class="btn" data-toggle="modal" id="option_btn" >+
                가져오기</a></li>
-      	<li ><a href="javascript:void(0);" onclick="selectItem(this)" class="allselect_btn">전체 선택</a></li>
+         <li ><a href="javascript:void(0);" onclick="selectItem(this)" class="allselect_btn">전체 선택</a></li>
       </ul>
       <ul class="nav navbar-nav" style="float: right;">
          <li><a href="#"><span class="glyphicon glyphicon-picture">&nbsp;</span><span id="imgCount">0 / 0</span>
@@ -91,27 +91,28 @@
    <div class="preview_container row">
       <div class="preview" id="preview">
          <!-- 사진 리스트 들어가는 곳 -->
-			<%-- <div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'">
-				<div class=" photo_wrap">
-					<div class="photo">
-						<div class="photo_center_wrap">
-							<div class="photo_center">
-								<img id="temp_img_index"
-									src="<c:url value='/resources/images/cat2.jpg'/>"
-									onload="resize(this)" />
-							</div>
-						</div>
-					</div>
-					<div class="menu" style="border-top: 1px solid #e6e6e6;">
-							<div class="centered">
-							<div class="btn-group item" role="group">
-								<button type="button" class="btn btn-default" id="index" onclick="javascript:deleteItem(this)">삭제</button>
-								<button type="button" class="btn btn-default tgbtn" id="index" onclick="javascript:selectItem(this)">선택</button>
-							</div> 
-						</div>
-					</div>
-				</div>
-			</div> --%>
+         <%-- <div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'">
+            <div class=" photo_wrap">
+               <div class="photo">
+                  <div class="photo_center_wrap">
+                     <div class="photo_center">
+                     <canvas id="canvas" ></canvas>
+                        <img id="temp_img_index"
+                           src="<c:url value='/resources/images/cat2.jpg'/>"
+                           onload="resize(this)" />
+                     </div>
+                  </div>
+               </div>
+               <div class="menu" style="border-top: 1px solid #e6e6e6;">
+                     <div class="centered">
+                     <div class="btn-group item" role="group">
+                        <button type="button" class="btn btn-default" id="index" onclick="javascript:deleteItem(this)">삭제</button>
+                        <button type="button" class="btn btn-default tgbtn" id="index" onclick="javascript:selectItem(this)">선택</button>
+                     </div> 
+                  </div>
+               </div>
+            </div>
+         </div>  --%>
 
       </div>
       <!-- preview -->
@@ -124,25 +125,26 @@
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
-		<div class=" card-a cssco card_hover" id="cssco--none"
-			onclick="filterOn(this)">
-			<img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
-			<div class="ovrly"></div>
-			<span class="name_text"> None </span>
-		</div>
+      <div class=" card-a cssco card_hover" id="none"
+         onclick="filterOn(this)">
+         <img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
+         <div class="ovrly"></div>
+         <span class="name_text"> NONE </span>
+      </div>
 
-		<c:forEach var="item" items="${list_filter }"  varStatus="loop">
-			<c:set var="str_f_name" value="${item.F_NAME }"/>
-			<c:set var="f_name" value="${fn:replace(str_f_name, 'cssco--', '')}"/>
-			<div class=" card-a cssco card_hover ${item.F_NAME}" id="${item.F_NAME}"
-				onclick="filterOn(this)">
-				<img src="<c:url value='/resources/images/filter/filter_default.jpg'/>" />
-				<div class="ovrly"></div>
-				<span class="name_text">${fn:toUpperCase(f_name)}</span>
-			</div>
-		</c:forEach>
-		
-	</div>
+      <c:forEach var="item" items="${list_filter }"  varStatus="loop">
+         <c:set var="str_f_name" value="${item.F_NAME }"/>
+         <%-- <c:set var="f_name" value="${fn:replace(str_f_name, 'cssco--', '')}"/> --%>
+         <div class=" card-a cssco card_hover ${item.F_NAME}" id="${item.F_NAME}"
+            onclick="filterOn(this)">
+            <img src="${item.F_IMAGE_PATH}" />
+            <div class="ovrly"></div>
+            <span class="name_text">${fn:toUpperCase(str_f_name)}</span>
+         </div>
+      </c:forEach>
+      
+      
+   </div>
       <!--scroll_inline box -->
    </div>
    <!--filter_list -->
@@ -151,95 +153,121 @@
 
 <script type="text/javascript">
 <!-- 모달창 열고 닫기 -->
-	//모달요소 얻기
-	var modal = document.getElementById('option_modal');
-	// 모달창 열기 버튼요소 얻기
-	var btn = document.getElementById("option_btn");
-	// 모달창 닫기(span) 태그요소 얻기
-	var span = document.getElementsByClassName("close")[0];
+   //모달요소 얻기
+   var modal = document.getElementById('option_modal');
+   // 모달창 열기 버튼요소 얻기
+   var btn = document.getElementById("option_btn");
+   // 모달창 닫기(span) 태그요소 얻기
+   var span = document.getElementsByClassName("close")[0];
 
-	//페이지 로드하면서 모달창 열기(띄우기)
-	window.onload = function() {
-		modal.style.display = "block";
-	}
-	// 버튼 클릭시 모달창 열기(보이기)
-	btn.onclick = function() {
-		modal.style.display = "block";
-	}
-	// 닫기 클릭시 모달창 닫기(감추기)
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
-	// 모달창 외의 바깥부분 클릭시 모달창 닫기(감추기)
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-	//프리뷰에 로드시 모달창 자동 닫기(감추기)
-	var input = document.getElementById("img_mypc");
-	function isEmpty(str) {
-		return !str.replace(/\s+/, '').length;
-	}
-	input.addEventListener("input", function() {
-		if (!isEmpty(this.value)) {
-			/* console.log("#img_mypc is NOTNULL"); */
-			modal.style.display = "none";
-		}
-	});
+   //페이지 로드하면서 모달창 열기(띄우기)
+   window.onload = function() {
+      modal.style.display = "block";
+   }
+   // 버튼 클릭시 모달창 열기(보이기)
+   btn.onclick = function() {
+      modal.style.display = "block";
+   }
+   // 닫기 클릭시 모달창 닫기(감추기)
+   span.onclick = function() {
+      modal.style.display = "none";
+   }
+   // 모달창 외의 바깥부분 클릭시 모달창 닫기(감추기)
+   window.onclick = function(event) {
+      if (event.target == modal) {
+         modal.style.display = "none";
+      }
+   }
+   //프리뷰에 로드시 모달창 자동 닫기(감추기)
+   var input = document.getElementById("img_mypc");
+   function isEmpty(str) {
+      return !str.replace(/\s+/, '').length;
+   }
+   input.addEventListener("input", function() {
+      if (!isEmpty(this.value)) {
+         /* console.log("#img_mypc is NOTNULL"); */
+         modal.style.display = "none";
+      }
+   });
 
-	/* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
-	var fileCollection = new Array();
-	var index = 0;
-	var idArray = new Array();
-	$('#img_mypc')
-			.on(
-					'change',
-					function(e) {
-						var files = e.target.files;
-						$
-								.each(
-										files,
-										function(i, file) {
-											fileCollection.push(file);
-											var reader = new FileReader();
-											reader.readAsDataURL(file);
-											reader.onload = function(e) {
-												var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
-														+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
-														+ '<div class="photo" >'
-														+ '<div class="photo_center_wrap" >'
-														+ '<div class="photo_center cssco" id=set_'+index+'>'
-														+ '<img id="temp_img_'
-														+ index
-														+ '" src="'
-														+ e.target.result
-														+ '" onload="resize(this)"/>'
-														+ '</div></div></div>'
-														+ '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
-														+ '<div class="centered">'
-														+ '<div class="btn-group item" role="group">'
-														+ '<button type="button" class="btn btn-default dl_btn" id="'
-														+ index
-														+ '" onclick="javascript:deleteItem(this)">삭제</button>'
-														+ '<button type="button" class="btn btn-default tg_btn" id="'
-														+ index
-														+ '" onclick="javascript:selectItem(this)">선택</button>'
-														+ '</div></div></div>'
-														+ '</div></div>';
+   /* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
+   var fileCollection = new Array();
+   var index = 0;
+   var idArray = new Array();
+   $('#img_mypc')
+         .on(
+               'change',
+               function(e) {
+                  var files = e.target.files;
+                  $
+                        .each(
+                              files,
+                              function(i, file) {
+                                 fileCollection.push(file);
+                                 var reader = new FileReader();
+                                 reader.readAsDataURL(file);
+                                 reader.onload = function(e) {                                                      
+                                    var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
+                                          + '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
+                                          + '<div class="photo" >'
+                                          + '<div class="photo_center_wrap" >'
+                                          + '<div class="photo_center cssco" id=set_'+index+'>'
+                                          +'<canvas id="canvas_'+index+'"></canvas>'
+                                          /* + '<img id="temp_img_'
+                                          + index
+                                          + '" src="'
+                                          + e.target.result
+                                          + '" onload="resize(this)"/>' */
+                                          + '</div></div></div>'
+                                          + '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
+                                          + '<div class="centered">'
+                                          + '<div class="btn-group item" role="group">'
+                                          + '<button type="button" class="btn btn-default dl_btn" id="'
+                                          + index
+                                          + '" onclick="javascript:deleteItem(this)">삭제</button>'
+                                          + '<button type="button" class="btn btn-default tg_btn" id="'
+                                          + index
+                                          + '" onclick="javascript:selectItem(this)">선택</button>'
+                                          + '</div></div></div>'
+                                          + '</div></div>';
+                                          
+                                
+											$('#preview').append(template);
+
+												const can = "canvas_" + index;
+												const canvas = document.getElementById(can);
+												const ctx = canvas.getContext("2d");
+
+												var img = new Image();
+
+												// Set image src
+												img.src = e.target.result; 
+
+												img.onload = function(e) {
+													canvas.width = img.width;
+													canvas.height = img.height;
+													ctx.drawImage(img, 0, 0,
+															img.width,
+															img.height);
+													canvas.removeAttribute("data-caman-id");
+												};
+
 												idArray[idArray.length] = index;
 												index++;
-												/* console.log("원:"+i,index); */
-												$('#preview').append(template);
+
 												/* console.log(e.target.result); */
-												$('#imgCount').html('0 / ' + idArray.length);
-												
+												$('#imgCount').html('0 / '+ idArray.length);
+
 											};
-											
+
 										});
 						console.log(idArray);
-						
+
 					});
+
+	function imgLoad(img) {
+
+	}
 
 	/* 이미지 기준 가로 또는 세로 적용 */
 	function resize(img) {
@@ -267,7 +295,7 @@
 								'5px 5px 5px #c9e3f7');
 						$("button[id=" + id + "]").eq(1).html('해제');
 					});
-					
+
 				} else if ($(item).html() == '전체 해제') {
 					/* 해제 후 */
 					$.each(selectArray, function(index, id) {
@@ -312,18 +340,8 @@
 		}
 		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
-	/* <!-- 이미지 선택 시 이미지 정보 가져오기 --> */
-	/* $("#btn_select").click(
-	      function(event) {
-	         var selected = document
-	               .querySelectorAll("div.photo_center img[id=temp_img]");
-	         console.log(selected);
-	      }); */
-/* document.getElementsByClassName("")
-for(var i = 0; i< ){
-	if
-} */
 
+	
 	/*<!-- 아이템 삭제  --> */
 	function deleteItem(item) {
 		var selectBtnClass = $(item).attr("class");
@@ -333,7 +351,8 @@ for(var i = 0; i< ){
 			if (findIndex != -1
 					&& $("button[id=" + currentId + "]").eq(1).html() == '선택') {
 				idArray.splice(findIndex, 1);
-				$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
+				$('#imgCount')
+						.html(selectArray.length + ' / ' + idArray.length);
 				if (selectArray.length == idArray.length)
 					$('.allselect_btn').html('전체 해제');
 				$("div[id='div_" + currentId + "']").remove();
@@ -351,23 +370,24 @@ for(var i = 0; i< ){
 				index = 0;
 				console.log("선택전체삭제 : idArray:" + idArray + ",selectArray:"
 						+ selectArray);
-			} else if (selectArray.length > 0 && selectArray.length != idArray.length) {/* 부분이 선택된 경우 */
+			} else if (selectArray.length > 0
+					&& selectArray.length != idArray.length) {/* 부분이 선택된 경우 */
 				console.log("선택부분삭제 : idArray:" + idArray + ",selectArray:"
 						+ selectArray);
-			   var selectArray2=new Array();
-			   $.each(selectArray, function(index, sel_id) {
-				   selectArray2[index]=sel_id;
-			   });
+				var selectArray2 = new Array();
+				$.each(selectArray, function(index, sel_id) {
+					selectArray2[index] = sel_id;
+				});
 				$.each(selectArray2, function(index, sel_id) {
 					selectArray.splice(selectArray.indexOf(sel_id), 1);
-					idArray.splice(idArray.indexOf(sel_id),1);
+					idArray.splice(idArray.indexOf(sel_id), 1);
 					$('div[id="div_' + sel_id + '"]').remove();
-				});					
-				console.log(selectArray.length +','+selectArray2.length);
+				});
+				console.log(selectArray.length + ',' + selectArray2.length);
 			} else if (selectArray.length == 0) {/* 선택이 없는경우 */
 				alert('선택된 사진이 없습니다.');
 			}
-			
+
 		}
 		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
@@ -389,26 +409,85 @@ for(var i = 0; i< ){
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
-			var set_class = $('#set_'+id).attr('class');
-			var class_length = $('#set_'+id)[0].classList.length;
+			/* var set_class = $('#set_' + id).attr('class');			
+			var class_length = $('#set_' + id)[0].classList.length; */
 			
-			if(class_length <= 2){
-				$('div[id="set_' + id + '"]').toggleClass(filterName,true);
-			} else{
-				var class_before = $('#set_'+id)[0].classList[2];
-				if(class_before==filterName){
-					/* 이미 가지고있는경우 삭제 */
-					$('div[id="set_' + id + '"]').toggleClass(filterName,false);
+			var current_can=$('#canvas_' + id).attr('id');	
+			var img = new Image();
+			var toggle=0;
+				switch (filterName) {
+				  case 'vintage':
+						  Caman("#"+current_can, img, function() {
+			    				this.vintage().render();
+							});
+				    break;
+				  case 'lomo':
+					  Caman("#"+current_can, img, function() {
+		    				this.lomo().render();
+						});
+				    break;
+				  case 'clarity':
+					  Caman("#"+current_can, img, function() {
+		    				this.clarity().render();
+						});
+				    break;
+				  case 'sinCity':
+					  Caman("#"+current_can, img, function() {
+		    				this.sinCity().render();
+						});
+				    break;
+				  case 'crossProcess':
+					  Caman("#"+current_can, img, function() {
+		    				this.crossProcess().render();
+						});
+				    break;
+				  case 'pinhole':
+					  Caman("#"+current_can, img, function() {
+		    				this.pinhole().render();
+						});
+				    break;
+				  case 'nostalgia':
+					  Caman("#"+current_can, img, function() {
+		    				this.nostalgia().render();
+						});
+				    break;
+				  case 'herMajesty':
+					  Caman("#"+current_can, img, function() {
+		    				this.nostalgia().render();
+					  });
+				    break; 
+				  default:
+					  Caman("#"+current_can, img, function() {
+						    this.revert();
+						  });
 				}
-				else{
-					$('div[id="set_' + id + '"]').removeClass(class_before);
+				
+				
+				/* if(toggle=1){
+				console.log("revert"+toggle);
+				 Caman("#"+current_can, img, function() {
+					    this.revert();
+					  });
+				 toggle=0;
+				 console.log("revert2"+toggle); 
+			}*/
+			/* if (class_length <= 2) {
+				 $('div[id="set_' + id + '"]').toggleClass(filterName, true);
+				
+				
+			} else {
+				var class_before = $('#set_' + id)[0].classList[2];
+				if (class_before == filterName) {*/
+					/* 이미 가지고있는경우 삭제 */
+					/* $('div[id="set_' + id + '"]')
+							.toggleClass(filterName, false);
+				} else {
+					 $('div[id="set_' + id + '"]').removeClass(class_before);
 					$('div[id="set_' + id + '"]').addClass(filterName);
 				}
-			}
-				 
+			} */
+
 		});
 
 	}
-	
-	
 </script>

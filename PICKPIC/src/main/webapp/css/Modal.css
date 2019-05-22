@@ -37,13 +37,14 @@
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
-	height: 267px;
-    width: 438px;
+	height: 300px;
+    width: 440px;
 }
 
 .img_100 {
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
+	margin: auto;
 }
 /* The Close Button */
 .close {
