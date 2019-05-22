@@ -323,8 +323,7 @@ public class AdminController {
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
 	public String qna(@RequestParam Map map,Model model) {
-		List<QuestionDTO> list = questionService.selectList(map);
-		
+		List<QuestionDTO> list = questionService.selectList(map);	
 		model.addAttribute("list",list);
 		
 		map.put("admin", "문의관리");
@@ -479,8 +478,45 @@ public class AdminController {
 		return "/admin/admin_notice.admin";
 	}
 	
+	//문의사항 답변처리
+	@ResponseBody
+	@RequestMapping(value="/admin/admin_qna_aqinsert.pic")
+	public String qna_aqinsert(@RequestParam Map map,Model model) {
+		System.out.println("SF"+map);
+		questionService.aqinsert(map);
+		List<QuestionDTO> list = questionService.selectList(map);	
+		model.addAttribute("list",list);
+		
+		return JSONArray.toJSONString(list);
+	}
 	
-	
+	//문의사항 삭제처리
+	@ResponseBody
+	@RequestMapping(value="/admin/admin_qna_delete.pic")
+	public String qna_delete(@RequestParam Map map,Model model) {
+		System.out.println(map);
+		questionService.delete(map);
+		List<QuestionDTO> list = questionService.selectList(map);	
+		model.addAttribute("list",list);
+		
+		
+		
+		return JSONArray.toJSONString(list);
+		
+		//return "/admin/admin_qna.admin";
+	}
+	@ResponseBody
+	@RequestMapping(value="/admin/admin_qna_update.pic")
+	public String qna_update(@RequestParam Map map,Model model,Principal principal) throws Exception {
+		map.put("ppa_email", principal.getName());
+		System.out.println("aa"+map);
+		questionService.aqupdate(map);
+		List<QuestionDTO> list = questionService.selectList(map);	
+		model.addAttribute("list",list);
+		
+		
+		return JSONArray.toJSONString(list);
+	}
 	
 	//ETC
 	//휴지통

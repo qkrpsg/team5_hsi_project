@@ -53,6 +53,18 @@ public class QuestionDAO implements QuestionService{
 		// TODO Auto-generated method stub
 		return template.update("questionUpdate",map);
 	}
+
+	@Override
+	public int aqinsert(Map map) {
+		// TODO Auto-generated method stub
+		return template.insert("questionaqInsert",map);
+	}
+
+	@Override
+	public int aqupdate(Map map) {
+		// TODO Auto-generated method stub
+		return template.update("questionaqUpdate",map);
+	}
 	
 
 }

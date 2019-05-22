@@ -11,15 +11,25 @@
 <!-- SELECT * FROM QUESTION Q INNER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID ORDER BY Q_INDEX DESC -->
   SELECT * FROM QUESTION Q FULL OUTER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID JOIN pickpic_account ppa ON ppa.ppa_id=q.ppa_id ORDER BY Q_INDEX DESC
 </select>
-
+<select id="questionSelectOne" parameterType="java.util.Map" resultType="QuestionDTO">
+  SELECT * FROM QUESTION Q FULL OUTER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID JOIN pickpic_account ppa ON ppa.ppa_id=q.ppa_id WHERE Q_INDEX = #{q_index}
+        
+</select>
 
 <insert id="questionInsert" parameterType="java.util.Map">
 INSERT INTO QUESTION VALUES(func_generator,#{Q_TITLE},#{Q_CONTENT},DEFAULT,seq_Q_index.NEXTVAL,(SELECT ppa_id FROM pickpic_account where ppa_email = #{ppa_email}))
 </insert>
 
+<delete id="questionDelete" parameterType="java.util.Map">
+DELETE QUESTION WHERE Q_INDEX = ${q_index}
+</delete>
 
-
-
+<insert id="questionaqInsert" parameterType="java.util.Map">
+INSERT INTO ANSWER_QUESTION VALUES(func_generator, #{aq_content}, DEFAULT, (SELECT q_id FROM question WHERE q_index=#{q_index}))
+</insert>
+<update id="questionaqUpdate" parameterType="java.util.Map">
+UPDATE ANSWER_QUESTION SET aq_content=#{aq_content} WHERE q_id=(SELECT q_id FROM question WHERE q_index=#{q_index} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
+</update>
 
 </mapper>
 

@@ -66,7 +66,7 @@
 							<c:forEach var="item" items="${list}" varStatus="loop">
 					<tr>
 						<td>${item.Q_INDEX }</td>
-						<td id="title">${item.Q_TITLE }</td>
+						<td id="title"><a href="<c:url value='/help/qna/View.pic?q_index=${item.Q_INDEX}'/> ">${item.Q_TITLE }</td>
 						<td>${item.Q_POST_DATE}</td>
 						<td>${item.AQ_POST_DATE }</td>
 						<td>${item.PPA_NICKNAME }</td>
@@ -101,26 +101,7 @@
 
 <script>
 //Add event listener for opening and closing details
-$('#title').on('click', 'td.details-control', function () {
-    var tr = $(this).closest('tr');
-    var row = table.row( tr );
 
-    if ( row.child.isShown() ) {
-        // This row is already open - close it
-        $('div.slider', row.child()).slideUp( function () {
-            row.child.hide();
-            tr.removeClass('shown');
-        } );
-    }
-    else {
-        // Open this row
-        row.child( format(row.data()), 'no-padding' ).show();
-        tr.addClass('shown');
-
-        $('div.slider', row.child()).slideDown();
-    }
-} );
-} );
 </script>
 
 
