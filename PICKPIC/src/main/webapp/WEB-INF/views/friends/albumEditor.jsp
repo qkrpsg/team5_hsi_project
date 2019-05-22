@@ -1,13 +1,14 @@
 <%@page import="org.springframework.web.multipart.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <style>
-canvas {
-	margin: auto;
-	background: #fff;
-	width: 100%;
+     
+ canvas {
+  margin: auto;
+  background: #fff;
+  width: 100%;
 }
 </style>
 
@@ -19,8 +20,7 @@ canvas {
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/caman.full.min.js'/>"></script>
 
 
@@ -28,73 +28,71 @@ canvas {
 
 <!-- 모달 창 시작-->
 <div class="modal" id="option_modal">
-	<div class="modal-content">
+   <div class="modal-content">
 
-		<!-- 모달 헤더 시작-->
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<h4 class="modal-title" id="option_title">원하는 사진이 있는 곳을 선택하세요.</h4>
-		</div>
-		<!-- 모달 헤더 끝-->
+      <!-- 모달 헤더 시작-->
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+         <h4 class="modal-title" id="option_title">원하는 사진이 있는 곳을 선택하세요.</h4>
+      </div>
+      <!-- 모달 헤더 끝-->
 
-		<!-- 모달 바디 시작-->
-		<div class="modal-body">
-			<div class="row text-center">
+      <!-- 모달 바디 시작-->
+      <div class="modal-body">
+         <div class="row text-center">
 
-				<div class="col-xs-6 btn ">
-					<img class="img-circle img_100"
-						src="<c:url value='/resources/images/sns/M.PNG'/>" alt="image">
-					<h5>내 픽보관함</h5>
-				</div>
+            <div class="col-xs-6 btn ">
+               <img class="img-circle img_100"
+                  src="<c:url value='/resources/images/sns/M.PNG'/>" alt="image">
+               <h5>내 픽보관함</h5>
+            </div>
 
-				<div class="col-xs-6 btn btn-file">
-					<input type="file" name="img_mypc[]" id="img_mypc" multiple
-						accept=".jpg, .jpeg, .png"> <img
-						class="img-circle img_100"
-						src="<c:url value='/resources/images/sns/P.png'/>" alt="image">
-					<h5>내 PC</h5>
-				</div>
-			</div>
-			<!-- row text-center -->
-		</div>
-		<!-- modal-body -->
-	</div>
-	<!-- modal-content -->
+            <div class="col-xs-6 btn btn-file">
+               <input type="file" name="img_mypc[]" id="img_mypc" multiple
+                  accept=".jpg, .png"> <img
+                  class="img-circle img_100"
+                  src="<c:url value='/resources/images/sns/P.png'/>" alt="image">
+               <h5>내 PC</h5>
+            </div>
+         </div>
+         <!-- row text-center -->
+      </div>
+      <!-- modal-body -->
+   </div>
+   <!-- modal-content -->
 </div>
 <!-- modal-->
 
 
 <!-- 상단 바 시작-->
 <nav class="navbar topnav" id="myTopnav">
-	<div class="container-fluid">
-		<ul class="nav navbar-nav">
-			<li><a href="javascript:void(0);" onclick="deleteItem(this)"
-				class="alldelete_btn">선택 삭제</a></li>
-			<li><a id="myfilter_btn">내 필터 보관함</a></li>
-			<li><a class="btn" data-toggle="modal" id="option_btn">+
-					가져오기</a></li>
-			<li><a href="javascript:void(0);" onclick="selectItem(this)"
-				class="allselect_btn">전체 선택</a></li>
-		</ul>
-		<ul class="nav navbar-nav" style="float: right;">
-			<li><a href="#"><span class="glyphicon glyphicon-picture">&nbsp;</span><span
-					id="imgCount">0 / 0</span> </a></li>
-			<li><a href="#" id="svae_btn"><span
-					class="glyphicon glyphicon-log-in"></span> 저장하기</a></li>
-		</ul>
-	</div>
+   <div class="container-fluid">
+      <ul class="nav navbar-nav">
+         <li><a href="javascript:void(0);" onclick="deleteItem(this)" class="alldelete_btn" >선택 삭제</a></li>
+         <li><a id="myfilter_btn">내 필터 보관함</a></li>
+         <li><a class="btn" data-toggle="modal" id="option_btn" >+
+               가져오기</a></li>
+         <li ><a href="javascript:void(0);" onclick="selectItem(this)" class="allselect_btn">전체 선택</a></li>
+      </ul>
+      <ul class="nav navbar-nav" style="float: right;">
+         <li><a href="#"><span class="glyphicon glyphicon-picture">&nbsp;</span><span id="imgCount">0 / 0</span>
+              </a></li>
+         <li><a href="javascript:void(0);" onclick="save_btn()"><span class="glyphicon glyphicon-log-in"></span>
+               저장하기</a></li>
+      </ul>
+   </div>
 </nav>
 <!-- 상단 바 끝-->
 
 <!-- 프리뷰 시작 -->
 <div class="preview_wrap">
-	<div class="preview_container row">
-		<div class="preview" id="preview">
-			<!-- 사진 리스트 들어가는 곳 -->
-			<%-- <div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'">
+   <div class="preview_container row">
+      <div class="preview" id="preview">
+         <!-- 사진 리스트 들어가는 곳 -->
+         <%-- <div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'">
             <div class=" photo_wrap">
                <div class="photo">
                   <div class="photo_center_wrap">
@@ -117,40 +115,40 @@ canvas {
             </div>
          </div>  --%>
 
-		</div>
-		<!-- preview -->
-	</div>
-	<!-- preview_container -->
+      </div>
+      <!-- preview -->
+   </div>
+   <!-- preview_container -->      
 </div>
 <!-- preview_wrap -->
-
+   
 <!-- 하단 수평스크롤 시작-->
-<div id="filter_list">
-	<div class="container-fluid noMnP scroll_inline box">
-		<!-- 필터 띄우기 -->
-		<div class=" card-a cssco card_hover" id="none"
-			onclick="filterOn(this)">
-			<img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
-			<div class="ovrly"></div>
-			<span class="name_text"> NONE </span>
-		</div>
+<div id="filter_list" >
+   <div class="container-fluid noMnP scroll_inline box" >
+         <!-- 필터 띄우기 -->
+      <div class=" card-a cssco card_hover" id="none"
+         onclick="filterOn(this)">
+         <img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
+         <div class="ovrly"></div>
+         <span class="name_text"> NONE </span>
+      </div>
 
-		<c:forEach var="item" items="${list_filter }" varStatus="loop">
-			<c:set var="str_f_name" value="${item.F_NAME }" />
-			<%-- <c:set var="f_name" value="${fn:replace(str_f_name, 'cssco--', '')}"/> --%>
-			<div class=" card-a cssco card_hover ${item.F_NAME}"
-				id="${item.F_NAME}" onclick="filterOn(this)">
-				<img src="${item.F_IMAGE_PATH}" />
-				<div class="ovrly"></div>
-				<span class="name_text">${fn:toUpperCase(str_f_name)}</span>
-			</div>
-		</c:forEach>
-
-
-	</div>
-	<!--scroll_inline box -->
-</div>
-<!--filter_list -->
+      <c:forEach var="item" items="${list_filter }"  varStatus="loop">
+         <c:set var="str_f_name" value="${item.F_NAME }"/>
+         <%-- <c:set var="f_name" value="${fn:replace(str_f_name, 'cssco--', '')}"/> --%>
+         <div class=" card-a cssco card_hover ${item.F_NAME}" id="${item.F_NAME}"
+            onclick="filterOn(this)">
+            <img src="${item.F_IMAGE_PATH}" />
+            <div class="ovrly"></div>
+            <span class="name_text">${fn:toUpperCase(str_f_name)}</span>
+         </div>
+      </c:forEach>
+      
+      
+   </div>
+      <!--scroll_inline box -->
+   </div>
+   <!--filter_list -->
 <!-- 하단 스크롤 끝 -->
 
 
@@ -198,78 +196,63 @@ canvas {
    var index = 0;
    var idArray = new Array();
    var fileNameMap = new Map();
-   $('#img_mypc')
-         .on(
-               'change',
-               function(e) {
-                  var files = e.target.files;
-                  $.each( files, function(i, file) {
-                                 fileCollection.push(file);
-                                 var reader = new FileReader();
-                                 fileNameMap.set(index, file.name);
-                                 reader.readAsDataURL(file);
-                                 reader.onload = function(e) {                                                      
-                                    var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
-                                          + '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
-                                          + '<div class="photo" >'
-                                          + '<div class="photo_center_wrap" >'
-                                          + '<div class="photo_center cssco" id=set_'+index+'>'
-                                          +'<canvas id="canvas_'+index+'"></canvas>'
-                                          /* + '<img id="temp_img_'
-                                          + index
-                                          + '" src="'
-                                          + e.target.result
-                                          + '" onload="resize(this)"/>' */
-                                          + '</div></div></div>'
-                                          + '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
-                                          + '<div class="centered">'
-                                          + '<div class="btn-group item" role="group">'
-                                          + '<button type="button" class="btn btn-default dl_btn" id="'
-                                          + index
-                                          + '" onclick="javascript:deleteItem(this)">삭제</button>'
-                                          + '<button type="button" class="btn btn-default tg_btn" id="'
-                                          + index
-                                          + '" onclick="javascript:selectItem(this)">선택</button>'
-                                          + '</div></div></div>'
-                                          + '</div></div>';
-                                          
-                                
-											$('#preview').append(template);
-
-												const can = "canvas_" + index;
-												const canvas = document.getElementById(can);
-												const ctx = canvas.getContext("2d");
-
-												var img = new Image();
-
-												// Set image src
-												img.src = e.target.result; 
-
-												img.onload = function(e) {
-													canvas.width = img.width;
-													canvas.height = img.height;
-													ctx.drawImage(img, 0, 0,
-															img.width,
-															img.height);
-													canvas.removeAttribute("data-caman-id");
-												};
-
-												idArray[idArray.length] = index;
-												index++;
-
-												/* console.log(e.target.result); */
-												$('#imgCount').html('0 / '+ idArray.length);
-
-											};
-
-										});
-						console.log(idArray);
-
-					});
-
-	function imgLoad(img) {
-
-	}
+  
+	$('#img_mypc').on('change',function(e) {
+		var files = e.target.files;
+		$.each(files,function(i, file) {
+			fileCollection.push(file);
+			var reader = new FileReader();
+			console.log('index1 : ' + index);
+			reader.readAsDataURL(file);
+			reader.onload = function(e) {
+				fileNameMap.set(index, file.name);
+				console.log('index2 : '+ index);
+				var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
+						+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
+						+ '<div class="photo" >'
+						+ '<div class="photo_center_wrap" >'
+						+ '<div class="photo_center cssco" id=set_'+index+'>'
+						+ '<canvas id="canvas_'+index+'"></canvas>'
+						/* + '<img id="temp_img_'
+						+ index
+						+ '" src="'
+						+ e.target.result
+						+ '" onload="resize(this)"/>' */
+						+ '</div></div></div>'
+						+ '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
+						+ '<div class="centered">'
+						+ '<div class="btn-group item" role="group">'
+						+ '<button type="button" class="btn btn-default dl_btn" id="'
+						+ index
+						+ '" onclick="javascript:deleteItem(this)">삭제</button>'
+						+ '<button type="button" class="btn btn-default tg_btn" id="'
+						+ index
+						+ '" onclick="javascript:selectItem(this)">선택</button>'
+						+ '</div></div></div>'
+						+ '</div></div>';
+				$('#preview').append(template);
+				const can = "canvas_" + index;
+				const canvas = document.getElementById(can);
+				const ctx = canvas.getContext("2d");
+				var img = new Image();
+				// Set image src
+				img.src = e.target.result;
+				img.onload = function(e) {
+					canvas.width = img.width;
+					canvas.height = img.height;
+					ctx.drawImage(img, 0, 0,img.width,img.height);
+					canvas.removeAttribute("data-caman-id");
+				};
+				idArray[idArray.length] = index;
+				index++;
+				console.log('index3 : '+ index);
+				/* console.log(e.target.result); */
+				$('#imgCount').html('0 / '+ idArray.length);
+			};
+			console.log('index4 : ' + index);
+		});
+		console.log(idArray);
+	});
 
 	/* 이미지 기준 가로 또는 세로 적용 */
 	function resize(img) {
@@ -281,8 +264,8 @@ canvas {
 		}
 	}
 
-   /*<!-- 아이템 선택  --> */
-   var selectArray = new Array();
+	/*<!-- 아이템 선택  --> */
+	var selectArray = new Array();
 
 	function selectItem(item) {
 		var selectBtnClass = $(item).attr("class");
@@ -331,6 +314,7 @@ canvas {
 				/* 해제 후 */
 				$('div[id=photo_wrap_' + currentId + ']').css('box-shadow', '');
 				selectArray.splice(selectArray.indexOf(Number(currentId)), 1);
+
 				if (selectArray.length != idArray.length) {
 					$('.allselect_btn').html('전체 선택');
 				}
@@ -341,7 +325,7 @@ canvas {
 		}
 		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
-	
+
 	/*<!-- 아이템 삭제  --> */
 	function deleteItem(item) {
 		var selectBtnClass = $(item).attr("class");
@@ -392,156 +376,144 @@ canvas {
 		$('#imgCount').html(selectArray.length + ' / ' + idArray.length);
 	}
 
-   /* 필터 선택시 이미지에 필터 적용*/
-   function filterOn(item) {
-      var filterName = $(item).attr("id");
-      $.each(selectArray, function(index, id) {
-         var set_class = $('#set_'+id).attr('class');
-         var class_length = $('#set_'+id)[0].classList.length;
-         
-         if(class_length <= 2){
-            $('div[id="set_' + id + '"]').toggleClass(filterName,true);
-         } else{
-            var class_before = $('#set_'+id)[0].classList[2];
-            if(class_before==filterName){
-               /* 이미 가지고있는경우 삭제 */
-               $('div[id="set_' + id + '"]').toggleClass(filterName,false);
-            }
-            else{
-               $('div[id="set_' + id + '"]').removeClass(class_before);
-               $('div[id="set_' + id + '"]').addClass(filterName);
-            }
-         }
-             
-      });
+	/*<!-- 필터창 열고 닫기  --> */
+	var filter_list = document.getElementById('filter_list');
+	var preview_wrap = document.getElementsByClassName('preview_wrap')[0];
+	$("#myfilter_btn").click(function() {
+		if (filter_list.style.display == "block") {
+			filter_list.style.display = "none";
+			preview_wrap.style.paddingBottom = "0";
+		} else {
+			filter_list.style.display = "block";
+			preview_wrap.style.paddingBottom = "100px";
+		}
+	});
 
 	/* 필터 선택시 이미지에 필터 적용*/
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
-			/* var set_class = $('#set_' + id).attr('class');			
+			/* var set_class = $('#set_' + id).attr('class');         
 			var class_length = $('#set_' + id)[0].classList.length; */
-			
-			var current_can=$('#canvas_' + id).attr('id');	
+
+			var current_can = $('#canvas_' + id).attr('id');
 			var img = new Image();
-			var toggle=0;
-				switch (filterName) {
-				  case 'vintage':
-						  Caman("#"+current_can, img, function() {
-			    				this.vintage().render();
-							});
-				    break;
-				  case 'lomo':
-					  Caman("#"+current_can, img, function() {
-		    				this.lomo().render();
-						});
-				    break;
-				  case 'clarity':
-					  Caman("#"+current_can, img, function() {
-		    				this.clarity().render();
-						});
-				    break;
-				  case 'sinCity':
-					  Caman("#"+current_can, img, function() {
-		    				this.sinCity().render();
-						});
-				    break;
-				  case 'crossProcess':
-					  Caman("#"+current_can, img, function() {
-		    				this.crossProcess().render();
-						});
-				    break;
-				  case 'pinhole':
-					  Caman("#"+current_can, img, function() {
-		    				this.pinhole().render();
-						});
-				    break;
-				  case 'nostalgia':
-					  Caman("#"+current_can, img, function() {
-		    				this.nostalgia().render();
-						});
-				    break;
-				  case 'herMajesty':
-					  Caman("#"+current_can, img, function() {
-		    				this.nostalgia().render();
-					  });
-				    break; 
-				  default:
-					  Caman("#"+current_can, img, function() {
-						    this.revert();
-						  });
-				}
-				
-				
-				/* if(toggle=1){
-				console.log("revert"+toggle);
-				 Caman("#"+current_can, img, function() {
-					    this.revert();
-					  });
-				 toggle=0;
-				 console.log("revert2"+toggle); 
+			var toggle = 0;
+			switch (filterName) {
+			case 'vintage':
+				Caman("#" + current_can, img, function() {
+					this.vintage().render();
+				});
+				break;
+			case 'lomo':
+				Caman("#" + current_can, img, function() {
+					this.lomo().render();
+				});
+				break;
+			case 'clarity':
+				Caman("#" + current_can, img, function() {
+					this.clarity().render();
+				});
+				break;
+			case 'sinCity':
+				Caman("#" + current_can, img, function() {
+					this.sinCity().render();
+				});
+				break;
+			case 'crossProcess':
+				Caman("#" + current_can, img, function() {
+					this.crossProcess().render();
+				});
+				break;
+			case 'pinhole':
+				Caman("#" + current_can, img, function() {
+					this.pinhole().render();
+				});
+				break;
+			case 'nostalgia':
+				Caman("#" + current_can, img, function() {
+					this.nostalgia().render();
+				});
+				break;
+			case 'herMajesty':
+				Caman("#" + current_can, img, function() {
+					this.nostalgia().render();
+				});
+				break;
+			default:
+				Caman("#" + current_can, img, function() {
+					this.revert();
+				});
+			}
+
+			/* if(toggle=1){
+			console.log("revert"+toggle);
+			 Caman("#"+current_can, img, function() {
+			       this.revert();
+			     });
+			 toggle=0;
+			 console.log("revert2"+toggle); 
 			}*/
 			/* if (class_length <= 2) {
-				 $('div[id="set_' + id + '"]').toggleClass(filterName, true);
-				
-				
+			    $('div[id="set_' + id + '"]').toggleClass(filterName, true);
+			   
+			   
 			} else {
-				var class_before = $('#set_' + id)[0].classList[2];
-				if (class_before == filterName) {*/
-					/* 이미 가지고있는경우 삭제 */
-					/* $('div[id="set_' + id + '"]')
-							.toggleClass(filterName, false);
-				} else {
-					 $('div[id="set_' + id + '"]').removeClass(class_before);
-					$('div[id="set_' + id + '"]').addClass(filterName);
-				}
+			   var class_before = $('#set_' + id)[0].classList[2];
+			   if (class_before == filterName) {*/
+			/* 이미 가지고있는경우 삭제 */
+			/* $('div[id="set_' + id + '"]')
+			      .toggleClass(filterName, false);
+			} else {
+			 $('div[id="set_' + id + '"]').removeClass(class_before);
+			$('div[id="set_' + id + '"]').addClass(filterName);
+			}
 			} */
 
 		});
 
 	}
-	
-	
-	
-	/* 다운로드 */	
-	$("#save_btn").on("click",
-			function(e) {//() =>
-			console.log("dfsdf");
-				fileNameMap.forEach(function(name, id) {
-					fileName = fileNameMap.get(id);
+	/* 다운로드 */
+	function save_btn(e) {//() =>
+		
+		idArray.forEach(function(id, i) {
+			console.log(i,id);
+			fileName = fileNameMap.get(id);
+			console.log(fileName);
+			// Get ext
+			var fileExtension = fileName.slice(-4);
+			console.log(fileExtension);
+			// Init new filename
+			var newFilename;
 
-					// Get ext
-					const fileExtension = fileName.slice(-4);
+			// Check image type
+			if (fileExtension === ".jpg" || fileExtension === ".png" ) {
+				// new filename
+				newFilename = fileName.substring(0, fileName.length - 4)
+						+ "-edited.jpg";
+			}
+			
+			const can = "canvas_" + id;
+			const canvas = document.getElementById(can);
+			console.log(can,canvas);
+			// Call download
+			download(canvas, newFilename); 
+		});
+	};
 
-					// Init new filename
-					var newFilename;
-
-					// Check image type
-					if (fileExtension === ".jpg" || fileExtension === ".png") {
-						// new filename
-						newFilename = fileName
-								.substring(0, fileName.length - 4)
-								+ "-edited.jpg";
-					}
-
-					// Call download
-					download(canvas, newFilename);
-				});
-			});
-	
 	// Download
 	function download(canvas, filename) {
-	  // Init event
-	  let e;
-	  // Create link
-	  const link = document.createElement("a");
+		// Init event
+		let e;
+		// Create link
+		const link = document.createElement("a");
 
-	  // Set props
-	  link.download = filename;
-	  link.href = canvas.toDataURL("image/jpeg", 0.8);
-	  // New mouse event
-	  e = new MouseEvent("click");
-	  // Dispatch event
-	  link.dispatchEvent(e);
-	}
+		// Set props
+		link.download = filename;
+		link.href = canvas.toDataURL("image/jpeg", 0.8);
+		// New mouse event
+		e = new MouseEvent("click");
+		// Dispatch event
+		link.dispatchEvent(e);
+	};
 </script>
