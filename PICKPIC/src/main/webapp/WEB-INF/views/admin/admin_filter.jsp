@@ -196,8 +196,6 @@
 						$('#d-postDate').html(element['f_post_date']);
 						$('#d-changeDate').html(element['f_change_date']);
 						
-// 						$('#userimage').attr("src",element["ppa_profile_path"]);
-
 						if (element['f_sale_yn'] == "Y") {
 							$('#d-typeSaleStart').css('display', 'inline');
 							$('#d-typeSaleStop').css('display', 'none');

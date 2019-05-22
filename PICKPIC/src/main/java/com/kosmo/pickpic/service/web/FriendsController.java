@@ -509,23 +509,18 @@ public class FriendsController {
 	// 앨범다운
 	@RequestMapping("/friends/albumDown.pic")
 	public String albumDown() throws Exception {
-		
 		return "friends/albumDown.tiles";
 	}
-	//앨범다운-팝업
+	//앨범다운-옵션
 	@RequestMapping("/friends/albumEditor.pic")
 	public String albumOption(@RequestParam Map map, Model model,Principal principal) throws Exception {
 		
 		map.put("ppa_email",principal.getName());
-		
 		List<Map> list_filter=dao_filter.albumDownFilterName(map);
-//		System.out.println(list_filter.toString());
-		
 		model.addAttribute("list_filter", list_filter);
-		
-//		System.out.println("ddd"+list_filter.toString());
 		return "friends/albumEditor.tiles";
 	}
+	
 	
 	//연습
 	@RequestMapping("/friends/search.pic")
