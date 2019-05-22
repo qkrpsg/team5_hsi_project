@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.PickpicAccountService;
-import com.kosmo.pickpic.service.web.MailUtils;
-import com.kosmo.pickpic.service.web.TempKey;
+import com.kosmo.pickpic.util.MailUtils;
+import com.kosmo.pickpic.util.TempKey;
 
 //
 

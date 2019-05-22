@@ -68,4 +68,16 @@ public class AdminServiceImpl implements AdminService {
 		
 		dao.delete2(map);
 	}
+	@Override
+	public int userTotal() {
+		return dao.userTotal();
+	}
+	@Override
+	public List<PickpicAccountDTO> selectUser(Map map) {
+		return dao.selectUser(map);
+	}
+	@Override
+	public FilterDTO oneFilter(Map map) {
+		return dao.oneFilter(map);
+	}
 }

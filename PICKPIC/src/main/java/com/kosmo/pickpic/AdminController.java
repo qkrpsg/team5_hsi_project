@@ -3,6 +3,7 @@ package com.kosmo.pickpic;
 import java.net.URLEncoder;
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.NoticeDTO;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
@@ -36,8 +37,8 @@ import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
-import com.kosmo.pickpic.service.web.DTOUtil;
-import com.kosmo.pickpic.service.web.PagingUtil;
+import com.kosmo.pickpic.util.DTOUtil;
+import com.kosmo.pickpic.util.PagingUtil;
 
 @Controller
 public class AdminController {
@@ -68,65 +69,71 @@ public class AdminController {
 	//회원관리
 	@RequestMapping(value = "/admin/users.pic")
 	public String users(Model model) throws Exception {
-		model.addAttribute("user", adminService.pickPicAccountAll());
-		model.addAttribute("total", adminService.pickPicAccountAll().size());
+		List<PickpicAccountDTO> beforeUser = adminService.pickPicAccountAll();
+		List<PickpicAccountDTO> AfterUser = new Vector<PickpicAccountDTO>();
+		
+		for(PickpicAccountDTO record : beforeUser) {
+			record.setLh_ld(DTOUtil.getStringDate(record.getLh_ld(), "yyyy-MM-dd HH:mm:ss", "yy/MM/dd"));
+			AfterUser.add(record);
+		}
+		
+		model.addAttribute("user", AfterUser);
+		model.addAttribute("total", AfterUser.size());
 		return "admin/admin_users.admin";
 	}//users
 	
+	//유저 상세보기 aJax
 	@ResponseBody
-    @RequestMapping(value="/admin/detail.do",produces="text/html; charset=UTF-8")
-    public String ttest(@RequestParam Map map,Model model) throws Exception{
+    @RequestMapping(value="/admin/userDetail.do",produces="text/html; charset=UTF-8")
+    public String userDetail(@RequestParam Map map) throws Exception{
        
        List<Map> user = new Vector<Map>();  
        user.add(DTOUtil.convertDTOToMap(adminService.oneUser(map)));
        
-//       List<Map> user = new Vector<Map>();   
-//       Map record = new HashMap();
-//       record.put("ppa_profile_path", onePpa.getPpa_profile_path());
-//       record.put("ppa_email", onePpa.getPpa_email());
-//       record.put("ppa_nickname", onePpa.getPpa_nickname());
-//       record.put("ppa_join_date", onePpa.getPpa_join_date().toString().substring(0, 10));
-//       record.put("lh_ld", onePpa.getLh_ld());
-//       user.add(record);
-       
-       System.out.println(JSONArray.toJSONString(user).toString());
+       System.out.println(JSONArray.toJSONString(user));
        
        return JSONArray.toJSONString(user);
     }
 	
-	@RequestMapping(value="/admin/deg.do",produces="text/html; charset=UTF-8")
-	//@RequestMapping("/admin/deg.pic")
-	public String userDetail(@RequestParam Map map) throws Exception{
-		System.out.println("찍히나요?"+map.toString());
-		
-		
-		
-		PickpicAccountDTO oneUser = adminService.oneUser(map);
-		
-		List<Map> user = new Vector<Map>();	
-		Map record = new HashMap();
-		record.put("ppa_email", oneUser.getPpa_email());
-		record.put("ppa_nickname", oneUser.getPpa_nickname());
-		record.put("ppa_join_date", oneUser.getPpa_join_date().toString().substring(0, 10));
-		record.put("ppa_type", oneUser.getPpa_type());
-		record.put("ppa_profile_path", oneUser.getPpa_profile_path());
-		user.add(record);
-		System.out.println(JSONArray.toJSONString(user));
+//	//유저관리 게시판 페이징
+//	@ResponseBody
+//	@RequestMapping(value="/admin/userPaging.do", produces="text/html; charset=UTF-8")
+//	public String userPaging(@RequestParam Map map) throws Exception{
 //		
-//		JSONObject json = new JSONObject();
-//		json.put("user", record);
-//		System.out.println(json.toJSONString());
-		
-//		json = new JSONObject();
-//		json.put("ppa_email", oneUser.getPpa_email());
-//		json.put("ppa_nickname", oneUser.getPpa_nickname());
-//		json.put("ppa_join_date", oneUser.getPpa_join_date());
-//		json.put("ppa_type", oneUser.getPpa_type());
-//		json.put("ppa_profile_path", oneUser.getPpa_profile_path());
-//		System.out.println(json.toJSONString());
-		return JSONArray.toJSONString(user);
-//		return json.toJSONString();
-	}//emailCheck
+//		System.out.println("nowPage : " + map.get("nowPage").toString());
+//		//페이징을 위한 로직 시작]
+//		//전체 레코드수
+//		int totalRecordCount= adminService.userTotal();		
+//		//전체 페이지수]
+//		int totalPage=(int)Math.ceil((double)totalRecordCount/10);		
+//		//시작 및 끝 ROWNUM구하기]
+//		int nowPage = Integer.parseInt(map.get("nowPage").toString());
+//		int start =(nowPage-1)*10+1;
+//		int end   =nowPage*10;
+//		map.put("start",start);
+//		map.put("end", end);
+//		
+//		List<PickpicAccountDTO> user = adminService.selectUser(map);
+//		Map record = new HashMap();
+//		
+//		List<Map> list = new Vector<Map>();
+//		for(PickpicAccountDTO dto : user) {
+//			record = DTOUtil.convertDTOToMap(dto);
+//			list.add(record);
+//		}
+//		
+//		record.put("list", list);
+//		record.put("nowPage", nowPage);
+//		record.put("pageSize", 10);
+//		record.put("totalRecordCount", totalRecordCount);
+//
+//		List<Map> paging = new Vector<Map>();
+//		paging.add(record);
+//		
+//		System.out.println(JSONArray.toJSONString(paging));
+//		return JSONArray.toJSONString(paging);
+//	}
+	
 	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")
@@ -136,13 +143,32 @@ public class AdminController {
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
-	public String filter(@RequestParam Map map) throws Exception{
+	public String filter(Model model) throws Exception{
+		List<FilterDTO> BeforefilterList = adminService.filterAll();
+		List<FilterDTO> AfterfilterList = new Vector<FilterDTO>();
+		
+		 for(FilterDTO record : BeforefilterList) {
+			 AfterfilterList.add(DTOUtil.reName(record));
+		 }
+		
+		model.addAttribute("filter", AfterfilterList);
+		model.addAttribute("total", AfterfilterList.size());
+		
 		return "admin/admin_filter.admin";
 	}//filter
 	
-	
-	
-	
+	//유저 상세보기 aJax
+	@ResponseBody
+	@RequestMapping(value="/admin/filterDetail.do",produces="text/html; charset=UTF-8")
+	public String filterDetail(@RequestParam Map map) throws Exception{
+		FilterDTO filter = adminService.oneFilter(map);
+		filter = DTOUtil.reName(filter);
+		
+		List<Map> user = new Vector<Map>();  
+		user.add(DTOUtil.convertDTOToMap(filter));
+		
+		return JSONArray.toJSONString(user);
+	}
 	
 	//픽로드관리
 	@RequestMapping(value = "/admin/pickRoad.pic")

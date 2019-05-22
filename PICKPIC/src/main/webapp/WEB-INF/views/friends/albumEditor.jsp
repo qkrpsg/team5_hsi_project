@@ -12,6 +12,12 @@
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
+
+<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
+
+
 <!-- albumEditor.jsp -->
 <!-- 모달 창 시작-->
 <div class="modal" id="option_modal">
@@ -74,7 +80,7 @@
       <ul class="nav navbar-nav" style="float: right;">
          <li><a href="#"><span class="glyphicon glyphicon-picture">&nbsp;</span><span id="imgCount">0 / 0</span>
               </a></li>
-         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+         <li><a href="#" id="svae_btn"><span class="glyphicon glyphicon-log-in"></span>
                저장하기</a></li>
       </ul>
    </div>
@@ -382,23 +388,37 @@ for(var i = 0; i< ){
 
 	/* 필터 선택시 이미지에 필터 적용*/
 	function filterOn(item) {
-		console.log("item: "+item);
 		var filterName = $(item).attr("id");
-		var i=0;
 		$.each(selectArray, function(index, id) {
+<<<<<<< HEAD
+			var set_class = $('#set_'+id).attr('class');
+			var class_length = $('#set_'+id)[0].classList.length;
+			
+			if(class_length <= 2){
+				$('div[id="set_' + id + '"]').toggleClass(filterName,true);
+			} else{
+				var class_before = $('#set_'+id)[0].classList[2];
+				if(class_before==filterName){
+					/* 이미 가지고있는경우 삭제 */
+					$('div[id="set_' + id + '"]').toggleClass(filterName,false);
+				}
+				else{
+					$('div[id="set_' + id + '"]').removeClass(class_before);
+					$('div[id="set_' + id + '"]').addClass(filterName);
+				}
+=======
 			console.log('아이디는?'+id);
 			var set_class =$('#set_'+id).attr('class');
 			console.log("1: "+set_class);
 			 if(set_class.indexOf(filterName)==-1){
 				$('div[id="set_' + id + '"]').addClass(filterName);
 				console.log("2: "+set_class);
+>>>>>>> branch 'L2' of https://github.com/qkrpsg/team5_hsi_project.git
 			}
-			else {
-				$('div[id="set_' + id + '"]').removeClass(filterName);
-				console.log("3: "+set_class);
-			} 
-			 console.log("4: "+set_class);
+				 
 		});
 
 	}
+	
+	
 </script>

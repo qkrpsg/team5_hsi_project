@@ -5,14 +5,29 @@ public class FilterDTO {
 	private String f_id;
 	private String f_name;
 	private String f_price;
-	private java.sql.Date f_post_date;
-	private java.sql.Date f_change_date;
+	private String f_post_date;
+	private String f_change_date;
 	private String f_reason;
 	private String f_sale_yn;
 	private String f_event_yn;
 	private String f_index_number;
 	
+	private String totalFilter;
+	private String filterName;
+
 	//getter,setter
+	public String getFilterName() {
+		return filterName;
+	}
+	public void setFilterName(String filterName) {
+		this.filterName = filterName;
+	}
+	public String getTotalfilter() {
+		return totalFilter;
+	}
+	public void setTotalfilter(String totalfilter) {
+		this.totalFilter = totalfilter;
+	}
 	public String getF_id() {
 		return f_id;
 	}
@@ -31,16 +46,16 @@ public class FilterDTO {
 	public void setF_price(String f_price) {
 		this.f_price = f_price;
 	}
-	public java.sql.Date getF_post_date() {
+	public String getF_post_date() {
 		return f_post_date;
 	}
-	public void setF_post_date(java.sql.Date f_post_date) {
+	public void setF_post_date(String f_post_date) {
 		this.f_post_date = f_post_date;
 	}
-	public java.sql.Date getF_change_date() {
+	public String getF_change_date() {
 		return f_change_date;
 	}
-	public void setF_change_date(java.sql.Date f_change_date) {
+	public void setF_change_date(String f_change_date) {
 		this.f_change_date = f_change_date;
 	}
 	public String getF_reason() {
