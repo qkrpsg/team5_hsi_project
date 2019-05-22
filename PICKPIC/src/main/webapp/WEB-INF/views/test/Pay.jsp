@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+
 <link href="<c:url value='/css/Pay.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/Pay.js'/>"></script>
 <!-- iamport.payment.js -->
@@ -20,30 +21,34 @@
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
+				<c:forEach var="user" items="${user }" varStatus="loop">
 					<tr>
-						<td>이름</td>
-						<td>이용수</td>
+						<td>닉네임</td>
+						<td>${user.PPA_NICKNAME }</td>
 					</tr>
 					<tr>
 						<td>이메일</td>
-						<td>dldasdsa@naver.com</td>
+						<td>${user.PPA_EMAIL }</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td>휴대폰 번호</td>
 						<td>010-8787-4852</td>
-					</tr>
+					</tr> -->
+				</c:forEach>
+				<c:forEach var="filter" items="${filter }" varStatus="loop">
 					<tr>
 						<td>상품명</td>
-						<td>강아지 간식1</td>
+						<td>${filter.F_NAME }</td>
 					</tr>
 					<tr>
 						<td>상품코드</td>
-						<td>QQ-QQ-00001</td>
+						<td>${filter.F_ID }${loop.index }</td>
 					</tr>
 					<tr>
 						<td>상품가격</td>
 						<td>1012 원</td>
 					</tr>
+				</c:forEach>
 					<tr>
 						<td>결제방법</td>
 						<td class="check" style="">
@@ -72,11 +77,11 @@
 									class="type-selector-label__text">신용/체크카드</span>
 							</label></li>
 
-							<div class="wrap">
-								<div class="cellphone-payment pay-type-content"
+							<!--<div class="wrap">-->
+								<!--<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
 									<label for="cellphoneTelecom" class="cell_label">통신사 종류</label>
-									<select name="cellphoneTelecom" id="cellphoneTelecom"
+									 <select name="cellphoneTelecom" id="cellphoneTelecom"
 										class="payment-cellphone__select">
 										<option value="" selected="">선택</option>
 										<option value="SKT" data-limitmsg="" data-messagecolor=""
@@ -85,13 +90,15 @@
 											data-paymentdisabled="false">KT</option>
 										<option value="LG" data-limitmsg="" data-messagecolor=""
 											data-paymentdisabled="false">LG</option>
-									</select>
+									</select> 
 								</div>
+								-->
 								<!-- 통신사 박스 -->
 
-								<div class="cellphone-payment pay-type-content"
+								<!--<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
-									<label for="depositBank" class="cell_label">입금은행</label> <select
+									<label for="depositBank" class="cell_label">입금은행</label> 
+									 <select
 										id="depositBank" class="" name="depositBank">
 										<option value="" selected="" data-limitmsg="">선택</option>
 										<option value="NH" data-limitmsg="" data-messagecolor=""
@@ -122,7 +129,7 @@
 											data-paymentdisabled="false">수협은행</option>
 										<option value="CITI" data-limitmsg="" data-messagecolor=""
 											data-paymentdisabled="false">씨티은행</option>
-									</select>
+									</select> 
 
 									<li class="payBox-section  pay-type-section"><span
 										class="line-title">입금기한</span>
@@ -130,11 +137,12 @@
 											<span class="depositDueTxt">20</span>
 										</div></li>
 
-								</div>
+								</div>-->
 								<!-- 무통장  -->
-								<div class="cellphone-payment pay-type-content"
+								<!--<div class="cellphone-payment pay-type-content"
 									data-controller="CellphonePayment" data-controller-data="{}">
-									<label for="cardTypeSelect" class="cell_label">카드종류</label> <select
+									<label for="cardTypeSelect" class="cell_label">카드종류</label>
+									  <select
 										name="cardCode" id="cardTypeSelect">
 										<option value="" selected="" data-limitmsg="">선택</option>
 										<option value="BC" data-limitmsg="" data-messagecolor=""
@@ -173,8 +181,10 @@
 									</select>
 
 								</div>
-								<!-- 카드 결제 -->
-							</div> <!-- wrap end -->
+								 카드 결제 -->
+							<!--</div>  wrap end -->
+							
+							
 						</td>
 
 					</tr>
@@ -186,8 +196,7 @@
 				</div>
 
 				<button type="button" id="paymentBtn">
-					<img
-						src="//image12.coupangcdn.com/image/rocketpay-order-image/pc/btn_payment.gif"
+					<img src="//image12.coupangcdn.com/image/rocketpay-order-image/pc/btn_payment.gif"
 						type="submit" width="260" height="60" alt="결제하기">
 				</button>
 			</div>

@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.FilterService;
 
 @Repository
@@ -20,5 +21,16 @@ public class FilterDAO implements FilterService{
 		// TODO Auto-generated method stub
 		return template.selectList("AlbumDownFilterName",map);
 	}
+
+	@Override
+	public FilterDTO selectFilter_buy(Map map) {
+		FilterDTO user =  template.selectOne("SelectFilter_buy",map);
+		//FilterDTO dto = new FilterDTO();
+		
+		
+		
+		return user;
+	}
+	
 
 }

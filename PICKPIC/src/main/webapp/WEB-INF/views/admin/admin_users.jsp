@@ -180,7 +180,7 @@
 			var email = $(this).html();
 			console.log(typeof email);
 			$.ajax({
-				url : '<c:url value="/admin/detail.do"/>',
+				url : '<c:url value="/admin/userDetail.do"/>',
 				data : {
 					"ppa_email" : email,
 					"${_csrf.parameterName}" : "${_csrf.token}"

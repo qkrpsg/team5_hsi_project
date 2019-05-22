@@ -116,4 +116,18 @@ public class AdminDAO implements AdminService {
 	public List<PickpicAccountDTO> selectUser(Map map) {
 		return template.selectList("adminSelectUser", map);
 	}
+	@Override
+	public FilterDTO oneFilter(Map map) {
+		FilterDTO filter = template.selectOne("adminOneFilter", map);
+		try {
+			filter.getTotalFilter().length();
+		}catch(Exception e) {
+			filter.setTotalFilter("0");
+		}
+		return filter;
+	}
+	@Override
+	public Boolean filterChange(Map map) {
+		return template.update("adminFilterChange", map) == 0 ? false : true ;
+	}
 }

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import com.kosmo.pickpic.service.FilterDTO;
+
 public class DTOUtil {
 	
 	//JSONObject or JSONArray를 쓰기 전에 
@@ -88,5 +90,15 @@ public class DTOUtil {
       
       return result;
    }////getStringDate
+   
+   //필터 이름 재지정
+//   public static FilterDTO reName(FilterDTO filter){
+//	   if(filter.getF_name().split("--").length > 1)
+//		   filter.setFilterName(filter.getF_name().split("--")[1].toUpperCase());
+//	   else
+//		   filter.setFilterName(filter.getF_name());
+//	   
+//	   return filter;
+//   }
 	
 }//class

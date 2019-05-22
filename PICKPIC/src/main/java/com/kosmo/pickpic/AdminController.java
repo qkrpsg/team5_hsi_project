@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.NoticeDTO;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
@@ -83,8 +84,8 @@ public class AdminController {
 	
 	//유저 상세보기 aJax
 	@ResponseBody
-    @RequestMapping(value="/admin/detail.do",produces="text/html; charset=UTF-8")
-    public String detail(@RequestParam Map map,Model model) throws Exception{
+    @RequestMapping(value="/admin/userDetail.do",produces="text/html; charset=UTF-8")
+    public String userDetail(@RequestParam Map map) throws Exception{
        
        List<Map> user = new Vector<Map>();  
        user.add(DTOUtil.convertDTOToMap(adminService.oneUser(map)));
@@ -142,13 +143,44 @@ public class AdminController {
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
-	public String filter(@RequestParam Map map) throws Exception{
+	public String filter(Model model) throws Exception{
+		List<FilterDTO> list = adminService.filterAll();
+		
+		model.addAttribute("filter", list);
+		model.addAttribute("total", list.size());
+		
 		return "admin/admin_filter.admin";
 	}//filter
 	
+	//필터 상세보기 aJax
+	@ResponseBody
+	@RequestMapping(value="/admin/filterDetail.do",produces="text/html; charset=UTF-8")
+	public String filterDetail(@RequestParam Map map) throws Exception{
+		List<Map> user = new Vector<Map>();  
+		user.add(DTOUtil.convertDTOToMap(adminService.oneFilter(map)));
+		
+		return JSONArray.toJSONString(user);
+	}
 	
-	
-	
+	//필터 가격 변경
+	@ResponseBody
+	@RequestMapping(value="/admin/filterPriceChange.do",produces="text/html; charset=UTF-8")
+	public String filterPriceChange(@RequestParam Map map) throws Exception{
+		Map result = new HashMap();
+		List<Map> filter = new Vector<Map>();  
+		
+		if(!adminService.filterChange(map)) {
+			result.put("result", "실패");
+		}
+		else {
+			result = DTOUtil.convertDTOToMap(adminService.oneFilter(map));
+			result.put("result", "성공");
+		}
+		
+		filter.add(result);
+		System.out.println(JSONArray.toJSONString(filter));
+		return JSONArray.toJSONString(filter);
+	}
 	
 	//픽로드관리
 	@RequestMapping(value = "/admin/pickRoad.pic")
@@ -291,8 +323,7 @@ public class AdminController {
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
 	public String qna(@RequestParam Map map,Model model) {
-		List<QuestionDTO> list = questionService.selectList(map);
-		
+		List<QuestionDTO> list = questionService.selectList(map);	
 		model.addAttribute("list",list);
 		
 		map.put("admin", "문의관리");
@@ -447,8 +478,45 @@ public class AdminController {
 		return "/admin/admin_notice.admin";
 	}
 	
+	//문의사항 답변처리
+	@ResponseBody
+	@RequestMapping(value="/admin/admin_qna_aqinsert.pic")
+	public String qna_aqinsert(@RequestParam Map map,Model model) {
+		System.out.println("SF"+map);
+		questionService.aqinsert(map);
+		List<QuestionDTO> list = questionService.selectList(map);	
+		model.addAttribute("list",list);
+		
+		return JSONArray.toJSONString(list);
+	}
 	
-	
+	//문의사항 삭제처리
+	@ResponseBody
+	@RequestMapping(value="/admin/admin_qna_delete.pic")
+	public String qna_delete(@RequestParam Map map,Model model) {
+		System.out.println(map);
+		questionService.delete(map);
+		List<QuestionDTO> list = questionService.selectList(map);	
+		model.addAttribute("list",list);
+		
+		
+		
+		return JSONArray.toJSONString(list);
+		
+		//return "/admin/admin_qna.admin";
+	}
+	@ResponseBody
+	@RequestMapping(value="/admin/admin_qna_update.pic")
+	public String qna_update(@RequestParam Map map,Model model,Principal principal) throws Exception {
+		map.put("ppa_email", principal.getName());
+		System.out.println("aa"+map);
+		questionService.aqupdate(map);
+		List<QuestionDTO> list = questionService.selectList(map);	
+		model.addAttribute("list",list);
+		
+		
+		return JSONArray.toJSONString(list);
+	}
 	
 	//ETC
 	//휴지통
