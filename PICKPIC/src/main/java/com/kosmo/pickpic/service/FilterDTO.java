@@ -15,6 +15,35 @@ public class FilterDTO {
 	private String totalFilter;
 	private String filterName;
 
+	//편의성
+	private String ppa_email;
+	private String ppa_nickname;
+	private String ppa_index;
+
+	public String getTotalFilter() {
+		return totalFilter;
+	}
+	public void setTotalFilter(String totalFilter) {
+		this.totalFilter = totalFilter;
+	}
+	public String getPpa_email() {
+		return ppa_email;
+	}
+	public void setPpa_email(String ppa_email) {
+		this.ppa_email = ppa_email;
+	}
+	public String getPpa_nickname() {
+		return ppa_nickname;
+	}
+	public void setPpa_nickname(String ppa_nickname) {
+		this.ppa_nickname = ppa_nickname;
+	}
+	public String getPpa_index() {
+		return ppa_index;
+	}
+	public void setPpa_index(String ppa_index) {
+		this.ppa_index = ppa_index;
+	}
 	//getter,setter
 	public String getFilterName() {
 		return filterName;

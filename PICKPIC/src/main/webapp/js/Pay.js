@@ -16,8 +16,8 @@ $(document).ready(function(){
 	
 	/*$('select').change(function(){
 		//val = $('.pay-type-content:eq('+a+')').find('select').val();
-		
 	});*/
+	
 	$('#paymentBtn').click(function(){
 		
 		console.log(val);
@@ -28,23 +28,25 @@ $(document).ready(function(){
 		IMP.request_pay({ // param
 		    pg: "html5_inicis", //   mobilians  html5_inicis
 		    pay_method: val, //뭐로 결제? vbank card phone 결제 방법
-		    merchant_uid: "ORD20180131-000011", //뭔지 모르겠다 결제코드 상품번호같은거 + new Date().getTime()
+		    merchant_uid: "안녕하세요", //뭔지 모르겠다 결제코드 상품번호같은거 + new Date().getTime()
 		    
 		    
 		   // name: "결제 테스트",
 		    amount: 1, //아마 가격     paid_amount 받을 계좌
-		  /*  buyer_email: "dldydtnsladk@naver.com",
+		    buyer_email: "dldydtnsladk@naver.com",
 		    buyer_name: "이용수",
 		    buyer_tel: "010-3345-9431",
 		    buyer_addr: "서울특별시 노원구 공릉동",
 		    buyer_postcode: "01181" //우편번호 ?
-*/		}, function (rsp) { // callback
+		}, function (rsp) { // callback
 		    if (rsp.success) {
 		    	 var msg = '결제가 완료되었습니다.';
 				msg += '고유ID : ' + rsp.imp_uid;
 				msg += '상점 거래ID : ' + rsp.merchant_uid;
 				msg += '결제 금액 : ' + rsp.paid_amount;
 				msg += '카드 승인번호 : ' + rsp.apply_num;
+				
+				console.log();
 				console.log(msg); 
 				console.log("hi");
 		    } else {
