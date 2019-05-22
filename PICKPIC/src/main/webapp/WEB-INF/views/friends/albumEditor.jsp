@@ -383,21 +383,23 @@ for(var i = 0; i< ){
 
 	/* 필터 선택시 이미지에 필터 적용*/
 	function filterOn(item) {
-		console.log("item: "+item);
 		var filterName = $(item).attr("id");
+		var tempName;
 		var i=0;
 		$.each(selectArray, function(index, id) {
-			var set_class =$('#set_'+id).attr('class');
-			console.log("1: "+set_class);
-			 if(set_class.indexOf(filterName)==-1){
+			var set_class = $('#set_'+id).attr('class');
+			var class_length = $('#set_'+id).lenght;
+			console.log(filterName);
+			console.log(set_class);
+			console.log(class_length);
+			
+			 /* if(set_class.indexOf(filterName)==-1){
 				$('div[id="set_' + id + '"]').addClass(filterName);
-				console.log("2: "+set_class);
 			}
-			else {
+			else if(set_class.indexOf(filterName)!=-1){
 				$('div[id="set_' + id + '"]').removeClass(filterName);
-				console.log("3: "+set_class);
-			} 
-			 console.log("4: "+set_class);
+			} */
+			 
 		});
 
 	}

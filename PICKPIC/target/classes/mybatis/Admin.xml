@@ -30,6 +30,13 @@
 	<select id="adminUser" resultType="PickPicAccountDTO">
 		SELECT * FROM pickpic_account ORDER BY ppa_index DESC
 	</select>
+	<select id="adminSelectUser" parameterType="java.util.Map" resultType="PickPicAccountDTO">
+		SELECT * FROM (
+			SELECT ppa.*, ROWNUM r FROM (
+				SELECT * FROM pickpic_account ORDER BY ppa_index DESC) 
+			ppa) 
+		WHERE ROWNUM BETWEEN #{start} AND #{end}
+	</select>
 	<select id="adminFilter" resultType="FilterDTO">
 		SELECT * FROM filter ORDER BY f_index DESC
 	</select>
@@ -76,6 +83,9 @@
 	</select>
 	<select id="adminUserClass" parameterType="java.util.Map" resultType="PickpicAccountDTO">
 		SELECT as_class FROM auth_security WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	<select id="adminUserTotal" resultType="int">
+		SELECT COUNT(*) total FROM pickpic_account
 	</select>
 	
 	<!-- 관리자 픽로드 관리자게시판 삭제 부분입니다. adminPickAccountRoadDelete -->

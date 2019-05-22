@@ -6,21 +6,31 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 	<!-- 보안과 관련된 설정파일 -->
 	<security:http auto-config="true" use-expressions="true">
-		<security:intercept-url pattern="/**" access="permitAll" />
-		<security:intercept-url pattern="/pickpic/**" access="hasRole('GUEST')" />
-		<security:intercept-url pattern="/pickpic/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/pickpic/*/*" access="hasRole('ADMIN')" />
-	
-		<security:form-login
-			login-page="/user/Login.pic"
-			login-processing-url="/user/LoginProcess.pic"
-			default-target-url="/user/LoginProcess.pic"
-			authentication-failure-url="/user/LoginProcessF.pic"
-			username-parameter="ppa_email" 
-			password-parameter="ppa_password" />
+		<security:intercept-url pattern="/friends/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<!-- 보안 -->
 		<security:csrf disabled="false" />
 		
-		<security:session-management invalid-session-url="/user/Login.pic">
+		<!-- 로그인 -->
+		<security:form-login
+			login-page="/user/Login.pic"
+			username-parameter="ppa_email" 
+			password-parameter="ppa_password" 
+			login-processing-url="/user/LoginProcess.pic"
+			default-target-url="/user/LoginProcess.pic"
+			authentication-failure-url="/user/LoginProcessF.pic"/>
+
+		<!-- 로그인에 성공했으나 권한이 없는경우 -->
+		<security:access-denied-handler error-page="/user/EmailProcessF.pic" />
+		
+		<!-- 로그아웃 -->
+		<security:logout 
+			logout-url="/logout" 
+			logout-success-url="/home.pic"
+			invalidate-session="true" />
+		
+		<security:session-management 
+			invalid-session-url="/user/Login.pic">
 			<security:concurrency-control max-sessions="1" expired-url="/user/Login.pic" />
 		</security:session-management>
 		
