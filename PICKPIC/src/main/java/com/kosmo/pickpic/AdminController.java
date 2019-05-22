@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.NoticeDTO;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
@@ -83,8 +84,8 @@ public class AdminController {
 	
 	//유저 상세보기 aJax
 	@ResponseBody
-    @RequestMapping(value="/admin/detail.do",produces="text/html; charset=UTF-8")
-    public String detail(@RequestParam Map map,Model model) throws Exception{
+    @RequestMapping(value="/admin/userDetail.do",produces="text/html; charset=UTF-8")
+    public String userDetail(@RequestParam Map map) throws Exception{
        
        List<Map> user = new Vector<Map>();  
        user.add(DTOUtil.convertDTOToMap(adminService.oneUser(map)));
@@ -142,13 +143,32 @@ public class AdminController {
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
-	public String filter(@RequestParam Map map) throws Exception{
+	public String filter(Model model) throws Exception{
+		List<FilterDTO> BeforefilterList = adminService.filterAll();
+		List<FilterDTO> AfterfilterList = new Vector<FilterDTO>();
+		
+		 for(FilterDTO record : BeforefilterList) {
+			 AfterfilterList.add(DTOUtil.reName(record));
+		 }
+		
+		model.addAttribute("filter", AfterfilterList);
+		model.addAttribute("total", AfterfilterList.size());
+		
 		return "admin/admin_filter.admin";
 	}//filter
 	
-	
-	
-	
+	//유저 상세보기 aJax
+	@ResponseBody
+	@RequestMapping(value="/admin/filterDetail.do",produces="text/html; charset=UTF-8")
+	public String filterDetail(@RequestParam Map map) throws Exception{
+		FilterDTO filter = adminService.oneFilter(map);
+		filter = DTOUtil.reName(filter);
+		
+		List<Map> user = new Vector<Map>();  
+		user.add(DTOUtil.convertDTOToMap(filter));
+		
+		return JSONArray.toJSONString(user);
+	}
 	
 	//픽로드관리
 	@RequestMapping(value = "/admin/pickRoad.pic")

@@ -19,7 +19,7 @@
 	</select>
 	
 	<!-- 대시보드 게시판 표시 -->
-	<!-- 유자와  -->
+	<!--  -->
 	<select id="adminDashUser" resultType="PickpicAccountDTO">
 		SELECT * FROM (
 			SELECT ppa.*, lh_ld FROM 
@@ -34,7 +34,7 @@
 			SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) 
 		lh ON ppa.ppa_id=lh.ppa_id ORDER BY ppa_index DESC
 	</select>
-	<!-- start부터 end까지 유저 -->
+	<!-- start부터 end까지 유저 반환 -->
 	<select id="adminSelectUser" parameterType="java.util.Map" resultType="PickPicAccountDTO">
 		SELECT * FROM (
 			SELECT ppa.*, ROWNUM r FROM (
@@ -106,6 +106,22 @@
 		SELECT COUNT(*) total FROM pickpic_account
 	</select>
 	
+	
+	<!-- 필터 관리 -->
+	<!-- 전체 필터 반환 -->
+	<select id="adminOneFilter" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT f.*, fs.totalfilter FROM (
+			SELECT f_id, count(f_id) totalFilter FROM filter_storage GROUP BY f_id) fs 
+		FULL OUTER JOIN filter f ON f.f_id=fs.f_id WHERE f_name=#{f_name} ORDER BY f_index DESC
+	</select>
+	<!-- start부터 end까지 필터 반환 -->
+	<select id="adminSelectFilter" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT * FROM(
+			SELECT f.*, fs.totalfilter, ROWNUM r FROM (
+				SELECT f_id, count(f_id) totalfilter FROM filter_storage GROUP BY f_id) fs 
+			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY f_index DESC) 
+		WHERE ROWNUM BETWEEN #{start} AND #{end}
+	</select>
 	
 	
 	<!-- 관리자 픽로드 관리자게시판 삭제 부분입니다. adminPickAccountRoadDelete -->

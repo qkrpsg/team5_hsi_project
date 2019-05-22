@@ -76,4 +76,8 @@ public class AdminServiceImpl implements AdminService {
 	public List<PickpicAccountDTO> selectUser(Map map) {
 		return dao.selectUser(map);
 	}
+	@Override
+	public FilterDTO oneFilter(Map map) {
+		return dao.oneFilter(map);
+	}
 }
