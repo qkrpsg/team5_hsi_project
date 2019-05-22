@@ -82,6 +82,15 @@
 	color: #eeeeee;
 }
 
+.name_text_center {
+	    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    font-size: 3.5em;
+    color: black;
+}
+
 
 
 /* 필터명 나열 */

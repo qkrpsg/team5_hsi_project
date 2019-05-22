@@ -206,14 +206,14 @@
 						$('#d-question').html(element['totalquestion']);
 
 						console.log(element['ppa_type']);
-						if (element['as_class'] == "ADMIN") {
+						if (element['as_class'] == "ROLE_ADMIN") {
 							console.log('넌관리자야');
-							$('#d-type-admin').css('display', 'block');
+							$('#d-type-admin').css('display', 'inline');
 							$('#d-type-pickpic').css('display', 'none');
 						} else {
 							console.log('넌사용자야');
 							$('#d-type-admin').css('display', 'none');
-							$('#d-type-pickpic').css('display', 'block');
+							$('#d-type-pickpic').css('display', 'inline');
 						}
 					});
 				},
