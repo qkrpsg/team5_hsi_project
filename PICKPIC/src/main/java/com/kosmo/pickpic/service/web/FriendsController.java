@@ -121,14 +121,14 @@ public class FriendsController {
 		map.put("ppa_email",principal.getName());
 		//나중에 map.get("f_name");
 		map.put("f_name", "vintage");
-		List<Map> filter = dao_filter.selectFilter_buy(map);
+		/*List<Map> filter = dao_filter.selectFilter_buy(map);
 		  List<Map> user = dao_filter.selectFilter_buy2(map);
 	
 		
 		System.out.println("filter"+ filter.toString());
 		System.out.println("user"+ user.toString());
 		model.addAttribute("filter",filter);
-		model.addAttribute("user",user);
+		model.addAttribute("user",user);*/
 		
 		
 		
