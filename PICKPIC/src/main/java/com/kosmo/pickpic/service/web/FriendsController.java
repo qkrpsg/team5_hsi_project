@@ -1,6 +1,10 @@
 package com.kosmo.pickpic.service.web;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -14,6 +18,7 @@ import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -22,15 +27,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewRequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBodyAdvice;
 
+import com.amazonaws.services.appstream.model.Application;
 import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
@@ -41,6 +52,8 @@ import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
+
+
 
 @Controller
 public class FriendsController {
@@ -66,6 +79,8 @@ public class FriendsController {
 		//1 리스트
 		//2 맵
 		//3 맵 -> 작성 페이지
+		//4 다시 리스트
+		
 		
 		return "friends/place_map.tiles";
 		//return "friends/place.tiles";//나중에 이걸로 바꾸자
@@ -90,20 +105,28 @@ public class FriendsController {
 		return "friends/place_write.tiles";//작성 완료 후 다시 리스트로 
 	}// place
 	
-	//이제 DB에 저장하고 리스트 페이지로 이동
-	@RequestMapping("/friends/place_wrte.pic")
+	//이제 DB에 저장하고 리스트 페이지로 이동 file 저장
+	@RequestMapping("/friends/file.pic")
 	public String place_list(@RequestParam Map map, Model model,Principal principal) throws Exception {
-		//여기서 작업 시작
-		map.put("ppa_email",principal.getName());
-		List<Map> list_filter=dao_filter.albumDownFilterName(map);
-		model.addAttribute("list_filter", list_filter);
-		
-		System.out.println(map.toString());
-		model.addAttribute("ppb_latitude",map.get("ppb_latitude"));
-		model.addAttribute("ppb_longitude",map.get("ppb_longitude"));
-		model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
+		System.out.println("오냐?");
+		//1]서버의 물리적 경로 얻기
+		try{
+            //파일 객체 생성
+            File file = new File("C:\\Users\\KSM16\\Downloads\\a.txt");
+            //입력 스트림 생성			
+            FileReader filereader = new FileReader(file);
+            int singleCh = 0;
+            while((singleCh = filereader.read()) != -1){
+                System.out.print((char)singleCh);
+            }
+            filereader.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
 
-		return "friends/place_write.tiles";//작성 완료 후 다시 리스트로 
+		
+		
+		return "friends/place_write.tiles";
 	}// place
 
 	
@@ -117,21 +140,38 @@ public class FriendsController {
 	
 	//Pay test
 	@RequestMapping("/pay/pay.pic")
-	public String pay(@RequestParam Map map,Principal principal,Model model) throws Exception{
+	public String pay(@RequestParam Map map,Principal principal,HttpSession session,Model model) throws Exception{
 		//pay  SelectFilter_buy ppa_email f_name
-		map.put("ppa_email",principal.getName());
+		//HttpSecurity sec 넣으면 에러
+		//http.antMatcher("/d").authorizeRequests().antMatchers("").permitAll().and().headers().frameOptions().disable();
+		map.put("ppa_email",session.getAttribute("ppa_email"));
+		System.out.println("hihi++"+map.toString());
 		//나중에 map.get("f_name");
 		map.put("f_name", "vintage");
 		FilterDTO a = dao_filter.selectFilter_buy(map);
 		List<Map> user = new Vector<Map>();
 		user.add(DTOUtil.convertDTOToMap(a));
 		model.addAttribute("list",user);
-		
-		System.out.println("hi"+user.toString());
-		
-		
 		return "test/Pay.tiles";
 	}//pay
+	
+	
+	@RequestMapping("/pay/pay_insert.pic")
+	public String pay_test(@RequestParam Map map,Model model,HttpSession session) throws Exception{//3가지 컬럼을 만들어서 넣는다   테스트용
+		map.put("ppa_email", session.getAttribute("ppa_email"));
+		System.out.println("map+"+map.toString());
+		System.out.println("들어옵니다");
+		
+		int a = dao_filter.addPayment(map);
+		
+		if(a == 1) {
+			System.out.println("인설트 성공");
+		}
+		
+		return "home.tiles";//
+	}//md
+	
+	
 	
 	//Map 이동
 	@RequestMapping("/friends/map.pic")
@@ -140,6 +180,8 @@ public class FriendsController {
 		return "friends/map.tiles";//
 	}//map
 	
+
+		
 	
 	//ajax 처리 /tourapi/download_csv.pic
 	@ResponseBody

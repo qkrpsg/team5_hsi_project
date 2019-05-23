@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.NoticeDTO;
 import com.kosmo.pickpic.service.QuestionDTO;
+import com.kosmo.pickpic.service.impl.FilterServiceImpl;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
+import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.PagingUtil;
 
 @Controller
@@ -32,6 +35,10 @@ public class HelpController {
 	private NoticeServiceImpl noticeService;
 	@Resource(name="questionService")
 	private QuestionServiceImpl questionService;
+	
+	@Resource(name = "fService")
+	private FilterServiceImpl dao_filter;
+	
 	
 	//픽크픽TIP
 	@RequestMapping("/help/tip.pic")
@@ -239,7 +246,25 @@ public class HelpController {
 
 	//초보자가이드
 	@RequestMapping("/help/guide.pic")
-	public String guide() throws Exception{
-		return "help/guide.tiles";
+	public String guide(@RequestParam Map map,Principal principal,HttpSession session,Model model) throws Exception{
+		//pay  SelectFilter_buy ppa_email f_name
+		/*map.put("ppa_email",session.getAttribute("ppa_email"));
+		
+		//나중에 map.get("f_name");
+		map.put("f_name", "vintage");
+		FilterDTO a = dao_filter.selectFilter_buy(map);
+		List<Map> user = new Vector<Map>();
+		user.add(DTOUtil.convertDTOToMap(a));
+		model.addAttribute("list",user);*/
+		
+		System.out.println("값 들어옵니꽈?");
+		
+		
+		return "test/Pay.tiles";
 	}//guide
+	
+	
+	
+	
+	
 }//helpController

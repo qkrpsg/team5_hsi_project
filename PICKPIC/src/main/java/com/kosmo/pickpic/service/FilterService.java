@@ -7,5 +7,6 @@ public interface FilterService {
 	
 	List<Map> albumDownFilterName(Map map);
 	FilterDTO selectFilter_buy(Map map);
-	int addPayment(PaymentDTO dto);
+	int addPayment(Map map);
+	
 }

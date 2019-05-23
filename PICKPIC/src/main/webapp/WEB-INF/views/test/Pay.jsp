@@ -1,5 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
+
 
 <link href="<c:url value='/css/Pay.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/Pay.js'/>"></script>
@@ -8,7 +11,11 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <div style="margin-top: 100px;"></div>
+
+	
+	
 <div class="middle">
 	<!-- container-fluid -->
 	<div class="ordTitle">
@@ -46,6 +53,7 @@
 						<td>상품가격</td>
 						<td>${list.f_price } 원</td>
 					</tr>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" class="mb" />
 				</c:forEach>
 					<tr>
 						<td>결제방법</td>
@@ -204,3 +212,5 @@
 </div>
 <!-- container-fluid -->
 <div style="margin-bottom: 139px;"></div>
+
+
