@@ -153,6 +153,7 @@ public class UserController {
 	//마이페이지
 	@RequestMapping("/user/myPage.pic")
 	public String myPage() throws Exception{
+		
 		return "login/MyPage.tiles";
 	}//myPage
 	

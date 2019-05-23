@@ -365,8 +365,23 @@ public class AdminController {
 	
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
-	public String qna(@RequestParam Map map,Model model) {
+	public String qna(@RequestParam Map map,Model model, HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage) throws Exception{
+		int totalRecordCount= questionService.getTotalRecord(map);
+		int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
+		int start =(nowPage-1)*pageSize+1;
+		int end   =nowPage*pageSize;
+		
+		map.put("start",start);
+		map.put("end", end);
 		List<QuestionDTO> list = questionService.selectList(map);	
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/help/qna/List.pic?");
+		model.addAttribute("list", list);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalRecordCount", totalRecordCount);		
+		model.addAttribute("pagingString", pagingString);
+		
+
 		model.addAttribute("list",list);
 		
 		map.put("admin", "문의관리");
@@ -551,7 +566,7 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/admin/admin_qna_update.pic")
 	public String qna_update(@RequestParam Map map,Model model,Principal principal) throws Exception {
-		map.put("ppa_email", principal.getName());
+		
 		System.out.println("aa"+map);
 		questionService.aqupdate(map);
 		List<QuestionDTO> list = questionService.selectList(map);	
