@@ -44,8 +44,8 @@
       <div class="modal-body">
          <div class="row text-center">
 
-            <div class="col-xs-6 btn ">
-               <img class="img-circle img_100"
+            <div class="col-xs-6 btn " id="img_mypic">
+               <img class="img-circle img_100" 
                   src="<c:url value='/resources/images/sns/M.PNG'/>" alt="image">
                <h5>내 픽보관함</h5>
             </div>
@@ -252,6 +252,10 @@
 			console.log('index4 : ' + index);
 		});
 		console.log(idArray);
+	});
+	
+	$('#img_mypic').on('click',function(e) {
+		console.log("ccvcxvzxcxc");
 	});
 
 	/* 이미지 기준 가로 또는 세로 적용 */
@@ -477,6 +481,10 @@
 	function save_btn(e) {//() =>
 		
 		idArray.forEach(function(id, i) {
+			
+			 var jbResult = confirm( '아래의 편집된 파일을 저장소에 다운로드를 완료하면 편집내용이 사라집니다. 지금 바로 저장하시겠습니까?', '' );
+		     document.write( jbResult );
+			
 			console.log(i,id);
 			fileName = fileNameMap.get(id);
 			console.log(fileName);
@@ -498,6 +506,7 @@
 			console.log(can,canvas);
 			// Call download
 			download(canvas, newFilename); 
+			
 		});
 	};
 
