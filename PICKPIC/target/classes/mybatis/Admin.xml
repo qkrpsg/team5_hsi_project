@@ -30,21 +30,22 @@
 	</select>
 	<!-- 전체 유저 + 마지막접속일 내림차순 -->
 	<select id="adminUser" resultType="PickPicAccountDTO">
-		SELECT ppa.*, lh_ld FROM pickpic_account ppa JOIN (
-			SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) 
-		lh ON ppa.ppa_id=lh.ppa_id ORDER BY ppa_index DESC
+		SELECT ppa.*, lh_ld FROM (
+			SELECT p.*, rownum FROM pickpic_account p) ppa JOIN (
+			SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
+		ON ppa.ppa_id=lh.ppa_id ORDER BY ppa_index DESC
 	</select>
 	<!-- start부터 end까지 유저 반환 -->
 	<select id="adminSelectUser" parameterType="java.util.Map" resultType="PickPicAccountDTO">
 		SELECT * FROM (
 			SELECT ppa.*, ROWNUM r FROM (
-				SELECT * FROM pickpic_account ORDER BY ppa_index DESC) 
-			ppa) 
+				SELECT * FROM pickpic_account ORDER BY ppa_index DESC) ppa
+			) 
 		WHERE ROWNUM BETWEEN #{start} AND #{end}
 	</select>
 	<!-- 필터 내림차순 -->
 	<select id="adminFilter" resultType="FilterDTO">
-		SELECT * FROM filter ORDER BY f_index DESC
+		SELECT f.*, rownum FROM (SELECT * FROM filter ORDER BY f_index DESC) f
 	</select>
 	<!-- 픽플레이스 내림차순 -->
 	<select id="adminPickPlace" resultType="PickPlaceBoardDTO">

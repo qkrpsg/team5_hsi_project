@@ -457,14 +457,18 @@
 									<tr>
 										<td>${loop.count}</td>
 										<td>${item.f_name }</td>
-										<td>${item.f_price}</td>
+										<td>${item.f_change}</td>
 										<c:if test="${item.f_sale_yn eq 'Y' }" var="isSale">
-											<td>판매 중</td>
-											<td><i class="fa fa-circle text-green"></i></td>	
+											<td>판매중</td>
 										</c:if>
-										<c:if test="${not isSale}">
-											<td>판매 중지</td>
-											<td><i class="fa fa-circle text-red"></i></td>
+										<c:if test="${not isSale }">
+											<td>미판매중</td>
+										</c:if>
+										<c:if test="${item.f_event_yn eq 'Y' }" var="isEvent">
+											<td>이벤트 진행중</td>
+										</c:if>
+										<c:if test="${not isEvent }">
+											<td>이벤트 종료</td>
 										</c:if>
 									</tr>
 								</c:forEach>
@@ -547,121 +551,6 @@
 			<!-- 픽로드 끝 -->
 		</div>
 		<!-- 3행 끝 -->
-
-		<!-- 4행 시작 -->
-		<div class="row">
-			<!-- 신고함 시작 -->
-			<div class="col-md-6">
-				<div class="box box-primary">
-					<!-- 박스 헤더 시작 -->
-					<div class="box-header with-border">
-						<h3 class="box-title">게시물신고함</h3>
-						<div class="box-tools pull-right">
-							<a href="<c:url value='/admin/report.pic'/>">더보기</a>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="table-responsive">
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>제목</th>
-										<th>게시판 분류</th>
-										<th>신고된 사용자</th>
-										<th>신고한 사용자</th>
-										<th>신고일</th>
-										<th>처리 상태</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>3</td>
-										<td>제목3</td>
-										<td>게시판1</td>
-										<td>신고된 사용자명1</td>
-										<td>신고한 사용자명2</td>
-										<td>2019/03/12</td>
-										<td>처리중</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>제목2</td>
-										<td>게시판2</td>
-										<td>신고된 사용자명2</td>
-										<td>신고한 사용자명2</td>
-										<td>2019/04/21</td>
-										<td>처리중</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>제목1</td>
-										<td>게시판1</td>
-										<td>신고된 사용자명1</td>
-										<td>신고한 사용자명1</td>
-										<td>2019/12/34</td>
-										<td>처리완료</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 신고함 끝 -->
-			<!-- 휴지통 시작 -->
-			<div class="col-md-6">
-				<div class="box">
-					<div class="box-header with-border">
-						<h3 class="box-title">휴지통</h3>
-						<div class="box-tools pull-right">
-							<a href="<c:url value='/admin/recyclebin.pic'/>">더보기</a>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="table-responsive">
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>제목</th>
-										<th>게시판 분류</th>
-										<th>사용자</th>
-										<th>삭제일</th>
-									</tr>
-								</thead>
-								<!-- 데이터를 받아오는 부분 -->
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>제목1</td>
-										<td>게시판1</td>
-										<td>사용자명1</td>
-										<td>2019/12/34</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>제목2</td>
-										<td>게시판2</td>
-										<td>사용자명2</td>
-										<td>2019/04/21</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>제목3</td>
-										<td>게시판1</td>
-										<td>사용자명3</td>
-										<td>2019/03/12</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 휴지통 끝 -->
-		</div>
-		<!-- 4행 끝 -->
 	</section>
 </div>
 

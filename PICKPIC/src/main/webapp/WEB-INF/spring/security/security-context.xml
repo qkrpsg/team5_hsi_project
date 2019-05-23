@@ -7,9 +7,8 @@
 	<!-- 보안과 관련된 설정파일 -->
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/friends/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
-		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<!-- 보안 -->
-		<security:csrf disabled="false" />
+		<security:csrf disabled="true" />
 		
 		<!-- 로그인 -->
 		<security:form-login
@@ -20,9 +19,6 @@
 			default-target-url="/user/LoginProcess.pic"
 			authentication-failure-url="/user/LoginProcessF.pic"/>
 
-		<!-- 로그인에 성공했으나 권한이 없는경우 -->
-		<security:access-denied-handler error-page="/user/EmailProcessF.pic" />
-		
 		<!-- 로그아웃 -->
 		<security:logout 
 			logout-url="/logout" 
