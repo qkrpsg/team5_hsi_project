@@ -37,22 +37,42 @@ $(document).ready(function(){
 		let f_id_ppa_index = $('.table').find('tr').eq(3).find('td').eq(1).html();//상품코드
 		let f_price = $('.table').find('tr').eq(4).find('td').eq(1).html();//상품가격
 		f_price = f_price.replace('원','');
-		console.log('한결'+f_id);
-		console.log(f_name);
-		console.log(f_id_ppa_index);
-		console.log(f_price);
+		/*console.log('f_id'+f_id);
+		console.log('ppa_nickname'+ppa_nickname);
+		console.log('f_name'+f_name);
+		console.log("val"+val);
+		console.log($('.mb').val());
+		console.log($('.mb').attr('name'));*/
+		let name2 = $('.mb').attr('name');
+		let val2 = $('.mb').val();
+	
+		
+		
+		
 		
 		var IMP = window.IMP; // 생략해도 괜찮습니다.
 		IMP.init("imp77502296"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
-		//IMP.request_pay(param, callback) 호출
-		IMP.request_pay({ // param
-		    pg: "html5_inicis", //   mobilians  html5_inicis
+		IMP.request_pay({
+			/*pg : 'html5_inicis2',
+		    pay_method : 'phone',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '결제테스트',
+			amount : 14000,
+			buyer_email : 'dldydtnsladk@naver.com',
+			buyer_name : '구매자',
+			buyer_tel : '010-1234-5678',
+			buyer_addr : '서울특별시 강남구 삼성동',
+			buyer_postcode : '123-456',
+			*/
+			
+			pg: "html5_inicis", //   mobilians  html5_inicis
 		    pay_method: val, //뭐로 결제? vbank card phone 결제 방법
-		    merchant_uid: f_id_ppa_index,  //상품코드 + new Date().getTime() 이건 임시로 남겨둠
-		    //name: "결제 테스트",
-		    amount: f_price, //상품가격    paid_amount 받을 계좌 
+		    //merchant_uid: f_id_ppa_index,  //상품코드 + new Date().getTime() 이건 임시로 남겨둠
+		    name: "결제 테스트",
+		    amount: f_price,//f_price, //상품가격    paid_amount 받을 계좌 
 		    buyer_email: ppa_email,  //이메일
 		    buyer_name: ppa_nickname, //닉네임
+		    name2 : val2,
 		    //buyer_tel: "010-3345-9431",//없다  예전엔(필수 가격 전화번호) 
 		    //buyer_addr: "서울특별시 노원구 공릉동",			//없다
 		    //buyer_postcode: "01181" //우편번호 ?
@@ -65,43 +85,42 @@ $(document).ready(function(){
 				msg += '카드 승인번호 : ' + rsp.apply_num;
 				console.log(msg); 
 				
-				      var form = document.createElement("form");
-				      form.setAttribute("charset", "UTF-8");
-				      form.setAttribute("method", "Post");  //Post 방식
-				      form.setAttribute("action", "/pickpic/admin/pickRoad.do"); //요청 보낼 주소
-				      
-				      
-				      
-				      var hiddenField = document.createElement("input");
-				      hiddenField.setAttribute("type", "hidden");
-				      hiddenField.setAttribute("name", "f_id");
-				      hiddenField.setAttribute("value", f_id);
-				      form.appendChild(hiddenField);
-				     
-				      var hiddenField = document.createElement("input");
-				      hiddenField.setAttribute("type", "hidden");
-				      hiddenField.setAttribute("name", "${_csrf.parameterName}");
-				      hiddenField.setAttribute("value", "${_csrf.token}");
-				      
-				      //결제 수단입니다.
-				      var hiddenField = document.createElement("input");
-				      hiddenField.setAttribute("type", "hidden");
-				      hiddenField.setAttribute("name", "p_method");
-				      hiddenField.setAttribute("value", val);
-				      
-				      //금액입ㄴ다.
-				      var hiddenField = document.createElement("input");
-				      hiddenField.setAttribute("type", "hidden");
-				      hiddenField.setAttribute("name", "p_price");
-				      hiddenField.setAttribute("value", f_price);
-				     
-				      form.appendChild(hiddenField); 
-				      document.body.appendChild(form);
-				      //form.submit();
+				    
+				
+				var form = document.createElement("form");
+			      form.setAttribute("charset", "UTF-8");
+			      form.setAttribute("method", "Post");  //Post 방식
+			      form.setAttribute("action", "/pickpic/pay/pay_insert.pic"); //요청 보낼 주소
+			      
+			      var hiddenField = document.createElement("input");
+			      hiddenField.setAttribute("type", "hidden");
+			      hiddenField.setAttribute("name", "f_id");
+			      hiddenField.setAttribute("value", f_id);
+			      form.appendChild(hiddenField);
+			     
+			      var hiddenField = document.createElement("input");
+			      hiddenField.setAttribute("type", "hidden");
+			      hiddenField.setAttribute("name", name2);
+			      hiddenField.setAttribute("value", val2);
+			      form.appendChild(hiddenField);
+			      //결제 수단입니다.
+			      var hiddenField = document.createElement("input");
+			      hiddenField.setAttribute("type", "hidden");
+			      hiddenField.setAttribute("name", "p_method");
+			      hiddenField.setAttribute("value", val);
+			      form.appendChild(hiddenField);
+			      //금액입니다.
+			      var hiddenField = document.createElement("input");
+			      hiddenField.setAttribute("type", "hidden");
+			      hiddenField.setAttribute("name", "p_price");
+			      hiddenField.setAttribute("value", f_price);
+			      form.appendChild(hiddenField);
+			      
+			      document.body.appendChild(form);
+			      form.submit();
+				
+				
 				   
-				
-				
-				
 		    } else {
 		    	 var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
@@ -109,6 +128,12 @@ $(document).ready(function(){
 				console.log("no-hi");
 		    }
 		}); 
+		
+		
+		
+		  
+		
+		
 	});//click
 	
 	

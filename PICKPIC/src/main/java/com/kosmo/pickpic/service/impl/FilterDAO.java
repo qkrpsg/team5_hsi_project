@@ -36,8 +36,11 @@ public class FilterDAO implements FilterService{
 	}
 
 	@Override
-	public int addPayment(PaymentDTO dto) {
-		return template.insert("addPayment", dto);
+	public int addPayment(Map map) {
+		int result = template.insert("addPayment", map);
+		if(result == 0)
+			return result;
+		return template.insert("filter_storage", map);
 	}//addPayment
 
 }

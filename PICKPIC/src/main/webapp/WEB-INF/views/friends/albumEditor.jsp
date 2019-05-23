@@ -20,11 +20,11 @@
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/caman.full.min.js'/>"></script>
 
 
 <!-- albumEditor.jsp -->
+
 <!-- 모달 창 시작-->
 <div class="modal" id="option_modal">
    <div class="modal-content">
