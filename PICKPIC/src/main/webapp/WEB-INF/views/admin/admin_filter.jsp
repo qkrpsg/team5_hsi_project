@@ -96,8 +96,13 @@
 
 <script>
 	//데이터 테이블
-	$(document).ready(function () {
-	    $('#userTable').DataTable({
+	$(document).ready(function() {
+	    InitUserTable();
+	});
+	
+	var table;
+	function InitUserTable() {
+		table = $('#userTable').DataTable({
 	    	responsive : true,
 	        pageLength : 10,
 	        lengthMenu : [ [ 5, 10, 20, -1 ], [ 5, 10, 20, "All" ] ],
@@ -157,7 +162,7 @@
 	            }
 	        ]
 	    });
-	});
+	};
 	
 	//상세보기
 	var detail = function(obj) {
@@ -251,7 +256,7 @@
 						$('#d-reason').val('');
 						$('#d-price').html(element['f_change']);
 					});
-// 					window.location.reload();
+					table.ajax.reload();
 				},
 				error : function(data) {
 					console.log('실패했습니다');
@@ -280,6 +285,7 @@
 			success : function(data) {
 				console.log('성공했습니다');
 				console.log(data);
+				table.ajax.reload();
 				$.each(data, function(index, element) {
 					if(element['f_sale_yn'] == "Y"){
 						$('#d-saleToggle').html('판매 중지');
@@ -316,6 +322,7 @@
 			success : function(data) {
 				console.log('성공했습니다');
 				console.log(data);
+				table.ajax.reload();
 				$.each(data, function(index, element) {
 					if(element['f_event_yn'] == "Y"){
 						$('#d-eventToggle').html('이벤트 중지');
