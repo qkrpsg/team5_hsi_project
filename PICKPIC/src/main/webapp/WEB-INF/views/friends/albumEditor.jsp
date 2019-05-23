@@ -25,7 +25,6 @@
 
 
 <!-- albumEditor.jsp -->
-
 <!-- 모달 창 시작-->
 <div class="modal" id="option_modal">
    <div class="modal-content">
@@ -160,7 +159,6 @@
    var btn = document.getElementById("option_btn");
    // 모달창 닫기(span) 태그요소 얻기
    var span = document.getElementsByClassName("close")[0];
-
    //페이지 로드하면서 모달창 열기(띄우기)
    window.onload = function() {
       modal.style.display = "block";
@@ -190,7 +188,6 @@
          modal.style.display = "none";
       }
    });
-
    /* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
    var fileCollection = new Array();
    var index = 0;
