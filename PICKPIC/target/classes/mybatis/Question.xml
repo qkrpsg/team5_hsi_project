@@ -9,7 +9,12 @@
 <select id="questionSelectList" parameterType="java.util.Map" resultType="java.util.Map">
 <!-- SELECT * FROM QUESTION ORDER BY Q_INDEX -->
 <!-- SELECT * FROM QUESTION Q INNER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID ORDER BY Q_INDEX DESC -->
-  SELECT * FROM QUESTION Q FULL OUTER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID JOIN pickpic_account ppa ON ppa.ppa_id=q.ppa_id ORDER BY Q_INDEX DESC
+<!-- <if test="start == null">
+SELECT * FROM QUESTION Q FULL OUTER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID JOIN pickpic_account ppa ON ppa.ppa_id=q.ppa_id ORDER BY Q_INDEX DESC
+</if> -->
+
+ SELECT * FROM (SELECT total.*, ROWNUM r FROM(SELECT * FROM QUESTION Q FULL OUTER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID JOIN pickpic_account ppa ON ppa.ppa_id=q.ppa_id ORDER BY Q_INDEX DESC) total) WHERE r BETWEEN #{start} AND #{end}
+
 </select>
 <select id="questionSelectOne" parameterType="java.util.Map" resultType="QuestionDTO">
   SELECT * FROM QUESTION Q FULL OUTER JOIN ANSWER_QUESTION AQ ON Q.Q_ID = AQ.Q_ID JOIN pickpic_account ppa ON ppa.ppa_id=q.ppa_id WHERE Q_INDEX = #{q_index}
@@ -30,6 +35,13 @@ INSERT INTO ANSWER_QUESTION VALUES(func_generator, #{aq_content}, DEFAULT, (SELE
 <update id="questionaqUpdate" parameterType="java.util.Map">
 UPDATE ANSWER_QUESTION SET aq_content=#{aq_content} WHERE q_id=(SELECT q_id FROM question WHERE q_index=#{q_index} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
 </update>
+
+<update id="questionUpdate" parameterType="java.util.Map">
+UPDATE QUESTION SET Q_CONTENT = #{q_content} ,Q_TITLE = #{q_title} WHERE Q_INDEX= ${q_index}
+</update>
+<select id="questionGetTotalCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM QUESTION
+ 	</select>	
 
 </mapper>
 
