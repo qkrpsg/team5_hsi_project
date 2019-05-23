@@ -178,9 +178,52 @@ public class AdminController {
 		}
 		
 		filter.add(result);
+		return JSONArray.toJSONString(filter);
+	}
+	
+	//필터 판매상태 변경
+	@ResponseBody
+	@RequestMapping(value="/admin/filterSaleUpdate.do",produces="text/html; charset=UTF-8")
+	public String filterSaleUpdate(@RequestParam Map map) throws Exception{
+		System.out.println(map.toString());
+		System.out.println(map.get("f_sale_yn"));
+		Map result = new HashMap();
+		List<Map> filter = new Vector<Map>();  
+		
+		if(!adminService.filterSaleUpdate(map)) {
+			result.put("result", "실패");
+		}
+		else {
+			result = DTOUtil.convertDTOToMap(adminService.oneFilter(map));
+			result.put("result", "성공");
+		}
+		
+		filter.add(result);
 		System.out.println(JSONArray.toJSONString(filter));
 		return JSONArray.toJSONString(filter);
 	}
+	
+	//필터 판매상태 변경
+	@ResponseBody
+	@RequestMapping(value="/admin/filterEventUpdate.do",produces="text/html; charset=UTF-8")
+	public String filterEventUpdate(@RequestParam Map map) throws Exception{
+		Map result = new HashMap();
+		List<Map> filter = new Vector<Map>();  
+		
+		if(!adminService.filterEventUpdate(map)) {
+			result.put("result", "실패");
+		}
+		else {
+			result = DTOUtil.convertDTOToMap(adminService.oneFilter(map));
+			result.put("result", "성공");
+		}
+		
+		filter.add(result);
+		System.out.println(JSONArray.toJSONString(filter));
+		return JSONArray.toJSONString(filter);
+	}
+	
+	
 	
 	//픽로드관리
 	@RequestMapping(value = "/admin/pickRoad.pic")

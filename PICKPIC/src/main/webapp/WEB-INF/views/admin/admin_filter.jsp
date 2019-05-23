@@ -88,10 +88,8 @@
 						</ul> 
 						<button id="priceSummit" class="btn btn-primary btn-block">가격 설정</button>
 						<div class="table-responsive">
-							<button id="d-saleStart" class="btn btn-primary col-xs-6" style='display:none'>판매시작</button>
-							<button id="d-saleStop" class="btn btn-primary col-xs-6" style='display:none'>판매중지</button>
-							<button id="d-eventStart" class="btn btn-primary col-xs-6" style='display:none'>이벤트시작</button>
-							<button id="d-eventStop" class="btn btn-primary col-xs-6" style='display:none'>이벤트중지</button>
+							<button id="d-saleToggle" class="btn btn-primary col-xs-6">판매 중지</button>
+							<button id="d-eventToggle" class="btn btn-primary col-xs-6">이벤트 시작</button>
 						</div>
 					</div>
 				</div>
@@ -112,13 +110,20 @@
 							<li class="list-group-item"><b>가격 변경일</b><a id="d-changeDate" class="pull-right">-</a></li>
 						</ul>
 						<hr>
-
+						
+						<strong><i class="fa fa-bookmark margin-r-5"></i> 최근 가격 변경 사유</strong>
+						<p><span id="d-reasonText">-</span></p>
+						<hr>
+						
 						<strong><i class="fa fa-star margin-r-5"></i> 상태</strong>
 						<p>
-							<span id="d-typeSaleStart" style="display:none" class="label label-primary">판매중</span>
-							<span id="d-typeSaleStop" style="display:none" class="label label-warning">판매 중지</span>
-							<span id="d-typeEventStart" style="display:none" class="label label-success">이벤트 진행중</span>
-							<span id="d-typeEventStop" style="display:none" class="label label-danger">이벤트 종료</span>
+							<span id="d-typeSaleToggle" class="label label-primary">판매중</span>
+							<span id="d-typeEventToggle" class="label label-success">이벤트 진행중</span>
+							
+<!-- 							<span id="d-typeSaleStart" style="display:none" class="label label-primary">판매중</span> -->
+<!-- 							<span id="d-typeSaleStop" style="display:none" class="label label-warning">판매 중지</span> -->
+<!-- 							<span id="d-typeEventStart" style="display:none" class="label label-success">이벤트 진행중</span> -->
+<!-- 							<span id="d-typeEventStop" style="display:none" class="label label-danger">이벤트 종료</span> -->
 						</p>
 						<hr>
 					</div>
@@ -182,19 +187,16 @@
 						$('#d-reason').val('');
 						
 						
+						
 						if (element['f_sale_yn'] == "Y") {
-							$('#d-saleStart').css('display', 'none');
-							$('#d-saleStop').css('display', 'inline');
+							$('d-saleToggle').html() == '판매 중지';
 						} else {
-							$('#d-saleStart').css('display', 'inline');
-							$('#d-saleStop').css('display', 'none');
+							$('d-saleToggle').html() == '판매 시작';
 						}
 						if (element['f_event_yn'] == "Y") {
-							$('#d-eventStart').css('display', 'none');
-							$('#d-eventStop').css('display', 'inline');
+							$('d-eventToggle').html() == '이벤트 중지';
 						} else {
-							$('#d-eventStart').css('display', 'inline');
-							$('#d-eventStop').css('display', 'none');
+							$('d-eventToggle').html() == '이벤트 시작';
 						}
 						
 						$('#d-priceStart').html(element['f_price']);
@@ -202,20 +204,30 @@
 						$('#d-saleCount').html(element['totalFilter']);
 						$('#d-postDate').html(element['f_post_date']);
 						$('#d-changeDate').html(element['f_change_date']);
+						$('#d-reasonText').html(element['f_reason']);
+						
 						
 						if (element['f_sale_yn'] == "Y") {
-							$('#d-typeSaleStart').css('display', 'inline');
-							$('#d-typeSaleStop').css('display', 'none');
+							$('#d-typeSaleToggle').html('판매중');
+							$('#d-typeSaleToggle').attr('class', 'label label-primary');
+// 							$('#d-typeSaleStart').css('display', 'inline');
+// 							$('#d-typeSaleStop').css('display', 'none');
 						} else {
-							$('#d-typeSaleStart').css('display', 'none');
-							$('#d-typeSaleStop').css('display', 'inline');
+							$('#d-typeSaleToggle').html('판매중지');
+							$('#d-typeSaleToggle').attr('class', 'label label-warning');
+// 							$('#d-typeSaleStart').css('display', 'none');
+// 							$('#d-typeSaleStop').css('display', 'inline');
 						}
 						if (element['f_event_yn'] == "Y") {
-							$('#d-typeEventStart').css('display', 'inline');
-							$('#d-typeEventStop').css('display', 'none');
+							$('#d-typeEventToggle').html('이벤트 진행중');
+							$('#d-typeEventToggle').attr('class', 'label label-success');
+// 							$('#d-typeEventStart').css('display', 'inline');
+// 							$('#d-typeEventStop').css('display', 'none');
 						} else {
-							$('#d-typeEventStart').css('display', 'none');
-							$('#d-typeEventStop').css('display', 'inline');
+							$('#d-typeEventToggle').html('이벤트 종료');
+							$('#d-typeEventToggle').attr('class', 'label label-danger');
+// 							$('#d-typeEventStart').css('display', 'none');
+// 							$('#d-typeEventStop').css('display', 'inline');
 						}
 						
 					});
@@ -230,7 +242,10 @@
 		$('#priceSummit').click(function() {
 // 			console.log($('#d-change').val().length);
 // 			console.log($('#d-filterName').html().length);
-			if($('#d-change').val().length > 0 && $('#d-reason').val().length > 0){
+			if($('#d-change').val() < 0){
+				alert('숫자는 양수만 입력해주세요');
+			}
+			else if($('#d-change').val().length > 0 && $('#d-reason').val().length > 0){
 				$.ajax({
 					url : '<c:url value="/admin/filterPriceChange.do"/>',
 					data : {
@@ -246,10 +261,12 @@
 						console.log(data);
 						
 						$.each(data, function(index, element) {
-							$('#d-change').val(element['f_change']);
+							$('#d-change').val('');
+							$('#d-change').attr('placeholder', element['f_change']);
 							$('#d-reason').val('');
 							$('#d-price').html(element['f_change']);
 						});
+// 						window.location.reload();
 					},
 					error : function(data) {
 						console.log('실패했습니다');
@@ -260,6 +277,76 @@
 			else if($('#d-change').val().length > 0 && $('#d-reason').val().length == 0){
 				alert('변경 사유를 입력해주세요');
 			}
+		});
+		
+		$('#d-saleToggle').click(function() {
+			var sale;
+			$('#d-saleToggle').html() == "판매 중지" ? sale="N" : sale="Y";
+			$.ajax({
+				url : '<c:url value="/admin/filterSaleUpdate.do"/>',
+				data : {
+					"f_name" : $('#d-filterName').html(),
+					"f_sale_yn" : sale,
+					"${_csrf.parameterName}" : "${_csrf.token}"
+				},
+				dataType : 'json',
+				type : "get",
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+					$.each(data, function(index, element) {
+						if(element['f_sale_yn'] == "Y"){
+							$('#d-saleToggle').html('판매 중지');
+							$('#d-typeSaleToggle').html('판매중');
+							$('#d-typeSaleToggle').attr('class', 'label label-primary');
+						}
+						else{
+							$('#d-saleToggle').html('판매 시작');
+							$('#d-typeSaleToggle').html('판매중지');
+							$('#d-typeSaleToggle').attr('class', 'label label-warning');
+						}
+					});
+				},
+				error : function(data) {
+					console.log('실패했습니다');
+					console.log(data);
+				}
+			});
+		});
+		
+		$('#d-eventToggle').click(function() {
+			var event;
+			$('#d-eventToggle').html() == "이벤트 시작" ? event="Y" : event="N";
+			$.ajax({
+				url : '<c:url value="/admin/filterEventUpdate.do"/>',
+				data : {
+					"f_name" : $('#d-filterName').html(),
+					"f_event_yn" : event,
+					"${_csrf.parameterName}" : "${_csrf.token}"
+				},
+				dataType : 'json',
+				type : "get",
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+					$.each(data, function(index, element) {
+						if(element['f_event_yn'] == "Y"){
+							$('#d-eventToggle').html('이벤트 중지');
+							$('#d-typeEventToggle').html('이벤트 진행중');
+							$('#d-typeEventToggle').attr('class', 'label label-success');
+						}
+						else{
+							$('#d-eventToggle').html('이벤트 시작');
+							$('#d-typeEventToggle').html('이벤트 종료');
+							$('#d-typeEventToggle').attr('class', 'label label-danger');
+						}
+					});
+				},
+				error : function(data) {
+					console.log('실패했습니다');
+					console.log(data);
+				}
+			});
 		});
 	});
 </script>

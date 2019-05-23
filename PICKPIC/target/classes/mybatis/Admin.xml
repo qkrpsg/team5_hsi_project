@@ -126,6 +126,15 @@
 	<update id="adminFilterChange" parameterType="java.util.Map">
 		UPDATE filter SET f_change=#{f_change}, f_change_date=SYSDATE, f_reason=#{f_reason} WHERE f_name=#{f_name}
 	</update>
+	<!-- 판매 상태 변경 -->
+	<update id="adminFilterSaleUpdate" parameterType="java.util.Map">
+		UPDATE filter SET f_sale_yn=#{f_sale_yn} WHERE f_name=#{f_name}
+	</update>
+	<!-- 이벤트 상태 변경 -->
+	<update id="adminFilterEventUpdate" parameterType="java.util.Map">
+		UPDATE filter SET f_event_yn=#{f_event_yn} WHERE f_name=#{f_name}
+	</update>
+	
 	
 	
 	<!-- 관리자 픽로드 관리자게시판 삭제 부분입니다. adminPickAccountRoadDelete -->

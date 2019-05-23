@@ -30,5 +30,8 @@ public interface AdminService {
 	//필터+판매수
 	FilterDTO oneFilter(Map map);
 	Boolean filterChange(Map map);
+	Boolean filterSaleUpdate(Map map);
+	Boolean filterEventUpdate(Map map);
+	
 	
 }

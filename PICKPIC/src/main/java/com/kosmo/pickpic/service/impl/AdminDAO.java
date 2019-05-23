@@ -130,4 +130,12 @@ public class AdminDAO implements AdminService {
 	public Boolean filterChange(Map map) {
 		return template.update("adminFilterChange", map) == 0 ? false : true ;
 	}
+	@Override
+	public Boolean filterSaleUpdate(Map map) {
+		return template.update("adminFilterSaleUpdate", map) == 0 ? false : true;
+	}
+	@Override
+	public Boolean filterEventUpdate(Map map) {
+		return template.update("adminFilterEventUpdate", map) == 0 ? false : true;
+	}
 }

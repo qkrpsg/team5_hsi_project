@@ -84,4 +84,12 @@ public class AdminServiceImpl implements AdminService {
 	public Boolean filterChange(Map map) {
 		return dao.filterChange(map);
 	}
+	@Override
+	public Boolean filterSaleUpdate(Map map) {
+		return dao.filterSaleUpdate(map);
+	}
+	@Override
+	public Boolean filterEventUpdate(Map map) {
+		return dao.filterEventUpdate(map);
+	}
 }
