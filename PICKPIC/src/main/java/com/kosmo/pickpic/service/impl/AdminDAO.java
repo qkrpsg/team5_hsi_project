@@ -14,6 +14,7 @@ import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.PickPlaceBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
+import com.kosmo.pickpic.util.DTOUtil;
 
 @Repository
 public class AdminDAO implements AdminService {
@@ -114,5 +115,27 @@ public class AdminDAO implements AdminService {
 	@Override
 	public List<PickpicAccountDTO> selectUser(Map map) {
 		return template.selectList("adminSelectUser", map);
+	}
+	@Override
+	public FilterDTO oneFilter(Map map) {
+		FilterDTO filter = template.selectOne("adminOneFilter", map);
+		try {
+			filter.getTotalFilter().length();
+		}catch(Exception e) {
+			filter.setTotalFilter("0");
+		}
+		return filter;
+	}
+	@Override
+	public Boolean filterChange(Map map) {
+		return template.update("adminFilterChange", map) == 0 ? false : true ;
+	}
+	@Override
+	public Boolean filterSaleUpdate(Map map) {
+		return template.update("adminFilterSaleUpdate", map) == 0 ? false : true;
+	}
+	@Override
+	public Boolean filterEventUpdate(Map map) {
+		return template.update("adminFilterEventUpdate", map) == 0 ? false : true;
 	}
 }

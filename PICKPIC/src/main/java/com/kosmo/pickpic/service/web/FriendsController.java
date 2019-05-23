@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewRequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBodyAdvice;
 
+import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
 import com.kosmo.pickpic.service.impl.FilterDAO;
@@ -39,6 +40,7 @@ import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
+import com.kosmo.pickpic.util.DTOUtil;
 
 @Controller
 public class FriendsController {
@@ -51,26 +53,88 @@ public class FriendsController {
 	
 	@Resource(name="adminService")
 	private AdminServiceImpl adminService;
+	
+	
 	// 픽플레이스
-	/*@RequestMapping("/friends/place.pic")
-	public String place() throws Exception {
-		return "friends/place.tiles";
+	@RequestMapping("/friends/place.pic")
+	public String place(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		//여기서 작업 시작
+		map.put("ppa_email",principal.getName());
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		model.addAttribute("list_filter", list_filter);
+		
+		//1 리스트
+		//2 맵
+		//3 맵 -> 작성 페이지
+		
+		return "friends/place_map.tiles";
+		//return "friends/place.tiles";//나중에 이걸로 바꾸자
 	}// place
-*/
+	
+	//맵 이동 페이지 추가
+	
+	
+	//맵에서 작성 페이지로 이동합니다. 값을 가지고 이동만!
+	@RequestMapping("/friends/place_write.pic")
+	public String place_write(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		//여기서 작업 시작
+		map.put("ppa_email",principal.getName());
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		model.addAttribute("list_filter", list_filter);
+		
+		System.out.println(map.toString());
+		model.addAttribute("ppb_latitude",map.get("ppb_latitude"));
+		model.addAttribute("ppb_longitude",map.get("ppb_longitude"));
+		model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
+
+		return "friends/place_write.tiles";//작성 완료 후 다시 리스트로 
+	}// place
+	
+	//이제 DB에 저장하고 리스트 페이지로 이동
+	@RequestMapping("/friends/place_wrte.pic")
+	public String place_list(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		//여기서 작업 시작
+		map.put("ppa_email",principal.getName());
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		model.addAttribute("list_filter", list_filter);
+		
+		System.out.println(map.toString());
+		model.addAttribute("ppb_latitude",map.get("ppb_latitude"));
+		model.addAttribute("ppb_longitude",map.get("ppb_longitude"));
+		model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
+
+		return "friends/place_write.tiles";//작성 완료 후 다시 리스트로 
+	}// place
+
+	
+	
 	// 필터정보
 	@RequestMapping("/friends/filter.pic")
 	public String filter() throws Exception {
 		return "friends/filter.tiles";
+	
 	}//filter
 	
 	//Pay test
 	@RequestMapping("/pay/pay.pic")
-	public String pay() throws Exception{
+	public String pay(@RequestParam Map map,Principal principal,Model model) throws Exception{
+		//pay  SelectFilter_buy ppa_email f_name
+		map.put("ppa_email",principal.getName());
+		//나중에 map.get("f_name");
+		map.put("f_name", "vintage");
+		FilterDTO a = dao_filter.selectFilter_buy(map);
+		List<Map> user = new Vector<Map>();
+		user.add(DTOUtil.convertDTOToMap(a));
+		model.addAttribute("list",user);
+		
+		System.out.println("hi"+user.toString());
+		
+		
 		return "test/Pay.tiles";
 	}//pay
 	
 	//Map 이동
-	@RequestMapping("/friends/place.pic")
+	@RequestMapping("/friends/map.pic")
 	public String map(@RequestParam Map map,Model model,HttpSession session) throws Exception{//3가지 컬럼을 만들어서 넣는다   테스트용
 	
 		return "friends/map.tiles";//
@@ -462,23 +526,18 @@ public class FriendsController {
 	// 앨범다운
 	@RequestMapping("/friends/albumDown.pic")
 	public String albumDown() throws Exception {
-		
 		return "friends/albumDown.tiles";
 	}
-	//앨범다운-팝업
+	//앨범다운-옵션
 	@RequestMapping("/friends/albumEditor.pic")
 	public String albumOption(@RequestParam Map map, Model model,Principal principal) throws Exception {
 		
 		map.put("ppa_email",principal.getName());
-		
 		List<Map> list_filter=dao_filter.albumDownFilterName(map);
-//		System.out.println(list_filter.toString());
-		
 		model.addAttribute("list_filter", list_filter);
-		
-//		System.out.println("ddd"+list_filter.toString());
 		return "friends/albumEditor.tiles";
 	}
+	
 	
 	//연습
 	@RequestMapping("/friends/search.pic")

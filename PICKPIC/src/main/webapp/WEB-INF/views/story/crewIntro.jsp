@@ -18,6 +18,10 @@
 <link rel="stylesheet" href="<c:url value='/css/templatemo-style.css'/>">
 <script src="<c:url value='/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js'/>"></script>
 
+<style>
+.team-member{overflow: hidden;height: 550px;}
+</style>
+
         <div class="content-wrapper">
             <div class="inner-container container">
                 <div class="row">

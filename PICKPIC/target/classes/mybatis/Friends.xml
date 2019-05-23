@@ -38,10 +38,28 @@
 	</insert> 
 	
 	<!-- 앨범다운 필터보관함 정보 불러오기 -->
+	<!-- 앨범다운 필터보관함 정보 불러오기 -->
 	<select id="AlbumDownFilterName" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT * FROM filter_storage fs 
 		JOIN filter f ON f.f_id=fs.f_id 
 		JOIN pickpic_account ac ON ac.ppa_id=fs.ppa_id 
 		WHERE ac.ppa_email=#{ppa_email }
 	</select>
+	
+	<!-- 필터 테이블 정보 불러오기 -->
+	<select id="SelectFilter_buy" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT * FROM filter WHERE f_name = #{f_name }
+	</select>
+	
+	<!-- 사용자 정보 불러오기 -->
+	<select id="SelectFilter_buy2" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT ppa_email,ppa_nickname,ppa_index FROM pickpic_account WHERE ppa_email = #{ppa_email }
+	</select>
+	
+	<insert id="addPayment" parameterType="com.kosmo.pickpic.service.PaymentDTO">
+		INSERT into payment 
+		values(func_generator, #{p_price}, #{p_method}, sysdate, seq_payment.nextval, #{f_id}, #{ppa_id})
+	</insert>
+	
+	
 </mapper>

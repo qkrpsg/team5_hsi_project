@@ -4,7 +4,7 @@
 <div class="content-wrapper">
 	<!-- 콘텐츠 헤더 시작 -->
 	<section class="content-header">
-		<h1>필터 <small>20개의 필터</small></h1>
+		<h1>필터 <small>${total }개의 필터</small></h1>
 	</section>
 	<!-- 콘텐츠 헤더 끝 -->
 	
@@ -15,8 +15,6 @@
 	    		<div class="box">
 					<div class="box-header">
 						<h3 class="box-title">필터 목록</h3>
-						
-						
 						<div class="box-tools pull-right">
 							<div class="has-feedback">
 								<input type="text" class="form-control input-sm" placeholder="Search Filter"> 
@@ -26,30 +24,10 @@
 					</div>
 					
 					<div class="box-body table-responsive">
-						<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-spinner"> 활성/비활성</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로고침</i>
-						</button>
-						<div class="pull-right">
-							1-50/200
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-left"></i>
-								</button>
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-right"></i>
-								</button>
-							</div>
-						</div>
 						<table class="table table-hover table-striped" >
 							<thead>
 								<tr>
-									<th></th>
+									<th><input type="checkbox" value="all"></th>
 									<th>번호</th>
 									<th>필터명</th>
 									<th>가격</th>
@@ -58,44 +36,33 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									<td><a href="#">필터명1</a></td>
-									<td>3,000</td>
-									<td>판매중</td>
-									<td><i class="fa fa-circle text-red"></i></td>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>2</td>
-									<td><a href="#">필터명2</a></td>
-									<td>2,500</td>
-									<td>판매중</td>
-									<td><i class="fa fa-circle text-green"></i></td>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>3</td>
-									<td><a href="#">필터명3</a></td>
-									<td>3,900</td>
-									<td>판매중</td>
-									<td><i class="fa fa-circle text-red"></i></td>
-								</tr>
+								<c:forEach var="item" items="${filter }" varStatus="loop">
+									<tr>
+										<td><input type="checkbox"></td>
+										<td>${loop.count}</td>
+										<td><a href="javascript:void(0)" class="detail" id="detail${loop.count }" value="${item.f_name }">${item.f_name }</a></td>
+										<td>${item.f_change}</td>
+										<c:if test="${item.f_sale_yn eq 'Y' }" var="isSale">
+											<td>판매중</td>
+										</c:if>
+										<c:if test="${not isSale }">
+											<td>미판매중</td>
+										</c:if>
+										<c:if test="${item.f_event_yn eq 'Y' }" var="isEvent">
+											<td>이벤트 진행중</td>
+										</c:if>
+										<c:if test="${not isEvent }">
+											<td>이벤트 종료</td>
+										</c:if>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
 					
 					<div class="box-footer">
-						<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-							<i class="fa fa-square-o"> 전체 선택</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-spinner"> 활성/비활성</i>
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<i class="fa fa-refresh"> 새로고침</i>
-						</button>
 						<div class="pull-right">
-							1-50/200
+							1/10
 							<div class="btn-group">
 								<button type="button" class="btn btn-default btn-sm">
 									<i class="fa fa-chevron-left"></i>
@@ -113,13 +80,17 @@
 				<!--프로필 사진 시작 -->
 				<div class="box box-primary">
 					<div class="box-body box-profile">
-						<img class="profile-user-img img-responsive" src="<c:url value='/resources/images/route2.jpg'/>" alt="User profile picture">
-						<h3 class="profile-username text-center">필터명1</h3>
+						<img id="d-filterImage" class="profile-user-img img-responsive" src="<c:url value='/resources/images/route2.jpg'/>" alt="User profile picture"/>
+						<h3 id="d-filterName" class="profile-username text-center" fname="">필터명</h3>
 						<ul class="list-group list-group-unbordered">
-							<li class="list-group-item"><b>가격변경 </b><input type="text" name="가격 설정" class="form-control" /></li>
-							<li class="list-group-item"><b>변경사유</b><input type="text" name="가격 설정" class="form-control" /></li>
-						</ul>
-						<a href="#" class="btn btn-primary btn-block"><b>가격 설정</b></a>
+							<li class="list-group-item"><b>가격변경 </b><input type="number" id="d-change" class="form-control" /></li>
+							<li class="list-group-item"><b>변경사유</b><input type="text" id="d-reason" class="form-control" /></li>
+						</ul> 
+						<button id="priceSummit" class="btn btn-primary btn-block">가격 설정</button>
+						<div class="table-responsive">
+							<button id="d-saleToggle" class="btn btn-primary col-xs-6">판매 중지</button>
+							<button id="d-eventToggle" class="btn btn-primary col-xs-6">이벤트 시작</button>
+						</div>
 					</div>
 				</div>
 				<!--프로필 사진 끝 -->
@@ -130,25 +101,29 @@
 						<h3 class="box-title">필터 정보</h3>
 					</div>
 					<div class="box-body">
-						<strong><i class="fa fa-info margin-r-5"></i> 상세정보</strong>
+						<strong><i class="fa fa-info margin-r-5"></i> 정보</strong>
 						<ul class="list-group">
-							<li class="list-group-item"><b>정가</b><a class="pull-right">3,000</a></li>
-							<li class="list-group-item"><b>현재가</b><a class="pull-right">3,000</a></li>
-							<li class="list-group-item"><b>판매수</b><a class="pull-right">45개</a></li>
-							<li class="list-group-item"><b>등록일</b><a class="pull-right">2019/03/24</a></li>
-							<li class="list-group-item"><b>가격 변경일</b><a class="pull-right">2019/03/24</a></li>
+							<li class="list-group-item"><b>정가</b><a id="d-priceStart" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>현재가</b><a id="d-price" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>판매수</b><a id="d-saleCount" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>등록일</b><a id="d-postDate" class="pull-right">-</a></li>
+							<li class="list-group-item"><b>가격 변경일</b><a id="d-changeDate" class="pull-right">-</a></li>
 						</ul>
 						<hr>
 						
-						<strong><i class="fa fa-tag margin-r-5"></i> 키워드</strong>
-						<p class="text-muted"> 인물, 배경, 음식</p>
+						<strong><i class="fa fa-bookmark margin-r-5"></i> 최근 가격 변경 사유</strong>
+						<p><span id="d-reasonText">-</span></p>
 						<hr>
-
+						
 						<strong><i class="fa fa-star margin-r-5"></i> 상태</strong>
 						<p>
-							<span class="label label-primary">판매중</span>
-							<span class="label label-danger">판매 중지</span>
-							<span class="label label-success">할인중</span>
+							<span id="d-typeSaleToggle" class="label label-primary">판매중</span>
+							<span id="d-typeEventToggle" class="label label-success">이벤트 진행중</span>
+							
+<!-- 							<span id="d-typeSaleStart" style="display:none" class="label label-primary">판매중</span> -->
+<!-- 							<span id="d-typeSaleStop" style="display:none" class="label label-warning">판매 중지</span> -->
+<!-- 							<span id="d-typeEventStart" style="display:none" class="label label-success">이벤트 진행중</span> -->
+<!-- 							<span id="d-typeEventStop" style="display:none" class="label label-danger">이벤트 종료</span> -->
 						</p>
 						<hr>
 					</div>
@@ -160,3 +135,218 @@
 	</section>
 	<!-- 콘텐츠 끝 -->
 </div>
+
+<script>
+	
+	$(function() {
+		$(':checkbox').click(function() {
+			if ($(this).val() == 'all') {//전체 선택 클릭
+				if ($(this).filter(':checked').length == 1) {//체크한 경우
+					$(":checkbox:gt(0)").each(function() {
+						$(this).prop("checked", true);
+					});
+				} 
+				else {//체크 해제한 경우
+					$(":checkbox:gt(0)").each(function() {
+						$(this).prop("checked", false);
+					});
+				}
+			} 
+			else {//전체 선택이 아닌 체크박스 클릭
+				if ($(this).filter(':checked').length == 1) {//체크한 경우
+					if ($(":checkbox:checked").length == $(":checkbox:gt(0)").length) {//체크시 체크된 모든 체크박스의 수와 전체선택을 제외한 체크박스의 수가 같다면 즉 모두 선택되었다면 			
+						$(":checkbox:first").prop("checked", true);
+					}
+				} 
+				else {//체크 해제한 경우
+					$(":checkbox:first").prop("checked", false);
+				}
+			}
+		});
+
+		$('.detail').click(function() {
+			var filter = $(this).attr('value');
+			console.log(filter);
+			$.ajax({
+				url : '<c:url value="/admin/filterDetail.do"/>',
+				data : {
+					"f_name" : filter,
+					"${_csrf.parameterName}" : "${_csrf.token}"
+				},
+				dataType : 'json',
+				type : "get",
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+
+					$.each(data, function(index, element) {
+// 						$('#d-filterImage').html(element['']);
+						$('#d-filterName').html(element['f_name']);
+						$('#d-change').attr('placeholder', element['f_change']);
+						$('#d-change').val('');
+						$('#d-reason').val('');
+						
+						
+						
+						if (element['f_sale_yn'] == "Y") {
+							$('d-saleToggle').html() == '판매 중지';
+						} else {
+							$('d-saleToggle').html() == '판매 시작';
+						}
+						if (element['f_event_yn'] == "Y") {
+							$('d-eventToggle').html() == '이벤트 중지';
+						} else {
+							$('d-eventToggle').html() == '이벤트 시작';
+						}
+						
+						$('#d-priceStart').html(element['f_price']);
+						$('#d-price').html(element['f_change']);
+						$('#d-saleCount').html(element['totalFilter']);
+						$('#d-postDate').html(element['f_post_date']);
+						$('#d-changeDate').html(element['f_change_date']);
+						$('#d-reasonText').html(element['f_reason']);
+						
+						
+						if (element['f_sale_yn'] == "Y") {
+							$('#d-typeSaleToggle').html('판매중');
+							$('#d-typeSaleToggle').attr('class', 'label label-primary');
+// 							$('#d-typeSaleStart').css('display', 'inline');
+// 							$('#d-typeSaleStop').css('display', 'none');
+						} else {
+							$('#d-typeSaleToggle').html('판매중지');
+							$('#d-typeSaleToggle').attr('class', 'label label-warning');
+// 							$('#d-typeSaleStart').css('display', 'none');
+// 							$('#d-typeSaleStop').css('display', 'inline');
+						}
+						if (element['f_event_yn'] == "Y") {
+							$('#d-typeEventToggle').html('이벤트 진행중');
+							$('#d-typeEventToggle').attr('class', 'label label-success');
+// 							$('#d-typeEventStart').css('display', 'inline');
+// 							$('#d-typeEventStop').css('display', 'none');
+						} else {
+							$('#d-typeEventToggle').html('이벤트 종료');
+							$('#d-typeEventToggle').attr('class', 'label label-danger');
+// 							$('#d-typeEventStart').css('display', 'none');
+// 							$('#d-typeEventStop').css('display', 'inline');
+						}
+						
+					});
+				},
+				error : function(data) {
+					console.log('실패했습니다');
+					console.log(data);
+				}
+			});
+		});/* 클릭  */
+		
+		$('#priceSummit').click(function() {
+// 			console.log($('#d-change').val().length);
+// 			console.log($('#d-filterName').html().length);
+			if($('#d-change').val() < 0){
+				alert('숫자는 양수만 입력해주세요');
+			}
+			else if($('#d-change').val().length > 0 && $('#d-reason').val().length > 0){
+				$.ajax({
+					url : '<c:url value="/admin/filterPriceChange.do"/>',
+					data : {
+						"f_name" : $('#d-filterName').html(),
+						"f_change" : $('#d-change').val(),
+						"f_reason" : $('#d-reason').val(),
+						"${_csrf.parameterName}" : "${_csrf.token}"
+					},
+					dataType : 'json',
+					type : "get",
+					success : function(data) {
+						console.log('성공했습니다');
+						console.log(data);
+						
+						$.each(data, function(index, element) {
+							$('#d-change').val('');
+							$('#d-change').attr('placeholder', element['f_change']);
+							$('#d-reason').val('');
+							$('#d-price').html(element['f_change']);
+						});
+// 						window.location.reload();
+					},
+					error : function(data) {
+						console.log('실패했습니다');
+						console.log(data);
+					}
+				});
+			}
+			else if($('#d-change').val().length > 0 && $('#d-reason').val().length == 0){
+				alert('변경 사유를 입력해주세요');
+			}
+		});
+		
+		$('#d-saleToggle').click(function() {
+			var sale;
+			$('#d-saleToggle').html() == "판매 중지" ? sale="N" : sale="Y";
+			$.ajax({
+				url : '<c:url value="/admin/filterSaleUpdate.do"/>',
+				data : {
+					"f_name" : $('#d-filterName').html(),
+					"f_sale_yn" : sale,
+					"${_csrf.parameterName}" : "${_csrf.token}"
+				},
+				dataType : 'json',
+				type : "get",
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+					$.each(data, function(index, element) {
+						if(element['f_sale_yn'] == "Y"){
+							$('#d-saleToggle').html('판매 중지');
+							$('#d-typeSaleToggle').html('판매중');
+							$('#d-typeSaleToggle').attr('class', 'label label-primary');
+						}
+						else{
+							$('#d-saleToggle').html('판매 시작');
+							$('#d-typeSaleToggle').html('판매중지');
+							$('#d-typeSaleToggle').attr('class', 'label label-warning');
+						}
+					});
+				},
+				error : function(data) {
+					console.log('실패했습니다');
+					console.log(data);
+				}
+			});
+		});
+		
+		$('#d-eventToggle').click(function() {
+			var event;
+			$('#d-eventToggle').html() == "이벤트 시작" ? event="Y" : event="N";
+			$.ajax({
+				url : '<c:url value="/admin/filterEventUpdate.do"/>',
+				data : {
+					"f_name" : $('#d-filterName').html(),
+					"f_event_yn" : event,
+					"${_csrf.parameterName}" : "${_csrf.token}"
+				},
+				dataType : 'json',
+				type : "get",
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+					$.each(data, function(index, element) {
+						if(element['f_event_yn'] == "Y"){
+							$('#d-eventToggle').html('이벤트 중지');
+							$('#d-typeEventToggle').html('이벤트 진행중');
+							$('#d-typeEventToggle').attr('class', 'label label-success');
+						}
+						else{
+							$('#d-eventToggle').html('이벤트 시작');
+							$('#d-typeEventToggle').html('이벤트 종료');
+							$('#d-typeEventToggle').attr('class', 'label label-danger');
+						}
+					});
+				},
+				error : function(data) {
+					console.log('실패했습니다');
+					console.log(data);
+				}
+			});
+		});
+	});
+</script>

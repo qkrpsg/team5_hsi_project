@@ -29,3 +29,5 @@ INSERT INTO NOTICE(n_id,n_title,n_content,n_index) VALUES(func_generator,#{n_tit
 
 	
 </mapper>
+
+
