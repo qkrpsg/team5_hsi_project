@@ -12,6 +12,7 @@ public class FilterDTO {
 	private String f_event_yn;
 	private String f_index;
 	private String f_image_path;
+	
 	private String f_change;
 
 	private String totalFilter;

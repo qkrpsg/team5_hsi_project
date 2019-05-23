@@ -21,32 +21,30 @@
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
-				<c:forEach var="user" items="${user }" varStatus="loop">
+				<c:forEach var="list" items="${list }" varStatus="loop">
 					<tr>
 						<td>닉네임</td>
-						<td>${user.PPA_NICKNAME }</td>
+						<td>${list.ppa_nickname }</td>
 					</tr>
 					<tr>
 						<td>이메일</td>
-						<td>${user.PPA_EMAIL }</td>
+						<td>${list.ppa_email }</td>
 					</tr>
 					<!-- <tr>
 						<td>휴대폰 번호</td>
 						<td>010-8787-4852</td>
 					</tr> -->
-				</c:forEach>
-				<c:forEach var="filter" items="${filter }" varStatus="loop">
 					<tr>
 						<td>상품명</td>
-						<td>${filter.F_NAME }</td>
+						<td>${list.f_name }</td>
 					</tr>
 					<tr>
 						<td>상품코드</td>
-						<td>${filter.F_ID }${loop.index }</td>
+						<td attr1="${list.f_id}" >${list.f_id}${list.ppa_index }</td>
 					</tr>
 					<tr>
 						<td>상품가격</td>
-						<td>1012 원</td>
+						<td>${list.f_price } 원</td>
 					</tr>
 				</c:forEach>
 					<tr>

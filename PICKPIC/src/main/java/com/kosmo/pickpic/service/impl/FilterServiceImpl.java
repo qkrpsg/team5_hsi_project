@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.FilterService;
+import com.kosmo.pickpic.service.PaymentDTO;
+import com.kosmo.pickpic.service.PickpicAccountDTO;
 
 @Service("fService")
 public class FilterServiceImpl implements FilterService{
@@ -24,5 +26,10 @@ public class FilterServiceImpl implements FilterService{
 	public FilterDTO selectFilter_buy(Map map) {
 		return dao.selectFilter_buy(map);
 	}
+
+	@Override
+	public int addPayment(PaymentDTO dto) {
+		return dao.addPayment(dto);
+	}//addPayment
 	
-}
+}//class
