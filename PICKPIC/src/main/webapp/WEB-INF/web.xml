@@ -67,5 +67,9 @@
 	<!-- 스프링 씨큐러티 설정 파일은 반드시 컨텍스트 초기화 파라미터로
 	     왜냐하면 springSecurityFilterChain 이 시큐러티 관련 설정파일을 찾음
      -->
+	
+	<welcome-file-list>
+		<welcome-file>/</welcome-file>	
+	</welcome-file-list>
 
 </web-app>
