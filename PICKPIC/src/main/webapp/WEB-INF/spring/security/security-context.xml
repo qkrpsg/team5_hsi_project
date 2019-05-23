@@ -22,11 +22,11 @@
 		<!-- 로그아웃 -->
 		<security:logout 
 			logout-url="/logout" 
-			logout-success-url="/home.pic"
+			logout-success-url="/"
 			invalidate-session="true" />
 		
 		<security:session-management 
-			invalid-session-url="/user/Login.pic">
+			invalid-session-url="/">
 			<security:concurrency-control max-sessions="1" expired-url="/user/Login.pic" />
 		</security:session-management>
 		
