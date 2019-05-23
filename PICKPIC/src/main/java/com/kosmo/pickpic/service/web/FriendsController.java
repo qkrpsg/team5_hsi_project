@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewRequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBodyAdvice;
 
+import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
 import com.kosmo.pickpic.service.impl.FilterDAO;
@@ -121,16 +122,12 @@ public class FriendsController {
 		map.put("ppa_email",principal.getName());
 		//나중에 map.get("f_name");
 		map.put("f_name", "vintage");
-		/*List<Map> filter = dao_filter.selectFilter_buy(map);
-		  List<Map> user = dao_filter.selectFilter_buy2(map);
-	
+		FilterDTO a = dao_filter.selectFilter_buy(map);
+		List<Map> user = new Vector<Map>();
+		user.add(DTOUtil.convertDTOToMap(a));
+		model.addAttribute("list",user);
 		
-		System.out.println("filter"+ filter.toString());
-		System.out.println("user"+ user.toString());
-		model.addAttribute("filter",filter);
-		model.addAttribute("user",user);*/
-		
-		
+		System.out.println("hi"+user.toString());
 		
 		
 		return "test/Pay.tiles";

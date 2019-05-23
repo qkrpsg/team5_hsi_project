@@ -10,8 +10,11 @@ public class FilterDTO {
 	private String f_reason;
 	private String f_sale_yn;
 	private String f_event_yn;
-	private String f_index_number;
+	
+	private String f_index;
+	
 	private String f_image_path;
+	
 	private String f_change;
 
 	private String totalFilter;
@@ -70,10 +73,10 @@ public class FilterDTO {
 		this.f_event_yn = f_event_yn;
 	}
 	public String getF_index_number() {
-		return f_index_number;
+		return f_index;
 	}
 	public void setF_index_number(String f_index_number) {
-		this.f_index_number = f_index_number;
+		this.f_index = f_index_number;
 	}
 	public String getF_image_path() {
 		return f_image_path;
