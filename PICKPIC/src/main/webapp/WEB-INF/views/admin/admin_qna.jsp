@@ -29,7 +29,7 @@
 						dataType : 'text',
 						type : 'post',
 						success : function() {
-
+                             alert('수정완료');
 						}
 
 					}); 
@@ -80,7 +80,7 @@
 										dataType : 'json',
 										type : 'post',
 										success : function(data) {
-										
+										alert('답변완료');
 
 										}
 									}); 
