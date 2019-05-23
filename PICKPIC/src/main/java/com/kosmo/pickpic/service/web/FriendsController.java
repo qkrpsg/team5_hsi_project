@@ -107,8 +107,7 @@ public class FriendsController {
 	
 	//이제 DB에 저장하고 리스트 페이지로 이동 file 저장
 	@RequestMapping("/friends/file.pic")
-	public String place_list(@RequestParam Map map, Model model,Principal principal) throws Exception {
-		System.out.println("오냐?");
+	public String place_list(@RequestParam Map map, Model model,Principal principal,HttpServletRequest req) throws Exception {
 		//1]서버의 물리적 경로 얻기
 		try{
             //파일 객체 생성
