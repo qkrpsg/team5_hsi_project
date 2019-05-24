@@ -72,17 +72,6 @@ public class UserController {
         out.close();
     }
 	
-	//권한이 없는 경우 프로세스
-	@RequestMapping("/user/AuthProcessF.pic")
-	public void emailProcessF(HttpSession session, HttpServletResponse response) throws Exception{
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		session.invalidate();
-        out.println("<script>alert('권한이 없습니다.'); history.go(-1);</script>");
-        out.flush();
-        out.close();
-	}
-	
 	//이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/validator/signUpEmailCheck.do",produces="text/html; charset=UTF-8")

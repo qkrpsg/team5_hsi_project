@@ -25,5 +25,10 @@ public class PickPlaceBoardDAO implements PickPlaceBoardService {
 	public List<Map> selectList(Map map) {
 		return template.selectList("ppbselect",map);
 	}
+
+	@Override
+	public List<PickPlaceBoardDTO> ppbBestList() {
+		return template.selectList("ppbBestList");
+	}
 	
 }

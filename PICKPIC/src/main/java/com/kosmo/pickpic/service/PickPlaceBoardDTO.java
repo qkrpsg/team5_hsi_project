@@ -20,7 +20,22 @@ public class PickPlaceBoardDTO {
 	//작성자 닉네임을 얻기 위한 변수 생성
 	private String ppa_nickname;
 	
+	private String f_name;
+	private String rownum;
+	
 	//getter,setter
+	public String getF_name() {
+		return f_name;
+	}
+	public void setF_name(String f_name) {
+		this.f_name = f_name;
+	}
+	public String getRownum() {
+		return rownum;
+	}
+	public void setRownum(String rownum) {
+		this.rownum = rownum;
+	}
 	public String getPpb_id() {
 		return ppb_id;
 	}

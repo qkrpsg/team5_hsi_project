@@ -17,10 +17,7 @@
 			password-parameter="ppa_password" 
 			login-processing-url="/user/LoginProcess.pic"
 			default-target-url="/user/LoginProcess.pic"
-			authentication-failure-url="/user/LoginProcessF.pic?authError=true"/>
-			
-		<!-- 권한이 없는경우 -->
-		<security:access-denied-handler error-page="/user/AuthProcessF.pic" />
+			authentication-failure-url="/user/LoginProcessF.pic"/>
 
 		<!-- 로그아웃 -->
 		<security:logout 

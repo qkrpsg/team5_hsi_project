@@ -92,11 +92,8 @@ public class FriendsController {
 		List<Map> list = ppb_service.selectList(map);
 		model.addAttribute("list",list);
 		
-		
 		System.out.println("왜2개임?"+list.toString());
 		System.out.println("사이즈는?"+list.size());
-		
-		
 		
 		return "friends/place_filter.tiles";
 		//return "friends/place.tiles";//나중에 이걸로 바꾸자

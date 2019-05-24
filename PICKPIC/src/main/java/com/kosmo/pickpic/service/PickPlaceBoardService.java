@@ -12,4 +12,5 @@ public interface PickPlaceBoardService {
 	List<Map> selectList(Map map);
 //	int delete(Map map);
 //	int update(Map map);
+	List<PickPlaceBoardDTO> ppbBestList();
 }

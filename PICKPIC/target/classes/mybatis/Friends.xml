@@ -78,5 +78,12 @@
 		SELECT * FROM filter
 	</select>
 	
-	
+	<!-- BEST pickPlace -->
+	<select id="ppbBestList" resultType="PickPlaceBoardDTO">
+		SELECT * FROM (
+			SELECT ppb.*, rownum FROM(
+				SELECT ppbd.*, f.f_name FROM pickplace_board ppbd JOIN filter f ON ppbd.f_id=f.f_id ORDER BY ppb_pick DESC
+			) ppb
+		) WHERE rownum BETWEEN 1 AND 6
+	</select>
 </mapper>

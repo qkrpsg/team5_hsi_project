@@ -92,26 +92,28 @@
     </div>
 	</section>
 
-<section class="pricing-tables" >
+<section class="pricing-tables">
+	<a href="<c:url value='/friends/place.pic'/>" class="btn btn-info"style="float: right; margin-right: 20px; margin-top: 20px;">작성하러가기</a>
 	<div class="container">
-  <div class="grid">
-  
-	  <c:forEach  var="list" items="${list }" varStatus="loop">
-	  	<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
-			<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와"/>
-			<div class="innerText">
-	           	<p class="Text_title" ><span >${list.PPB_TITLE}</span></p>
-	            <p class="" ><span >${list.PPB_CONTENT}</span></p>
-	       </div>
-	      <div class="hi"><a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a></div>
+		<div class="grid">
+			<c:forEach var="list" items="${list }" varStatus="loop">
+				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
+					<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와" />
+					<div class="innerText">
+						<p class="Text_title">
+							<span>${list.PPB_TITLE}</span>
+						</p>
+						<p class="">
+							<span>${list.PPB_CONTENT}</span>
+						</p>
+					</div>
+					<div class="hi">
+						<a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
-	  </c:forEach>
-	
-	
-	
-  </div>	
 	</div>
-	<a href="<c:url value='/friends/place.pic'/>" class="btn btn-info" style="float: right;margin-right:20px;margin-top:20px;">작성하러가기</a>
 </section>
 
 <section class="featured-places" id="best">
