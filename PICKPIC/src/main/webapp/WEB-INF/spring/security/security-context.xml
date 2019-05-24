@@ -17,7 +17,10 @@
 			password-parameter="ppa_password" 
 			login-processing-url="/user/LoginProcess.pic"
 			default-target-url="/user/LoginProcess.pic"
-			authentication-failure-url="/user/LoginProcessF.pic"/>
+			authentication-failure-url="/user/LoginProcessF.pic?authError=true"/>
+			
+		<!-- 권한이 없는경우 -->
+		<security:access-denied-handler error-page="/user/AuthProcessF.pic" />
 
 		<!-- 로그아웃 -->
 		<security:logout 
@@ -25,11 +28,11 @@
 			logout-success-url="/"
 			invalidate-session="true" />
 		
+		<!-- 동일 로그인 한개만 가능 -->
 		<security:session-management 
 			invalid-session-url="/">
 			<security:concurrency-control max-sessions="1" expired-url="/user/Login.pic" />
 		</security:session-management>
-		
 	</security:http>
 	
 	<security:authentication-manager>
@@ -42,11 +45,4 @@
 				/>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	
-	
-	
-	
-
-	
-	
 </beans>

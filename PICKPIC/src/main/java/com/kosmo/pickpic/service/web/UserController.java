@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,21 +55,30 @@ public class UserController {
 	
 	//로그인 실패시 프로세스
 	@RequestMapping("/user/LoginProcessF.pic")
-    public void loginProcessF(HttpServletResponse response) throws Exception{
+    public void loginProcessF(HttpServletResponse response, HttpSession session) throws Exception{
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+        
+        Exception error = (Exception) session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+    	System.out.println(error.getMessage());
+        if (error != null) {
+        	if(error.getMessage().equals("User is disabled"))
+            	out.println("<script>alert('이메일 인증을 해주세요.'); history.go(-1);</script>");
+        	else
+        		out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+        }
+        
         out.flush();
         out.close();
     }
 	
-	//로그인에 성공했으나 이메일인증이 이루어지지 않은경우 프로세스
-	@RequestMapping("/user/EmailProcessF.pic")
+	//권한이 없는 경우 프로세스
+	@RequestMapping("/user/AuthProcessF.pic")
 	public void emailProcessF(HttpSession session, HttpServletResponse response) throws Exception{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		session.invalidate();
-        out.println("<script>alert('이메일 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
+        out.println("<script>alert('권한이 없습니다.'); history.go(-1);</script>");
         out.flush();
         out.close();
 	}
