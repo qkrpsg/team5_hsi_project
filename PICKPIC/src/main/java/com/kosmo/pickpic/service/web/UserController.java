@@ -67,7 +67,7 @@ public class UserController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		session.invalidate();
-        out.println("<script>alert('이메일 인증이 이루어지지 않았습니다.'); hi story.go(-1);</script>");
+        out.println("<script>alert('이메일 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
         out.flush();
         out.close();
 	}
@@ -108,15 +108,15 @@ public class UserController {
 			if(accountService.securityInsert(map) == 1 ? true : false) {
 				accountService.loginHistoryInsert(map);
 				
-				response.setContentType("text/html; charset=UTF-8");
-		        PrintWriter out = response.getWriter();
-		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
-		        out.flush();
-		        out.close();
-				return "home.tiles";
+//				response.setContentType("text/html; charset=UTF-8");
+//		        PrintWriter out = response.getWriter();
+//		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
+//		        out.flush();
+//		        out.close();
+//				return "/home";
 			}//as테이블 insert 성공시 
 		}//ppa테이블 insert 성공시
-		return "/user/sign_up.pic";
+		return "home.tiles";
 	}//sign_up_process
 	
 	//이메일 인증 프로세스
@@ -128,16 +128,16 @@ public class UserController {
         PrintWriter out = response.getWriter();
 		
 		if(accountService.isAuthAbled(map)) {
-	        out.println("<script>alert('이메일 인증이 완료되었습니다!');</script>");
+	        out.println("<script>alert('이메일 인증이 완료되었습니다!'); location.href='http://localhost:8080/pickpic/';</script>");
 	        out.flush();
 	        out.close();
-			return "redirect:home.tiles";
+			return "/home";
 		}
-        out.println("<script>alert('이메일 인증에 실패하였습니다.'); history.go(-1);</script>");
+        out.println("<script>alert('이메일 인증에 실패하였습니다.'); location.href='http://localhost:8080/pickpic/';</script>");
         out.flush();
         out.close();
 		
-		return "";
+		return "/home";
 	}
 	
 //	//로그아웃 프로세스  
