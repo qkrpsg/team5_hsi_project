@@ -33,6 +33,8 @@
 					</nav>
 					<div class="login_wrap col-md-3">
 						<ul>
+						
+						
 							<sec:authorize access="isAnonymous()">
 								<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a></li>
 								<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a></li>
@@ -68,7 +70,7 @@
 
 					<li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
+							<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
 							<li><a href="<c:url value='/friends/filter.pic'/>">필터</a></li>
 							<li><a href="<c:url value='/friends/route.pic?noInsert=1'/> ">픽로드</a></li>
 							<li><a href="<c:url value='/friends/albumDown.pic'/>">앨범다운</a></li>
@@ -112,7 +114,7 @@
 
 				<div class="nav_wrap col-md-1">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
+						<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
 						<li><a href="<c:url value='/friends/route.pic?noInsert=1'/>">픽로드</a></li>
 						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>

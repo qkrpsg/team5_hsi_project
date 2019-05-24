@@ -22,7 +22,7 @@ public class HGController {
 	@RequestMapping(value="/LHG/pay.pic")
 	public String pay(PaymentDTO dto,Principal principal) throws Exception {
 		dto.setPpa_id(principal.getName());
-		fService.addPayment(dto);
+		//fService.addPayment(dto);
 		return "friends/filter.tiles";
 	}//pay
 }//class 

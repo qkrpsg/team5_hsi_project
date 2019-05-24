@@ -12,16 +12,28 @@ public class FilterDTO {
 	private String f_event_yn;
 	private String f_index;
 	private String f_image_path;
-	
 	private String f_change;
 
-	private String totalFilter;
 
 	//편의성
+	private String totalFilter;
 	private String ppa_email;
 	private String ppa_nickname;
 	private String ppa_index;
+	private String rownum;
 	
+	public String getF_index() {
+		return f_index;
+	}
+	public void setF_index(String f_index) {
+		this.f_index = f_index;
+	}
+	public String getRownum() {
+		return rownum;
+	}
+	public void setRownum(String rownum) {
+		this.rownum = rownum;
+	}
 	public String getF_id() {
 		return f_id;
 	}

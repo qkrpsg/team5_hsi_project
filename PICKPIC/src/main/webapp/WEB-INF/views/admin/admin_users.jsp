@@ -4,7 +4,7 @@
 <!-- 여기서부터 사용자 관리 페이지 시작 -->
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>회원 <small>${total }명의 사용자</small></h1>
+		<h1>회원 <small class="count"></small></h1>
 	</section>
 	
 	<!-- 프로필사진+목록 통합 시작 -->
@@ -16,12 +16,6 @@
 					<!-- 목록 헤더 시작 -->
 					<div class="box-header with-border">
 						<h3 class="box-title">사용자 목록</h3>
-						<div class="box-tools pull-right">
-							<div class="has-feedback">
-								<input type="text" class="form-control input-sm" placeholder="Search User"> 
-								<span class="glyphicon glyphicon-search form-control-feedback"></span>
-							</div>
-						</div>
 					</div>
 					<!-- 목록 헤더 끝-->
 
@@ -29,47 +23,30 @@
 					<div class="box-body">
 						<!-- 목록데이터 : 사용자 아이디 입력 부분 -->
 						<div class="table-responsive mailbox-messages">
-							<table class="table table-hover table-striped">
+							<table id="userTable" class="table table-hover table-striped">
 								<thead>
 									<tr>
-										<th><input type="checkbox" value="all"></th>
 										<th>번호</th>
-										<th class="">아이디</th>
-										<th class="">별명</th>
-										<th class="">최종로그인</th>
+										<th>고유번호</th>
+										<th>아이디</th>
+										<th>별명</th>
+										<th>최종로그인</th>
 									</tr>
 								</thead>
-								<tbody>
-									<c:forEach var="item" items="${user }" varStatus="loop">
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>${loop.count}</td>
-											<td><a href="javascript:void(0)" class="mb-detail">${item.ppa_email }</a></td>
-											<td>${item.ppa_nickname}</td>
-											<td>${item.lh_ld }</td>
-										</tr>
-									</c:forEach>
-								</tbody>
+<!-- 								<tbody> -->
+<%-- 									<c:forEach var="item" items="${user }" varStatus="loop"> --%>
+<!-- 										<tr> -->
+<%-- 											<td>${loop.count}</td> --%>
+<%-- 											<td><a href="javascript:void(0)" class="mb-detail">${item.ppa_email }</a></td> --%>
+<%-- 											<td>${item.ppa_nickname}</td> --%>
+<%-- 											<td>${item.lh_ld }</td> --%>
+<!-- 										</tr> -->
+<%-- 									</c:forEach> --%>
+<!-- 								</tbody> -->
 							</table>
 						</div>
 					</div>
 					<!-- 목록 바디 끝 -->
-
-					<!-- 목록 풋터 시작 -->
-					<div class="box-footer">
-						<div class="pull-right">
-							1/10
-							<div class="btn-group">
-								<button type="button" id="prev" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-left"></i>
-								</button>
-								<button type="button" id="next" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-right"></i>
-								</button>
-							</div>
-						</div>
-						<!-- 목록 풋터 끝 -->
-					</div>
 				</div>
 			</div>
 			
@@ -128,101 +105,100 @@
 <!-- 여기까지 사용자 관리 페이지 끝 -->
 
 <script>
+	//데이터 테이블
+	$(document).ready(function () {
+	    $('#userTable').DataTable({
+	    	responsive : true,
+            pageLength : 10,
+            lengthMenu : [ [ 5, 10, 20, -1 ], [ 5, 10, 20, "All" ] ],
+            language: {
+                "emptyTable": "데이터가 없어요.",
+                "lengthMenu": "페이지당 개수 : _MENU_",
+                "info": "현재 _START_ - _END_ / _TOTAL_건",
+                "infoEmpty": "데이터 없음",
+                "infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+                "search": "검색 :",
+                "zeroRecords": "일치하는 데이터가 없습니다",
+                "loadingRecords": "로딩중...",
+                "processing":     "잠시만 기다려 주세요...",
+                "paginate": {
+                    "next": "다음",
+                    "previous": "이전"
+                }
+            },
+            ajax : {
+                url:"<c:url value='/admin/userList.do'/>",
+                type:"POST",
+                dataType:"JSON",
+				"${_csrf.parameterName}" : "${_csrf.token}",
+			    dataSrc: "",
+			    error:function(request, error){
+			    	console.log('실패했습니다');
+			    	console.log(request.responseText);
+			    }
+            },
+            columns : [
+            	{data: "rownum"},
+                {data: "ppa_id"},
+                {data: "ppa_email",
+                	"render" : function(data){
+                		data = '<a href="javascript:void(0)" onclick="detail(this)" class="mb-detail">'+data+'</a>';
+                		return data;
+                	}
+                },
+                {data: "ppa_nickname"},
+                {data: "lh_ld"}
+            ]
+	    });
+	});
 	
-	$(function() {
-// 		var nowPage = 1;
-// 		$('#next').click(function() {
-// 			$.ajax({
-// 				url : '<c:url value="/admin/userPaging.do"/>',
-// 				data :{
-// 					"nowPage" : parseInt(nowPage),
-// 		            "${_csrf.parameterName}" : "${_csrf.token}"
-// 				},
-// 				dataType : 'json',
-// 				type : 'get',
-// 				success :function(data){
-// 					console.log('성공했습니다');
-// 					console.log(data);
-// 				},
-// 				error : function(data) {
-// 					console.log('실패했습니다');
-// 					console.log(data);
-// 				}
-// 			});
-// 		});
+	//상세보기
+	var detail = function(obj) {
+		var email = $(obj).html();
+		console.log(typeof email);
+		$.ajax({
+			url : '<c:url value="/admin/userDetail.do"/>',
+			data : {
+				"ppa_email" : email,
+				"${_csrf.parameterName}" : "${_csrf.token}"
+			},
+			dataType : 'json',
+			type : "get",
+			success : function(data) {
+				console.log('성공했습니다');
+				console.log(data);
+				
+				$.each(data, function(index, element) {
+					$('#userimage').attr("src",element["ppa_profile_path"]);
+					$('#useremail').html(element["ppa_email"]);
+					$('#nickname').html(element['ppa_nickname']);
 
-		$(':checkbox').click(function() {
-			if ($(this).val() == 'all') {//전체 선택 클릭
-				if ($(this).filter(':checked').length == 1) {//체크한 경우
-					$(":checkbox:gt(0)").each(function() {
-						$(this).prop("checked", true);
-					});
-				} 
-				else {//체크 해제한 경우
-					$(":checkbox:gt(0)").each(function() {
-						$(this).prop("checked", false);
-					});
-				}
-			} 
-			else {//전체 선택이 아닌 체크박스 클릭
-				if ($(this).filter(':checked').length == 1) {//체크한 경우
-					if ($(":checkbox:checked").length == $(":checkbox:gt(0)").length) {//체크시 체크된 모든 체크박스의 수와 전체선택을 제외한 체크박스의 수가 같다면 즉 모두 선택되었다면 			
-						$(":checkbox:first").prop("checked", true);
+					$('#d-useremail').html(element["ppa_email"]);
+					$('#d-nickname').html(element['ppa_nickname']);
+					$('#d-joindate').html(element['ppa_join_date']);
+					$('#d-logindate').html(element['lh_ld']);
+
+					$('#d-pick').html(element['totalpick']);
+					$('#d-post').html(element['totalpost']);
+					$('#d-filter').html(element['totalfilter']);
+					$('#d-question').html(element['totalquestion']);
+
+					console.log(element['ppa_type']);
+					if (element['as_class'] == "ROLE_ADMIN") {
+						console.log('넌관리자야');
+						$('#d-type-admin').css('display', 'inline');
+						$('#d-type-pickpic').css('display', 'none');
+					} else {
+						console.log('넌사용자야');
+						$('#d-type-admin').css('display', 'none');
+						$('#d-type-pickpic').css('display', 'inline');
 					}
-				} 
-				else {//체크 해제한 경우
-					$(":checkbox:first").prop("checked", false);
-				}
+				});
+			},
+			error : function(data) {
+				console.log('실패했습니다');
+				console.log(data);
 			}
 		});
-
-		$('.mb-detail').click(function() {
-			var email = $(this).html();
-			console.log(typeof email);
-			$.ajax({
-				url : '<c:url value="/admin/userDetail.do"/>',
-				data : {
-					"ppa_email" : email,
-					"${_csrf.parameterName}" : "${_csrf.token}"
-				},
-				dataType : 'json',
-				type : "get",
-				success : function(data) {
-					console.log('성공했습니다');
-					console.log(data);
-
-					$.each(data, function(index, element) {
-						$('#userimage').attr("src",element["ppa_profile_path"]);
-						$('#useremail').html(element["ppa_email"]);
-						$('#nickname').html(element['ppa_nickname']);
-
-						$('#d-useremail').html(element["ppa_email"]);
-						$('#d-nickname').html(element['ppa_nickname']);
-						$('#d-joindate').html(element['ppa_join_date']);
-						$('#d-logindate').html(element['lh_ld']);
-
-						$('#d-pick').html(element['totalpick']);
-						$('#d-post').html(element['totalpost']);
-						$('#d-filter').html(element['totalfilter']);
-						$('#d-question').html(element['totalquestion']);
-
-						console.log(element['ppa_type']);
-						if (element['as_class'] == "ROLE_ADMIN") {
-							console.log('넌관리자야');
-							$('#d-type-admin').css('display', 'inline');
-							$('#d-type-pickpic').css('display', 'none');
-						} else {
-							console.log('넌사용자야');
-							$('#d-type-admin').css('display', 'none');
-							$('#d-type-pickpic').css('display', 'inline');
-						}
-					});
-				},
-				error : function(data) {
-					console.log('실패했습니다');
-					console.log(data);
-				}
-			});
-		});/* 클릭  */
-	});
+	};
 </script>

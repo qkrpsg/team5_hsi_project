@@ -45,5 +45,43 @@
 	</bean>
 	<context:property-placeholder location="classpath:validator/pickpic.properties"/>
 	<context:component-scan base-package="com.kosmo.pickpic" />
+	
+	
+	
+	<!-- 시큐리티 해당 페이지 비활성화???  -->
+	<bean id="csrfMatcher"
 
+    class="org.springframework.security.web.util.matcher.AndRequestMatcher">
+
+    <constructor-arg>
+
+    	<list>
+
+    		<bean class="org.springframework.security.web.csrf.CsrfFilter.DefaultRequiresCsrfMatcher"/>
+
+    		<bean id="aa" class="org.springframework.security.web.util.matcher.NegatedRequestMatcher">
+
+        	<constructor-arg>
+
+        	<bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+
+            <constructor-arg value="/friends/**"/>
+
+          </bean>
+
+        	</constructor-arg>
+
+        </bean>
+
+    	</list>
+
+    </constructor-arg>
+
+</bean>
+
+
+
+	
+	
+	
 </beans>

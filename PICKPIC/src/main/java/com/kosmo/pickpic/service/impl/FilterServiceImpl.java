@@ -28,8 +28,13 @@ public class FilterServiceImpl implements FilterService{
 	}
 
 	@Override
-	public int addPayment(PaymentDTO dto) {
-		return dao.addPayment(dto);
+	public int addPayment(Map map) {
+		return dao.addPayment(map);
 	}//addPayment
+
+	@Override
+	public List<Map> filterList() {
+		return dao.filterList();
+	}
 	
 }//class

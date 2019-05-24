@@ -94,7 +94,7 @@
 			<li id="pickPlace"><a href="<c:url value='/admin/pickPlace.pic'/>"><i class="fa fa-map"></i> <span>픽플레이스관리</span></a></li>
 			<li id="filter"><a href="<c:url value='/admin/filter.pic'/>"><i class="fa fa-clone"></i> <span>필터관리</span></a></li>
 			<li id="pickRoad"><a href="<c:url value='/admin/pickRoad.pic'/>"><i class="fa fa-map-signs"></i> <span>픽로드관리</span></a></li>
-			<li id="albumDown"><a href="<c:url value='/admin/albumDown.pic'/>"><i class="fa fa-navicon"></i> <span>앨범다운관리</span></a></li>
+<%-- 			<li id="albumDown"><a href="<c:url value='/admin/albumDown.pic'/>"><i class="fa fa-navicon"></i> <span>앨범다운관리</span></a></li> --%>
 			
 			<li class="header">고객센터</li>
 			<li id="gonggi"><a href="<c:url value='/admin/notice.pic'/> "><span>공지사항</span> </a></li>

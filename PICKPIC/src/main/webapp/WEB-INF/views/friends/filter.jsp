@@ -80,14 +80,17 @@
 	      <div class="button-group filters-button-group" >
 	        <ul>
 	            <button class="btn btn-info" is-checked" data-filter="*"><span class="nav_color"></span><a >All</a></button>
-	            <button class="btn btn-info" data-filter=".ko"><span class="nav_color"></span><a >C1</a></button>
-	            <button class="btn btn-info" data-filter=".am"><span class="nav_color"></span><a >F2</a></button>
-	            <button class="btn btn-info" data-filter=".ni"><span class="nav_color"></span><a >G3</a></button>
-	            <button class="btn btn-info" data-filter=".cha"><span class="nav_color"></span><a >LV3</a></button>
-	            <button class="btn btn-info" data-filter=".ho"><span class="nav_color"></span><a >B5</a></button>
-	            <button class="btn btn-info" data-filter=".ap"><span class="nav_color"></span><a >A6</a></button>  
+	            <button class="btn btn-info" data-filter=".vintage"><span class="nav_color"></span><a >VI</a></button>
+	            <button class="btn btn-info" data-filter=".lomo"><span class="nav_color"></span><a >LO</a></button>
+	            <button class="btn btn-info" data-filter=".clarity"><span class="nav_color"></span><a >CL</a></button>
+	            <button class="btn btn-info" data-filter=".sincity"><span class="nav_color"></span><a >SI</a></button>
+	            <button class="btn btn-info" data-filter=".pinhole"><span class="nav_color"></span><a >PI</a></button>
+	            <button class="btn btn-info" data-filter=".nostalgia"><span class="nav_color"></span><a >NO</a></button>  
+	            <button class="btn btn-info" data-filter=".hermajesty"><span class="nav_color"></span><a >HE</a></button>  
+	            <button class="btn btn-info" data-filter=".crossprocess"><span class="nav_color"></span><a >CR</a></button>
 	        </ul>
 	      </div>
+    	</div>
     </div>
 	</section>
 
@@ -95,78 +98,20 @@
 	<div class="container">
   <div class="grid">
   
-  
-	<div class="col-xs-3 element-item img_wrap2 ko">
-		<img src="<c:url value='/resources/images/main_image1.jpg' />" alt="안나와"/>
-		
-		
-		
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       </div>
-      <div class="hi"><a href="<c:url value='/pay/pay.pic'/>">구매하기</a></div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 am">
-		<img src="<c:url value='/resources/images/main_image2.jpg' />" alt="안나와"/>
-		
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       		
-       </div>
-       <div class="hi"><a href="#">구매하기</a></div>
-       
-       
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ni">
-		<img src="<c:url value='/resources/images/main_image3.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       </div>
-       <div class="hi"><a href="#">구매하기</a></div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 cha">
-		<img src="<c:url value='/resources/images/main_image4.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       </div>
-       <div class="hi"><a href="#">구매하기</a></div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ho">
-		<img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       </div>
-       <div class="hi"><a href="#">구매하기</a></div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ap">
-		<img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       </div>
-       <div class="hi"><a href="#">구매하기</a></div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ko">
-		<img src="<c:url value='/resources/images/main_image5.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       </div>
-       <div class="hi"><a href="#">구매하기</a></div>
-	</div>
-	<div class="col-xs-3 element-item img_wrap2 ap">
-		<img src="<c:url value='/resources/images/main_image6.jpg' />" alt="안나와"/>
-		<div class="innerText">
-           	<p class="Text_title" ><span >TITLE</span></p>
-            <p class="" ><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-       </div>
-        <div class="hi"><a href="#">구매하기</a></div>
-	</div>
+  <c:forEach  var="list" items="${list }" varStatus="loop">
+  	<c:if test="${list.F_SALE_YN eq 'Y' }">
+	   <div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
+			<img src="${list.F_IMAGE_PATH }" alt="안나와"/>
+			<div class="innerText">
+	           	<p class="Text_title" ><span >${list.F_NAME}</span></p>
+	            <p class="" ><span >가격 : ${list.F_CHANGE}</span></p>
+	       </div><!-- &f_change= ${list.F_CHANGE } -->
+	      <div class="hi"><a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a></div>
+		</div>
+  	</c:if>
+  </c:forEach>
+	
+	
   </div>
 		
 		

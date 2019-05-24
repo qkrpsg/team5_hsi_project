@@ -19,8 +19,17 @@ public class PickpicAccountDTO {
 	private String totalfilter;
 	private String totalquestion;
 	private String as_class;
+	private String rownum;
 
+	
 	//getter,setter
+	public String getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(String rownum) {
+		this.rownum = rownum;
+	}
 	public String getTotalpick() {
 		return totalpick;
 	}
