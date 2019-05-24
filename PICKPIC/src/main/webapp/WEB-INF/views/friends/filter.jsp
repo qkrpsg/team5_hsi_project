@@ -99,6 +99,7 @@
   <div class="grid">
   
   <c:forEach  var="list" items="${list }" varStatus="loop">
+  	<c:if test="${list.F_SALE_YN eq 'Y' }">
 	   <div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
 			<img src="${list.F_IMAGE_PATH }" alt="안나와"/>
 			<div class="innerText">
@@ -107,6 +108,7 @@
 	       </div><!-- &f_change= ${list.F_CHANGE } -->
 	      <div class="hi"><a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a></div>
 		</div>
+  	</c:if>
   </c:forEach>
 	
 	

@@ -181,21 +181,21 @@
 				console.log(data);
 
 				$.each(data, function(index, element) {
-// 					$('#d-filterImage').html(element['']);
+					$('#d-filterImage').attr("src",element["f_image_path"]);
 					$('#d-filterName').html(element['f_name']);
 					$('#d-change').attr('placeholder', element['f_change']);
 					$('#d-change').val('');
 					$('#d-reason').val('');
 					
 					if (element['f_sale_yn'] == "Y") {
-						$('d-saleToggle').html() == '판매 중지';
+						$('#d-saleToggle').html('판매 중지');
 					} else {
-						$('d-saleToggle').html() == '판매 시작';
+						$('#d-saleToggle').html('판매 시작');
 					}
 					if (element['f_event_yn'] == "Y") {
-						$('d-eventToggle').html() == '이벤트 중지';
+						$('#d-eventToggle').html('이벤트 중지');
 					} else {
-						$('d-eventToggle').html() == '이벤트 시작';
+						$('#d-eventToggle').html('이벤트 시작');
 					}
 					
 					$('#d-priceStart').html(element['f_price']);
@@ -255,6 +255,7 @@
 						$('#d-change').attr('placeholder', element['f_change']);
 						$('#d-reason').val('');
 						$('#d-price').html(element['f_change']);
+						$('#d-reasonText').html(element['f_reason']);
 					});
 					table.ajax.reload();
 				},
