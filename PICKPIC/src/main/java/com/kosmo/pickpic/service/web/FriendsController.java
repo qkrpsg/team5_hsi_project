@@ -633,4 +633,6 @@ public class FriendsController {
 		return "friends/search.tiles";
 	}
 	
+	
+	
 }//FriendsController

@@ -25,4 +25,6 @@ public class HGController {
 		//fService.addPayment(dto);
 		return "friends/filter.tiles";
 	}//pay
+	
+	
 }//class 

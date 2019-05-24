@@ -122,7 +122,6 @@
 <!-- preview_wrap -->
    
 <!-- 하단 수평스크롤 시작-->
-
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
