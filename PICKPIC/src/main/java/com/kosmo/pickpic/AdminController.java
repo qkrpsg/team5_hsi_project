@@ -1,26 +1,17 @@
 package com.kosmo.pickpic;
 
-import java.net.URLEncoder;
 import java.security.Principal;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.codehaus.jackson.JsonGenerationException;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scripting.config.LangNamespaceHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +25,6 @@ import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.QuestionDTO;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
-import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
-import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.PagingUtil;
@@ -52,9 +41,6 @@ public class AdminController {
 	@Resource(name="questionService")
 	private QuestionServiceImpl questionService;
 	
-	
-	
-	
 	//HOME
 	@RequestMapping(value = "/admin/home.pic")
 	public String home(@RequestParam Map map, Model model) throws Exception{
@@ -68,19 +54,24 @@ public class AdminController {
 	
 	//회원관리
 	@RequestMapping(value = "/admin/users.pic")
-	public String users(Model model) throws Exception {
+	public String users() throws Exception {
+		return "admin/admin_users.admin";
+	}//users
+	
+	//유저 리스트 aJax
+	@ResponseBody
+	@RequestMapping(value="/admin/userList.do",produces="text/html; charset=UTF-8")
+	public String userList(@RequestParam Map map, Model model) throws Exception{
 		List<PickpicAccountDTO> beforeUser = adminService.pickPicAccountAll();
-		List<PickpicAccountDTO> AfterUser = new Vector<PickpicAccountDTO>();
+		List<Map> user = new Vector<Map>();
 		
 		for(PickpicAccountDTO record : beforeUser) {
 			record.setLh_ld(DTOUtil.getStringDate(record.getLh_ld(), "yyyy-MM-dd HH:mm:ss", "yy/MM/dd"));
-			AfterUser.add(record);
+			user.add(DTOUtil.convertDTOToMap(record));
 		}
-		
-		model.addAttribute("user", AfterUser);
-		model.addAttribute("total", AfterUser.size());
-		return "admin/admin_users.admin";
-	}//users
+
+       return JSONArray.toJSONString(user);
+	}
 	
 	//유저 상세보기 aJax
 	@ResponseBody
@@ -90,50 +81,8 @@ public class AdminController {
        List<Map> user = new Vector<Map>();  
        user.add(DTOUtil.convertDTOToMap(adminService.oneUser(map)));
        
-       System.out.println(JSONArray.toJSONString(user));
-       
        return JSONArray.toJSONString(user);
     }
-	
-//	//유저관리 게시판 페이징
-//	@ResponseBody
-//	@RequestMapping(value="/admin/userPaging.do", produces="text/html; charset=UTF-8")
-//	public String userPaging(@RequestParam Map map) throws Exception{
-//		
-//		System.out.println("nowPage : " + map.get("nowPage").toString());
-//		//페이징을 위한 로직 시작]
-//		//전체 레코드수
-//		int totalRecordCount= adminService.userTotal();		
-//		//전체 페이지수]
-//		int totalPage=(int)Math.ceil((double)totalRecordCount/10);		
-//		//시작 및 끝 ROWNUM구하기]
-//		int nowPage = Integer.parseInt(map.get("nowPage").toString());
-//		int start =(nowPage-1)*10+1;
-//		int end   =nowPage*10;
-//		map.put("start",start);
-//		map.put("end", end);
-//		
-//		List<PickpicAccountDTO> user = adminService.selectUser(map);
-//		Map record = new HashMap();
-//		
-//		List<Map> list = new Vector<Map>();
-//		for(PickpicAccountDTO dto : user) {
-//			record = DTOUtil.convertDTOToMap(dto);
-//			list.add(record);
-//		}
-//		
-//		record.put("list", list);
-//		record.put("nowPage", nowPage);
-//		record.put("pageSize", 10);
-//		record.put("totalRecordCount", totalRecordCount);
-//
-//		List<Map> paging = new Vector<Map>();
-//		paging.add(record);
-//		
-//		System.out.println(JSONArray.toJSONString(paging));
-//		return JSONArray.toJSONString(paging);
-//	}
-	
 	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")
@@ -143,14 +92,25 @@ public class AdminController {
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
-	public String filter(Model model) throws Exception{
-		List<FilterDTO> list = adminService.filterAll();
-		
-		model.addAttribute("filter", list);
-		model.addAttribute("total", list.size());
-		
+	public String filter() throws Exception{
 		return "admin/admin_filter.admin";
 	}//filter
+	
+	
+	
+	//필터 상세보기 aJax
+	@ResponseBody
+	@RequestMapping(value="/admin/filterList.do",produces="text/html; charset=UTF-8")
+	public String filterList(@RequestParam Map map) throws Exception{
+		List<FilterDTO> beforeList = adminService.filterAll();
+		List<Map> list = new Vector<Map>();
+		
+		for(FilterDTO record : beforeList) {
+			list.add(DTOUtil.convertDTOToMap(record));
+		}
+		
+		return JSONArray.toJSONString(list);
+	}
 	
 	//필터 상세보기 aJax
 	@ResponseBody
@@ -364,8 +324,23 @@ public class AdminController {
 	
 	//문의 관리
 	@RequestMapping(value = "/admin/qna.pic")
-	public String qna(@RequestParam Map map,Model model) {
+	public String qna(@RequestParam Map map,Model model, HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage) throws Exception{
+		int totalRecordCount= questionService.getTotalRecord(map);
+		int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
+		int start =(nowPage-1)*pageSize+1;
+		int end   =nowPage*pageSize;
+		
+		map.put("start",start);
+		map.put("end", end);
 		List<QuestionDTO> list = questionService.selectList(map);	
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/help/qna/List.pic?");
+		model.addAttribute("list", list);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalRecordCount", totalRecordCount);		
+		model.addAttribute("pagingString", pagingString);
+		
+
 		model.addAttribute("list",list);
 		
 		map.put("admin", "문의관리");
@@ -550,7 +525,7 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/admin/admin_qna_update.pic")
 	public String qna_update(@RequestParam Map map,Model model,Principal principal) throws Exception {
-		map.put("ppa_email", principal.getName());
+		
 		System.out.println("aa"+map);
 		questionService.aqupdate(map);
 		List<QuestionDTO> list = questionService.selectList(map);	

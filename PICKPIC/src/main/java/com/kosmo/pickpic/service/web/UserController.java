@@ -67,7 +67,7 @@ public class UserController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		session.invalidate();
-        out.println("<script>alert('이메일 인증이 이루어지지 않았습니다.'); history.go(-1);</script>");
+        out.println("<script>alert('이메일 인증이 이루어지지 않았습니다.'); hi story.go(-1);</script>");
         out.flush();
         out.close();
 	}
@@ -153,6 +153,7 @@ public class UserController {
 	//마이페이지
 	@RequestMapping("/user/myPage.pic")
 	public String myPage() throws Exception{
+		
 		return "login/MyPage.tiles";
 	}//myPage
 	

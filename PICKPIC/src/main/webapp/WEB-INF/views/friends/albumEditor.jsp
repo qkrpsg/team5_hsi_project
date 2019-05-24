@@ -20,11 +20,11 @@
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/caman.full.min.js'/>"></script>
 
 
 <!-- albumEditor.jsp -->
+
 <!-- 모달 창 시작-->
 <div class="modal" id="option_modal">
    <div class="modal-content">
@@ -479,8 +479,8 @@
 		
 		idArray.forEach(function(id, i) {
 			
-			 var jbResult = confirm( '아래의 편집된 파일을 저장소에 다운로드를 완료하면 편집내용이 사라집니다. 지금 바로 저장하시겠습니까?', '' );
-		     document.write( jbResult );
+			 /* var jbResult = confirm( '아래의 편집된 파일을 저장소에 다운로드를 완료하면 편집내용이 사라집니다. 지금 바로 저장하시겠습니까?', '' );
+		     document.write( jbResult ); */
 			
 			console.log(i,id);
 			fileName = fileNameMap.get(id);

@@ -47,5 +47,6 @@
 		INSERT INTO login_history(lh_id, lh_index, ppa_id) 
 		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
 	</insert>
+	
 </mapper>
 

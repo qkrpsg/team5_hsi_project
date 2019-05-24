@@ -4,7 +4,7 @@
 <div class="content-wrapper">
 	<!-- 콘텐츠 헤더 시작 -->
 	<section class="content-header">
-		<h1>필터 <small>${total }개의 필터</small></h1>
+		<h1>필터 <small id="count"></small></h1>
 	</section>
 	<!-- 콘텐츠 헤더 끝 -->
 	
@@ -15,63 +15,21 @@
 	    		<div class="box">
 					<div class="box-header">
 						<h3 class="box-title">필터 목록</h3>
-						<div class="box-tools pull-right">
-							<div class="has-feedback">
-								<input type="text" class="form-control input-sm" placeholder="Search Filter"> 
-								<span class="glyphicon glyphicon-search form-control-feedback"></span>
-							</div>
-						</div>
 					</div>
 					
 					<div class="box-body table-responsive">
-						<table class="table table-hover table-striped" >
+						<table id="userTable" class="table table-hover table-striped" >
 							<thead>
 								<tr>
-									<th><input type="checkbox" value="all"></th>
 									<th>번호</th>
+									<th>고유번호</th>
 									<th>필터명</th>
 									<th>가격</th>
 									<th>상태</th>
 									<th>이벤트 여부</th>
 								</tr>
 							</thead>
-							<tbody>
-								<c:forEach var="item" items="${filter }" varStatus="loop">
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>${loop.count}</td>
-										<td><a href="javascript:void(0)" class="detail" id="detail${loop.count }" value="${item.f_name }">${item.f_name }</a></td>
-										<td>${item.f_change}</td>
-										<c:if test="${item.f_sale_yn eq 'Y' }" var="isSale">
-											<td>판매중</td>
-										</c:if>
-										<c:if test="${not isSale }">
-											<td>미판매중</td>
-										</c:if>
-										<c:if test="${item.f_event_yn eq 'Y' }" var="isEvent">
-											<td>이벤트 진행중</td>
-										</c:if>
-										<c:if test="${not isEvent }">
-											<td>이벤트 종료</td>
-										</c:if>
-									</tr>
-								</c:forEach>
-							</tbody>
 						</table>
-					</div>
-					
-					<div class="box-footer">
-						<div class="pull-right">
-							1/10
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-left"></i>
-								</button>
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-chevron-right"></i>
-								</button>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -137,40 +95,153 @@
 </div>
 
 <script>
+	//데이터 테이블
+	$(document).ready(function() {
+	    InitUserTable();
+	});
 	
-	$(function() {
-		$(':checkbox').click(function() {
-			if ($(this).val() == 'all') {//전체 선택 클릭
-				if ($(this).filter(':checked').length == 1) {//체크한 경우
-					$(":checkbox:gt(0)").each(function() {
-						$(this).prop("checked", true);
-					});
-				} 
-				else {//체크 해제한 경우
-					$(":checkbox:gt(0)").each(function() {
-						$(this).prop("checked", false);
-					});
-				}
-			} 
-			else {//전체 선택이 아닌 체크박스 클릭
-				if ($(this).filter(':checked').length == 1) {//체크한 경우
-					if ($(":checkbox:checked").length == $(":checkbox:gt(0)").length) {//체크시 체크된 모든 체크박스의 수와 전체선택을 제외한 체크박스의 수가 같다면 즉 모두 선택되었다면 			
-						$(":checkbox:first").prop("checked", true);
+	var table;
+	function InitUserTable() {
+		table = $('#userTable').DataTable({
+	    	responsive : true,
+	        pageLength : 10,
+	        lengthMenu : [ [ 5, 10, 20, -1 ], [ 5, 10, 20, "All" ] ],
+	        language: {
+	            "emptyTable": "데이터가 없어요.",
+	            "lengthMenu": "페이지당 개수 : _MENU_",
+	            "info": "현재 _START_ - _END_ / _TOTAL_건",
+	            "infoEmpty": "데이터 없음",
+	            "infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+	            "search": "검색 :",
+	            "zeroRecords": "일치하는 데이터가 없습니다",
+	            "loadingRecords": "로딩중...",
+	            "processing":     "잠시만 기다려 주세요...",
+	            "paginate": {
+	                "next": "다음",
+	                "previous": "이전"
+	            }
+	        },
+	        ajax : {
+	            url:"<c:url value='/admin/filterList.do'/>",
+	            type:"POST",
+	            dataType:"JSON",
+				"${_csrf.parameterName}" : "${_csrf.token}",
+			    dataSrc: "",
+			    error:function(request, error){
+			    	console.log('실패했습니다');
+			    	console.log(request.responseText);
+			    }
+	        },
+	        columns : [
+	        	{data: "rownum"},
+	            {data: "f_id"},
+	            {data: "f_name",
+	            	"render" : function(data){
+	            		data = '<a href="javascript:void(0)" onclick="detail(this)">'+data+'</a>';
+	            		return data;
+	            	}
+	            },
+	            {data: "f_change"},
+	            {data: "f_sale_yn",
+	            	"render" : function(data) {
+						if(data == 'Y')
+							data = '판매중';
+						else
+							data = '판매 중지';
+						return data;
 					}
-				} 
-				else {//체크 해제한 경우
-					$(":checkbox:first").prop("checked", false);
-				}
+	            },
+				{data : "f_event_yn",
+					"render":function(data){
+						if(data == 'Y')
+							data = '이벤트 진행중';
+						else
+							data = '이벤트 종료';
+						return data;
+					}
+	            }
+	        ]
+	    });
+	};
+	
+	//상세보기
+	var detail = function(obj) {
+		var filter = $(obj).html();
+		console.log(filter);
+		$.ajax({
+			url : '<c:url value="/admin/filterDetail.do"/>',
+			data : {
+				"f_name" : filter,
+				"${_csrf.parameterName}" : "${_csrf.token}"
+			},
+			dataType : 'json',
+			type : "get",
+			success : function(data) {
+				console.log('성공했습니다');
+				console.log(data);
+
+				$.each(data, function(index, element) {
+// 					$('#d-filterImage').html(element['']);
+					$('#d-filterName').html(element['f_name']);
+					$('#d-change').attr('placeholder', element['f_change']);
+					$('#d-change').val('');
+					$('#d-reason').val('');
+					
+					if (element['f_sale_yn'] == "Y") {
+						$('d-saleToggle').html() == '판매 중지';
+					} else {
+						$('d-saleToggle').html() == '판매 시작';
+					}
+					if (element['f_event_yn'] == "Y") {
+						$('d-eventToggle').html() == '이벤트 중지';
+					} else {
+						$('d-eventToggle').html() == '이벤트 시작';
+					}
+					
+					$('#d-priceStart').html(element['f_price']);
+					$('#d-price').html(element['f_change']);
+					$('#d-saleCount').html(element['totalFilter']);
+					$('#d-postDate').html(element['f_post_date']);
+					$('#d-changeDate').html(element['f_change_date']);
+					$('#d-reasonText').html(element['f_reason']);
+					
+					
+					if (element['f_sale_yn'] == "Y") {
+						$('#d-typeSaleToggle').html('판매중');
+						$('#d-typeSaleToggle').attr('class', 'label label-primary');
+					} else {
+						$('#d-typeSaleToggle').html('판매중지');
+						$('#d-typeSaleToggle').attr('class', 'label label-warning');
+					}
+					if (element['f_event_yn'] == "Y") {
+						$('#d-typeEventToggle').html('이벤트 진행중');
+						$('#d-typeEventToggle').attr('class', 'label label-success');
+					} else {
+						$('#d-typeEventToggle').html('이벤트 종료');
+						$('#d-typeEventToggle').attr('class', 'label label-danger');
+					}
+					
+				});
+			},
+			error : function(data) {
+				console.log('실패했습니다');
+				console.log(data);
 			}
 		});
-
-		$('.detail').click(function() {
-			var filter = $(this).attr('value');
-			console.log(filter);
+	};/* 클릭  */
+		
+	//가격 변경
+	$('#priceSummit').click(function() {
+		if($('#d-change').val() < 0){
+			alert('숫자는 양수만 입력해주세요');
+		}
+		else if($('#d-change').val().length > 0 && $('#d-reason').val().length > 0){
 			$.ajax({
-				url : '<c:url value="/admin/filterDetail.do"/>',
+				url : '<c:url value="/admin/filterPriceChange.do"/>',
 				data : {
-					"f_name" : filter,
+					"f_name" : $('#d-filterName').html(),
+					"f_change" : $('#d-change').val(),
+					"f_reason" : $('#d-reason').val(),
 					"${_csrf.parameterName}" : "${_csrf.token}"
 				},
 				dataType : 'json',
@@ -178,175 +249,97 @@
 				success : function(data) {
 					console.log('성공했습니다');
 					console.log(data);
-
+					
 					$.each(data, function(index, element) {
-// 						$('#d-filterImage').html(element['']);
-						$('#d-filterName').html(element['f_name']);
-						$('#d-change').attr('placeholder', element['f_change']);
 						$('#d-change').val('');
+						$('#d-change').attr('placeholder', element['f_change']);
 						$('#d-reason').val('');
-						
-						
-						
-						if (element['f_sale_yn'] == "Y") {
-							$('d-saleToggle').html() == '판매 중지';
-						} else {
-							$('d-saleToggle').html() == '판매 시작';
-						}
-						if (element['f_event_yn'] == "Y") {
-							$('d-eventToggle').html() == '이벤트 중지';
-						} else {
-							$('d-eventToggle').html() == '이벤트 시작';
-						}
-						
-						$('#d-priceStart').html(element['f_price']);
 						$('#d-price').html(element['f_change']);
-						$('#d-saleCount').html(element['totalFilter']);
-						$('#d-postDate').html(element['f_post_date']);
-						$('#d-changeDate').html(element['f_change_date']);
-						$('#d-reasonText').html(element['f_reason']);
-						
-						
-						if (element['f_sale_yn'] == "Y") {
-							$('#d-typeSaleToggle').html('판매중');
-							$('#d-typeSaleToggle').attr('class', 'label label-primary');
-// 							$('#d-typeSaleStart').css('display', 'inline');
-// 							$('#d-typeSaleStop').css('display', 'none');
-						} else {
-							$('#d-typeSaleToggle').html('판매중지');
-							$('#d-typeSaleToggle').attr('class', 'label label-warning');
-// 							$('#d-typeSaleStart').css('display', 'none');
-// 							$('#d-typeSaleStop').css('display', 'inline');
-						}
-						if (element['f_event_yn'] == "Y") {
-							$('#d-typeEventToggle').html('이벤트 진행중');
-							$('#d-typeEventToggle').attr('class', 'label label-success');
-// 							$('#d-typeEventStart').css('display', 'inline');
-// 							$('#d-typeEventStop').css('display', 'none');
-						} else {
-							$('#d-typeEventToggle').html('이벤트 종료');
-							$('#d-typeEventToggle').attr('class', 'label label-danger');
-// 							$('#d-typeEventStart').css('display', 'none');
-// 							$('#d-typeEventStop').css('display', 'inline');
-						}
-						
 					});
+					table.ajax.reload();
 				},
 				error : function(data) {
 					console.log('실패했습니다');
 					console.log(data);
 				}
 			});
-		});/* 클릭  */
+		}
+		else if($('#d-change').val().length > 0 && $('#d-reason').val().length == 0){
+			alert('변경 사유를 입력해주세요');
+		}
+	});
 		
-		$('#priceSummit').click(function() {
-// 			console.log($('#d-change').val().length);
-// 			console.log($('#d-filterName').html().length);
-			if($('#d-change').val() < 0){
-				alert('숫자는 양수만 입력해주세요');
-			}
-			else if($('#d-change').val().length > 0 && $('#d-reason').val().length > 0){
-				$.ajax({
-					url : '<c:url value="/admin/filterPriceChange.do"/>',
-					data : {
-						"f_name" : $('#d-filterName').html(),
-						"f_change" : $('#d-change').val(),
-						"f_reason" : $('#d-reason').val(),
-						"${_csrf.parameterName}" : "${_csrf.token}"
-					},
-					dataType : 'json',
-					type : "get",
-					success : function(data) {
-						console.log('성공했습니다');
-						console.log(data);
-						
-						$.each(data, function(index, element) {
-							$('#d-change').val('');
-							$('#d-change').attr('placeholder', element['f_change']);
-							$('#d-reason').val('');
-							$('#d-price').html(element['f_change']);
-						});
-// 						window.location.reload();
-					},
-					error : function(data) {
-						console.log('실패했습니다');
-						console.log(data);
+	//판매 여부
+	$('#d-saleToggle').click(function() {
+		var sale;
+		$('#d-saleToggle').html() == "판매 중지" ? sale="N" : sale="Y";
+		$.ajax({
+			url : '<c:url value="/admin/filterSaleUpdate.do"/>',
+			data : {
+				"f_name" : $('#d-filterName').html(),
+				"f_sale_yn" : sale,
+				"${_csrf.parameterName}" : "${_csrf.token}"
+			},
+			dataType : 'json',
+			type : "get",
+			success : function(data) {
+				console.log('성공했습니다');
+				console.log(data);
+				table.ajax.reload();
+				$.each(data, function(index, element) {
+					if(element['f_sale_yn'] == "Y"){
+						$('#d-saleToggle').html('판매 중지');
+						$('#d-typeSaleToggle').html('판매중');
+						$('#d-typeSaleToggle').attr('class', 'label label-primary');
+					}
+					else{
+						$('#d-saleToggle').html('판매 시작');
+						$('#d-typeSaleToggle').html('판매중지');
+						$('#d-typeSaleToggle').attr('class', 'label label-warning');
 					}
 				});
-			}
-			else if($('#d-change').val().length > 0 && $('#d-reason').val().length == 0){
-				alert('변경 사유를 입력해주세요');
+			},
+			error : function(data) {
+				console.log('실패했습니다');
+				console.log(data);
 			}
 		});
+	});
 		
-		$('#d-saleToggle').click(function() {
-			var sale;
-			$('#d-saleToggle').html() == "판매 중지" ? sale="N" : sale="Y";
-			$.ajax({
-				url : '<c:url value="/admin/filterSaleUpdate.do"/>',
-				data : {
-					"f_name" : $('#d-filterName').html(),
-					"f_sale_yn" : sale,
-					"${_csrf.parameterName}" : "${_csrf.token}"
-				},
-				dataType : 'json',
-				type : "get",
-				success : function(data) {
-					console.log('성공했습니다');
-					console.log(data);
-					$.each(data, function(index, element) {
-						if(element['f_sale_yn'] == "Y"){
-							$('#d-saleToggle').html('판매 중지');
-							$('#d-typeSaleToggle').html('판매중');
-							$('#d-typeSaleToggle').attr('class', 'label label-primary');
-						}
-						else{
-							$('#d-saleToggle').html('판매 시작');
-							$('#d-typeSaleToggle').html('판매중지');
-							$('#d-typeSaleToggle').attr('class', 'label label-warning');
-						}
-					});
-				},
-				error : function(data) {
-					console.log('실패했습니다');
-					console.log(data);
-				}
-			});
-		});
-		
-		$('#d-eventToggle').click(function() {
-			var event;
-			$('#d-eventToggle').html() == "이벤트 시작" ? event="Y" : event="N";
-			$.ajax({
-				url : '<c:url value="/admin/filterEventUpdate.do"/>',
-				data : {
-					"f_name" : $('#d-filterName').html(),
-					"f_event_yn" : event,
-					"${_csrf.parameterName}" : "${_csrf.token}"
-				},
-				dataType : 'json',
-				type : "get",
-				success : function(data) {
-					console.log('성공했습니다');
-					console.log(data);
-					$.each(data, function(index, element) {
-						if(element['f_event_yn'] == "Y"){
-							$('#d-eventToggle').html('이벤트 중지');
-							$('#d-typeEventToggle').html('이벤트 진행중');
-							$('#d-typeEventToggle').attr('class', 'label label-success');
-						}
-						else{
-							$('#d-eventToggle').html('이벤트 시작');
-							$('#d-typeEventToggle').html('이벤트 종료');
-							$('#d-typeEventToggle').attr('class', 'label label-danger');
-						}
-					});
-				},
-				error : function(data) {
-					console.log('실패했습니다');
-					console.log(data);
-				}
-			});
+	//이벤트 여부
+	$('#d-eventToggle').click(function() {
+		var event;
+		$('#d-eventToggle').html() == "이벤트 시작" ? event="Y" : event="N";
+		$.ajax({
+			url : '<c:url value="/admin/filterEventUpdate.do"/>',
+			data : {
+				"f_name" : $('#d-filterName').html(),
+				"f_event_yn" : event,
+				"${_csrf.parameterName}" : "${_csrf.token}"
+			},
+			dataType : 'json',
+			type : "get",
+			success : function(data) {
+				console.log('성공했습니다');
+				console.log(data);
+				table.ajax.reload();
+				$.each(data, function(index, element) {
+					if(element['f_event_yn'] == "Y"){
+						$('#d-eventToggle').html('이벤트 중지');
+						$('#d-typeEventToggle').html('이벤트 진행중');
+						$('#d-typeEventToggle').attr('class', 'label label-success');
+					}
+					else{
+						$('#d-eventToggle').html('이벤트 시작');
+						$('#d-typeEventToggle').html('이벤트 종료');
+						$('#d-typeEventToggle').attr('class', 'label label-danger');
+					}
+				});
+			},
+			error : function(data) {
+				console.log('실패했습니다');
+				console.log(data);
+			}
 		});
 	});
 </script>
