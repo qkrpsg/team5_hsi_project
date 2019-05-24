@@ -26,7 +26,7 @@
 			pickpic_account ppa JOIN (
 				SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
 			ON ppa.ppa_id=lh.ppa_id) 
-		ORDER BY ppa_id DESC
+		ORDER BY ppa_index DESC
 	</select>
 	<!-- 전체 유저 + 마지막접속일 내림차순 -->
 	<select id="adminUser" resultType="PickPicAccountDTO">
