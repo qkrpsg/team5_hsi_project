@@ -51,7 +51,7 @@
 					</tr>
 					<tr>
 						<td>상품가격</td>
-						<td>${list.f_price } 원</td>
+						<td>${list.f_change } 원</td>
 					</tr>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" class="mb" />
 				</c:forEach>
