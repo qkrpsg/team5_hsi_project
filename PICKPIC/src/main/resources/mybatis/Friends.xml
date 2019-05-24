@@ -63,4 +63,13 @@
 	INSERT INTO filter_storage VALUES(func_generator,seq_fs_index.nextval,#{f_id},(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
 	</insert>
 	
+	
+	<!-- 픽플레이스 인설트 문 -->
+	<insert id="ppbinsert" parameterType="java.util.Map" >
+	INSERT INTO pickplace_board VALUES(func_generator, #{ppb_title},#{ppb_content},sysdate,default,default,#{ppb_image_path},seq_ppb_index.nextval,(SELECT f_id FROM filter WHERE f_name = #{f_name}),(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}),#{ppb_latitude},#{ppb_longitude},#{ppb_addr1},#{ppb_addr2})
+	</insert>
+	<!-- 픽플레이스 셀렉트 문  ppbselect   다음부턴 첫 글자 대문자로 하겠습니다 ㅠ-->
+	<select id="ppbselect" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT ppb.*,f_name FROM pickplace_board ppb JOIN filter fil ON ppb.f_id = fil.f_id ORDER BY ppb_index desc
+	</select>
 </mapper>

@@ -12,6 +12,7 @@
 	$(function() {
 		//showComments();		
 		//보내기 = 작성
+	
 		$('#qna_aqupdate').click(
 				function() {
 					console.log('번호 잘 담고있니', $(this).parent().children(0)
@@ -34,27 +35,7 @@
 
 					}); 
 				});
-		var showComments = function() {
-			$.ajax({
-				url : action,
-				data : $('#frm').serialize(),
-				dataType : 'text',
-				type : 'post',
-				success : function(data) {
 
-					//	$.each()
-				}
-
-			});
-			//
-
-			div.html('');
-
-			var a = '<div> ' + dsadsadasdasdas + '</div>'
-
-			div.html(a);
-
-		};
 
 		
 		$('#qna_aqcomment')
@@ -85,7 +66,7 @@
 										}
 									}); 
 						});
-	});
+	}); 
 </script>
 
 
@@ -93,7 +74,7 @@
 	<!-- 컨텐츠 헤더 시작 -->
 	<section class="content-header">
 		<h1>
-			문의 <small>30 개의 문의사항</small>
+			문의 <small></small>
 		</h1>
 	</section>
 	<!-- 컨텐츠 헤더 시작 -->
@@ -131,8 +112,7 @@
 													등록일: ${item.Q_POST_DATE}</span> <br /> 사용자: ${item.PPA_EMAIL } 
 										</div>
 										<p style="font-size: 15px;">
-											<br />
-											<span style="font-weight: bold; font-size: 15px">내용:</span>&nbsp;&nbsp;
+											<br /> <span style="font-weight: bold; font-size: 15px">내용:</span>&nbsp;&nbsp;
 											${item.Q_CONTENT }<br />
 										</p>
 										<c:if test="${empty item.AQ_CONTENT }" var="Empty">
@@ -143,16 +123,14 @@
 												</div>
 												<div class="col-sm-9 hi" style="margin-top: 6px;">
 													<input type="hidden" id="cch" name="q_index"
-														value=${item.Q_INDEX } > 
-														<input
-														class="form-control ha" placeholder="답변" value=${item.AQ_CONTENT }>
+														value=${item.Q_INDEX }> <input
+														class="form-control ha" placeholder="답변"
+														value=${item.AQ_CONTENT }>
 												</div>
 												<div class="col-sm-1 " style="margin-top: 6px;">
 													<button type="submit"
-														class="btn btn-primary pull-right btn-block btn-sm qna_comment"
-														name="qna_aqcomment" id="qna_aqcomment">
-														보내기
-													</button>
+														class="btn btn-primary pull-right btn-block btn-sm "
+														n id="qna_aqcomment">보내기</button>
 												</div>
 											</div>
 										</c:if>
@@ -172,7 +150,7 @@
 
 												</div>
 												<div class="col-sm-1" style="margin-top: 6px;">
-													<button type="submit" name="qna_aqupdate"
+													<button type="submit" 
 														class="btn btn-info pull-right btn-block btn-sm qna_aqupdate"
 														id="qna_aqupdate">수정</button>
 												</div>

@@ -479,8 +479,8 @@
 		
 		idArray.forEach(function(id, i) {
 			
-			 var jbResult = confirm( '아래의 편집된 파일을 저장소에 다운로드를 완료하면 편집내용이 사라집니다. 지금 바로 저장하시겠습니까?', '' );
-		     document.write( jbResult );
+			 /* var jbResult = confirm( '아래의 편집된 파일을 저장소에 다운로드를 완료하면 편집내용이 사라집니다. 지금 바로 저장하시겠습니까?', '' );
+		     document.write( jbResult ); */
 			
 			console.log(i,id);
 			fileName = fileNameMap.get(id);
