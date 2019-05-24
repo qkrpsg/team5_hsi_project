@@ -72,4 +72,11 @@
 	<select id="ppbselect" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT ppb.*,f_name FROM pickplace_board ppb JOIN filter fil ON ppb.f_id = fil.f_id ORDER BY ppb_index desc
 	</select>
+	
+	<!-- FilterList 필터 리스트 뽑아오기 -->
+	<select id="FilterList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM filter
+	</select>
+	
+	
 </mapper>

@@ -88,6 +88,7 @@
 	            <button class="btn btn-info" data-filter=".crossProcess"><span class="nav_color"></span><a >CR</a></button>  
 	        </ul>
 	      </div>
+    	</div>
     </div>
 	</section>
 
@@ -118,8 +119,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-heading">
-					<span>베스트 필터</span>
-					<h2>인기 있는 필터를 만나보세요!</h2>
+					<span>베스트 픽 플레이스</span>
+					<h2>인기 있는 플레이스를 만나보세요!</h2>
 				</div>
 			</div>
 		</div>
