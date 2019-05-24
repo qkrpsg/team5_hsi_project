@@ -4,7 +4,33 @@
 
 
 <mapper namespace="mybatis.Tip">
+<!-- 게시글 전체 목록 조회 -->
+<select id="TipSelectList" parameterType="java.util.Map" resultType="java.util.Map">
+SELECT tb_id,
+       tb_title,
+       tb_content,
+       tb_post_date,
+       tb_count,
+       tb_index,
+       ppa_id
+FROM tip_board ORDER BY tb_post_date
+</select>
+<!-- 게시글 작성 -->
+<insert id="TipInsert" parameterType="java.util.Map">
+INSERT INTO tip_board VALUES(func_generator,#{tb_title},#{tb_content},SYSDATE,0,seq_tb_index.NEXTVAL,
+(SELECT ppa_id FROM pickpic_account WHERE ppa_email= #{ppa_email}))
+</insert>
 
+<!-- 게시글 삭제 처리 -->
+<delete id="TipDelete" parameterType="java.util.Map">
+DELETE tip_board WHERE TB_INDEX = ${tb_index}
+</delete>
+
+<!-- 게시글 수정 처리 -->
+<update id="TipUpdate" parameterType="java.util.Map">
+UPDATE tip_board set tb_title=#{tb_title}, tb_content=#{tb_content} WHERE tb_index=#{tb_index}
+AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+</update>
 
 </mapper>
 
