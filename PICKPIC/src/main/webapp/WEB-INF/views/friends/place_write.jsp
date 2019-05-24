@@ -92,34 +92,43 @@
 <section class="all_wrap">
 
 
-	<form action="<c:url value='/friends/file.pic'/>" method="post">
+	
 		<div class="writePage">
 			<h1>나만의 픽플레이스 작성</h1>
-
+			
 			<div class="contents_wrap">
 				<div class="contents">
 					<div class="img_wrap preview" id="preview"><p style="text-align: center;line-height: 600px;">사진을 넣어주세요</p></div>
 				</div>
 				<div class="contents_schedule_title">
 					<p>픽플레이스 제목을 입력해주세요</p>
-					<input type="text" name="prb_title" value="" style="word-break: break-all;">
+					<input type="text" name="ppb_title" class="ppb_title" value="" style="word-break: break-all;">
 						<div class="btn btn-info" id="option_btn" style="float: left;margin-left:10px;">사진 첨부</div>
 						<div class="btn btn-info" id="myfilter_btn" style="margin-left:10px;float: left;">필터 적용</div>
 					
 				</div>
+			
+				<div class="contents_schedule_title">
+					<p>픽플레이스 주소를 입력해주세요     </p>
+					<input type="text" name="ppb_addr2" class="ppb_addr2" value="" style="word-break: break-all;">
+				</div>
+				
 				<div class="contents_schedule_naiyo">
 					<p>픽플레이스 내용을 입력해주세요</p>
-					<textarea name="prb_content"></textarea>
+					<textarea name="ppb_content" class="ppb_content"></textarea>
 
 				</div>
 				
-				<div class="main_title_wrap">
-					<input type="hidden" name="ppb_latitude" value="${ppb_latitude }" >
-					<input type="hidden" name="ppb_longitude" value="${ppb_longitude }" >
-					<input type="hidden" name="ppb_addr1" value="${ppb_addr1 }" >
 				
-					<input type="submit" class="btn btn-info" value="저장">
-					<div id="download-btn">사진저장</div>
+				
+				<div class="main_title_wrap">
+					<input type="hidden" name="ppb_latitude" value="${ppb_latitude }"  class="ppb_latitude"/>
+					<input type="hidden" name="ppb_longitude" value="${ppb_longitude }" class="ppb_longitude"/>
+					<input type="hidden" name="ppb_addr1" value="${ppb_addr1 }" class="ppb_addr1"/>
+				
+					<input type="button" class="btn btn-info" id="download-btn" value="저장">
+					<input type="button" class="btn btn-info" id="download-btn2" value="사진 완료">
+					
 				</div>
 			</div>
 			<!-- 여기는 전체 wrap -->
@@ -129,7 +138,7 @@
 
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
-	</form>
+	
 </section>
 
 
@@ -164,6 +173,7 @@
 
 <script type="text/javascript">
 <!-- 모달창 열고 닫기 -->
+var checked = null;
 //모달요소 얻기
 var modal = document.getElementById('option_modal');
 // 모달창 열기 버튼요소 얻기
@@ -491,36 +501,133 @@ let canvas;
 		});
 
 	}
-
-		
+ 		let f_name;
+		$('.card_hover').click(function(){
+			f_name = $(this).find('.name_text').html();
+			console.log('뭐가 뜨나요?'+f_name);
+		});
 
 	const downloadBtn = document.getElementById("download-btn");
+	const downloadBtn2 = document.getElementById("download-btn2");
+
+	let newFilename;
+	
+	/* 다운로드 */
+	downloadBtn2.addEventListener("click",  function(e){
+			const fileExtension = file_name.slice(-4);
+			checked = 'hi';
+			//if문 처리
+		  // Check image type
+		  if (fileExtension === ".jpg" || fileExtension === ".png") {
+		    // new filename
+		    newFilename = file_name.substring(0, file_name.length - 4) + "-edited.jpg";
+		  }	
+		  // Call download
+		  download(canvas, newFilename);
+		  
+	});
+	
+	
 	/* 다운로드 */
 	downloadBtn.addEventListener("click",  function(e){
+		console.log('checked:::'+checked);
+		if(checked == null){
+			alert('사진 완료 후 이동해주세요');
+			return;
+		}
+			/* const fileExtension = file_name.slice(-4);
+			//if문 처리
 		
-		
-		const fileExtension = file_name.slice(-4);
-		  
 		  // Init new filename
-		  let newFilename;
+		  
 		
 		  // Check image type
 		  if (fileExtension === ".jpg" || fileExtension === ".png") {
 		    // new filename
 		    newFilename = file_name.substring(0, file_name.length - 4) + "-edited.jpg";
-		  }
-		 	console.log('newFilename'+newFilename);
-		 	console.log('canvas:::'+canvas);
+		  }	
 		  // Call download
-		  download(canvas, newFilename);
+		  download(canvas, newFilename); */
+		  
+		  
+		  console.log('지번'+$('.ppb_addr1').val());
+		  console.log('상제'+$('.ppb_addr2').val());
+		  console.log('위도'+$('.ppb_latitude').val());
+		  console.log('경도'+$('.ppb_longitude').val());
+		  console.log('제목'+$('.ppb_title').val());
+		  console.log('내용'+$('.ppb_content').val());
+
+		  
+		  
+			var form = document.createElement("form");
+	        form.setAttribute("charset", "UTF-8");
+	        form.setAttribute("method", "Post");  //Post 방식
+	        form.setAttribute("action", "/pickpic/friends/file.pic"); //요청 보낼 주소
+	        //지번
+	        var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "ppb_addr1");
+	        hiddenField.setAttribute("value", $('.ppb_addr1').val());
+	        form.appendChild(hiddenField);
+	        //상세
+	        var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "ppb_addr2");
+	        hiddenField.setAttribute("value", $('.ppb_addr2').val());
+	        form.appendChild(hiddenField);
+	        //위도
+	         var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "ppb_latitude");
+	        hiddenField.setAttribute("value", $('.ppb_latitude').val());
+	        form.appendChild(hiddenField);
+	        //경도
+	         var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "ppb_longitude");
+	        hiddenField.setAttribute("value", $('.ppb_longitude').val());
+	        form.appendChild(hiddenField);
+	        
+	        //이미지 경로
+	        var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "ppb_image_path");
+	        hiddenField.setAttribute("value", newFilename);
+	        form.appendChild(hiddenField);
+	       //제목
+	        var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "ppb_title");
+	        hiddenField.setAttribute("value", $('.ppb_title').val());
+	        form.appendChild(hiddenField);
+	        //내용
+	         var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "ppb_content");
+	        hiddenField.setAttribute("value", $('.ppb_content').val());
+	        form.appendChild(hiddenField);
+	      
+	        //f_id 값 가져올려고
+	        var hiddenField = document.createElement("input");
+	       hiddenField.setAttribute("type", "hidden");
+	       hiddenField.setAttribute("name", "f_name");
+	       hiddenField.setAttribute("value", f_name);
+	       form.appendChild(hiddenField);
+	       
+	        document.body.appendChild(form);
+	        form.submit();
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 		  
 		  
 	});
-		
-		
-		
-		
-
+	
+	
 	// Download
 	function download(canvas, filename) {
 		// Init event
@@ -537,7 +644,7 @@ let canvas;
 		link.dispatchEvent(e);
 	};
 
-
+	
 </script>
 
 
