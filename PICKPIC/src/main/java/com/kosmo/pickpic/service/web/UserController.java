@@ -154,6 +154,9 @@ public class UserController {
 	@RequestMapping("/user/myPage.pic")
 	public String myPage() throws Exception{
 		
+		
+		
+		
 		return "login/MyPage.tiles";
 	}//myPage
 	

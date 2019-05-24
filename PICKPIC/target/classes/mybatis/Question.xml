@@ -33,7 +33,7 @@ DELETE QUESTION WHERE Q_INDEX = ${q_index}
 INSERT INTO ANSWER_QUESTION VALUES(func_generator, #{aq_content}, DEFAULT, (SELECT q_id FROM question WHERE q_index=#{q_index}))
 </insert>
 <update id="questionaqUpdate" parameterType="java.util.Map">
-UPDATE ANSWER_QUESTION SET aq_content=#{aq_content} WHERE q_id=(SELECT q_id FROM question WHERE q_index=#{q_index} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
+UPDATE ANSWER_QUESTION SET aq_content=#{aq_content} WHERE q_id=(SELECT q_id FROM question WHERE q_index=#{q_index} )
 </update>
 
 <update id="questionUpdate" parameterType="java.util.Map">
