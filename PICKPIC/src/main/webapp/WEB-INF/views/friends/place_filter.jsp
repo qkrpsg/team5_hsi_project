@@ -50,7 +50,7 @@
 							</div>
 							<div class="col-md-3 third-item">
 								<fieldset>
-									<select required name='category' onchange='this.form.()'>
+									<select required name='category' onchange='this.form()'>
 										<option value="">세부분류</option>
 										<option value="Kor">오전</option>
 										<option value="Usa">낮</option>
