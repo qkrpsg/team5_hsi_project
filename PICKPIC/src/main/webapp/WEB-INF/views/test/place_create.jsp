@@ -169,75 +169,165 @@
 	var toggle=false;
 	var filterNameAfter;
 	function filterOn(item) {
+		/* 
 		console.log(toggle);
 		console.log(typeof(toggle));
+		 */
 		var filterName = $(item).attr("id");
-		var img = new Image();		
+		 console.log(filterName);
+		var img = new Image();	
+		/* 
 		console.log(filterName != filterNameAfter);
+		 */
 		if(filterName != filterNameAfter){
+			console.log("!="+toggle);
 			Caman('#canvas', img, function() {this.revert();});	
 			toggle = !toggle;
+			console.log("2!="+toggle);
 		}
 		
 		switch (filterName) {
 		case 'vintage':
-			console.log(toggle);
+			console.log("v="+toggle);
 			if(!toggle){
-				console.log(toggle);
 				Caman('#canvas', img, function() {this.revert();});		
 			}
 			else{
 				console.log(toggle);
 				Caman('#canvas', img, function() {this.vintage().render();});
 			}
-			toggle = !toggle;		
-			console.log(toggle);
+			toggle = !toggle;	
+			console.log("v2="+toggle);
 			break;
 		case 'lomo':
+			console.log("l="+toggle);
 			if(!toggle)
 				Caman('#canvas', img, function() {this.revert();});		
 			else
 				Caman('#canvas', img, function() {this.lomo().render();});
 			toggle = !toggle;	
+			console.log("l2="+toggle);
 			break;
 		case 'clarity':
-			Caman('#canvas', img, function() {
-				this.clarity().render();
-			});
+			console.log("c="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.clarity().render();});
+			}
+			toggle = !toggle;	
+			console.log("c2="+toggle);
 			break;
-		case 'sinCity':
-			Caman('#canvas', img, function() {
-				this.sinCity().render();
-			});
+		case 'sincity':
+			/* 안됨 */
+			console.log("s="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.sinCity().render();});
+			}
+			toggle = !toggle;	
+			console.log("s2="+toggle);
 			break;
-		case 'crossProcess':
-			Caman('#canvas', img, function() {
-				this.crossProcess().render();
-			});
+		case 'crossprocess':
+			/* 안됨 */
+			console.log("c="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.crossProcess().render();});
+			}
+			toggle = !toggle;	
+			console.log("c2="+toggle);
 			break;
 		case 'pinhole':
-			Caman('#canvas', img, function() {
-				this.pinhole().render();
-			});
+			console.log("p="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.pinhole().render();});
+			}
+			toggle = !toggle;	
+			console.log("p2="+toggle);
 			break;
 		case 'nostalgia':
-			Caman('#canvas', img, function() {
-				this.nostalgia().render();
-			});
+			console.log("n="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.nostalgia().render();});
+			}
+			toggle = !toggle;	
+			console.log("n2="+toggle);
 			break;
-		case 'herMajesty':
-			Caman('#canvas', img, function() {
-				this.herMajesty().render();
-			});
+		case 'hermajesty':
+			/* 안됨 */
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.herMajesty().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
 			break;
 		default:
+			console.log("dr="+toggle);
 			Caman('#canvas', img, function() {
 				this.revert();
 			});
+			toggle = !toggle;
+			console.log("dr2="+toggle);
 		}
 		filterNameAfter = $(item).attr("id");
 
 	}
+	
+	/*  등록하기 */
+/* 	> 캔버스에서 이미지를 만듭니다 (이전처럼).
+> 이미지를 새 페이지에 표시하십시오.
+> 사용자가 로컬 드라이브를 마우스 오른쪽 버튼으로 클릭 한 상태로 저장하십시오.
+> 그런 다음 파일 입력 요소를 사용하여 새로 생성 된 파일을 업로드 할 수 있습니다.
+
+Ajax를 사용하여 캔바스 데이터를 POST */
+	/* var blobBin = atob(dataURL.split(',')[1]);
+var array = [];
+for(var i = 0; i < blobBin.length; i++) {
+    array.push(blobBin.charCodeAt(i));
+}
+var file=new Blob([new Uint8Array(array)], {type: 'image/png'});
+
+
+var formdata = new FormData();
+formdata.append("myNewFileName", file);
+$.ajax({
+   url: "uploadFile.php",
+   type: "POST",
+   data: formdata,
+   processData: false,
+   contentType: false,
+}).done(function(respond){
+  alert(respond);
+}); */
+	
 
 </script>
 

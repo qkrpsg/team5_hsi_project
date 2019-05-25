@@ -462,7 +462,7 @@ let canvas;
 				break;
 			case 'herMajesty':
 				Caman("#" + current_can, img, function() {
-					this.nostalgia().render();
+					this.herMajesty().render();
 				});
 				break;
 			default:

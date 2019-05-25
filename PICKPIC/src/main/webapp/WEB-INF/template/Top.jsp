@@ -110,8 +110,8 @@
 						<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
 						<li><a href="<c:url value='/'/>#sec_5" >다운로드</a></li>
 						<li><a href="<c:url value='/test/place_create.pic'/>">테스트 1</a></li>
-							<li><a href="<c:url value='/'/>">테스트 2</a></li>
-							<li><a href="<c:url value='/'/>">테스트 3</a></li>
+							<li><a href="<c:url value='/test/place_list.pic'/>">테스트 2</a></li>
+							<li><a href="<c:url value='/test/place_view.pic'/>">테스트 3</a></li>
 							<li><a href="<c:url value='/'/>">테스트 4</a></li>
 					</ul>
 				</div>

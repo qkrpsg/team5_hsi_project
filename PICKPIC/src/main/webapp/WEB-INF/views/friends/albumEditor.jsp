@@ -205,7 +205,7 @@
 			reader.onload = function(e) {
 				fileNameMap.set(index, file.name);
 				console.log('index2 : '+ index);
-				var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
+				var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
 						+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
 						+ '<div class="photo" >'
 						+ '<div class="photo_center_wrap" >'
@@ -391,8 +391,167 @@
 		}
 	});
 
+
 	/* 필터 선택시 이미지에 필터 적용*/
+	
+	var filterNameAfter;
 	function filterOn(item) {
+		var filterName = $(item).attr("id");
+		var toggle=false;
+		
+		
+		
+		$.each(selectArray, function(index, id) {		
+			var current_can = $('#canvas_' + id).attr('id');
+			var img = new Image();	
+			
+			
+			if(filterName != filterNameAfter){
+				console.log("!="+toggle);
+				Caman("#" + current_can, img, function() {this.revert();});	
+// 				toggle = false;
+				$('#canvas_' + id).attr('flag', 'false');
+				console.log("2!="+toggle);
+			}
+			
+			switch (filterName) {
+			case 'vintage':
+				console.log("v="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.vintage().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("v2="+toggle);
+				break;
+			case 'lomo':
+				console.log("l="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.lomo().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("l2="+toggle);
+				break;
+			case 'clarity':
+				console.log("c="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.clarity().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("c2="+toggle);
+				break;
+			case 'sincity':
+				/* 안됨 */
+				console.log("s="+toggle);
+				if(toggle){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.sinCity().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("s2="+toggle);
+				break;
+			case 'crossprocess':
+				/* 안됨 */
+				console.log("c="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.crossProcess().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("c2="+toggle);
+				break;
+			case 'pinhole':
+				console.log("p="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.pinhole().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("p2="+toggle);
+				break;
+			case 'nostalgia':
+				console.log("n="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.nostalgia().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("n2="+toggle);
+				break;
+			case 'hermajesty':
+				/* 안됨 */
+				console.log("h="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.herMajesty().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("h2="+toggle);
+				break;
+			default:
+				console.log("dr="+toggle);
+				Caman("#" + current_can, img, function()  {
+						this.revert();
+				});
+				$('#canvas_' + id).attr('flag', 'false');
+// 				toggle = !toggle
+				console.log("dr2="+toggle);
+			};
+			filterNameAfter = $(item).attr("id");
+		});
+	}
+	
+	
+	/* 필터 선택시 이미지에 필터 적용*/
+	/* function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
 			var current_can = $('#canvas_' + id).attr('id');
@@ -445,7 +604,7 @@
 				});
 			}
 		});
-	}
+	} */
 	
 	/*
 	var set_class = $('#set_' + id).attr('class');         
