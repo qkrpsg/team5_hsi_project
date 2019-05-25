@@ -12,6 +12,11 @@
 <script>
 	new WOW().init();
 </script>
+<style>
+	.mb-imgBtn {
+		cursor:pointer;
+	}
+</style>
 
 <span id="body"></span>
 <div class="checked">
@@ -70,7 +75,7 @@
 	</div>
 	<div class="main_image_wrap">
 		<c:forEach var="list" items="${ppbBest }" varStatus="loop">
-			<div class="main_image col-md-4 col-xs-12 wow fadeInUp" data-wow-duration="2s" ${list.f_name }">
+			<div class="main_image col-md-4 col-xs-12 wow fadeInUp mb-imgBtn" onclick="location.href='<c:url value="작업작업중"/>'" data-wow-duration="2s" ${list.f_name }">
 				<img src="<c:url value='${list.ppb_image_path }' />" alt="안나와" />
 				<div class="innerText">
 					<p class="text-center" style="margin-top:142.5px; font-size:large;" >
@@ -81,7 +86,8 @@
 		</c:forEach>
 	</div>
 	<div class="icon_wrap">
-		<a href="<c:url value='/friends/place_filter.pic' />">
+<%-- 		<a href="<c:url value='/friends/place_filter.pic' />"> --%>
+		<a href="<c:url value='/user/uploadImage.pic' />">
 			<img class="more_icon" alt="more" src="<c:url value='/resources/images/more_icon.png' />" />
 			<p>more</p>
 		</a>
@@ -271,15 +277,19 @@
 		<button>어플리케이션 다운로드</button>
 	</div>
 </section>
+
 <script type="text/javascript">
 	$('.grid').isotope({
 		itemSelector : '.grid-item',
 		masonry : {}
 
 	});
-</script>
-<script>
+	
 	$('.img-holder').imageScroll({
 		container : $('#sec_4')
 	}).$('.imageHolder').css("z-index", "1");
+	
+	var clickBtn = function(obj) {
+		
+	};
 </script>
