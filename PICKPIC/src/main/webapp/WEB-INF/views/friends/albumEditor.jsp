@@ -134,7 +134,6 @@
 
       <c:forEach var="item" items="${list_filter }"  varStatus="loop">
          <c:set var="str_f_name" value="${item.F_NAME }"/>
-         <%-- <c:set var="f_name" value="${fn:replace(str_f_name, 'cssco--', '')}"/> --%>
          <div class=" card-a cssco card_hover ${item.F_NAME}" id="${item.F_NAME}"
             onclick="filterOn(this)">
             <img src="${item.F_IMAGE_PATH}" />
@@ -150,6 +149,8 @@
    <!--filter_list -->
 <!-- 하단 스크롤 끝 -->
 
+
+         <%-- <c:set var="f_name" value="${fn:replace(str_f_name, 'cssco--', '')}"/> --%>
 
 <script type="text/javascript">
 <!-- 모달창 열고 닫기 -->
@@ -204,7 +205,7 @@
 			reader.onload = function(e) {
 				fileNameMap.set(index, file.name);
 				console.log('index2 : '+ index);
-				var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" >'
+				var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
 						+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
 						+ '<div class="photo" >'
 						+ '<div class="photo_center_wrap" >'
@@ -390,13 +391,169 @@
 		}
 	});
 
+
 	/* 필터 선택시 이미지에 필터 적용*/
+	
+	var filterNameAfter;
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
+		var toggle=false;
+		
+		
+		
+		$.each(selectArray, function(index, id) {		
+			var current_can = $('#canvas_' + id).attr('id');
+			var img = new Image();	
+			
+			
+			if(filterName != filterNameAfter){
+				console.log("!="+toggle);
+				Caman("#" + current_can, img, function() {this.revert();});	
+// 				toggle = false;
+				$('#canvas_' + id).attr('flag', 'false');
+				console.log("2!="+toggle);
+			}
+			
+			switch (filterName) {
+			case 'vintage':
+				console.log("v="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.vintage().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("v2="+toggle);
+				break;
+			case 'lomo':
+				console.log("l="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.lomo().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("l2="+toggle);
+				break;
+			case 'clarity':
+				console.log("c="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.clarity().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("c2="+toggle);
+				break;
+			case 'sincity':
+				/* 안됨 */
+				console.log("s="+toggle);
+				if(toggle){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.sinCity().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("s2="+toggle);
+				break;
+			case 'crossprocess':
+				/* 안됨 */
+				console.log("c="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.crossProcess().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("c2="+toggle);
+				break;
+			case 'pinhole':
+				console.log("p="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.pinhole().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("p2="+toggle);
+				break;
+			case 'nostalgia':
+				console.log("n="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.nostalgia().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("n2="+toggle);
+				break;
+			case 'hermajesty':
+				/* 안됨 */
+				console.log("h="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.herMajesty().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("h2="+toggle);
+				break;
+			default:
+				console.log("dr="+toggle);
+				Caman("#" + current_can, img, function()  {
+						this.revert();
+				});
+				$('#canvas_' + id).attr('flag', 'false');
+// 				toggle = !toggle
+				console.log("dr2="+toggle);
+			};
+			filterNameAfter = $(item).attr("id");
+		});
+	}
+	
+	
+	/* 필터 선택시 이미지에 필터 적용*/
+	/* function filterOn(item) {
+		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
-			/* var set_class = $('#set_' + id).attr('class');         
-			var class_length = $('#set_' + id)[0].classList.length; */
-
 			var current_can = $('#canvas_' + id).attr('id');
 			var img = new Image();
 			var toggle = 0;
@@ -438,7 +595,7 @@
 				break;
 			case 'herMajesty':
 				Caman("#" + current_can, img, function() {
-					this.nostalgia().render();
+					this.herMajesty().render();
 				});
 				break;
 			default:
@@ -446,80 +603,73 @@
 					this.revert();
 				});
 			}
-
-			/* if(toggle=1){
-			console.log("revert"+toggle);
-			 Caman("#"+current_can, img, function() {
-			       this.revert();
-			     });
-			 toggle=0;
-			 console.log("revert2"+toggle); 
-			}*/
-			/* if (class_length <= 2) {
-			    $('div[id="set_' + id + '"]').toggleClass(filterName, true);
-			   
-			   
-			} else {
-			   var class_before = $('#set_' + id)[0].classList[2];
-			   if (class_before == filterName) {*/
-			/* 이미 가지고있는경우 삭제 */
-			/* $('div[id="set_' + id + '"]')
-			      .toggleClass(filterName, false);
-			} else {
-			 $('div[id="set_' + id + '"]').removeClass(class_before);
-			$('div[id="set_' + id + '"]').addClass(filterName);
-			}
-			} */
-
 		});
-
+	} */
+	
+	/*
+	var set_class = $('#set_' + id).attr('class');         
+	var class_length = $('#set_' + id)[0].classList.length; 
+	
+	if(toggle=1){
+	console.log("revert"+toggle);
+	 Caman("#"+current_can, img, function() {
+	       this.revert();
+	     });
+	 toggle=0;
+	 console.log("revert2"+toggle); 
+	}*/
+	/* if (class_length <= 2) {
+	    $('div[id="set_' + id + '"]').toggleClass(filterName, true);
+	   
+	   
+	} else {
+	   var class_before = $('#set_' + id)[0].classList[2];
+	   if (class_before == filterName) {*/
+	/* 이미 가지고있는경우 삭제 */
+	/* $('div[id="set_' + id + '"]')
+	      .toggleClass(filterName, false);
+	} else {
+	 $('div[id="set_' + id + '"]').removeClass(class_before);
+	$('div[id="set_' + id + '"]').addClass(filterName);
 	}
+	} */
+	
+	
 	/* 다운로드 */
-	function save_btn(e) {//() =>
-		
+	function save_btn(e) {		
 		idArray.forEach(function(id, i) {
-			
-			 /* var jbResult = confirm( '아래의 편집된 파일을 저장소에 다운로드를 완료하면 편집내용이 사라집니다. 지금 바로 저장하시겠습니까?', '' );
-		     document.write( jbResult ); */
-			
-			console.log(i,id);
+			// 아이디로 파일명을 찾는다
 			fileName = fileNameMap.get(id);
-			console.log(fileName);
-			// Get ext
+			// 파일 확장자를 분리한다
 			var fileExtension = fileName.slice(-4);
-			console.log(fileExtension);
-			// Init new filename
 			var newFilename;
 
-			// Check image type
+			// 이미지파일을 체크
 			if (fileExtension === ".jpg" || fileExtension === ".png" ) {
-				// new filename
+				// 편집된 이미지의 새로운 이름
 				newFilename = fileName.substring(0, fileName.length - 4)
 						+ "-edited.jpg";
 			}
 			
+			// 캔버스를 찾는다.
 			const can = "canvas_" + id;
 			const canvas = document.getElementById(can);
-			console.log(can,canvas);
-			// Call download
-			download(canvas, newFilename); 
-			
+			// 다운로드
+			download(canvas, newFilename); 			
 		});
 	};
 
-	// Download
 	function download(canvas, filename) {
-		// Init event
 		let e;
-		// Create link
+		// a로 링크를 만든다.
 		const link = document.createElement("a");
 
-		// Set props
+		// 다운로드를 연결한다.
 		link.download = filename;
 		link.href = canvas.toDataURL("image/jpeg", 0.8);
-		// New mouse event
+		// 마우스 클릭 이벤트 발생시
 		e = new MouseEvent("click");
-		// Dispatch event
 		link.dispatchEvent(e);
 	};
+	
 </script>
