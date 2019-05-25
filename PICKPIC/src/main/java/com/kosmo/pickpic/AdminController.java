@@ -84,19 +84,20 @@ public class AdminController {
        return JSONArray.toJSONString(user);
     }
 	
+	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")
-	public String attraction(@RequestParam Map map) throws Exception{
+	public String attraction(@RequestParam Map map, Model model) throws Exception{
+		model.addAttribute("place", adminService.pickPlaceAll());
 		return "admin/admin_pickPlace.admin";
 	}//pickPlace
+	
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
 	public String filter() throws Exception{
 		return "admin/admin_filter.admin";
 	}//filter
-	
-	
 	
 	//필터 상세보기 aJax
 	@ResponseBody

@@ -62,101 +62,29 @@
 </div>
 
 <section id="sec_0" class="sec_wrap">
-
-	<div>
-		<h2 class="best_pick wow fadeInDown">#BEST PICK</h2>
-	</div>
+	<div><h2 class="best_pick wow fadeInDown">#BEST PICK</h2></div>
 
 	<div class="line_box">
 		<div class="edge"></div>
 		<div class="edge"></div>
 	</div>
-
 	<div class="main_image_wrap">
-		<div class="main_image col-md-4 col-xs-12 wow fadeInUp" data-wow-duration="2s">
-			<img src="<c:url value='/resources/images/main_image1.jpg'/>" />
-			<div class="innerText">
-				<p class="gallery-board-caption-title">
-					<span style="font-size: 20px; width: 100%;">TITLE</span>
-				</p>
-				<p class="gallery-board-caption-description">
-					<span>Lorem ipsum dolor sit amet, consectetur adipisicing
-						elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua.</span>
-				</p>
+		<c:forEach var="list" items="${ppbBest }" varStatus="loop">
+			<div class="main_image col-md-4 col-xs-12 wow fadeInUp" data-wow-duration="2s" ${list.f_name }">
+				<img src="<c:url value='${list.ppb_image_path }' />" alt="안나와" />
+				<div class="innerText">
+					<p class="text-center" style="margin-top:142.5px; font-size:large;" >
+						<span>${list.ppb_title}</span>
+					</p>
+				</div>
 			</div>
-		</div>
-		<div class="main_image col-md-4 col-xs-12 wow fadeInUp" data-wow-duration="1s">
-			<img src="<c:url value='/resources/images/main_image2.jpg'/>" />
-			<div class="innerText">
-				<p class="gallery-board-caption-title">
-					<span>TITLE</span>
-				</p>
-				<p class="gallery-board-caption-description">
-					<span>Lorem ipsum dolor sit amet, consectetur adipisicing
-						elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua.</span>
-				</p>
-			</div>
-		</div>
-		<div class="main_image col-md-4 col-xs-12 wow fadeInUp">
-			<img src="<c:url value='/resources/images/main_image3.jpg'/>" />
-			<div class="innerText">
-				<p class="gallery-board-caption-title">
-					<span>TITLE</span>
-				</p>
-				<p class="gallery-board-caption-description">
-					<span>Lorem ipsum dolor sit amet, consectetur adipisicing
-						elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua.</span>
-				</p>
-			</div>
-		</div>
-
-		<div class="main_image col-md-4 col-xs-12 wow fadeInUp" data-wow-duration="2s">
-			<img src="<c:url value='/resources/images/main_image4.jpg'/>" />
-			<div class="innerText">
-				<p class="gallery-board-caption-title">
-					<span>TITLE</span>
-				</p>
-				<p class="gallery-board-caption-description">
-					<span>aliqua212d1.</span>
-				</p>
-			</div>
-		</div>
-
-		<div class="main_image col-md-4 col-xs-12 wow fadeInUp" data-wow-duration="1s">
-			<img src="<c:url value='/resources/images/main_image5.jpg'/>" />
-			<div class="innerText">
-				<p class="gallery-board-caption-title">
-					<span>TITLE</span>
-				</p>
-				<p class="gallery-board-caption-description">
-					<span>Lorem ipsum dolor sit amet, consectetur adipisicing
-						elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua.</span>
-				</p>
-			</div>
-		</div>
-
-		<div class="main_image col-md-4 col-xs-12 wow fadeInUp">
-			<img src="<c:url value='/resources/images/main_image6.jpg'/>" />
-			<div class="innerText">
-				<p class="gallery-board-caption-title">
-					<span>TITLE</span>
-				</p>
-				<p class="gallery-board-caption-description">
-					<span>Lorem ipsum dolor sit amet, consectetur adipisicing
-						elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua.</span>
-				</p>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
 	<div class="icon_wrap">
-		<img class="more_icon" alt="more"
-			src="<c:url value='/resources/images/more_icon.png' />" />
-		<p>more</p>
+		<a href="<c:url value='/friends/place_filter.pic' />">
+			<img class="more_icon" alt="more" src="<c:url value='/resources/images/more_icon.png' />" />
+			<p>more</p>
+		</a>
 	</div>
 </section>
 

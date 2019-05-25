@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.kosmo.pickpic.service.PickPlaceBoardDTO;
 import com.kosmo.pickpic.service.PickPlaceBoardService;
 
 @Service("ppbService")
@@ -22,5 +23,10 @@ public class PickPlaceBoardServiceImpl implements PickPlaceBoardService {
 	@Override
 	public List<Map> selectList(Map map) {
 		return dao.selectList(map);
+	}
+
+	@Override
+	public List<PickPlaceBoardDTO> ppbBestList() {
+		return dao.ppbBestList();
 	}
 }

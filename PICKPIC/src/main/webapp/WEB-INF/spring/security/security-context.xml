@@ -25,11 +25,11 @@
 			logout-success-url="/"
 			invalidate-session="true" />
 		
+		<!-- 동일 로그인 한개만 가능 -->
 		<security:session-management 
 			invalid-session-url="/">
 			<security:concurrency-control max-sessions="1" expired-url="/user/Login.pic" />
 		</security:session-management>
-		
 	</security:http>
 	
 	<security:authentication-manager>
@@ -42,11 +42,4 @@
 				/>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	
-	
-	
-	
-
-	
-	
 </beans>

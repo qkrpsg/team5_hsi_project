@@ -50,7 +50,7 @@
 							</div>
 							<div class="col-md-3 third-item">
 								<fieldset>
-									<select required name='category' onchange='this.form.()'>
+									<select required name='category' onchange='this.form()'>
 										<option value="">세부분류</option>
 										<option value="Kor">오전</option>
 										<option value="Usa">낮</option>
@@ -88,29 +88,32 @@
 	            <button class="btn btn-info" data-filter=".crossProcess"><span class="nav_color"></span><a >CR</a></button>  
 	        </ul>
 	      </div>
+    	</div>
     </div>
 	</section>
 
-<section class="pricing-tables" >
+<section class="pricing-tables">
+	<a href="<c:url value='/friends/place.pic'/>" class="btn btn-info"style="float: right; margin-right: 20px; margin-top: 20px;">작성하러가기</a>
 	<div class="container">
-  <div class="grid">
-  
-	  <c:forEach  var="list" items="${list }" varStatus="loop">
-	  	<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
-			<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와"/>
-			<div class="innerText">
-	           	<p class="Text_title" ><span >${list.PPB_TITLE}</span></p>
-	            <p class="" ><span >${list.PPB_CONTENT}</span></p>
-	       </div>
-	      <div class="hi"><a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a></div>
+		<div class="grid">
+			<c:forEach var="list" items="${list }" varStatus="loop">
+				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
+					<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와" />
+					<div class="innerText">
+						<p class="Text_title">
+							<span>${list.PPB_TITLE}</span>
+						</p>
+						<p class="">
+							<span>${list.PPB_CONTENT}</span>
+						</p>
+					</div>
+					<div class="hi">
+						<a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
-	  </c:forEach>
-	
-	
-	
-  </div>	
 	</div>
-	<a href="<c:url value='/friends/place.pic'/>" class="btn btn-info" style="float: right;margin-right:20px;margin-top:20px;">작성하러가기</a>
 </section>
 
 <section class="featured-places" id="best">
@@ -118,8 +121,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-heading">
-					<span>베스트 필터</span>
-					<h2>인기 있는 필터를 만나보세요!</h2>
+					<span>베스트 픽 플레이스</span>
+					<h2>인기 있는 플레이스를 만나보세요!</h2>
 				</div>
 			</div>
 		</div>

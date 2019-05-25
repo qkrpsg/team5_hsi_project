@@ -72,4 +72,18 @@
 	<select id="ppbselect" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT ppb.*,f_name FROM pickplace_board ppb JOIN filter fil ON ppb.f_id = fil.f_id ORDER BY ppb_index desc
 	</select>
+	
+	<!-- FilterList 필터 리스트 뽑아오기 -->
+	<select id="FilterList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM filter
+	</select>
+	
+	<!-- BEST pickPlace -->
+	<select id="ppbBestList" resultType="PickPlaceBoardDTO">
+		SELECT * FROM (
+			SELECT ppb.*, rownum FROM(
+				SELECT ppbd.*, f.f_name FROM pickplace_board ppbd JOIN filter f ON ppbd.f_id=f.f_id ORDER BY ppb_pick DESC
+			) ppb
+		) WHERE rownum BETWEEN 1 AND 6
+	</select>
 </mapper>

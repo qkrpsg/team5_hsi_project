@@ -35,6 +35,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -91,11 +92,8 @@ public class FriendsController {
 		List<Map> list = ppb_service.selectList(map);
 		model.addAttribute("list",list);
 		
-		
 		System.out.println("왜2개임?"+list.toString());
 		System.out.println("사이즈는?"+list.size());
-		
-		
 		
 		return "friends/place_filter.tiles";
 		//return "friends/place.tiles";//나중에 이걸로 바꾸자
@@ -174,9 +172,14 @@ public class FriendsController {
 	
 	// 필터정보
 	@RequestMapping("/friends/filter.pic")
-	public String filter() throws Exception {
+	public String filter(@RequestParam Map map,Model model) throws Exception {
+		
+		//filter 테이블 전부 가져오기
+		List<Map> list = dao_filter.filterList();
+		model.addAttribute("list",list);
+		
+		System.out.println(list.toString());
 		return "friends/filter.tiles";
-	
 	}//filter
 	
 	//Pay test
@@ -186,9 +189,8 @@ public class FriendsController {
 		//HttpSecurity sec 넣으면 에러
 		//http.antMatcher("/d").authorizeRequests().antMatchers("").permitAll().and().headers().frameOptions().disable();
 		map.put("ppa_email",session.getAttribute("ppa_email"));
-		System.out.println("hihi++"+map.toString());
-		//나중에 map.get("f_name");
-		map.put("f_name", "vintage");
+		
+		
 		FilterDTO a = dao_filter.selectFilter_buy(map);
 		List<Map> user = new Vector<Map>();
 		user.add(DTOUtil.convertDTOToMap(a));
