@@ -49,6 +49,8 @@ public class AdminController {
 		model.addAttribute("filter",adminService.filterAll());
 		model.addAttribute("place", adminService.pickPlaceAll());
 		model.addAttribute("road", adminService.pickRoadAll());
+		model.addAttribute("nowDate", DTOUtil.getNowDate());
+		
 		return "admin/admin_home.admin";
 	}//home
 	
