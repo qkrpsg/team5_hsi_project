@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link href="<c:url value='/css/Sign_Up.css' />" rel="stylesheet">
-<script src="<c:url value='/js_api/jquery.form-validator.js'/>"></script>
+<script src="<c:url value='/js_api/jquery.form-validator.js'/>"></script>    
+
 
 <script>
 
@@ -65,7 +66,7 @@ file.onchange = function() {
 		var pwd = document.getElementById("ppa_password");
 		var pwdChk = document.getElementById("ppa_passwordCheck");
 		var nickname = document.getElementById("ppa_nickname");
-		var profile = document.getElementById("ppa_profile_path");
+		var profile = document.getElementById("filePath");
 		var agree = document.getElementById("ppa_agree");
 
 		var jo = document.getElementById("join-submit");
@@ -149,8 +150,8 @@ file.onchange = function() {
 				</div>
 				<div class="filebox">
 					<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled"> 
-					<label for="ppa_profile_path" class="btn btn-warning" name="ppu_profile_path">업로드</label> 
-					<input type="file" id="ppa_profile_path" class="upload-hidden" name="ppa_profile_path"  accept=".jpg, .png">
+					<label for="filePath" class="btn btn-warning">업로드</label> 
+					<input type="file" id="filePath" name="filePath" class="upload-hidden"  accept=".jpg, .png">
 				</div>
 				<div class="form-group" style="overflow: hidden;">
 					<input type="checkbox" name="ppa_agree" value="이용약관" id="ppa_agree" value="ok" style="float: left; margin-right: 10px;" />
@@ -166,7 +167,7 @@ file.onchange = function() {
 					</div>
 					
 					<input type="hidden" name="ppa_type" value="pickpic" />
-					
+					<input type="hidden" id="ppa_profile_path" name="ppa_profile_path" value="test전">
 				</div>
 			</form>
 			
@@ -177,7 +178,7 @@ file.onchange = function() {
 
 <script>
 /* 파일명/파일data 추출- 위로 올리지 말것!  */
-var file = document.querySelector('#ppa_profile_path');
+var file = document.querySelector('#filePath');
 var img = new Image();
 file.onchange = function() {
 	var fileList = file.files;
@@ -192,6 +193,11 @@ file.onchange = function() {
 			$('.filebox .upload-hidden').siblings('.upload-name').val(filename);
 		};
 		console.log(img.src);
+		console.log(typeof(img.src));
+		$('#ppa_profile_path').attr('value', img.src);
+// 		$('#filePath').attr('value', img.src);
+// 		console.log("hidden : " + $('#ppa_profile_path').val());
+// 		console.log("file : " + $('#filePath').val());
 	};
 };
 

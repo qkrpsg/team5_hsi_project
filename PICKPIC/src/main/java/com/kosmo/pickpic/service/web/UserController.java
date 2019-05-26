@@ -112,18 +112,19 @@ public class UserController {
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
 	public String sign_up_process(@RequestParam Map map, HttpServletResponse response) throws Exception{
-		if(accountService.accountInsert(map) == 1 ? true : false) {
-			if(accountService.securityInsert(map) == 1 ? true : false) {
-				accountService.loginHistoryInsert(map);
-				
-//				response.setContentType("text/html; charset=UTF-8");
-//		        PrintWriter out = response.getWriter();
-//		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
-//		        out.flush();
-//		        out.close();
-//				return "/home";
-			}//as테이블 insert 성공시 
-		}//ppa테이블 insert 성공시
+		System.out.println(map.toString());
+//		if(accountService.accountInsert(map) == 1 ? true : false) {
+//			if(accountService.securityInsert(map) == 1 ? true : false) {
+//				accountService.loginHistoryInsert(map);
+//				
+////				response.setContentType("text/html; charset=UTF-8");
+////		        PrintWriter out = response.getWriter();
+////		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
+////		        out.flush();
+////		        out.close();
+////				return "/home";
+//			}//as테이블 insert 성공시 
+//		}//ppa테이블 insert 성공시
 		return "home.tiles";
 	}//sign_up_process
 	
