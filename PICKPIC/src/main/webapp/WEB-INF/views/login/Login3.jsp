@@ -14,10 +14,9 @@
 		<div class="container-login100" style="background-image: url('/pickpic/resources/images/login_background.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
-					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
-					</span>
-
+				
+				<img src="/pickpic/resources/images/pkp_app_logo.png" style=" width: 100px; height: 100px;object-fit: cover;border-radius: 50%;margin-left: auto;margin-right: auto;">
+			
 					<span class="login100-form-title p-b-34 p-t-27">
 						로그인
 					</span>

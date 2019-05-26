@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="<c:url value='/css/fontAwesome.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/hero-slider.css' /> ">
 <link rel="stylesheet" href="<c:url value='/css/owl-carousel.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/datepicker.css' /> ">
+<%-- <link rel="stylesheet" href="<c:url value='/css/datepicker.css' />  --%>">
 <!-- 첫상단 고정 필터용 -->
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
@@ -17,8 +17,8 @@
 	href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
-<script
-	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
+<%-- <script
+	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script> --%>
 
 <section class="banner" id="top">
 	<div class="container">
@@ -157,12 +157,12 @@
 						<div class="row">
 							<div class="col-md-6 first-button">
 								<div class="text-button">
-									<a href="#">픽보관함 담기</a>
+									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="text-button">
-									<a href="#serchlist">상세보기</a>
+									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -185,12 +185,12 @@
 						<div class="row">
 							<div class="col-md-6 first-button">
 								<div class="text-button">
-									<a href="#">픽보관함 담기</a>
+									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="text-button">
-									<a href="#serchlist">상세보기</a>
+									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -213,7 +213,7 @@
 						<div class="row">
 							<div class="col-md-6 first-button">
 								<div class="text-button">
-									<a href="#">픽보관함 담기</a>
+									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -239,9 +239,9 @@
 
 
 <script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
-<script src="<c:url value='js/datepicker.js'/>"></script>
+<%-- <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
-<script src="<c:url value='js/Main.js'/>"></script>
+<script src="<c:url value='js/Main.js'/>"></script> --%>
 
 
 

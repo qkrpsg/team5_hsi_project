@@ -631,12 +631,20 @@ public class FriendsController {
 	}
 	
 	// 주영테스트4
-	@RequestMapping("/test/my_page.pic")
-	public String myPage() throws Exception {
+			@RequestMapping("/test/my_page.pic")
+			public String myPage() throws Exception {
+				// 여기서 작업 시작
+
+				return "test/my_page.tiles";
+			}// myPage
+
+	// 주영테스트5
+	@RequestMapping("/test/filter_view.pic")
+	public String filterView() throws Exception {
 		// 여기서 작업 시작
 
-		return "test/my_page.tiles";
-	}// plaView
-
-	
+		return "test/filter_view.tiles";
+	}// filterView
+			
+			
 }//FriendsController
