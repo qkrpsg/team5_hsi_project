@@ -93,7 +93,7 @@
 	</section>
 
 <section class="pricing-tables">
-	<a href="<c:url value='/friends/place.pic'/>" class="btn btn-info"style="float: right; margin-right: 20px; margin-top: 20px;">작성하러가기</a>
+	<a href="<c:url value='/friends/place_write.pic'/>" class="btn btn-info"style="float: right; margin-right: 20px; margin-top: 20px;">작성하러가기</a>
 	<div class="container">
 		<div class="grid">
 			<c:forEach var="list" items="${list }" varStatus="loop">

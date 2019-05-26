@@ -61,7 +61,6 @@ public class UploadController {
 	public String uploadImage (@RequestParam Map map, HttpServletRequest request) throws Exception{
 		//S3를 이용한 이미지 업로드 절차
 		
-		//base64형식으로 저장된 문자열 이미지 저장
 		String strImg = map.get("strImg").toString();
 		
 		//폴더 경로 지정
@@ -78,6 +77,7 @@ public class UploadController {
 		// base64 디코더를 이용하여 이미지 데이터를  byte 코드로 변환
 		byte[] byteImg;
 		byteImg = Base64.decodeBase64(rstStrImg); 
+		//???
 		ByteArrayInputStream bis = new ByteArrayInputStream(byteImg);
 		BufferedImage image = null;
 		// BufferedImage형식으로 변환후 저장
