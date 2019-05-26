@@ -64,6 +64,10 @@
 							<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
 							<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
 							<li><a href="<c:url value='/'/>#sec_5 ">다운로드</a></li>
+							<li><a href="<c:url value='/test/place_create.pic'/>">테스트1-픽생성</a></li>
+							<li><a href="<c:url value='/test/place_list.pic'/>">테스트2-픽리스트</a></li>
+							<li><a href="<c:url value='/test/place_view.pic'/>">테스트3-픽상세보기</a></li>
+	
 						</ul></li>
 
 
@@ -109,10 +113,10 @@
 						<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
 						<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
 						<li><a href="<c:url value='/'/>#sec_5" >다운로드</a></li>
-						<li><a href="<c:url value='/test/place_create.pic'/>">테스트 1</a></li>
-							<li><a href="<c:url value='/test/place_list.pic'/>">테스트 2</a></li>
-							<li><a href="<c:url value='/test/place_view.pic'/>">테스트 3</a></li>
-							<li><a href="<c:url value='/'/>">테스트 4</a></li>
+							<li><a href="<c:url value='/test/place_create.pic'/>">테스트1-픽생성</a></li>
+							<li><a href="<c:url value='/test/place_list.pic'/>">테스트2-픽리스트</a></li>
+							<li><a href="<c:url value='/test/place_view.pic'/>">테스트3-픽상세보기</a></li>
+
 					</ul>
 				</div>
 
@@ -122,6 +126,9 @@
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
 						<li><a href="<c:url value='/friends/route.pic?noInsert=1'/>">픽로드</a></li>
 						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>
+						<li><a href="<c:url value='/test/my_page.pic'/>">테스트4-마이페이지(플레이스)</a></li>
+						<li><a href="<c:url value='/'/>">테스트5-마이페이지(로드)</a></li>
+						<li><a href="<c:url value='/'/>">테스트6-마이페이지(필터)</a></li>
 					</ul>
 				</div>
 

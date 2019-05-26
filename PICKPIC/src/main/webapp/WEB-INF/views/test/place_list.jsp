@@ -33,7 +33,7 @@
 						<font style="vertical-align: inherit;"> 
 							<font style="vertical-align: inherit;"> 
 								<input type="submit" value="+ 픽 생성하기 " class="submit" id="submit" name="submit" 
-								onclick="location.href='<c:url value="/friends/place.pic"/>'">
+								onclick="location.href='<c:url value="/test/place_create.pic"/>'">
 							</font>
 						</font> 
 						<font style="vertical-align: inherit;">
@@ -162,7 +162,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="text-button">
-									<a href="#serchlist">검색하기</a>
+									<a href="#serchlist">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -190,7 +190,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="text-button">
-									<a href="#serchlist">검색하기</a>
+									<a href="#serchlist">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -218,7 +218,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="text-button">
-									<a href="#serchlist">검색하기</a>
+									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
 								</div>
 							</div>
 						</div>

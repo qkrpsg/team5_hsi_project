@@ -630,6 +630,13 @@ public class FriendsController {
 		return "friends/search.tiles";
 	}
 	
-	
+	// 주영테스트4
+	@RequestMapping("/test/my_page.pic")
+	public String myPage() throws Exception {
+		// 여기서 작업 시작
+
+		return "test/my_page.tiles";
+	}// plaView
+
 	
 }//FriendsController

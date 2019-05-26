@@ -30,7 +30,7 @@
 	<div class="inner">
 		<form action="">
 			<div class="image-holder">
-				<canvas style="width:315px;height:315px;background-color:#ececec;" id="canvas"></canvas>
+				<canvas style="width:100%;height:auto;background-color:#ececec;" id="canvas"></canvas>
 				<%-- <img
 					src="<c:url value='/resources/images/filter/filter_default.jpg'/>"
 					alt=""> --%>
@@ -84,7 +84,7 @@
 					placeholder="내용을 작성하세요."></textarea>
 			</div>
 
-			<button class="btn-danger" type="button" style="width: 164px; height: 51px;">등록하기</button>
+			<button class="btn-danger" type="button" style="width: 164px; height: 51px;" onclick="location.href='<c:url value="/test/place_view.pic"/>'">등록하기</button>
 		</form>
 
 	</div>
