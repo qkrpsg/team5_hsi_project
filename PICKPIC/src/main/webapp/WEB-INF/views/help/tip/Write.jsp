@@ -37,7 +37,7 @@
       
       <div class="l_tip_list_wrap">
 			<div class="row" style="margin-left: 20%;margin-right: 20%;">
-				<form method="post" action="<c:url value='/views/tip/Write2.pic'/>" id="jyu"> 
+				<form method="post" action="<c:url value='/help/tip/Write2.pic'/>" id="jyu"> 
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 					<div class="form-group">
@@ -51,7 +51,7 @@
 					
 					<div class="form-group text-center">
 						<input type="button" id="join-submit" class="btn btn-primary" value="작성완료" >
-						<input type="button"  class="btn btn-warning" onclick="location.href='<c:url value="/views/tip/List.pic"/>'" value="취소" >
+						<input type="button"  class="btn btn-warning" onclick="location.href='<c:url value="/help/tip/List.pic"/>'" value="취소" >
 					</div>
 				</form>
 			</div>

@@ -56,7 +56,7 @@ public class HelpController {
 	
 	//피크픽TIP작성 페이지
 	
-	@RequestMapping("/views/tip/Write2.pic")
+	@RequestMapping("/help/tip/Write2.pic")
 	public String tip_write2(@RequestParam Map map,
 			Model model,
 			Principal principal,
@@ -73,7 +73,7 @@ public class HelpController {
 		map.put("end", end);
 		
 		List<TipBoardDTO> list = tipService.selectList(map);
-		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/views/tip/List.pic?");
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/help/tip/List.pic?");
 		model.addAttribute("list",list);
 		model.addAttribute("nowPage",nowPage);
 		model.addAttribute("pageSize",pageSize);
@@ -82,16 +82,16 @@ public class HelpController {
 		
 		model.addAttribute("list",list);
 		
-		return "views/tip/List.tiles";
+		return "help/tip/List.tiles";
 		
 	}//tip_write2
 	//tip
-	@RequestMapping("views/tip/Write.pic")
+	@RequestMapping("help/tip/Write.pic")
 	public String tip_write(@RequestParam Map params) throws Exception{
-		    return "views/tip/Write.tiles";	    
+		    return "help/tip/Write.tiles";	    
 	}//tip
 	
-	@RequestMapping("/views/tip/View.pic")
+	@RequestMapping("/help/tip/View.pic")
 	public String tip_view(@RequestParam Map map,Model model)throws Exception{
 		System.out.println(map);
 		TipBoardDTO list = tipService.selectOne(map);
@@ -103,10 +103,10 @@ public class HelpController {
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list.getTb_index());
 		
-		return "views/tip/Views.tiles";
+		return "help/tip/Views.tiles";
 	}
 	//피크픽TIP 수정페이지
-	@RequestMapping("/views/tip/update.pic")
+	@RequestMapping("/help/tip/update.pic")
 	public String tip_update(@RequestParam Map map,Model model,Principal principal) throws Exception{
 		map.put("ppa_email", principal.getName());
 		/*questionService.insert(map);
@@ -117,10 +117,10 @@ public class HelpController {
 		model.addAttribute("list",list);
 		System.out.println("ww"+list);
 		
-		return "views/tip/Edit.tiles";
+		return "help/tip/Edit.tiles";
 		
 	}//tip_write2
-	@RequestMapping("/views/tip/update_write.pic")
+	@RequestMapping("/help/tip/update_write.pic")
 	public String tip_update_write(@RequestParam Map map,
 			Model model,Principal principal,
 			HttpServletRequest req,
@@ -141,7 +141,7 @@ public class HelpController {
             		                                            pageSize,
             		                                            blockPage,
             		                                            nowPage,
-            		                                            req.getContextPath()+"/views/tip/List.pic?");
+            		                                            req.getContextPath()+"/help/tip/List.pic?");
             model.addAttribute("list",list);
             model.addAttribute("nowPage",nowPage);
             model.addAttribute("pageSize",pageSize);
@@ -150,10 +150,10 @@ public class HelpController {
             
             model.addAttribute("list",list);
             
-            return "/views/tip/List.tiles";       
+            return "/help/tip/List.tiles";       
             
 	}
-	@RequestMapping("/views/tip/delete.pic")
+	@RequestMapping("/help/tip/delete.pic")
 	public String tip_delete(@RequestParam Map map,Model model,Principal principal,HttpServletRequest req,@RequestParam(required=false,defaultValue="1")int nowPage)throws Exception{
 		map.put("ppa_email", principal.getName());
 		try {
@@ -170,7 +170,7 @@ public class HelpController {
 					                                            pageSize, 
 					                                            blockPage, 
 					                                            nowPage, 
-					                                            req.getContextPath()+"/views/tip/List.pic?");
+					                                            req.getContextPath()+"/help/tip/List.pic?");
 			model.addAttribute("list",list);
 			model.addAttribute("nowPage",nowPage);
 			model.addAttribute("totalRecordCount",totalRecordCount);
@@ -186,7 +186,7 @@ public class HelpController {
 		List<TipBoardDTO> list = tipService.selectList(map);
 		        model.addAttribute("list",list);
 		        
-		        return "/views/tip/List.tiles";
+		        return "/help/tip/List.tiles";
 	}
 	
 	

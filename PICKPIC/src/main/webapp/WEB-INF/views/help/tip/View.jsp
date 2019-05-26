@@ -47,18 +47,18 @@ float : left;
 <c:if test="${list.ppa_email == sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }" var="su">
  <div class="col-md-offset-4 col-md-4" style="margin-top:2%;float: center;margin-bottom: 7%; " >
  <c:if test="${empty list.tb_content }" var="tbempty">
-   <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/views/tip/List.pic'/>">목록</a></button> <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/views/tip/update.pic?q_index=${list2 }'/> ">수정  </a></button>
-   <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/views/tip/delete.pic?tb_index=${list2 }'/>">삭제</a></button>
+   <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/help/tip/List.pic'/>">목록</a></button> <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/help/tip/update.pic?q_index=${list2 }'/> ">수정  </a></button>
+   <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/help/tip/delete.pic?tb_index=${list2 }'/>">삭제</a></button>
 </c:if>
   <c:if test="${not tbempty }">
-  <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/views/tip/List/pic'/>">목록</span></a></button>
+  <button class="btn btn-info" style="font-weight: bold;"><a href="<c:url value='/help/tip/List/pic'/>">목록</span></a></button>
   </c:if>
  </div>
 
 </c:if>
 <c:if test="${not su }">
  <div class="col-md-offset-4 col-md-4" style="margin-top:2%;float: center;margin-bottom: 7%;" >
-<button class="btn btn-info" style="color:white;font-weight: bold;"><a href="<c:url value='/views/tip/List.pic'/>">목록</a></button>
+<button class="btn btn-info" style="color:white;font-weight: bold;"><a href="<c:url value='/help/tip/List.pic'/>">목록</a></button>
 </div>
 </c:if>
 

@@ -29,7 +29,7 @@
 			<div class="row_serch">
 				<form class="form-inline" method="post" action="#">
 					<div class="form-group pull-left">
-						<a class="btn btn-block btn-primary btn-sm"  href="<c:url value='/views/tip/Write.pic'/>">작성하기</a>
+						<a class="btn btn-block btn-primary btn-sm"  href="<c:url value='/help/tip/Write.pic'/>">작성하기</a>
 					</div>
 
 					<div class="form-group">
