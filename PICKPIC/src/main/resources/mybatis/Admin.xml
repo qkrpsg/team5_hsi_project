@@ -26,7 +26,7 @@
 			pickpic_account ppa JOIN (
 				SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
 			ON ppa.ppa_id=lh.ppa_id) 
-		ORDER BY ppa_id DESC
+		ORDER BY ppa_index DESC
 	</select>
 	<!-- 전체 유저 + 마지막접속일 내림차순 -->
 	<select id="adminUser" resultType="PickPicAccountDTO">
@@ -49,7 +49,7 @@
 	</select>
 	<!-- 픽플레이스 내림차순 -->
 	<select id="adminPickPlace" resultType="PickPlaceBoardDTO">
-		SELECT * FROM pickplace_board ORDER BY ppb_index DESC
+		SELECT * FROM pickplace_board ppb JOIN pickpic_account ppa ON ppa.ppa_id=ppb.ppa_id ORDER BY ppb_index DESC
 	</select>
 	<!-- 픽로드 내림차순 -->
 	<select id="adminPickRoad" resultType="PickRoadBoardDTO">
@@ -136,8 +136,6 @@
 		UPDATE filter SET f_event_yn=#{f_event_yn} WHERE f_name=#{f_name}
 	</update>
 	
-	
-	
 	<!-- 관리자 픽로드 관리자게시판 삭제 부분입니다. adminPickAccountRoadDelete -->
 	<delete id="adminPickAccountRoadDelete2" parameterType="java.util.Map">
 		DELETE pickroad_place WHERE prb_id = (SELECT prb.prb_id FROM pickroad_board prb JOIN pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prb_index = #{prb_index } AND ROWNUM = 1)
@@ -145,8 +143,4 @@
 	<delete id="adminPickAccountRoadDelete" parameterType="java.util.Map">
 		DELETE pickroad_board WHERE prb_index =#{prb_index }
 	</delete>
-	
-	
-	
-	
 </mapper>

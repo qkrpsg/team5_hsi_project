@@ -43,4 +43,9 @@ public class FilterDAO implements FilterService{
 		return template.insert("filter_storage", map);
 	}//addPayment
 
+	@Override
+	public List<Map> filterList() {
+		return template.selectList("FilterList");
+	}
+
 }

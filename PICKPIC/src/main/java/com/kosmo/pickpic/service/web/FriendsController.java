@@ -1,5 +1,6 @@
 package com.kosmo.pickpic.service.web;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +18,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,25 +35,32 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewRequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBodyAdvice;
 
 import com.amazonaws.services.appstream.model.Application;
+import com.amazonaws.services.devicefarm.model.Upload;
 import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
 import com.kosmo.pickpic.service.impl.FilterDAO;
 import com.kosmo.pickpic.service.impl.FilterServiceImpl;
+import com.kosmo.pickpic.service.impl.PickPlaceBoardServiceImpl;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
+import com.kosmo.pickpic.util.FileUpDownUtils;
+
+import io.netty.handler.codec.http.multipart.FileUpload;
 
 
 
@@ -67,7 +76,28 @@ public class FriendsController {
 	@Resource(name="adminService")
 	private AdminServiceImpl adminService;
 	
+	@Resource(name="ppbService")
+	private PickPlaceBoardServiceImpl ppb_service;
 	
+	
+	
+	
+	
+	//픽플레이스 리스트 페이지
+	@RequestMapping("/friends/place_filter.pic")
+	public String place_list(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		//여기서 작업 시작
+		map.put("ppa_email",principal.getName());
+		
+		List<Map> list = ppb_service.selectList(map);
+		model.addAttribute("list",list);
+		
+		System.out.println("왜2개임?"+list.toString());
+		System.out.println("사이즈는?"+list.size());
+		
+		return "friends/place_filter.tiles";
+		//return "friends/place.tiles";//나중에 이걸로 바꾸자
+	}// place
 	// 픽플레이스
 	@RequestMapping("/friends/place.pic")
 	public String place(@RequestParam Map map, Model model,Principal principal) throws Exception {
@@ -76,19 +106,9 @@ public class FriendsController {
 		List<Map> list_filter=dao_filter.albumDownFilterName(map);
 		model.addAttribute("list_filter", list_filter);
 		
-		//1 리스트
-		//2 맵
-		//3 맵 -> 작성 페이지
-		//4 다시 리스트
-		
-		
 		return "friends/place_map.tiles";
 		//return "friends/place.tiles";//나중에 이걸로 바꾸자
 	}// place
-	
-	//맵 이동 페이지 추가
-	
-	
 	//맵에서 작성 페이지로 이동합니다. 값을 가지고 이동만!
 	@RequestMapping("/friends/place_write.pic")
 	public String place_write(@RequestParam Map map, Model model,Principal principal) throws Exception {
@@ -107,35 +127,59 @@ public class FriendsController {
 	
 	//이제 DB에 저장하고 리스트 페이지로 이동 file 저장
 	@RequestMapping("/friends/file.pic")
-	public String place_list(@RequestParam Map map, Model model,Principal principal) throws Exception {
-		System.out.println("오냐?");
-		//1]서버의 물리적 경로 얻기
-		try{
+	public String place_list(@RequestParam Map map,HttpServletRequest req,Principal principal,Model model) throws Exception {
+			
+			System.out.println(map.toString());
             //파일 객체 생성
-            File file = new File("C:\\Users\\KSM16\\Downloads\\a.txt");
-            //입력 스트림 생성			
-            FileReader filereader = new FileReader(file);
-            int singleCh = 0;
-            while((singleCh = filereader.read()) != -1){
-                System.out.print((char)singleCh);
+			String path = req.getServletContext().getRealPath("/resources/update/"+map.get("ppb_image_path"));
+            File file = new File("C:\\Users\\KSM16\\Downloads\\"+map.get("ppb_image_path"));
+            File file2 = new File(path);
+            BufferedImage bi = null;
+            try {
+                bi = ImageIO.read(file);
+                ImageIO.write(bi, "jpg", file2);
+            }catch (IOException e) {}
+            
+            map.put("ppa_email", principal.getName());
+            map.put("ppb_image_path", "/resources/update/"+map.get("ppb_image_path"));
+            map.put("f_name",map.get("f_name").toString().toLowerCase());
+            map.put("ppb_latitude", map.get("ppb_latitude").toString().substring(0,9));
+            map.put("ppb_longitude", map.get("ppb_longitude").toString().substring(0,9));
+            
+            //이제 인설트 문 만들자
+            int a = ppb_service.insert(map);
+            if(a == 1) {
+            	System.out.println("인설트 성공");
             }
-            filereader.close();
-        }catch(Exception e){
-            System.out.println(e);
-        }
-
-		
-		
-		return "friends/place_write.tiles";
+            
+            
+            for(int i=0;i< 9999;i++) {
+            	System.out.println("");
+            }
+            List<Map> list = ppb_service.selectList(map);
+    		model.addAttribute("list",list);
+    		
+            
+            
+            
+         ///   return "friends/place_filter.tiles";
+            return "home.tiles";
+            
+		//return "friends/place_write.tiles";
 	}// place
 
 	
 	
 	// 필터정보
 	@RequestMapping("/friends/filter.pic")
-	public String filter() throws Exception {
+	public String filter(@RequestParam Map map,Model model) throws Exception {
+		
+		//filter 테이블 전부 가져오기
+		List<Map> list = dao_filter.filterList();
+		model.addAttribute("list",list);
+		
+		System.out.println(list.toString());
 		return "friends/filter.tiles";
-	
 	}//filter
 	
 	//Pay test
@@ -145,9 +189,8 @@ public class FriendsController {
 		//HttpSecurity sec 넣으면 에러
 		//http.antMatcher("/d").authorizeRequests().antMatchers("").permitAll().and().headers().frameOptions().disable();
 		map.put("ppa_email",session.getAttribute("ppa_email"));
-		System.out.println("hihi++"+map.toString());
-		//나중에 map.get("f_name");
-		map.put("f_name", "vintage");
+		
+		
 		FilterDTO a = dao_filter.selectFilter_buy(map);
 		List<Map> user = new Vector<Map>();
 		user.add(DTOUtil.convertDTOToMap(a));
@@ -586,5 +629,7 @@ public class FriendsController {
 	public String search() throws Exception {
 		return "friends/search.tiles";
 	}
+	
+	
 	
 }//FriendsController

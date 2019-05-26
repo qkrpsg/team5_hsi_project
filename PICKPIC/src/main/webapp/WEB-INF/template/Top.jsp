@@ -70,7 +70,7 @@
 
 					<li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
+							<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
 							<li><a href="<c:url value='/friends/filter.pic'/>">필터</a></li>
 							<li><a href="<c:url value='/friends/route.pic?noInsert=1'/> ">픽로드</a></li>
 							<li><a href="<c:url value='/friends/albumDown.pic'/>">앨범다운</a></li>
@@ -109,12 +109,16 @@
 						<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
 						<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
 						<li><a href="<c:url value='/'/>#sec_5" >다운로드</a></li>
+						<li><a href="<c:url value='/test/place_create.pic'/>">테스트 1</a></li>
+							<li><a href="<c:url value='/test/place_list.pic'/>">테스트 2</a></li>
+							<li><a href="<c:url value='/test/place_view.pic'/>">테스트 3</a></li>
+							<li><a href="<c:url value='/'/>">테스트 4</a></li>
 					</ul>
 				</div>
 
 				<div class="nav_wrap col-md-1">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
+						<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
 						<li><a href="<c:url value='/friends/route.pic?noInsert=1'/>">픽로드</a></li>
 						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>

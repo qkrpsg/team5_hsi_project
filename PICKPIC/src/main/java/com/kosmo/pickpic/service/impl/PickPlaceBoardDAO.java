@@ -15,5 +15,20 @@ import com.kosmo.pickpic.service.PickPlaceBoardService;
 public class PickPlaceBoardDAO implements PickPlaceBoardService {
 	@Resource(name = "template")
 	private SqlSessionTemplate template;
+
+	@Override
+	public int insert(Map map) {
+		return template.insert("ppbinsert",map);
+	}
+
+	@Override
+	public List<Map> selectList(Map map) {
+		return template.selectList("ppbselect",map);
+	}
+
+	@Override
+	public List<PickPlaceBoardDTO> ppbBestList() {
+		return template.selectList("ppbBestList");
+	}
 	
 }

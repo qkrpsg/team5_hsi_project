@@ -13,7 +13,7 @@ public class UploadFileUtils {
 
 	public static String uploadFile(String uploadPath, String originalName, byte[] byteData) throws Exception {
 		S3Util s3 = new S3Util();
-		String bucketName = "almombucket";
+		String bucketName = "img.pickpic.com";
 		//랜덤의 uid 를 만들어준다.
 		UUID uid = UUID.randomUUID();
 
@@ -35,6 +35,7 @@ public class UploadFileUtils {
 
 		return uploadedFileName;
 	}
+	
 
 	private static String calcPath(String uploadPath) {
 		Calendar cal = Calendar.getInstance();

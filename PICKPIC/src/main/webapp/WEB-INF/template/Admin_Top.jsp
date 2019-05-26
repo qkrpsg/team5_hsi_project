@@ -29,7 +29,7 @@
 						<!-- The user image in the menu -->
 						<li class="user-header">
 							<img src="<c:url value='/resources/admin_images/user_icon.png'/>" class="img-circle" alt="User Image">
-							<p>${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username } <small>가입일자</small></p>
+							<p>${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }</p>
 						</li>
 						<!-- Menu Footer-->
 						<li class="user-footer">
@@ -67,8 +67,8 @@
 				<img src="<c:url value='/resources/admin_images/user_icon.png'/>" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
-				<p>ADMINSTER</p>
-				<p>관리자 ID</p>
+				<p>admin</p>
+				<p>관리자</p>
 			</div>
 		</div>
 
@@ -97,7 +97,7 @@
 <%-- 			<li id="albumDown"><a href="<c:url value='/admin/albumDown.pic'/>"><i class="fa fa-navicon"></i> <span>앨범다운관리</span></a></li> --%>
 			
 			<li class="header">고객센터</li>
-			<li id="gonggi"><a href="<c:url value='/admin/notice.pic'/> "><span>공지사항</span> </a></li>
+			<li id="gonggi"><a href="<c:url value='/admin/notice.pic'/> "><i class="fa fa-newspaper-o"></i> <span>공지사항</span> </a></li>
 			<li id="qna"><a href="<c:url value='/admin/qna.pic'/>"><i class="fa fa-question"></i> <span>문의관리</span></a></li>
 			<li id="report"><a href="<c:url value='/admin/report.pic'/>"><i class="fa fa-warning"></i> <span>게시물신고함</span></a></li>
 			

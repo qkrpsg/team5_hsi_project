@@ -78,6 +78,8 @@ public class PickpicAccountDAO implements PickpicAccountService {
 					.append(authkey)
 					.append("&ppa_type=")
 					.append(map.get("ppa_type"))
+					.append("&isCheck=")
+					.append("true")
 					.append("' target='_blenk'>이메일 인증 확인</a>")
 					.append("</div></div>")
 					.toString());

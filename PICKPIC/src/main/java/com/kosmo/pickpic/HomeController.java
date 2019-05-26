@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,11 +13,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kosmo.pickpic.service.impl.FilterServiceImpl;
+import com.kosmo.pickpic.service.impl.PickPlaceBoardServiceImpl;
+import com.kosmo.pickpic.util.TempKey;
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+	@Resource(name="ppbService")
+	private PickPlaceBoardServiceImpl ppbService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -32,11 +40,12 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
+		model.addAttribute("ppbBest", ppbService.ppbBestList());
 		
 //		System.out.println("home 으로 옵니까?");
 		//return "friends/user_end.tiles";
 		//.tiles
 		return "home.tiles";
 	}//home
+	
 }//HomeController

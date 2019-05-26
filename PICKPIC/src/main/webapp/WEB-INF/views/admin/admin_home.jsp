@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -66,7 +67,7 @@
 							<div class="col-md-12">
 								<h3 class="box-title">사이트 통계</h3>
 								<p class="text-center">
-									<strong>접속자 통계 : 2019.04.19 - 2019.04.25</strong>
+									<strong>접속자 통계 : ${nowDate }</strong>
 								</p>
 								<div class="_GAN9" id="ID-overview-graph"
 									data-guidedhelpid="overview-tab-graph">
@@ -76,8 +77,7 @@
 												<div class="_GAq1">
 													<div class="_GAb-_GAci-_GAhi">
 														<div class="_GAdVb _GAb-_GAci-_GAhi">
-															<span style="border-color: #058DC7" class="_GAytb"></span>&nbsp;페이지뷰
-															수
+															<span style="border-color: #058DC7" class="_GAytb"></span>&nbsp;사용자
 														</div>
 													</div>
 												</div>
@@ -86,21 +86,14 @@
 												<div style="position: relative;">
 													<div dir="ltr"
 														style="position: relative; width: 1580px; height: 160px;">
-														<div aria-label="차트"
-															style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+														<div
+															style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"
+															aria-label="차트">
 															<svg width="1580" height="160" aria-label="차트"
 																style="overflow: hidden;">
-																<defs id="_ABSTRACT_RENDERER_ID_378">
-																<clipPath id="_ABSTRACT_RENDERER_ID_379">
-																<rect x="7" y="4" width="1553" height="136"></rect></clipPath>
-																<filter id="_ABSTRACT_RENDERER_ID_392">
-																<feGaussianBlur in="SourceAlpha" stdDeviation="2"></feGaussianBlur>
-																<feOffset dx="1" dy="1"></feOffset>
-																<feComponentTransfer>
-																<feFuncA type="linear" slope="0.1"></feFuncA></feComponentTransfer>
-																<feMerge>
-																<feMergeNode></feMergeNode>
-																<feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs>
+																<defs id="_ABSTRACT_RENDERER_ID_17">
+																<clipPath id="_ABSTRACT_RENDERER_ID_18">
+																<rect x="7" y="4" width="1553" height="136"></rect></clipPath></defs>
 																<rect x="0" y="0" width="1580" height="160"
 																	stroke="none" stroke-width="0" fill="#ffffff"></rect>
 																<g>
@@ -108,7 +101,7 @@
 																	stroke="none" stroke-width="0" fill-opacity="0"
 																	fill="#ffffff"></rect>
 																<g
-																	clip-path="url(https://analytics.google.com/analytics/app/#_ABSTRACT_RENDERER_ID_379)">
+																	clip-path="url(https://analytics.google.com/analytics/app/#_ABSTRACT_RENDERER_ID_18)">
 																<g>
 																<rect x="7" y="4" width="1" height="136" stroke="none"
 																	stroke-width="0" fill="#ffffff"></rect>
@@ -126,22 +119,18 @@
 																	stroke="none" stroke-width="0" fill="#ffffff"></rect>
 																<rect x="7" y="139" width="1553" height="1"
 																	stroke="none" stroke-width="0" fill="#efefef"></rect>
-																<rect x="7" y="94" width="1553" height="1" stroke="none"
-																	stroke-width="0" fill="#efefef"></rect>
-																<rect x="7" y="49" width="1553" height="1" stroke="none"
+																<rect x="7" y="72" width="1553" height="1" stroke="none"
 																	stroke-width="0" fill="#efefef"></rect>
 																<rect x="7" y="4" width="1553" height="1" stroke="none"
 																	stroke-width="0" fill="#efefef"></rect>
-																<rect x="7" y="117" width="1553" height="1"
+																<rect x="7" y="105" width="1553" height="1"
 																	stroke="none" stroke-width="0" fill="#f9f9f9"></rect>
-																<rect x="7" y="72" width="1553" height="1" stroke="none"
-																	stroke-width="0" fill="#f9f9f9"></rect>
-																<rect x="7" y="27" width="1553" height="1" stroke="none"
+																<rect x="7" y="38" width="1553" height="1" stroke="none"
 																	stroke-width="0" fill="#f9f9f9"></rect></g>
 																<g>
 																<g>
 																<path
-																	d="M7.5,139.5L7.5,139.5L7.5,138.1275L266.1666666666667,135.99L524.8333333333334,129.4425L783.5,109.755L1042.1666666666667,90.1575L1300.8333333333335,25.627499999999998L1559.5,55.6425L1559.5,139.5L1559.5,139.5Z"
+																	d="M7.5,139.5L7.5,139.5L7.5,126L266.1666666666667,126L524.8333333333334,72L783.5,58.5L1042.1666666666667,72L1300.8333333333335,58.5L1559.5,31.5L1559.5,139.5L1559.5,139.5Z"
 																	stroke="none" stroke-width="0" fill-opacity="0.1"
 																	fill="#058dc7"></path></g></g>
 																<g>
@@ -149,26 +138,23 @@
 																	stroke="none" stroke-width="0" fill="#333333"></rect></g>
 																<g>
 																<path
-																	d="M7.5,138.1275L266.1666666666667,135.99L524.8333333333334,129.4425L783.5,109.755L1042.1666666666667,90.1575L1300.8333333333335,25.627499999999998L1559.5,55.6425"
+																	d="M7.5,126L266.1666666666667,126L524.8333333333334,72L783.5,58.5L1042.1666666666667,72L1300.8333333333335,58.5L1559.5,31.5"
 																	stroke="#058dc7" stroke-width="4" fill-opacity="1"
 																	fill="none"></path></g></g>
 																<g>
-																<circle cx="7.5" cy="138.1275" r="4.5" stroke="none"
+																<circle cx="7.5" cy="126" r="4.5" stroke="none"
 																	stroke-width="0" fill="#058dc7"></circle>
-																<circle cx="266.1666666666667" cy="135.99" r="4.5"
+																<circle cx="266.1666666666667" cy="126" r="4.5"
 																	stroke="none" stroke-width="0" fill="#058dc7"></circle>
-																<g>
-																<circle cx="524.8333333333334" cy="129.4425" r="7"
-																	stroke="#058dc7" stroke-width="1" fill="#ffffff"></circle>
-																<circle cx="524.8333333333334" cy="129.4425" r="4.5"
-																	stroke="none" stroke-width="0" fill="#058dc7"></circle></g>
-																<circle cx="783.5" cy="109.755" r="4.5" stroke="none"
+																<circle cx="524.8333333333334" cy="72" r="4.5"
+																	stroke="none" stroke-width="0" fill="#058dc7"></circle>
+																<circle cx="783.5" cy="58.5" r="4.5" stroke="none"
 																	stroke-width="0" fill="#058dc7"></circle>
-																<circle cx="1042.1666666666667" cy="90.1575" r="4.5"
+																<circle cx="1042.1666666666667" cy="72" r="4.5"
 																	stroke="none" stroke-width="0" fill="#058dc7"></circle>
-																<circle cx="1300.8333333333335" cy="25.627499999999998"
-																	r="4.5" stroke="none" stroke-width="0" fill="#058dc7"></circle>
-																<circle cx="1559.5" cy="55.6425" r="4.5" stroke="none"
+																<circle cx="1300.8333333333335" cy="58.5" r="4.5"
+																	stroke="none" stroke-width="0" fill="#058dc7"></circle>
+																<circle cx="1559.5" cy="31.5" r="4.5" stroke="none"
 																	stroke-width="0" fill="#058dc7"></circle></g>
 																<g>
 																<g>
@@ -181,81 +167,73 @@
 																<g>
 																<text text-anchor="middle" x="266.1666666666667"
 																	y="153.85" font-family="Arial" font-size="11"
-																	stroke="none" stroke-width="0" fill="#444444">4월 20일</text></g>
+																	stroke="none" stroke-width="0" fill="#444444">5월 19일</text></g>
 																<g>
 																<text text-anchor="middle" x="524.8333333333334"
 																	y="153.85" font-family="Arial" font-size="11"
-																	stroke="none" stroke-width="0" fill="#444444">4월 21일</text></g>
+																	stroke="none" stroke-width="0" fill="#444444">5월 20일</text></g>
 																<g>
 																<text text-anchor="middle" x="783.5" y="153.85"
 																	font-family="Arial" font-size="11" stroke="none"
-																	stroke-width="0" fill="#444444">4월 22일</text></g>
+																	stroke-width="0" fill="#444444">5월 21일</text></g>
 																<g>
 																<text text-anchor="middle" x="1042.1666666666667"
 																	y="153.85" font-family="Arial" font-size="11"
-																	stroke="none" stroke-width="0" fill="#444444">4월 23일</text></g>
+																	stroke="none" stroke-width="0" fill="#444444">5월 22일</text></g>
 																<g>
 																<text text-anchor="middle" x="1300.8333333333335"
 																	y="153.85" font-family="Arial" font-size="11"
-																	stroke="none" stroke-width="0" fill="#444444">4월 24일</text></g>
+																	stroke="none" stroke-width="0" fill="#444444">5월 23일</text></g>
 																<g>
 																<text text-anchor="middle" x="1559.5" y="153.85"
 																	font-family="Arial" font-size="11" stroke="none"
-																	stroke-width="0" fill="#444444">4월 25일</text></g>
+																	stroke-width="0" fill="#444444">5월 24일</text></g>
 																<g>
 																<g>
-																<text text-anchor="start" x="10" y="106.85"
+																<text text-anchor="start" x="10" y="84.35"
 																	font-family="Arial" font-size="11" stroke="#ffffff"
-																	stroke-width="3" fill="#444444" aria-hidden="true">2,000</text>
-																<text text-anchor="start" x="10" y="106.85"
+																	stroke-width="3" fill="#444444" aria-hidden="true">5</text>
+																<text text-anchor="start" x="10" y="84.35"
 																	font-family="Arial" font-size="11" stroke="none"
-																	stroke-width="0" fill="#444444">2,000</text></g></g>
-																<g>
-																<g>
-																<text text-anchor="start" x="10" y="61.85"
-																	font-family="Arial" font-size="11" stroke="#ffffff"
-																	stroke-width="3" fill="#444444" aria-hidden="true">4,000</text>
-																<text text-anchor="start" x="10" y="61.85"
-																	font-family="Arial" font-size="11" stroke="none"
-																	stroke-width="0" fill="#444444">4,000</text></g></g>
+																	stroke-width="0" fill="#444444">5</text></g></g>
 																<g>
 																<g>
 																<text text-anchor="start" x="10" y="16.85"
 																	font-family="Arial" font-size="11" stroke="#ffffff"
-																	stroke-width="3" fill="#444444" aria-hidden="true">6,000</text>
+																	stroke-width="3" fill="#444444" aria-hidden="true">10</text>
 																<text text-anchor="start" x="10" y="16.85"
 																	font-family="Arial" font-size="11" stroke="none"
-																	stroke-width="0" fill="#444444">6,000</text></g></g></g></g>
+																	stroke-width="0" fill="#444444">10</text></g></g></g></g>
 																<g></g></svg>
 															<div aria-label="차트의 데이터를 표로 표시합니다."
 																style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">
 																<table>
 																	<thead>
 																		<tr>
-																			<th>페이지뷰 수</th>
+																			<th>사용자</th>
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
-																			<td>61</td>
+																			<td>1</td>
 																		</tr>
 																		<tr>
-																			<td>156</td>
+																			<td>1</td>
 																		</tr>
 																		<tr>
-																			<td>447</td>
+																			<td>5</td>
 																		</tr>
 																		<tr>
-																			<td>1,322</td>
+																			<td>6</td>
 																		</tr>
 																		<tr>
-																			<td>2,193</td>
+																			<td>5</td>
 																		</tr>
 																		<tr>
-																			<td>5,061</td>
+																			<td>6</td>
 																		</tr>
 																		<tr>
-																			<td>3,727</td>
+																			<td>8</td>
 																		</tr>
 																	</tbody>
 																</table>
@@ -263,7 +241,7 @@
 														</div>
 													</div>
 													<div aria-hidden="true"
-														style="display: none; position: absolute; top: 170px; left: 1590px; white-space: nowrap; font-family: Arial; font-size: 11px; font-weight: bold;">61</div>
+														style="display: none; position: absolute; top: 170px; left: 1590px; white-space: nowrap; font-family: Arial; font-size: 11px;">10</div>
 													<div></div>
 												</div>
 											</div>
@@ -337,20 +315,18 @@
 																									style="display: none">?</span>
 																							</div></td>
 																						<td class="_GAIe"><a class="_GAjb _GAWn"><b><b><b>저장</b></b></b></a>
-																							<div class="_GAeB">
+																						<div class="_GAeB">
 																								<div class="_GAcSb">|</div>
 																								<a class="_GAZH">취소</a>
 																								<div class="_GAAS">
 																									<div class="_GAcSb">|</div>
 																									<a class="_GAHF">삭제</a>
 																								</div>
-																							</div>
-																						</td>
+																							</div></td>
 																					</tr>
 																				</tbody>
 																			</table>
-																		</form>
-																	</td>
+																		</form></td>
 																</tr>
 																<tr class="_GAhp" style="display: none">
 																	<td colspan="5">오류가 발생했습니다. 페이지 <a

@@ -5,7 +5,7 @@ public class PickPlaceBoardDTO {
 	private String ppb_id;
 	private String ppb_title;
 	private String ppb_content;
-	private java.sql.Date ppb_post_date;
+	private String ppb_post_date;
 	private String ppb_count;
 	private String ppb_pick;
 	private String ppb_nation;
@@ -14,13 +14,34 @@ public class PickPlaceBoardDTO {
 	private String ppb_detail;
 	private String ppb_image_path;
 	private String ppb_index;
-	//외래키 변수 생성
+	
+	//편의용 변수 생성
 	private String f_id;
+	private String f_name;
 	private String ppa_id;
-	//작성자 닉네임을 얻기 위한 변수 생성
 	private String ppa_nickname;
+	private String ppa_profile_path;
+	private String rownum;
 	
 	//getter,setter
+	public String getPpa_profile_path() {
+		return ppa_profile_path;
+	}
+	public void setPpa_profile_path(String ppa_profile_path) {
+		this.ppa_profile_path = ppa_profile_path;
+	}
+	public String getF_name() {
+		return f_name;
+	}
+	public void setF_name(String f_name) {
+		this.f_name = f_name;
+	}
+	public String getRownum() {
+		return rownum;
+	}
+	public void setRownum(String rownum) {
+		this.rownum = rownum;
+	}
 	public String getPpb_id() {
 		return ppb_id;
 	}
@@ -39,10 +60,10 @@ public class PickPlaceBoardDTO {
 	public void setPpb_content(String ppb_content) {
 		this.ppb_content = ppb_content;
 	}
-	public java.sql.Date getPpb_post_date() {
+	public String getPpb_post_date() {
 		return ppb_post_date;
 	}
-	public void setPpb_post_date(java.sql.Date ppb_post_date) {
+	public void setPpb_post_date(String ppb_post_date) {
 		this.ppb_post_date = ppb_post_date;
 	}
 	public String getPpb_count() {

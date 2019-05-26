@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,24 +55,22 @@ public class UserController {
 	
 	//로그인 실패시 프로세스
 	@RequestMapping("/user/LoginProcessF.pic")
-    public void loginProcessF(HttpServletResponse response) throws Exception{
+    public void loginProcessF(HttpServletResponse response, HttpSession session) throws Exception{
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+        
+        Exception error = (Exception) session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+    	System.out.println(error.getMessage());
+        if (error != null) {
+        	if(error.getMessage().equals("User is disabled"))
+            	out.println("<script>alert('이메일 인증을 해주세요.'); history.go(-1);</script>");
+        	else
+        		out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+        }
+        
         out.flush();
         out.close();
     }
-	
-	//로그인에 성공했으나 이메일인증이 이루어지지 않은경우 프로세스
-	@RequestMapping("/user/EmailProcessF.pic")
-	public void emailProcessF(HttpSession session, HttpServletResponse response) throws Exception{
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		session.invalidate();
-        out.println("<script>alert('이메일 인증이 이루어지지 않았습니다.'); hi story.go(-1);</script>");
-        out.flush();
-        out.close();
-	}
 	
 	//이메일 중복 체크
 	@ResponseBody
@@ -108,15 +108,15 @@ public class UserController {
 			if(accountService.securityInsert(map) == 1 ? true : false) {
 				accountService.loginHistoryInsert(map);
 				
-				response.setContentType("text/html; charset=UTF-8");
-		        PrintWriter out = response.getWriter();
-		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
-		        out.flush();
-		        out.close();
-				return "home.tiles";
+//				response.setContentType("text/html; charset=UTF-8");
+//		        PrintWriter out = response.getWriter();
+//		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
+//		        out.flush();
+//		        out.close();
+//				return "/home";
 			}//as테이블 insert 성공시 
 		}//ppa테이블 insert 성공시
-		return "/user/sign_up.pic";
+		return "home.tiles";
 	}//sign_up_process
 	
 	//이메일 인증 프로세스
@@ -128,16 +128,16 @@ public class UserController {
         PrintWriter out = response.getWriter();
 		
 		if(accountService.isAuthAbled(map)) {
-	        out.println("<script>alert('이메일 인증이 완료되었습니다!');</script>");
+	        out.println("<script>alert('이메일 인증이 완료되었습니다!'); location.href='http://localhost:8080/pickpic/';</script>");
 	        out.flush();
 	        out.close();
-			return "redirect:home.tiles";
+			return "/home";
 		}
-        out.println("<script>alert('이메일 인증에 실패하였습니다.'); history.go(-1);</script>");
+        out.println("<script>alert('이메일 인증에 실패하였습니다.'); location.href='http://localhost:8080/pickpic/';</script>");
         out.flush();
         out.close();
 		
-		return "";
+		return "/home";
 	}
 	
 //	//로그아웃 프로세스  

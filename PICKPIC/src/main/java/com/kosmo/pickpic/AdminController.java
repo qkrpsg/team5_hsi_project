@@ -49,6 +49,8 @@ public class AdminController {
 		model.addAttribute("filter",adminService.filterAll());
 		model.addAttribute("place", adminService.pickPlaceAll());
 		model.addAttribute("road", adminService.pickRoadAll());
+		model.addAttribute("nowDate", DTOUtil.getNowDate());
+		
 		return "admin/admin_home.admin";
 	}//home
 	
@@ -84,19 +86,20 @@ public class AdminController {
        return JSONArray.toJSONString(user);
     }
 	
+	
 	//픽플레이스관리
 	@RequestMapping(value = "/admin/pickPlace.pic")
-	public String attraction(@RequestParam Map map) throws Exception{
+	public String attraction(@RequestParam Map map, Model model) throws Exception{
+		model.addAttribute("place", adminService.pickPlaceAll());
 		return "admin/admin_pickPlace.admin";
 	}//pickPlace
+	
 	
 	//필터관리
 	@RequestMapping(value = "/admin/filter.pic")
 	public String filter() throws Exception{
 		return "admin/admin_filter.admin";
 	}//filter
-	
-	
 	
 	//필터 상세보기 aJax
 	@ResponseBody
@@ -182,7 +185,6 @@ public class AdminController {
 		System.out.println(JSONArray.toJSONString(filter));
 		return JSONArray.toJSONString(filter);
 	}
-	
 	
 	
 	//픽로드관리
