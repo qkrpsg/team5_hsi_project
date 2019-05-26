@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.FilterServiceImpl;
+import com.kosmo.pickpic.service.impl.PickPlaceBoardServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.UploadFileUtils;
@@ -50,6 +51,8 @@ public class UserController {
 	@Resource(name="adminService")
 	private AdminServiceImpl adminService;
 	
+	@Resource(name="ppbService")
+	private PickPlaceBoardServiceImpl ppb_service;
 	
 	//로그인
 	@RequestMapping("/user/Login.pic")
@@ -224,7 +227,7 @@ public class UserController {
 	@RequestMapping("/user/myPage.pic")
 	public String myPage() throws Exception{
 		
-		return "login/MyPage.tiles";
+		return "login/my_page.tiles";
 	}//myPage
 	
 	
@@ -237,7 +240,6 @@ public class UserController {
 		List<Map> list = new Vector<Map>();
 		map.put("ppa_email", principal.getName());
 		
-		System.out.println(map.toString());
 		String type = map.get("id").toString();
 		
 		//내부 로직 처리
@@ -250,7 +252,11 @@ public class UserController {
 //				}
 			for(Map record : fService.albumDownFilterName(map)) {
 				list.add(record);
-			}
+			}//for
+			
+		}else if(type.equals("place")) {
+			
+			
 		}
        System.out.println(JSONArray.toJSONString(list));
        return JSONArray.toJSONString(list);

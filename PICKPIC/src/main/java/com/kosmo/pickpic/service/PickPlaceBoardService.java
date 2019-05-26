@@ -13,4 +13,5 @@ public interface PickPlaceBoardService {
 //	int delete(Map map);
 //	int update(Map map);
 	List<PickPlaceBoardDTO> ppbBestList();
+	//이건 픽 플레이스 게시판 가져오는 것!
 }

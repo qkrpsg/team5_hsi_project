@@ -126,7 +126,7 @@
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
 						<li><a href="<c:url value='/friends/route.pic?noInsert=1'/>">픽로드</a></li>
 						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>
-						<li><a href="<c:url value='/test/my_page.pic'/>">테스트4-마이페이지(플레이스)</a></li>
+						<li><a href="<c:url value='/user/myPage.pic'/>">테스트4-마이페이지(플레이스)</a></li>
 						<li><a href="<c:url value='/test/filter_view.pic'/>">테스트5-필터상세보기</a></li>
 					</ul>
 				</div>
