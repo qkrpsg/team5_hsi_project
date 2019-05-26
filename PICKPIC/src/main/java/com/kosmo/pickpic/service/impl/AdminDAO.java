@@ -140,6 +140,8 @@ public class AdminDAO implements AdminService {
 	}
 	@Override
 	public Map getAuthKey() {
-		return template.selectOne("getAuthKey");
+		Map map = template.selectOne("getAuthKey");
+		System.out.println("DAO map : " + map.toString());
+		return map;
 	}
 }

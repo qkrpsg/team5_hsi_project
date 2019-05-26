@@ -232,6 +232,7 @@
 				canvas.removeAttribute("data-caman-id");
 			};
 		};
+	}
 	
 	/*<!-- 필터창 열고 닫기  --> */
 	var filter_list = document.getElementById('filter_list');

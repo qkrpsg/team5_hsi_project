@@ -84,7 +84,7 @@
 					placeholder="내용을 작성하세요." >${naiyo }</textarea>
 			</div>
 
-			<button class="btn-danger insert" type="button" style="width: 164px; height: 51px;">등록하기</button>
+			<button class="btn-danger insert" type="button" style="width: 164px; height: 51px;" onclick='imageSummit()'>등록하기</button>
 		</form>
 
 	</div>
@@ -128,12 +128,11 @@
 <script>
 	$(function(){
 		//$('.latlng').
-		console.log("뭐 뜨냐? "+typeof $('.filter2').val());
+// 		console.log("뭐 뜨냐? "+typeof $('.filter2').val());
 		
 		if($('.filter2').val() != "null"){
 		   $('.filter1').val($('.filter2').val());
 		}
-		
 		
 		 var d = new Date();
 		 var day = parseInt(d.getDate());
@@ -143,22 +142,8 @@
 		 	$('.my_calendar').val($('.my_calendar2').val());
 		 }
 		 
-		 //var currentDate = d.getFullYear() + "년 " + ( d.getMonth() + 1 ) + "월 " + day + "일";
-	     //var currentTime = d.getHours() + "시 " + d.getMinutes() + "분 ";// + d.getSeconds() + "초"
-	   	
-	     //ㅋㅋㅋㅋ
+		 //맵 페이지
 		 $('.latlng2').click(function(){
-			 //title   , addr  ,my_calendar  , filter1  ,naiyo
-			  //제목 , 상세 주소 , 달력 값 , 사용한 필터  , 내용
-			 
-			  /* 
-			  console.log('제목!!!'+$('.title').val());
-			  console.log('상세!!!'+$('.addr').val());
-			  console.log('달력!!!'+$('.my_calendar').val());
-			  console.log('필터!!!'+$('.filter1').val());
-			  console.log('내용!!!'+$('.naiyo').val());
-			   */
-			  
 			  var form = document.createElement("form");
 		      form.setAttribute("charset", "UTF-8");
 		      form.setAttribute("method", "Post");  //Post 방식
@@ -202,107 +187,10 @@
 		      
 		      document.body.appendChild(form);
 		      form.submit();
-
-			 
-			 
 		 });
-	     
-	     
-		 
-	    
-	    
-		 
-		 
-		
-		
 	});
 	 //등록하기
-	 //  /test/place_view.pic
-	$(document).ready(function(){
-        $(document).on("click",".insert",function(event){
-          // 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
-          console.log('제목!!!'+$('.title').val());
-		  console.log('상세!!!'+$('.addr').val());
-		  console.log('달력!!!'+$('.my_calendar').val());
-		  console.log('필터!!!'+$('.filter1').val());
-		  console.log('내용!!!'+$('.naiyo').val());
-        	var form = document.createElement("form");
-	        form.setAttribute("charset", "UTF-8");
-	        form.setAttribute("method", "Post");  //Post 방식
-	        form.setAttribute("action", "/pickpic/friends/place_view_myPage.pic"); //요청 보낼 주소
-	        //insert 체크용
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "insert");
-	        hiddenField.setAttribute("value", "insert");
-	        form.appendChild(hiddenField);
-	        //달력  딱히 필요없는듯 하다
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_post_date");
-	        hiddenField.setAttribute("value", $('.my_calendar').val());
-	        form.appendChild(hiddenField);
-	        //지번
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_addr1");
-	        hiddenField.setAttribute("value", $('.ppb_addr1').val());
-	        form.appendChild(hiddenField);
-	        //상세
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_addr2");
-	        hiddenField.setAttribute("value", $('.addr').val());
-	        form.appendChild(hiddenField);
-	        //위도
-	         var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_latitude");
-	        hiddenField.setAttribute("value", $('.ppb_latitude').val());
-	        form.appendChild(hiddenField);
-	        //경도
-	         var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_longitude");
-	        hiddenField.setAttribute("value", $('.ppb_longitude').val());
-	        form.appendChild(hiddenField);
-	        
-	        //이미지 경로
-	        /* var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_image_path");
-	        hiddenField.setAttribute("value", newFilename);
-	        form.appendChild(hiddenField); */
-	       //제목
-	        var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_title");
-	        hiddenField.setAttribute("value", $('.title').val());
-	        form.appendChild(hiddenField);
-	        //내용
-	         var hiddenField = document.createElement("input");
-	        hiddenField.setAttribute("type", "hidden");
-	        hiddenField.setAttribute("name", "ppb_content");
-	        hiddenField.setAttribute("value", $('.naiyo').val());
-	        form.appendChild(hiddenField);
-	      
-	        //f_id 값 가져올려고
-	        var hiddenField = document.createElement("input");
-	       hiddenField.setAttribute("type", "hidden");
-	       hiddenField.setAttribute("name", "f_name");
-	       hiddenField.setAttribute("value", $('.filter1').val());
-	       form.appendChild(hiddenField);
-	       
-	        document.body.appendChild(form);
-	        form.submit();
-          
-          
-          
-        });
-    }); // end of ready()
-   
-</script>
-<script type="text/javascript">
+	 
 	/* 날짜 시간 찍기 */
 	$(function() {
 		$('#datetimepicker').datetimepicker({
@@ -320,26 +208,25 @@
 		} 	 
 	});
 	
-		file.onchange = function() {
-			var fileList = file.files;
-			// 읽기
-			var reader = new FileReader();
-			reader.readAsDataURL(fileList[0]);
-			//로드 한 후
-			reader.onload = function() {
-				const canvas = document.getElementById('canvas');
-				const ctx = canvas.getContext("2d");
-				var img = new Image();
-				img.src= reader.result;
-				img.onload = function(e) {
-					canvas.width = img.width;
-					canvas.height = img.height;
-					ctx.drawImage(img, 0, 0, img.width, img.height);
-					canvas.removeAttribute("data-caman-id");
-				};
-				
+	file.onchange = function() {
+		var fileList = file.files;
+		// 읽기
+		var reader = new FileReader();
+		reader.readAsDataURL(fileList[0]);
+		//로드 한 후
+		reader.onload = function() {
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext("2d");
+			var img = new Image();
+			img.src= reader.result;
+			img.onload = function(e) {
+				canvas.width = img.width;
+				canvas.height = img.height;
+				ctx.drawImage(img, 0, 0, img.width, img.height);
+				canvas.removeAttribute("data-caman-id");
 			};
 		};
+	};
 	
 	/*<!-- 필터창 열고 닫기  --> */
 	var filter_list = document.getElementById('filter_list');
@@ -359,8 +246,6 @@
 			} 	 
 			filter_list.style.display = "block";
 		}
-		
-		
 	});
 	
 	/* 필터 선택시 이미지에 필터 적용*/
@@ -508,34 +393,47 @@
 
 	}
 	
-	/*  등록하기 */
-/* 	> 캔버스에서 이미지를 만듭니다 (이전처럼).
-> 이미지를 새 페이지에 표시하십시오.
-> 사용자가 로컬 드라이브를 마우스 오른쪽 버튼으로 클릭 한 상태로 저장하십시오.
-> 그런 다음 파일 입력 요소를 사용하여 새로 생성 된 파일을 업로드 할 수 있습니다.
-
-Ajax를 사용하여 캔바스 데이터를 POST */
-	/* var blobBin = atob(dataURL.split(',')[1]);
-var array = [];
-for(var i = 0; i < blobBin.length; i++) {
-    array.push(blobBin.charCodeAt(i));
-}
-var file=new Blob([new Uint8Array(array)], {type: 'image/png'});
-
-
-var formdata = new FormData();
-formdata.append("myNewFileName", file);
-$.ajax({
-   url: "uploadFile.php",
-   type: "POST",
-   data: formdata,
-   processData: false,
-   contentType: false,
-}).done(function(respond){
-  alert(respond);
-}); */
-	
-
+	var imageSummit = function() {
+		var imgCan = document.getElementById('canvas');
+		console.log(imgCan);
+		console.log(typeof(imgCan));
+		var canvImgStr = imgCan.toDataURL('image/png', 1.0);
+		console.log('적용되니');
+		$.ajax({
+			url:"<c:url value='/user/uploadImage.do'/>",
+			type:"POST",
+			data:{
+				"strImg": canvImgStr,
+				"type" : "place"
+			},
+			dataType:'json',
+			success : function(data) {
+				console.log('성공했습니다');
+				console.log(data);
+				
+				$.each(data, function(index, element) {
+	// 				canvas = document.getElementById('canvas');
+	// 				ctx = canvas.getContext("2d");
+					
+	// 				var loadImg = new Image();
+	// 				loadImg.src= element['img'];
+	// 				loadImg.onload = function(e) {
+	// 					canvas.width = loadImg.width;
+	// 					canvas.height = loadImg.height;
+	// 					ctx.drawImage(loadImg, 0, 0, loadImg.width, loadImg.height);
+	// 					canvas.removeAttribute("data-caman-id");
+	// 				};
+					
+				});
+	//				location.href = "<c:url value='' />";
+			},
+			error : function(data) {
+				console.log('실패했습니다');
+				console.log(data);
+	//				location.href = "<c:url value='/test/place_create.pic'/>";
+			}
+		});
+	}
 </script>
 
 

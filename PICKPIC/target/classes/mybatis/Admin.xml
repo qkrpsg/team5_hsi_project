@@ -147,7 +147,7 @@
 	
 	<!-- S3 서비스 이용을 위한 키 획득 -->
 	<select id="getAuthKey" resultType="java.util.Map">
-		SELECT * FROM authority;
+		SELECT * FROM authority
 	</select>
 	
 </mapper>
