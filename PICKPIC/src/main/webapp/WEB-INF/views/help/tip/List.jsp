@@ -56,63 +56,31 @@
 						<th>날짜</th>
 						<th class="text-center">조회수</th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td><span class="label label-danger">new</span></td>
-						<td>첫번째 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td><span class="label label-danger">new</span></td>
-						<td>두번째 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td><span class="label label-danger">new</span></td>
-						<td>세번째 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td></td>
-						<td>지난주 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td></td>
-						<td>지난주 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-					<tr>
-						<td>6</td>
-						<td></td>
-						<td>지난주 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td></td>
-						<td>지난주 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-					<tr>
-						<td>8</td>
-						<td></td>
-						<td>지난주 팁입니다.</td>
-						<td>2019-04-22</td>
-						<td>23</td>
-					</tr>
-				</table>
+					
+			<c:if test="${empty list }" var="isEmpty">
+			       <tr>
+			            <td colspan="4">등록된 게시물이 없어요</td>
+			       </tr>
+			   </c:if>
+			   <c:if test="${not isEmpty}">
+			      <c:forEach var="item" items="${list}" varStatus="loop">
+			  <tr>
+			     <td>${item.TB_INDEX }</td>
+			     <td id="title"><a href="<c:url value='/help/tip/View.pic?tb_index=${item.TB_INDEX}'/> ">${item.TB_TITLE }</a></td>
+			     <td>${item.TB_POST_DATE}</td>
+			     <c:if test="${empty item.TB_POST_DATE }" var="postempty">
+			     <td style="font-weight: bold;text-align: center">대기중</td>
+			     </c:if>
+			     <c:if test="${not postempty }">
+			     <td style="background-color: red;color:white;font-weight:bold;width:100px;text-align:center">답변완료</td>
+			     </c:if>
+			     
+			     <td>${item.PPA_NICKNAME }</td>
+			    </tr>
+			      
+			      </c:forEach>
+			   </c:if>
+			   </table>
 			</div>
 		</div>
 		<div class="row">

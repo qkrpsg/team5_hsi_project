@@ -45,9 +45,9 @@ public class HelpController {
 	
 	
 	//피크픽TIP
-	@RequestMapping("/views/tip.pic")
+	@RequestMapping("/help/tip.pic")
 	public String tip() throws Exception{
-		return "views/tip.tiles";
+		return "help/tip.tiles";
 	}//tip
 	@Value("${PAGESIZE}")
 	private int pageSize;
