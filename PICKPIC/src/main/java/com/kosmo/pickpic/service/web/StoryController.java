@@ -51,13 +51,18 @@ public class StoryController {
 	
 	
 	//주영테스트1
-			@RequestMapping("/test/place_create.pic")
-			public String plaCreate(@RequestParam Map map, Model model,Principal principal) throws Exception {
-				map.put("ppa_email",principal.getName());
-				List<Map> list_filter=dao_filter.albumDownFilterName(map);
-				model.addAttribute("list_filter", list_filter);
-				return "test/place_create.tiles";
-			}//plaCreate
+	@RequestMapping("/test/place_create.pic")
+	public String plaCreate(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		try {
+		map.put("ppa_email",principal.getName());
+		}catch(Exception e) {
+			return "home.tiles";
+		}
+		
+		List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		model.addAttribute("list_filter", list_filter);
+		return "test/place_create.tiles";
+	}//plaCreate
 		
 	// 주영테스트2
 	@RequestMapping("/test/place_list.pic")
@@ -70,15 +75,11 @@ public class StoryController {
 	}// plaList
 	
 	// 주영테스트3
-		@RequestMapping("/test/place_view.pic")
-		public String plaView() {
-			//여기서 작업 시작
-				
-			return "test/place_view.tiles";
-		}// plaView
-		
-
-	
-	
+	@RequestMapping("/test/place_view.pic")
+	public String plaView() {
+		//여기서 작업 시작
+			
+		return "test/place_view.tiles";
+	}// plaView
 	
 }//StoryController

@@ -3,7 +3,11 @@ package com.kosmo.pickpic.util;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
@@ -16,14 +20,16 @@ import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
+import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 
 public class S3Util {
-	private String accessKey = S3Key.accessKey; // 엑세스 키
-	private String secretKey = S3Key.secretKey; // 보안 엑세스 키
+	
+	private String accessKey; // 엑세스 키
+	private String secretKey; // 보안 엑세스 키
 
 	private AmazonS3 conn;
 
-	public S3Util() {
+	public S3Util(String accessKey, String secretKey) {
 		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 		ClientConfiguration clientConfig = new ClientConfiguration();
 		clientConfig.setProtocol(Protocol.HTTP);

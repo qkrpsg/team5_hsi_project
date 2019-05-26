@@ -3,6 +3,7 @@
 
 DROP TABLE album_down CASCADE CONSTRAINTS;
 DROP TABLE answer_question CASCADE CONSTRAINTS;
+DROP TABLE authority CASCADE CONSTRAINTS;
 DROP TABLE auth_security CASCADE CONSTRAINTS;
 DROP TABLE filter_storage CASCADE CONSTRAINTS;
 DROP TABLE refund CASCADE CONSTRAINTS;
@@ -47,6 +48,15 @@ CREATE TABLE answer_question
 	aq_post_date date DEFAULT SYSDATE NOT NULL,
 	q_id nvarchar2(12) NOT NULL,
 	PRIMARY KEY (aq_id)
+);
+
+
+CREATE TABLE authority
+(
+	a_id nvarchar2(12) NOT NULL,
+	a_accessKey nvarchar2(25),
+	a_secretKey nvarchar2(50),
+	PRIMARY KEY (a_id)
 );
 
 

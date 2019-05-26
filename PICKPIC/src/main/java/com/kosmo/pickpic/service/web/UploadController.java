@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.apigateway.model.Model;
 import com.amazonaws.util.IOUtils;
+import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.S3Util;
 import com.kosmo.pickpic.util.UploadFileUtils;
@@ -41,49 +43,80 @@ import io.netty.handler.codec.http.multipart.FileUpload;
 
 @Controller
 public class UploadController {
+	@Resource(name="adminService")
+	private AdminServiceImpl adminService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 
 //	@Inject
 //	private ImageService service;
 //	@Inject
 //	private UserService userService;
-	
-	S3Util s3 = new S3Util();
+
+	S3Util s3; 
 	String bucketName = "img.pickpic.com";
 	
 	@ResponseBody
 	@RequestMapping(value = "/user/uploadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String uploadImage (@RequestParam Map map, HttpServletRequest request) throws Exception{
-//		System.out.println(s3.getBucketList());
-//		System.out.println("strImg : " + map.get("strImg"));
+		//S3를 이용한 이미지 업로드 절차
+		
+		//base64형식으로 저장된 문자열 이미지 저장
 		String strImg = map.get("strImg").toString();
 		
+		//폴더 경로 지정
 		String uploadpath = "pickpic/image";
 		String folder = request.getServletContext().getRealPath("/") + uploadpath;
-		String fullpath = "";
+		//이미지 데이터 분류를 위한 split
 		String[] strParts = strImg.split(",");
 		String rstStrImg = strParts[1]; // ,로 구분하여 뒷 부분 이미지 데이터를 임시저장
+		//파일명 앞에 현재 날짜를 저장 하기 위한 데이터 포맷
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_hhmmss");
-		String filenm = sdf.format(new Date()).toString() + "_testimg2.png";
+		//서버에 저장될 파일 이름 지정
+		String filenm = sdf.format(new Date()).toString() + "_pickImg.jpg";
 
-		BufferedImage image = null;
+		// base64 디코더를 이용하여 이미지 데이터를  byte 코드로 변환
 		byte[] byteImg;
-
-		byteImg = Base64.decodeBase64(rstStrImg); // base64 디코더를 이용하여 byte 코드로 변환
+		byteImg = Base64.decodeBase64(rstStrImg); 
 		ByteArrayInputStream bis = new ByteArrayInputStream(byteImg);
-		image = ImageIO.read(bis); // BufferedImage형식으로 변환후 저장
+		BufferedImage image = null;
+		// BufferedImage형식으로 변환후 저장
+		image = ImageIO.read(bis); 
 		bis.close();
 
+		//서버에 저장될 파일 경로 +이름을 저장
+		String fullpath = "";
 		fullpath = folder + filenm;
+		//서버에 저장될 경로로 설정한 File타입 객체 생성
 		File folderObj = new File(folder);
+		//디렉토리가 비어있는 경우 디렉토리 생성
 		if (!folderObj.isDirectory())
 			folderObj.mkdir();
-		File outputFile = new File(fullpath); // 파일객체 생성
+		//파일 객체 생성
+		File outputFile = new File(fullpath);
+		//파일이 이미 존재하는경우 중복저장을 피하기 위해 생성된 파일 삭제
 		if (outputFile.exists())
 			outputFile.delete();
 
-		String uploadedFileName = UploadFileUtils.uploadFile(uploadpath, filenm, byteImg);//실제 저장되는 장소
-//		System.out.println("uploadedFileName : " + uploadedFileName);
+		//S3 연결을 위해 DB에서 Key값을 가져옴
+		Map key = adminService.getAuthKey();
+		String accessKey = key.get("a_accesskey").toString();
+		String secretKey = key.get("a_secretkey").toString();
+		s3 = new S3Util(accessKey, secretKey);
+		
+		//서버에 파일 업로드(폴더 경로, 파일 이름, 이미지 데이터, 액세스키, 비밀키)
+		String uploadedFileName = UploadFileUtils.uploadFile(uploadpath, filenm, byteImg, accessKey, secretKey);//실제 저장되는 장소
+		//S3 이미지 업로드 절차 끝
+		
+		
+		//1. 회원가입
+		//map에 저장된 파일이름 반환
+		//파일 이름(ppa_profile_path)
+		String fileName = map.get("fileName").toString();
+		
+		//2. 픽플레이스 이미지
+		//파일이름(ppb_image_path), 적용 필터(f_name)
+		
 		
 		List<Map> user = new Vector<Map>();  
 		map.put("img", uploadpath+filenm);
@@ -96,9 +129,41 @@ public class UploadController {
 	@ResponseBody
 	@RequestMapping(value = "/user/downloadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String downloadImage(@RequestParam Map map, HttpServletRequest request) throws Exception{
-//		s3.fileDownload(bucketName, "pickpic/image/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png");
-		String img = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/" + "pickpic/image/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png";
-
+		//S3를 이용한 이미지 다운로드 절차
+		s3.fileDownload(bucketName, "pickpic/image/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png");
+		//S3를 이용한 이미지 다운로드 절차 끝
+		
+		List<Map> user = new Vector<Map>();  
+//		map.put("img", img);
+		
+		user.add(map);
+		return JSONArray.toJSONString(user);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/user/getImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String getImage(@RequestParam Map map, HttpServletRequest request) throws Exception{
+		//S3를 이용한 이미지 가져오기 절차
+		
+		
+		//1. 픽플레이스 리스트 페이지
+		//이미지 경로(ppb_image_path)
+		
+		//2. 픽플레이스 상세보기 페이지
+		//이미지 경로(ppb_image_path), 사용자 프로필(ppa_profile_image)
+		
+		//3. 마이페이지 
+		//사용자 프로필(ppa_profile_image), 픽플레이스 이미지(ppb_image_path)
+		
+		
+		
+		//서버에 저장된 이미지 경로를 디비에서 추출
+		String imgPath = "pickpic/image/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png";
+		
+		//디비에서 가져온 이미지 경로를 저장
+		String img = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/" + imgPath;
+		//S3를 이용한 이미지 가져오기 절차 끝
+		
 		List<Map> user = new Vector<Map>();  
 		map.put("img", img);
 		
@@ -116,8 +181,12 @@ public class UploadController {
 		logger.info("originalName: " + file.getOriginalFilename());
 		String uploadpath = "almom/certificate";
 
+		Map key = adminService.getAuthKey();
+		String accessKey = key.get("a_accesskey").toString();
+		String secretKey = key.get("a_secretkey").toString();
+		s3 = new S3Util(accessKey, secretKey);
 		ResponseEntity<String> img_path = new ResponseEntity<String>(
-				UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes()),
+				UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes(), accessKey, secretKey),
 				HttpStatus.CREATED);
 		String certificatePath = (String) img_path.getBody();
 
@@ -135,8 +204,12 @@ public class UploadController {
 		logger.info("originalName: " + file.getOriginalFilename());
 		String uploadpath = "almom/coverImage";
 
+		Map key = adminService.getAuthKey();
+		String accessKey = key.get("a_accesskey").toString();
+		String secretKey = key.get("a_secretkey").toString();
+		s3 = new S3Util(accessKey, secretKey);
 		ResponseEntity<String> img_path = new ResponseEntity<String>(
-				UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes()),
+				UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes(), accessKey, secretKey),
 				HttpStatus.CREATED);
 		String coverImagePath = (String) img_path.getBody();
 
@@ -153,8 +226,12 @@ public class UploadController {
 		//프로필 이미지의 추가경로
 		String uploadpath = "almom/profileImage";
 
+		Map key = adminService.getAuthKey();
+		String accessKey = key.get("a_accesskey").toString();
+		String secretKey = key.get("a_secretkey").toString();
+		s3 = new S3Util(accessKey, secretKey);
 		ResponseEntity<String> img_path = new ResponseEntity<String>(
-				UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes()),
+				UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes(), accessKey, secretKey),
 				HttpStatus.CREATED);
 
 		String user_imgPath = (String) img_path.getBody();

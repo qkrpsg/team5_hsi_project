@@ -138,4 +138,8 @@ public class AdminDAO implements AdminService {
 	public Boolean filterEventUpdate(Map map) {
 		return template.update("adminFilterEventUpdate", map) == 0 ? false : true;
 	}
+	@Override
+	public Map getAuthKey() {
+		return template.selectOne("getAuthKey");
+	}
 }

@@ -44,4 +44,7 @@ public interface AdminService {
 	void delete2(Map map);
 	
 	
+	//S3
+	Map getAuthKey();
+	
 }

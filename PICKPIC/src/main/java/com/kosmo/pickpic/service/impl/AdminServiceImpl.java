@@ -92,4 +92,8 @@ public class AdminServiceImpl implements AdminService {
 	public Boolean filterEventUpdate(Map map) {
 		return dao.filterEventUpdate(map);
 	}
+	@Override
+	public Map getAuthKey() {
+		return dao.getAuthKey();
+	}
 }
