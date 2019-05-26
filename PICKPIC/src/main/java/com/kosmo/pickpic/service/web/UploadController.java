@@ -60,7 +60,6 @@ public class UploadController {
 	@RequestMapping(value = "/user/uploadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String uploadImage (@RequestParam Map map, HttpServletRequest request) throws Exception{
 		//S3를 이용한 이미지 업로드 절차
-		
 		String strImg = map.get("strImg").toString();
 		
 		//폴더 경로 지정

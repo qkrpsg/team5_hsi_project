@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!-- MATERIAL DESIGN ICONIC FONT -->
 <link rel="stylesheet"
@@ -91,7 +92,6 @@
 	
 </div>
 <!-- 픽플레이스 생성 폼 끝 -->
-
 
 <!-- 하단 수평스크롤 시작-->
 <div id="filter_list" >
@@ -216,22 +216,54 @@
 		
 		
 	});
+	var imgCan;
+	var canvImgStr;
 	 //등록하기
 	 //  /test/place_view.pic
 	$(document).ready(function(){
-        $(document).on("click",".insert",function(event){
+        $(document).on("click",".insert",function(){
           // 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
-          console.log('제목!!!'+$('.title').val());
+          /* console.log('제목!!!'+$('.title').val());
 		  console.log('상세!!!'+$('.addr').val());
 		  console.log('달력!!!'+$('.my_calendar').val());
 		  console.log('필터!!!'+$('.filter1').val());
 		  console.log('내용!!!'+$('.naiyo').val());
-        	var form = document.createElement("form");
+		   */
+		  
+		   
+	 	   $.ajax({
+				url:"<c:url value='/friends/place_view_myPage.do'/>",
+				type:"POST",
+				data:{
+					"ppb_image_path" : canvImgStr,
+					"ppb_post_date" : $('.my_calendar').val(),
+					"ppb_addr1" : $('.ppb_addr1').val(),
+					"ppb_addr2" : $('.addr').val(),
+					"ppb_latitude" : $('.ppb_latitude').val(),
+					"ppb_longitude" : $('.ppb_longitude').val(),
+					"ppb_title" : $('.title').val(),
+					"ppb_content" : $('.naiyo').val(),
+					"f_name" : $('.filter1').val()
+				},
+				dataType:'json',
+				success : function(data) {
+					console.log('성공했습니다');
+					console.log(data);
+//	 				location.href = "<c:url value='' />";
+				},
+				error : function(data) {
+					console.log('실패했습니다');
+					console.log(data);
+				}
+			});//ajax
+		    
+		    /* 
+		    var form = document.createElement("form");
 	        form.setAttribute("charset", "UTF-8");
 	        form.setAttribute("method", "Post");  //Post 방식
 	        form.setAttribute("action", "/pickpic/friends/place_view_myPage.pic"); //요청 보낼 주소
-	        //insert 체크용
-	        var hiddenField = document.createElement("input");
+	        */ //insert 체크용
+	        /* var hiddenField = document.createElement("input");
 	        hiddenField.setAttribute("type", "hidden");
 	        hiddenField.setAttribute("name", "insert");
 	        hiddenField.setAttribute("value", "insert");
@@ -266,15 +298,15 @@
 	        hiddenField.setAttribute("name", "ppb_longitude");
 	        hiddenField.setAttribute("value", $('.ppb_longitude').val());
 	        form.appendChild(hiddenField);
-	        
+	         */
 	        //이미지 경로
-	        /* var hiddenField = document.createElement("input");
+	       /*  var hiddenField = document.createElement("input");
 	        hiddenField.setAttribute("type", "hidden");
 	        hiddenField.setAttribute("name", "ppb_image_path");
-	        hiddenField.setAttribute("value", newFilename);
-	        form.appendChild(hiddenField); */
+	        hiddenField.setAttribute("value", canvImgStr);
+	        form.appendChild(hiddenField);  */
 	       //제목
-	        var hiddenField = document.createElement("input");
+	       /*  var hiddenField = document.createElement("input");
 	        hiddenField.setAttribute("type", "hidden");
 	        hiddenField.setAttribute("name", "ppb_title");
 	        hiddenField.setAttribute("value", $('.title').val());
@@ -291,11 +323,11 @@
 	       hiddenField.setAttribute("type", "hidden");
 	       hiddenField.setAttribute("name", "f_name");
 	       hiddenField.setAttribute("value", $('.filter1').val());
-	       form.appendChild(hiddenField);
+	       form.appendChild(hiddenField); */
 	       
-	        document.body.appendChild(form);
-	        form.submit();
-          
+	      //  document.body.appendChild(form);
+	       // form.submit();
+           
           
           
         });
@@ -339,6 +371,9 @@
 				};
 				
 			};
+			imgCan = document.getElementById('canvas');
+		 	canvImgStr = imgCan.toDataURL('image/jpg', 1.0);
+		 	console.log(canvImgStr);
 		};
 	
 	/*<!-- 필터창 열고 닫기  --> */
@@ -395,8 +430,10 @@
 				console.log(toggle);
 				Caman('#canvas', img, function() {this.vintage().render();});
 			}
+			
 			toggle = !toggle;	
 			console.log("v2="+toggle);
+			
 			break;
 		case 'lomo':
 			$('.filter1').val(filterName);
@@ -407,6 +444,7 @@
 				Caman('#canvas', img, function() {this.lomo().render();});
 			toggle = !toggle;	
 			console.log("l2="+toggle);
+			
 			break;
 		case 'clarity':
 			$('.filter1').val(filterName);
@@ -421,6 +459,7 @@
 			}
 			toggle = !toggle;	
 			console.log("c2="+toggle);
+			
 			break;
 		case 'sincity':
 			$('.filter1').val(filterName);
@@ -436,6 +475,7 @@
 			}
 			toggle = !toggle;	
 			console.log("s2="+toggle);
+			
 			break;
 		case 'crossprocess':
 			$('.filter1').val(filterName);
@@ -451,6 +491,7 @@
 			}
 			toggle = !toggle;	
 			console.log("c2="+toggle);
+			
 			break;
 		case 'pinhole':
 			$('.filter1').val(filterName);
@@ -465,6 +506,7 @@
 			}
 			toggle = !toggle;	
 			console.log("p2="+toggle);
+			
 			break;
 		case 'nostalgia':
 			$('.filter1').val(filterName);
@@ -479,6 +521,7 @@
 			}
 			toggle = !toggle;	
 			console.log("n2="+toggle);
+			
 			break;
 		case 'hermajesty':
 			$('.filter1').val(filterName);
@@ -494,6 +537,7 @@
 			}
 			toggle = !toggle;	
 			console.log("h2="+toggle);
+			
 			break;
 		default:
 			$('.filter1').val(filterName);
@@ -503,6 +547,7 @@
 			});
 			toggle = !toggle;
 			console.log("dr2="+toggle);
+			
 		}
 		filterNameAfter = $(item).attr("id");
 
