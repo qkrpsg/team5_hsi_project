@@ -23,8 +23,7 @@
 						url : '<c:url value="/admin/admin_qna_update.pic"/> ',
 						data : {
 							 q_index : $(this).parent().parent().find('.ho').find('#cch').val(),
-							 aq_content : $(this).parent().parent().find('.how').val(),
-									
+							 aq_content : $(this).parent().parent().find('.how').val(),	
 							'_csrf' : '${_csrf.token}'
 						},
 						dataType : 'text',
