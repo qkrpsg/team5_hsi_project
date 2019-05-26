@@ -116,6 +116,15 @@ body{font-family: A옛날사진관2;}
 	width:100%;
 	cursor: pointer;
 }
+.img_wrap1{
+	padding: 5px;
+	position: relative;
+	overflow: hidden;
+}
+.img_wrap1 img{
+	width:100%;
+	cursor: pointer;
+}
 
 .img_wrap2{
 	padding: 5px;
@@ -126,6 +135,8 @@ body{font-family: A옛날사진관2;}
 	width:100%;
 	cursor: pointer;
 }
+
+
 .hi{
 	width:100px;height:100px;
 	background:white;

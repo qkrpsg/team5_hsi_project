@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+
 <link href="<c:url value='/css/Login.css' />" rel="stylesheet">
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="<c:url value='/js/Login.js'/>"></script>
 
-<section class="l_login_all_wrap">
+<section class="l_login_all_wrap" >
 	<div class="l_login_wrap">
 		<div class="l_login_p_wrap">
 			<div>
@@ -17,6 +18,7 @@
 
 		<div class="l_login_bottom_wrap">
 			<div class="l_login_background"></div>
+			
 			<div class="l_login_left_wrap">
 
 				<div class="l_login_left_text">

@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -537,6 +539,22 @@ public class FriendsController {
 			
 			List<Map> recode = prbService.pickRoadBoardSelectAll(null);
 			System.out.println("null 값이 아닐 때"+recode.toString());
+			
+			for(Map list : recode) {
+				list.put("PRB_POST_DATE", list.get("PRB_POST_DATE").toString().substring(8,10));
+				System.out.println(list.get("PRB_POST_DATE").toString());
+		}
+			  
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
+			   String todayString = dateFormat.format(new Date());
+			   
+			   model.addAttribute("todayString", todayString);
+			   
+			   
+			
+			   System.out.println("todayString:"+todayString);
+	
+			
 			model.addAttribute("recode",recode);
 			/*
 			 {
@@ -630,6 +648,13 @@ public class FriendsController {
 		return "friends/search.tiles";
 	}
 	
-	
+	// 주영테스트4
+	@RequestMapping("/test/my_page.pic")
+	public String myPage() throws Exception {
+		// 여기서 작업 시작
+
+		return "test/my_page.tiles";
+	}// plaView
+
 	
 }//FriendsController
