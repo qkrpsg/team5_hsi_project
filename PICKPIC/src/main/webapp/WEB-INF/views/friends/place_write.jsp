@@ -324,6 +324,7 @@
 			var fileList = file.files;
 			// 읽기
 			var reader = new FileReader();
+			console.log(fileList[0].name);
 			reader.readAsDataURL(fileList[0]);
 			//로드 한 후
 			reader.onload = function() {
