@@ -56,8 +56,8 @@ public class HelpController {
 	
 	//피크픽TIP작성 페이지
 	
-	@RequestMapping("/help/tip/Write2.pic")
-	public String tip_write2(@RequestParam Map map,
+	@RequestMapping("/help/tip/Write.pic")
+	public String tip_write(@RequestParam Map map,
 			Model model,
 			Principal principal,
 			HttpServletRequest req,
@@ -84,7 +84,7 @@ public class HelpController {
 		
 		return "help/tip/List.tiles";
 		
-	}//tip_write2
+	}//tip_write
 	//tip
 	@RequestMapping("help/tip/Write.pic")
 	public String tip_write(@RequestParam Map params) throws Exception{
