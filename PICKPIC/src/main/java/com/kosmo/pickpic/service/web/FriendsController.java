@@ -136,8 +136,8 @@ public class FriendsController {
 		
 		if(map.get("title") !=null){
 //			System.out.println(":"+map.toString());
-			model.addAttribute("ppb_latitude",map.get("ppb_latitude").toString().substring(0,5));
-			model.addAttribute("ppb_longitude",map.get("ppb_longitude").toString().substring(0,5));
+			model.addAttribute("ppb_latitude",map.get("ppb_latitude").toString().substring(0,9));
+			model.addAttribute("ppb_longitude",map.get("ppb_longitude").toString().substring(0,9));
 			model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
 			model.addAttribute("title",map.get("title"));
 			model.addAttribute("addr",map.get("addr"));
@@ -153,8 +153,7 @@ public class FriendsController {
 		
 		return "friends/place_write.tiles";//마이 페이지로
 	}// place
-	S3Util s3; 
-	String bucketName = "img.pickpic.com";
+	
 	//등록하기 ajax
 	/*@ResponseBody
 	@RequestMapping(value="/friends/place_view_myPage.do", produces = "text/plain;charset=UTF-8")
@@ -164,116 +163,6 @@ public class FriendsController {
 		System.out.println("insert::"+map.toString());
 		return JSONArray.toJSONString(list);
 	}*/
-	//등록하기
-	@RequestMapping("/friends/place_view_myPage.pic")
-	public String place_view_myPage(@RequestParam Map map, Model model,Principal principal) throws Exception {
-//		System.out.println("map전부요::"+map.toString());
-		if(map.get("insert") != null) {
-//		System.out.println("insert 쪽 오나영?");
-//		System.out.println("insert::"+map.toString());
-			/*map.put("ppa_email", principal.getName());
-	        map.put("ppb_image_path", "/resources/update/"+map.get("ppb_image_path"));
-	        map.put("f_name",map.get("f_name").toString().toLowerCase());
-	        map.put("ppb_latitude", map.get("ppb_latitude").toString().substring(0,9));
-	        map.put("ppb_longitude", map.get("ppb_longitude").toString().substring(0,9));
-	        
-	        //인설트 문 
-	        int a = ppb_service.insert(map);
-	        if(a == 1) {
-	        	System.out.println("인설트 성공");
-	        }*/
-
-		}
-		
-		
-		/*String strImg = map.get("ppb_image_path").toString();
-		
-				//폴더 경로 지정
-				String uploadpath = "pickpic/image";
-				String folder = request.getServletContext().getRealPath("/") + uploadpath;
-				//이미지 데이터 분류를 위한 split
-				String[] strParts = strImg.split(",");
-				String rstStrImg = strParts[1]; // ,로 구분하여 뒷 부분 이미지 데이터를 임시저장
-				
-				//파일명 앞에 현재 날짜를 저장 하기 위한 데이터 포맷
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_hhmmss");
-				//서버에 저장될 파일 이름 지정
-				String filenm = sdf.format(new Date()).toString() + "_pickImg.jpg";
-				
-				// base64 디코더를 이용하여 이미지 데이터를  byte 코드로 변환
-				byte[] byteImg;
-				byteImg = Base64.decodeBase64(rstStrImg); 
-				//??
-				ByteArrayInputStream bis = new ByteArrayInputStream(byteImg);
-				BufferedImage image = null;
-				// BufferedImage형식으로 변환후 저장
-				image = ImageIO.read(bis); 
-				
-				bis.close();
-
-				//서버에 저장될 파일 경로 +이름을 저장
-				String fullpath = "";
-				fullpath = folder + filenm;
-				System.out.println("fullpath::"+fullpath);
-				//서버에 저장될 경로로 설정한 File타입 객체 생성
-				File folderObj = new File(folder);
-				//디렉토리가 비어있는 경우 디렉토리 생성
-				if (!folderObj.isDirectory())
-					folderObj.mkdir();
-				//파일 객체 생성
-				File outputFile = new File(fullpath);
-				//파일이 이미 존재하는경우 중복저장을 피하기 위해 생성된 파일 삭제
-				if (outputFile.exists())
-					outputFile.delete();
-				System.out.println("outputFile::" + outputFile);
-				//S3 연결을 위해 DB에서 Key값을 가져옴
-				Map key = adminService.getAuthKey();
-				System.out.println("key"+key);
-				System.out.println("key:::"+key.toString());
-				String accessKey = key.get("a_accesskey").toString();
-				String secretKey = key.get("a_secretkey").toString();
-				s3 = new S3Util(accessKey, secretKey);
-				System.out.println("s3::::"+s3);
-				System.out.println("secretKey::::"+secretKey);
-				//서버에 파일 업로드(폴더 경로, 파일 이름, 이미지 데이터, 액세스키, 비밀키)
-				String uploadedFileName = UploadFileUtils.uploadFile(uploadpath, filenm, byteImg, accessKey, secretKey);//실제 저장되는 장소
-				//S3 이미지 업로드 절차 끝
-				
-				*/
-				//1. 회원가입
-				//map에 저장된 파일이름 반환
-				//파일 이름(ppa_profile_path)
-				/*String fileName = map.get("fileName").toString();*/
-				
-				//2. 픽플레이스 이미지
-				//파일이름(ppb_image_path), 적용 필터(f_name)
-				
-				/*map.put("ppa_email", principal.getName());
-		        map.put("ppb_image_path", "/resources/update/"+map.get("ppb_image_path"));
-		        map.put("f_name",map.get("f_name").toString().toLowerCase());
-		        map.put("ppb_latitude", map.get("ppb_latitude").toString().substring(0,9));
-		        map.put("ppb_longitude", map.get("ppb_longitude").toString().substring(0,9));
-		        
-		        //인설트 문 
-		        int a = ppb_service.insert(map);
-		        if(a == 1) {
-		        	System.out.println("인설트 성공");
-		        }*/
-				
-				
-				List<Map> user = new Vector<Map>();  
-				//map.put("img", uploadpath+filenm);
-				map.put("img", "d");
-				System.out.println("img : " + map.get("img"));
-				user.add(map);
-				return JSONArray.toJSONString(user);
-		
-			
-
-		
-		
-		
-	}//등록하고 (insert) 마이페이지로 이동 insert 값 없으면 그냥 이동
 	
 	
 	//등록하기 NO ajax

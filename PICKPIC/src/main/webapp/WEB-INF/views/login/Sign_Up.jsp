@@ -127,7 +127,7 @@
 				<div class="filebox">
 					<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled"> 
 					<label for="ppa_profile_path" class="btn btn-warning" name="ppu_profile_path">업로드</label> 
-					<input type="file" id="ppa_profile_path" class="upload-hidden" name="ppa_profile_path">
+					<input type="file" id="ppa_profile_path" class="upload-hidden" name="ppa_profile_path"  accept=".jpg, .png">
 				</div>
 				<div class="form-group" style="overflow: hidden;">
 					<input type="checkbox" name="ppa_agree" value="이용약관" id="ppa_agree" value="ok" style="float: left; margin-right: 10px;" />
