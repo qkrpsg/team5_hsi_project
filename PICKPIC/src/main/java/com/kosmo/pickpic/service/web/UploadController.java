@@ -60,6 +60,10 @@ public class UploadController {
 	@RequestMapping(value = "/user/uploadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String uploadImage (@RequestParam Map map, HttpServletRequest request) throws Exception{
 		//S3를 이용한 이미지 업로드 절차
+
+		System.out.println("map : " + map.toString());
+		
+		
 		String strImg = map.get("strImg").toString();
 		
 		//폴더 경로 지정
@@ -71,7 +75,7 @@ public class UploadController {
 		//파일명 앞에 현재 날짜를 저장 하기 위한 데이터 포맷
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_hhmmss");
 		//서버에 저장될 파일 이름 지정
-		String filenm = sdf.format(new Date()).toString() + "_pickImg.jpg";
+		String filenm = sdf.format(new Date()).toString() + "_pickImg.png";
 
 		// base64 디코더를 이용하여 이미지 데이터를  byte 코드로 변환
 		byte[] byteImg;
@@ -99,8 +103,11 @@ public class UploadController {
 
 		//S3 연결을 위해 DB에서 Key값을 가져옴
 		Map key = adminService.getAuthKey();
-		String accessKey = key.get("a_accesskey").toString();
-		String secretKey = key.get("a_secretkey").toString();
+		System.out.println("key : " + key.toString());
+		System.out.println("ak : " + key.get("A_ACCESSKEY"));
+		System.out.println("sk : " + key.get("A_SECRETKEY"));
+		String accessKey = key.get("A_ACCESSKEY").toString();
+		String secretKey = key.get("A_SECRETKEY").toString();
 		s3 = new S3Util(accessKey, secretKey);
 		
 		//서버에 파일 업로드(폴더 경로, 파일 이름, 이미지 데이터, 액세스키, 비밀키)
@@ -108,14 +115,18 @@ public class UploadController {
 		//S3 이미지 업로드 절차 끝
 		
 		
+		
+		
 		//1. 회원가입
 		//map에 저장된 파일이름 반환
 		//파일 이름(ppa_profile_path)
-		String fileName = map.get("fileName").toString();
+//		String fileName = map.get("fileName").toString();
 		
 		//2. 픽플레이스 이미지
 		//파일이름(ppb_image_path), 적용 필터(f_name)
-		
+		if(map.get("type").toString().equals("place")){
+			//여기부터 진행하세욘
+		}
 		
 		List<Map> user = new Vector<Map>();  
 		map.put("img", uploadpath+filenm);

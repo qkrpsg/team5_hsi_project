@@ -2,13 +2,16 @@ package com.kosmo.pickpic.service.web;
 
 import java.io.PrintWriter;
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
@@ -21,7 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosmo.pickpic.service.PickpicAccountDTO;
+import com.kosmo.pickpic.service.impl.FilterServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
+import com.kosmo.pickpic.util.DTOUtil;
 
 
 @Controller
@@ -29,6 +34,9 @@ public class UserController {
 	//서비스 주입
 	@Resource(name="accountService")
 	private PickpicAccountServiceImpl accountService;
+
+	@Resource(name = "fService")
+	private FilterServiceImpl fService;
 	
 	
 	//로그인
@@ -155,6 +163,35 @@ public class UserController {
 	public String myPage() throws Exception{
 		
 		return "login/MyPage.tiles";
+	}//myPage
+	
+	
+	
+	
+	//주영테스트4 - 마이페이지 리스트
+	@ResponseBody
+	@RequestMapping(value="/user/myPage.do",produces="text/html; charset=UTF-8")
+	public String myPage(@RequestParam Map map, Principal principal) throws Exception{
+		List<Map> list = new Vector<Map>();
+		map.put("ppa_email", principal.getName());
+		
+		System.out.println(map.toString());
+		String type = map.get("id").toString();
+		
+		//내부 로직 처리
+		//List<PickpicAccountDTO> list = userService.myPageList(map);
+		//List<Map> list =  userService.myPageList(map);
+		if(type.equals("myfilter")) {
+//			List<filterStorageDTO> filterList =  userService.myPageList(map);
+//			for(filterStorageDTO record : filterList) {
+//				list.add(DTOUtil.convertDTOToMap(record));
+//				}
+			for(Map record : fService.albumDownFilterName(map)) {
+				list.add(record);
+			}
+		}
+       System.out.println(JSONArray.toJSONString(list));
+       return JSONArray.toJSONString(list);
 	}//myPage
 	
 	//정보수정

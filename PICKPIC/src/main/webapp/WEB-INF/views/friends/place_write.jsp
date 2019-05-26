@@ -85,7 +85,7 @@
 					placeholder="내용을 작성하세요." >${naiyo }</textarea>
 			</div>
 
-			<button class="btn-danger insert" type="button" style="width: 164px; height: 51px;">등록하기</button>
+			<button class="btn-danger insert" type="button" style="width: 164px; height: 51px;" onclick='imageSummit()'>등록하기</button>
 		</form>
 
 	</div>
@@ -128,12 +128,11 @@
 <script>
 	$(function(){
 		//$('.latlng').
-		console.log("뭐 뜨냐? "+typeof $('.filter2').val());
+// 		console.log("뭐 뜨냐? "+typeof $('.filter2').val());
 		
 		if($('.filter2').val() != "null"){
 		   $('.filter1').val($('.filter2').val());
 		}
-		
 		
 		 var d = new Date();
 		 var day = parseInt(d.getDate());
@@ -143,22 +142,8 @@
 		 	$('.my_calendar').val($('.my_calendar2').val());
 		 }
 		 
-		 //var currentDate = d.getFullYear() + "년 " + ( d.getMonth() + 1 ) + "월 " + day + "일";
-	     //var currentTime = d.getHours() + "시 " + d.getMinutes() + "분 ";// + d.getSeconds() + "초"
-	   	
-	     //ㅋㅋㅋㅋ
+		 //맵 페이지
 		 $('.latlng2').click(function(){
-			 //title   , addr  ,my_calendar  , filter1  ,naiyo
-			  //제목 , 상세 주소 , 달력 값 , 사용한 필터  , 내용
-			 
-			  /* 
-			  console.log('제목!!!'+$('.title').val());
-			  console.log('상세!!!'+$('.addr').val());
-			  console.log('달력!!!'+$('.my_calendar').val());
-			  console.log('필터!!!'+$('.filter1').val());
-			  console.log('내용!!!'+$('.naiyo').val());
-			   */
-			  
 			  var form = document.createElement("form");
 		      form.setAttribute("charset", "UTF-8");
 		      form.setAttribute("method", "Post");  //Post 방식
@@ -202,23 +187,12 @@
 		      
 		      document.body.appendChild(form);
 		      form.submit();
-
-			 
-			 
 		 });
-	     
-	     
-		 
-	    
-	    
-		 
-		 
-		
-		
 	});
 	var imgCan;
 	var canvImgStr;
 	 //등록하기
+<<<<<<< HEAD
 	 //  /test/place_view.pic
 	$(document).ready(function(){
         $(document).on("click",".insert",function(){
@@ -335,6 +309,9 @@
    
 </script>
 <script type="text/javascript">
+=======
+	 
+>>>>>>> branch 'mbc' of https://github.com/qkrpsg/team5_hsi_project.git
 	/* 날짜 시간 찍기 */
 	$(function() {
 		$('#datetimepicker').datetimepicker({
@@ -352,29 +329,28 @@
 		} 	 
 	});
 	
-		file.onchange = function() {
-			var fileList = file.files;
-			// 읽기
-			var reader = new FileReader();
-			reader.readAsDataURL(fileList[0]);
-			//로드 한 후
-			reader.onload = function() {
-				const canvas = document.getElementById('canvas');
-				const ctx = canvas.getContext("2d");
-				var img = new Image();
-				img.src= reader.result;
-				img.onload = function(e) {
-					canvas.width = img.width;
-					canvas.height = img.height;
-					ctx.drawImage(img, 0, 0, img.width, img.height);
-					canvas.removeAttribute("data-caman-id");
-				};
-				
+	file.onchange = function() {
+		var fileList = file.files;
+		// 읽기
+		var reader = new FileReader();
+		reader.readAsDataURL(fileList[0]);
+		//로드 한 후
+		reader.onload = function() {
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext("2d");
+			var img = new Image();
+			img.src= reader.result;
+			img.onload = function(e) {
+				canvas.width = img.width;
+				canvas.height = img.height;
+				ctx.drawImage(img, 0, 0, img.width, img.height);
+				canvas.removeAttribute("data-caman-id");
 			};
 			imgCan = document.getElementById('canvas');
 		 	canvImgStr = imgCan.toDataURL('image/jpg', 1.0);
 		 	console.log(canvImgStr);
 		};
+	};
 	
 	/*<!-- 필터창 열고 닫기  --> */
 	var filter_list = document.getElementById('filter_list');
@@ -394,8 +370,6 @@
 			} 	 
 			filter_list.style.display = "block";
 		}
-		
-		
 	});
 	
 	/* 필터 선택시 이미지에 필터 적용*/
@@ -553,34 +527,47 @@
 
 	}
 	
-	/*  등록하기 */
-/* 	> 캔버스에서 이미지를 만듭니다 (이전처럼).
-> 이미지를 새 페이지에 표시하십시오.
-> 사용자가 로컬 드라이브를 마우스 오른쪽 버튼으로 클릭 한 상태로 저장하십시오.
-> 그런 다음 파일 입력 요소를 사용하여 새로 생성 된 파일을 업로드 할 수 있습니다.
-
-Ajax를 사용하여 캔바스 데이터를 POST */
-	/* var blobBin = atob(dataURL.split(',')[1]);
-var array = [];
-for(var i = 0; i < blobBin.length; i++) {
-    array.push(blobBin.charCodeAt(i));
-}
-var file=new Blob([new Uint8Array(array)], {type: 'image/png'});
-
-
-var formdata = new FormData();
-formdata.append("myNewFileName", file);
-$.ajax({
-   url: "uploadFile.php",
-   type: "POST",
-   data: formdata,
-   processData: false,
-   contentType: false,
-}).done(function(respond){
-  alert(respond);
-}); */
-	
-
+	var imageSummit = function() {
+		var imgCan = document.getElementById('canvas');
+		console.log(imgCan);
+		console.log(typeof(imgCan));
+		var canvImgStr = imgCan.toDataURL('image/png', 1.0);
+		console.log('적용되니');
+		$.ajax({
+			url:"<c:url value='/user/uploadImage.do'/>",
+			type:"POST",
+			data:{
+				"strImg": canvImgStr,
+				"type" : "place"
+			},
+			dataType:'json',
+			success : function(data) {
+				console.log('성공했습니다');
+				console.log(data);
+				
+				$.each(data, function(index, element) {
+	// 				canvas = document.getElementById('canvas');
+	// 				ctx = canvas.getContext("2d");
+					
+	// 				var loadImg = new Image();
+	// 				loadImg.src= element['img'];
+	// 				loadImg.onload = function(e) {
+	// 					canvas.width = loadImg.width;
+	// 					canvas.height = loadImg.height;
+	// 					ctx.drawImage(loadImg, 0, 0, loadImg.width, loadImg.height);
+	// 					canvas.removeAttribute("data-caman-id");
+	// 				};
+					
+				});
+	//				location.href = "<c:url value='' />";
+			},
+			error : function(data) {
+				console.log('실패했습니다');
+				console.log(data);
+	//				location.href = "<c:url value='/test/place_create.pic'/>";
+			}
+		});
+	}
 </script>
 
 
