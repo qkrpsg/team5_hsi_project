@@ -557,7 +557,7 @@ $.ajax({
 			url:"<c:url value='/user/downloadImage.do'/>",
 			type:"POST",
 			data:{
-				strImg: canvImgStr
+				strImg : canvImgStr
 			},
 			dataType:'json',
 			success : function(data) {

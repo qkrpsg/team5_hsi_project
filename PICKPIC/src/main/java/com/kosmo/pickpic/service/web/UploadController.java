@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +36,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.amazonaws.services.apigateway.model.Model;
 import com.amazonaws.util.IOUtils;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
+import com.kosmo.pickpic.service.impl.PickPlaceBoardServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.S3Util;
 import com.kosmo.pickpic.util.UploadFileUtils;
@@ -46,12 +48,15 @@ public class UploadController {
 	@Resource(name="adminService")
 	private AdminServiceImpl adminService;
 
+	@Resource(name="ppbService")
+	private PickPlaceBoardServiceImpl ppb_service;
 	
 	@ResponseBody
 	@RequestMapping(value = "/user/uploadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String uploadImage (@RequestParam Map map, HttpServletRequest request) throws Exception{
-		//S3를 이용한 이미지 업로드 절차	
-		System.out.println("map : " + map.toString());
+	public String uploadImage (@RequestParam Map map, HttpServletRequest request,Principal principal) throws Exception{
+
+		
+		 
 		
 		
 		String strImg = map.get("strImg").toString();
@@ -93,9 +98,6 @@ public class UploadController {
 
 		//S3 연결을 위해 DB에서 Key값을 가져옴
 		Map key = adminService.getAuthKey();
-		System.out.println("key : " + key.toString());
-		System.out.println("ak : " + key.get("A_ACCESSKEY"));
-		System.out.println("sk : " + key.get("A_SECRETKEY"));
 		String accessKey = key.get("A_ACCESSKEY").toString();
 		String secretKey = key.get("A_SECRETKEY").toString();
 		
@@ -103,11 +105,16 @@ public class UploadController {
 		String uploadedFileName = UploadFileUtils.uploadFile(uploadpath, filenm, byteImg, accessKey, secretKey);//실제 저장되는 장소
 		//S3 이미지 업로드 절차 끝
 		
+		
 		//서버에 저장된  파일 경로 디비에 저장
 		map.put("ppb_image_path", uploadedFileName);
-		
-		
-		
+		map.put("ppa_email", principal.getName());
+		System.out.println("map::::"+map.toString());
+		int a = ppb_service.insert(map);
+		/*if(a == 1) {
+        	System.out.println("인설트 성공");
+        }
+		*/
 		List<Map> user = new Vector<Map>();  
 		user.add(map);
 		return JSONArray.toJSONString(user);
@@ -152,11 +159,11 @@ public class UploadController {
 		
 		
 		//서버에 저장된 이미지 경로를 디비에서 추출
-		String imgPath = "pickpic/image/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png";
+		String imgPath = "/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png";
 		
 		//디비에서 가져온 이미지 경로를 저장
-		String img = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/" + imgPath;
-		//S3를 이용한 이미지 가져오기 절차 끝
+		String img = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image" + imgPath;
+		//S3를 이용한 이미지 가져오기 절차 끝  pickpic/image
 		
 		List<Map> user = new Vector<Map>();  
 		map.put("img", img);

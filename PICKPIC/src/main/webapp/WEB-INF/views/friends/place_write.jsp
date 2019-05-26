@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!-- MATERIAL DESIGN ICONIC FONT -->
 <link rel="stylesheet"
@@ -92,7 +93,6 @@
 </div>
 <!-- 픽플레이스 생성 폼 끝 -->
 
-
 <!-- 하단 수평스크롤 시작-->
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
@@ -123,13 +123,13 @@
 
 <input type="hidden" class="filter2" value="${filter1}" />
 <input type="hidden" class="my_calendar2" value="${my_calendar}" />
+<input type="hidden" class="ppb_addr1" value="${ppb_addr1}" />
+<input type="hidden" class="ppb_longitude" value="${ppb_longitude}" />
+<input type="hidden" class="ppb_latitude" value="${ppb_latitude}" />
 
 
 <script>
 	$(function(){
-		//$('.latlng').
-// 		console.log("뭐 뜨냐? "+typeof $('.filter2').val());
-		
 		if($('.filter2').val() != "null"){
 		   $('.filter1').val($('.filter2').val());
 		}
@@ -141,7 +141,6 @@
 		 if($('.my_calendar2').val() != ''){
 		 	$('.my_calendar').val($('.my_calendar2').val());
 		 }
-		 
 		 //맵 페이지
 		 $('.latlng2').click(function(){
 			  var form = document.createElement("form");
@@ -189,8 +188,7 @@
 		      form.submit();
 		 });
 	});
-	 //등록하기
-	 
+	
 	/* 날짜 시간 찍기 */
 	$(function() {
 		$('#datetimepicker').datetimepicker({
@@ -247,6 +245,7 @@
 				
 >>>>>>> branch 'han' of https://github.com/qkrpsg/team5_hsi_project.git
 			};
+			
 		};
 	};
 	
@@ -302,8 +301,10 @@
 				console.log(toggle);
 				Caman('#canvas', img, function() {this.vintage().render();});
 			}
+			
 			toggle = !toggle;	
 			console.log("v2="+toggle);
+			
 			break;
 		case 'lomo':
 			$('.filter1').val(filterName);
@@ -314,6 +315,7 @@
 				Caman('#canvas', img, function() {this.lomo().render();});
 			toggle = !toggle;	
 			console.log("l2="+toggle);
+			
 			break;
 		case 'clarity':
 			$('.filter1').val(filterName);
@@ -328,6 +330,7 @@
 			}
 			toggle = !toggle;	
 			console.log("c2="+toggle);
+			
 			break;
 		case 'sincity':
 			$('.filter1').val(filterName);
@@ -343,6 +346,7 @@
 			}
 			toggle = !toggle;	
 			console.log("s2="+toggle);
+			
 			break;
 		case 'crossprocess':
 			$('.filter1').val(filterName);
@@ -358,6 +362,7 @@
 			}
 			toggle = !toggle;	
 			console.log("c2="+toggle);
+			
 			break;
 		case 'pinhole':
 			$('.filter1').val(filterName);
@@ -372,6 +377,7 @@
 			}
 			toggle = !toggle;	
 			console.log("p2="+toggle);
+			
 			break;
 		case 'nostalgia':
 			$('.filter1').val(filterName);
@@ -386,6 +392,7 @@
 			}
 			toggle = !toggle;	
 			console.log("n2="+toggle);
+			
 			break;
 		case 'hermajesty':
 			$('.filter1').val(filterName);
@@ -401,6 +408,7 @@
 			}
 			toggle = !toggle;	
 			console.log("h2="+toggle);
+			
 			break;
 		default:
 			$('.filter1').val(filterName);
@@ -410,6 +418,7 @@
 			});
 			toggle = !toggle;
 			console.log("dr2="+toggle);
+			
 		}
 		filterNameAfter = $(item).attr("id");
 
@@ -425,6 +434,14 @@
 			url:"<c:url value='/user/uploadImage.do'/>",
 			type:"POST",
 			data:{
+				"ppb_post_date" : $('.my_calendar').val(),
+				"ppb_addr1" : $('.ppb_addr1').val(),
+				"ppb_addr2" : $('.addr').val(),
+				"ppb_latitude" : $('.ppb_latitude').val(),
+				"ppb_longitude" : $('.ppb_longitude').val(),
+				"ppb_title" : $('.title').val(),
+				"ppb_content" : $('.naiyo').val(),
+				"f_name" : $('.filter1').val(),
 				"strImg": canvImgStr,
 				"type" : "place"
 			},
@@ -432,22 +449,7 @@
 			success : function(data) {
 				console.log('성공했습니다');
 				console.log(data);
-				
-				$.each(data, function(index, element) {
-	// 				canvas = document.getElementById('canvas');
-	// 				ctx = canvas.getContext("2d");
-					
-	// 				var loadImg = new Image();
-	// 				loadImg.src= element['img'];
-	// 				loadImg.onload = function(e) {
-	// 					canvas.width = loadImg.width;
-	// 					canvas.height = loadImg.height;
-	// 					ctx.drawImage(loadImg, 0, 0, loadImg.width, loadImg.height);
-	// 					canvas.removeAttribute("data-caman-id");
-	// 				};
-					
-				});
-	//				location.href = "<c:url value='' />";
+				location.href = "<c:url value='/friends' />";
 			},
 			error : function(data) {
 				console.log('실패했습니다');

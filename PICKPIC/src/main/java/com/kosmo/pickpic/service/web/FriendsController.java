@@ -2,6 +2,7 @@ package com.kosmo.pickpic.service.web;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,6 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +26,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.binary.Base64;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONAware;
 import org.json.simple.JSONObject;
@@ -37,6 +41,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -59,6 +64,8 @@ import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.FileUpDownUtils;
+import com.kosmo.pickpic.util.S3Util;
+import com.kosmo.pickpic.util.UploadFileUtils;
 
 import io.netty.handler.codec.http.multipart.FileUpload;
 
@@ -103,6 +110,7 @@ public class FriendsController {
 	public String place(@RequestParam Map map, Model model,Principal principal) throws Exception {
 		//여기서 작업 시작
 		//map.put("ppa_email",principal.getName());
+
 //		System.out.println("map 에서 ㅜ뭐나옴?"+map.toString());
 		
 		
@@ -128,8 +136,8 @@ public class FriendsController {
 		
 		if(map.get("title") !=null){
 //			System.out.println(":"+map.toString());
-			model.addAttribute("ppb_latitude",map.get("ppb_latitude").toString().substring(0,5));
-			model.addAttribute("ppb_longitude",map.get("ppb_longitude").toString().substring(0,5));
+			model.addAttribute("ppb_latitude",map.get("ppb_latitude").toString().substring(0,9));
+			model.addAttribute("ppb_longitude",map.get("ppb_longitude").toString().substring(0,9));
 			model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
 			model.addAttribute("title",map.get("title"));
 			model.addAttribute("addr",map.get("addr"));
@@ -145,27 +153,23 @@ public class FriendsController {
 		
 		return "friends/place_write.tiles";//마이 페이지로
 	}// place
-	//등록하기
-	@RequestMapping("/friends/place_view_myPage.pic")
-	public String place_view_myPage(@RequestParam Map map, Model model,Principal principal) throws Exception {
-//		System.out.println("map전부요::"+map.toString());
-		if(map.get("insert") != null) {
-//		System.out.println("insert 쪽 오나영?");
-//		System.out.println("insert::"+map.toString());
-			/*map.put("ppa_email", principal.getName());
-	        map.put("ppb_image_path", "/resources/update/"+map.get("ppb_image_path"));
-	        map.put("f_name",map.get("f_name").toString().toLowerCase());
-	        map.put("ppb_latitude", map.get("ppb_latitude").toString().substring(0,9));
-	        map.put("ppb_longitude", map.get("ppb_longitude").toString().substring(0,9));
-	        
-	        //인설트 문 
-	        int a = ppb_service.insert(map);
-	        if(a == 1) {
-	        	System.out.println("인설트 성공");
-	        }*/
-
-		}
+	
+	//등록하기 ajax
+	/*@ResponseBody
+	@RequestMapping(value="/friends/place_view_myPage.do", produces = "text/plain;charset=UTF-8")
+	public String place_view_myPage_ajax(@RequestParam Map map, Model model,Principal principal, HttpServletRequest request) throws Exception {
 		
+		System.out.println("insert 쪽 오나영?");
+		System.out.println("insert::"+map.toString());
+		return JSONArray.toJSONString(list);
+	}*/
+	
+	
+	//등록하기 NO ajax
+	@RequestMapping("/friends/place_view_myPage.pic")
+	public String place_view_myPage(@RequestParam Map map, Model model,Principal principal, HttpServletRequest request) throws Exception {
+		System.out.println("map전부요::"+map.toString());
+		System.out.println("왜 안뜨나요?");
 		return "friends/place_view_myPage.tiles";
 	}//등록하고 (insert) 마이페이지로 이동 insert 값 없으면 그냥 이동
 	
