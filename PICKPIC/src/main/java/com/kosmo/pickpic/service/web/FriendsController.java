@@ -92,19 +92,29 @@ public class FriendsController {
 		List<Map> list = ppb_service.selectList(map);
 		model.addAttribute("list",list);
 		
-		System.out.println("왜2개임?"+list.toString());
-		System.out.println("사이즈는?"+list.size());
+		//System.out.println("왜2개임?"+list.toString());
+		//System.out.println("사이즈는?"+list.size());
 		
 		return "friends/place_filter.tiles";
 		//return "friends/place.tiles";//나중에 이걸로 바꾸자
 	}// place
 	// 픽플레이스
-	@RequestMapping("/friends/place.pic")
+	@RequestMapping("/friends/place_map.pic")
 	public String place(@RequestParam Map map, Model model,Principal principal) throws Exception {
 		//여기서 작업 시작
-		map.put("ppa_email",principal.getName());
-		List<Map> list_filter=dao_filter.albumDownFilterName(map);
-		model.addAttribute("list_filter", list_filter);
+		//map.put("ppa_email",principal.getName());
+		System.out.println("map 에서 ㅜ뭐나옴?"+map.toString());
+		
+		
+		model.addAttribute("title",map.get("title"));
+		model.addAttribute("addr",map.get("addr"));
+		model.addAttribute("my_calendar",map.get("my_calendar"));
+		model.addAttribute("filter1",map.get("filter1"));
+		model.addAttribute("naiyo",map.get("naiyo"));
+		
+		//이전  
+		//List<Map> list_filter=dao_filter.albumDownFilterName(map);
+		//model.addAttribute("list_filter", list_filter);
 		
 		return "friends/place_map.tiles";
 		//return "friends/place.tiles";//나중에 이걸로 바꾸자
@@ -112,18 +122,56 @@ public class FriendsController {
 	//맵에서 작성 페이지로 이동합니다. 값을 가지고 이동만!
 	@RequestMapping("/friends/place_write.pic")
 	public String place_write(@RequestParam Map map, Model model,Principal principal) throws Exception {
-		//여기서 작업 시작
 		map.put("ppa_email",principal.getName());
 		List<Map> list_filter=dao_filter.albumDownFilterName(map);
 		model.addAttribute("list_filter", list_filter);
 		
-		System.out.println(map.toString());
-		model.addAttribute("ppb_latitude",map.get("ppb_latitude"));
-		model.addAttribute("ppb_longitude",map.get("ppb_longitude"));
-		model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
+		if(map.get("title") !=null){
+			System.out.println(":"+map.toString());
+			model.addAttribute("ppb_latitude",map.get("ppb_latitude").toString().substring(0,5));
+			model.addAttribute("ppb_longitude",map.get("ppb_longitude").toString().substring(0,5));
+			model.addAttribute("ppb_addr1",map.get("ppb_addr1"));
+			model.addAttribute("title",map.get("title"));
+			model.addAttribute("addr",map.get("addr"));
+			model.addAttribute("my_calendar",map.get("my_calendar"));
+			System.out.println("fil11"+map.get("filter1"));
+			model.addAttribute("filter1",map.get("filter1"));
+			model.addAttribute("naiyo",map.get("naiyo"));
+		}
+		
+		//여기서 픽플레이스 게시판 인설트 작업이 이루어져야한다   ppbinsert
+		System.out.println("map전부"+map.toString());
 
-		return "friends/place_write.tiles";//작성 완료 후 다시 리스트로 
+		
+		return "friends/place_write.tiles";//마이 페이지로
 	}// place
+	//등록하기
+	@RequestMapping("/friends/place_view_myPage.pic")
+	public String place_view_myPage(@RequestParam Map map, Model model,Principal principal) throws Exception {
+		System.out.println("map전부요::"+map.toString());
+		if(map.get("insert") != null) {
+		System.out.println("insert 쪽 오나영?");
+		System.out.println("insert::"+map.toString());
+			/*map.put("ppa_email", principal.getName());
+	        map.put("ppb_image_path", "/resources/update/"+map.get("ppb_image_path"));
+	        map.put("f_name",map.get("f_name").toString().toLowerCase());
+	        map.put("ppb_latitude", map.get("ppb_latitude").toString().substring(0,9));
+	        map.put("ppb_longitude", map.get("ppb_longitude").toString().substring(0,9));
+	        
+	        //인설트 문 
+	        int a = ppb_service.insert(map);
+	        if(a == 1) {
+	        	System.out.println("인설트 성공");
+	        }*/
+
+		}
+		
+		return "friends/place_view_myPage.tiles";
+	}//등록하고 (insert) 마이페이지로 이동 insert 값 없으면 그냥 이동
+	
+	
+	
+	
 	
 	//이제 DB에 저장하고 리스트 페이지로 이동 file 저장
 	@RequestMapping("/friends/file.pic")

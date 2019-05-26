@@ -73,6 +73,10 @@ public class StoryController {
 		@RequestMapping("/test/place_view.pic")
 		public String plaView() {
 			//여기서 작업 시작
+			
+			
+			
+			
 				
 			return "test/place_view.tiles";
 		}// plaView

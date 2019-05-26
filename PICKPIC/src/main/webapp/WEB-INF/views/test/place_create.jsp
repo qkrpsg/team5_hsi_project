@@ -18,12 +18,12 @@
 <script src="<c:url value='/js/caman.full.min.js'/>"></script>
 
 
-
 <style>
 .form-control {
 	border-radius: 0px;
 }
 </style>
+
 
 <!-- 픽플레이스 생성 폼 시작 -->
 <div class="wrapper" style="background-color: #ececec;">
@@ -38,9 +38,9 @@
 
 			<div class="btn-group" style="width: 100%">
 
-				<div class="upload-btn-wrapper">
+				<div class="upload-btn-wrapper" >
 					<button class="button" >+ 이미지</button>
-					<input type="file" name="getfile" id="getfile" accept=".jpg, .png"/>
+					<input type="file" name="getfile" id="getfile" accept=".jpg, .png" />
 				</div>		
 				<button class="button" type="button" style="width: 50%" id="myfilter_btn">+ My 필터</button>
 			</div>
@@ -49,27 +49,27 @@
 			<h3>픽플레이스</h3>
 
 			<div class="form-wrapper">
-				<input type="text" placeholder="제목을 입력하세요." class="form-control2">
+				<input type="text" placeholder="제목을 입력하세요." class="form-control2 title">
 			</div>
 			<div class="form-wrapper">
-				<input type="text" placeholder="위치를 지정하세요." class="form-control2">
-				<i class="zmdi zmdi-pin zmdi-hc-lg"></i>
+				<input type="text" placeholder="위치를 지정하세요. ->오른쪽 아이콘을 눌러주세요 " class="form-control2 latlng" value="" readonly>
+				<i class="zmdi zmdi-pin zmdi-hc-lg latlng2" style="cursor: pointer;"></i>
 			</div>
 			<div class="form-wrapper">
-				<input type="text" placeholder="상세주소" class="form-control2">
+				<input type="text" placeholder="상세주소" class="form-control2 addr">
 			</div>
 			<div class="form-group">
 				<div class='input-group date' id='datetimepicker'>
-					<input type='text' class="form-control" /> <span
-						class="input-group-addon"> <span
-						class="glyphicon glyphicon-calendar"> </span>
+					<input type='text' class="form-control my_calendar" value=""/> 
+					<span class="input-group-addon"> 
+						<span class="glyphicon glyphicon-calendar"> </span>
 					</span>
 				</div>
 			</div>
 
 
 			<div class="form-wrapper">
-				<select name="" id="" class="form-control2">
+				<select name="" id="" class="form-control2 filter1">
 					<option value="" disabled selected>사용한 필터를 고르세요.</option>
 					
 					<c:forEach var="item" items="${list_filter }" varStatus="loop">
@@ -80,7 +80,7 @@
 				</select> <i class="zmdi zmdi-caret-down zmdi-hc-2x"></i>
 			</div>
 			<div class="form-wrapper">
-				<textarea name="" id="" class="form-control3" style="height: 69px"
+				<textarea name="" id="" class="form-control3 naiyo" style="height: 69px"
 					placeholder="내용을 작성하세요."></textarea>
 			</div>
 
@@ -122,6 +122,84 @@
 <!-- 하단 스크롤 끝 -->
 
 
+
+
+<script>
+	$(function(){
+		//$('.latlng').
+		
+		 var d = new Date();
+		 var day = parseInt(d.getDate());
+		 var myDate = d.getFullYear()+"-"+( d.getMonth() + 1 )+"-"+day+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		 $('.my_calendar').val(myDate);
+		 //var currentDate = d.getFullYear() + "년 " + ( d.getMonth() + 1 ) + "월 " + day + "일";
+	     //var currentTime = d.getHours() + "시 " + d.getMinutes() + "분 ";// + d.getSeconds() + "초"
+	   	
+	     //ㅋㅋㅋㅋ
+		 $('.latlng2').click(function(){
+			 //title   , addr  ,my_calendar  , filter1  ,naiyo
+			  //제목 , 상세 주소 , 달력 값 , 사용한 필터  , 내용
+			 
+			  /* 
+			  console.log('제목!!!'+$('.title').val());
+			  console.log('상세!!!'+$('.addr').val());
+			  console.log('달력!!!'+$('.my_calendar').val());
+			  console.log('필터!!!'+$('.filter1').val());
+			  console.log('내용!!!'+$('.naiyo').val());
+			   */
+			  
+			  var form = document.createElement("form");
+		      form.setAttribute("charset", "UTF-8");
+		      form.setAttribute("method", "Post");  //Post 방식
+		      form.setAttribute("action", "/pickpic/admin/pickRoad.do"); 
+			 
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "title");
+		      hiddenField.setAttribute("value", $('.title').val());
+		      form.appendChild(hiddenField);
+		      
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "addr");
+		      hiddenField.setAttribute("value", $('.addr').val());
+		      form.appendChild(hiddenField);
+		      
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "my_calendar");
+		      hiddenField.setAttribute("value", $('.addr').val());
+		      form.appendChild(hiddenField);
+		      
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "filter1");
+		      hiddenField.setAttribute("value", $('.filter1').val());
+		      form.appendChild(hiddenField);
+		      
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "naiyo");
+		      hiddenField.setAttribute("value", $('.naiyo').val());
+		      form.appendChild(hiddenField);
+		     
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "${_csrf.parameterName}");
+		      hiddenField.setAttribute("value", "${_csrf.token}");
+		      form.appendChild(hiddenField);
+		      
+		      document.body.appendChild(form);
+		      form.submit();
+
+			 
+			 
+		 });
+	     
+		
+		
+	});
+</script>
 <script type="text/javascript">
 	/* 날짜 시간 찍기 */
 	$(function() {
@@ -133,36 +211,54 @@
 	
 	/* 파일  이미지띄우기  */
 	var file = document.querySelector('#getfile');
-	file.onchange = function() {
-		var fileList = file.files;
-		// 읽기
-		var reader = new FileReader();
-		reader.readAsDataURL(fileList[0]);
-		//로드 한 후
-		reader.onload = function() {
-			const canvas = document.getElementById('canvas');
-			const ctx = canvas.getContext("2d");
-			var img = new Image();
-			img.src= reader.result;
-			img.onload = function(e) {
-				canvas.width = img.width;
-				canvas.height = img.height;
-				ctx.drawImage(img, 0, 0, img.width, img.height);
-				canvas.removeAttribute("data-caman-id");
+	$('#getfile').click(function(){
+		if($('.latlng').val() == ''){
+			alert('먼저 위치를 설정해주세요');
+			return false;
+		} 	 
+	});
+	
+		file.onchange = function() {
+			var fileList = file.files;
+			// 읽기
+			var reader = new FileReader();
+			reader.readAsDataURL(fileList[0]);
+			//로드 한 후
+			reader.onload = function() {
+				const canvas = document.getElementById('canvas');
+				const ctx = canvas.getContext("2d");
+				var img = new Image();
+				img.src= reader.result;
+				img.onload = function(e) {
+					canvas.width = img.width;
+					canvas.height = img.height;
+					ctx.drawImage(img, 0, 0, img.width, img.height);
+					canvas.removeAttribute("data-caman-id");
+				};
+				
 			};
-			
 		};
-	};
 	
 	/*<!-- 필터창 열고 닫기  --> */
 	var filter_list = document.getElementById('filter_list');
 	var preview_wrap = document.getElementsByClassName('wrapper')[0]; 
 	$("#myfilter_btn").click(function() {
+		
 		if (filter_list.style.display == "block") {
+			if($('.latlng').val() == ''){
+				alert('먼저 위치를 설정해주세요');
+				return;
+			} 	 
 			filter_list.style.display = "none";
 		} else {
+			if($('.latlng').val() == ''){
+				alert('먼저 위치를 설정해주세요');
+				return;
+			} 	 
 			filter_list.style.display = "block";
 		}
+		
+		
 	});
 	
 	/* 필터 선택시 이미지에 필터 적용*/
