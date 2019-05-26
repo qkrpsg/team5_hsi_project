@@ -37,7 +37,7 @@
       
       <div class="l_tip_list_wrap">
 			<div class="row" style="margin-left: 20%;margin-right: 20%;">
-				<form method="post" action="<c:url value='/help/tip/Write2.pic'/>" id="jyu"> 
+				<form method="post" action="<c:url value='/help/tip/Write.pic'/>" id="jyu"> 
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 					<div class="form-group">
