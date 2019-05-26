@@ -97,12 +97,12 @@
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
-      <div class=" card-a cssco card_hover" id="none"
+      <%-- <div class=" card-a cssco card_hover" id="none"
          onclick="filterOn(this)">
          <img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
          <div class="ovrly"></div>
          <span class="name_text"> NONE </span>
-      </div>
+      </div> --%>
 
       <c:forEach var="item" items="${list_filter }"  varStatus="loop">
          <c:set var="str_f_name" value="${item.F_NAME }"/>
@@ -313,7 +313,6 @@
 			console.log("c2="+toggle);
 			break;
 		case 'sincity':
-			/* 안됨 */
 			console.log("s="+toggle);
 			if(!toggle){
 				console.log(toggle);
@@ -327,7 +326,6 @@
 			console.log("s2="+toggle);
 			break;
 		case 'crossprocess':
-			/* 안됨 */
 			console.log("c="+toggle);
 			if(!toggle){
 				console.log(toggle);
@@ -367,7 +365,6 @@
 			console.log("n2="+toggle);
 			break;
 		case 'hermajesty':
-			/* 안됨 */
 			console.log("h="+toggle);
 			if(!toggle){
 				console.log(toggle);
@@ -376,6 +373,136 @@
 			else{
 				console.log(toggle);
 				Caman('#canvas', img, function() {this.herMajesty().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'orangepeel':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.orangePeel().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'oldboot':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.oldBoot().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'love':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.love().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'jarques':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.jarques().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'hazydays':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.hazyDays().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'grungy':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.grungy().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'glowingsun':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.glowingSun().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'concentrate':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.concentrate().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'hemingway':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.hemingway().render();});
+			}
+			toggle = !toggle;	
+			console.log("h2="+toggle);
+			break;
+		case 'sunrise':
+			console.log("h="+toggle);
+			if(!toggle){
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.revert();});		
+			}
+			else{
+				console.log(toggle);
+				Caman('#canvas', img, function() {this.sunrise().render();});
 			}
 			toggle = !toggle;	
 			console.log("h2="+toggle);
@@ -419,7 +546,7 @@ $.ajax({
   alert(respond);
 }); */
 	
-	var imageSummit = function() {
+	/* var imageSummit = function() {
 		var imgCan = document.getElementById('canvas');
 // 		var canvas = $('#canvas');
 		console.log(imgCan);
@@ -460,7 +587,7 @@ $.ajax({
 // 				location.href = "<c:url value='/test/place_create.pic'/>";
 			}
 		});
-	}
+	} */
 </script>
 
 

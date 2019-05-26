@@ -208,6 +208,7 @@
 		} 	 
 	});
 	
+<<<<<<< HEAD
 	file.onchange = function() {
 		var fileList = file.files;
 		// 읽기
@@ -224,6 +225,27 @@
 				canvas.height = img.height;
 				ctx.drawImage(img, 0, 0, img.width, img.height);
 				canvas.removeAttribute("data-caman-id");
+=======
+		file.onchange = function() {
+			var fileList = file.files;
+			// 읽기
+			var reader = new FileReader();
+			console.log(fileList[0].name);
+			reader.readAsDataURL(fileList[0]);
+			//로드 한 후
+			reader.onload = function() {
+				const canvas = document.getElementById('canvas');
+				const ctx = canvas.getContext("2d");
+				var img = new Image();
+				img.src= reader.result;
+				img.onload = function(e) {
+					canvas.width = img.width;
+					canvas.height = img.height;
+					ctx.drawImage(img, 0, 0, img.width, img.height);
+					canvas.removeAttribute("data-caman-id");
+				};
+				
+>>>>>>> branch 'han' of https://github.com/qkrpsg/team5_hsi_project.git
 			};
 		};
 	};
