@@ -45,7 +45,7 @@
 						<input type="text" class="form-control" name="TB_TITLE" id="TB_TITLE" placeholder="제목을 입력해 주세요">
 					</div>
 					<!-- 등록일 -->
-					<input type="hidden" name="ppu_register_date" id="Q_POST_DATE"/>
+					<input type="hidden" name="ppu_register_date" id="TB_POST_DATE"/>
 					<!-- 글쓰기 썸머노트 -->
 					<textarea id="summernote" name="TB_CONTENT" id="TB_CONTENT">상세 내용을 작성하세요.</textarea>       
 					
