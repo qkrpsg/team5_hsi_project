@@ -84,7 +84,7 @@
 					placeholder="내용을 작성하세요."></textarea>
 			</div>
 
-			<button class="btn-danger" type="button" style="width: 164px; height: 51px;">등록하기</button>
+			<button class="btn-danger" type="button" style="width: 164px; height: 51px;" onclick='imageSummit()'>등록하기</button>
 		</form>
 
 	</div>
@@ -133,15 +133,18 @@
 	
 	/* 파일  이미지띄우기  */
 	var file = document.querySelector('#getfile');
+	var canvas;
+	var ctx;
 	file.onchange = function() {
+		console.log(file);
 		var fileList = file.files;
 		// 읽기
 		var reader = new FileReader();
 		reader.readAsDataURL(fileList[0]);
 		//로드 한 후
 		reader.onload = function() {
-			const canvas = document.getElementById('canvas');
-			const ctx = canvas.getContext("2d");
+			canvas = document.getElementById('canvas');
+			ctx = canvas.getContext("2d");
 			var img = new Image();
 			img.src= reader.result;
 			img.onload = function(e) {
@@ -328,7 +331,48 @@ $.ajax({
   alert(respond);
 }); */
 	
-
+	var imageSummit = function() {
+		var imgCan = document.getElementById('canvas');
+// 		var canvas = $('#canvas');
+		console.log(imgCan);
+		console.log(typeof(imgCan));
+		var canvImgStr = imgCan.toDataURL('image/jpg', 1.0);
+		console.log('적용되니');
+		$.ajax({
+			url:"<c:url value='/user/downloadImage.do'/>",
+			type:"POST",
+			data:{
+				strImg: canvImgStr
+			},
+			dataType:'json',
+			success : function(data) {
+				console.log('성공했습니다');
+				console.log(data);
+				
+				$.each(data, function(index, element) {
+// 					location.href = element['img'];
+					canvas = document.getElementById('canvas');
+					ctx = canvas.getContext("2d");
+					
+					var loadImg = new Image();
+					loadImg.src= element['img'];
+					loadImg.onload = function(e) {
+						canvas.width = loadImg.width;
+						canvas.height = loadImg.height;
+						ctx.drawImage(loadImg, 0, 0, loadImg.width, loadImg.height);
+						canvas.removeAttribute("data-caman-id");
+					};
+					
+				});
+				
+			},
+			error : function(data) {
+				console.log('실패했습니다');
+				console.log(data);
+// 				location.href = "<c:url value='/test/place_create.pic'/>";
+			}
+		});
+	}
 </script>
 
 

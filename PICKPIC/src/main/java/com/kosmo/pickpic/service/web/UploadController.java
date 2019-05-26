@@ -1,15 +1,24 @@
 package com.kosmo.pickpic.service.web;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.binary.Base64;
+import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -18,11 +27,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.apigateway.model.Model;
 import com.amazonaws.util.IOUtils;
+import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.S3Util;
 import com.kosmo.pickpic.util.UploadFileUtils;
 
@@ -42,16 +53,58 @@ public class UploadController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/user/uploadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String uploadImage(Map map) throws Exception{
-		System.out.println(s3.getBucketList());
+	public String uploadImage (@RequestParam Map map, HttpServletRequest request) throws Exception{
+//		System.out.println(s3.getBucketList());
+//		System.out.println("strImg : " + map.get("strImg"));
+		String strImg = map.get("strImg").toString();
 		
+		String uploadpath = "pickpic/image";
+		String folder = request.getServletContext().getRealPath("/") + uploadpath;
+		String fullpath = "";
+		String[] strParts = strImg.split(",");
+		String rstStrImg = strParts[1]; // ,로 구분하여 뒷 부분 이미지 데이터를 임시저장
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_hhmmss");
+		String filenm = sdf.format(new Date()).toString() + "_testimg2.png";
+
+		BufferedImage image = null;
+		byte[] byteImg;
+
+		byteImg = Base64.decodeBase64(rstStrImg); // base64 디코더를 이용하여 byte 코드로 변환
+		ByteArrayInputStream bis = new ByteArrayInputStream(byteImg);
+		image = ImageIO.read(bis); // BufferedImage형식으로 변환후 저장
+		bis.close();
+
+		fullpath = folder + filenm;
+		File folderObj = new File(folder);
+		if (!folderObj.isDirectory())
+			folderObj.mkdir();
+		File outputFile = new File(fullpath); // 파일객체 생성
+		if (outputFile.exists())
+			outputFile.delete();
+
+		String uploadedFileName = UploadFileUtils.uploadFile(uploadpath, filenm, byteImg);//실제 저장되는 장소
+//		System.out.println("uploadedFileName : " + uploadedFileName);
 		
-		String fileName = "";
-		byte[] fileData = {};
+		List<Map> user = new Vector<Map>();  
+		map.put("img", uploadpath+filenm);
+		System.out.println("img : " + map.get("img"));
+		user.add(map);
+		return JSONArray.toJSONString(user);
+	}
+	
+
+	@ResponseBody
+	@RequestMapping(value = "/user/downloadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String downloadImage(@RequestParam Map map, HttpServletRequest request) throws Exception{
+//		s3.fileDownload(bucketName, "pickpic/image/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png");
+		String img = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/" + "pickpic/image/2019/05/26/3bf4103a-15a8-4192-ba8c-ab637c509321_20190526_055059_testimg2.png";
+
+		List<Map> user = new Vector<Map>();  
+		map.put("img", img);
 		
-		s3.fileUpload(bucketName, fileName, fileData);
+		user.add(map);
 		
-		return "home.tiles";
+		return JSONArray.toJSONString(user);
 	}
 
 	//자격증 & 신분증 이미지 업로드
@@ -70,6 +123,8 @@ public class UploadController {
 
 		return certificatePath;
 	}
+	
+	
 
 	//커버이미지 업로드
 	@ResponseBody
