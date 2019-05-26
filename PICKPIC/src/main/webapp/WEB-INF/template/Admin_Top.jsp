@@ -23,18 +23,18 @@
 						<!-- The user image in the navbar--> 
 						<img src="<c:url value='/resources/admin_images/user_icon.png'/>" class="user-image" alt="User Image"> 
 						<!-- hidden-xs hides the username on small devices so only the image appears. -->
-						<span class="hidden-xs">관리자 ID</span>
+						<span class="hidden-xs">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }</span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- The user image in the menu -->
 						<li class="user-header">
 							<img src="<c:url value='/resources/admin_images/user_icon.png'/>" class="img-circle" alt="User Image">
-							<p>관리자 ID <small>가입일자</small></p>
+							<p>${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }</p>
 						</li>
 						<!-- Menu Footer-->
 						<li class="user-footer">
-							<a href="#"><div class="btn-user-footer">마이페이지</div></a>
-							<a href="#"><div class="btn-user-footer">로그아웃</div></a>
+							<a href="<c:url value='/user/myPage.pic'/>"><div class="btn-user-footer">마이페이지</div></a>
+							<a href="javascript:logout()"><div class="btn-user-footer">로그아웃</div></a>
 						</li>
 					</ul>
 				</li>
@@ -67,8 +67,8 @@
 				<img src="<c:url value='/resources/admin_images/user_icon.png'/>" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
-				<p>ADMINSTER</p>
-				<p>관리자 ID</p>
+				<p>admin</p>
+				<p>관리자</p>
 			</div>
 		</div>
 
@@ -94,9 +94,10 @@
 			<li id="pickPlace"><a href="<c:url value='/admin/pickPlace.pic'/>"><i class="fa fa-map"></i> <span>픽플레이스관리</span></a></li>
 			<li id="filter"><a href="<c:url value='/admin/filter.pic'/>"><i class="fa fa-clone"></i> <span>필터관리</span></a></li>
 			<li id="pickRoad"><a href="<c:url value='/admin/pickRoad.pic'/>"><i class="fa fa-map-signs"></i> <span>픽로드관리</span></a></li>
-			<li id="albumDown"><a href="<c:url value='/admin/albumDown.pic'/>"><i class="fa fa-navicon"></i> <span>앨범다운관리</span></a></li>
+<%-- 			<li id="albumDown"><a href="<c:url value='/admin/albumDown.pic'/>"><i class="fa fa-navicon"></i> <span>앨범다운관리</span></a></li> --%>
 			
 			<li class="header">고객센터</li>
+			<li id="gonggi"><a href="<c:url value='/admin/notice.pic'/> "><i class="fa fa-newspaper-o"></i> <span>공지사항</span> </a></li>
 			<li id="qna"><a href="<c:url value='/admin/qna.pic'/>"><i class="fa fa-question"></i> <span>문의관리</span></a></li>
 			<li id="report"><a href="<c:url value='/admin/report.pic'/>"><i class="fa fa-warning"></i> <span>게시물신고함</span></a></li>
 			
@@ -107,4 +108,15 @@
 	</section>
 	<!-- /.sidebar -->
 </aside>
+
+<script>
+	//csrf사용시에만 아래 함수 필요
+	function logout() {
+		$('#logoutForm').submit();
+	}
+</script>
+<!-- action 은 스프링 씨큐리티의 디폴트 로그아웃 URL지정(/logout) -->
+<form id="logoutForm" method="post" action="<c:url value='/logout'/>">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
 

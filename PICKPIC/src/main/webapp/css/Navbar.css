@@ -1,0 +1,39 @@
+.topnav {
+	overflow: hidden;
+	position: relative;
+	font-family: NANUMSQUAREROUNDB;
+	background-color: #e3f2fd;
+	margin-bottom: 0;
+}
+
+/* .topnav form {
+	float: left;
+	margin-top: 9px;
+	margin-left: 12px;
+} */
+
+.topnav a:hover {
+	
+}
+
+
+/* 미디엄 */
+@media screen and (max-width:1000px) and (min-width:0px) {
+	.topnav.responsive {
+		position: relative;
+	}
+	.topnav.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+	.topnav form {
+		display: none;
+	}
+	.topnav-centered a {
+		position: relative;
+		top: 0;
+		left: 0;
+		transform: none;
+	}
+}

@@ -37,12 +37,50 @@
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1"/>
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+	<context:property-placeholder location="classpath:validator/pickpic.properties"/>
 	<context:component-scan base-package="com.kosmo.pickpic" />
+	
+	
+	
+	<!-- 시큐리티 해당 페이지 비활성화???  -->
+	<bean id="csrfMatcher"
+
+    class="org.springframework.security.web.util.matcher.AndRequestMatcher">
+
+    <constructor-arg>
+
+    	<list>
+
+    		<bean class="org.springframework.security.web.csrf.CsrfFilter.DefaultRequiresCsrfMatcher"/>
+
+    		<bean id="aa" class="org.springframework.security.web.util.matcher.NegatedRequestMatcher">
+
+        	<constructor-arg>
+
+        	<bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+
+            <constructor-arg value="/friends/**"/>
+
+          </bean>
+
+        	</constructor-arg>
+
+        </bean>
+
+    	</list>
+
+    </constructor-arg>
+
+</bean>
+
+
+
 	
 	
 	

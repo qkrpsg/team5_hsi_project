@@ -4,23 +4,23 @@
 DROP TABLE album_down CASCADE CONSTRAINTS;
 DROP TABLE answer_question CASCADE CONSTRAINTS;
 DROP TABLE auth_security CASCADE CONSTRAINTS;
-DROP TABLE connection_status CASCADE CONSTRAINTS;
 DROP TABLE filter_storage CASCADE CONSTRAINTS;
 DROP TABLE refund CASCADE CONSTRAINTS;
 DROP TABLE payment CASCADE CONSTRAINTS;
 DROP TABLE pickplace_recycle_bin CASCADE CONSTRAINTS;
 DROP TABLE pickplace_report CASCADE CONSTRAINTS;
 DROP TABLE pickplace_storage CASCADE CONSTRAINTS;
-DROP TABLE pickroad_pickplace CASCADE CONSTRAINTS;
 DROP TABLE pickplace_board CASCADE CONSTRAINTS;
 DROP TABLE filter CASCADE CONSTRAINTS;
 DROP TABLE login_history CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
+DROP TABLE pickroad_place CASCADE CONSTRAINTS;
 DROP TABLE pickroad_recycle_bin CASCADE CONSTRAINTS;
 DROP TABLE pickroad_report CASCADE CONSTRAINTS;
 DROP TABLE pickroad_storage CASCADE CONSTRAINTS;
 DROP TABLE pickroad_board CASCADE CONSTRAINTS;
 DROP TABLE question CASCADE CONSTRAINTS;
+DROP TABLE tip_board CASCADE CONSTRAINTS;
 DROP TABLE pickpic_account CASCADE CONSTRAINTS;
 
 
@@ -33,7 +33,7 @@ CREATE TABLE album_down
 	ad_id nvarchar2(12) NOT NULL,
 	ad_down_date date DEFAULT SYSDATE NOT NULL,
 	ad_way nvarchar2(10) NOT NULL,
-	ad_image_path nvarchar2(50) NOT NULL,
+	ad_image_path nvarchar2(100) NOT NULL,
 	ad_index number NOT NULL,
 	ppa_id nvarchar2(12) NOT NULL,
 	PRIMARY KEY (ad_id)
@@ -43,7 +43,7 @@ CREATE TABLE album_down
 CREATE TABLE answer_question
 (
 	aq_id nvarchar2(12) NOT NULL,
-	aq_content nvarchar2(500),
+	aq_content nvarchar2(2000) NOT NULL,
 	aq_post_date date DEFAULT SYSDATE NOT NULL,
 	q_id nvarchar2(12) NOT NULL,
 	PRIMARY KEY (aq_id)
@@ -53,37 +53,29 @@ CREATE TABLE answer_question
 CREATE TABLE auth_security
 (
 	as_id nvarchar2(12) NOT NULL,
-	as_enabled_yn char(1) DEFAULT 'N' NOT NULL CHECK(as_enabled_yn IN('Y', 'N')),
-	as_class nvarchar2(10) DEFAULT 'GUEST' NOT NULL,
+	as_enabled_flag number DEFAULT 0 NOT NULL CHECK(as_enabled_flag IN('1', '0')),
+	as_class nvarchar2(10) DEFAULT 'ROLE_GUEST' NOT NULL,
 	as_date date DEFAULT SYSDATE NOT NULL,
 	as_index number NOT NULL,
+	as_key nvarchar2(30) NOT NULL,
 	ppa_id nvarchar2(12) NOT NULL,
 	PRIMARY KEY (as_id)
-);
-
-
-CREATE TABLE connection_status
-(
-	cs_id nvarchar2(12) NOT NULL,
-	cs_name nvarchar2(10) NOT NULL,
-	cs_connect_date date DEFAULT SYSDATE NOT NULL,
-	cs_service_token nvarchar2(30) NOT NULL,
-	ppa_id nvarchar2(12) NOT NULL,
-	PRIMARY KEY (cs_id)
 );
 
 
 CREATE TABLE filter
 (
 	f_id nvarchar2(12) NOT NULL,
-	f_name nvarchar2(10) NOT NULL,
-	f_price number NOT NULL,
+	f_name nvarchar2(30) NOT NULL,
+	f_price number DEFAULT 0 NOT NULL,
+	f_change number DEFAULT 0 NOT NULL,
 	f_post_date date DEFAULT SYSDATE NOT NULL,
 	f_change_date date DEFAULT SYSDATE NOT NULL,
-	f_reason nvarchar2(30) NOT NULL,
-	f_sale_yn char(1) DEFAULT 'N' NOT NULL CHECK(f_sale_yn IN('Y', 'N')),
+	f_reason nvarchar2(100) NOT NULL,
+	f_sale_yn char(1) DEFAULT 'Y' NOT NULL CHECK(f_sale_yn IN('Y', 'N')),
 	f_event_yn char(1) DEFAULT 'N' NOT NULL CHECK(f_event_yn IN('Y', 'N')),
 	f_index number NOT NULL,
+	f_image_path nvarchar2(100) DEFAULT '/pickpic/resources/images/defaultProfile.jpg' NOT NULL,
 	PRIMARY KEY (f_id)
 );
 
@@ -112,7 +104,7 @@ CREATE TABLE notice
 (
 	n_id nvarchar2(12) NOT NULL,
 	n_title nvarchar2(30) NOT NULL,
-	n_content nvarchar2(500),
+	n_content nvarchar2(2000),
 	n_post_date date DEFAULT SYSDATE NOT NULL,
 	n_index number NOT NULL,
 	PRIMARY KEY (n_id)
@@ -135,13 +127,12 @@ CREATE TABLE payment
 CREATE TABLE pickpic_account
 (
 	ppa_id nvarchar2(12) NOT NULL,
-	ppa_user_id nvarchar2(20) NOT NULL,
-	ppa_password varchar2(15) NOT NULL,
-	ppa_name nvarchar2(5) NOT NULL,
+	ppa_email nvarchar2(50) NOT NULL,
+	ppa_password varchar2(20) NOT NULL,
 	ppa_nickname nvarchar2(10) NOT NULL,
-	ppa_gender nvarchar2(1) NOT NULL,
-	ppa_register_date date DEFAULT SYSDATE NOT NULL,
-	ppa_profile_path nvarchar2(50),
+	ppa_join_date date DEFAULT SYSDATE NOT NULL,
+	ppa_type nvarchar2(10) DEFAULT 'pickpic' NOT NULL,
+	ppa_profile_path nvarchar2(100) DEFAULT '/pickpic/resources/images/defaultProfile.jpg' NOT NULL,
 	ppa_index number NOT NULL,
 	PRIMARY KEY (ppa_id)
 );
@@ -150,17 +141,17 @@ CREATE TABLE pickpic_account
 CREATE TABLE pickplace_board
 (
 	ppb_id nvarchar2(12) NOT NULL,
-	ppb_title nvarchar2(30) NOT NULL,
-	ppb_content nvarchar2(500),
+	ppb_title nvarchar2(50) NOT NULL,
+	ppb_content nvarchar2(2000),
 	ppb_post_date date DEFAULT SYSDATE NOT NULL,
 	ppb_count number DEFAULT 0 NOT NULL,
 	ppb_pick number DEFAULT 0 NOT NULL,
-	ppb_nation nvarchar2(20) NOT NULL,
-	ppb_city nvarchar2(20) NOT NULL,
-	ppb_area nvarchar2(20) NOT NULL,
-	ppb_detail_location nvarchar2(20),
-	ppb_image_path nvarchar2(30) NOT NULL,
+	ppb_image_path nvarchar2(100) DEFAULT '/pickpic/resources/images/defaultImage.jpg' NOT NULL,
 	ppb_index number NOT NULL,
+	ppb_latitude nvarchar2(10) NOT NULL,
+	ppb_longitude nvarchar2(10) NOT NULL,
+	ppb_addr1 nvarchar2(100) NOT NULL,
+	ppb_addr2 nvarchar2(100) NOT NULL,
 	f_id nvarchar2(12) NOT NULL,
 	ppa_id nvarchar2(12) NOT NULL,
 	PRIMARY KEY (ppb_id)
@@ -181,7 +172,7 @@ CREATE TABLE pickplace_report
 (
 	ppr_id nvarchar2(12) NOT NULL,
 	ppr_report_date date DEFAULT SYSDATE NOT NULL,
-	ppr_reason nvarchar2(200) NOT NULL,
+	ppr_reason nvarchar2(2000) NOT NULL,
 	ppr_aceept_yn char(1) DEFAULT 'N' NOT NULL CHECK(ppr_aceept_yn IN ('Y', 'N')),
 	ppr_index number NOT NULL,
 	ppb_id nvarchar2(12) NOT NULL,
@@ -203,8 +194,8 @@ CREATE TABLE pickplace_storage
 CREATE TABLE pickroad_board
 (
 	prb_id nvarchar2(12) NOT NULL,
-	prb_title nvarchar2(30) NOT NULL,
-	prb_content nvarchar2(500),
+	prb_title nvarchar2(50) NOT NULL,
+	prb_content nvarchar2(2000),
 	prb_post_date date DEFAULT SYSDATE NOT NULL,
 	prb_view number DEFAULT 0 NOT NULL,
 	prb_recommend number DEFAULT 0 NOT NULL,
@@ -216,11 +207,14 @@ CREATE TABLE pickroad_board
 );
 
 
-CREATE TABLE pickroad_pickplace
+CREATE TABLE pickroad_place
 (
-	prpp_order number NOT NULL,
+	prp_id varchar2(12) NOT NULL,
+	prp_order number NOT NULL,
+	prp_contentid nvarchar2(12) NOT NULL,
+	prp_image_path nvarchar2(100) NOT NULL,
 	prb_id nvarchar2(12) NOT NULL,
-	ppb_id nvarchar2(12) NOT NULL
+	PRIMARY KEY (prp_id)
 );
 
 
@@ -238,7 +232,7 @@ CREATE TABLE pickroad_report
 (
 	prr_id nvarchar2(12) NOT NULL,
 	prr_report_date date DEFAULT SYSDATE NOT NULL,
-	prr_reason nvarchar2(200) NOT NULL,
+	prr_reason nvarchar2(2000) NOT NULL,
 	prr_aceept_yn char(1) DEFAULT 'N' NOT NULL CHECK(prr_aceept_yn IN('Y', 'N')),
 	prr_index number NOT NULL,
 	prb_id nvarchar2(12) NOT NULL,
@@ -261,7 +255,7 @@ CREATE TABLE question
 (
 	q_id nvarchar2(12) NOT NULL,
 	q_title nvarchar2(30) NOT NULL,
-	q_content nvarchar2(500),
+	q_content nvarchar2(2000),
 	q_post_date date DEFAULT SYSDATE NOT NULL,
 	q_index number NOT NULL,
 	ppa_id nvarchar2(12) NOT NULL,
@@ -272,11 +266,23 @@ CREATE TABLE question
 CREATE TABLE refund
 (
 	r_id nvarchar2(12) NOT NULL,
-	r_cause nvarchar2(30) NOT NULL,
+	r_cause nvarchar2(500) NOT NULL,
 	r_date date DEFAULT SYSDATE NOT NULL,
 	r_index number NOT NULL,
 	p_id nvarchar2(12) NOT NULL,
 	PRIMARY KEY (r_id)
+);
+
+
+CREATE TABLE tip_board
+(
+	tb_id nvarchar2(12) NOT NULL,
+	tb_title nvarchar2(100) NOT NULL,
+	tb_content nvarchar2(2000) NOT NULL,
+	tb_post_date date DEFAULT SYSDATE NOT NULL,
+	tb_index number NOT NULL,
+	ppa_id nvarchar2(12) NOT NULL,
+	PRIMARY KEY (tb_id)
 );
 
 
@@ -314,12 +320,6 @@ ALTER TABLE album_down
 
 
 ALTER TABLE auth_security
-	ADD FOREIGN KEY (ppa_id)
-	REFERENCES pickpic_account (ppa_id)
-;
-
-
-ALTER TABLE connection_status
 	ADD FOREIGN KEY (ppa_id)
 	REFERENCES pickpic_account (ppa_id)
 ;
@@ -385,6 +385,12 @@ ALTER TABLE question
 ;
 
 
+ALTER TABLE tip_board
+	ADD FOREIGN KEY (ppa_id)
+	REFERENCES pickpic_account (ppa_id)
+;
+
+
 ALTER TABLE pickplace_recycle_bin
 	ADD FOREIGN KEY (ppb_id)
 	REFERENCES pickplace_board (ppb_id)
@@ -403,13 +409,7 @@ ALTER TABLE pickplace_storage
 ;
 
 
-ALTER TABLE pickroad_pickplace
-	ADD FOREIGN KEY (ppb_id)
-	REFERENCES pickplace_board (ppb_id)
-;
-
-
-ALTER TABLE pickroad_pickplace
+ALTER TABLE pickroad_place
 	ADD FOREIGN KEY (prb_id)
 	REFERENCES pickroad_board (prb_id)
 ;

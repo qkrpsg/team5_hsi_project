@@ -1,0 +1,197 @@
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+	height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+#mapwrap {
+	position: relative;
+	overflow: hidden;
+}
+
+.category, .category * {
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+.category ul {
+	
+}
+.category_wrap{
+	position: absolute;
+	width:300px;
+	height:100%;
+	background: white;
+	top:0;
+	left:0;
+	z-index:10;
+	
+}
+.category_wrap2{
+	height:100%;
+	overflow: auto;
+	
+}
+
+.category {
+	position: absolute;
+	overflow: hidden;
+	top: 20px;
+	left: 320px;
+	width: 250px;
+	height: 90px;
+	z-index: 11;
+	border: 1px solid black;
+	border-radius:15px;
+	font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+	font-size: 12px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.category .menu_selected {
+	background: #FF5F4A;
+	color: #fff;
+	border-left: 1px solid #915B2F;
+	border-right: 1px solid #915B2F;
+	margin: 0 -1px;
+}
+
+.category li {
+	list-style: none;
+	float: left;
+	width: 60px;
+	
+	padding-top: 5px;
+
+	cursor: pointer;
+	
+}
+.category li img{
+	display: block;
+	margin: 0 auto 2px;
+	width: 35px;
+}
+/* 여기는 리스트 목록   */
+.category_list{
+	overflow: hidden;
+}
+.l_f{
+	width:90px;
+	
+	float: left;
+	margin-left:15px;
+}
+.l_f img{
+	width:100%;
+}
+
+.x_f{
+	overflow: hidden;
+	padding-top: 50px;
+	padding-left: 20px;
+}
+.x_f p{
+	display:block;
+	width:100%;
+	float:left;
+	
+	
+}
+
+
+.x_f img{
+	width:20px;
+	cursor: pointer;
+	float: right;
+	margin-right: 20px;
+}
+
+.write{
+	position: absolute;
+	top: 10px;
+	right: 30px;
+	width:100px;
+}
+
+/* 선 거리 */
+
+.dot {
+	overflow: hidden;
+	float: left;
+	width: 12px;
+	height: 12px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png');
+}
+
+.dotOverlay {
+	position: relative;
+	bottom: 10px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	border-bottom: 2px solid #ddd;
+	float: left;
+	font-size: 12px;
+	padding: 5px;
+	background: #fff;
+}
+
+.dotOverlay:nth-of-type(n) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.number {
+	font-weight: bold;
+	color: #ee6152;
+}
+
+.dotOverlay:after {
+	content: '';
+	position: absolute;
+	margin-left: -6px;
+	left: 50%;
+	bottom: -8px;
+	width: 11px;
+	height: 8px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white_small.png')
+}
+
+.distanceInfo {
+	position: relative;
+	top: 5px;
+	left: 5px;
+	list-style: none;
+	margin: 0;
+}
+
+.distanceInfo .label {
+	display: inline-block;
+	width: 50px;
+	
+}
+
+.distanceInfo:after {
+	content: none;
+	
+	cursor: pointer;
+}
+.end_btn{
+	width:20px;cursor: pointer;
+}
+
+
+
+
+
+

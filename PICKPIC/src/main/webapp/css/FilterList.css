@@ -1,0 +1,121 @@
+#filter_list {
+	display: none;
+	position: relative;
+}
+
+.scroll_inline {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	display: -webkit-inline-box;
+	background-color: #e6e6e6;
+	border-top: 1px solid #cccccc;
+	/* overflow-x: scroll;
+	overflow-y: hidden; */
+	}
+
+.box {
+	bottom: 0;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	padding-top: 5px;
+}
+
+.box::-webkit-scrollbar {
+	display: block;
+}
+
+.card-a {
+	display:inline-block;
+	height: 100%;
+	width: 180px;
+	margin: 10px 10px 0 10px;
+	vertical-align: middle;
+	
+	
+}
+
+/* .card-a:hover {
+	height: 100%;
+	width: 175px;
+	box-shadow: 5px 0 5px white;
+	tran
+} */
+
+
+.card_hover {
+	height: 100%;
+	width: 180px;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card_hover .ovrly {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.card_hover:hover .ovrly {
+    opacity: 1;
+}
+	
+.name_text {
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 3%;
+	font-size: 2em;
+	color: #eeeeee;
+}
+
+.name_text_center {
+	    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    font-size: 3.5em;
+    color: black;
+}
+
+
+
+/* 필터명 나열 */
+/* .topnav-centered ul {
+	float: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+
+Style the search box
+#filterMenu li {
+	display: table-cell;
+}
+
+#filterMenu li a {
+	padding: 12px;
+	text-decoration: none;
+	color: black;
+}
+
+#filterMenu li a:hover {
+	
+} */
+

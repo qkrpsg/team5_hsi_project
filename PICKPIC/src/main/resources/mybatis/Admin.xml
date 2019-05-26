@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.Admin">
+	<!-- 대시보드 -->
+	<!-- 대시보드 탑 표시 -->
+	<select id="adminNewPick" resultType="int">
+		SELECT (SELECT COUNT(*) FROM pickplace_board)+(SELECT COUNT(*) FROM pickroad_board) FROM DUAL
+	</select>
+	<select id="adminNewUser" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM pickpic_account ORDER BY ppa_index DESC) WHERE ppa_join_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	<select id="adminNewQuestion" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM question ORDER BY q_index DESC) WHERE q_post_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	<select id="adminNewSale" resultType="int">
+		SELECT count(*) FROM (SELECT * FROM payment ORDER BY p_index DESC) WHERE p_date BETWEEN SYSDATE-7 AND SYSDATE
+	</select>
+	
+	<!-- 대시보드 게시판 표시 -->
+	<!--  -->
+	<select id="adminDashUser" resultType="PickpicAccountDTO">
+		SELECT * FROM (
+			SELECT ppa.*, lh_ld FROM 
+			pickpic_account ppa JOIN (
+				SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
+			ON ppa.ppa_id=lh.ppa_id) 
+		ORDER BY ppa_index DESC
+	</select>
+	<!-- 전체 유저 + 마지막접속일 내림차순 -->
+	<select id="adminUser" resultType="PickPicAccountDTO">
+		SELECT ppa.*, lh_ld FROM (
+			SELECT p.*, rownum FROM pickpic_account p) ppa JOIN (
+			SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
+		ON ppa.ppa_id=lh.ppa_id ORDER BY ppa_index DESC
+	</select>
+	<!-- start부터 end까지 유저 반환 -->
+	<select id="adminSelectUser" parameterType="java.util.Map" resultType="PickPicAccountDTO">
+		SELECT * FROM (
+			SELECT ppa.*, ROWNUM r FROM (
+				SELECT * FROM pickpic_account ORDER BY ppa_index DESC) ppa
+			) 
+		WHERE ROWNUM BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 필터 내림차순 -->
+	<select id="adminFilter" resultType="FilterDTO">
+		SELECT f.*, rownum FROM (SELECT * FROM filter ORDER BY f_index DESC) f
+	</select>
+	<!-- 픽플레이스 내림차순 -->
+	<select id="adminPickPlace" resultType="PickPlaceBoardDTO">
+		SELECT * FROM pickplace_board ppb JOIN pickpic_account ppa ON ppa.ppa_id=ppb.ppa_id ORDER BY ppb_index DESC
+	</select>
+	<!-- 픽로드 내림차순 -->
+	<select id="adminPickRoad" resultType="PickRoadBoardDTO">
+		SELECT * FROM pickroad_board ORDER BY prb_index DESC
+	</select>
+	<!-- 신고함 내림차순 -->
+	<select id="adminDashReport" resultType="java.util.Map">
+	</select>
+	<!-- 휴지통 내림차순 -->
+	<select id="adminDashRecycleBin" resultType="java.util.Map">
+	
+	</select>
+	<!-- Account 조인하여 Road 픽로드 관리자게시판에 뿌려줄 List-->
+	<select id="adminPickAccountRoad" parameterType="java.util.Map" resultType="java.util.Map" >
+		SELECT prb.*,ppa_email FROM pickroad_board prb JOIN pickpic_account ppa ON prb.ppa_id = ppa.ppa_id
+	</select>
+	
+	<!-- 사용자 관리 -->
+	<!-- 유저와 마지막 접속일 -->
+	<select id="adminOneUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT * FROM (
+			SELECT ppa.*, lh_ld FROM pickpic_account ppa JOIN (
+				SELECT ppa_id, max(lh_login_date) lh_ld FROM login_history GROUP BY ppa_id) lh 
+			ON ppa.ppa_id=lh.ppa_id) 
+		WHERE ppa_email=#{ppa_email}
+	</select>
+	<!-- 추천수 -->
+	<select id="adminUserPick" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT 
+			((SELECT sum(ppb_pick) FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))+
+			(SELECT sum(prb_view) FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})))
+		AS totalpick FROM dual
+	</select>
+	<!-- 게시글수 -->
+	<select id="adminUserPost" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT 
+			((SELECT COUNT(*) FROM pickplace_board WHERE PPA_ID=(SELECT PPA_ID FROM pickpic_account WHERE PPA_EMAIL=#{ppa_email}))+
+			(SELECT COUNT(*) FROM pickroad_board WHERE PPA_ID=(SELECT PPA_ID FROM pickpic_account WHERE PPA_EMAIL=#{ppa_email}))) 
+		AS totalpost FROM dual
+	</select>
+	<!-- 보유필터수 -->
+	<select id="adminUserFilter" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT COUNT(*) totalfilter FROM filter_storage WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	<!-- 문의사항수 -->
+	<select id="adminUserQuestion" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT COUNT(*) totalquestion FROM question WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	<!-- 권한 -->
+	<select id="adminUserClass" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT as_class FROM auth_security WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	<!-- 총 유저수 -->
+	<select id="adminUserTotal" resultType="int">
+		SELECT COUNT(*) total FROM pickpic_account
+	</select>
+	
+	
+	<!-- 필터 관리 -->
+	<!-- 전체 필터 반환 -->
+	<select id="adminOneFilter" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT f.*, fs.totalfilter FROM (
+			SELECT f_id, count(f_id) totalFilter FROM filter_storage GROUP BY f_id) fs 
+		FULL OUTER JOIN filter f ON f.f_id=fs.f_id WHERE f_name=#{f_name} ORDER BY f_index DESC
+	</select>
+	<!-- start부터 end까지 필터 반환 -->
+	<select id="adminSelectFilter" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT * FROM(
+			SELECT f.*, fs.totalfilter, ROWNUM r FROM (
+				SELECT f_id, count(f_id) totalfilter FROM filter_storage GROUP BY f_id) fs 
+			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY f_index DESC) 
+		WHERE ROWNUM BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 필터 가격 변경 -->
+	<update id="adminFilterChange" parameterType="java.util.Map">
+		UPDATE filter SET f_change=#{f_change}, f_change_date=SYSDATE, f_reason=#{f_reason} WHERE f_name=#{f_name}
+	</update>
+	<!-- 판매 상태 변경 -->
+	<update id="adminFilterSaleUpdate" parameterType="java.util.Map">
+		UPDATE filter SET f_sale_yn=#{f_sale_yn} WHERE f_name=#{f_name}
+	</update>
+	<!-- 이벤트 상태 변경 -->
+	<update id="adminFilterEventUpdate" parameterType="java.util.Map">
+		UPDATE filter SET f_event_yn=#{f_event_yn} WHERE f_name=#{f_name}
+	</update>
+	
+	<!-- 관리자 픽로드 관리자게시판 삭제 부분입니다. adminPickAccountRoadDelete -->
+	<delete id="adminPickAccountRoadDelete2" parameterType="java.util.Map">
+		DELETE pickroad_place WHERE prb_id = (SELECT prb.prb_id FROM pickroad_board prb JOIN pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prb_index = #{prb_index } AND ROWNUM = 1)
+	</delete>
+	<delete id="adminPickAccountRoadDelete" parameterType="java.util.Map">
+		DELETE pickroad_board WHERE prb_index =#{prb_index }
+	</delete>
+</mapper>

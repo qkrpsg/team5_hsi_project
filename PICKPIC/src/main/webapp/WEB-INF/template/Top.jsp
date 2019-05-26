@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>"
 	rel="stylesheet">
+	<link rel="stylesheet" href="<c:url value='/css/font-awesome.css'/>">
 <link href="<c:url value='/css/Top.css'/>" rel="stylesheet">
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/js/mostrar_nav.js'/>"></script>
@@ -14,7 +15,7 @@
 	<div class="menu_all_wrap_position">
 		<div class="main_menu_wrap">
 			<div class="logo col-md-2">
-				<a href="<c:url value='/admin/home.pic'/>">
+				<a href="<c:url value='/'/>">
 					<img id="top_logo" src="<c:url value='/resources/images/pickpic_logo_white.png'/>" />
 				</a>
 			</div>
@@ -24,23 +25,28 @@
 					<nav class="menu_wrap col-md-9">
 						<ul>
 							<li class="col-md-2"></li>
-							<li class="col-md-3"><a
-								href="<c:url value='/user/home.pic'/>">피크픽 스토리</a></li>
-							<li class="col-md-3"><a href="<c:url value='/user/map.pic'/>">피크픽 프렌즈</a></li>
-							<li class="col-md-3"><a href="#">고객센터</a></li>
+							<li class="col-md-3"><a href="<c:url value='/'/>">피크픽 스토리</a></li>
+							<li class="col-md-3"><a href="#">피크픽 프렌즈</a></li>
+							<li class="col-md-3"><a href="<c:url value='/friends/notice.pic?noInsert=hi'/>">고객센터</a></li>
 							<li class="col-md-1"></li>
 						</ul>
 					</nav>
 					<div class="login_wrap col-md-3">
 						<ul>
+						
+						
 							<sec:authorize access="isAnonymous()">
 								<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a></li>
 								<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">
-								<li><a href="<c:url value='/user/myPage.pic'/>"><sec:authentication property="principal.username" /> 님 <span></span></a></li>
+								<c:if test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username eq 'admin' }" var="isAdmin">
+									<li><a href="<c:url value='/admin/home.pic'/>"> 관리자 <span></span></a></li>
+								</c:if>
+								<c:if test="${not isAdmin }">
+									<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppa_nickname }님 <span></span></a></li>
+								</c:if>
 								<li><a href="javascript:logout()">Logout</a></li>
-								<%-- <c:url value='/user/logout.pic'/> --%>
 							</sec:authorize>
 						</ul>
 					</div>
@@ -54,17 +60,19 @@
 				<ul class="menu">
 					<li class="l_menu_li"><a href="#">피크픽 스토리</a>
 						<ul class="m_sub">
-							<li><a href="<c:url value='/story/back.pic'/> "> 비전</a></li>
+							<li><a href="<c:url value='/'/>#sec_4 "> 비전</a></li>
 							<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
-							<li><a href="<c:url value='/story/tech.pic'/>">사용기술</a></li>
-							<li><a href="<c:url value='/story/appDown.pic'/>">다운로드</a></li>
+							<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
+							<li><a href="<c:url value='/'/>#sec_5 ">다운로드</a></li>
 						</ul></li>
+
+
 
 					<li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
+							<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
 							<li><a href="<c:url value='/friends/filter.pic'/>">필터</a></li>
-							<li><a href="<c:url value='/friends/route.pic'/> ">픽로드</a></li>
+							<li><a href="<c:url value='/friends/route.pic?noInsert=1'/> ">픽로드</a></li>
 							<li><a href="<c:url value='/friends/albumDown.pic'/>">앨범다운</a></li>
 						</ul></li>
 
@@ -97,18 +105,22 @@
 				<div class="col-md-3"></div>
 				<div class="nav_wrap col-md-2">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='/story/vision.pic'/> "> 비전</a></li>
+						<li><a href="<c:url value='/'/>#sec_4 "> 비전</a></li>
 						<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
-						<li><a href="<c:url value='/story/tech.pic'/>">사용기술</a></li>
-						<li><a href="<c:url value='/story/appDown.pic'/> ">다운로드</a></li>
+						<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
+						<li><a href="<c:url value='/'/>#sec_5" >다운로드</a></li>
+						<li><a href="<c:url value='/test/place_create.pic'/>">테스트 1</a></li>
+							<li><a href="<c:url value='/test/place_list.pic'/>">테스트 2</a></li>
+							<li><a href="<c:url value='/test/place_view.pic'/>">테스트 3</a></li>
+							<li><a href="<c:url value='/'/>">테스트 4</a></li>
 					</ul>
 				</div>
 
 				<div class="nav_wrap col-md-1">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='/friends/place.pic'/>">픽플레이스</a></li>
+						<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
-						<li><a href="<c:url value='/friends/route.pic'/>">픽로드</a></li>
+						<li><a href="<c:url value='/friends/route.pic?noInsert=1'/>">픽로드</a></li>
 						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>
 					</ul>
 				</div>
@@ -148,7 +160,6 @@
 </script>
 <!-- action 은 스프링 씨큐리티의 디폴트 로그아웃 URL지정(/logout) -->
 <form id="logoutForm" method="post" action="<c:url value='/logout'/>">
-	<input type="hidden" name="${_csrf.parameterName}"
-		value="${_csrf.token}" />
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
 

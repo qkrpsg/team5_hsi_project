@@ -6,39 +6,40 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 	<!-- 보안과 관련된 설정파일 -->
 	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/friends/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		<!-- 보안 -->
+		<security:csrf disabled="true" />
 		
-		<security:intercept-url pattern="/**" access="permitAll" />
-		
-		<security:intercept-url pattern="/pickpic/**" access="hasRole('USER')" />
-		
-		
+		<!-- 로그인 -->
 		<security:form-login
-			login-page="/user/Login.pic" default-target-url="/user/Login.pic"
-			always-use-default-target="true"
-			authentication-failure-url="/user/Login.pic?error"
-			login-processing-url="/user/loginProcess.pic"
-			username-parameter="ppu_id" password-parameter="ppu_password" /><!-- 아마 여기  ppu_id 로 바꿔야할듯 -->
-		<security:csrf disabled="false" />
+			login-page="/user/Login.pic"
+			username-parameter="ppa_email" 
+			password-parameter="ppa_password" 
+			login-processing-url="/user/LoginProcess.pic"
+			default-target-url="/user/LoginProcess.pic"
+			authentication-failure-url="/user/LoginProcessF.pic"/>
+
+		<!-- 로그아웃 -->
+		<security:logout 
+			logout-url="/logout" 
+			logout-success-url="/"
+			invalidate-session="true" />
 		
-		
-		<security:session-management invalid-session-url="/user/Login.pic">
+		<!-- 동일 로그인 한개만 가능 -->
+		<security:session-management 
+			invalid-session-url="/">
 			<security:concurrency-control max-sessions="1" expired-url="/user/Login.pic" />
 		</security:session-management>
-		
 	</security:http>
-<!--  
-	  users-by-username-query="      select O.id as username, pwd as password, enabled from onemember O JOIN AUTH_SECURITY A ON O.id=A.id where O.id = ?"
-	  authorities-by-username-query="select O.id as username, authority AS authority  from onemember O JOIN AUTH_SECURITY A ON O.id=A.id where O.id = ?"
-	SELECT COUNT(*) FROM PICKPIC_USER WHERE PPU_ID=#{ppu_id} AND PPU_PASSWORD=#{ppu_password}
--->
+	
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="datasource" role-prefix=""
-				users-by-username-query="select O.ppu_id as username, ppu_password as password, enabled from pickpic_user O JOIN AUTH_SECURITY A ON O.ppu_id=A.ppu_id where O.ppu_id = ?"
-				authorities-by-username-query="select O.ppu_id as username, authority AS authority  from pickpic_user O JOIN AUTH_SECURITY A ON O.ppu_id=A.ppu_id where O.ppu_id = ?"
-				
+			<security:jdbc-user-service 
+				data-source-ref="datasource" 
+				role-prefix=""
+	            users-by-username-query="select O.ppa_email as username, ppa_password as password, as_enabled_flag as enabled from pickpic_account O JOIN AUTH_SECURITY A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
+	            authorities-by-username-query="select O.ppa_email as username, as_class as authority from pickpic_account O JOIN AUTH_SECURITY A ON O.ppa_id=A.ppa_id where O.ppa_email = ?"
 				/>
 		</security:authentication-provider>
 	</security:authentication-manager>
-
 </beans>

@@ -1,0 +1,313 @@
+@font-face{
+	font-family: A옛날사진관2;
+	src: url("/pickpic/css/fonts/A옛날사진관2.TTF");
+}
+
+@font-face{
+	font-family: NANUMSQUAREROUNDB;
+	src: url("/pickpic/css/fonts/NANUMSQUAREROUNDB.TTF");
+}
+
+*{	margin:0;
+	padding:0;
+	border:0;
+	box-sizing: border-box;
+}
+img{display: block;}
+a{
+	text-decoration: none;
+	
+}
+
+.header_top{
+	background: white !important;
+	opacity:1;
+	background:white;
+	border-bottom:1px #ccc solid;
+}
+.menu_wrap a{
+	color:#5a5a5a !important;
+	font-weight: normal !important;
+	font-size:1.1em !important;
+}
+.ul_submenu li a{
+	color:#5a5a5a !important;
+	font-weight: normal !important;
+	font-size:.9em !important;
+}
+
+.login_wrap ul li a{
+	color:#00AEEA !important;	
+}
+.login_wrap ul li a span{
+	background:#00AEEA !important;
+}
+.nav_wrap_top_position{
+	opacity:1;
+	background:white;
+	border-bottom:1px #ccc solid;
+}
+/* 메인 페이지 이외에 페이지에서 넣어야 하는 s속성 */
+body{font-family: A옛날사진관2;}
+.l_all_wrap{
+	font-family: NANUMSQUAREROUNDB;
+}
+.top_wrap{overflow: hidden;}
+
+.left_wrap{width:50%;float:left;padding:10px;}
+
+.right_wrap{width:50%;float:left;}
+
+.left_wrap p:nth-child(2){margin-top:30px;margin-bottom:30px;}
+
+
+/* 선택하는 부분 장소 필터 루트  베스트픽 새로운 필터 */
+.l_selector{
+	overflow: hidden;
+	margin-bottom:30px;
+}
+.l_selector li{
+	float: left;
+	width:50px;
+	cursor: pointer;
+}
+
+.l_selector2{
+	overflow: hidden;padding-left:10px;
+}
+.l_selector2 li{
+	float: left;
+	width:100px;
+	cursor: pointer;
+}
+
+
+
+
+/* 인풋 부분 */
+.l_search input{
+	height: 45px;
+	margin-top:10px;
+	padding:5px;
+	border: 1px #eee solid;
+	border-radius: 5px;
+}
+.l_search input:first-child{
+		width:90%;
+		display: block;
+}
+.l_search input:nth-child(2) {
+	clear: both;
+	width:60%;
+}
+.l_search button{
+	height:45px;
+	width:30%;
+}
+
+
+/* 사진 */
+.img_wrap{
+	padding: 5px;
+	position: relative;
+	overflow: hidden;
+}
+.img_wrap img{
+	width:100%;
+	cursor: pointer;
+}
+
+.img_wrap2{
+	padding: 5px;
+	position: relative;
+	overflow: hidden;
+}
+.img_wrap2 img{
+	width:100%;
+	cursor: pointer;
+}
+.hi{
+	width:100px;height:100px;
+	background:white;
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:1;
+	text-align: center;
+	line-height: 100px;
+	display: none;
+	border-radius: 25px;
+}
+
+
+
+
+/* 사진 마우스 오버시 보이는 텍스트 */
+.innerText{
+	position: absolute;
+	opacity: .6;
+	width:100%; 
+	height: 100%;
+	background-color: black;
+	
+	top:5px;
+	left:5px;
+	
+	cursor: pointer;
+	display:none;
+}
+.innerText p{
+	
+	word-wrap:break-word;
+	color: white;
+	
+}
+.innerText p:first-child{
+	
+}
+.Text_title{
+	margin-top:300px;
+	
+}
+
+
+/* 데이터 필터 클릭 부분 */
+.con{
+	margin:0 auto;
+	margin-top:50px;
+	
+}
+.button-group{
+	width:60%;
+	margin:0 auto;
+
+}
+.button-group button{
+	width:10%;
+	padding:0;
+	height: 40px;
+	text-align: center;
+}
+
+
+.btn a{
+	color:white;
+}
+
+/* 
+body:before{
+  content:'';
+  height:100%;
+  display:inline-block;
+  vertical-align:middle;
+}
+button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+} */
+
+/* bottom_fileter */
+
+
+
+
+/* 미디어쿼리 시작 */
+@media screen and (max-width:1600px) and (min-width:1401px){
+	/* .Text_title{
+	margin-top:200px;
+	
+	} */
+	
+}
+@media screen and (max-width:1400px) and (min-width:1201px){
+	
+	/* .Text_title{
+	margin-top:200px;
+	
+	} */
+	
+}
+@media screen and (max-width:1200px) and (min-width:701px){
+	.element-item{
+		width:33%; 
+	}
+	/* .Text_title{
+	margin-top:200px;
+	
+	} */
+}
+
+@media screen and (max-width:800px) and (min-width:0px){
+/* 	.Text_title{
+	margin-top:100px;
+	
+	} */
+}
+
+
+@media screen and (max-width:700px) and (min-width:0px){
+	.button-group{
+		width:100%;
+	}
+	.element-item{
+		width:100%; 
+	}
+	.button-group ul{
+		margin-left:20px;
+	
+	}
+	/* .Text_title{
+	margin-top:450px;
+	
+	} */
+	
+}
+@media screen and (max-width:400px) and (min-width:0px){
+	/* .Text_title{
+	margin-top:250px;
+	
+	} */
+}
+
+@media screen and (max-width:1200px) and (min-width:0px){
+	.right_wrap{width:100%;margin-top:50px;}
+	.l_selector2{margin-bottom:20px;}/* 베스트 필터 새로운 필터 */
+	.left_wrap{width:100%;float:left;padding:10px;padding-left:50px;}
+	
+	.l_thumbnail-wrapper{width:100%;clear: both;}
+	.l_place_left_wrap{width:100%;}
+	
+}
+

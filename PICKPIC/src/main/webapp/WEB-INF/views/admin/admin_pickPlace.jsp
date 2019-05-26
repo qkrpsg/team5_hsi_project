@@ -1,5 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+<link href="<c:url value='/css/Filter2.css'/>" rel="stylesheet">
+<script src="<c:url value='/js/Filter.js'/>"></script>
+
+<style>
+	body {
+	font-family: '';
+	}
+</style>
 
 <div class="content-wrapper">
 	<section class="content-header">
@@ -8,7 +16,7 @@
 
 	<section class="content container-fluid" style="overflow: hidden">
 		<!-- 검색용 UI -->
-		<div class="row">
+		<div class="row" style="padding-right:30px">
 			<div class="pull-right table-responsive">
 				<form class="form-inline" method="post" action="<c:url value='#'/>">
 					<div class="form-group">
@@ -25,133 +33,34 @@
 				</form>
 			</div>
 		</div>
-		<!-- 실제내용 시작 -->
-		<div class="box-body_wrap col-md-6">
-			<div class="box-body">
-				<img class="img-responsive pad" src="<c:url value='/resources/images/13.jpg'/>" alt="Photo">
-				<p></p>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa fa-share"> 게시물 보기</i>
-				</button>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa  fa-trash-o"> 게시물 삭제</i>
-				</button>
-			</div>
-			<div class="box-footer box-comments">
-				<div class="box-comment">
-					<div class="user-block">
-						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-						<span class="username"> 
-							<a href="#">사용자1</a>
-						</span> 
-						<span class="description">2019/03/24 17:33</span>
-					</div>
-					<p>
-						내용1
-					</p>
-				</div>
-			</div>
-		</div>
-		<!-- 실제내용 끝 -->
-
-		<div class="box-body_wrap col-md-6">
-			<div class="box-body">
-				<img class="img-responsive pad" src="<c:url value='/resources/images/5.jpg'/>" alt="Photo">
-				<p></p>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa fa-share"> 게시물 보기</i>
-				</button>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa  fa-trash-o"> 게시물 삭제</i>
-				</button>
-			</div>
-			<div class="box-footer box-comments">
-				<div class="box-comment">
-					<div class="user-block">
-						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-						<span class="username"> 
-							<a href="#">사용자2</a>
-						</span> 
-						<span class="description">2019/04/10 15:03</span>
-					</div>
-					<p>
-						내용2
-					</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="box-body_wrap col-md-6">
-			<div class="box-body">
-				<img class="img-responsive pad" src="<c:url value='/resources/images/9.jpg'/>" alt="Photo">
-				<p></p>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa fa-share"> 게시물 보기</i>
-				</button>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa  fa-trash-o"> 게시물 삭제</i>
-				</button>
-			</div>
-			<div class="box-footer box-comments">
-				<div class="box-comment">
-					<div class="user-block">
-						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-						<span class="username"> 
-							<a href="#">사용자3</a>
-						</span> 
-						<span class="description">2019/04/20 21:47</span>
-					</div>
-					<p>
-						내용3
-					</p>
-				</div>
-			</div>
-		</div>
 		
-		<div class="box-body_wrap col-md-6">
-			<div class="box-body">
-				<img class="img-responsive pad" src="<c:url value='/resources/images/12.jpg'/>" alt="Photo">
-				<p></p>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa fa-share"> 게시물 보기</i>
-				</button>
-				<button type="button" class="btn btn-default btn-xs">
-					<i class="fa  fa-trash-o"> 게시물 삭제</i>
-				</button>
-			</div>
-			<div class="box-footer box-comments">
-				<div class="box-comment">
-					<div class="user-block">
-						<img class="img-circle" src="<c:url value='/resources/admin_images/user_icon.png'/>" alt="User Image">
-						<span class="username"> 
-							<a href="#">사용자4</a>
-						</span> 
-						<span class="description">2019/04/25 20:00</span>
+		<!-- 실제내용 시작 -->
+		<section class="pricing-tables">
+			<c:forEach var="item" items="${place }" varStatus="loop">
+				<div class="box-body_wrap col-md-3 col-sm-6">
+					<div class="box-body element-item img_wrap2">
+						<img class="img-responsive pp-image" src="<c:url value='${item.ppb_image_path }'/>" alt="Photo">
+						<p></p>
+						<button type="button" class="btn btn-default btn-xs pp-view">
+							<i class="fa fa-share"> 게시물 보기</i>
+						</button>
+						<button type="button" class="btn btn-default btn-xs pp-delete">
+							<i class="fa fa-trash-o"> 게시물 삭제</i>
+						</button>
 					</div>
-					<p>
-						내용4
-					</p>
+					<div class="box-footer box-comments">
+						<div class="box-comment">
+							<div class="user-block">
+								<img class="img-circle pp-profile" src='${item.ppa_profile_path }' alt="User Image">
+								<span class="username pp-name">${item.ppa_nickname }</span> 
+								<span class="description pp-post">${item.ppb_post_date }</span>
+							</div>
+							<p class="pp-content">${item.ppb_content }</p>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-
-		<div style="clear: both;">
-			<!-- 페이징 -->
-<!-- 			<div class="row" style="margin-top: 30px; margin-bottom: 30px;"> -->
-<!-- 				페이지네이션 가운데 배치:text-center -->
-<%-- 				<div class="col-md-12 text-center">${pagingString}</div> --%>
-<!-- 			</div> -->
-			<div class="row">
-				<div class="clearfix text-center">
-	              <ul class="pagination pagination-sm">
-	                <li><a href="#">&laquo;</a></li>
-	                <li><a href="#">1</a></li>
-	                <li><a href="#">2</a></li>
-	                <li><a href="#">3</a></li>
-	                <li><a href="#">&raquo;</a></li>
-	              </ul>
-	            </div>
-			</div>
-		</div>
+			</c:forEach>
+		</section>
+		<!-- 실제내용 끝 -->
 	</section>
 </div>

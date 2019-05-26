@@ -1,148 +1,159 @@
 package com.kosmo.pickpic.service.web;
 
+import java.io.PrintWriter;
+import java.security.Principal;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.kosmo.pickpic.service.impl.PickpicUserServiceImpl;
+import com.kosmo.pickpic.service.PickpicAccountDTO;
+import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 
 
 @Controller
 public class UserController {
 	//서비스 주입
-	@Resource(name="userService")
-	private PickpicUserServiceImpl userService;
+	@Resource(name="accountService")
+	private PickpicAccountServiceImpl accountService;
+	
 	
 	//로그인
 	@RequestMapping("/user/Login.pic")
-	public String login(HttpSession session,Model model) throws Exception{
+	public String login() throws Exception{
 		return "login/Login.tiles";
 	}//login
-	
-	//로그인 처리 로직
-	@RequestMapping("/user/loginProcess.pic")
-	public String loginProcess(HttpSession session,@RequestParam Map map,Model model) throws Exception{
-		boolean flag = userService.isMember(map);
-		if(flag) {
-			session.setAttribute("ppu_id", map.get("ppu_id"));
-			//return "home.tiles";
-			return "login/Login.tiles";
-		}
-		else{
-			model.addAttribute("errorMsg", "회원 정보가 일치하지 않습니다");
-			//회원 정보가 일치하지 않는경우 로그인페이지로 재이동
-			return "login/Login.tiles";
-		}//비회원이거나 아이디가 틀린경우
-		//로그인 성공시 메인화면으로 이동
-		
-		
-	}//loginProcess
-	
 
+	//로그인 성공시 프로세스
+	@RequestMapping("/user/LoginProcess.pic")
+	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal) throws Exception{
+		//시큐리티를 통하여 저장된 이메일값 map에 저장
+		map.put("ppa_email", principal.getName());
+		//로그인 정보 저장
+		accountService.loginHistoryInsert(map);
+		//아이디와 닉네임을 세션에 저장
+		PickpicAccountDTO user = accountService.oneUser(map);
+		session.setAttribute("ppa_id", user.getPpa_id());
+		session.setAttribute("ppa_email", user.getPpa_email());
+		session.setAttribute("ppa_nickname", user.getPpa_nickname());
+		
+		return "home.tiles";
+	}
+	
+	//로그인 실패시 프로세스
+	@RequestMapping("/user/LoginProcessF.pic")
+    public void loginProcessF(HttpServletResponse response, HttpSession session) throws Exception{
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        Exception error = (Exception) session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+    	System.out.println(error.getMessage());
+        if (error != null) {
+        	if(error.getMessage().equals("User is disabled"))
+            	out.println("<script>alert('이메일 인증을 해주세요.'); history.go(-1);</script>");
+        	else
+        		out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+        }
+        
+        out.flush();
+        out.close();
+    }
+	
+	//이메일 중복 체크
 	@ResponseBody
-	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
-	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
+	@RequestMapping(value="/validator/signUpEmailCheck.do",produces="text/html; charset=UTF-8")
+	public String emailCheck(@RequestParam Map map) throws Exception{
 										//맵에는 아이디 값만 담겨있다
-		
-		
-		
-		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
-		System.out.println(flag);
-		
+//		System.out.println(map.get("ppa_email"));
+		boolean flag = accountService.isEmail(map);//이걸 좀 바꿔줘야 한다
+//		System.out.println(flag);
 		
 		JSONObject json=new JSONObject();
-		if(map.get("ppu_id") == "") {
-			json.put("error", "아이디를 입력해주세요");
+		if(map.get("ppa_email") == "") {
+			json.put("error", "이메일를 입력해주세요");
 			return json.toJSONString();
 		}
 		if(flag) {
-			json.put("error", "아이디가 중복 됩니다.");
+			json.put("error", "사용 할 수 없는 이메일 입니다.");
 			return json.toJSONString();
 		}
-		json.put("error", "아이디 사용가능");
+		json.put("error", "사용 가능한 이메일 입니다.");
 		return json.toJSONString();
-	}
-//	@ResponseBody
-//	@RequestMapping(value="/validator/id_check.do",produces="text/html; charset=UTF-8")
-//	public String check(@RequestParam Map map,Model model,Map map2) throws Exception{
-//										//맵에는 아이디 값만 담겨있다
-//		
-//		System.out.println("::::::::::"+map.get("ppu_id"));
-//		
-//		boolean flag = userService.isMember2(map);//이걸 좀 바꿔줘야 한다
-//		System.out.println(flag);
-//		JSONObject json=new JSONObject();
-//		if(flag) {
-//			json.put("flag", flag ? "Y":"N");
-//			return json.toJSONString();
-//		}
-//		json.put("error", "아이디가 중복 됩니다.");
-//		//model.addAttribute("error","아이디가 중복 됩니다.");
-//		map2.put("error","아이디가 중복 됩니다.");
-//		System.out.println(map2.get("error"));
-//		return json.toJSONString();
-//	}
+	}//emailCheck
 	
-	
-	//home
-	@RequestMapping("/user/home.pic")
-	public String home() throws Exception{
-		
-		return "/home.tiles"; 
-	}//login
-	//회원가입 
+	//회원가입 페이지 이동
 	@RequestMapping("/user/sign_up.pic")
 	public String sign_up() throws Exception{
 		
 		return "login/Sign_Up.tiles";
 	}//login
-	
 
 	//회원가입 프로세스   
 	@RequestMapping("/user/sign_process.pic")
-	public String sign_up_process(@RequestParam Map map) throws Exception{
-		userService.insert(map);
-		/*
-		7 먼저 회원가입 축하 메시지를 띄우고 로그인 페이지로 보냅시다!
-		*/
-		return "login/Login.tiles";
-	}
-	
-	@ResponseBody
-	@RequestMapping("/va/id.do")
-	public String check2(@RequestParam Map map,Model model) throws Exception{
-										//맵에는 아이디 값만 담겨있다
-		
-		
-		System.out.println("코치코치");
-		JSONObject json=new JSONObject();
-		//JSON객체의 put("키값","값")메소드로 저장하면
-		//{"키값":"값"} JSON형태의 데이타로 저장됨.
-		json.put("flag", "Y");
-		return json.toJSONString();
-	}
-	
-	//로그아웃 프로세스  
-	@RequestMapping("/user/logout.pic")
-	public String logoutProcess(HttpSession session,@RequestParam Map map) throws Exception{
-		session.invalidate();
-		
+	public String sign_up_process(@RequestParam Map map, HttpServletResponse response) throws Exception{
+		if(accountService.accountInsert(map) == 1 ? true : false) {
+			if(accountService.securityInsert(map) == 1 ? true : false) {
+				accountService.loginHistoryInsert(map);
+				
+//				response.setContentType("text/html; charset=UTF-8");
+//		        PrintWriter out = response.getWriter();
+//		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
+//		        out.flush();
+//		        out.close();
+//				return "/home";
+			}//as테이블 insert 성공시 
+		}//ppa테이블 insert 성공시
 		return "home.tiles";
-	}//logoutProcess
+	}//sign_up_process
+	
+	//이메일 인증 프로세스
+	@RequestMapping("/user/joinConfirm.pic")
+	public String emailConfirm(@RequestParam Map map, HttpServletResponse response) throws Exception{
+		map.put("as_enabled_flag", "1");
+		accountService.securityUpdate(map);
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+		
+		if(accountService.isAuthAbled(map)) {
+	        out.println("<script>alert('이메일 인증이 완료되었습니다!'); location.href='http://localhost:8080/pickpic/';</script>");
+	        out.flush();
+	        out.close();
+			return "/home";
+		}
+        out.println("<script>alert('이메일 인증에 실패하였습니다.'); location.href='http://localhost:8080/pickpic/';</script>");
+        out.flush();
+        out.close();
+		
+		return "/home";
+	}
+	
+//	//로그아웃 프로세스  
+//	@RequestMapping("/user/logout.pic")
+//	public String logoutProcess(HttpSession session, Principal principal) throws Exception{
+//		session.invalidate();
+//		
+//		
+//		return "home.tiles";
+//	}//logoutProcess
 	
 	
-	//내정보
+	//마이페이지
 	@RequestMapping("/user/myPage.pic")
 	public String myPage() throws Exception{
+		
 		return "login/MyPage.tiles";
 	}//myPage
 	

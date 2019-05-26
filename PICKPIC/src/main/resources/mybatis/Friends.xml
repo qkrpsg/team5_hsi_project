@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.Friends">
+
+	 <!--픽로드 게시판 등록(인설트) -->
+	<insert id="PickroadBoardInsert" parameterType="java.util.Map">
+		INSERT INTO pickroad_board(prb_id,prb_title,prb_content,prb_start_date,prb_end_date,prb_index,ppa_id) 
+		VALUES(func_generator,#{prb_title},#{prb_content},#{prb_start_date},#{prb_end_date},seq_prb_index.NEXTVAL,(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email})) 
+	</insert> 
+	<!-- 픽로드 이정표 등록(인설트)  (SELECT prb_id FROM pickroad_board WHERE ppa_email = #{ppa_email})-->
+	<insert id="PickRoadPlaceInsert" parameterType="java.util.Map">
+		INSERT INTO pickroad_place
+		VALUES(func_generator, #{prp_order},#{prp_contentid},#{prp_title},#{prp_image_path},
+		(SELECT prb_id FROM (SELECT * FROM pickroad_board ORDER BY prb_index DESC) WHERE ROWNUM = 1))
+	</insert> 
+	<!-- user_end 에 뿌려줄  select 문 구현하기    PickRoadBoardSelectAll   prb.*,prp.prp_image_path-->  
+	<select id="PickRoadBoardSelectAll" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT prb.*,prp_image_path FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prp_order = 1 ORDER BY prb_index DESC
+	</select>
+	<!-- view 페이지 상세보기  -->
+	<select id="PickRoadBoardSelectOne" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT prb.*,prp.prp_image_path,prp_title,prp_order FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prb_index = #{prb_index } AND prp.prb_id = #{prb_id } ORDER BY prb_index DESC
+	</select>
+	<!-- view 페이지 상세보기  -->
+	<select id="PickRoadBoardSelectOne2" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM pickroad_board WHERE prb_index = #{prb_index } 
+	</select>
+	<!-- 픽로드 게시판에  조회수를 업데이트 할 쿼리문! --> 
+	<update id="PickRoadBoardUpdate" parameterType="java.util.Map">
+		UPDATE pickroad_board SET prb_view= prb_view +1  WHERE prb_index=#{prb_index }
+	</update>
+	
+	<!-- 필터보관함에 필터 저장 -->
+	<insert id="FilterStorageInsert" parameterType="java.util.Map">
+		INSERT INTO filter_storage VALUES(fs_id,fs_index,f_id,ppa_id)
+	</insert> 
+	
+	
+	<!-- 앨범다운 필터보관함 정보 불러오기 -->
+	<select id="AlbumDownFilterName" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM filter_storage fs 
+		JOIN filter f ON f.f_id=fs.f_id 
+		JOIN pickpic_account ac ON ac.ppa_id=fs.ppa_id 
+		WHERE ac.ppa_email=#{ppa_email }
+	</select>
+	
+	<!-- 필터 테이블 정보 불러오기 -->
+	<select id="SelectFilter_buy" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT * FROM filter WHERE f_name = #{f_name }
+	</select>
+	
+	<!-- 사용자 정보 불러오기 -->
+	<select id="SelectFilter_buy2" parameterType="java.util.Map" resultType="FilterDTO">
+		SELECT ppa_email,ppa_nickname,ppa_index FROM pickpic_account WHERE ppa_email = #{ppa_email }
+	</select>
+	
+	<insert id="addPayment" parameterType="java.util.Map" >
+	INSERT INTO payment VALUES(func_generator, (SELECT f_change FROM filter WHERE f_id=#{f_id}), #{p_method}, sysdate, seq_p_index.nextval, #{f_id},(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
+	</insert>
+	<insert id="filter_storage" parameterType="java.util.Map" >
+	INSERT INTO filter_storage VALUES(func_generator,seq_fs_index.nextval,#{f_id},(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
+	</insert>
+	
+	
+	<!-- 픽플레이스 인설트 문 -->
+	<insert id="ppbinsert" parameterType="java.util.Map" >
+	INSERT INTO pickplace_board VALUES(func_generator, #{ppb_title},#{ppb_content},sysdate,default,default,#{ppb_image_path},seq_ppb_index.nextval,(SELECT f_id FROM filter WHERE f_name = #{f_name}),(SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}),#{ppb_latitude},#{ppb_longitude},#{ppb_addr1},#{ppb_addr2})
+	</insert>
+	<!-- 픽플레이스 셀렉트 문  ppbselect   다음부턴 첫 글자 대문자로 하겠습니다 ㅠ-->
+	<select id="ppbselect" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT ppb.*,f_name FROM pickplace_board ppb JOIN filter fil ON ppb.f_id = fil.f_id ORDER BY ppb_index desc
+	</select>
+	
+	<!-- FilterList 필터 리스트 뽑아오기 -->
+	<select id="FilterList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM filter
+	</select>
+	
+	<!-- BEST pickPlace -->
+	<select id="ppbBestList" resultType="PickPlaceBoardDTO">
+		SELECT * FROM (
+			SELECT ppb.*, rownum FROM(
+				SELECT ppbd.*, f.f_name FROM pickplace_board ppbd JOIN filter f ON ppbd.f_id=f.f_id ORDER BY ppb_pick DESC
+			) ppb
+		) WHERE rownum BETWEEN 1 AND 6
+	</select>
+</mapper>
