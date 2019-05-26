@@ -54,11 +54,6 @@ public class UploadController {
 	@ResponseBody
 	@RequestMapping(value = "/user/uploadImage.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String uploadImage (@RequestParam Map map, HttpServletRequest request,Principal principal) throws Exception{
-
-		
-		 
-		
-		
 		String strImg = map.get("strImg").toString();
 		
 		//폴더 경로 지정
@@ -155,6 +150,9 @@ public class UploadController {
 		
 		//3. 마이페이지 
 		//사용자 프로필(ppa_profile_image), 픽플레이스 이미지(ppb_image_path)
+		
+		//4. 관리자페이지
+		
 		
 		
 		

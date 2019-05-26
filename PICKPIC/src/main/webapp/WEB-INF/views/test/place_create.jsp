@@ -576,7 +576,6 @@ $.ajax({
 						ctx.drawImage(loadImg, 0, 0, loadImg.width, loadImg.height);
 						canvas.removeAttribute("data-caman-id");
 					};
-					
 				});
 				
 // 				location.href = "<c:url value='' />";
