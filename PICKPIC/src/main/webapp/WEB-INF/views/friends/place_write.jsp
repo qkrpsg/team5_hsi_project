@@ -30,7 +30,7 @@
 	<div class="inner">
 		<form action="">
 			<div class="image-holder">
-				<canvas style="width:100%;height:auto;background-color:#ececec;" id="canvas"></canvas>
+				<canvas style="width:100%;height:auto;background-color:#ececec;" id="canvas" data-caman-hidpi-disabled="true"></canvas>
 				<%-- <img
 					src="<c:url value='/resources/images/filter/filter_default.jpg'/>"
 					alt=""> --%>
