@@ -125,13 +125,13 @@
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
-      <div class=" card-a cssco card_hover" id="none"
+      <%-- <div class=" card-a cssco card_hover" id="none"
          onclick="filterOn(this)">
          <img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
          <div class="ovrly"></div>
          <span class="name_text"> NONE </span>
       </div>
-
+ --%>
       <c:forEach var="item" items="${list_filter }"  varStatus="loop">
          <c:set var="str_f_name" value="${item.F_NAME }"/>
          <div class=" card-a cssco card_hover ${item.F_NAME}" id="${item.F_NAME}"
@@ -394,7 +394,8 @@
 
 	/* 필터 선택시 이미지에 필터 적용*/
 	
-	var filterNameAfter;
+	/* 수정중 */
+/* 	var filterNameAfter;
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
 		var toggle=false;
@@ -426,7 +427,7 @@
 					Caman("#" + current_can, img, function()  {this.vintage().render();});
 					$('#canvas_' + id).attr('flag', 'true');
 				}	
-// 				toggle = !toggle
+ 				toggle = !toggle
 				console.log("v2="+toggle);
 				break;
 			case 'lomo':
@@ -459,7 +460,7 @@
 				console.log("c2="+toggle);
 				break;
 			case 'sincity':
-				/* 안됨 */
+		
 				console.log("s="+toggle);
 				if(toggle){
 					console.log(toggle);
@@ -475,7 +476,7 @@
 				console.log("s2="+toggle);
 				break;
 			case 'crossprocess':
-				/* 안됨 */
+		
 				console.log("c="+toggle);
 				if($('#canvas_' + id).attr('flag') == 'true'){
 					console.log(toggle);
@@ -521,7 +522,7 @@
 				console.log("n2="+toggle);
 				break;
 			case 'hermajesty':
-				/* 안됨 */
+			
 				console.log("h="+toggle);
 				if($('#canvas_' + id).attr('flag') == 'true'){
 					console.log(toggle);
@@ -548,10 +549,10 @@
 			filterNameAfter = $(item).attr("id");
 		});
 	}
-	
+	 */
 	
 	/* 필터 선택시 이미지에 필터 적용*/
-	/* function filterOn(item) {
+	 function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
 			var current_can = $('#canvas_' + id).attr('id');
@@ -573,12 +574,12 @@
 					this.clarity().render();
 				});
 				break;
-			case 'sinCity':
+			case 'sincity':
 				Caman("#" + current_can, img, function() {
 					this.sinCity().render();
 				});
 				break;
-			case 'crossProcess':
+			case 'crossprocess':
 				Caman("#" + current_can, img, function() {
 					this.crossProcess().render();
 				});
@@ -593,9 +594,59 @@
 					this.nostalgia().render();
 				});
 				break;
-			case 'herMajesty':
+			case 'hermajesty':
 				Caman("#" + current_can, img, function() {
 					this.herMajesty().render();
+				});
+				break;
+			case 'orangepeel':
+				Caman("#" + current_can, img, function() {
+					this.orangePeel().render();
+				});
+				break;
+			case 'oldboot':
+				Caman("#" + current_can, img, function() {
+					this.oldBoot().render();
+				});
+				break;
+			case 'love':
+				Caman("#" + current_can, img, function() {
+					this.love().render();
+				});
+				break;
+			case 'jarques':
+				Caman("#" + current_can, img, function() {
+					this.jarques().render();
+				});
+				break;
+			case 'hazydays':
+				Caman("#" + current_can, img, function() {
+					this.hazyDays().render();
+				});
+				break;
+			case 'grungy':
+				Caman("#" + current_can, img, function() {
+					this.grungy().render();
+				});
+				break;
+			case 'glowingsun':
+				Caman("#" + current_can, img, function() {
+					this.glowingSun().render();
+				});
+				break;
+			case 'concentrate':
+				Caman("#" + current_can, img, function() {
+					this.concentrate().render();
+				});
+				break;
+			case 'hemingway':
+				Caman("#" + current_can, img, function() {
+					this.hemingway().render();
+				});
+				break;
+			case 'sunrise':
+				Caman("#" + current_can, img, function() {
+					this.sunrise().render();
 				});
 				break;
 			default:
@@ -604,7 +655,7 @@
 				});
 			}
 		});
-	} */
+	}
 	
 	/*
 	var set_class = $('#set_' + id).attr('class');         
