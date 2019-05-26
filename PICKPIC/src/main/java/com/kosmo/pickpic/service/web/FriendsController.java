@@ -97,10 +97,19 @@ public class FriendsController {
 		map.put("ppa_email",principal.getName());
 		
 		List<Map> list = ppb_service.selectList(map);
-		model.addAttribute("list",list);
+		List<Map> afterList = new Vector<Map>();
+		for(Map record : list) {
+			
+//			System.out.println(record.toString());
+			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image" + record.get("PPB_IMAGE_PATH").toString());
+			afterList.add(record);
+		}
+		
+		model.addAttribute("list",afterList);
 		
 		//System.out.println("왜2개임?"+list.toString());
 		//System.out.println("사이즈는?"+list.size());
+		
 		
 		return "friends/place_filter.tiles";
 		//return "friends/place.tiles";//나중에 이걸로 바꾸자
@@ -154,24 +163,6 @@ public class FriendsController {
 		return "friends/place_write.tiles";//마이 페이지로
 	}// place
 	
-	//등록하기 ajax
-	/*@ResponseBody
-	@RequestMapping(value="/friends/place_view_myPage.do", produces = "text/plain;charset=UTF-8")
-	public String place_view_myPage_ajax(@RequestParam Map map, Model model,Principal principal, HttpServletRequest request) throws Exception {
-		
-		System.out.println("insert 쪽 오나영?");
-		System.out.println("insert::"+map.toString());
-		return JSONArray.toJSONString(list);
-	}*/
-	
-	
-	//등록하기 NO ajax
-	@RequestMapping("/friends/place_view_myPage.pic")
-	public String place_view_myPage(@RequestParam Map map, Model model,Principal principal, HttpServletRequest request) throws Exception {
-		System.out.println("map전부요::"+map.toString());
-		System.out.println("왜 안뜨나요?");
-		return "friends/place_view_myPage.tiles";
-	}//등록하고 (insert) 마이페이지로 이동 insert 값 없으면 그냥 이동
 	
 	
 	
@@ -683,12 +674,12 @@ public class FriendsController {
 	}
 	
 	// 주영테스트4
-			@RequestMapping("/test/my_page.pic")
-			public String myPage() throws Exception {
-				// 여기서 작업 시작
+	@RequestMapping("/test/my_page.pic")
+	public String myPage() throws Exception {
+		// 여기서 작업 시작
 
-				return "test/my_page.tiles";
-			}// myPage
+		return "test/my_page.tiles";
+	}// myPage
 
 	// 주영테스트5
 	@RequestMapping("/test/filter_view.pic")

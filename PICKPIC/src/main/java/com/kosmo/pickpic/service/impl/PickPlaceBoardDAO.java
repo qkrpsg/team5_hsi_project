@@ -30,5 +30,6 @@ public class PickPlaceBoardDAO implements PickPlaceBoardService {
 	public List<PickPlaceBoardDTO> ppbBestList() {
 		return template.selectList("ppbBestList");
 	}
+
 	
 }

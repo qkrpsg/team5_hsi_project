@@ -427,12 +427,11 @@
 			success : function(data) {
 				console.log('성공했습니다');
 				console.log(data);
-				location.href = "<c:url value='/friends' />";
+				location.href = "<c:url value='/user/myPage.pic' />";
 			},
 			error : function(data) {
 				console.log('실패했습니다');
 				console.log(data);
-	//				location.href = "<c:url value='/test/place_create.pic'/>";
 			}
 		});
 	}
