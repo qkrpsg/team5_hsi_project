@@ -11,6 +11,16 @@
 	href="<c:url value='/css/test/material-design-iconic-font.min.css'/>">
 <script src="<c:url value='/js/test/tether.min.js'/>"></script>
 
+        <link rel="stylesheet" href="<c:url value='/Bootsrtap/css/bootstrap-theme.min.css'/>">
+        <link rel="stylesheet" href="<c:url value='/css/test/hero-slider.css'/>">
+        <link rel="stylesheet" href="<c:url value='/css/tset/owl-carousel.css'/>">
+        <link rel="stylesheet" href="<c:url value='/css/test/templatemo-style.css'/>">
+
+        <script src="<c:url value='/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+    
+
+
 <section class="intro-section">
 	<div class="container">
 		<div class="row">
@@ -67,6 +77,201 @@
 	<!-- container -->
 </section>
 
+<section class="popular-places" id="popular">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <span>Popular Places</span>
+                        <h2>Integer sapien odio</h2>
+                    </div>
+                </div> 
+            </div> 
+            <div class="owl-carousel owl-theme">
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Mauris tempus</h4>
+                            <span>76 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Aenean dolor</h4>
+                            <span>18 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Nunc at quam</h4>
+                            <span>55 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Fusce ac turpis</h4>
+                            <span>66 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="img/popular_item_5.jpg" alt="">
+                        <div class="text-content">
+                            <h4>Lorem ipsum</h4>
+                            <span>82 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Praesent nec</h4>
+                            <span>76 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Suspendisse</h4>
+                            <span>36 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Bibendum</h4>
+                            <span>48 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Quisque sodales</h4>
+                            <span>66 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Pellentesque</h4>
+                            <span>85 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Commodo</h4>
+                            <span>76 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Adipiscing</h4>
+                            <span>32 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Etiam hendrerit</h4>
+                            <span>49 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Suspendisse</h4>
+                            <span>63 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
+                        <div class="text-content">
+                            <h4>Sit amet dictum</h4>
+                            <span>86 listings</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <section class="light-bg booking-details_wrap">
 	<div class="container">
 		<div class="row">
@@ -74,56 +279,69 @@
 				<div class="booking-checkbox_wrap">
 					<div class="booking-checkbox">
 						<div class="customer-content">
-                                    <div class="customer-review">
-                                        <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">가산역 최고의 장소</font></font></h3>
-                      
-                                        <p>
-                                        <font style="vertical-align: inherit;">2019-05-29 12:30:15</font></p>
-                                    </div>
-                                    
-                                </div>
+							<div class="customer-review">
+								<h3>
+									<font style="vertical-align: inherit;"><font
+										style="vertical-align: inherit;">가산역 최고의 장소</font></font>
+								</h3>
+							</div>
+						</div>
 						<hr>
-						
-						<canvas style="background-color:#ececec;width:100%;height:auto;" id="canvas"></canvas>
-						
+
+						<canvas
+							style="background-color: #ececec; width: 100%; height: auto;"
+							id="canvas"></canvas>
+
 						<hr>
 						<p>
-							<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-								사진 위치 내용 소개하기</font></font>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;"> 사진 위치 내용 소개하기</font></font>
 						</p>
-
 					</div>
-					
 				</div>
 			</div>
 			<div class="col-md-4 responsive-wrap">
 				<div class="contact-info">
-					<img src="/pickpic/resources/images/test/map.jpg" class="img-fluid" alt="#">
+					<img src="/pickpic/resources/images/test/map.jpg" class="img-fluid"
+						alt="#">
 					<div class="address">
 						<span><i class="zmdi zmdi-pin zmdi-hc-lg"></i></span>
 
 						<p>
-							<font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 서울특별시 </font></font><br>
-							<font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 금천구</font></font><br>
-							<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">426-5 &amp; 가산동</font><font style="vertical-align: inherit;"> 월드 메르디앙 벤처 센터 2 차 </font></font><br>
-							<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">311호</font></font>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;"> 서울특별시 </font></font><br> <font
+								style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;"> 금천구</font></font><br> <font
+								style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">426-5 &amp; 가산동</font><font
+								style="vertical-align: inherit;"> 월드 메르디앙 벤처 센터 2 차 </font></font><br>
+							<font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">311호</font></font>
 						</p>
 					</div>
 
-					<a class="btn btn-outline-danger btn-contact" onclick="fn_spread('crowling_result');">
-					<font style="vertical-align: inherit;">+ 이 지역 관련 검색어</font></a>
+					<a class="btn btn-outline-danger btn-contact"
+						onclick="fn_spread('crowling_result');"> <font
+						style="vertical-align: inherit;">+ 이 지역 관련 검색어</font></a>
 				</div>
-				<div class="follow" id="crowling_result" style="display:none;">
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                        
-                    </div>
+				<div class="follow" id="crowling_result" style="display: none;">
+					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+
+				</div>
 
 			</div>
 		</div>
-</div></section>
+	</div>
+</section>
+
+
+<script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
+<script src="<c:url value='js/plugins.js'/>"></script>
+<script src="<c:url value='js/Main.js'/>"></script>
+    
