@@ -6,43 +6,20 @@
 <link rel="stylesheet" href="<c:url value='/css/fontAwesome.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/hero-slider.css' /> ">
 <link rel="stylesheet" href="<c:url value='/css/owl-carousel.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/datepicker.css' /> ">
-<link rel="stylesheet" href="<c:url value='/css/test/style2.css'/>">
-
-<!-- 첫상단 고정 필터용 -->
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
-<link rel="stylesheet"
-   href="<c:url value='/css/templatemo-style2.css'/>">
-
-<link
-   href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900"
-   rel="stylesheet">
-
-<script
-   src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
+<link rel="stylesheet" href="<c:url value='/css/test/style2.css'/>">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <style>
+/* 
 .new{
-padding: 5px;
-   position: relative;
-   overflow: hidden;
-   
+	padding: 5px;
+	position: relative;
+	overflow: hidden;
 }
 .new img{
-   width:100%;
-   height:285px;
-   cursor: pointer;
-}
-.new2{
-padding: 5px;
-   position: relative;
-   overflow: hidden;
-  
-}
-.new2 img{
-   width:100%;
-   height:285px;
-   cursor: pointer;
+	width:100%;
+	cursor: pointer;
 }
 
  .new:after{
@@ -72,7 +49,7 @@ text-align: left;
 
 
 }
-
+ */
 
 </style>
 <section class="banner" id="top">
@@ -122,48 +99,61 @@ text-align: left;
 </section>
 
 <section class="pricing-tables">
-<%--    <a href="<c:url value='/friends/map.pic'/>" class="btn btn-info" style="float: right; margin-right: 20px; margin-top: 20px;">작성하러가기</a> --%>
-   <div class="container">
-      <div class="grid">
-         <c:forEach var="recode" items="${recode}" varStatus="loop">
-            <!-- 하루 사이 생성된 경우 new 표시 -->
-            <c:if test="${recode.PRB_POST_DATE  >= (todayString-1)}" var="pa">
-               <div class="col-xs-3 element-item img_wrap2 new ">
-                  <img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
-                  <div class="innerText">
-                     <p class="tt" style="margin-top: 20%">
-                        <span>${recode.PRB_TITLE}</span>
-                     </p>
-                     <p class="tt">
-                        <span>조회수: ${recode.PRB_VIEW }</span>
-                     </p>
-                  </div>
-                  <div class="hi">
-                     <a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }&prb_id=${recode.PRB_ID }'/>">보러가기</a>
-                  </div>
-               </div>
-            </c:if>
-            <!-- new 표시 안함 -->
-            <c:if test="${not pa}">
-               <div class="col-xs-3 element-item img_wrap2 new2">
-                  <img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
-                  <div class="innerText">
-                     <p class="tt" style="margin-top: 20%">
-                        <span>${recode.PRB_TITLE }</span>
-                     </p>
-                     <p class="tt">
-                        <span>조회수: ${recode.PRB_VIEW }</span>
-                     </p>
+<%-- 	<a href="<c:url value='/friends/map.pic'/>" class="btn btn-info" style="float: right; margin-right: 20px; margin-top: 20px;">작성하러가기</a> --%>
+	<div class="container">
+		<div class="grid">
+			
+			
+		<c:forEach var="recode" items="${recode}" varStatus="loop">
+				<!-- 하루 사이 생성된 경우 new 표시 -->
+				<c:if test="${recode.PRB_POST_DATE  >= (todayString-1)}" var="pa">
+					<div class="col-xs-3 element-item img_wrap2 new ">
+						<img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
+						<div class="innerText">
+							<p class="tt" style="margin-top: 20%">
+								<span>${recode.PRB_TITLE}</span>
+							</p>
+							<p class="tt">
+								<span>${recode.PRB_CONTENT}</span>
+							</p>
+							<p class="tt">
+								<span>조회수: ${recode.PRB_VIEW }</span>
+							</p>
+						</div>
+						<div class="hi">
+							<a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }&prb_id=${recode.PRB_ID }'/>">보러가기</a>
+						</div>
+					</div>
+				</c:if>
+				<!-- new 표시 안함 -->
+				<c:if test="${not pa}">
+					<div class="col-xs-3 element-item img_wrap2">
+						<img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
+						<div class="innerText">
+							<p class="tt" style="margin-top: 20%">
+								<span>${recode.PRB_TITLE }</span>
+							</p>
+							<p class="tt">
+								<span>${recode.PRB_CONTENT }</span>
+							</p>
+							<p class="tt">
+								<span>조회수: ${recode.PRB_VIEW }</span>
+							</p>
 
-                  </div>
-                  <div class="hi">
-                     <a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }&prb_id=${recode.PRB_ID }'/>">보러가기</a>
-                  </div>
-               </div>
-            </c:if>
-         </c:forEach>
-      </div>
-   </div>
+						</div>
+						<div class="hi">
+							<a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }&prb_id=${recode.PRB_ID }'/>">보러가기</a>
+						</div>
+					</div>
+				</c:if>
+			</c:forEach>
+		
+			
+			
+			
+			
+		</div>
+	</div>
 </section>
 <section class="featured-places" id="best">
    <div class="container">
@@ -212,34 +202,38 @@ text-align: left;
      </div>
 </section>
 
+
 <script>
 $(document).ready(function(){
-    $(document).on("mouseover",".img_wrap2",function(event){
-       //$('.img_wrap img').css("height",$('.img_wrap').css('width'));
-       //$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
-       
-       $('.innerText').css('height',$('.img_wrap2 img').css('height'));
-       $('.innerText').css('width',$('.img_wrap2 img').css('width'));
-      var img2 =$('.img_wrap2 img').css('height').replace('px','');
+   
+	
+	$(document).on("mouseover",".img_wrap2",function(event){
+    	
+    	
+    	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
+    	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
+		var img2 =$('.img_wrap2 img').css('height').replace('px','');
         $('.Text_title').css('margin-top',img2/2+"px");
-       $(this).find('.innerText').css("display","block");
+    	$(this).find('.innerText').css("display","block");
     });
     
     $(document).on("mouseout",".img_wrap2",function(event){
-       $(this).find('.innerText').css("display","none");
+    	$(this).find('.innerText').css("display","none");
     });
     $(window).resize(function(){
-      $('.img_wrap img').css("height",$('.img_wrap').css('width'));//
-      $('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
-      $('.innerText').css('height',$('.img_wrap2 img').css('height'));
-      $('.innerText').css('width',$('.img_wrap2 img').css('width'));
-   });
+		$('.img_wrap img').css("height",$('.img_wrap').css('width'));//
+		$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
+		$('.innerText').css('height',$('.img_wrap2 img').css('height'));
+		$('.innerText').css('width',$('.img_wrap2 img').css('width'));
+	});
 }); // end of ready()
 </script>
 
 
 
+
 <script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
-<script src="<c:url value='js/datepicker.js'/>"></script>
+<%-- <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
-<script src="<c:url value='js/Main.js'/>"></script>
+<script src="<c:url value='js/Main.js'/>"></script> --%>
+

@@ -250,6 +250,16 @@
 			<version>2.8.7</version>
 		</dependency>
 		
+		<!-- 자바 크롤링 -->
+		<dependency>
+		  <groupId>org.jsoup</groupId>
+		  <artifactId>jsoup</artifactId>
+		  <version>1.11.2</version>
+		</dependency>
+
+
+		
+		
 	</dependencies>
     <build>
         <plugins>

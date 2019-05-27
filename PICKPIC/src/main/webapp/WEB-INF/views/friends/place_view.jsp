@@ -200,13 +200,10 @@
 					<font style="vertical-align: inherit;">+ 이 지역 관련 검색어</font></a>
 				</div>
 				<div class="follow" id="crowling_result" style="display:none;">
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-                     <a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
+				
+				<c:forEach var="list" items="${list_c }" varStatus="loop">
+                     <a href="#"><font style="vertical-align: inherit;">${list }</font></a>
+  				</c:forEach>                   
                         
                     </div>
 
