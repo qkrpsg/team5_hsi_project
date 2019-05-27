@@ -62,6 +62,7 @@ import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.impl.PickRoadBoardDAO;
 import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
+import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.FileUpDownUtils;
 import com.kosmo.pickpic.util.S3Util;
@@ -84,7 +85,10 @@ public class FriendsController {
 	@Resource(name = "ppbService")
 	private PickPlaceBoardServiceImpl ppbService;
 
-
+	@Resource(name="accountService")
+	private PickpicAccountServiceImpl accountService;
+	
+	
 	@RequestMapping("/friends/place_list.pic")
 	public String plaList(@RequestParam Map map, Model model, Principal principal) throws Exception {
 		//여기서 작업 시작
@@ -110,23 +114,20 @@ public class FriendsController {
 		map.put("ppa_email", principal.getName());
 		System.out.println("map전부:"+map.toString());
 		
-		Map a = ppbService.ppbSelectOne(map);
-		//a.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+map.get("PPB_IMAGE_PATH").toString());
 		
-		String test = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+a.get("PPB_IMAGE_PATH");
+		PickpicAccountDTO dto = accountService.myPageInfo(map);
+		model.addAttribute("user", dto);
+		System.out.println("모모델" + model.toString());
+		System.out.println("프로필 경로 : " + dto.getPpa_profile_path());
 		
-		a.put("PPB_IMAGE_PATH",test);
-		//System.out.println("list::"+list.toString());
-		//List<Map> afterList = new Vector<Map>();
-		/*for (Map record : list) {
-			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+record.get("PPB_IMAGE_PATH").toString());
-			afterList.add(record);
-		}
 		
-		System.out.println("list::"+list.toString());
-		*/
-		System.out.println(a);
-		model.addAttribute("list",a);
+		
+		Map selectOne = ppbService.ppbSelectOne(map);
+		System.out.println("selectOne"+selectOne.toString());
+		String test = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+selectOne.get("PPB_IMAGE_PATH");
+		selectOne.put("PPB_IMAGE_PATH",test);
+		System.out.println(selectOne);
+		model.addAttribute("list",selectOne);
 		
 		return "friends/place_view.tiles";
 	}

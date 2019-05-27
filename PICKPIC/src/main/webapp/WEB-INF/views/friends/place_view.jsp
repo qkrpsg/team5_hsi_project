@@ -13,7 +13,7 @@
 <script src="<c:url value='/js/test/tether.min.js'/>"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=750e581d29f9f411452640632fee1ead&libraries=services"></script>
-<<style>
+<style>
 .map_wrap {
 	position: relative;
 	width: 100%;
@@ -65,6 +65,7 @@
 <script src="<c:url value='/js/test/progressbar.min.js'/>"></script>
 <script src="<c:url value='/js/test/scripts.js'/>"></script> --%>
 
+
 <section class="intro-section">
 	<div class="container">
 		<div class="row">
@@ -72,40 +73,38 @@
 			<div class="col-md-10 col-lg-8">
 				<div class="intro">
 					<div class="profile-img">
-						<img class="pr_img"
-							src="<c:url value='/resources/images/team/memberPark.jpg'/>"
-							alt="">
+						<img class="pr_img" src="${user.ppa_profile_path }" alt="">
 					</div>
 					<h3 style="margin-top: 10px">
-						<b>슬기로운다슬기</b>
+						<b>${user.ppa_nickname }</b>
 					</h3>
 					<!-- <h4 class="font-yellow">프로필수정</h4> -->
 					<ul class="follow2">
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">5</font></font>
+									style="vertical-align: inherit; color: #4883ff">${user.totalplace }</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">픽플레이스</font></font></span>
 						</li>
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">3</font></font>
+									style="vertical-align: inherit; color: #4883ff">${user.totalroad }</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">픽로드</font></font></span>
 						</li>
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">4</font></font>
+									style="vertical-align: inherit; color: #4883ff">0</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">보관함</font></font></span>
 						</li>
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">7</font></font>
+									style="vertical-align: inherit; color: #4883ff">${user.totalfilter }</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">보유 필터</font></font></span>
 						</li>
