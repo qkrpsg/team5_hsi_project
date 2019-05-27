@@ -62,7 +62,6 @@ float : left;
 </div>
 </c:if>
 
-
 </div>
 
 
