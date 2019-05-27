@@ -45,12 +45,12 @@
 					<ul class="follow2" id="mypage_sub">
 						<li >
 							<h6>
-								<font style="vertical-align: inherit; color: #4883ff">5</font>
+								<font class="index_place" style="vertical-align: inherit; color: #4883ff">5</font>
 							</h6><a href="javascript:void(0);" onclick="sub_spread('place')" id="place" style="color:#2c343b;"><font style="vertical-align: inherit;" >픽플레이스</font></a>
 						</li>
 						<li>
 							<h6>
-								<font style="vertical-align: inherit; color: #4883ff">3</font>
+								<font class="index_load" style="vertical-align: inherit; color: #4883ff">3</font>
 							</h6> <a href="javascript:void(0);" onclick="sub_spread('load')" id="load" style="color:#2c343b;"><font style="vertical-align: inherit;" >픽로드</font></a>
 						</li>
 						<li>
@@ -79,28 +79,7 @@
 <section class="pricing-tables sub_items">
 	<div class="container">
   <div class="grid" style="position: relative; height: 885px;">
-  		
-	  	<div class="col-xs-3 element-item img_wrap2 clarity" onclick="clickBtn(this)" >
-			<img src="/pickpic/resources/update/Square (11)-edited.jpg" alt="안나와" style="height: 285px;">
-			<div class="innerText" style="height: 285px; width: 275px; display: block;">
-	           	<p class="Text_title" style="margin-top: 142.5px;"><span>한소인 건물입니다</span></p>
-	            <p class=""><span>건물이 멋지네요</span></p>
-	            <input type="hidden" value="">
-	       </div>
-		</div>
-		
-	  <div class="col-xs-3 element-item img_wrap2 clarity" onclick="clickBtn(this)" >
-			<img src="/pickpic/resources/update/Square (11)-edited.jpg" alt="안나와" style="height: 285px;">
-			<div class="innerText" style="height: 285px; width: 275px; display: block;">
-	           	<p class="Text_title" style="margin-top: 142.5px;"><span>한소인 건물입니다</span></p>
-	            <p class=""><span>건물이 멋지네요</span></p>
-	            <input type="hidden" value="">
-	       </div>
-		</div>
-	 
-	
-	
-	
+  
   </div>	
 	</div>
 </section>
@@ -156,10 +135,24 @@ function sub_spread(id){
 				console.log('data : ' + data);
 				
 				//현재 출력된 이미지 다 삭제
-				
+				let html ="";
+				let index_font=0;
 				$.each(data, function(index, element) {
+				/* 	console.log('data'+data);
+					console.log('index'+index);
+					console.log('element'+element['PPB_IMAGE_PATH']); */
+					html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" onclick="clickBtn(this)" >'
+						+'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" style="height: 285px;"/>'
+						+'<div class="innerText"style="display:block;" >'
+						+'<p class="Text_title" ><span>'+element['PPB_TITLE']+'</span></p>'
+						+'<p class=""><span>'+element['PPB_COUNT']+'</span></p>'
+						+'</div>'
+						+'</div>';
 					
-				})
+					index_font++;
+				});
+				$('.grid').html(html);
+				$('.index_place').html(index_font);
 			},
 			error : function(data) {
 				console.log('실패');
@@ -168,8 +161,58 @@ function sub_spread(id){
 		});
 		
 	}//place
-	
+	else if(id == 'load'){
+		$.ajax({
+			url:'<c:url value="/user/myPage.do"/>',
+			dataType : 'json',
+			type : "get",
+			data : {
+				"id" : id
+			},
+			success : function(data) {
+				console.log('성공');
+				console.log('data : ' + data);
+				
+				//현재 출력된 이미지 다 삭제
+				let html ="";
+				let index_font=0;
+				$.each(data, function(index, element) {
+					
+					html += '<div class="col-xs-3 element-item img_wrap2 " onclick="clickBtn(this)" >'
+						+'<img src="'+element['PRP_IMAGE_PATH']+'" alt="안나와" style="height: 285px;"/>'
+						+'<div class="innerText" style="display:block;">'
+						+'<p class="Text_title" ><span>'+element['PRB_TITLE']+'</span></p>'
+						+'<p class=""><span>'+element['PRB_CONTENT']+'</span></p>'
+						+'</div>'
+						+'</div>';
+					
+					index_font++;
+				});
+				$('.grid').html(html);
+				$('.index_load').html(index_font);
+			},
+			error : function(data) {
+				console.log('실패');
+				console.log('data : ' + data);
+			}
+		});
+		
+	}//load
 	
 }
+$(document).ready(function(){
+    $(document).on("click",".grid",function(event){
+      alert('dd');
+    });
+}); // end of ready()
+	
+	//$('.img_wrap2').mouseenter(function(){
+		
+		//$(this).find('.innerText').css('display','block');	
+	///});
+
+
+
+
 
 </script>

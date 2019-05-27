@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.FilterServiceImpl;
 import com.kosmo.pickpic.service.impl.PickPlaceBoardServiceImpl;
+import com.kosmo.pickpic.service.impl.PickRoadBoardServiceImpl;
 import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 
@@ -41,6 +42,9 @@ public class UserController {
 	
 	@Resource(name="ppbService")
 	private PickPlaceBoardServiceImpl ppb_service;
+	@Resource(name="prbService")
+	private PickRoadBoardServiceImpl prb_service;
+	
 	
 	//로그인
 	@RequestMapping("/user/Login.pic")
@@ -52,6 +56,7 @@ public class UserController {
 	@RequestMapping("/user/LoginProcess.pic")
 	public String loginProcess(HttpSession session, @RequestParam Map map, Principal principal) throws Exception{
 		//시큐리티를 통하여 저장된 이메일값 map에 저장
+		
 		map.put("ppa_email", principal.getName());
 		//로그인 정보 저장
 		accountService.loginHistoryInsert(map);
@@ -175,8 +180,11 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="/user/myPage.do",produces="text/html; charset=UTF-8")
 	public String myPage(@RequestParam Map map, Principal principal) throws Exception{
+		
+		System.out.println(map.toString());
 		List<Map> list = new Vector<Map>();
 		map.put("ppa_email", principal.getName());
+		List<Map> list2 = new Vector<Map>();
 		
 		String type = map.get("id").toString();
 		
@@ -192,12 +200,33 @@ public class UserController {
 				list.add(record);
 			}//for
 			
+			
 		}else if(type.equals("place")) {
+			list = ppb_service.ppbMyPageList(map);
+			for(Map list3:list) {
+				list3.put("PPB_PICK", list3.get("PPB_PICK").toString());
+				list3.put("PPB_INDEX", list3.get("PPB_INDEX").toString());
+				list3.put("PPB_POST_DATE", list3.get("PPB_POST_DATE").toString().replace(":","_"));
+				list3.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image" + list3.get("PPB_IMAGE_PATH").toString());
+				list2.add(list3);
+			}
 			
+			System.out.println(list.toString());
+		}else if(type.equals("load")) {
 			
+			list =  prb_service.pickRoadMyPage(map);
+			for(Map list3 : list) {
+				//PRP_IMAGE_PATH
+				//PRB_POST_DATE
+				list3.put("PRB_POST_DATE", list3.get("PRB_POST_DATE").toString());
+				list2.add(list3);
+			}
+			System.out.println("list:"+list.toString());
+			
+			System.out.println(JSONArray.toJSONString(list2));
 		}
-       System.out.println(JSONArray.toJSONString(list));
-       return JSONArray.toJSONString(list);
+      
+       return JSONArray.toJSONString(list2);
 	}//myPage
 	
 	//정보수정

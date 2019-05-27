@@ -50,5 +50,10 @@ public class PickRoadBoardServiceImpl implements PickRoadBoardService{
 		
 		return dao.pickRoadBoardSelectOne2(map);
 	}
+
+	@Override
+	public List<Map> pickRoadMyPage(Map map) {
+		return dao.pickRoadMyPage(map);
+	}
 	
 }
