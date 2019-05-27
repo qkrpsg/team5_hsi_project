@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+
+<mapper namespace="mybatis.Tip">
+
+<select id="TipSelectList" parameterType="java.util.Map" resultType="TipBoardDTO">
+select * from tip_board ORDER BY TB_INDEX desc
+</select>
+
+<!-- 게시글 상세 조회 -->
+<select id="TipSelectOne" parameterType="java.util.Map" resultType="TipBoardDTO">
+ select * from tip_board where tb_index =#{tb_index}
+  </select>
+
+
+<!-- 게시글 작성 -->
+<insert id="TipInsert" parameterType="java.util.Map">
+insert into tip_board(tb_id,tb_title,tb_content,tb_post_date,tb_index) values(#{tb_id}, #{tb_title}, #{tb_content}, default ,seq_tipboard.nextval)
+</insert>
+
+<!-- 게시글 삭제 처리 -->
+<delete id="TipDelete" parameterType="java.util.Map">
+DELETE tip_board WHERE TB_INDEX = ${tb_index}
+</delete>
+
+<!-- 게시글 수정 처리 -->
+<update id="TipUpdate" parameterType="java.util.Map">
+UPDATE tip_board set tb_title=#{tb_title}, tb_content=#{tb_content} WHERE tb_index=#{tb_index}
+AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+</update>
+
+<insert id="TipAQInsert" parameterType="java.util.Map">
+INSERT INTO ANSWER_QUESTION VALUES(func_generator, #{aq_content}, DEFAULT, (SELECT tb_id FROM tip_board WHERE tb_index=#{tb_index}))
+</insert>
+
+<update id="TipAQUpdate" parameterType="java.util.Map">
+UPDATE ANSWER_QUESTION SET aq_content=#{aq_content} WHERE tb_id=(SELECT tb_id FROM tip_board WHERE tb_index=#{tb_index} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})) 
+</update>
+
+<select id="TipGetTotalCount" parameterType="java.util.Map" resultType="int">
+           SELECT COUNT(*) FROM tip_board
+   </select>
+
+</mapper>
+
+
+
+
+

@@ -1,8 +1,11 @@
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 
 
-<link href="<c:url value='/css/Login.css' />" rel="stylesheet">
+<%-- 
+<link href="<c:url value='/css/Login.css' />" rel="stylesheet"> --%>
 <link href="<c:url value='/css/test/main.css' />" rel="stylesheet">
 	
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -26,7 +29,7 @@
 				</div>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 				<div class="container-login100-form-btn">
-					<button class="login100-form-btn">시작하기</button>
+					<button class="login100-form-btn">접속하기</button>
 				</div>
 			</form>
 		</div>

@@ -59,4 +59,9 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	public int loginHistoryInsert(Map map) {
 		return dao.loginHistoryInsert(map);
 	}
+
+	@Override
+	public PickpicAccountDTO myPageInfo(Map map) {
+		return dao.myPageInfo(map);
+	}
 }

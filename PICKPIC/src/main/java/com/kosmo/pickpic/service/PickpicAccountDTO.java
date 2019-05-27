@@ -20,10 +20,28 @@ public class PickpicAccountDTO {
 	private String totalquestion;
 	private String as_class;
 	private String rownum;
+	private String totalplace;
+	private String totalroad;
 	
 
 	
 	//getter,setter
+	public String getTotalplace() {
+		return totalplace;
+	}
+
+	public void setTotalplace(String totalplace) {
+		this.totalplace = totalplace;
+	}
+
+	public String getTotalroad() {
+		return totalroad;
+	}
+
+	public void setTotalroad(String totalroad) {
+		this.totalroad = totalroad;
+	}
+
 	public String getRownum() {
 		return rownum;
 	}

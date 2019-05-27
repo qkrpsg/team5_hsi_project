@@ -230,8 +230,12 @@ public class UserController {
 	
 	//마이페이지
 	@RequestMapping("/user/myPage.pic")
-	public String myPage() throws Exception{
-		
+	public String myPage(Principal principal,Map map, Model model) throws Exception{
+		map.put("ppa_email", principal.getName());
+		PickpicAccountDTO dto = accountService.myPageInfo(map);
+		model.addAttribute("user", dto);
+		System.out.println("모모델" + model.toString());
+		System.out.println("프로필 경로 : " + dto.getPpa_profile_path());
 		return "login/my_page.tiles";
 	}//myPage
 	

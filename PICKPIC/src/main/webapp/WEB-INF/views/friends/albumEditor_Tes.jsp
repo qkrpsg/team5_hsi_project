@@ -71,7 +71,7 @@
    <div class="container-fluid">
       <ul class="nav navbar-nav">
          <li><a href="javascript:void(0);" onclick="deleteItem(this)" class="alldelete_btn" >선택 삭제</a></li>
-         <li><a href="javascript:void(0);" onclick="myfilter_btn(this)" id="myfilter_btn">내 필터 보관함</a></li>
+         <li><a id="myfilter_btn">내 필터 보관함</a></li>
          <li><a class="btn" data-toggle="modal" id="option_btn" >+
                가져오기</a></li>
          <li ><a href="javascript:void(0);" onclick="selectItem(this)" class="allselect_btn">전체 선택</a></li>
@@ -189,8 +189,7 @@
          modal.style.display = "none";
       }
    });
-   
-   /* <!-- 프리뷰에 다중으로 이미지띄우기 : #img_mypc  --> */
+   /* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
    var fileCollection = new Array();
    var index = 0;
    var idArray = new Array();
@@ -253,53 +252,9 @@
 		console.log(idArray);
 	});
 	
-	  /* <!-- 프리뷰에 다중으로 이미지띄우기 : #img_mypic  --> */
-	  let html ="";
 	$('#img_mypic').on('click',function(e) {
 		console.log("ccvcxvzxcxc");
-		$('#preview').empty();
-		idArray = [];
-		selectArray = [];
-		index = 0;
-		$.ajax({
-	         url:'<c:url value="/friends/albumEditor.do"/>',
-	         dataType : 'json',
-	         type : "get",
-	         data : {
-	        	 "id" : "dd"
-	         },
-	         success : function(data) {
-	            console.log('성공');
-	            
-	            //현재 출력된 이미지 다 삭제
-	            html ="";
-	            let index_font=0;
-	            $.each(data, function(index, element) {
-	            /*    console.log('data'+data);
-	               console.log('index'+index);
-	               console.log('element'+element['PPB_IMAGE_PATH']); */
-	               html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
-	                  +'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" />'
-	                  +'<div class="innerText" >'
-	                  +'<p class="Text_title" ><span>'+element['PPB_TITLE']+'</span></p>'
-	                  +'</div>'
-	                  +'</div>';
-	               
-	               index_font++;
-	               
-	            });
-	            
-	            $('#preview').html(html);
-	            $('#imgCount').html(index_font);
-	            
-	         },
-	         error : function(data) {
-	            console.log('실패');
-	         }
-	  });
 	});
-	 
-	
 
 	/* 이미지 기준 가로 또는 세로 적용 */
 	function resize(img) {

@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="<c:url value='/css/fontAwesome.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/hero-slider.css' /> ">
 <link rel="stylesheet" href="<c:url value='/css/owl-carousel.css'/>">
-<%-- <link rel="stylesheet" href="<c:url value='/css/datepicker.css' />  --%>">
 <!-- 첫상단 고정 필터용 -->
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">

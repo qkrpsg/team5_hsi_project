@@ -632,6 +632,37 @@ public class FriendsController {
 		return "friends/albumEditor.tiles";
 	}
 
+	
+	//주영테스트 - 앨범다운에디터
+		@ResponseBody
+		@RequestMapping(value="/friends/albumEditor.do",produces="text/html; charset=UTF-8")
+		public String albumEditor(@RequestParam Map map, Principal principal) throws Exception{
+			
+			System.out.println(map.toString());
+			List<Map> list = new Vector<Map>();
+			map.put("ppa_email", principal.getName());
+			List<Map> list2 = new Vector<Map>();
+			
+			/*String type = map.get("id").toString();*/
+			
+			//내부 로직 처리
+			
+			
+				list = ppbService.ppbMyPageList(map);
+				for(Map list3:list) {
+					list3.put("PPB_PICK", list3.get("PPB_PICK").toString());
+					list3.put("PPB_INDEX", list3.get("PPB_INDEX").toString());
+					list3.put("PPB_POST_DATE", list3.get("PPB_POST_DATE").toString().replace(":","_"));
+					list3.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image" + list3.get("PPB_IMAGE_PATH").toString());
+					list2.add(list3);
+				}
+				System.out.println(list.toString());
+		
+			System.out.println(JSONArray.toJSONString(list2));
+		   return JSONArray.toJSONString(list2);
+		}//albumEditor
+	
+	
 	// 연습
 	@RequestMapping("/friends/search.pic")
 	public String search() throws Exception {
