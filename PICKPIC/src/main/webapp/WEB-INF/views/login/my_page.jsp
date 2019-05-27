@@ -35,32 +35,32 @@
             <div class="intro">
                <div class="profile-img">
                   <img class="pr_img"
-                     src="<c:url value='/resources/images/team/memberPark.jpg'/>"
-                     alt="">
+                     src='${user.ppa_profile_path }'
+                     alt="x">
                </div>
                <h3 style="margin-top: 10px">
-                  <b id="test">슬기다운다슬기</b>
+                  <b id="test">${user.ppa_nickname }</b>
                </h3>
                <!-- <h4 class="font-yellow">프로필수정</h4> -->
                <ul class="follow2" id="mypage_sub">
                   <li >
                      <h6>
-                        <font class="index_place" style="vertical-align: inherit; color: #4883ff">5</font>
+                        <font class="index_place" style="vertical-align: inherit; color: #4883ff">${user.totalplace }</font>
                      </h6><a href="javascript:void(0);" onclick="sub_spread('place')" id="place" style="color:#2c343b;"><font style="vertical-align: inherit;" >픽플레이스</font></a>
                   </li>
                   <li>
                      <h6>
-                        <font class="index_load" style="vertical-align: inherit; color: #4883ff">3</font>
+                        <font class="index_load" style="vertical-align: inherit; color: #4883ff">${user.totalroad }</font>
                      </h6> <a href="javascript:void(0);" onclick="sub_spread('load')" id="load" style="color:#2c343b;"><font style="vertical-align: inherit;" >픽로드</font></a>
                   </li>
                   <li>
                      <h6>
-                        <font style="vertical-align: inherit; color: #4883ff">5</font>
+                        <font style="vertical-align: inherit; color: #4883ff">0</font>
                      </h6> <a href="javascript:void(0);" onclick="sub_spread('mystorage')" id="mystorage" style="color:#2c343b;"><font style="vertical-align: inherit;" >보관함</font></a>
                   </li>
                   <li>
                      <h6>
-                        <font class="index_myfilter" style="vertical-align: inherit; color: #4883ff">5</font>
+                        <font class="index_myfilter" style="vertical-align: inherit; color: #4883ff">${user.totalfilter }</font>
                      </h6> <a href="javascript:void(0);" onclick="sub_spread('myfilter')" id="myfilter" style="color:#2c343b;"><font style="vertical-align: inherit;" >보유 필터</font></a>
                   </li>
                </ul>
@@ -92,6 +92,11 @@ function fn_spread(id){
     var getID = document.getElementById(id);
     getID.style.display=(getID.style.display=='none') ? 'block' : 'none';
 }
+
+$(document).ready(function(){
+	sub_spread('place');
+});
+
 let html ="";
 function sub_spread(id){
    console.log(id);

@@ -144,6 +144,15 @@
 		DELETE pickroad_board WHERE prb_index =#{prb_index }
 	</delete>
 	
+	<!-- 유저가 작성한 픽플레이스 수 -->
+	<select id="adminUserPlace" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT count(*) totalplace FROM pickplace_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	<!-- 유저가 작성한 픽로드 수 -->
+	<select id="adminUserRoad" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT count(*) totalroad FROM pickroad_board WHERE ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+	</select>
+	
 	
 	<!-- S3 서비스 이용을 위한 키 획득 -->
 	<select id="getAuthKey" resultType="java.util.Map">

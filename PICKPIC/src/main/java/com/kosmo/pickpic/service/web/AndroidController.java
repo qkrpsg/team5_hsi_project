@@ -1,8 +1,11 @@
 package com.kosmo.pickpic.service.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -58,5 +61,13 @@ public class AndroidController {
         
         return jsonMain;
     }
-
+	
+	@RequestMapping(value="/android/Login.and")
+	@ResponseBody
+	public boolean login(HttpServletRequest request) throws Exception{
+		Map map = new HashMap<String, String>();
+		map.put("ppa_email", request.getParameter("ppa_email"));
+		map.put("ppa_password", request.getParameter("ppa_password"));
+		return accountService.isMember(map);
+   }
 }

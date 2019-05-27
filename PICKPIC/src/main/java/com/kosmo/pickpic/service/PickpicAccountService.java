@@ -13,4 +13,7 @@ public interface PickpicAccountService {
 	int securityUpdate(Map map);
 	
 	int loginHistoryInsert(Map map);
+	
+	//마이페이지 픽플레이스, 픽로드, 보유필터 데이터
+	PickpicAccountDTO myPageInfo(Map map);
 } 
