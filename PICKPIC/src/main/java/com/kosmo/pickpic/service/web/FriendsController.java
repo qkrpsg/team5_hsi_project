@@ -175,11 +175,13 @@ public class FriendsController {
 	// 필터정보
 	@RequestMapping("/friends/filter.pic")
 	public String filter(@RequestParam Map map,Model model) throws Exception {
-		
+        
 		//filter 테이블 전부 가져오기
 		List<Map> list = dao_filter.filterList();
+		List<Map> best = dao_filter.filterbest();
 		model.addAttribute("list",list);
-		
+		//model.addAttribute("filtertotalbuy",filtertotalbuy);
+		model.addAttribute("best",best);
 		System.out.println(list.toString());
 		return "friends/filter.tiles";
 	}//filter
@@ -544,12 +546,13 @@ public class FriendsController {
 				list.put("PRB_POST_DATE", list.get("PRB_POST_DATE").toString().substring(8,10));
 				System.out.println(list.get("PRB_POST_DATE").toString());
 		}
-			  
+			List<Map> bestroad = prbService.pickRoadBest(map);  
+			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
 			   String todayString = dateFormat.format(new Date());
 			   
 			   model.addAttribute("todayString", todayString);
-			   
+			   model.addAttribute("bestroad",bestroad);
 			   
 			
 			   System.out.println("todayString:"+todayString);

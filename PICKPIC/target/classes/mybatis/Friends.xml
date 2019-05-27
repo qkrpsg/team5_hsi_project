@@ -50,6 +50,12 @@
 	<select id="SelectFilter_buy" parameterType="java.util.Map" resultType="FilterDTO">
 		SELECT * FROM filter WHERE f_name = #{f_name }
 	</select>
+	<select id="pickRoadbest" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM (SELECT prb.*,prp_image_path, rownum r FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prp_order = 1 ORDER BY PRB_VIEW DESC) WHERE r BETWEEN 1 AND 3
+		<!-- WHERE ROWNUM BETWEEN #{start} AND #{end} -->
+	</select>
+	
+	
 	
 	<!-- 사용자 정보 불러오기 -->
 	<select id="SelectFilter_buy2" parameterType="java.util.Map" resultType="FilterDTO">
@@ -75,7 +81,10 @@
 	
 	<!-- FilterList 필터 리스트 뽑아오기 -->
 	<select id="FilterList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * FROM filter
+	SELECT * FROM(
+			SELECT f.*, fs.totalfilter, ROWNUM r FROM (
+				SELECT f_id, count(f_id) totalfilter FROM filter_storage GROUP BY f_id) fs 
+			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY f_index DESC) 
 	</select>
 	
 	<!-- BEST pickPlace -->
@@ -86,4 +95,17 @@
 			) ppb
 		) WHERE rownum BETWEEN 1 AND 6
 	</select>
+	
+	<!-- 필퍼 판먜쑤 ,,,,,,, -->
+	<select id="filterbest" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM(
+			SELECT f.*, fs.totalfilter, ROWNUM r FROM (
+				SELECT f_id, count(f_id) totalfilter FROM filter_storage GROUP BY f_id) fs 
+			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY fs.totalfilter DESC) 
+			WHERE ROWNUM BETWEEN 1 AND 3
+		<!-- WHERE ROWNUM BETWEEN #{start} AND #{end} -->
+	</select>
+	
+	
+	
 </mapper>

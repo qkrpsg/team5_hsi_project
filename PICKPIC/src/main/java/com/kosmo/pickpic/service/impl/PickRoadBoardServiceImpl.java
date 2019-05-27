@@ -50,5 +50,11 @@ public class PickRoadBoardServiceImpl implements PickRoadBoardService{
 		
 		return dao.pickRoadBoardSelectOne2(map);
 	}
+
+	@Override
+	public List<Map> pickRoadBest(Map map) {
+		// TODO Auto-generated method stub
+		return dao.pickRoadBest(map);
+	}
 	
 }

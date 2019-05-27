@@ -9,4 +9,7 @@ public interface FilterService {
 	FilterDTO selectFilter_buy(Map map);
 	int addPayment(Map map);
 	List<Map> filterList();
+	List<Map> filterbest();
+	
+	
 }

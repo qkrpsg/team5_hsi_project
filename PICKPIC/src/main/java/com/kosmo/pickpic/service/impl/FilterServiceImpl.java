@@ -36,5 +36,14 @@ public class FilterServiceImpl implements FilterService{
 	public List<Map> filterList() {
 		return dao.filterList();
 	}
+
+	@Override
+	public List<Map> filterbest() {
+		// TODO Auto-generated method stub
+		return dao.filterbest();
+	}
+
+
+	
 	
 }//class

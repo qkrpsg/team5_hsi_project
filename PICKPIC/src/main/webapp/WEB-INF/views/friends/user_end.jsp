@@ -52,7 +52,7 @@ width:100%;
 .tt{
 margin-left:2%;
 
-font-size: 15px;
+font-size: 25px;
 color: white;
 text-align: left;
 
@@ -71,19 +71,13 @@ text-align: left;
                <h2>픽 로드</h2>
                <span>원하는 루트로 자기만의 픽 로드를 만들어 봐요! </span>
                
-               <div class="form-submit" >
-                  <font style="vertical-align: inherit;"> 
-                     <font style="vertical-align: inherit;"> 
-                        <input type="submit" value="+ 픽 로드 생성하기 " class="submit" id="submit" name="submit" 
-                        onclick="location.href='<c:url value="/test/place_create.pic"/>'">
-                     </font>
-                  </font> 
-                  <font style="vertical-align: inherit;">
-                     <font style="vertical-align: inherit;"> 
-                        <input type="submit" value="베스트 로드" class="submit" id="reset" name="reset"
-                        onclick="location.href='#best'">
-                     </font>
-                  </font>
+              <div class="blue-button">
+                 <a class="scrollTo" data-scrollTo="popular" href="#best">+ 베스트 로드
+							픽</a>
+					</div>
+                     
+             
+          
                </div>
             </div>
             
@@ -106,7 +100,7 @@ text-align: left;
                      <div class="col-md-5 third-item">
                         <fieldset>
                            <select required name='category' onchange='this.form.()'>
-                              <option value="">위치</option>
+                             <option value="">위치</option>
                               <option value="Kor">오전</option>
                               <option value="Usa">낮</option>
                               <option value="Jan">오후</option>
@@ -193,11 +187,60 @@ text-align: left;
 		    </c:if>
 		   </c:forEach>
 		
-		
-		
 	</div>
 	</div>
 </section>
+<section class="featured-places" id="best">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-heading">
+					<span>베스트 픽 로드</span>
+					<h2>인기 있는 픽 로드를 만나보세요!</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		<div class="col-md-12">
+       <c:forEach  var="bestroad" items="${bestroad }" varStatus="loop">
+		
+
+			<div class="col-md-4 " style="float: left">
+				<div class="featured-item">
+				
+					<div class="thumb">
+					   
+						<img src="${bestroad.PRP_IMAGE_PATH }" />
+						<div class="date-content">
+							<h6>조회수</h6>
+							<span>${bestroad.PRB_VIEW }</span>
+						</div>
+					</div>
+					<div class="down-content">
+						<div class="row">
+							
+							<div class=" col-md-12">
+								<div class="text-button" >
+									<a href="<c:url value='/friends/view.pic?prb_index=${bestroad.PRB_INDEX }&prb_id=${bestroad.PRB_ID }'/>"><span style="font-size: 20px;font-weight: bold">보러가기</span></a>
+								</div>
+							</div>
+						</div>
+						</div>
+					
+					</div>
+				
+				</div>
+			
+            	</c:forEach >
+            	</div>
+            	</div>
+     </div>
+</section>
+
+
+
+
+
 <script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
 <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
