@@ -2,23 +2,14 @@
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
 <link href="<c:url value='/css/Filter2.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/Filter.js'/>"></script>
-
-<%-- <link rel="stylesheet" href="<c:url value='/css/datepicker.css' />  --%>
-<!-- 첫상단 고정 필터용 -->
-
 <script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='/css/fontAwesome.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/hero-slider.css' /> ">
 <link rel="stylesheet" href="<c:url value='/css/owl-carousel.css'/>">
-
-
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
-
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value='/css/test/style2.css'/>">
-
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
 <%-- <script
 	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script> --%>
 
@@ -106,7 +97,7 @@
 						
 					</div>
 					<div class="hi">
-						<a href="<c:url value='/friends/place_view.pic?ppb_index=${list.PPB_INDEX }'/>">상세보기</a>
+						<a href="<c:url value='/friends/place_view.pic?ppb_index=${list.PPB_INDEX }&ppb_addr1=${list.PPB_ADDR1 }'/>">상세보기</a>
 						</div>
 				</div>
 			</c:forEach>

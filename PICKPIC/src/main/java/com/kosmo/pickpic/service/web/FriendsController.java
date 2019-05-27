@@ -1,5 +1,9 @@
 package com.kosmo.pickpic.service.web;
+import org.jsoup.Jsoup;
 
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -110,23 +114,67 @@ public class FriendsController {
 	
 	@RequestMapping("/friends/place_view.pic")
 	public String placeView(@RequestParam Map map, Model model, Principal principal) throws Exception {
-		//여기서 작업 시작
+		// 웹 크롤링
+		System.out.println(map.get("ppb_addr1"));
+		String addr = map.get("ppb_addr1").toString().substring(0,5);
+		System.out.println("addr"+addr);
+		try {
+
+			//웹에서 내용을 가져온다.
+
+			Document doc = Jsoup.connect("https://search.naver.com/search.naver?query="+addr).get();
+
+			//내용 중에서 원하는 부분을 가져온다.
+		
+			Elements contents = doc.select("._related_keyword_ul li");
+			String[] a = new String[contents.size()];
+			System.out.println("contents::::"+contents);
+			String text = "";
+			for(Element content : contents) {
+				text +=	content.text() + ",";
+			}
+			text = text.substring(0, text.length()-1);
+			
+			String[] text_split = text.split(",");
+			
+			
+
+			System.out.println(text_split.length);
+			
+			List<String> list = new Vector<String>();
+			for(int i = 0;i<text_split.length;i++) {
+				list.add(text_split[i]);
+			}
+			model.addAttribute("list_c",list);
+			 
+			
+			System.out.println(text);
+			} catch (IOException e) { //Jsoup의 connect 부분에서 IOException 오류가 날 수 있으므로 사용한다.   
+
+			e.printStackTrace();
+
+			}
+		
+		
+		
+		
+		
+		
+		
 		map.put("ppa_email", principal.getName());
-		System.out.println("map전부:"+map.toString());
 		
 		
 		PickpicAccountDTO dto = accountService.myPageInfo(map);
 		model.addAttribute("user", dto);
-		System.out.println("모모델" + model.toString());
-		System.out.println("프로필 경로 : " + dto.getPpa_profile_path());
+		
 		
 		
 		
 		Map selectOne = ppbService.ppbSelectOne(map);
-		System.out.println("selectOne"+selectOne.toString());
+		
 		String test = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+selectOne.get("PPB_IMAGE_PATH");
 		selectOne.put("PPB_IMAGE_PATH",test);
-		System.out.println(selectOne);
+		
 		model.addAttribute("list",selectOne);
 		
 		return "friends/place_view.tiles";
@@ -223,7 +271,6 @@ public class FriendsController {
 	// 필터정보
 	@RequestMapping("/friends/filter.pic")
 	public String filter(@RequestParam Map map, Model model) throws Exception {
-
 		// filter 테이블 전부 가져오기
 		List<Map> list = fService.filterList();
 		List<Map> best = fService.filterbest();

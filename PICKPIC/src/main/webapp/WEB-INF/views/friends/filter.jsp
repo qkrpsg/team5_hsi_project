@@ -22,7 +22,9 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
-
+<%-- 
+<script
+	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script> --%>
 
 <style>
 .text1{
@@ -33,8 +35,6 @@ margin-left: 5%;
 
 </style>
 
-<script
-	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
 
 <section class="banner" id="top">
 	<div class="container">
@@ -184,8 +184,30 @@ margin-left: 5%;
 		</div>
 	</div>
 </section>
-
-<script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
-<script src="<c:url value='js/datepicker.js'/>"></script>
+<script>
+$(document).ready(function(){
+    $(document).on("mouseover",".img_wrap2",function(event){
+    	//$('.img_wrap img').css("height",$('.img_wrap').css('width'));
+    	//$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
+    	
+    	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
+    	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
+		var img2 =$('.img_wrap2 img').css('height').replace('px','');
+        $('.Text_title').css('margin-top',img2/2+"px");
+    	$(this).find('.innerText').css("display","block");
+    });
+    
+    $(document).on("mouseout",".img_wrap2",function(event){
+    	$(this).find('.innerText').css("display","none");
+    });
+    $(window).resize(function(){
+		$('.img_wrap img').css("height",$('.img_wrap').css('width'));//
+		$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
+		$('.innerText').css('height',$('.img_wrap2 img').css('height'));
+		$('.innerText').css('width',$('.img_wrap2 img').css('width'));
+	});
+}); // end of ready()
+</script>
+<%-- <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
-<script src="<c:url value='js/Main.js'/>"></script>
+<script src="<c:url value='js/Main.js'/>"></script> --%>

@@ -75,18 +75,40 @@
 
 
 	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-			level : 3
+	
+	
+	$(document).ready(function(){
+		
+		var mapContainer;
+		var latitude
+		var longitude
+		navigator.geolocation.getCurrentPosition(function(pos) {
+		latitude = pos.coords.latitude;
+		longitude = pos.coords.longitude;
+			console.log(latitude);
+		});      
+		
+		$(window).load(function() {
+				
+				
+							
+		
+		
+		//37.473083599999995       126.8788276
+		
+	
+		mapContainer = document.getElementById('map'),
+		mapOption = {//9  11
+		center : new daum.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+		level : 3
 		// 지도의 확대 레벨
-		};
-
-		// 지도를 생성합니다    
-		var map = new daum.maps.Map(mapContainer, mapOption);
-
+		};// 지도를 생성합니다    
+	
+	
+	var map = new daum.maps.Map(mapContainer, mapOption); 
+	
 		// 주소-좌표 변환 객체를 생성합니다
-		console.log('hi' + new daum.maps.services.Geocoder());
+		
 		var geocoder = new daum.maps.services.Geocoder();
 
 		var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
@@ -141,7 +163,7 @@
 										}
 									});
 						});
-
+		
 		// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 		daum.maps.event.addListener(map, 'idle', function() {
 			
@@ -173,7 +195,11 @@
 				}
 			}
 		}
-
+	});
+		
+		
+		
+	});
 		$(document).ready(function() {
 			$(document).on("click", "#moveBtn", function(event) {
 				//동적으로 생성 후 클릭 하는 방법입니니다
@@ -182,7 +208,7 @@
 					console.log('addr_:::'+addr_);
 					 */
 					//console.log('title:::'+$('.title').val());
-					console.log('addr:::'+$('.addr2').val());
+				//	console.log('addr:::'+$('.addr2').val());
 					/* console.log('my_calendar:::'+$('.my_calendar').val());
 					console.log('filter1:::'+$('.filter1').val());
 					console.log('naiyo:::'+$('.naiyo').val()); 
@@ -263,9 +289,9 @@
 					document.body.appendChild(form);
 					form.submit();
 				
-			});
+			});  
 		}); // end of ready()
-		
+
 	</script>
 
 
