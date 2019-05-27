@@ -1,33 +1,33 @@
 $(document).ready(function(){
-	$('.img_wrap img').css("height",$('.img_wrap').css('width'));
+	/*$('.img_wrap img').css("height",$('.img_wrap').css('width'));
 	$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
 	
 	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
 	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
 	
 	var img2 =$('.img_wrap2 img').css('height').replace('px','');
-	$('.Text_title').css('margin-top',img2/2+"px");
+	$('.Text_title').css('margin-top',img2/2+"px");*/
 	
 	/*	var img = document.getElementsByClassName('img_wrap')[0].clientWidth/3 +20;
 		$('.Text_title').css("margin-top", img+"px");
 		img = document.getElementsByClassName('img_wrap')[0].clientWidth/5;
 		$('.Text_title').css("margin-top", img+"px");
 	*/
-	$(window).resize(function(){
+	/*$(window).resize(function(){
+		console.log('s나난');
 		$('.img_wrap img').css("height",$('.img_wrap').css('width'));//
 		$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
 		$('.innerText').css('height',$('.img_wrap2 img').css('height'));
 		$('.innerText').css('width',$('.img_wrap2 img').css('width'));
 		
 		
-		var img2 =$('.img_wrap2 img').css('height').replace('px','');
-		
+		//var img2 =$('.img_wrap2 img').css('height').replace('px','');
 		//console.log($('.Text_title').css('margin-top'));
 		
-		$('.Text_title').css('margin-top',img2/2+"px");
+		//$('.Text_title').css('margin-top',img2/2+"px");
 		
 		
-	});
+	});*/
 	
 
 		
