@@ -15,4 +15,7 @@ public interface PickRoadBoardService {
 	//이 2개는 view 페이지에서 사용할거 컨트롤러도 view 검색시 찾기 가능
 	List<Map> pickRoadBoardSelectOne(Map map);
 	List<Map> pickRoadBoardSelectOne2(Map map);
+	
+	//마이페이지 픽로드 게시판 처리할거임
+	List<Map> pickRoadMyPage(Map map);
 }

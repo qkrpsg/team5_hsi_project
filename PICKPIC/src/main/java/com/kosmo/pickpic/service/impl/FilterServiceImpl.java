@@ -43,6 +43,11 @@ public class FilterServiceImpl implements FilterService{
 		return dao.filterbest();
 	}
 
+	@Override
+	public List<Map> myPageFilter(Map map) {
+		return dao.myPageFilter(map);
+	}
+
 
 	
 	

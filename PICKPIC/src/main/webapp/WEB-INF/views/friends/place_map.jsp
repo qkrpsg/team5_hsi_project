@@ -62,7 +62,13 @@
 			<span id="centerAddr"></span>
 		</div>
 		<p id="result" style=""></p>
-
+		
+				<input type="hidden" value="${title}" class="title"/>
+				<input type="hidden" value="${addr}" class="addr2"/>
+				<input type="hidden" value="${my_calendar}" class="my_calendar"/>
+				<input type="hidden" value="${filter1}" class="filter1"/>
+				<input type="hidden" value="${naiyo}" class="naiyo"/>
+		
 	</div>
 
 
@@ -122,7 +128,7 @@
 											addr_ = result[0].address.address_name;
 											var content = '<div class="bAddr" style="overflow: hidden;">'
 													+'<div class="addr">' +detailAddr+'</div>'
-													+ '<div style="float:right;"><a href="#" id="moveBtn" style="color:red;cursor: pointer;">작성하기</a></div>'
+													+ '<div style="float:right;"><a href="#" id="moveBtn" style="color:red;cursor: pointer;">저장하기</a></div>'
 											'</div>';
 											//   /pickpic/friends/place_write.pic
 											// 마커를 클릭한 위치에 표시합니다 
@@ -171,9 +177,17 @@
 		$(document).ready(function() {
 			$(document).on("click", "#moveBtn", function(event) {
 				//동적으로 생성 후 클릭 하는 방법입니니다
-					console.log("나오냐lat:"+lat_);
+					/*  console.log("나오냐lat:"+lat_);
 					console.log("나오냐lng_"+lng_);
-					console.log('addr:::'+addr_);
+					console.log('addr_:::'+addr_);
+					 */
+					//console.log('title:::'+$('.title').val());
+					console.log('addr:::'+$('.addr2').val());
+					/* console.log('my_calendar:::'+$('.my_calendar').val());
+					console.log('filter1:::'+$('.filter1').val());
+					console.log('naiyo:::'+$('.naiyo').val()); 
+					 */
+					
 					/* 
 					위도 : ppb_latitude
 					경도 : ppb_longitude
@@ -205,11 +219,46 @@
 					hiddenField.setAttribute("value", addr_);
 					form.appendChild(hiddenField);
 
+					
+					//제목
+					  var hiddenField = document.createElement("input");
+				      hiddenField.setAttribute("type", "hidden");
+				      hiddenField.setAttribute("name", "title");
+				      hiddenField.setAttribute("value", $('.title').val());
+				      form.appendChild(hiddenField);
+					//상세주소
+					var hiddenField = document.createElement("input");
+				      hiddenField.setAttribute("type", "hidden");
+				      hiddenField.setAttribute("name", "addr");
+				      hiddenField.setAttribute("value", $('.addr2').val());
+				      form.appendChild(hiddenField);
+					//달력값
+					 var hiddenField = document.createElement("input");
+				      hiddenField.setAttribute("type", "hidden");
+				      hiddenField.setAttribute("name", "my_calendar");
+				      hiddenField.setAttribute("value", $('.my_calendar').val());
+				      form.appendChild(hiddenField);
+					//사용할 필터
+					 var hiddenField = document.createElement("input");
+				      hiddenField.setAttribute("type", "hidden");
+				      hiddenField.setAttribute("name", "filter1");
+				      hiddenField.setAttribute("value", $('.filter1').val());
+				      form.appendChild(hiddenField);
+					//내용
+					var hiddenField = document.createElement("input");
+				      hiddenField.setAttribute("type", "hidden");
+				      hiddenField.setAttribute("name", "naiyo");
+				      hiddenField.setAttribute("value", $('.naiyo').val());
+				      form.appendChild(hiddenField);
+					
+					
+					
 					var hiddenField = document.createElement("input");
 					hiddenField.setAttribute("type", "hidden");
 					hiddenField.setAttribute("name", "${_csrf.parameterName}");
 					hiddenField.setAttribute("value", "${_csrf.token}");
 					form.appendChild(hiddenField);
+					
 					
 					document.body.appendChild(form);
 					form.submit();

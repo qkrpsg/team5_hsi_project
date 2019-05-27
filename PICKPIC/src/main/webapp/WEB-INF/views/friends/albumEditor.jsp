@@ -71,7 +71,7 @@
    <div class="container-fluid">
       <ul class="nav navbar-nav">
          <li><a href="javascript:void(0);" onclick="deleteItem(this)" class="alldelete_btn" >선택 삭제</a></li>
-         <li><a id="myfilter_btn">내 필터 보관함</a></li>
+         <li><a href="javascript:void(0);" onclick="myfilter_btn(this)" id="myfilter_btn">내 필터 보관함</a></li>
          <li><a class="btn" data-toggle="modal" id="option_btn" >+
                가져오기</a></li>
          <li ><a href="javascript:void(0);" onclick="selectItem(this)" class="allselect_btn">전체 선택</a></li>
@@ -125,13 +125,13 @@
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
-      <div class=" card-a cssco card_hover" id="none"
+      <%-- <div class=" card-a cssco card_hover" id="none"
          onclick="filterOn(this)">
          <img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
          <div class="ovrly"></div>
          <span class="name_text"> NONE </span>
       </div>
-
+ --%>
       <c:forEach var="item" items="${list_filter }"  varStatus="loop">
          <c:set var="str_f_name" value="${item.F_NAME }"/>
          <div class=" card-a cssco card_hover ${item.F_NAME}" id="${item.F_NAME}"
@@ -189,7 +189,8 @@
          modal.style.display = "none";
       }
    });
-   /* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
+   
+   /* <!-- 프리뷰에 다중으로 이미지띄우기 : #img_mypc  --> */
    var fileCollection = new Array();
    var index = 0;
    var idArray = new Array();
@@ -210,7 +211,7 @@
 						+ '<div class="photo" >'
 						+ '<div class="photo_center_wrap" >'
 						+ '<div class="photo_center cssco" id=set_'+index+'>'
-						+ '<canvas id="canvas_'+index+'"></canvas>'
+						+ '<canvas id="canvas_'+index+'" data-caman-hidpi-disabled="true"></canvas>'
 						/* + '<img id="temp_img_'
 						+ index
 						+ '" src="'
@@ -252,9 +253,53 @@
 		console.log(idArray);
 	});
 	
+	  /* <!-- 프리뷰에 다중으로 이미지띄우기 : #img_mypic  --> */
+	  let html ="";
 	$('#img_mypic').on('click',function(e) {
 		console.log("ccvcxvzxcxc");
+		$('#preview').empty();
+		idArray = [];
+		selectArray = [];
+		index = 0;
+		$.ajax({
+	         url:'<c:url value="/friends/albumEditor.do"/>',
+	         dataType : 'json',
+	         type : "get",
+	         data : {
+	        	 "id" : "dd"
+	         },
+	         success : function(data) {
+	            console.log('성공');
+	            
+	            //현재 출력된 이미지 다 삭제
+	            html ="";
+	            let index_font=0;
+	            $.each(data, function(index, element) {
+	            /*    console.log('data'+data);
+	               console.log('index'+index);
+	               console.log('element'+element['PPB_IMAGE_PATH']); */
+	               html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
+	                  +'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" />'
+	                  +'<div class="innerText" >'
+	                  +'<p class="Text_title" ><span>'+element['PPB_TITLE']+'</span></p>'
+	                  +'</div>'
+	                  +'</div>';
+	               
+	               index_font++;
+	               
+	            });
+	            
+	            $('#preview').html(html);
+	            $('#imgCount').html(index_font);
+	            
+	         },
+	         error : function(data) {
+	            console.log('실패');
+	         }
+	  });
 	});
+	 
+	
 
 	/* 이미지 기준 가로 또는 세로 적용 */
 	function resize(img) {
@@ -279,7 +324,7 @@
 					selectArray = selectArray.concat(idArray);
 					$.each(selectArray, function(index, id) {
 						$('div[id=photo_wrap_' + id + ']').css('box-shadow',
-								'5px 5px 5px #c9e3f7');
+								'5px 5px 5px#4a4a4a');
 						$("button[id=" + id + "]").eq(1).html('해제');
 					});
 
@@ -307,7 +352,7 @@
 			if ($(item).html() == '선택') {
 				/* 선택 후 효과 */
 				$('div[id=photo_wrap_' + currentId + ']').css('box-shadow',
-						'5px 5px 5px #c9e3f7');
+						'5px 5px 5px #4a4a4a');
 				selectArray.push(Number(currentId));
 				if (selectArray.length == idArray.length) {
 					$('.allselect_btn').html('전체 해제');
@@ -394,7 +439,8 @@
 
 	/* 필터 선택시 이미지에 필터 적용*/
 	
-	var filterNameAfter;
+	/* 수정중 */
+/* 	var filterNameAfter;
 	function filterOn(item) {
 		var filterName = $(item).attr("id");
 		var toggle=false;
@@ -426,7 +472,7 @@
 					Caman("#" + current_can, img, function()  {this.vintage().render();});
 					$('#canvas_' + id).attr('flag', 'true');
 				}	
-// 				toggle = !toggle
+ 				toggle = !toggle
 				console.log("v2="+toggle);
 				break;
 			case 'lomo':
@@ -459,7 +505,7 @@
 				console.log("c2="+toggle);
 				break;
 			case 'sincity':
-				/* 안됨 */
+		
 				console.log("s="+toggle);
 				if(toggle){
 					console.log(toggle);
@@ -475,7 +521,7 @@
 				console.log("s2="+toggle);
 				break;
 			case 'crossprocess':
-				/* 안됨 */
+		
 				console.log("c="+toggle);
 				if($('#canvas_' + id).attr('flag') == 'true'){
 					console.log(toggle);
@@ -521,7 +567,7 @@
 				console.log("n2="+toggle);
 				break;
 			case 'hermajesty':
-				/* 안됨 */
+			
 				console.log("h="+toggle);
 				if($('#canvas_' + id).attr('flag') == 'true'){
 					console.log(toggle);
@@ -548,10 +594,10 @@
 			filterNameAfter = $(item).attr("id");
 		});
 	}
-	
+	 */
 	
 	/* 필터 선택시 이미지에 필터 적용*/
-	/* function filterOn(item) {
+	 function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
 			var current_can = $('#canvas_' + id).attr('id');
@@ -573,12 +619,12 @@
 					this.clarity().render();
 				});
 				break;
-			case 'sinCity':
+			case 'sincity':
 				Caman("#" + current_can, img, function() {
 					this.sinCity().render();
 				});
 				break;
-			case 'crossProcess':
+			case 'crossprocess':
 				Caman("#" + current_can, img, function() {
 					this.crossProcess().render();
 				});
@@ -593,9 +639,59 @@
 					this.nostalgia().render();
 				});
 				break;
-			case 'herMajesty':
+			case 'hermajesty':
 				Caman("#" + current_can, img, function() {
 					this.herMajesty().render();
+				});
+				break;
+			case 'orangepeel':
+				Caman("#" + current_can, img, function() {
+					this.orangePeel().render();
+				});
+				break;
+			case 'oldboot':
+				Caman("#" + current_can, img, function() {
+					this.oldBoot().render();
+				});
+				break;
+			case 'love':
+				Caman("#" + current_can, img, function() {
+					this.love().render();
+				});
+				break;
+			case 'jarques':
+				Caman("#" + current_can, img, function() {
+					this.jarques().render();
+				});
+				break;
+			case 'hazydays':
+				Caman("#" + current_can, img, function() {
+					this.hazyDays().render();
+				});
+				break;
+			case 'grungy':
+				Caman("#" + current_can, img, function() {
+					this.grungy().render();
+				});
+				break;
+			case 'glowingsun':
+				Caman("#" + current_can, img, function() {
+					this.glowingSun().render();
+				});
+				break;
+			case 'concentrate':
+				Caman("#" + current_can, img, function() {
+					this.concentrate().render();
+				});
+				break;
+			case 'hemingway':
+				Caman("#" + current_can, img, function() {
+					this.hemingway().render();
+				});
+				break;
+			case 'sunrise':
+				Caman("#" + current_can, img, function() {
+					this.sunrise().render();
 				});
 				break;
 			default:
@@ -604,7 +700,7 @@
 				});
 			}
 		});
-	} */
+	}
 	
 	/*
 	var set_class = $('#set_' + id).attr('class');         

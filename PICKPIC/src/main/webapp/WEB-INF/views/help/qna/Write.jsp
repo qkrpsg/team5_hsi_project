@@ -46,9 +46,10 @@
 					<!-- 등록일 -->
 					<input type="hidden" name="ppu_register_date" id="Q_POST_DATE"/>
 					<!-- 글쓰기 썸머노트 -->
-					<textarea id="summernote" name="Q_CONTENT" id="Q_CONTENT">상세 내용을 작성하세요.</textarea>       
+					<textarea id="summernote" name="Q_CONTENT" id="Q_CONTENT">상세 내용을 작성하세요.</textarea>        
 					
 					<div class="form-group text-center">
+						
 						<input type="button" id="join-submit" class="btn btn-primary" value="작성완료" >
 						<input type="button"  class="btn btn-warning" onclick="location.href='<c:url value="/help/qna/List.pic"/>'" value="취소" >
 					</div>
@@ -70,7 +71,7 @@ $(function(){
 		$("#kyk").submit();
 	});
 });
-	$(document).ready(function() {
+	 $(document).ready(function() {
 		$('#summernote').summernote({
 			height : 300, // set editor height
 			minHeight : null, // set minimum height of editor
@@ -84,26 +85,6 @@ $(function(){
 				}	
 			}
 		});
-	})
-function sendFile(file, el) {
-		var form_data = new FormData();
-      	form_data.append('file', file);
-      	$.ajax({
-        	data: form_data,
-        	type: "POST",
-        	url: '/profileImage.mpf',
-        	cache: false,
-        	contentType: false,
-        	enctype: 'multipart/form-data',
-        	processData: false,
-        	success: function(img_name) {
-          		$(el).summernote('editor.insertImage', img_name);
-        	}
-      	});
-    }	
-	
-	
-	
-	
-	
+	}); 
+
 </script>

@@ -38,7 +38,7 @@
 				<!--프로필 사진 시작 -->
 				<div class="box box-primary">
 					<div class="box-body box-profile">
-						<img id="d-filterImage" class="profile-user-img img-responsive" src="<c:url value='/resources/images/route2.jpg'/>" alt="User profile picture"/>
+						<img id="d-filterImage" class="profile-user-img img-responsive" src="<c:url value='/resources/pay_img/none.jpg'/>" alt="User profile picture"/>
 						<h3 id="d-filterName" class="profile-username text-center" fname="">필터명</h3>
 						<ul class="list-group list-group-unbordered">
 							<li class="list-group-item"><b>가격변경 </b><input type="number" id="d-change" class="form-control" /></li>

@@ -57,4 +57,8 @@ public class PickRoadBoardServiceImpl implements PickRoadBoardService{
 		return dao.pickRoadBest(map);
 	}
 	
+	public List<Map> pickRoadMyPage(Map map) {
+		return dao.pickRoadMyPage(map);
+	}
+	
 }

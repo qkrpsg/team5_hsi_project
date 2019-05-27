@@ -32,7 +32,7 @@
 					<h3 style="margin-top: 10px">
 						<b>슬기로운다슬기</b>
 					</h3>
-					<h4 class="font-yellow">프로필수정</h4>
+					<!-- <h4 class="font-yellow">프로필수정</h4> -->
 					<ul class="follow2">
 						<li>
 							<h6>
@@ -60,7 +60,7 @@
 								<font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit; color: #4883ff">7</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit;">내 필터</font></font></span>
+									style="vertical-align: inherit;">보유 필터</font></font></span>
 						</li>
 					</ul>
 

@@ -86,7 +86,6 @@
 		</c:forEach>
 	</div>
 	<div class="icon_wrap">
-<%-- 		<a href="<c:url value='/friends/place_filter.pic' />"> --%>
 		<a href="<c:url value='/user/uploadImage.pic' />">
 			<img class="more_icon" alt="more" src="<c:url value='/resources/images/more_icon.png' />" />
 			<p>more</p>
@@ -274,7 +273,7 @@
 			src="<c:url value='/resources/images/playstrore_icon.png'/>" />
 	</div>
 	<div>
-		<button>어플리케이션 다운로드</button>
+		<button onclick="sdk_download()">어플리케이션 다운로드</button>
 	</div>
 </section>
 
@@ -289,7 +288,11 @@
 		container : $('#sec_4')
 	}).$('.imageHolder').css("z-index", "1");
 	
-	var clickBtn = function(obj) {
-		
-	};
+	
+	function sdk_download(e) {
+		e.preventDefault();  //stop the browser from following
+		window.location.href("<c:url value='/resources/images/playstrore_icon.png'/>");
+	}
+	
+	
 </script>

@@ -33,16 +33,6 @@
 										<th>최종로그인</th>
 									</tr>
 								</thead>
-<!-- 								<tbody> -->
-<%-- 									<c:forEach var="item" items="${user }" varStatus="loop"> --%>
-<!-- 										<tr> -->
-<%-- 											<td>${loop.count}</td> --%>
-<%-- 											<td><a href="javascript:void(0)" class="mb-detail">${item.ppa_email }</a></td> --%>
-<%-- 											<td>${item.ppa_nickname}</td> --%>
-<%-- 											<td>${item.lh_ld }</td> --%>
-<!-- 										</tr> -->
-<%-- 									</c:forEach> --%>
-<!-- 								</tbody> -->
 							</table>
 						</div>
 					</div>
@@ -55,7 +45,7 @@
 				<!--프로필 사진 시작 -->
 				<div class="box box-primary detailTop">
 					<div class="box-body box-profile">
-						<img id="userimage" class="profile-user-img img-responsive img-circle" src="/pickpic/resources/images/defaultProfile.png" alt="User profile picture">
+						<canvas class="profile-user-img img-responsive img-circle" id="canvas"></canvas>
 						<h3 id="useremail" class="profile-username text-center">로그인계정</h3>
 						<p id="nickname" class="text-muted text-center">별명</p>
 					</div>
@@ -169,7 +159,20 @@
 				console.log(data);
 				
 				$.each(data, function(index, element) {
-					$('#userimage').attr("src",element["ppa_profile_path"]);
+					var canvas = document.getElementById('canvas');
+					ctx = canvas.getContext("2d");
+					
+					var loadImg = new Image();
+					loadImg.src= "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image" + element['ppa_profile_path'];
+					loadImg.onload = function(e) {
+						canvas.width = loadImg.width;
+						canvas.height = loadImg.height;
+						ctx.drawImage(loadImg, 0, 0, loadImg.width, loadImg.height);
+						canvas.removeAttribute("data-caman-id");
+					};
+					
+					
+					
 					$('#useremail').html(element["ppa_email"]);
 					$('#nickname').html(element['ppa_nickname']);
 

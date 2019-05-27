@@ -10,8 +10,7 @@ body {
     padding: 0;
 }
 
-.light-bg {
-  background: #e6e6e6; }
+.light-bg {}
 
 
   
@@ -253,11 +252,13 @@ body {
    BOOKING DETAILS
    ============================================================== */
 .booking-details_wrap {
-  padding: 26px 0; }
+  padding: 26px 0; 
+      background-color: whitesmoke;}
 
 .booking-checkbox_wrap {
   background: #fff;
-  padding: 30px; }
+  padding: 30px; 
+      border: 1px solid #e6e6e6;}
   .booking-checkbox_wrap h5 {
     color: #3e434b;
     text-align: center;
@@ -383,7 +384,8 @@ body {
 .contact-info {
   background: #fff;
   padding: 0 0 6px;
-  margin: 0 0 15px; }
+  margin: 0 0 15px;
+      border: 1px solid #e6e6e6; }
   .contact-info img {
     width: 100%; }
   .contact-info label {

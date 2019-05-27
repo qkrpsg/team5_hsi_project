@@ -54,4 +54,9 @@ public class FilterDAO implements FilterService{
 		return template.selectList("filterbest");
 	}
 
+	@Override
+	public List<Map> myPageFilter(Map map) {
+		return template.selectList("myPageFilter", map);
+	}
+
 }

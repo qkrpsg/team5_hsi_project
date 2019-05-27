@@ -29,4 +29,14 @@ public class PickPlaceBoardServiceImpl implements PickPlaceBoardService {
 	public List<PickPlaceBoardDTO> ppbBestList() {
 		return dao.ppbBestList();
 	}
+
+	@Override
+	public List<Map> ppbMyPageList(Map map) {
+		return dao.ppbMyPageList(map);
+	}
+
+	@Override
+	public Map ppbSelectOne(Map map) {
+		return dao.ppbSelectOne(map);
+	}
 }

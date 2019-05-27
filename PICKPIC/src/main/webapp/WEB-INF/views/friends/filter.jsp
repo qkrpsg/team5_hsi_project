@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+
+
 <link href="<c:url value='/css/Filter.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/Filter.js'/>"></script>
 <script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
@@ -9,8 +11,10 @@
 <link rel="stylesheet" href="<c:url value='/css/hero-slider.css' /> ">
 <link rel="stylesheet" href="<c:url value='/css/owl-carousel.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/datepicker.css' /> ">
+
 <!-- 첫상단 고정 필터용 -->
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
+
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
 <link rel="stylesheet"
 	href="<c:url value='/css/templatemo-style2.css'/>">
@@ -18,6 +22,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
+
+
 <style>
 .text1{
 font-size: 30px;
@@ -46,30 +52,13 @@ margin-left: 5%;
 				<div class="submit-form" id="serchlist">
 					<form id="form-submit" action="" method="get">
 						<div class="row">
-							<div class="col-md-3 first-item">
-								<fieldset>
-									<input name="name" type="text" class="form-control" id="name"
-										placeholder="필터명" required="">
-								</fieldset>
-							</div>
-							<div class="col-md-3 second-item">
+							<div class="col-md-10 second-item">
 								<fieldset>
 									<input name="location" type="text" class="form-control"
 										id="location" placeholder="키워드를 입력하세요." required="">
 								</fieldset>
 							</div>
-							<div class="col-md-3 third-item">
-								<fieldset>
-									<select required name='category' onchange='this.form.()'>
-										<option value="">세부분류</option>
-										<option value="Kor">오전</option>
-										<option value="Usa">낮</option>
-										<option value="Jan">오후</option>
-										<option value="Chi">종일</option>
-									</select>
-								</fieldset>
-							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<fieldset>
 									<button type="submit" id="form-submit" class="btn">검색</button>
 								</fieldset>
