@@ -19,14 +19,6 @@
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
 
-<%-- 
-<link rel="stylesheet" href="<c:url value='/css/test/bootstrap-theme.min.css'/>"> --%>
-<link rel="stylesheet" href="<c:url value='/css/test/hero-slider.css'/>">
- <link rel="stylesheet" href="<c:url value='/css/test/owl-carousel.css'/>">
-<%--<link rel="stylesheet" href="<c:url value='/css/test/datepicker.css'/>">--%>
-<%-- <link rel="stylesheet" href="<c:url value='/css/test/templatemo-style.css'/>"> --%>
-<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<script src="<c:url value='/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
 
 <script src="<c:url value='/js/caman.full.min.js'/>"></script>
 
@@ -133,7 +125,14 @@
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
-      <%-- <c:forEach var="item" items="${list_filter }"  varStatus="loop">
+      <%-- <div class=" card-a cssco card_hover" id="none"
+         onclick="filterOn(this)">
+         <img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
+         <div class="ovrly"></div>
+         <span class="name_text"> NONE </span>
+      </div>
+ --%>
+      <c:forEach var="item" items="${list_filter }"  varStatus="loop">
          <c:set var="str_f_name" value="${item.F_NAME }"/>
          <div class=" card-a cssco card_hover ${item.F_NAME}" id="${item.F_NAME}"
             onclick="filterOn(this)">
@@ -141,26 +140,10 @@
             <div class="ovrly"></div>
             <span class="name_text">${fn:toUpperCase(str_f_name)}</span>
          </div>
-      </c:forEach> --%>
-
-		<section class="popular-places" id="popular">
-			<div class="container-fluid">
-				<div class="owl-carousel owl-theme">
-					<div class="item popular-item">
-						<div class="thumb">
-							<img src="<c:url value='/resources/images/team/memberPark.jpg'/>"
-								alt="">
-							<div class="text-content">
-								<h4>Mauris tempus</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-
-	</div>
+      </c:forEach>
+      
+      
+   </div>
       <!--scroll_inline box -->
    </div>
    <!--filter_list -->
@@ -171,124 +154,105 @@
 
 <script type="text/javascript">
 <!-- 모달창 열고 닫기 -->
-	//모달요소 얻기
-	var modal = document.getElementById('option_modal');
-	// 모달창 열기 버튼요소 얻기
-	var btn = document.getElementById("option_btn");
-	// 모달창 닫기(span) 태그요소 얻기
-	var span = document.getElementsByClassName("close")[0];
-	//페이지 로드하면서 모달창 열기(띄우기)
-	window.onload = function() {
-		modal.style.display = "block";
-	}
-	// 버튼 클릭시 모달창 열기(보이기)
-	btn.onclick = function() {
-		modal.style.display = "block";
-	}
-	// 닫기 클릭시 모달창 닫기(감추기)
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
-	// 모달창 외의 바깥부분 클릭시 모달창 닫기(감추기)
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-	//프리뷰에 로드시 모달창 자동 닫기(감추기)
-	var input = document.getElementById("img_mypc");
-	function isEmpty(str) {
-		return !str.replace(/\s+/, '').length;
-	}
-	input.addEventListener("input", function() {
-		if (!isEmpty(this.value)) {
-			/* console.log("#img_mypc is NOTNULL"); */
-			modal.style.display = "none";
-		}
+   //모달요소 얻기
+   var modal = document.getElementById('option_modal');
+   // 모달창 열기 버튼요소 얻기
+   var btn = document.getElementById("option_btn");
+   // 모달창 닫기(span) 태그요소 얻기
+   var span = document.getElementsByClassName("close")[0];
+   //페이지 로드하면서 모달창 열기(띄우기)
+   window.onload = function() {
+      modal.style.display = "block";
+   }
+   // 버튼 클릭시 모달창 열기(보이기)
+   btn.onclick = function() {
+      modal.style.display = "block";
+   }
+   // 닫기 클릭시 모달창 닫기(감추기)
+   span.onclick = function() {
+      modal.style.display = "none";
+   }
+   // 모달창 외의 바깥부분 클릭시 모달창 닫기(감추기)
+   window.onclick = function(event) {
+      if (event.target == modal) {
+         modal.style.display = "none";
+      }
+   }
+   //프리뷰에 로드시 모달창 자동 닫기(감추기)
+   var input = document.getElementById("img_mypc");
+   function isEmpty(str) {
+      return !str.replace(/\s+/, '').length;
+   }
+   input.addEventListener("input", function() {
+      if (!isEmpty(this.value)) {
+         /* console.log("#img_mypc is NOTNULL"); */
+         modal.style.display = "none";
+      }
+   });
+   /* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
+   var fileCollection = new Array();
+   var index = 0;
+   var idArray = new Array();
+   var fileNameMap = new Map();
+  
+	$('#img_mypc').on('change',function(e) {
+		var files = e.target.files;
+		$.each(files,function(i, file) {
+			fileCollection.push(file);
+			var reader = new FileReader();
+			console.log('index1 : ' + index);
+			reader.readAsDataURL(file);
+			reader.onload = function(e) {
+				fileNameMap.set(index, file.name);
+				console.log('index2 : '+ index);
+				var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
+						+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
+						+ '<div class="photo" >'
+						+ '<div class="photo_center_wrap" >'
+						+ '<div class="photo_center cssco" id=set_'+index+'>'
+						+ '<canvas id="canvas_'+index+'" data-caman-hidpi-disabled="true"></canvas>'
+						/* + '<img id="temp_img_'
+						+ index
+						+ '" src="'
+						+ e.target.result
+						+ '" onload="resize(this)"/>' */
+						+ '</div></div></div>'
+						+ '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
+						+ '<div class="centered">'
+						+ '<div class="btn-group item" role="group">'
+						+ '<button type="button" class="btn btn-default dl_btn" id="'
+						+ index
+						+ '" onclick="javascript:deleteItem(this)">삭제</button>'
+						+ '<button type="button" class="btn btn-default tg_btn" id="'
+						+ index
+						+ '" onclick="javascript:selectItem(this)">선택</button>'
+						+ '</div></div></div>'
+						+ '</div></div>';
+				$('#preview').append(template);
+				const can = "canvas_" + index;
+				const canvas = document.getElementById(can);
+				const ctx = canvas.getContext("2d");
+				var img = new Image();
+				// Set image src
+				img.src = e.target.result;
+				img.onload = function(e) {
+					canvas.width = img.width;
+					canvas.height = img.height;
+					ctx.drawImage(img, 0, 0,img.width,img.height);
+					canvas.removeAttribute("data-caman-id");
+				};
+				idArray[idArray.length] = index;
+				index++;
+				console.log('index3 : '+ index);
+				/* console.log(e.target.result); */
+				$('#imgCount').html('0 / '+ idArray.length);
+			};
+			console.log('index4 : ' + index);
+		});
+		console.log(idArray);
 	});
-	/* <!-- 프리뷰에 다중으로 이미지띄우기  --> */
-	var fileCollection = new Array();
-	var index = 0;
-	var idArray = new Array();
-	var fileNameMap = new Map();
-
-	$('#img_mypc')
-			.on(
-					'change',
-					function(e) {
-						var files = e.target.files;
-						$
-								.each(
-										files,
-										function(i, file) {
-											fileCollection.push(file);
-											var reader = new FileReader();
-											console.log('index1 : ' + index);
-											reader.readAsDataURL(file);
-											reader.onload = function(e) {
-												fileNameMap.set(index,
-														file.name);
-												console
-														.log('index2 : '
-																+ index);
-												var template = '<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
-														+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
-														+ '<div class="photo" >'
-														+ '<div class="photo_center_wrap" >'
-														+ '<div class="photo_center cssco" id=set_'+index+'>'
-														+ '<canvas id="canvas_'+index+'" data-caman-hidpi-disabled="true"></canvas>'
-														/* + '<img id="temp_img_'
-														+ index
-														+ '" src="'
-														+ e.target.result
-														+ '" onload="resize(this)"/>' */
-														+ '</div></div></div>'
-														+ '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
-														+ '<div class="centered">'
-														+ '<div class="btn-group item" role="group">'
-														+ '<button type="button" class="btn btn-default dl_btn" id="'
-														+ index
-														+ '" onclick="javascript:deleteItem(this)">삭제</button>'
-														+ '<button type="button" class="btn btn-default tg_btn" id="'
-														+ index
-														+ '" onclick="javascript:selectItem(this)">선택</button>'
-														+ '</div></div></div>'
-														+ '</div></div>';
-												$('#preview').append(template);
-												const can = "canvas_" + index;
-												const canvas = document
-														.getElementById(can);
-												const ctx = canvas
-														.getContext("2d");
-												var img = new Image();
-												// Set image src
-												img.src = e.target.result;
-												img.onload = function(e) {
-													canvas.width = img.width;
-													canvas.height = img.height;
-													ctx.drawImage(img, 0, 0,
-															img.width,
-															img.height);
-													canvas
-															.removeAttribute("data-caman-id");
-												};
-												idArray[idArray.length] = index;
-												index++;
-												console
-														.log('index3 : '
-																+ index);
-												/* console.log(e.target.result); */
-												$('#imgCount')
-														.html(
-																'0 / '
-																		+ idArray.length);
-											};
-											console.log('index4 : ' + index);
-										});
-						console.log(idArray);
-					});
-
-	$('#img_mypic').on('click', function(e) {
+	
+	$('#img_mypic').on('click',function(e) {
 		console.log("ccvcxvzxcxc");
 	});
 
@@ -427,167 +391,168 @@
 		}
 	});
 
-	/* 필터 선택시 이미지에 필터 적용*/
 
+	/* 필터 선택시 이미지에 필터 적용*/
+	
 	/* 수정중 */
-	/* 	var filterNameAfter;
-	 function filterOn(item) {
-	 var filterName = $(item).attr("id");
-	 var toggle=false;
-	
-	
-	
-	 $.each(selectArray, function(index, id) {		
-	 var current_can = $('#canvas_' + id).attr('id');
-	 var img = new Image();	
-	
-	
-	 if(filterName != filterNameAfter){
-	 console.log("!="+toggle);
-	 Caman("#" + current_can, img, function() {this.revert();});	
-	 // 				toggle = false;
-	 $('#canvas_' + id).attr('flag', 'false');
-	 console.log("2!="+toggle);
-	 }
-	
-	 switch (filterName) {
-	 case 'vintage':
-	 console.log("v="+toggle);
-	 if($('#canvas_' + id).attr('flag') == 'true'){
-	 Caman("#" + current_can, img, function()  {this.revert();});
-	 $('#canvas_' + id).attr('flag', 'false');
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.vintage().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }	
-	 toggle = !toggle
-	 console.log("v2="+toggle);
-	 break;
-	 case 'lomo':
-	 console.log("l="+toggle);
-	 if($('#canvas_' + id).attr('flag') == 'true'){
-	 Caman("#" + current_can, img, function()  {this.revert();});	
-	 $('#canvas_' + id).attr('flag', 'false');	
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.lomo().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }	
-	 // 				toggle = !toggle
-	 console.log("l2="+toggle);
-	 break;
-	 case 'clarity':
-	 console.log("c="+toggle);
-	 if($('#canvas_' + id).attr('flag') == 'true'){
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.revert();});
-	 $('#canvas_' + id).attr('flag', 'false');		
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.clarity().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }
-	 // 				toggle = !toggle
-	 console.log("c2="+toggle);
-	 break;
-	 case 'sincity':
-	
-	 console.log("s="+toggle);
-	 if(toggle){
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.revert();});	
-	 $('#canvas_' + id).attr('flag', 'false');	
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.sinCity().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }	
-	 // 				toggle = !toggle
-	 console.log("s2="+toggle);
-	 break;
-	 case 'crossprocess':
-	
-	 console.log("c="+toggle);
-	 if($('#canvas_' + id).attr('flag') == 'true'){
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.revert();});	
-	 $('#canvas_' + id).attr('flag', 'false');	
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.crossProcess().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }
-	 // 				toggle = !toggle
-	 console.log("c2="+toggle);
-	 break;
-	 case 'pinhole':
-	 console.log("p="+toggle);
-	 if($('#canvas_' + id).attr('flag') == 'true'){
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.revert();});	
-	 $('#canvas_' + id).attr('flag', 'false');	
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.pinhole().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }	
-	 // 				toggle = !toggle
-	 console.log("p2="+toggle);
-	 break;
-	 case 'nostalgia':
-	 console.log("n="+toggle);
-	 if($('#canvas_' + id).attr('flag') == 'true'){
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.revert();});
-	 $('#canvas_' + id).attr('flag', 'false');		
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.nostalgia().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }
-	 // 				toggle = !toggle
-	 console.log("n2="+toggle);
-	 break;
-	 case 'hermajesty':
-	
-	 console.log("h="+toggle);
-	 if($('#canvas_' + id).attr('flag') == 'true'){
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.revert();});
-	 $('#canvas_' + id).attr('flag', 'false');		
-	 }
-	 else{
-	 console.log(toggle);
-	 Caman("#" + current_can, img, function()  {this.herMajesty().render();});
-	 $('#canvas_' + id).attr('flag', 'true');
-	 }
-	 // 				toggle = !toggle
-	 console.log("h2="+toggle);
-	 break;
-	 default:
-	 console.log("dr="+toggle);
-	 Caman("#" + current_can, img, function()  {
-	 this.revert();
-	 });
-	 $('#canvas_' + id).attr('flag', 'false');
-	 // 				toggle = !toggle
-	 console.log("dr2="+toggle);
-	 };
-	 filterNameAfter = $(item).attr("id");
-	 });
-	 }
-	 */
-
-	/* 필터 선택시 이미지에 필터 적용*/
+/* 	var filterNameAfter;
 	function filterOn(item) {
+		var filterName = $(item).attr("id");
+		var toggle=false;
+		
+		
+		
+		$.each(selectArray, function(index, id) {		
+			var current_can = $('#canvas_' + id).attr('id');
+			var img = new Image();	
+			
+			
+			if(filterName != filterNameAfter){
+				console.log("!="+toggle);
+				Caman("#" + current_can, img, function() {this.revert();});	
+// 				toggle = false;
+				$('#canvas_' + id).attr('flag', 'false');
+				console.log("2!="+toggle);
+			}
+			
+			switch (filterName) {
+			case 'vintage':
+				console.log("v="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.vintage().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+ 				toggle = !toggle
+				console.log("v2="+toggle);
+				break;
+			case 'lomo':
+				console.log("l="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.lomo().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("l2="+toggle);
+				break;
+			case 'clarity':
+				console.log("c="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.clarity().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("c2="+toggle);
+				break;
+			case 'sincity':
+		
+				console.log("s="+toggle);
+				if(toggle){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.sinCity().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("s2="+toggle);
+				break;
+			case 'crossprocess':
+		
+				console.log("c="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.crossProcess().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("c2="+toggle);
+				break;
+			case 'pinhole':
+				console.log("p="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});	
+					$('#canvas_' + id).attr('flag', 'false');	
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.pinhole().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}	
+// 				toggle = !toggle
+				console.log("p2="+toggle);
+				break;
+			case 'nostalgia':
+				console.log("n="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.nostalgia().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("n2="+toggle);
+				break;
+			case 'hermajesty':
+			
+				console.log("h="+toggle);
+				if($('#canvas_' + id).attr('flag') == 'true'){
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.revert();});
+					$('#canvas_' + id).attr('flag', 'false');		
+				}
+				else{
+					console.log(toggle);
+					Caman("#" + current_can, img, function()  {this.herMajesty().render();});
+					$('#canvas_' + id).attr('flag', 'true');
+				}
+// 				toggle = !toggle
+				console.log("h2="+toggle);
+				break;
+			default:
+				console.log("dr="+toggle);
+				Caman("#" + current_can, img, function()  {
+						this.revert();
+				});
+				$('#canvas_' + id).attr('flag', 'false');
+// 				toggle = !toggle
+				console.log("dr2="+toggle);
+			};
+			filterNameAfter = $(item).attr("id");
+		});
+	}
+	 */
+	
+	/* 필터 선택시 이미지에 필터 적용*/
+	 function filterOn(item) {
 		var filterName = $(item).attr("id");
 		$.each(selectArray, function(index, id) {
 			var current_can = $('#canvas_' + id).attr('id');
@@ -691,7 +656,7 @@
 			}
 		});
 	}
-
+	
 	/*
 	var set_class = $('#set_' + id).attr('class');         
 	var class_length = $('#set_' + id)[0].classList.length; 
@@ -719,9 +684,10 @@
 	$('div[id="set_' + id + '"]').addClass(filterName);
 	}
 	} */
-
+	
+	
 	/* 다운로드 */
-	function save_btn(e) {
+	function save_btn(e) {		
 		idArray.forEach(function(id, i) {
 			// 아이디로 파일명을 찾는다
 			fileName = fileNameMap.get(id);
@@ -730,17 +696,17 @@
 			var newFilename;
 
 			// 이미지파일을 체크
-			if (fileExtension === ".jpg" || fileExtension === ".png") {
+			if (fileExtension === ".jpg" || fileExtension === ".png" ) {
 				// 편집된 이미지의 새로운 이름
 				newFilename = fileName.substring(0, fileName.length - 4)
 						+ "-edited.jpg";
 			}
-
+			
 			// 캔버스를 찾는다.
 			const can = "canvas_" + id;
 			const canvas = document.getElementById(can);
 			// 다운로드
-			download(canvas, newFilename);
+			download(canvas, newFilename); 			
 		});
 	};
 
@@ -756,10 +722,5 @@
 		e = new MouseEvent("click");
 		link.dispatchEvent(e);
 	};
+	
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-<script src="<c:url value='/js/test/datepicker.js'/>"></script>
-<script src="<c:url value='/js/test/plugins.js'/>"></script>
-<script src="<c:url value='/js/test/main3.js'/>"></script>

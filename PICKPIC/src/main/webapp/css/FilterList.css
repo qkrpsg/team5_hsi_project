@@ -75,11 +75,13 @@
 	
 .name_text {
 	text-align: center;
-	position: absolute;
-	top: 0;
-	left: 3%;
-	font-size: 2em;
-	color: #eeeeee;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    font-size: 1.5em;
+    color: #eeeeee;
+    background-color: firebrick;
+    padding: 0 3% 0 3%;
 }
 
 .name_text_center {
