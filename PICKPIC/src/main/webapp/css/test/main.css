@@ -2,6 +2,12 @@ body {
 	font-family: 'NANUMSQUAREROUNDB';
 }
 
+input:-internal-autofill-selected {
+	background-color: #cccccc !important;
+    background-image: none !important;
+    color: #fff !important;
+
+	}
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
