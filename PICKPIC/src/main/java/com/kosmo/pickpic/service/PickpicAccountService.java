@@ -16,4 +16,7 @@ public interface PickpicAccountService {
 	
 	//마이페이지 픽플레이스, 픽로드, 보유필터 데이터
 	PickpicAccountDTO myPageInfo(Map map);
+	
+	//픽플레이스 상세보기
+	PickpicAccountDTO placeView(Map map);
 } 

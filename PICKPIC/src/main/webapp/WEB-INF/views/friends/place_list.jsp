@@ -217,28 +217,29 @@
 	</div>
 </section>
 
+
 <script>
 $(document).ready(function(){
     $(document).on("mouseover",".img_wrap2",function(event){
-    	//$('.img_wrap img').css("height",$('.img_wrap').css('width'));
-    	//$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
-    	
-    	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
-    	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
-		var img2 =$('.img_wrap2 img').css('height').replace('px','');
+       //$('.img_wrap img').css("height",$('.img_wrap').css('width'));
+       //$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
+       
+       $('.innerText').css('height',$('.img_wrap2 img').css('height'));
+       $('.innerText').css('width',$('.img_wrap2 img').css('width'));
+      var img2 =$('.img_wrap2 img').css('height').replace('px','');
         $('.Text_title').css('margin-top',img2/2+"px");
-    	$(this).find('.innerText').css("display","block");
+       $(this).find('.innerText').css("display","block");
     });
     
     $(document).on("mouseout",".img_wrap2",function(event){
-    	$(this).find('.innerText').css("display","none");
+       $(this).find('.innerText').css("display","none");
     });
     $(window).resize(function(){
-		$('.img_wrap img').css("height",$('.img_wrap').css('width'));//
-		$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
-		$('.innerText').css('height',$('.img_wrap2 img').css('height'));
-		$('.innerText').css('width',$('.img_wrap2 img').css('width'));
-	});
+      $('.img_wrap img').css("height",$('.img_wrap').css('width'));//
+      $('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
+      $('.innerText').css('height',$('.img_wrap2 img').css('height'));
+      $('.innerText').css('width',$('.img_wrap2 img').css('width'));
+   });
 }); // end of ready()
 </script>
 

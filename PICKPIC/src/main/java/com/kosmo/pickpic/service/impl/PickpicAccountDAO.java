@@ -112,4 +112,16 @@ public class PickpicAccountDAO implements PickpicAccountService {
 		
 		return dto;
 	}
+
+	@Override
+	public PickpicAccountDTO placeView(Map map) {
+		PickpicAccountDTO dto = template.selectOne("adminPlaceUser", map);
+		dto.setPpa_profile_path("https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+dto.getPpa_profile_path());
+		map.put("ppa_email", dto.getPpa_email());
+		dto.setTotalplace(((PickpicAccountDTO)template.selectOne("adminUserPlace", map)).getTotalplace());
+		dto.setTotalroad(((PickpicAccountDTO)template.selectOne("adminUserRoad", map)).getTotalroad());
+		dto.setTotalfilter(((PickpicAccountDTO)template.selectOne("adminUserFilter", map)).getTotalfilter());
+		
+		return dto;
+	}
 }

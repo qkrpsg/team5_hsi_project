@@ -64,4 +64,9 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	public PickpicAccountDTO myPageInfo(Map map) {
 		return dao.myPageInfo(map);
 	}
+
+	@Override
+	public PickpicAccountDTO placeView(Map map) {
+		return dao.placeView(map);
+	}
 }

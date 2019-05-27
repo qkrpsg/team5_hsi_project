@@ -124,14 +124,11 @@ margin-left: 5%;
 							<p class="text1">
 								<span>가격 : ${list.F_CHANGE}</span>
 							</p>
-							<p class="text1">
-								<span>판매 수: ${list.TOTALFILTER}</span>
-							</p>
 
 						</div>
 						<!-- &f_change= ${list.F_CHANGE } -->
 						<div class="hi">
-							<a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a>
+							<a id="${list.F_NAME }" href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a>
 						</div>
 					</div>
 				</c:if>
@@ -189,3 +186,33 @@ margin-left: 5%;
 <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
 <script src="<c:url value='js/Main.js'/>"></script>
+
+<script>
+$(document).ready(function(){
+    $(document).on("mouseover",".img_wrap2",function(event){
+       //$('.img_wrap img').css("height",$('.img_wrap').css('width'));
+       //$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
+       
+       $('.innerText').css('height',$('.img_wrap2 img').css('height'));
+       $('.innerText').css('width',$('.img_wrap2 img').css('width'));
+      var img2 =$('.img_wrap2 img').css('height').replace('px','');
+        $('.Text_title').css('margin-top',img2/2+"px");
+       $(this).find('.innerText').css("display","block");
+    });
+    
+    $(document).on("mouseout",".img_wrap2",function(event){
+       $(this).find('.innerText').css("display","none");
+    });
+    $(window).resize(function(){
+      $('.img_wrap img').css("height",$('.img_wrap').css('width'));//
+      $('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
+      $('.innerText').css('height',$('.img_wrap2 img').css('height'));
+      $('.innerText').css('width',$('.img_wrap2 img').css('width'));
+   });
+}); // end of ready()
+
+$('#none').click(function(){
+	alert('none은 기본 필터입니다.');
+	$('#none').attr('href', 'javascript:void(0)');
+});
+</script>

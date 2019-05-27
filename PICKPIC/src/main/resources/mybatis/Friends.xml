@@ -92,7 +92,7 @@
 	SELECT * FROM(
 			SELECT f.*, fs.totalfilter, ROWNUM r FROM (
 				SELECT f_id, count(f_id) totalfilter FROM filter_storage GROUP BY f_id) fs 
-			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY f_index DESC) 
+			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY f_index DESC) ORDER BY f_index
 	</select>
 	
 	<!-- BEST pickPlace -->

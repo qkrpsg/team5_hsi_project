@@ -115,7 +115,7 @@ public class FriendsController {
 		System.out.println("map전부:"+map.toString());
 		
 		
-		PickpicAccountDTO dto = accountService.myPageInfo(map);
+		PickpicAccountDTO dto = accountService.placeView(map);
 		model.addAttribute("user", dto);
 		System.out.println("모모델" + model.toString());
 		System.out.println("프로필 경로 : " + dto.getPpa_profile_path());
