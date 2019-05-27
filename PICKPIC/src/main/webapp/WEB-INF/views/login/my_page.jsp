@@ -92,7 +92,7 @@ function fn_spread(id){
     var getID = document.getElementById(id);
     getID.style.display=(getID.style.display=='none') ? 'block' : 'none';
 }
-
+let html ="";
 function sub_spread(id){
 	console.log(id);
 	
@@ -109,11 +109,11 @@ function sub_spread(id){
 				console.log('data : ' + data);
 				
 				//현재 출력된 이미지 다 삭제
-				let html ="";
+				html ="";
 				let index_font=0;
 				$.each(data, function(index, element) {
 					html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
-					+'<img src="'+element['F_IMAGE_PATH']+'" alt="안나와" style="height: 285px;"/>'
+					+'<img src="'+element['F_IMAGE_PATH']+'" alt="안나와" />'
 					+'<div class="innerText" >'
 					+'<p class="Text_title" ><span>'+element['F_NAME']+'</span></p>'
 					+'</div>'
@@ -144,14 +144,14 @@ function sub_spread(id){
 				console.log('data : ' + data);
 				
 				//현재 출력된 이미지 다 삭제
-				let html ="";
+				html ="";
 				let index_font=0;
 				$.each(data, function(index, element) {
 				/* 	console.log('data'+data);
 					console.log('index'+index);
 					console.log('element'+element['PPB_IMAGE_PATH']); */
 					html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
-						+'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" style="height: 285px;"/>'
+						+'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" />'
 						+'<div class="innerText" >'
 						+'<p class="Text_title" ><span>'+element['PPB_TITLE']+'</span></p>'
 						+'<p class=""><span>'+element['PPB_COUNT']+'</span></p>'
@@ -183,7 +183,7 @@ function sub_spread(id){
 				console.log('data : ' + data);
 				
 				//현재 출력된 이미지 다 삭제
-				let html ="";
+				html ="";
 				let index_font=0;
 				$.each(data, function(index, element) {
 					
@@ -199,7 +199,7 @@ function sub_spread(id){
 				});
 				$('.grid').html(html);
 				$('.index_load').html(index_font);
-				
+				val();
 				
 			},
 			error : function(data) {
@@ -212,14 +212,14 @@ function sub_spread(id){
 	
 }
 $(document).ready(function(){
-	
     $(document).on("mouseover",".img_wrap2",function(event){
-    	$('.img_wrap img').css("height",$('.img_wrap').css('width'));
-    	$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
+    	//$('.img_wrap img').css("height",$('.img_wrap').css('width'));
+    	//$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
+    	
     	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
     	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
-//     	var img2 =$('.img_wrap2 img').css('height').replace('px','');
-//     	$('.Text_title').css('margin-top',img2/2+"px");
+		var img2 =$('.img_wrap2 img').css('height').replace('px','');
+        $('.Text_title').css('margin-top',img2/2+"px");
     	$(this).find('.innerText').css("display","block");
     });
     
@@ -233,7 +233,15 @@ $(document).ready(function(){
 		$('.innerText').css('width',$('.img_wrap2 img').css('width'));
 	});
 }); // end of ready()
-	
+
+
+function val(){
+	console.log('val 호출');
+	$('.img_wrap img').css("height",$('.img_wrap').css('width'));
+	$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
+	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
+	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
+}
 
 
 
