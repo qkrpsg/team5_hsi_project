@@ -59,7 +59,8 @@
 		SELECT * FROM filter WHERE f_name = #{f_name }
 	</select>
 	<select id="pickRoadbest" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * FROM (SELECT prb.*,prp_image_path, rownum r FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prp_order = 1 ORDER BY PRB_VIEW DESC) WHERE r BETWEEN 1 AND 3
+		select * from(SELECT t.*,rownum r FROM (SELECT prb.*,prp_image_path FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prp_order = 1 ORDER BY PRB_VIEW DESC) t)
+        where r between 1 and 3
 		<!-- WHERE ROWNUM BETWEEN #{start} AND #{end} -->
 	</select>
 	
