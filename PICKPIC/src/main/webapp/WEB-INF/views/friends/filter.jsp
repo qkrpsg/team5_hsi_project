@@ -71,49 +71,72 @@ margin-left: 5%;
 	</div>
 </section>
 
-<section class="pricing-tables" style="padding:0;" >
+<section class="pricing-tables" style="padding: 0;">
 	<div class="container con">
-	    <div class="row" >
-	      <div class="button-group filters-button-group" >
-	        <ul>
-	            <button class="btn btn-info" is-checked" data-filter="*"><span class="nav_color"></span><a >All</a></button>
-	            <button class="btn btn-info" data-filter=".vintage"><span class="nav_color"></span><a >VI</a></button>
-	            <button class="btn btn-info" data-filter=".lomo"><span class="nav_color"></span><a >LO</a></button>
-	            <button class="btn btn-info" data-filter=".clarity"><span class="nav_color"></span><a >CL</a></button>
-	            <button class="btn btn-info" data-filter=".sincity"><span class="nav_color"></span><a >SI</a></button>
-	            <button class="btn btn-info" data-filter=".pinhole"><span class="nav_color"></span><a >PI</a></button>
-	            <button class="btn btn-info" data-filter=".nostalgia"><span class="nav_color"></span><a >NO</a></button>  
-	            <button class="btn btn-info" data-filter=".hermajesty"><span class="nav_color"></span><a >HE</a></button>  
-	            <button class="btn btn-info" data-filter=".crossprocess"><span class="nav_color"></span><a >CR</a></button>
-	        </ul>
-	      </div>
-    	</div>
-    </div>
-	</section>
-
-<section class="pricing-tables" >
-	<div class="container">
-  <div class="grid">
-  
-  <c:forEach  var="list" items="${list }" varStatus="loop">
-  	<c:if test="${list.F_SALE_YN eq 'Y' }">
-	   <div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
-			<img src="${list.F_IMAGE_PATH }" alt="안나와"/>
-			<div class="innerText"  >
-	           	<p class="text1" style="margin-top: 30%"><span >${list.F_NAME}</span></p>
-	            <p class="text1" ><span >가격 : ${list.F_CHANGE}</span></p>
-	            <p class="text1"><span>판매 수: ${list.TOTALFILTER}</span></p>
-	            
-	     	       </div><!-- &f_change= ${list.F_CHANGE } -->
-	      <div class="hi"><a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a></div>
+		<div class="row">
+			<div class="button-group filters-button-group">
+				<ul>
+					<button class="btn btn-info" is-checked" data-filter="*">
+						<span class="nav_color"></span><a>All</a>
+					</button>
+					<button class="btn btn-info" data-filter=".vintage">
+						<span class="nav_color"></span><a>VI</a>
+					</button>
+					<button class="btn btn-info" data-filter=".lomo">
+						<span class="nav_color"></span><a>LO</a>
+					</button>
+					<button class="btn btn-info" data-filter=".clarity">
+						<span class="nav_color"></span><a>CL</a>
+					</button>
+					<button class="btn btn-info" data-filter=".sincity">
+						<span class="nav_color"></span><a>SI</a>
+					</button>
+					<button class="btn btn-info" data-filter=".pinhole">
+						<span class="nav_color"></span><a>PI</a>
+					</button>
+					<button class="btn btn-info" data-filter=".nostalgia">
+						<span class="nav_color"></span><a>NO</a>
+					</button>
+					<button class="btn btn-info" data-filter=".hermajesty">
+						<span class="nav_color"></span><a>HE</a>
+					</button>
+					<button class="btn btn-info" data-filter=".crossprocess">
+						<span class="nav_color"></span><a>CR</a>
+					</button>
+				</ul>
+			</div>
 		</div>
-  	</c:if>
-  </c:forEach>
-	
-	
-  </div>
-		
-		
+	</div>
+</section>
+
+<section class="pricing-tables">
+	<div class="container">
+		<div class="grid">
+
+			<c:forEach var="list" items="${list }" varStatus="loop">
+				<c:if test="${list.F_SALE_YN eq 'Y' }">
+					<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
+						<img src="${list.F_IMAGE_PATH }" alt="안나와" />
+						<div class="innerText">
+							<p class="text1" style="margin-top: 30%">
+								<span>${list.F_NAME}</span>
+							</p>
+							<p class="text1">
+								<span>가격 : ${list.F_CHANGE}</span>
+							</p>
+							<p class="text1">
+								<span>판매 수: ${list.TOTALFILTER}</span>
+							</p>
+
+						</div>
+						<!-- &f_change= ${list.F_CHANGE } -->
+						<div class="hi">
+							<a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a>
+						</div>
+					</div>
+				</c:if>
+			</c:forEach>
+		</div>
 	</div>
 </section>
 
@@ -128,52 +151,41 @@ margin-left: 5%;
 			</div>
 		</div>
 		<div class="row">
-		<div class="col-md-12">
-       <c:forEach  var="best" items="${best }" varStatus="loop">
-		
+			<div class="col-md-12">
+				<c:forEach var="best" items="${best }" varStatus="loop">
 
-			<div class="col-md-4 " style="float: left">
-				<div class="featured-item">
-				
-					<div class="thumb">
-					   
-						<img src="${best.F_IMAGE_PATH }" />
-						<div class="date-content">
-							<h6>${best.F_NAME }</h6>
-							<span>판매수: ${best.TOTALFILTER }</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-12" style="text-align: center;">
-							<a href="<c:url value='/pay/pay.pic?f_name=${best.F_NAME }'/>"><span style="font-size: 20px;margin-top: 3%">구매하기</span></a>
+
+					<div class="col-md-4 " style="float: left">
+						<div class="featured-item">
+
+							<div class="thumb">
+
+								<img src="${best.F_IMAGE_PATH }" />
+								<div class="date-content">
+									<h6>${best.F_NAME }</h6>
+									<span>판매수: ${best.TOTALFILTER }</span>
+								</div>
 							</div>
+							<div class="down-content">
+								<div class="row">
+									<div class="col-md-12" style="text-align: center;">
+										<a href="<c:url value='/pay/pay.pic?f_name=${best.F_NAME }'/>"><span
+											style="font-size: 20px; margin-top: 3%">구매하기</span></a>
+									</div>
+								</div>
+							</div>
+
 						</div>
-						</div>
-					
+
 					</div>
-				
-				</div>
-			
-            	</c:forEach >
-            	</div>
-            	</div>
-     </div>
+
+				</c:forEach>
+			</div>
+		</div>
+	</div>
 </section>
-
-<script>
-
-</script>
-
 
 <script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
 <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
 <script src="<c:url value='js/Main.js'/>"></script>
-
-
-
-
-
-
-

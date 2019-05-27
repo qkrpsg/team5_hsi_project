@@ -92,7 +92,7 @@
 				<output_file_path>C:\Users\KSM06-07\Desktop\pickpicDB.png</output_file_path>
 				<category_dir_path></category_dir_path>
 				<with_category_image>true</with_category_image>
-				<is_open_after_saved>true</is_open_after_saved>
+				<is_open_after_saved>false</is_open_after_saved>
 			</export_image_setting>
 			<export_java_setting>
 				<java_output></java_output>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2019-04-05 19:24:20</creation_date>
-			<updated_date>2019-05-27 19:11:49</updated_date>
+			<updated_date>2019-05-27 22:07:57</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>

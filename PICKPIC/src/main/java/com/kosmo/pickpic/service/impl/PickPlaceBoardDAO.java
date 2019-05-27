@@ -28,7 +28,14 @@ public class PickPlaceBoardDAO implements PickPlaceBoardService {
 
 	@Override
 	public List<PickPlaceBoardDTO> ppbBestList() {
-		return template.selectList("ppbBestList");
+		List<PickPlaceBoardDTO> list = template.selectList("ppbBestList");
+		
+		for(PickPlaceBoardDTO record : list) {
+			record.setPpb_image_path("https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image" + record.getPpb_image_path());
+		}
+		
+		
+		return list;
 	}
 
 	@Override

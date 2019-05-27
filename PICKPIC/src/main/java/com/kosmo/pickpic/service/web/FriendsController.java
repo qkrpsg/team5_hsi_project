@@ -601,6 +601,7 @@ public class FriendsController {
 	@RequestMapping("/friends/view.pic")
 	public String view(@RequestParam Map map, Model model) throws Exception {
 		int update = prbService.pickRoadBoardUpdate(map);
+		
 		// UPDATE 문 하고 상세보기로 SELECT ONE
 		List<Map> recode = prbService.pickRoadBoardSelectOne(map);
 		List<Map> recode2 = prbService.pickRoadBoardSelectOne2(map);

@@ -49,7 +49,7 @@
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">4</font></font>
+									style="vertical-align: inherit; color: #4883ff">0</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">보관함</font></font></span>
 						</li>
