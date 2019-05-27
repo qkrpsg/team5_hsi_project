@@ -336,7 +336,7 @@ public class AdminController {
 		map.put("start",start);
 		map.put("end", end);
 		List<QuestionDTO> list = questionService.selectList(map);	
-		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/help/qna/List.pic?");
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/admin/qna.pic?");
 		model.addAttribute("list", list);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("pageSize", pageSize);
