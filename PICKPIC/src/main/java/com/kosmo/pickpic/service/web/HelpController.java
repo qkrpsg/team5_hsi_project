@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.NoticeDTO;
 import com.kosmo.pickpic.service.QuestionDTO;
+import com.kosmo.pickpic.service.TipBoardDTO;
 import com.kosmo.pickpic.service.impl.FilterServiceImpl;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
+import com.kosmo.pickpic.service.impl.TipBoardServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.PagingUtil;
 
@@ -33,23 +35,152 @@ public class HelpController {
 	//서비스 주입
 	@Resource(name="noticeService")
 	private NoticeServiceImpl noticeService;
+	
 	@Resource(name="questionService")
 	private QuestionServiceImpl questionService;
+	
+	@Resource(name="TipBoardService")
+	private TipBoardServiceImpl tipService;
 	
 	@Resource(name = "fService")
 	private FilterServiceImpl dao_filter;
 	
-	
-	//픽크픽TIP
+	//피크픽TIP
+	//전체보기
 	@RequestMapping("/help/tip.pic")
-	public String tip() throws Exception{
-		return "help/tip.tiles";
-	}//tip
+	public String list(Map map, Model model) throws Exception {
+		System.out.println("값이 여기로 잘 들어가니");
+		
+		List<TipBoardDTO> list = tipService.selectList(map);
+		model.addAttribute("list", list);
+		
+		return "help/tip/List.tiles";
+	}
+	
 	@Value("${PAGESIZE}")
 	private int pageSize;
 	@Value("${BLOCKPAGE}")
 	private int blockPage;
 	
+	//피크픽TIP작성 페이지
+	
+	//등록 폼으로 가기
+	@RequestMapping("/help/tip/Write.pic")
+	public String write() throws Exception{
+		return "help/tip/Write.tiles";
+	}
+	
+	
+	//글 작성하기
+	@RequestMapping("/help/tip/WriteOk.pic")
+	public String writeOk(@RequestParam Map map) throws Exception{
+		System.out.println("map:"+map);
+		
+		tipService.insert(map);
+		return "forward:/help/tip.pic";
+	}
+	
+	@RequestMapping("/help/tip/View.pic")
+	public String selectOne(@RequestParam Map map, Model model) throws Exception{
+		System.out.println("map:"+map);
+		
+		TipBoardDTO selectOne = tipService.selectOne(map);
+		model.addAttribute("selectOne",selectOne);
+		
+		return "help/tip/View.tiles";
+	}
+	
+	
+	//피크픽TIP 수정페이지
+	@RequestMapping("/help/tip/update.pic")
+	public String tip_update(@RequestParam Map map,Model model,Principal principal) throws Exception{
+		map.put("ppa_email", principal.getName());
+		/*questionService.insert(map);
+		List<QuestionDTO> list = questionService.selectList(map);
+		model.addAttribute("list",list);*/
+		System.out.println("aa"+map);
+		TipBoardDTO list = tipService.selectOne(map);
+		model.addAttribute("list",list);
+		System.out.println("ww"+list);
+		
+		return "help/tip/Edit.tiles";
+		
+	}//tip_write2
+	@RequestMapping("/help/tip/update_write.pic")
+	public String tip_update_write(@RequestParam Map map,
+			Model model,Principal principal,
+			HttpServletRequest req,
+			@RequestParam(required=false,defaultValue="1")int nowPage)throws Exception{
+		map.put("ppa_email", principal.getName());
+		System.out.println("제발"+map);
+		tipService.update(map);
+		int totalRecordCount = tipService.getTotalRecord(map);
+		    int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize);
+            int start =(nowPage-1)*pageSize+1;
+            int end = nowPage*pageSize;
+            
+            map.put("start", start);
+            map.put("end", end);
+            
+            List<TipBoardDTO> list = tipService.selectList(map);
+            String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount,
+            		                                            pageSize,
+            		                                            blockPage,
+            		                                            nowPage,
+            		                                            req.getContextPath()+"/help/tip/List.pic?");
+            model.addAttribute("list",list);
+            model.addAttribute("nowPage",nowPage);
+            model.addAttribute("pageSize",pageSize);
+            model.addAttribute("totalRecordCount",totalRecordCount);
+            model.addAttribute("pagingString",pagingString);
+            
+            model.addAttribute("list",list);
+            
+            return "/help/tip/List.tiles";       
+            
+	}
+	@RequestMapping("/help/tip/delete.pic")
+	public String tip_delete(@RequestParam Map map,Model model,Principal principal,HttpServletRequest req,@RequestParam(required=false,defaultValue="1")int nowPage)throws Exception{
+		map.put("ppa_email", principal.getName());
+		try {
+			tipService.delete(map);
+			int totalRecordCount=tipService.getTotalRecord(map);
+			int start =(nowPage-1)*pageSize+1;
+			int end = nowPage*pageSize;
+			
+			map.put("start", start);
+			map.put("end", end);
+			
+			List<TipBoardDTO> list = tipService.selectList(map);
+			String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount,
+					                                            pageSize, 
+					                                            blockPage, 
+					                                            nowPage, 
+					                                            req.getContextPath()+"/help/tip/List.pic?");
+			model.addAttribute("list",list);
+			model.addAttribute("nowPage",nowPage);
+			model.addAttribute("totalRecordCount",totalRecordCount);
+			model.addAttribute("pagingString",pagingString);
+			
+			model.addAttribute("list",list);
+		}
+		catch(Exception e) {
+			
+			
+		}
+		
+		List<TipBoardDTO> list = tipService.selectList(map);
+		        model.addAttribute("list",list);
+		        
+		        return "/help/tip/List.tiles";
+	}
+	
+	
+	
+	
+	
+
+
 	//공지사항
 	@RequestMapping(value= "/help/notice/List.pic")
 	public String notice(Model model, @RequestParam Map map,
