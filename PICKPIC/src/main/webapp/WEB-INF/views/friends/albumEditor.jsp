@@ -46,7 +46,7 @@
             <div class="col-xs-6 btn " id="img_mypic">
                <img class="img-circle img_100" 
                   src="<c:url value='/resources/images/sns/M.PNG'/>" alt="image">
-               <h5>내 픽보관함</h5>
+               <h5>내 픽플레이스</h5>
             </div>
 
             <div class="col-xs-6 btn btn-file">
@@ -180,6 +180,7 @@
    }
    //프리뷰에 로드시 모달창 자동 닫기(감추기)
    var input = document.getElementById("img_mypc");
+   var input2 = document.getElementById("img_mypic");
    function isEmpty(str) {
       return !str.replace(/\s+/, '').length;
    }
@@ -190,6 +191,7 @@
       }
    });
    
+   
    /* <!-- 프리뷰에 다중으로 이미지띄우기 : #img_mypc  --> */
    var fileCollection = new Array();
    var index = 0;
@@ -197,6 +199,11 @@
    var fileNameMap = new Map();
   
 	$('#img_mypc').on('change',function(e) {
+		
+		$('#preview').empty();
+		idArray = [];
+		selectArray = [];
+		index = 0;
 		var files = e.target.files;
 		$.each(files,function(i, file) {
 			fileCollection.push(file);
@@ -212,11 +219,6 @@
 						+ '<div class="photo_center_wrap" >'
 						+ '<div class="photo_center cssco" id=set_'+index+'>'
 						+ '<canvas id="canvas_'+index+'" data-caman-hidpi-disabled="true"></canvas>'
-						/* + '<img id="temp_img_'
-						+ index
-						+ '" src="'
-						+ e.target.result
-						+ '" onload="resize(this)"/>' */
 						+ '</div></div></div>'
 						+ '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
 						+ '<div class="centered">'
@@ -253,52 +255,83 @@
 		console.log(idArray);
 	});
 	
-	  /* <!-- 프리뷰에 다중으로 이미지띄우기 : #img_mypic  --> */
-	  let html ="";
+	  /* <!-- 프리뷰에 다중으로 이미지띄우기 : #img_mypic  --> */	 
+	let html ="";
 	$('#img_mypic').on('click',function(e) {
+		
 		console.log("ccvcxvzxcxc");
 		$('#preview').empty();
 		idArray = [];
 		selectArray = [];
 		index = 0;
 		$.ajax({
-	         url:'<c:url value="/friends/albumEditor.do"/>',
-	         dataType : 'json',
-	         type : "get",
-	         data : {
-	        	 "id" : "dd"
-	         },
-	         success : function(data) {
-	            console.log('성공');
+         url:'<c:url value="/friends/albumEditor.do"/>',
+         dataType : 'json',
+         type : "get",
+         data : {
+        	 "id" : "dd"
+         },
+         success : function(data) {
+            console.log('성공');
 	            
-	            //현재 출력된 이미지 다 삭제
-	            html ="";
-	            let index_font=0;
-	            $.each(data, function(index, element) {
-	            /*    console.log('data'+data);
-	               console.log('index'+index);
-	               console.log('element'+element['PPB_IMAGE_PATH']); */
-	               html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
-	                  +'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" />'
-	                  +'<div class="innerText" >'
-	                  +'<p class="Text_title" ><span>'+element['PPB_TITLE']+'</span></p>'
-	                  +'</div>'
-	                  +'</div>';
-	               
-	               index_font++;
-	               
-	            });
-	            
-	            $('#preview').html(html);
-	            $('#imgCount').html(index_font);
-	            
-	         },
-	         error : function(data) {
-	            console.log('실패');
-	         }
-	  });
+            //현재 출력된 이미지 다 삭제
+            html ="";
+            let imgCount=0;
+            $.each(data, function(index, element) {
+               html +='<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
+				+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
+				+ '<div class="photo" >'
+				+ '<div class="photo_center_wrap" >'
+				+ '<div class="photo_center cssco" id=set_'+index+'>'
+				+ '<canvas id="canvas_'+index+'" data-caman-hidpi-disabled="true"></canvas>'
+				+ '</div></div></div>'
+				+ '<div class="menu" style="border-top: 1px solid #e6e6e6;">'
+				+ '<div class="centered">'
+				+ '<div class="btn-group item" role="group">'
+				+ '<button type="button" class="btn btn-default dl_btn" id="'
+				+ index
+				+ '" onclick="javascript:deleteItem(this)">삭제</button>'
+				+ '<button type="button" class="btn btn-default tg_btn" id="'
+				+ index
+				+ '" onclick="javascript:selectItem(this)">선택</button>'
+				+ '</div></div></div>'
+				+ '</div></div>';
+				
+              /*  html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
+                  +'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" />'
+                  +'<div class="innerText" >'
+                  +'</div>'
+                  +'</div>'; */
+               
+                  imgCount++;
+	                    
+                  $('#preview').html(html);
+                  const can = "canvas_" + index;
+                  const canvas = document.getElementById(can);
+                  const ctx = canvas.getContext("2d");
+                  console.log(element);
+                  var img = new Image();
+                  img.src = element['PPB_IMAGE_PATH'];
+                  console.log(img.src);
+                  // Set image src
+                  img.onload = function(e) {
+                	  canvas.width = img.width;
+                	  canvas.height = img.height;
+                	  ctx.drawImage(img, 0, 0,img.width,img.height);
+                	  canvas.removeAttribute("data-caman-id"); 
+                  };
+                  /* idArray[idArray.length] = index;
+                  index++;
+                  console.log('index3 : '+ index); */
+                  /* console.log(e.target.result); */
+                  $('#imgCount').html('0 / '+ imgCount);
+            });
+         },
+         error : function(data) {
+        	 console.log('실패');
+         }
+		});
 	});
-	 
 	
 
 	/* 이미지 기준 가로 또는 세로 적용 */
