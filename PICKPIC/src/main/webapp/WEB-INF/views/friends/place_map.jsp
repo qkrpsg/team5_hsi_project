@@ -78,7 +78,7 @@
 	
 	
 	$(document).ready(function(){
-		
+		var lat_,lng_,addr_;
 		var mapContainer;
 		var latitude
 		var longitude
@@ -118,7 +118,7 @@
 		
 		// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
 		searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-		var lat_,lng_,addr_;
+		
 		
 		// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
 		daum.maps.event
@@ -127,6 +127,7 @@
 							var latlng = mouseEvent.latLng;
 							lat_ = latlng.getLat();
 							lng_ = latlng.getLng();
+							
 							var message = '클릭한 위치의 위도는 ' + latlng.getLat()
 									+ ' 이고, ';
 							message += '경도는 ' + latlng.getLng() + ' 입니다';
@@ -150,7 +151,7 @@
 											addr_ = result[0].address.address_name;
 											var content = '<div class="bAddr" style="overflow: hidden;">'
 													+'<div class="addr">' +detailAddr+'</div>'
-													+ '<div style="float:right;"><a href="#" id="moveBtn" style="color:red;cursor: pointer;">저장하기</a></div>'
+													+ '<div style="float:right;"><a id="moveBtn" style="color:red;cursor: pointer;">저장하기</a></div>'
 											'</div>';
 											//   /pickpic/friends/place_write.pic
 											// 마커를 클릭한 위치에 표시합니다 
@@ -162,8 +163,13 @@
 											infowindow.open(map, marker);
 										}
 									});
+							
 						});
 		
+			
+			
+		console.log("hihi"+lat_);
+	
 		// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 		daum.maps.event.addListener(map, 'idle', function() {
 			
@@ -195,12 +201,8 @@
 				}
 			}
 		}
-	});
-		
-		
-		
-	});
-		$(document).ready(function() {
+	
+		//$(document).ready(function() {
 			$(document).on("click", "#moveBtn", function(event) {
 				//동적으로 생성 후 클릭 하는 방법입니니다
 					/*  console.log("나오냐lat:"+lat_);
@@ -224,6 +226,7 @@
 					form.setAttribute("method", "Post"); //Post 방식
 					form.setAttribute("action", "/pickpic/friends/place_write.pic"); //요청 보낼 주소
 					
+					console.log("dddd"+lat_);
 					//위도
 					var hiddenField = document.createElement("input");
 					hiddenField.setAttribute("type", "hidden");
@@ -289,8 +292,14 @@
 					document.body.appendChild(form);
 					form.submit();
 				
-			});  
-		}); // end of ready()
+			}); 
+			
+});
+		
+		
+		
+	});
+		//}); // end of ready()
 
 	</script>
 
