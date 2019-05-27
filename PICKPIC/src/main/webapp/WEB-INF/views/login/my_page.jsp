@@ -141,9 +141,9 @@ function sub_spread(id){
 				/* 	console.log('data'+data);
 					console.log('index'+index);
 					console.log('element'+element['PPB_IMAGE_PATH']); */
-					html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" onclick="clickBtn(this)" >'
+					html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
 						+'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" style="height: 285px;"/>'
-						+'<div class="innerText"style="display:block;" >'
+						+'<div class="innerText" >'
 						+'<p class="Text_title" ><span>'+element['PPB_TITLE']+'</span></p>'
 						+'<p class=""><span>'+element['PPB_COUNT']+'</span></p>'
 						+'</div>'
@@ -178,9 +178,9 @@ function sub_spread(id){
 				let index_font=0;
 				$.each(data, function(index, element) {
 					
-					html += '<div class="col-xs-3 element-item img_wrap2 " onclick="clickBtn(this)" >'
-						+'<img src="'+element['PRP_IMAGE_PATH']+'" alt="안나와" style="height: 285px;"/>'
-						+'<div class="innerText" style="display:block;">'
+					html += '<div class="col-xs-3 element-item img_wrap2 " >'
+						+'<img src="'+element['PRP_IMAGE_PATH']+'" alt="안나와" />'
+						+'<div class="innerText" >'
 						+'<p class="Text_title" ><span>'+element['PRB_TITLE']+'</span></p>'
 						+'<p class=""><span>'+element['PRB_CONTENT']+'</span></p>'
 						+'</div>'
@@ -190,6 +190,8 @@ function sub_spread(id){
 				});
 				$('.grid').html(html);
 				$('.index_load').html(index_font);
+				
+				
 			},
 			error : function(data) {
 				console.log('실패');
@@ -201,18 +203,32 @@ function sub_spread(id){
 	
 }
 $(document).ready(function(){
-    $(document).on("click",".grid",function(event){
-      alert('dd');
+	
+    $(document).on("mouseover",".img_wrap2",function(event){
+    	$('.img_wrap img').css("height",$('.img_wrap').css('width'));
+    	$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
+    	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
+    	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
+    	var img2 =$('.img_wrap2 img').css('height').replace('px','');
+    	$('.Text_title').css('margin-top',img2/2+"px");
+    	$(this).find('.innerText').css("display","block");
     });
+    
+    $(document).on("mouseout",".img_wrap2",function(event){
+    	$(this).find('.innerText').css("display","none");
+    });
+    $(window).resize(function(){
+		$('.img_wrap img').css("height",$('.img_wrap').css('width'));//
+		$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
+		$('.innerText').css('height',$('.img_wrap2 img').css('height'));
+		$('.innerText').css('width',$('.img_wrap2 img').css('width'));
+	});
 }); // end of ready()
 	
-	//$('.img_wrap2').mouseenter(function(){
-		
-		//$(this).find('.innerText').css('display','block');	
-	///});
 
 
 
 
 
 </script>
+
