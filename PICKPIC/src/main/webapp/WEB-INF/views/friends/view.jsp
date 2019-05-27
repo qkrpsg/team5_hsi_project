@@ -5,15 +5,15 @@
 <link href="<c:url value='/css/test/style3.css'/>" rel="stylesheet">
 <link rel="stylesheet"
 	href="<c:url value='/css/test/themify-icons.css'/>">
-<link rel="stylesheet"
-	href="<c:url value='/css/test/simple-line-icons.css'/>">
+<%-- <link rel="stylesheet"
+	href="<c:url value='/css/test/simple-line-icons.css'/>"> --%>
 <link rel="stylesheet"
 	href="<c:url value='/css/test/material-design-iconic-font.min.css'/>">
 <script src="<c:url value='/js/test/tether.min.js'/>"></script>
 
-        <link rel="stylesheet" href="<c:url value='/Bootsrtap/css/bootstrap-theme.min.css'/>">
+        <link rel="stylesheet" href="<c:url value='/css/test/bootstrap-theme.min.css'/>">
         <link rel="stylesheet" href="<c:url value='/css/test/hero-slider.css'/>">
-        <link rel="stylesheet" href="<c:url value='/css/tset/owl-carousel.css'/>">
+        <link rel="stylesheet" href="<c:url value='/css/test/owl-carousel.css'/>">
         <link rel="stylesheet" href="<c:url value='/css/test/templatemo-style.css'/>">
 
         <script src="<c:url value='/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
@@ -138,7 +138,7 @@
                 </div>
                 <div class="item popular-item">
                     <div class="thumb">
-                        <img src="img/popular_item_5.jpg" alt="">
+                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
                         <div class="text-content">
                             <h4>Lorem ipsum</h4>
                             <span>82 listings</span>
@@ -342,6 +342,7 @@
 
 
 <script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
-<script src="<c:url value='js/plugins.js'/>"></script>
-<script src="<c:url value='js/Main.js'/>"></script>
+<script src="<c:url value='/js/bootstrap.js'/>"></script>
+<script src="<c:url value='/js/plugins.js'/>"></script>
+<script src="<c:url value='/js/Main.js'/>"></script>
     
