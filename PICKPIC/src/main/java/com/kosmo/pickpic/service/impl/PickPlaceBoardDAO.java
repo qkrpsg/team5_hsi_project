@@ -36,5 +36,10 @@ public class PickPlaceBoardDAO implements PickPlaceBoardService {
 		return template.selectList("ppbMyPageList",map);
 	}
 
+	@Override
+	public Map ppbSelectOne(Map map) {
+		return template.selectOne("PpbSelectOne",map);
+	}
+
 	
 }

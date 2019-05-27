@@ -80,8 +80,23 @@
 							<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
 						</ul>
 					</li>
+					<sec:authorize access="isAnonymous()">
 					<li><a href="<c:url value='/user/Login.pic'/>">LOGIN</a>
 					<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+								<c:if test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username eq 'admin' }" var="isAdmin">
+									<li><a href="<c:url value='/admin/home.pic'/>"> 관리자 <span></span></a></li>
+								</c:if>
+								<c:if test="${not isAdmin }">
+									<li><a href="<c:url value='/user/myPage.pic'/>">${sessionScope.ppa_nickname }님 <span></span></a></li>
+								</c:if>
+								<li><a href="javascript:logout()">Logout</a></li>
+								<li><a href="<c:url value='/user/myPage.pic'/>">MyPage</a></li>
+		
+														
+								
+							</sec:authorize>
 				</ul>
 			</nav>
 			<!-- 모바일 용 서브 메뉴 창 -->

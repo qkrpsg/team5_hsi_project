@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true" contentType="text/html; charset=UTF-8"%>
+
+
 <link href="<c:url value='/css/Filter.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/Filter.js'/>"></script>
 <script src="<c:url value='/js/isotope-docs.min.js'/>"></script>
@@ -9,8 +11,10 @@
 <link rel="stylesheet" href="<c:url value='/css/hero-slider.css' /> ">
 <link rel="stylesheet" href="<c:url value='/css/owl-carousel.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/datepicker.css' /> ">
+
 <!-- 첫상단 고정 필터용 -->
 <link href="<c:url value='/css/cssco.css'/>" rel=" stylesheet ">
+
 <link href="<c:url value='/css/FilterList.css'/>" rel="stylesheet">
 <link rel="stylesheet"
 	href="<c:url value='/css/templatemo-style2.css'/>">
@@ -18,6 +22,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
+
+
 <style>
 .text1{
 font-size: 30px;

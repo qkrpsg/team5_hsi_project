@@ -109,11 +109,6 @@
 						<p class="">
 							<span>${list.PPB_CONTENT}</span>
 						</p>
-						<p class="">
-							<span>${list.PPB_CONTENT}</span>
-						</p>
-						
-						
 					</div>
 					<div class="hi">
 						<a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a>
