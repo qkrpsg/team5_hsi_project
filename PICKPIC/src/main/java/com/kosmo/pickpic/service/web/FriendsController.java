@@ -134,7 +134,7 @@ public class FriendsController {
 			for(Element content : contents) {
 				text +=	content.text() + ",";
 			}
-			text = text.substring(0, text.length()-1);
+			text = text.substring(0, text.length());
 			
 			String[] text_split = text.split(",");
 			
