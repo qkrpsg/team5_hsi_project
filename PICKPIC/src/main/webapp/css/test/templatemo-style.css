@@ -7,7 +7,7 @@ http://www.templatemo.com/tm-522-venue
 */
 
 body {
-  font-family: 'Raleway', 'sans-serif';
+	font-family:'';
   background-color: #fff;
 }
 
@@ -25,13 +25,13 @@ p {
 }
 
 section {
-  padding-top: 80px;
+     padding-top: 30px;
 }
 
 
 .section-heading {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .section-heading span {
@@ -442,8 +442,9 @@ section.banner {
 }
 
 .popular-places .owl-dots {
-  margin-top: 40px;
-  text-align: center;
+      margin-top: 20px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .popular-places .owl-dots .owl-dot span  {

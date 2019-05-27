@@ -3,22 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <link href="<c:url value='/css/test/style3.css'/>" rel="stylesheet">
-<link rel="stylesheet"
-	href="<c:url value='/css/test/themify-icons.css'/>">
-<%-- <link rel="stylesheet"
-	href="<c:url value='/css/test/simple-line-icons.css'/>"> --%>
-<link rel="stylesheet"
-	href="<c:url value='/css/test/material-design-iconic-font.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/test/themify-icons.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/test/material-design-iconic-font.min.css'/>">
 <script src="<c:url value='/js/test/tether.min.js'/>"></script>
 
-        <link rel="stylesheet" href="<c:url value='/css/test/bootstrap-theme.min.css'/>">
-        <link rel="stylesheet" href="<c:url value='/css/test/hero-slider.css'/>">
-        <link rel="stylesheet" href="<c:url value='/css/test/owl-carousel.css'/>">
-        <link rel="stylesheet" href="<c:url value='/css/test/templatemo-style.css'/>">
-
-        <script src="<c:url value='/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
-    
+<link rel="stylesheet" href="<c:url value='/css/test/bootstrap-theme.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/test/hero-slider.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/test/owl-carousel.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/test/datepicker.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/test/templatemo-style.css'/>">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<script src="<c:url value='/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
 
 
 <section class="intro-section">
@@ -78,15 +73,15 @@
 </section>
 
 <section class="popular-places" id="popular">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
+        <div class="container-fluid">     
+        <div class="row">
+                <div class="col-md-6 col-md-offset-3">
                     <div class="section-heading">
-                        <span>Popular Places</span>
-                        <h2>Integer sapien odio</h2>
+                        <span>배고파</span>
+                        <h5>맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요</h5>
                     </div>
                 </div> 
-            </div> 
+            </div>      
             <div class="owl-carousel owl-theme">
                 <div class="item popular-item">
                     <div class="thumb">
@@ -108,7 +103,7 @@
                             <span>18 listings</span>
                         </div>
                         <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
+                            <a href="#"><i class="far fa-minus-square"></i></a>
                         </div>
                     </div>
                 </div>
@@ -271,6 +266,8 @@
             </div>
         </div>
     </section>
+    
+    
 
 <section class="light-bg booking-details_wrap">
 	<div class="container">
@@ -284,6 +281,8 @@
 									<font style="vertical-align: inherit;"><font
 										style="vertical-align: inherit;">가산역 최고의 장소</font></font>
 								</h3>
+								<p>
+                                        <font style="vertical-align: inherit;">2019-05-29 12:30:15</font></p>
 							</div>
 						</div>
 						<hr>
@@ -300,6 +299,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="col-md-4 responsive-wrap">
 				<div class="contact-info">
 					<img src="/pickpic/resources/images/test/map.jpg" class="img-fluid"
@@ -340,9 +340,19 @@
 	</div>
 </section>
 
+<script type="text/javascript">
 
-<script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
-<script src="<c:url value='/js/bootstrap.js'/>"></script>
-<script src="<c:url value='/js/plugins.js'/>"></script>
-<script src="<c:url value='/js/Main.js'/>"></script>
-    
+function fn_spread(id){
+    var getID = document.getElementById(id);
+    getID.style.display=(getID.style.display=='none') ? 'block' : 'none';
+}
+
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+<script src="<c:url value='/js/test/datepicker.js'/>"></script>
+<script src="<c:url value='/js/test/plugins.js'/>"></script>
+<script src="<c:url value='/js/test/main3.js'/>"></script>
