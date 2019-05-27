@@ -238,10 +238,24 @@ infowindow = new daum.maps.InfoWindow({
 
 
 $(document).ready(function() {	
-	$(document).on('click','.img_click',function(e){
-		console.log('hi');
+	console.log("위도"+$('.lng').val());//위도
+	console.log("경도"+$('.lat').val());// 경도
+	function setCenter() {            
+	    // 이동할 위도 경도 위치를 생성합니다 
+	    var moveLatLon = new daum.maps.LatLng($('.lng').val(), $('.lat').val());
+	    // 지도 중심을 이동 시킵니다
+	    map.setCenter(moveLatLon);
+	}
+	var markerPosition  = new daum.maps.LatLng($('.lng').val(), $('.lat').val()); 
+	// 마커를 생성합니다
+	var marker = new daum.maps.Marker({
+	    position: markerPosition
 	});
-}); 
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	setCenter();
+});
+ 
 function fn_spread(id){
     var getID = document.getElementById(id);
     getID.style.display=(getID.style.display=='none') ? 'block' : 'none';
