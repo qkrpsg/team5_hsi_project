@@ -54,4 +54,8 @@ public class PickRoadBoardDAO implements PickRoadBoardService{
 		return template.selectList("pickRoadbest",map);	
 	}
 	
+	public List<Map> pickRoadMyPage(Map map) {
+		return template.selectList("PickRoadMyPage",map);
+	}
+	
 }

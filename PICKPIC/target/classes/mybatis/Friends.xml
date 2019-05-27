@@ -106,6 +106,12 @@
 		<!-- WHERE ROWNUM BETWEEN #{start} AND #{end} -->
 	</select>
 	
-	
-	
+	<!-- 픽플 마이페이지 값 가져오기 -->
+	<select id="ppbMyPageList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT ppb.*,f_name FROM pickplace_board ppb JOIN pickpic_account ppa ON ppb.ppa_id = ppa.ppa_id JOIN filter fil ON ppb.f_id = fil.f_id WHERE ppa_email = #{ppa_email}
+	</select>
+	<!-- 픽로드 값 가져오기 -->
+	<select id="PickRoadMyPage" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT prb.prb_id,prb_title,prb_content,prb_post_date,prp_image_path FROM pickroad_board prb JOIN pickpic_account ppa ON prb.ppa_id = ppa.ppa_id JOIN pickroad_place prp ON prb.prb_id = prp.prb_id WHERE ppa_email = #{ppa_email} AND prp_order = '1'	
+	</select>
 </mapper>
