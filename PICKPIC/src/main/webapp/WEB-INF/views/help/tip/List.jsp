@@ -71,7 +71,7 @@
 			     <td style="font-weight: bold;text-align: center">대기중</td>
 			     </c:if>
 <%-- 			     <c:if test="${not postempty }"> --%>
-			     <td style="background-color: red;color:white;font-weight:bold;width:100px;text-align:center">답변대기</td>
+			     <td style="background-color: white;color:white;font-weight:bold;width:100px;text-align:center"></td>
 <%-- 			     </c:if> --%>
 			     
 			     <td></td>
