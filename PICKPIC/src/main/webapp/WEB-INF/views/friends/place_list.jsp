@@ -93,8 +93,7 @@
 		<div class="grid">
 
 			<c:forEach var="list" items="${list }" varStatus="loop">
-				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }"
-					onclick="clickBtn(this)">
+				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
 					<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와" />
 					<div class="innerText">
 						<p class="Text_title">
@@ -103,7 +102,7 @@
 						<p class="">
 							<span>${list.PPB_CONTENT}</span>
 						</p>
-						<input type="hidden" value="${list.ppb_index }">
+						
 						
 					</div>
 					<div class="hi">

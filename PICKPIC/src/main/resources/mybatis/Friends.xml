@@ -125,7 +125,7 @@
 	
 	<!-- 상세보기 픽플레이스 1개 값 꺼내오기 PpbSelectOne -->
 	<select id="PpbSelectOne" parameterType="java.util.Map" resultType="java.util.Map">
-			SELECT ppb.*,f_name FROM pickplace_board ppb JOIN pickpic_account ppa ON ppb.ppa_id = ppa.ppa_id JOIN filter fil ON  fil.f_id = ppb.f_id WHERE ppa_email = #{ppa_email} AND ppb_index = #{ppb_index}
+			SELECT ppb.*,f_name FROM pickplace_board ppb JOIN pickpic_account ppa ON ppb.ppa_id = ppa.ppa_id JOIN filter fil ON  fil.f_id = ppb.f_id WHERE ppb_index = #{ppb_index}
 	</select>
 	
 	
