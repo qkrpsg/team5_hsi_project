@@ -99,9 +99,37 @@ public class FriendsController {
 		
 		model.addAttribute("list",list);
 		
-		return "test/place_list.tiles";
+		return "friends/place_list.tiles";
 	}// plaList
 	
+	
+	
+	@RequestMapping("/friends/place_view.pic")
+	public String placeView(@RequestParam Map map, Model model, Principal principal) throws Exception {
+		//여기서 작업 시작
+		map.put("ppa_email", principal.getName());
+		System.out.println("map전부:"+map.toString());
+		
+		Map a = ppbService.ppbSelectOne(map);
+		//a.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+map.get("PPB_IMAGE_PATH").toString());
+		
+		String test = "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+a.get("PPB_IMAGE_PATH");
+		
+		a.put("PPB_IMAGE_PATH",test);
+		//System.out.println("list::"+list.toString());
+		//List<Map> afterList = new Vector<Map>();
+		/*for (Map record : list) {
+			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+record.get("PPB_IMAGE_PATH").toString());
+			afterList.add(record);
+		}
+		
+		System.out.println("list::"+list.toString());
+		*/
+		System.out.println(a);
+		model.addAttribute("list",a);
+		
+		return "friends/place_view.tiles";
+	}
 
 	@RequestMapping("/friends/place_map.pic")
 	public String place(@RequestParam Map map, Model model, Principal principal) throws Exception {
@@ -580,7 +608,14 @@ public class FriendsController {
 		model.addAttribute("recode2", recode2);
 		return "friends/view.tiles";
 	}//
-
+	
+	
+	
+	
+	
+	
+	
+	
 	// 앨범다운
 	@RequestMapping("/friends/albumDown.pic")
 	public String albumDown() throws Exception {
