@@ -151,20 +151,13 @@ margin-left: 5%;
 						<img src="${best.F_IMAGE_PATH }" />
 						<div class="date-content">
 							<h6>${best.F_NAME }</h6>
-							<span>${best.TOTALFILTER }</span>
+							<span>판매수: ${best.TOTALFILTER }</span>
 						</div>
 					</div>
 					<div class="down-content">
 						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="#">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="#serchlist">검색하기</a>
-								</div>
+							<div class="col-md-12" style="text-align: center;">
+							<a href="<c:url value='/pay/pay.pic?f_name=${best.F_NAME }'/>"><span style="font-size: 20px;margin-top: 3%">구매하기</span></a>
 							</div>
 						</div>
 						</div>
