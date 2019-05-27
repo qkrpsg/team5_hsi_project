@@ -355,7 +355,6 @@ public class HelpController {
 			model.addAttribute("list",list);
 		}
 		catch(Exception e) {
-		  alert("삭제 할 수 없어요");
 			
 		}
 		
@@ -364,11 +363,6 @@ public class HelpController {
 		model.addAttribute("list",list);
 		
 		return "/help/qna/List.tiles";
-	}
-
-	private Object alert(String string) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	//초보자가이드
@@ -389,9 +383,4 @@ public class HelpController {
 		
 		return "test/Pay.tiles";
 	}//guide
-	
-	
-	
-	
-	
 }//helpController

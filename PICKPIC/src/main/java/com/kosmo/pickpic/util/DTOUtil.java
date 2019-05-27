@@ -2,7 +2,9 @@ package com.kosmo.pickpic.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -101,4 +103,16 @@ public class DTOUtil {
 //	   return filter;
 //   }
 	
+   //현재 날짜 기준 일주일 문자 가져오기
+   public static String getNowDate() {
+	   SimpleDateFormat nowDate = new SimpleDateFormat("yyyy.MM.dd");
+
+	   Calendar c1 = Calendar.getInstance();
+	   c1.add(Calendar.DAY_OF_MONTH, -1);
+	   Calendar c2 = Calendar.getInstance();
+	   c2.add(Calendar.DAY_OF_MONTH, -7);
+
+	   String strToday = nowDate.format(c2.getTime()) + "-" + nowDate.format(c1.getTime());
+	   return strToday;
+   }
 }//class

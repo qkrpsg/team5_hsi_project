@@ -3,7 +3,11 @@ package com.kosmo.pickpic.util;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
@@ -13,15 +17,19 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
+import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.S3Object;
+import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 
 public class S3Util {
-	private String accessKey = ""; // 엑세스 키
-	private String secretKey = ""; // 보안 엑세스 키
+	
+	private String accessKey; // 엑세스 키
+	private String secretKey; // 보안 엑세스 키
 
 	private AmazonS3 conn;
 
-	public S3Util() {
+	public S3Util(String accessKey, String secretKey) {
 		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 		ClientConfiguration clientConfig = new ClientConfiguration();
 		clientConfig.setProtocol(Protocol.HTTP);
@@ -52,8 +60,21 @@ public class S3Util {
 
 		metaData.setContentLength(fileData.length);   //메타데이터 설정 -->원래는 128kB까지 업로드 가능했으나 파일크기만큼 버퍼를 설정시켰다.
 	    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileData); //파일 넣음
+	    
+	    System.out.println("bucketName : " + bucketName);
+	    System.out.println("filePath : " + filePath);
+	    System.out.println("byteArrayInputStream : " + byteArrayInputStream);
+	    System.out.println("metaData : " + metaData);
 
 		conn.putObject(bucketName, filePath, byteArrayInputStream, metaData);
+	}
+	
+	//파일 다운로드
+	public void fileDownload(String bucketName, String key) throws FileNotFoundException{
+		
+	   S3Object object = conn.getObject(new GetObjectRequest(bucketName, key));
+       System.out.println("Content-Type: "  + object.getObjectMetadata().getContentType());
+//       displayTextInputStream(object.getObjectContent());
 	}
 
 	// 파일 삭제

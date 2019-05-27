@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 public class UploadFileUtils {
 	private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 
-	public static String uploadFile(String uploadPath, String originalName, byte[] byteData) throws Exception {
-		S3Util s3 = new S3Util();
-		String bucketName = "almombucket";
+	public static String uploadFile(String uploadPath, String originalName, byte[] byteData, String accessKey, String secretKey) throws Exception {
+		S3Util s3 = new S3Util(accessKey, secretKey);
+		String bucketName = "img.pickpic.com";
 		//랜덤의 uid 를 만들어준다.
 		UUID uid = UUID.randomUUID();
 
@@ -35,6 +35,7 @@ public class UploadFileUtils {
 
 		return uploadedFileName;
 	}
+	
 
 	private static String calcPath(String uploadPath) {
 		Calendar cal = Calendar.getInstance();

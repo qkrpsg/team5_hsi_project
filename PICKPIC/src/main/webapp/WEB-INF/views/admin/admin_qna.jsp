@@ -13,18 +13,17 @@
 		//showComments();		
 		//보내기 = 작성
 	
-		$('#qna_aqupdate').click(
+		$('.kyk').click(
 				function() {
-					console.log('번호 잘 담고있니', $(this).parent().children(0)
-							.children(0).val());
+					console.log('번호 잘 담고있니',  $(this).parent().parent().find('.ho').find('#cch').val());
+						
 					console.log('ㅎㅇ');
 					//아직 안됨
 					$.ajax({
 						url : '<c:url value="/admin/admin_qna_update.pic"/> ',
 						data : {
 							 q_index : $(this).parent().parent().find('.ho').find('#cch').val(),
-							 aq_content : $(this).parent().parent().find('.how').val(),
-									
+							 aq_content : $(this).parent().parent().find('.how').val(),	
 							'_csrf' : '${_csrf.token}'
 						},
 						dataType : 'text',
@@ -130,7 +129,7 @@
 												<div class="col-sm-1 " style="margin-top: 6px;">
 													<button type="submit"
 														class="btn btn-primary pull-right btn-block btn-sm "
-														n id="qna_aqcomment">보내기</button>
+														 id="qna_aqcomment">보내기</button>
 												</div>
 											</div>
 										</c:if>
@@ -143,16 +142,14 @@
 												</div>
 												<div class="col-sm-9 ho" style="margin-top: 6px;">
 													<input type="hidden" id="cch" name="q_index"
-														value=${item.Q_INDEX} > <input
+														value= ${item.Q_INDEX} > <input
 														class="form-control how" placeholder=""
 														value="${item.AQ_CONTENT }">
-
-
 												</div>
 												<div class="col-sm-1" style="margin-top: 6px;">
 													<button type="submit" 
-														class="btn btn-info pull-right btn-block btn-sm qna_aqupdate"
-														id="qna_aqupdate">수정</button>
+														class="btn btn-info pull-right btn-block btn-sm kyk" id="qna_aqupdate">
+														수정</button>
 												</div>
 
 											</div>

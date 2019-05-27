@@ -43,13 +43,27 @@
 		SELECT * FROM filter_storage fs 
 		JOIN filter f ON f.f_id=fs.f_id 
 		JOIN pickpic_account ac ON ac.ppa_id=fs.ppa_id 
-		WHERE ac.ppa_email=#{ppa_email }
+		WHERE ac.ppa_email=#{ppa_email } ORDER BY f_index
+	</select>
+	
+	<!-- 마이페이지 필터보관함 정보 불러오기(필터이름, 필터경로) -->
+	<select id="myPageFilter" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT f_name, f_image_path FROM filter_storage fs 
+		JOIN filter f ON f.f_id=fs.f_id 
+		JOIN pickpic_account ac ON ac.ppa_id=fs.ppa_id 
+		WHERE ac.ppa_email=#{ppa_email } ORDER BY f_index
 	</select>
 	
 	<!-- 필터 테이블 정보 불러오기 -->
 	<select id="SelectFilter_buy" parameterType="java.util.Map" resultType="FilterDTO">
 		SELECT * FROM filter WHERE f_name = #{f_name }
 	</select>
+	<select id="pickRoadbest" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM (SELECT prb.*,prp_image_path, rownum r FROM pickroad_board prb JOIN  pickroad_place prp ON prb.prb_id = prp.prb_id WHERE prp_order = 1 ORDER BY PRB_VIEW DESC) WHERE r BETWEEN 1 AND 3
+		<!-- WHERE ROWNUM BETWEEN #{start} AND #{end} -->
+	</select>
+	
+	
 	
 	<!-- 사용자 정보 불러오기 -->
 	<select id="SelectFilter_buy2" parameterType="java.util.Map" resultType="FilterDTO">
@@ -75,7 +89,10 @@
 	
 	<!-- FilterList 필터 리스트 뽑아오기 -->
 	<select id="FilterList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * FROM filter
+	SELECT * FROM(
+			SELECT f.*, fs.totalfilter, ROWNUM r FROM (
+				SELECT f_id, count(f_id) totalfilter FROM filter_storage GROUP BY f_id) fs 
+			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY f_index DESC) 
 	</select>
 	
 	<!-- BEST pickPlace -->
@@ -85,5 +102,24 @@
 				SELECT ppbd.*, f.f_name FROM pickplace_board ppbd JOIN filter f ON ppbd.f_id=f.f_id ORDER BY ppb_pick DESC
 			) ppb
 		) WHERE rownum BETWEEN 1 AND 6
+	</select>
+	
+	<!-- 필퍼 판먜쑤 ,,,,,,, -->
+	<select id="filterbest" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM(
+			SELECT f.*, fs.totalfilter, ROWNUM r FROM (
+				SELECT f_id, count(f_id) totalfilter FROM filter_storage GROUP BY f_id) fs 
+			FULL OUTER JOIN filter f ON f.f_id=fs.f_id ORDER BY fs.totalfilter DESC) 
+			WHERE ROWNUM BETWEEN 1 AND 3
+		<!-- WHERE ROWNUM BETWEEN #{start} AND #{end} -->
+	</select>
+	
+	<!-- 픽플 마이페이지 값 가져오기 -->
+	<select id="ppbMyPageList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT ppb.*,f_name FROM pickplace_board ppb JOIN pickpic_account ppa ON ppb.ppa_id = ppa.ppa_id JOIN filter fil ON ppb.f_id = fil.f_id WHERE ppa_email = #{ppa_email}
+	</select>
+	<!-- 픽로드 값 가져오기 -->
+	<select id="PickRoadMyPage" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT prb.prb_id,prb_title,prb_content,prb_post_date,prp_image_path FROM pickroad_board prb JOIN pickpic_account ppa ON prb.ppa_id = ppa.ppa_id JOIN pickroad_place prp ON prb.prb_id = prp.prb_id WHERE ppa_email = #{ppa_email} AND prp_order = '1'	
 	</select>
 </mapper>

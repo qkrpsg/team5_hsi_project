@@ -2,39 +2,63 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link href="<c:url value='/css/Sign_Up.css' />" rel="stylesheet">
-<script src="<c:url value='/js_api/jquery.form-validator.js'/>"></script>
+<script src="<c:url value='/js_api/jquery.form-validator.js'/>"></script>    
+
 
 <script>
-	$(document).ready(
-			function() {
-				var fileTarget = $('.filebox .upload-hidden');
-				fileTarget.on('change', function() { // 값이 변경되면 
-					if (window.FileReader) { // modern browser 
-						var filename = $(this)[0].files[0].name;
-					} else { // old IE 
-						var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-					} // 추출한 파일명 삽입
-					$(this).siblings('.upload-name').val(filename);
-				});
+
+/* var file = document.querySelector('#ppa_profile_path');
+file.onchange = function() {
+	var fileList = file.files;
+	// 읽기
+	var reader = new FileReader();
+	var filename=fileList[0].name;
+	reader.readAsDataURL(fileList[0]);
+	//로드 한 후
+	reader.onload = function() {
+		var img = new Image();
+		img.src= reader.result;
+		img.onload = function(e) {
+			$('.filebox .upload-hidden').siblings('.upload-name').val(filename);
+		};
+		
+	};
+};
+ */
+
+	/* $(document).ready(
+		function() {
+			var fileTarget = $('.filebox .upload-hidden');
+			fileTarget.on('change', function() { // 값이 변경되면 
+				if (window.FileReader) { // modern browser 
+					console.log(this);
+					var filename = $(this)[0].files[0].name;
+					console.log(filename);
+				} else { // old IE 
+					var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+				} // 추출한 파일명 삽입
+				$(this).siblings('.upload-name').val(filename);
 			});
+		}); 
+	 */
 
 	$(function() {
 		// setup validate
 		$.validate();
 	});
 	$(document).ready(function() {
-		function ch(){
+		function ch() {
 			alert('이메일 인증을 해주세요~');
 		}
-		
-		$('.submit_hi').click(function(){
-			if($('#ppa_agree').filter(':checked').length == 1){
+
+		$('.submit_hi').click(function() {
+			if ($('#ppa_agree').filter(':checked').length == 1) {
 				alert("이메일 인증을 확인 해주세요");
 				$("#my_form").submit();
 			}
 		});
 	});
-	
+
 	$(document).ready(function() {
 		var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
 		//console.log(re);
@@ -42,7 +66,7 @@
 		var pwd = document.getElementById("ppa_password");
 		var pwdChk = document.getElementById("ppa_passwordCheck");
 		var nickname = document.getElementById("ppa_nickname");
-		var profile = document.getElementById("ppa_profile_path");
+		var profile = document.getElementById("filePath");
 		var agree = document.getElementById("ppa_agree");
 
 		var jo = document.getElementById("join-submit");
@@ -64,7 +88,7 @@
 				}
 			}); //ajax 끝
 		});
-		
+
 		jo.onclick = function() {
 			if ($('#hi').html() != "사용 가능한 이메일 입니다.") {
 				alert('이메일 중복체크를 해주세요');
@@ -76,13 +100,13 @@
 				pwdChk.focus();
 				return false;
 			}
-			if($('#ppa_agree').filter(':checked').length == 0){
+			if ($('#ppa_agree').filter(':checked').length == 0) {
 				alert('이용약관에 동의 해주세요');
 				agree.focus();
 				return false;
 			}
 		}//onclick	
-		
+
 	});
 </script>
 <style>
@@ -126,8 +150,8 @@
 				</div>
 				<div class="filebox">
 					<input class="upload-name  btn-default" value="프로필 사진을 올려주세요" disabled="disabled"> 
-					<label for="ppa_profile_path" class="btn btn-warning" name="ppu_profile_path">업로드</label> 
-					<input type="file" id="ppa_profile_path" class="upload-hidden" name="ppa_profile_path">
+					<label for="filePath" class="btn btn-warning">업로드</label> 
+					<input type="file" id="filePath" name="filePath" class="upload-hidden"  accept=".jpg, .png">
 				</div>
 				<div class="form-group" style="overflow: hidden;">
 					<input type="checkbox" name="ppa_agree" value="이용약관" id="ppa_agree" value="ok" style="float: left; margin-right: 10px;" />
@@ -143,7 +167,7 @@
 					</div>
 					
 					<input type="hidden" name="ppa_type" value="pickpic" />
-					
+					<input type="hidden" id="ppa_profile_path" name="ppa_profile_path" value="test전">
 				</div>
 			</form>
 			
@@ -152,5 +176,30 @@
 	</div>
 </div>
 
+<script>
+/* 파일명/파일data 추출- 위로 올리지 말것!  */
+var file = document.querySelector('#filePath');
+var img = new Image();
+file.onchange = function() {
+	var fileList = file.files;
+	// 읽기
+	var reader = new FileReader();
+	var filename=fileList[0].name;
+	reader.readAsDataURL(fileList[0]);
+	//로드 한 후
+	reader.onload = function() {	
+		img.src= reader.result;
+		img.onload = function(e) {
+			$('.filebox .upload-hidden').siblings('.upload-name').val(filename);
+		};
+		console.log(img.src);
+		console.log(typeof(img.src));
+		$('#ppa_profile_path').attr('value', img.src);
+// 		$('#filePath').attr('value', img.src);
+// 		console.log("hidden : " + $('#ppa_profile_path').val());
+// 		console.log("file : " + $('#filePath').val());
+	};
+};
 
+</script>
 

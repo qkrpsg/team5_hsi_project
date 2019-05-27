@@ -47,5 +47,15 @@ public class PickRoadBoardDAO implements PickRoadBoardService{
 	public List<Map> pickRoadBoardSelectOne2(Map map) {
 		return template.selectList("PickRoadBoardSelectOne2",map);
 	}
+
+	@Override
+	public List<Map> pickRoadBest(Map map) {
+		// TODO Auto-generated method stub
+		return template.selectList("pickRoadbest",map);	
+	}
+	
+	public List<Map> pickRoadMyPage(Map map) {
+		return template.selectList("PickRoadMyPage",map);
+	}
 	
 }

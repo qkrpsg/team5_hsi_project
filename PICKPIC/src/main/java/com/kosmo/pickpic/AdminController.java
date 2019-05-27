@@ -49,6 +49,8 @@ public class AdminController {
 		model.addAttribute("filter",adminService.filterAll());
 		model.addAttribute("place", adminService.pickPlaceAll());
 		model.addAttribute("road", adminService.pickRoadAll());
+		model.addAttribute("nowDate", DTOUtil.getNowDate());
+		
 		return "admin/admin_home.admin";
 	}//home
 	
@@ -526,7 +528,7 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/admin/admin_qna_update.pic")
 	public String qna_update(@RequestParam Map map,Model model,Principal principal) throws Exception {
-		
+		map.put("ppa_email", principal.getName());
 		System.out.println("aa"+map);
 		questionService.aqupdate(map);
 		List<QuestionDTO> list = questionService.selectList(map);	

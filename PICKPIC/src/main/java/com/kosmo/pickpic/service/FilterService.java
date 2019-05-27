@@ -9,4 +9,8 @@ public interface FilterService {
 	FilterDTO selectFilter_buy(Map map);
 	int addPayment(Map map);
 	List<Map> filterList();
+	List<Map> filterbest();
+	
+	//마이페이지 필터보관함
+	List<Map> myPageFilter(Map map);
 }

@@ -18,6 +18,14 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
+<style>
+.text1{
+font-size: 30px;
+margin-left: 5%;
+
+}
+
+</style>
 
 <script
 	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script>
@@ -38,30 +46,13 @@
 				<div class="submit-form" id="serchlist">
 					<form id="form-submit" action="" method="get">
 						<div class="row">
-							<div class="col-md-3 first-item">
-								<fieldset>
-									<input name="name" type="text" class="form-control" id="name"
-										placeholder="필터명" required="">
-								</fieldset>
-							</div>
-							<div class="col-md-3 second-item">
+							<div class="col-md-10 second-item">
 								<fieldset>
 									<input name="location" type="text" class="form-control"
 										id="location" placeholder="키워드를 입력하세요." required="">
 								</fieldset>
 							</div>
-							<div class="col-md-3 third-item">
-								<fieldset>
-									<select required name='category' onchange='this.form.()'>
-										<option value="">세부분류</option>
-										<option value="Kor">오전</option>
-										<option value="Usa">낮</option>
-										<option value="Jan">오후</option>
-										<option value="Chi">종일</option>
-									</select>
-								</fieldset>
-							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<fieldset>
 									<button type="submit" id="form-submit" class="btn">검색</button>
 								</fieldset>
@@ -102,10 +93,12 @@
   	<c:if test="${list.F_SALE_YN eq 'Y' }">
 	   <div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
 			<img src="${list.F_IMAGE_PATH }" alt="안나와"/>
-			<div class="innerText">
-	           	<p class="Text_title" ><span >${list.F_NAME}</span></p>
-	            <p class="" ><span >가격 : ${list.F_CHANGE}</span></p>
-	       </div><!-- &f_change= ${list.F_CHANGE } -->
+			<div class="innerText"  >
+	           	<p class="text1" style="margin-top: 30%"><span >${list.F_NAME}</span></p>
+	            <p class="text1" ><span >가격 : ${list.F_CHANGE}</span></p>
+	            <p class="text1"><span>판매 수: ${list.TOTALFILTER}</span></p>
+	            
+	     	       </div><!-- &f_change= ${list.F_CHANGE } -->
 	      <div class="hi"><a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a></div>
 		</div>
   	</c:if>
@@ -128,96 +121,38 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="row">
+		<div class="col-md-12">
+       <c:forEach  var="best" items="${best }" varStatus="loop">
+		
 
-			<div class="col-md-4 col-sm-6 col-xs-12">
+			<div class="col-md-4 " style="float: left">
 				<div class="featured-item">
+				
 					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
+					   
+						<img src="${best.F_IMAGE_PATH }" />
 						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
+							<h6>${best.F_NAME }</h6>
+							<span>판매수: ${best.TOTALFILTER }</span>
 						</div>
 					</div>
 					<div class="down-content">
 						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="#">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="#serchlist">검색하기</a>
-								</div>
+							<div class="col-md-12" style="text-align: center;">
+							<a href="<c:url value='/pay/pay.pic?f_name=${best.F_NAME }'/>"><span style="font-size: 20px;margin-top: 3%">구매하기</span></a>
 							</div>
 						</div>
+						</div>
+					
 					</div>
+				
 				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="#">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="#serchlist">검색하기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="#">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="#serchlist">검색하기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
+			
+            	</c:forEach >
+            	</div>
+            	</div>
+     </div>
 </section>
 
 <script>

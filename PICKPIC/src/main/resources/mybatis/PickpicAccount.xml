@@ -27,8 +27,8 @@
 	
 	<!-- 계성 생성  -->
 	<insert id="PickpicAccountInsert" parameterType="java.util.Map">
-		INSERT INTO pickpic_account(ppa_id, ppa_email, ppa_password, ppa_nickname, ppa_index) 
-		VALUES(func_generator, #{ppa_email},#{ppa_password},#{ppa_nickname}, seq_ppa_index.NEXTVAL)
+		INSERT INTO pickpic_account(ppa_id, ppa_email, ppa_password, ppa_nickname, ppa_index, ppa_profile_path) 
+		VALUES(func_generator, #{ppa_email},#{ppa_password},#{ppa_nickname}, seq_ppa_index.NEXTVAL, #{ppa_profile_path})
 	</insert>
 
 	<!-- 초기 계정정보 인증 테이블에 등록 -->
