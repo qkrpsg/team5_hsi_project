@@ -165,7 +165,7 @@ public class HelpController {
 			model.addAttribute("list",list);
 		}
 		catch(Exception e) {
-			alert("삭제 할 수 없어요");
+			
 			
 		}
 		
@@ -177,6 +177,10 @@ public class HelpController {
 	
 	
 	
+	
+	
+
+
 	//공지사항
 	@RequestMapping(value= "/help/notice/List.pic")
 	public String notice(Model model, @RequestParam Map map,
