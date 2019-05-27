@@ -129,7 +129,7 @@ text-align: left;
 	<div class="container">
 		<div class="grid">
 		<c:forEach var="recode" items="${recode}" varStatus="loop">
-		<c:if test="${recode.PRB_POST_DATE  == (todayString-1)}" var ="pa">
+		<c:if test="${recode.PRB_POST_DATE  >= (todayString-1)}" var ="pa">
 		<%-- <% System.out.println("b"); %>
 		    <div class="col-xs-3 element-item img_wrap2 new ">
 		    <a href="<c:url value='/friends/view.pic?prb_index=${recode.PRB_INDEX }&prb_id=${recode.PRB_ID }'/>"><img src="${recode.PRP_IMAGE_PATH }" ></a></div>

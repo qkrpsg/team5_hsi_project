@@ -87,6 +87,8 @@ public class HelpController {
 		return "help/notice/View.tiles";
 	}
 	
+	
+	
 	//문의사항
 	@RequestMapping("/help/qna/List.pic")///문의하기로 넘어가는 컨트롤러
 	public String qna_list(@RequestParam Map map,Model model,HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage) throws Exception{
@@ -139,6 +141,9 @@ public class HelpController {
 	
 		return "help/qna/List.tiles";
 	}//qna_wirite2
+	
+	
+	
 	//qna
 	@RequestMapping("/help/qna/Write.pic")
 	public String qna_write(@RequestParam Map params) throws Exception{
