@@ -135,9 +135,6 @@ text-align: left;
                         <span>${recode.PRB_TITLE}</span>
                      </p>
                      <p class="tt">
-                        <span>${recode.PRB_CONTENT}</span>
-                     </p>
-                     <p class="tt">
                         <span>조회수: ${recode.PRB_VIEW }</span>
                      </p>
                   </div>
@@ -153,9 +150,6 @@ text-align: left;
                   <div class="innerText">
                      <p class="tt" style="margin-top: 20%">
                         <span>${recode.PRB_TITLE }</span>
-                     </p>
-                     <p class="tt">
-                        <span>${recode.PRB_CONTENT }</span>
                      </p>
                      <p class="tt">
                         <span>조회수: ${recode.PRB_VIEW }</span>

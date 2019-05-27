@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kosmo.pickpic.service.PickRoadPlaceDTO;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.PickpicAccountService;
 
@@ -68,5 +69,20 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	@Override
 	public PickpicAccountDTO placeView(Map map) {
 		return dao.placeView(map);
+	}
+
+	@Override
+	public PickpicAccountDTO roadView(Map map) {
+		return dao.roadView(map);
+	}
+
+	@Override
+	public List<Map> roadplace(Map map) {
+		return dao.roadplace(map);
+	}
+
+	@Override
+	public PickRoadPlaceDTO roadOnePlace(Map map) {
+		return dao.roadOnePlace(map);
 	}
 }

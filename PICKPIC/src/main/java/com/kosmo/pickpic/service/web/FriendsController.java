@@ -55,6 +55,7 @@ import com.amazonaws.services.devicefarm.model.Upload;
 import com.kosmo.pickpic.service.FilterDTO;
 import com.kosmo.pickpic.service.PickRoadBoardDTO;
 import com.kosmo.pickpic.service.PickRoadBoardService;
+import com.kosmo.pickpic.service.PickRoadPlaceDTO;
 import com.kosmo.pickpic.service.impl.FilterDAO;
 import com.kosmo.pickpic.service.impl.FilterServiceImpl;
 import com.kosmo.pickpic.service.impl.PickPlaceBoardServiceImpl;
@@ -117,10 +118,8 @@ public class FriendsController {
 		
 		PickpicAccountDTO dto = accountService.placeView(map);
 		model.addAttribute("user", dto);
-		System.out.println("모모델" + model.toString());
-		System.out.println("프로필 경로 : " + dto.getPpa_profile_path());
-		
-		
+//		System.out.println("모모델" + model.toString());
+//		System.out.println("프로필 경로 : " + dto.getPpa_profile_path());
 		
 		Map selectOne = ppbService.ppbSelectOne(map);
 		System.out.println("selectOne"+selectOne.toString());
@@ -542,7 +541,7 @@ public class FriendsController {
 			System.out.println("사이즈" + recode.size());
 			model.addAttribute("recode", recode);
 			System.out.println("첫 쿼리문 성공 ~~" + recode.toString());
-			return "friends/route.tiles";
+//			return "friends/route.tiles";
 		} // if 끝
 
 		List<Map> recode = prbService.pickRoadBoardSelectAll(null);
@@ -600,8 +599,24 @@ public class FriendsController {
 	}
 
 	@RequestMapping("/friends/view.pic")
-	public String view(@RequestParam Map map, Model model) throws Exception {
+	public String view(@RequestParam Map map, Model model, Principal principal) throws Exception {
 		int update = prbService.pickRoadBoardUpdate(map);
+		
+		map.put("ppa_email", principal.getName());
+		PickpicAccountDTO road = accountService.roadView(map);
+		System.out.println("roadView : " + DTOUtil.convertDTOToMap(road).toString());
+		model.addAttribute("road", road);
+		
+//		List<PickRoadPlaceDTO> roadPlace = accountService.roadplace(map);
+//		List<Map> list = new Vector<Map>();
+//		System.out.println(roadPlace.toString());
+//		for(PickRoadPlaceDTO dto : roadPlace) {
+//			list.add(DTOUtil.convertDTOToMap(dto));
+//		}
+		
+		List<Map> list = accountService.roadplace(map);
+		System.out.println("roadplace : " + list.toString());
+		model.addAttribute("list", list);
 		
 		// UPDATE 문 하고 상세보기로 SELECT ONE
 		List<Map> recode = prbService.pickRoadBoardSelectOne(map);
@@ -611,11 +626,23 @@ public class FriendsController {
 		return "friends/view.tiles";
 	}//
 	
-	
-	
-	
-	
-	
+	//픽로드 선택 이미지 변경
+	@ResponseBody
+	@RequestMapping(value="/friends/pickroadAjax.do",produces="text/html; charset=UTF-8")
+	public String filterSaleUpdate(@RequestParam Map map) throws Exception{
+		System.out.println(map.toString());
+		PickRoadPlaceDTO onePlace = accountService.roadOnePlace(map);
+		Map place = DTOUtil.convertDTOToMap(onePlace);
+		System.out.println(place.toString());
+		
+		place.put("prp_id", map.get("prp_id").toString());
+		
+		List<Map> list = new Vector<Map>();  
+		list.add(place);
+		
+		System.out.println(JSONArray.toJSONString(list));
+		return JSONArray.toJSONString(list);
+	}
 	
 	
 	// 앨범다운
@@ -627,13 +654,12 @@ public class FriendsController {
 	// 앨범다운-옵션
 	@RequestMapping("/friends/albumEditor.pic")
 	public String albumOption(@RequestParam Map map, Model model, Principal principal) throws Exception {
-
+		
 		map.put("ppa_email", principal.getName());
 		List<Map> list_filter = fService.albumDownFilterName(map);
 		model.addAttribute("list_filter", list_filter);
 		return "friends/albumEditor.tiles";
 	}
-
 	
 	//주영테스트 - 앨범다운에디터
 		@ResponseBody

@@ -161,9 +161,22 @@
 		SELECT * FROM pickpic_account WHERE ppa_id=(SELECT ppa_id FROM pickplace_board WHERE ppb_index= #{ppb_index})
 	</select>
 	
+	<!-- 픽로드 상세보기 -->
+	<select id="adminRoadUser" parameterType="java.util.Map" resultType="PickpicAccountDTO">
+		SELECT * FROM pickpic_account ppa JOIN pickroad_board prb ON prb.ppa_id=ppa.ppa_id WHERE prb_index= #{prb_index}
+	</select>
+	<!-- 픽로드 플레이스 -->
+	<select id="adminRoadPlace" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM pickroad_place WHERE prb_id=(SELECT prb_id FROM pickroad_board WHERE prb_index=#{prb_index}) ORDER BY prp_order
+	</select>
+	<!-- 픽로드 플레이스 1개 -->
+	<select id="adminRoadOnePlace" parameterType="java.util.Map" resultType="PickRoadPlaceDTO">
+		SELECT * FROM pickroad_place WHERE prp_id=#{prp_id}
+	</select>
+	
+	
 	<!-- S3 서비스 이용을 위한 키 획득 -->
 	<select id="getAuthKey" resultType="java.util.Map">
 		SELECT * FROM authority
 	</select>
-	
 </mapper>

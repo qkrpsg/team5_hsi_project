@@ -23,8 +23,35 @@ public class PickpicAccountDTO {
 	private String totalplace;
 	private String totalroad;
 	
+	private String prb_title;
+	private String prb_post_date;
+	private String prb_content;
 
 	
+	public String getPrb_content() {
+		return prb_content;
+	}
+
+	public void setPrb_content(String prb_content) {
+		this.prb_content = prb_content;
+	}
+
+	public String getPrb_post_date() {
+		return prb_post_date;
+	}
+
+	public void setPrb_post_date(String prb_post_date) {
+		this.prb_post_date = prb_post_date;
+	}
+
+	public String getPrb_title() {
+		return prb_title;
+	}
+
+	public void setPrb_title(String prb_title) {
+		this.prb_title = prb_title;
+	}
+
 	//getter,setter
 	public String getTotalplace() {
 		return totalplace;
@@ -120,14 +147,6 @@ public class PickpicAccountDTO {
 	public void setPpa_nickname(String ppa_nickname) {
 		this.ppa_nickname = ppa_nickname;
 	}
-
-//	public java.sql.Date getPpa_join_date() {
-//		return ppa_join_date;
-//	}
-//
-//	public void setPpa_join_date(java.sql.Date ppa_join_date) {
-//		this.ppa_join_date = ppa_join_date;
-//	}
 
 	public String getPpa_type() {
 		return ppa_type;

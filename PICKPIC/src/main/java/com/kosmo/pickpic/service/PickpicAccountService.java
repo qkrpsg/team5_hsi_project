@@ -1,5 +1,6 @@
 package com.kosmo.pickpic.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface PickpicAccountService {
@@ -19,4 +20,11 @@ public interface PickpicAccountService {
 	
 	//픽플레이스 상세보기
 	PickpicAccountDTO placeView(Map map);
+	
+	//픽로드 상세보기
+	PickpicAccountDTO roadView(Map map);
+	//픽로드 플레이스
+	List<Map> roadplace(Map map);
+	//픽로드 플레이스 1개
+	PickRoadPlaceDTO roadOnePlace(Map map);
 } 

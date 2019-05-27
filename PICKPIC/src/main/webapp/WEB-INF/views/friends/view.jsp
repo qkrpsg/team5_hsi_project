@@ -24,25 +24,25 @@
 				<div class="intro">
 					<div class="profile-img">
 						<img class="pr_img"
-							src="<c:url value='/resources/images/team/memberPark.jpg'/>"
+							src="${road.ppa_profile_path }"
 							alt="">
 					</div>
 					<h3 style="margin-top: 10px">
-						<b>슬기로운다슬기</b>
+						<b>${road.ppa_nickname }</b>
 					</h3>
 					<!-- <h4 class="font-yellow">프로필수정</h4> -->
 					<ul class="follow2">
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">5</font></font>
+									style="vertical-align: inherit; color: #4883ff">${road.totalplace }</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">픽플레이스</font></font></span>
 						</li>
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">3</font></font>
+									style="vertical-align: inherit; color: #4883ff">${road.totalroad }</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">픽로드</font></font></span>
 						</li>
@@ -56,7 +56,7 @@
 						<li>
 							<h6>
 								<font style="vertical-align: inherit;"><font
-									style="vertical-align: inherit; color: #4883ff">7</font></font>
+									style="vertical-align: inherit; color: #4883ff">${road.totalfilter }</font></font>
 							</h6> <span><font style="vertical-align: inherit;"><font
 									style="vertical-align: inherit;">보유 필터</font></font></span>
 						</li>
@@ -73,201 +73,25 @@
 </section>
 
 <section class="popular-places" id="popular">
-        <div class="container-fluid">     
-        <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="section-heading">
-                        <span>배고파</span>
-                        <h5>맛있어요맛있어요맛있어요맛있어요맛있어요맛있어요</h5>
-                    </div>
-                </div> 
-            </div>      
-            <div class="owl-carousel owl-theme">
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Mauris tempus</h4>
-                            <span>76 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Aenean dolor</h4>
-                            <span>18 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="far fa-minus-square"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Nunc at quam</h4>
-                            <span>55 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Fusce ac turpis</h4>
-                            <span>66 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Lorem ipsum</h4>
-                            <span>82 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Praesent nec</h4>
-                            <span>76 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Suspendisse</h4>
-                            <span>36 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Bibendum</h4>
-                            <span>48 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Quisque sodales</h4>
-                            <span>66 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Pellentesque</h4>
-                            <span>85 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Commodo</h4>
-                            <span>76 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Adipiscing</h4>
-                            <span>32 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Etiam hendrerit</h4>
-                            <span>49 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Suspendisse</h4>
-                            <span>63 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item popular-item">
-                    <div class="thumb">
-                        <img src="<c:url value='/resources/images/team/memberPark.jpg'/>" alt="">
-                        <div class="text-content">
-                            <h4>Sit amet dictum</h4>
-                            <span>86 listings</span>
-                        </div>
-                        <div class="plus-button">
-                            <a href="#"><i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
+	<div class="container-fluid">
+		<div class="owl-carousel owl-theme">
+
+			<c:forEach var="list" items="${list }" varStatus="loop">
+				<div id="${list.PRP_ID }" class="item popular-item btnimg">
+					<div class="thumb">
+						<img src="${list.PRP_IMAGE_PATH }" alt="">
+						<div class="text-content">
+							<h4>${list.PRP_TITLE }</h4>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+
+		</div>
+	</div>
+</section>
+
+
 
 <section class="light-bg booking-details_wrap">
 	<div class="container">
@@ -279,34 +103,33 @@
 							<div class="customer-review">
 								<h3>
 									<font style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">가산역 최고의 장소</font></font>
+										style="vertical-align: inherit;">${road.prb_title }</font></font>
 								</h3>
 								<p>
-                                        <font style="vertical-align: inherit;">2019-05-29 12:30:15</font></p>
+									<font style="vertical-align: inherit;">${road.prb_post_date }</font>
+								</p>
 							</div>
 						</div>
 						<hr>
 
-						<canvas
-							style="background-color: #ececec; width: 100%; height: auto;"
-							id="canvas"></canvas>
-
+<%-- 						<canvas style="background-color: #ececec; width: 100%; height: auto;" id="canvas"></canvas> --%>
+						<img id="img" src="${list[0].PRP_IMAGE_PATH}"/>
 						<hr>
 						<p>
-							<font style="vertical-align: inherit;"><font
-								style="vertical-align: inherit;"> 사진 위치 내용 소개하기</font></font>
+							<font style="vertical-align: inherit;"> <font
+								style="vertical-align: inherit;"> ${road.prb_content }</font>
+							</font>
 						</p>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-md-4 responsive-wrap">
 				<div class="contact-info">
 					<img src="/pickpic/resources/images/test/map.jpg" class="img-fluid"
 						alt="#">
 					<div class="address">
 						<span><i class="zmdi zmdi-pin zmdi-hc-lg"></i></span>
-
 						<p>
 							<font style="vertical-align: inherit;"><font
 								style="vertical-align: inherit;"> 서울특별시 </font></font><br> <font
@@ -332,9 +155,7 @@
 					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
 					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
 					<a href="#"><font style="vertical-align: inherit;">관련어1</font></a>
-
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -346,7 +167,31 @@ function fn_spread(id){
     var getID = document.getElementById(id);
     getID.style.display=(getID.style.display=='none') ? 'block' : 'none';
 }
-
+$('.btnimg').click(function(){ 
+	var prp_id = $(this).attr('id');
+	console.log(prp_id);
+	$.ajax({
+		url:'<c:url value="/friends/pickroadAjax.do"/>',
+		dataType : 'json',
+		type : 'GET',
+		data : {
+			'prp_id' : prp_id
+		},
+		success : function(data){
+			console.log(data);
+			console.log('성공');
+			
+			$.each(data, function(index, element){
+				console.log(element);
+				$('#img').attr('src', element['prp_image_path']);
+			});
+		},
+		error : function(data){
+			console.log(data);
+		}
+	});
+	//console.log("fa-plus : " + $(this).find('a').find('.fa-plus'));
+});
 
 </script>
 
