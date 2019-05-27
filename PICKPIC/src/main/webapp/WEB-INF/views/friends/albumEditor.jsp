@@ -210,7 +210,7 @@
 						+ '<div class="photo" >'
 						+ '<div class="photo_center_wrap" >'
 						+ '<div class="photo_center cssco" id=set_'+index+'>'
-						+ '<canvas id="canvas_'+index+'"></canvas>'
+						+ '<canvas id="canvas_'+index+'" data-caman-hidpi-disabled="true"></canvas>'
 						/* + '<img id="temp_img_'
 						+ index
 						+ '" src="'
@@ -279,7 +279,7 @@
 					selectArray = selectArray.concat(idArray);
 					$.each(selectArray, function(index, id) {
 						$('div[id=photo_wrap_' + id + ']').css('box-shadow',
-								'5px 5px 5px #c9e3f7');
+								'5px 5px 5px#4a4a4a');
 						$("button[id=" + id + "]").eq(1).html('해제');
 					});
 
@@ -307,7 +307,7 @@
 			if ($(item).html() == '선택') {
 				/* 선택 후 효과 */
 				$('div[id=photo_wrap_' + currentId + ']').css('box-shadow',
-						'5px 5px 5px #c9e3f7');
+						'5px 5px 5px #4a4a4a');
 				selectArray.push(Number(currentId));
 				if (selectArray.length == idArray.length) {
 					$('.allselect_btn').html('전체 해제');
