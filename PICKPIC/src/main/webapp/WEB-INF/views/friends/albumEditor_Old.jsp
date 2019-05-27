@@ -387,7 +387,7 @@ for(var i = 0; i< ){
 		$.each(selectArray, function(index, id) {
 			var set_class = $('#set_'+id).attr('class');
 			var class_length = $('#set_'+id)[0].classList.length;
-			
+	
 			if(class_length <= 2){
 				$('div[id="set_' + id + '"]').toggleClass(filterName,true);
 			} else{
