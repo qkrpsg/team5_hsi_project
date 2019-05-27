@@ -9,7 +9,6 @@
 <!-- List.jsp -->
 <div class="l_pkp_all_wrap">
 	<div class="l_pkp_sub_wrap">
-
 		<div class="l_help_title_wrap">
 			<div class="wrapper">
 				<div class="box">
@@ -71,11 +70,11 @@
 			     <c:if test="${empty item.TB_POST_DATE }" var="postempty">
 			     <td style="font-weight: bold;text-align: center">대기중</td>
 			     </c:if>
-			     <c:if test="${not postempty }">
-			     <td style="background-color: red;color:white;font-weight:bold;width:100px;text-align:center">답변완료</td>
-			     </c:if>
+<%-- 			     <c:if test="${not postempty }"> --%>
+			     <td style="background-color: red;color:white;font-weight:bold;width:100px;text-align:center">답변대기</td>
+<%-- 			     </c:if> --%>
 			     
-			     <td>${item.PPA_NICKNAME }</td>
+			     <td></td>
 			    </tr>
 			      
 			      </c:forEach>

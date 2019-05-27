@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="NoticeDTO" type="com.kosmo.pickpic.service.NoticeDTO"/>
 		<typeAlias alias="AuthSecurityDTO" type="com.kosmo.pickpic.service.AuthSecurityDTO"/>
 		<typeAlias alias="QuestionDTO" type="com.kosmo.pickpic.service.QuestionDTO"/>
+		<typeAlias alias="TipBoardDTO" type="com.kosmo.pickpic.service.TipBoardDTO"/>
 	 </typeAliases>
 	
 	
@@ -27,6 +28,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/Admin.xml" />
 		<mapper resource="mybatis/AdminNotice.xml" />
 	    <mapper resource="mybatis/Question.xml" />
+	    <mapper resource="mybatis/Tip.xml" />
 	</mappers>
 	
 </configuration>

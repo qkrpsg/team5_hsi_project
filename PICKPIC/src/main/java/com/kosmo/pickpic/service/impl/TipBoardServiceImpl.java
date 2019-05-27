@@ -18,7 +18,6 @@ public class TipBoardServiceImpl implements TipBoardService {
 	
 	@Override
 	public List<TipBoardDTO> selectList(Map map) {
-		
 		return dao.selectList(map);
 	}
 
@@ -50,6 +49,18 @@ public class TipBoardServiceImpl implements TipBoardService {
 	public int update(Map map) {
 		
 		return dao.update(map);
+	}
+
+	@Override
+	public int aqinsert(Map map) {
+		// TODO Auto-generated method stub
+		return dao.aqinsert(map);
+	}
+
+	@Override
+	public int aqupdate(Map map) {
+		// TODO Auto-generated method stub
+		return dao.aqupdate(map);
 	}
 
 	

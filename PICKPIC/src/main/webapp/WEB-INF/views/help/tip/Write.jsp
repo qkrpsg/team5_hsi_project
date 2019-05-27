@@ -36,21 +36,25 @@
       <!-- /.row -->
       
       <div class="l_tip_list_wrap">
-			<div class="row" style="margin-left: 20%;margin-right: 20%;">
-				<form method="post" action="<c:url value='/help/tip/Write.pic'/>" id="jyu"> 
+			<div class="row" style="margin-left: 20%;margin-right: 20%;"> 
+				<form method="post" action="<c:url value='/help/tip/WriteOk.pic'/>" id="jyu"> 
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 					<div class="form-group">
 						<label for="title">제목</label> 
-						<input type="text" class="form-control" name="TB_TITLE" id="TB_TITLE" placeholder="제목을 입력해 주세요">
+						<input type="text" class="form-control" name="tb_title" id="tb_title" placeholder="제목을 입력해 주세요">
+					</div>
+					<div class="form-group">
+						<label for="title">작성자</label> 
+						<input type="text" class="form-control" name="tb_id" id="tb_id" placeholder="작성자를 입력해 주세요">
 					</div>
 					<!-- 등록일 -->
 					<input type="hidden" name="ppu_register_date" id="TB_POST_DATE"/>
 					<!-- 글쓰기 썸머노트 -->
-					<textarea id="summernote" name="TB_CONTENT" id="TB_CONTENT">상세 내용을 작성하세요.</textarea>       
+					<textarea id="summernote" name="tb_content" id="tb_content">상세 내용을 작성하세요.</textarea>       
 					
 					<div class="form-group text-center">
-						<input type="button" id="join-submit" class="btn btn-primary" value="작성완료" >
+						<input type="submit" id="join-submit" class="btn btn-primary" value="작성 완료" >
 						<input type="button"  class="btn btn-warning" onclick="location.href='<c:url value="/help/tip/List.pic"/>'" value="취소" >
 					</div>
 				</form>

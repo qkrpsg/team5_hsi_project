@@ -13,5 +13,7 @@ public interface TipBoardService {
 	int insert(Map map);
 	int delete(Map map);
 	int update(Map map);
+	int aqinsert(Map map);
+	int aqupdate(Map map);
 	
 }///TipBoardService

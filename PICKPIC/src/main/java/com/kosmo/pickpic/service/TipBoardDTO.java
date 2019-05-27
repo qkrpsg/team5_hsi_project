@@ -2,59 +2,76 @@ package com.kosmo.pickpic.service;
 
 public class TipBoardDTO {
     //컬럼 변수 생성
-	private String tb_id;
-	private String tb_title;
-	private String tb_content;
-	private java.sql.Date tb_post_date;
-	private String tb_count;
-	private String tb_index;
+	private String TB_ID;
+	private String TB_TITLE;
+	private String TB_CONTENT;
+	private String TB_POST_DATE;
+	private String TB_COUNT;
+	private String TB_INDEX;
+	
 	//외래키 변수 생성
-	private String ppa_id;
+	private String PPA_ID;
+	
+	//편의상 추가
+	private String aq_content;
+	private String aq_post_date;
+	
 	
 	//getter,setter
-	public String getTb_id() {
-		return tb_id;
+	public String getAq_content() {
+		return aq_content;
 	}
-	public void setTb_id(String tb_id) {
-		this.tb_id = tb_id;
+	public String getTB_ID() {
+		return TB_ID;
 	}
-	public String getTb_title() {
-		return tb_title;
+	public void setTB_ID(String tB_ID) {
+		TB_ID = tB_ID;
 	}
-	public void setTb_title(String tb_title) {
-		this.tb_title = tb_title;
+	public String getTB_TITLE() {
+		return TB_TITLE;
 	}
-	public String getTb_content() {
-		return tb_content;
+	public void setTB_TITLE(String tB_TITLE) {
+		TB_TITLE = tB_TITLE;
 	}
-	public void setTb_content(String tb_content) {
-		this.tb_content = tb_content;
+	public String getTB_CONTENT() {
+		return TB_CONTENT;
 	}
-	public java.sql.Date getTb_post_date() {
-		return tb_post_date;
+	public void setTB_CONTENT(String tB_CONTENT) {
+		TB_CONTENT = tB_CONTENT;
 	}
-	public void setTb_post_date(java.sql.Date tb_post_date) {
-		this.tb_post_date = tb_post_date;
+	public String getTB_POST_DATE() {
+		return TB_POST_DATE;
 	}
-	public String getTb_count() {
-		return tb_count;
+	public void setTB_POST_DATE(String tB_POST_DATE) {
+		TB_POST_DATE = tB_POST_DATE;
 	}
-	public void setTb_count(String tb_count) {
-		this.tb_count = tb_count;
+	public String getTB_COUNT() {
+		return TB_COUNT;
 	}
-	public String getTb_index() {
-		return tb_index;
+	public void setTB_COUNT(String tB_COUNT) {
+		TB_COUNT = tB_COUNT;
 	}
-	public void setTb_index(String tb_index) {
-		this.tb_index = tb_index;
+	public String getTB_INDEX() {
+		return TB_INDEX;
 	}
-	public String getPpa_id() {
-		return ppa_id;
+	public void setTB_INDEX(String tB_INDEX) {
+		TB_INDEX = tB_INDEX;
 	}
-	public void setPpa_id(String ppa_id) {
-		this.ppa_id = ppa_id;
+	public String getPPA_ID() {
+		return PPA_ID;
 	}
-	
+	public void setPPA_ID(String pPA_ID) {
+		PPA_ID = pPA_ID;
+	}
+	public void setAq_content(String aq_content) {
+		this.aq_content = aq_content;
+	}
+	public String getAq_post_date() {
+		return aq_post_date;
+	}
+	public void setAq_post_date(String aq_post_date) {
+		this.aq_post_date = aq_post_date;
+	}
 	
 	
 }
