@@ -204,8 +204,10 @@ public class FriendsController {
 
 		// filter 테이블 전부 가져오기
 		List<Map> list = dao_filter.filterList();
-		model.addAttribute("list", list);
-
+		List<Map> best = dao_filter.filterbest();
+		model.addAttribute("list",list);
+		//model.addAttribute("filtertotalbuy",filtertotalbuy);
+		model.addAttribute("best",best);
 		System.out.println(list.toString());
 		return "friends/filter.tiles";
 	}// filter
@@ -528,15 +530,17 @@ public class FriendsController {
 			list.put("PRB_POST_DATE", list.get("PRB_POST_DATE").toString().substring(8, 10));
 			System.out.println(list.get("PRB_POST_DATE").toString());
 		}
-
+		List<Map> bestroad = prbService.pickRoadBest(map);  
+        
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
 		String todayString = dateFormat.format(new Date());
 
 		model.addAttribute("todayString", todayString);
+		model.addAttribute("bestroad", bestroad);
 
 		System.out.println("todayString:" + todayString);
 
-		model.addAttribute("recode", recode);
+		model.addAttribute("recode",recode);
 		/*
 		 * { o PRB_INDEX=21, 색인 o PRB_RECOMMEND=0, 추천수 PPA_ID=2ZORUAF7I0JW, 사용자 고유번호 o
 		 * PRB_TITLE=qqq, 제목 PRB_END_DATE=2019-05-13 00:00:00.0, 끝나는 날짜 o

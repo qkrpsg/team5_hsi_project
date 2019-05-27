@@ -242,7 +242,3 @@
 <%-- <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
 <script src="<c:url value='js/Main.js'/>"></script> --%>
-
-
-
-

@@ -137,6 +137,7 @@
 						<li><a href="<c:url value='/help/notice/List.pic'/> ">공지사항</a></li>
 						<li><a href="<c:url value='/help/qna/List.pic'/>">문의사항</a></li>
 						<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
+						<li><a href="<c:url value='/test/route_list.pic'/>">테스트7-마이페이지(필터)</a></li>
 					</ul>
 				</div>
 			</div>

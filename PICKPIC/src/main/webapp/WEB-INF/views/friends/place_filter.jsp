@@ -92,10 +92,12 @@
     </div>
 	</section>
 
+
 <section class="pricing-tables">
 	<a href="<c:url value='/friends/place_write.pic'/>" class="btn btn-info"style="float: right; margin-right: 20px; margin-top: 20px;">작성하러가기</a>
 	<div class="container">
 		<div class="grid">
+		<h3>ㅁㅁ</h3>
 			<c:forEach var="list" items="${list }" varStatus="loop">
 				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
 					
@@ -107,6 +109,11 @@
 						<p class="">
 							<span>${list.PPB_CONTENT}</span>
 						</p>
+						<p class="">
+							<span>${list.PPB_CONTENT}</span>
+						</p>
+						
+						
 					</div>
 					<div class="hi">
 						<a href="<c:url value='/pay/pay.pic?f_name=${list.F_NAME }'/>">구매하기</a>
@@ -228,8 +235,6 @@
 <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
 <script src="<c:url value='js/Main.js'/>"></script>
-
-
 
 
 

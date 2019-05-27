@@ -48,4 +48,10 @@ public class FilterDAO implements FilterService{
 		return template.selectList("FilterList");
 	}
 
+	@Override
+	public List<Map> filterbest() {
+		
+		return template.selectList("filterbest");
+	}
+
 }
