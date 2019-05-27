@@ -11,8 +11,54 @@
 	href="<c:url value='/css/test/material-design-iconic-font.min.css'/>">
 <%-- <link href="<c:url value='/css/test/ionicons.css'/>" rel="stylesheet">  --%>
 <script src="<c:url value='/js/test/tether.min.js'/>"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=750e581d29f9f411452640632fee1ead&libraries=services"></script>
+<<style>
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 1900px;
+}
+
+.title {
+	font-weight: bold;
+	display: block;
+}
+
+.hAddr {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	border-radius: 2px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 1;
+	padding: 5px;
+}
+
+#centerAddr {
+	display: block;
+	margin-top: 2px;
+	font-weight: normal;
+}
+
+.bAddr {
+	padding: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.map_wrap{
+	height: 300px;
+}
+@media screen and (max-width:1000px) and (min-width:0px){
+.map_wrap{
+	height: 500px;
+}
 
 
+
+</style>
 <%-- <script src="<c:url value='/js/test/jquery-3.2.1.min.js'/>"></script>
 <script src="<c:url value='/js/test/isotope.pkgd.min.js'/>"></script>
 <script src="<c:url value='/js/test/jquery.waypoints.min.js'/>"></script>
@@ -81,6 +127,7 @@
 <section class="light-bg booking-details_wrap">
 	<div class="container">
 		<div class="row">
+		
 			<div class="col-md-8 responsive-wrap">
 				<div class="booking-checkbox_wrap">
 					<div class="booking-checkbox">
@@ -121,8 +168,21 @@
 			</div>
 			<div class="col-md-4 responsive-wrap">
 				<div class="contact-info">
-					<img src="<c:url value='/resources/images/test/map.jpg'/>"
-						class="img-fluid" alt="#">
+					<%-- <img src="<c:url value='/resources/images/test/map.jpg'/>"
+						class="img-fluid" alt="#"> --%>
+						
+						<div class="map_wrap" style="">
+							<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+								<div class="hAddr">
+									<span id="centerAddr"></span>
+								</div>
+							<p id="result" style=""></p>	
+						</div>
+						
+						
+						
+						
+						
 					<div class="address">
 						<span><i class="zmdi zmdi-pin zmdi-hc-lg"></i></span>
 
@@ -157,6 +217,31 @@
 
 <script type="text/javascript">
 
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+	center : new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+	level : 3
+// 지도의 확대 레벨
+};
+
+// 지도를 생성합니다    
+var map = new daum.maps.Map(mapContainer, mapOption);
+
+// 주소-좌표 변환 객체를 생성합니다
+console.log('hi' + new daum.maps.services.Geocoder());
+var geocoder = new daum.maps.services.Geocoder();
+
+var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+infowindow = new daum.maps.InfoWindow({
+	zindex : 1
+}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+
+$(document).ready(function() {	
+	$(document).on('click','.img_click',function(e){
+		console.log('hi');
+	});
+}); 
 function fn_spread(id){
     var getID = document.getElementById(id);
     getID.style.display=(getID.style.display=='none') ? 'block' : 'none';
