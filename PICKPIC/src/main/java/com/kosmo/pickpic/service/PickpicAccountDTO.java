@@ -20,6 +20,7 @@ public class PickpicAccountDTO {
 	private String totalquestion;
 	private String as_class;
 	private String rownum;
+	
 
 	
 	//getter,setter

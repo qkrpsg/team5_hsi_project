@@ -76,13 +76,13 @@ public class FriendsController {
 	private PickRoadBoardServiceImpl prbService;
 
 	@Resource(name = "fService")
-	private FilterServiceImpl dao_filter;
+	private FilterServiceImpl fService;
 
 	@Resource(name = "adminService")
 	private AdminServiceImpl adminService;
 
 	@Resource(name = "ppbService")
-	private PickPlaceBoardServiceImpl ppb_service;
+	private PickPlaceBoardServiceImpl ppbService;
 
 
 	@RequestMapping("/friends/place_list.pic")
@@ -90,7 +90,7 @@ public class FriendsController {
 		//여기서 작업 시작
 		map.put("ppa_email", principal.getName());
 
-		List<Map> list = ppb_service.selectList(map);
+		List<Map> list = ppbService.selectList(map);
 		List<Map> afterList = new Vector<Map>();
 		for (Map record : list) {
 			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+record.get("PPB_IMAGE_PATH").toString());
@@ -128,7 +128,7 @@ public class FriendsController {
 	@RequestMapping("/friends/place_write.pic")
 	public String place_write(@RequestParam Map map, Model model, Principal principal) throws Exception {
 		map.put("ppa_email", principal.getName());
-		List<Map> list_filter = dao_filter.albumDownFilterName(map);
+		List<Map> list_filter = fService.albumDownFilterName(map);
 		model.addAttribute("list_filter", list_filter);
 
 		if (map.get("title") != null) {
@@ -174,7 +174,7 @@ public class FriendsController {
 		map.put("ppb_longitude", map.get("ppb_longitude").toString().substring(0, 9));
 
 		// 이제 인설트 문 만들자
-		int a = ppb_service.insert(map);
+		int a = ppbService.insert(map);
 		if (a == 1) {
 			System.out.println("인설트 성공");
 		}
@@ -182,7 +182,7 @@ public class FriendsController {
 		for (int i = 0; i < 9999; i++) {
 			System.out.println("");
 		}
-		List<Map> list = ppb_service.selectList(map);
+		List<Map> list = ppbService.selectList(map);
 		model.addAttribute("list", list);
 
 		/// return "friends/place_filter.tiles";
@@ -196,8 +196,8 @@ public class FriendsController {
 	public String filter(@RequestParam Map map, Model model) throws Exception {
 
 		// filter 테이블 전부 가져오기
-		List<Map> list = dao_filter.filterList();
-		List<Map> best = dao_filter.filterbest();
+		List<Map> list = fService.filterList();
+		List<Map> best = fService.filterbest();
 		model.addAttribute("list",list);
 		//model.addAttribute("filtertotalbuy",filtertotalbuy);
 		model.addAttribute("best",best);
@@ -213,7 +213,7 @@ public class FriendsController {
 		// http.antMatcher("/d").authorizeRequests().antMatchers("").permitAll().and().headers().frameOptions().disable();
 		map.put("ppa_email", session.getAttribute("ppa_email"));
 
-		FilterDTO a = dao_filter.selectFilter_buy(map);
+		FilterDTO a = fService.selectFilter_buy(map);
 		List<Map> user = new Vector<Map>();
 		user.add(DTOUtil.convertDTOToMap(a));
 		model.addAttribute("list", user);
@@ -227,7 +227,7 @@ public class FriendsController {
 		System.out.println("map+" + map.toString());
 		System.out.println("들어옵니다");
 
-		int a = dao_filter.addPayment(map);
+		int a = fService.addPayment(map);
 
 		if (a == 1) {
 			System.out.println("인설트 성공");
@@ -592,7 +592,7 @@ public class FriendsController {
 	public String albumOption(@RequestParam Map map, Model model, Principal principal) throws Exception {
 
 		map.put("ppa_email", principal.getName());
-		List<Map> list_filter = dao_filter.albumDownFilterName(map);
+		List<Map> list_filter = fService.albumDownFilterName(map);
 		model.addAttribute("list_filter", list_filter);
 		return "friends/albumEditor.tiles";
 	}

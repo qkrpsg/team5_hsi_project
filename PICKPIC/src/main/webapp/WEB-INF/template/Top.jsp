@@ -33,8 +33,6 @@
 					</nav>
 					<div class="login_wrap col-md-3">
 						<ul>
-						
-						
 							<sec:authorize access="isAnonymous()">
 								<li><a href="<c:url value='/user/Login.pic'/>">LOGIN<span></span></a></li>
 								<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a></li>

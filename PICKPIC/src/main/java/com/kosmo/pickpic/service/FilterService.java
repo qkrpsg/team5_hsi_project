@@ -11,5 +11,6 @@ public interface FilterService {
 	List<Map> filterList();
 	List<Map> filterbest();
 	
-	
+	//마이페이지 필터보관함
+	List<Map> myPageFilter(Map map);
 }

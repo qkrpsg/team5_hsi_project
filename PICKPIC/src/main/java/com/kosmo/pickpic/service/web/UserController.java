@@ -258,8 +258,11 @@ public class UserController {
 //			for(filterStorageDTO record : filterList) {
 //				list.add(DTOUtil.convertDTOToMap(record));
 //				}
-			for(Map record : fService.albumDownFilterName(map)) {
-				list.add(record);
+			//이부분은 다시
+			list = fService.myPageFilter(map);
+			System.out.println(list.toString());
+			for(Map record : list) {
+				list2.add(record);
 			}//for
 			
 			
@@ -285,9 +288,8 @@ public class UserController {
 			}
 			System.out.println("list:"+list.toString());
 			
-			System.out.println(JSONArray.toJSONString(list2));
 		}
-      
+		System.out.println(JSONArray.toJSONString(list2));
        return JSONArray.toJSONString(list2);
 	}//myPage
 	

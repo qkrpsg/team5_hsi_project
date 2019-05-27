@@ -46,6 +46,14 @@
 		WHERE ac.ppa_email=#{ppa_email } ORDER BY f_index
 	</select>
 	
+	<!-- 마이페이지 필터보관함 정보 불러오기(필터이름, 필터경로) -->
+	<select id="myPageFilter" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT f_name, f_image_path FROM filter_storage fs 
+		JOIN filter f ON f.f_id=fs.f_id 
+		JOIN pickpic_account ac ON ac.ppa_id=fs.ppa_id 
+		WHERE ac.ppa_email=#{ppa_email } ORDER BY f_index
+	</select>
+	
 	<!-- 필터 테이블 정보 불러오기 -->
 	<select id="SelectFilter_buy" parameterType="java.util.Map" resultType="FilterDTO">
 		SELECT * FROM filter WHERE f_name = #{f_name }

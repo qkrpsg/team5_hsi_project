@@ -60,7 +60,7 @@
 						</li>
 						<li>
 							<h6>
-								<font style="vertical-align: inherit; color: #4883ff">5</font>
+								<font class="index_myfilter" style="vertical-align: inherit; color: #4883ff">5</font>
 							</h6> <a href="javascript:void(0);" onclick="sub_spread('myfilter')" id="myfilter" style="color:#2c343b;"><font style="vertical-align: inherit;" >보유 필터</font></a>
 						</li>
 					</ul>
@@ -109,11 +109,20 @@ function sub_spread(id){
 				console.log('data : ' + data);
 				
 				//현재 출력된 이미지 다 삭제
-				
+				let html ="";
+				let index_font=0;
 				$.each(data, function(index, element) {
-					$('#test').html(element['f_name']);
-// 					$('#sub_items')
-				})
+					html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
+					+'<img src="'+element['F_IMAGE_PATH']+'" alt="안나와" style="height: 285px;"/>'
+					+'<div class="innerText" >'
+					+'<p class="Text_title" ><span>'+element['F_NAME']+'</span></p>'
+					+'</div>'
+					+'</div>';
+				
+					index_font++;
+				});
+				$('.grid').html(html);
+				$('.index_myfilter').html(index_font);
 			},
 			error : function(data) {
 				console.log('실패');
@@ -209,8 +218,8 @@ $(document).ready(function(){
     	$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
     	$('.innerText').css('height',$('.img_wrap2 img').css('height'));
     	$('.innerText').css('width',$('.img_wrap2 img').css('width'));
-    	var img2 =$('.img_wrap2 img').css('height').replace('px','');
-    	$('.Text_title').css('margin-top',img2/2+"px");
+//     	var img2 =$('.img_wrap2 img').css('height').replace('px','');
+//     	$('.Text_title').css('margin-top',img2/2+"px");
     	$(this).find('.innerText').css("display","block");
     });
     
