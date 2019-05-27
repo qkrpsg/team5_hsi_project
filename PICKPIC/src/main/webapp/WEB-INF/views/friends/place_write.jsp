@@ -97,12 +97,6 @@
 <div id="filter_list" >
    <div class="container-fluid noMnP scroll_inline box" >
          <!-- 필터 띄우기 -->
-      <div class=" card-a cssco card_hover" id="none"
-         onclick="filterOn(this)">
-         <img src="<c:url value='/resources/images/filter/filter_none.png'/>" />
-         <div class="ovrly"></div>
-         <span class="name_text"> NONE </span>
-      </div>
 
       <c:forEach var="item" items="${list_filter }"  varStatus="loop">
          <c:set var="str_f_name" value="${item.F_NAME }"/>
@@ -206,28 +200,27 @@
 		} 	 
 	});
 	
-		file.onchange = function() {
-			var fileList = file.files;
-			// 읽기
-			var reader = new FileReader();
-			console.log(fileList[0].name);
-			reader.readAsDataURL(fileList[0]);
-			//로드 한 후
-			reader.onload = function() {
-				const canvas = document.getElementById('canvas');
-				const ctx = canvas.getContext("2d");
-				var img = new Image();
-				img.src= reader.result;
-				img.onload = function(e) {
-					canvas.width = img.width;
-					canvas.height = img.height;
-					ctx.drawImage(img, 0, 0, img.width, img.height);
-					canvas.removeAttribute("data-caman-id");
-				};
-				
+	file.onchange = function() {
+		var fileList = file.files;
+		// 읽기
+		var reader = new FileReader();
+		console.log(fileList[0].name);
+		reader.readAsDataURL(fileList[0]);
+		//로드 한 후
+		reader.onload = function() {
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext("2d");
+			var img = new Image();
+			img.src= reader.result;
+			img.onload = function(e) {
+				canvas.width = img.width;
+				canvas.height = img.height;
+				ctx.drawImage(img, 0, 0, img.width, img.height);
+				canvas.removeAttribute("data-caman-id");
 			};
 			
 		};
+		
 	};
 	
 	/*<!-- 필터창 열고 닫기  --> */

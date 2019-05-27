@@ -86,7 +86,6 @@
 		</c:forEach>
 	</div>
 	<div class="icon_wrap">
-<%-- 		<a href="<c:url value='/friends/place_filter.pic' />"> --%>
 		<a href="<c:url value='/user/uploadImage.pic' />">
 			<img class="more_icon" alt="more" src="<c:url value='/resources/images/more_icon.png' />" />
 			<p>more</p>

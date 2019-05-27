@@ -46,30 +46,13 @@ margin-left: 5%;
 				<div class="submit-form" id="serchlist">
 					<form id="form-submit" action="" method="get">
 						<div class="row">
-							<div class="col-md-3 first-item">
-								<fieldset>
-									<input name="name" type="text" class="form-control" id="name"
-										placeholder="필터명" required="">
-								</fieldset>
-							</div>
-							<div class="col-md-3 second-item">
+							<div class="col-md-10 second-item">
 								<fieldset>
 									<input name="location" type="text" class="form-control"
 										id="location" placeholder="키워드를 입력하세요." required="">
 								</fieldset>
 							</div>
-							<div class="col-md-3 third-item">
-								<fieldset>
-									<select required name='category' onchange='this.form.()'>
-										<option value="">세부분류</option>
-										<option value="Kor">오전</option>
-										<option value="Usa">낮</option>
-										<option value="Jan">오후</option>
-										<option value="Chi">종일</option>
-									</select>
-								</fieldset>
-							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<fieldset>
 									<button type="submit" id="form-submit" class="btn">검색</button>
 								</fieldset>

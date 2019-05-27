@@ -33,7 +33,7 @@
 						<font style="vertical-align: inherit;"> 
 							<font style="vertical-align: inherit;"> 
 								<input type="submit" value="+ 픽 생성하기 " class="submit" id="submit" name="submit" 
-								onclick="location.href='<c:url value="/test/place_create.pic"/>'">
+								onclick="location.href='<c:url value="/friends/place_write.pic"/>'">
 							</font>
 						</font> 
 						<font style="vertical-align: inherit;">
@@ -44,32 +44,13 @@
 						</font>
 					</div>
 				</div>
-				
-				
-			<div class="submit-form" id="serchlist">
+				<div class="submit-form" id="serchlist">
 					<form id="form-submit" action="" method="get">
 						<div class="row">
-							<div class="col-md-5 first-item">
+							<div class="col-md-10 first-item">
 								<fieldset>
 									<input name="name" type="text" class="form-control" id="name"
 										placeholder="키워드로 검색하세요" required="">
-								</fieldset>
-							</div>
-							<!-- <div class="col-md-5 second-item">
-								<fieldset>
-									<input name="location" type="text" class="form-control"
-										id="location" placeholder="픽플레이스명으로 찾으세요." required="">
-								</fieldset>
-							</div> -->
-							<div class="col-md-5 third-item">
-								<fieldset>
-									<select required name='category' onchange='this.form.()'>
-										<option value="">위치</option>
-										<option value="Kor">오전</option>
-										<option value="Usa">낮</option>
-										<option value="Jan">오후</option>
-										<option value="Chi">종일</option>
-									</select>
 								</fieldset>
 							</div>
 							<div class="col-md-2">
@@ -80,9 +61,6 @@
 						</div>
 					</form>
 				</div>
-				
-				
-				
 			</div>
 		</div>
 	</div>
@@ -104,28 +82,31 @@
 	            <button class="btn btn-info" data-filter=".crossProcess"><span class="nav_color"></span><a >CR</a></button>  
 	        </ul>
 	      </div>
-    	</div>
-    </div>
-	</section>
+	   </div>
+   </div>
+</section>
 
-<section class="pricing-tables" >
+<section class="pricing-tables">
 	<div class="container">
-  <div class="grid">
-  
-	  <c:forEach  var="list" items="${list }" varStatus="loop">
-	  	<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }" onclick="clickBtn(this)">
-			<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와"/>
-			<div class="innerText">
-	           	<p class="Text_title" ><span >${list.PPB_TITLE}</span></p>
-	            <p class="" ><span >${list.PPB_CONTENT}</span></p>
-	            <input type="hidden" value="${list.ppb_index }">
-	       </div>
+		<div class="grid">
+
+			<c:forEach var="list" items="${list }" varStatus="loop">
+				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }"
+					onclick="clickBtn(this)">
+					<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와" />
+					<div class="innerText">
+						<p class="Text_title">
+							<span>${list.PPB_TITLE}</span>
+						</p>
+						<p class="">
+							<span>${list.PPB_CONTENT}</span>
+						</p>
+						<input type="hidden" value="${list.ppb_index }">
+					</div>
+				</div>
+			</c:forEach>
+
 		</div>
-	  </c:forEach>
-	
-	
-	
-  </div>	
 	</div>
 </section>
 

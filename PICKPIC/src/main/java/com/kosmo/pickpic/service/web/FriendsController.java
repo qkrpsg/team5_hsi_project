@@ -84,31 +84,24 @@ public class FriendsController {
 	@Resource(name = "ppbService")
 	private PickPlaceBoardServiceImpl ppb_service;
 
-	// 픽플레이스 리스트 페이지
-	@RequestMapping("/friends/place_filter.pic")
-	public String place_list(@RequestParam Map map, Model model, Principal principal) throws Exception {
-		// 여기서 작업 시작
+
+	@RequestMapping("/friends/place_list.pic")
+	public String plaList(@RequestParam Map map, Model model, Principal principal) throws Exception {
+		//여기서 작업 시작
 		map.put("ppa_email", principal.getName());
 
 		List<Map> list = ppb_service.selectList(map);
 		List<Map> afterList = new Vector<Map>();
 		for (Map record : list) {
-
-//			System.out.println(record.toString());
-			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"
-					+ record.get("PPB_IMAGE_PATH").toString());
+			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+record.get("PPB_IMAGE_PATH").toString());
 			afterList.add(record);
 		}
-
-		model.addAttribute("list", afterList);
-
-		// System.out.println("왜2개임?"+list.toString());
-		// System.out.println("사이즈는?"+list.size());
-
-		return "friends/place_filter.tiles";
-		// return "friends/place.tiles";//나중에 이걸로 바꾸자
-	}// place
-		// 픽플레이스
+		
+		model.addAttribute("list",list);
+		
+		return "test/place_list.tiles";
+	}// plaList
+	
 
 	@RequestMapping("/friends/place_map.pic")
 	public String place(@RequestParam Map map, Model model, Principal principal) throws Exception {
@@ -520,7 +513,7 @@ public class FriendsController {
 			System.out.println("사이즈" + recode.size());
 			model.addAttribute("recode", recode);
 			System.out.println("첫 쿼리문 성공 ~~" + recode.toString());
-			return "friends/user_end.tiles";
+			return "friends/route.tiles";
 		} // if 끝
 
 		List<Map> recode = prbService.pickRoadBoardSelectAll(null);
@@ -574,7 +567,7 @@ public class FriendsController {
 
 		// (JSONObject) jsonparser.parse(jsonString);
 
-		return "friends/user_end.tiles";
+		return "friends/route.tiles";
 	}
 
 	@RequestMapping("/friends/view.pic")
@@ -610,10 +603,4 @@ public class FriendsController {
 		return "friends/search.tiles";
 	}
 
-	// 주영테스트4
-	@RequestMapping("/test/my_page.pic")
-	public String myPage() throws Exception {
-		// 여기서 작업 시작
-		return "test/my_page.tiles";
-	}// myPage
 }// FriendsController

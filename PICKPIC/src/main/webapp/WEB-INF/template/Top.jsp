@@ -64,30 +64,24 @@
 							<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
 							<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
 							<li><a href="<c:url value='/'/>#sec_5 ">다운로드</a></li>
-							<li><a href="<c:url value='/test/place_create.pic'/>">테스트1-픽생성</a></li>
-							<li><a href="<c:url value='/test/place_list.pic'/>">테스트2-픽리스트</a></li>
-							<li><a href="<c:url value='/test/place_view.pic'/>">테스트3-픽상세보기</a></li>
-	
-						</ul></li>
-
-
-
+						</ul>
+					</li>
 					<li class="l_menu_li"><a href="#">피크픽 프렌즈</a>
 						<ul class="m_sub" style="display: none;">
-							<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
+							<li><a href="<c:url value='/friends/place_list.pic'/>">픽플레이스</a></li>
 							<li><a href="<c:url value='/friends/filter.pic'/>">필터</a></li>
 							<li><a href="<c:url value='/friends/route.pic?noInsert=1'/> ">픽로드</a></li>
 							<li><a href="<c:url value='/friends/albumDown.pic'/>">앨범다운</a></li>
-						</ul></li>
-
+						</ul>
+					</li>
 					<li class="l_menu_li"><a href="#">고객센터</a>
 						<ul class="m_sub" style="display: none;">
 							<li><a href="<c:url value='/help/tip.pic'/>">피크픽TIP</a></li>
 							<li><a href="<c:url value='/help/notice/List.pic'/>">공지사항</a></li>
 							<li><a href="<c:url value='/help/qna/List.pic'/>">문의사항</a></li>
 							<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
-						</ul></li>
-
+						</ul>
+					</li>
 					<li><a href="<c:url value='/user/Login.pic'/>">LOGIN</a>
 					<li><a href="<c:url value='/user/sign_up.pic'/>">SIGN UP</a>
 				</ul>
@@ -113,21 +107,15 @@
 						<li><a href="<c:url value='/story/crewIntro.pic'/> ">크루소개</a></li>
 						<li><a href="<c:url value='/'/>#sec_1 ">사용기능</a></li>
 						<li><a href="<c:url value='/'/>#sec_5" >다운로드</a></li>
-							<li><a href="<c:url value='/test/place_create.pic'/>">테스트1-픽생성</a></li>
-							<li><a href="<c:url value='/test/place_list.pic'/>">테스트2-픽리스트</a></li>
-							<li><a href="<c:url value='/test/place_view.pic'/>">테스트3-픽상세보기</a></li>
-
 					</ul>
 				</div>
 
 				<div class="nav_wrap col-md-1">
 					<ul class="ul_submenu">
-						<li><a href="<c:url value='/friends/place_filter.pic'/>">픽플레이스</a></li>
+						<li><a href="<c:url value='/friends/place_list.pic'/>">픽플레이스</a></li>
 						<li><a href="<c:url value='/friends/filter.pic'/> ">필터</a></li>
 						<li><a href="<c:url value='/friends/route.pic?noInsert=1'/>">픽로드</a></li>
 						<li><a href="<c:url value='/friends/albumDown.pic'/> ">앨범다운</a></li>
-						<li><a href="<c:url value='/user/myPage.pic'/>">테스트4-마이페이지(플레이스)</a></li>
-						<li><a href="<c:url value='/test/filter_view.pic'/>">테스트5-필터상세보기</a></li>
 					</ul>
 				</div>
 
@@ -137,7 +125,6 @@
 						<li><a href="<c:url value='/help/notice/List.pic'/> ">공지사항</a></li>
 						<li><a href="<c:url value='/help/qna/List.pic'/>">문의사항</a></li>
 						<li><a href="<c:url value='/help/guide.pic'/>">초보자가이드</a></li>
-						<li><a href="<c:url value='/test/route_list.pic'/>">테스트7-마이페이지(필터)</a></li>
 					</ul>
 				</div>
 			</div>
