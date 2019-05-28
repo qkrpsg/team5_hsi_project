@@ -51,8 +51,14 @@ public class PickPlaceBoardDAO implements PickPlaceBoardService {
 	@Override
 	public int pickPlaceBoardUpdate(Map map) {
 		// TODO Auto-generated method stub
-		return template.update("pickRoadBoardUpdate",map) ;
+		return template.update("pickPlaceBoardUpdate",map) ;
 	}
 
+	@Override
+	public List<Map> pickPlaceBest(Map map) {
+	
+		return template.selectList("PickPlaceBest",map);
+	}
+ 
 	
 }

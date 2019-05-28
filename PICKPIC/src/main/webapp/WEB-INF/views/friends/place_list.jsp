@@ -13,6 +13,14 @@
 <%-- <script
 	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script> --%>
 
+<style>
+.text1{
+font-size: 25px;
+margin-left: 5%;
+
+}
+</style>
+
 <section class="banner" id="top">
 	<div class="container">
 		<div class="row">
@@ -68,11 +76,11 @@
 	            <button class="btn btn-info" data-filter=".vintage"><span class="nav_color"></span><a >VI</a></button>
 	            <button class="btn btn-info" data-filter=".lomo"><span class="nav_color"></span><a >LO</a></button>
 	            <button class="btn btn-info" data-filter=".clarity"><span class="nav_color"></span><a >CL</a></button>
-	            <button class="btn btn-info" data-filter=".sinCity"><span class="nav_color"></span><a >SI</a></button>
+	            <button class="btn btn-info" data-filter=".sincity"><span class="nav_color"></span><a >SI</a></button>
 	            <button class="btn btn-info" data-filter=".pimhole"><span class="nav_color"></span><a >PI</a></button>
 	            <button class="btn btn-info" data-filter=".nostalgia"><span class="nav_color"></span><a >NO</a></button>  
-	            <button class="btn btn-info" data-filter=".herMajesty"><span class="nav_color"></span><a >HE</a></button>  
-	            <button class="btn btn-info" data-filter=".crossProcess"><span class="nav_color"></span><a >CR</a></button>  
+	            <button class="btn btn-info" data-filter=".hermajesty"><span class="nav_color"></span><a >HE</a></button>  
+	            <button class="btn btn-info" data-filter=".crossorocess"><span class="nav_color"></span><a >CR</a></button>  
 	        </ul>
 	      </div>
 	   </div>
@@ -84,14 +92,12 @@
 		<div class="grid">
 
 			<c:forEach var="list" items="${list }" varStatus="loop">
+			
 				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
 					<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와" />
 					<div class="innerText">
-						<p class="Text_title">
+						<p class="text1" style="margin-top: 30%">
 							<span>${list.PPB_TITLE}</span>
-						</p>
-						<p class="">
-							<span>${list.PPB_CONTENT}</span>
 						</p>
 						
 						
@@ -116,92 +122,40 @@
 				</div>
 			</div>
 		</div>
-
+  
 		<div class="row">
+         <div class="col-md-12">
+       <c:forEach  var="bestplace" items="${bestplace }" varStatus="loop">
+      
 
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+         <div class="col-md-4 " style="float: left">
+            <div class="featured-item">
+            
+               <div class="thumb">
+                  
+                  <img src="${bestplace.PPB_IMAGE_PATH }" />
+                  <div class="date-content">
+                     <h6>픽</h6>
+                     <span>${bestplace.PPB_COUNT }</span>
+                  </div>
+               </div>
+               <div class="down-content">
+                  <div class="row">
+                     
+                     <div class=" col-md-12">
+                        <div class="text-button" >
+                           <a href="<c:url value='/friends/place_view.pic?ppb_index=${bestplace.PPB_INDEX }&ppb_addr1=${bestplace.PPB_ADDR1 }'/>"><span style="font-size: 20px;font-weight: bold">보러가기</span></a>
+                        </div>
+                     </div>
+                  </div>
+                  </div>
+               
+               </div>
+            
+            </div>
+         
+               </c:forEach >
+			
 
 		</div>
 

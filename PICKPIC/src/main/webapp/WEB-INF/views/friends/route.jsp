@@ -64,7 +64,7 @@ padding: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }   
 .tt{
-margin-left:2%;
+margin-left:5%;
 
 font-size: 25px;
 color: white;
@@ -131,6 +131,7 @@ text-align: left;
                <div class="col-xs-3 element-item img_wrap2 new ">
                   <img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
                   <div class="innerText">
+
                      <p class="tt" style="margin-top: 20%">
                         <span>${recode.PRB_TITLE}</span>
                      </p>
@@ -159,6 +160,8 @@ text-align: left;
                      </p>
                      <p class="tt">
                         <span>조회수: ${recode.PRB_VIEW }</span>
+
+            
                      </p>
 
                   </div>
@@ -235,6 +238,7 @@ $(document).ready(function(){
        $(this).find('.innerText').css("display","none");
     });
     $(window).resize(function(){
+
       $('.img_wrap img').css("height",$('.img_wrap').css('width'));//
       $('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));//
       $('.innerText').css('height',$('.img_wrap2 img').css('height'));
@@ -248,4 +252,8 @@ $(document).ready(function(){
 <script>window.jQuery || document.write('<script src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"><\/script>')</script>
 <script src="<c:url value='js/datepicker.js'/>"></script>
 <script src="<c:url value='js/plugins.js'/>"></script>
+<<<<<<< HEAD
 <script src="<c:url value='js/Main.js'/>"></script>
+=======
+<script src="<c:url value='js/Main.js'/>"></script>
+>>>>>>> branch 'mbc' of https://github.com/qkrpsg/team5_hsi_project.git

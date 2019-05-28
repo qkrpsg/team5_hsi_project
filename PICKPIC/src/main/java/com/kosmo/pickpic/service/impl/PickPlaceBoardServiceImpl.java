@@ -45,4 +45,10 @@ public class PickPlaceBoardServiceImpl implements PickPlaceBoardService {
 		// TODO Auto-generated method stub
 		return dao.pickPlaceBoardUpdate(map);
 	}
+
+	@Override
+	public List<Map> pickPlaceBest(Map map) {
+		// TODO Auto-generated method stub
+		return dao.pickPlaceBest(map);
+	}
 }

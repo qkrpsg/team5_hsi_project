@@ -97,6 +97,13 @@ public class FriendsController {
 	@RequestMapping("/friends/place_list.pic")
 	public String plaList(@RequestParam Map map, Model model, Principal principal) throws Exception {
 		//여기서 작업 시작
+		System.out.println("daf"+map);
+		List<Map> bestplace = ppbService.pickPlaceBest(map);
+		List<Map> afterBestList = new Vector<Map>();
+		for (Map record : bestplace) {
+			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+record.get("PPB_IMAGE_PATH").toString());
+			afterBestList.add(record);
+		}
 		map.put("ppa_email", principal.getName());
 
 		List<Map> list = ppbService.selectList(map);
@@ -105,7 +112,8 @@ public class FriendsController {
 			record.put("PPB_IMAGE_PATH", "https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image"+record.get("PPB_IMAGE_PATH").toString());
 			afterList.add(record);
 		}
-		
+		model.addAttribute("afterBestList",bestplace);
+		model.addAttribute("bestplace",bestplace);
 		model.addAttribute("list",list);
 		
 		return "friends/place_list.tiles";
@@ -116,8 +124,9 @@ public class FriendsController {
 	@RequestMapping("/friends/place_view.pic")
 	public String placeView(@RequestParam Map map, Model model, Principal principal) throws Exception {
 		// 웹 크롤링
+		int update = ppbService.pickPlaceBoardUpdate(map);
 		System.out.println(map.get("ppb_addr1"));
-		String addr = map.get("ppb_addr1").toString().substring(0,5);
+		String addr = map.get("ppb_addr1").toString().substring(3,6);
 		System.out.println("addr"+addr);
 		try {
 

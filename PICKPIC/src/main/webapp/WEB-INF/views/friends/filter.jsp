@@ -28,7 +28,7 @@
 
 <style>
 .text1{
-font-size: 30px;
+font-size: 25px;
 margin-left: 5%;
 
 }
