@@ -77,9 +77,13 @@
 		<div class="owl-carousel owl-theme">
 
 			<c:forEach var="list" items="${list }" varStatus="loop">
-				<div id="${list.PRP_ID }" class="item popular-item btnimg" >
-					<div class="thumb" style="width:280px;height: 280px;">
-						<img src="${list.PRP_IMAGE_PATH }" alt="" style="width: 100%;height: 280px;">
+
+				<div id="${list.PRP_ID }" class="item popular-item btnimg">
+					<div class="thumb" style="width: 280px; height: 280px;">
+						<img src="${list.PRP_IMAGE_PATH }" alt=""
+							style="width: 100%; height: 280px;">
+							
+							
 						<div class="text-content">
 							<h4>${list.PRP_TITLE }</h4>
 						</div>

@@ -277,10 +277,9 @@
             //현재 출력된 이미지 다 삭제
             html ="";
             let imgCount=0;
+            $.each(data, function(index, element) {
             
-            $('#preview').empty();
-            $.each(data, function(index, element) {  
-            	 html +='<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
+            	 html ='<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
 				+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
 				+ '<div class="photo" >'
 				+ '<div class="photo_center_wrap" >'
@@ -299,35 +298,24 @@
 				+ '</div></div></div>'
 				+ '</div></div>';
 				 
-				
+
+                $('#preview').append(html); 
                 imgCount++;
                 $('#imgCount').html('0 / '+ imgCount);
-                console.log('인덱스'+index);
-                $('#preview').append(html);
-             
-                let can = "canvas_"+index;
-                let canvas = document.getElementById(can);
-                let ctx = canvas.getContext("2d");
-                console.log(element);
-                var img = new Image();
-                img.src = element['PPB_IMAGE_PATH'];
-                console.log("뭐냐?"+img.src);
-                // Set image src
-                img.onload = function(e) {
-              	  canvas.width = img.width;
-              	  canvas.height = img.height;
-              	  ctx.drawImage(img, 0, 0,img.width,img.height);
-              	  canvas.removeAttribute("data-caman-id"); 
-                };
+
+                const can = "canvas_"+index;
+	            const canvas = document.getElementById(can);
+	            const ctx = canvas.getContext("2d");
+	            var img = new Image();
+	            img.src = element['PPB_IMAGE_PATH']; //이값은 위에서 실행해야한다
+	            // Set image src
+	            img.onload = function(e) {
+		          	  canvas.width = img.width;
+		          	  canvas.height = img.height;
+		          	  ctx.drawImage(img, 0, 0,img.width,img.height);
+		          	  canvas.removeAttribute("data-caman-id"); 
+		        };
             });
-              
-            
-            
-            
-            
-            
-            
-            
          },
          error : function(data) {
         	 console.log('실패');

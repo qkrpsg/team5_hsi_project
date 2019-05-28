@@ -13,6 +13,14 @@
 <%-- <script
 	src="<c:url value='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'/>"></script> --%>
 
+<style>
+.text1{
+font-size: 25px;
+margin-left: 5%;
+
+}
+</style>
+
 <section class="banner" id="top">
 	<div class="container">
 		<div class="row">
@@ -68,11 +76,11 @@
 	            <button class="btn btn-info" data-filter=".vintage"><span class="nav_color"></span><a >VI</a></button>
 	            <button class="btn btn-info" data-filter=".lomo"><span class="nav_color"></span><a >LO</a></button>
 	            <button class="btn btn-info" data-filter=".clarity"><span class="nav_color"></span><a >CL</a></button>
-	            <button class="btn btn-info" data-filter=".sinCity"><span class="nav_color"></span><a >SI</a></button>
+	            <button class="btn btn-info" data-filter=".sincity"><span class="nav_color"></span><a >SI</a></button>
 	            <button class="btn btn-info" data-filter=".pimhole"><span class="nav_color"></span><a >PI</a></button>
 	            <button class="btn btn-info" data-filter=".nostalgia"><span class="nav_color"></span><a >NO</a></button>  
-	            <button class="btn btn-info" data-filter=".herMajesty"><span class="nav_color"></span><a >HE</a></button>  
-	            <button class="btn btn-info" data-filter=".crossProcess"><span class="nav_color"></span><a >CR</a></button>  
+	            <button class="btn btn-info" data-filter=".hermajesty"><span class="nav_color"></span><a >HE</a></button>  
+	            <button class="btn btn-info" data-filter=".crossorocess"><span class="nav_color"></span><a >CR</a></button>  
 	        </ul>
 	      </div>
 	   </div>
@@ -87,11 +95,8 @@
 				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
 					<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와" />
 					<div class="innerText">
-						<p class="Text_title">
+						<p class="text1" style="margin-top: 30%">
 							<span>${list.PPB_TITLE}</span>
-						</p>
-						<p class="">
-							<span>${list.PPB_CONTENT}</span>
 						</p>
 						
 						
