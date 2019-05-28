@@ -117,7 +117,7 @@ public class FriendsController {
 	public String placeView(@RequestParam Map map, Model model, Principal principal) throws Exception {
 		// 웹 크롤링
 		System.out.println(map.get("ppb_addr1"));
-		String addr = map.get("ppb_addr1").toString().substring(0,5);
+		String addr = map.get("ppb_addr1").toString().substring(3,6);
 		System.out.println("addr"+addr);
 		try {
 
