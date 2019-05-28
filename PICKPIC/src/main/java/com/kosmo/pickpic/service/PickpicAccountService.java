@@ -30,4 +30,7 @@ public interface PickpicAccountService {
 	//픽로드 플레이스 1개
 	PickRoadPlaceDTO roadOnePlace(Map map);
 	
+	int updateToken(Map map);
+	Map selectToken(Map map);
+	Map questionEmail(Map map);
 } 

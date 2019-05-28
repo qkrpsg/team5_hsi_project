@@ -1,5 +1,10 @@
 package com.kosmo.pickpic;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +30,7 @@ import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.impl.AdminServiceImpl;
 import com.kosmo.pickpic.service.QuestionDTO;
 import com.kosmo.pickpic.service.impl.NoticeServiceImpl;
+import com.kosmo.pickpic.service.impl.PickpicAccountServiceImpl;
 import com.kosmo.pickpic.service.impl.QuestionServiceImpl;
 import com.kosmo.pickpic.util.DTOUtil;
 import com.kosmo.pickpic.util.PagingUtil;
@@ -40,6 +46,9 @@ public class AdminController {
 
 	@Resource(name="questionService")
 	private QuestionServiceImpl questionService;
+
+	@Resource(name="accountService")
+	private PickpicAccountServiceImpl accountService;
 	
 	//HOME
 	@RequestMapping(value = "/admin/home.pic")
@@ -498,17 +507,60 @@ public class AdminController {
 		return "/admin/admin_notice.admin";
 	}
 	
-	//문의사항 답변처리
-	@ResponseBody
-	@RequestMapping(value="/admin/admin_qna_aqinsert.pic")
-	public String qna_aqinsert(@RequestParam Map map,Model model) {
-		System.out.println("SF"+map);
-		questionService.aqinsert(map);
-		List<QuestionDTO> list = questionService.selectList(map);	
-		model.addAttribute("list",list);
-		
-		return JSONArray.toJSONString(list);
-	}
+	 //문의사항 답변처리
+	   @ResponseBody
+	   @RequestMapping(value="/admin/admin_qna_aqinsert.pic")
+	   public String qna_aqinsert(@RequestParam Map map,Model model) throws Exception {
+	      //fcm설정. 바꾸지 말것
+	      final String apiKey = "AAAAap5K-lo:APA91bFHi4YM7yHDY2h4EJ5smZS8trpfL98NIr8rc7X7zZiAoEew9Ejhd27qwB1DHpEOJgSGLoX9NybDvpCO7c9053V2gjGCR1fdY2HjOHXcbvPKgzE1-CDcuywEzA9d2aQuJk0WIB5U";
+	        URL url = new URL("https://fcm.googleapis.com/fcm/send");
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setDoOutput(true);
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Content-Type", "application/json");
+	        conn.setRequestProperty("Authorization", "key=" + apiKey);
+	        conn.setDoOutput(true);
+	        
+	        Map userEmail = accountService.questionEmail(map);
+	        System.out.println("이메일 : "+userEmail);
+	        String userToken = accountService.selectToken(userEmail).get("PPA_TOKEN").toString();
+	      System.out.println("토큰값 : "+userToken);
+
+	        // 이렇게 보내면 주제를 ALL로 지정해놓은 모든 사람들한테 알림을 날려준다.
+//	              String input = "{\"notification\" : {\"title\" : \"여기다 제목 넣기 \", \"body\" : \"여기다 내용 넣기\"}, \"to\":\"/topics/ALL\"}";
+	        // 이걸로 보내면 특정 토큰을 가지고있는 어플에만 알림을 날려준다  위에 둘중에 한개 골라서 날려주자
+	        String input = "{\"notification\" : {\"title\" : \" 문의사항에 대한 답변이 완료되었습니다 \", \"body\" : \""+map.get("aq_content")+"\"}, \"to\":\""+userToken+"\"}";
+	        
+	        OutputStream os = conn.getOutputStream();
+	        
+	        // 서버에서 날려서 한글 깨지는 사람은 아래처럼  UTF-8로 인코딩해서 날려주자
+	        os.write(input.getBytes("UTF-8"));
+	        os.flush();
+	        os.close();
+
+	        int responseCode = conn.getResponseCode();
+	        System.out.println("\nSending 'POST' request to URL : " + url);
+	        System.out.println("Post parameters : " + input);
+	        System.out.println("Response Code : " + responseCode);
+	        
+	        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        String inputLine;
+	        StringBuffer response = new StringBuffer();
+
+	        while ((inputLine = in.readLine()) != null) {
+	            response.append(inputLine);
+	        }
+	        in.close();
+	        // print result
+	        System.out.println(response.toString());
+	      
+	      System.out.println("SF"+map);
+	      questionService.aqinsert(map);
+	      List<QuestionDTO> list = questionService.selectList(map);
+	      model.addAttribute("list",list);
+	      
+	      return JSONArray.toJSONString(list);
+	   }
 	
 	//문의사항 삭제처리
 	@ResponseBody

@@ -162,4 +162,18 @@ public class PickpicAccountDAO implements PickpicAccountService {
 		template.insert("defaultFilterInsert4", map);
 		return template.insert("defaultFilterInsert5", map);
 	}
+   @Override
+   public int updateToken(Map map) {
+      return template.update("UpdateToken", map);
+   }
+
+   @Override
+   public Map selectToken(Map map) {
+      return template.selectOne("SelectToken", map);
+   }
+
+   @Override
+   public Map questionEmail(Map map) {
+      return template.selectOne("questionEmail", map);
+   }
 }

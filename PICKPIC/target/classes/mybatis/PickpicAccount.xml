@@ -69,5 +69,18 @@
 		INSERT INTO filter_storage 
 		VALUES (func_generator,seq_fs_index.NEXTVAL,(SELECT f_id FROM filter WHERE f_name='hemingway'),(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))
 	</insert>
+	
+	<!-- 토큰 저장 -->
+   <update id="UpdateToken" parameterType="java.util.Map">
+      UPDATE pickpic_account SET ppa_token = #{ppa_token} WHERE ppa_email = #{ppa_email} and ppa_password = #{ppa_password}
+   </update>
+   
+   <select id="SelectToken" parameterType="java.util.Map" resultType="java.util.Map">
+      SELECT ppa_token FROM pickpic_account WHERE ppa_email=#{PPA_EMAIL}
+   </select>
+   
+   <select id="questionEmail" parameterType="java.util.Map" resultType="java.util.Map">
+      SELECT ppa_email FROM question q JOIN pickpic_account ppa ON q.ppa_id=ppa.ppa_id WHERE q_index=#{q_index} 
+   </select>
 </mapper>
 

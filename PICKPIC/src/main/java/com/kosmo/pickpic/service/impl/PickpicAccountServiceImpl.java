@@ -90,4 +90,19 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	public int defaultFilterInsert(Map map) {
 		return dao.defaultFilterInsert(map);
 	}
+
+	@Override
+	public int updateToken(Map map) {
+		return dao.updateToken(map);
+	}
+
+	@Override
+	public Map selectToken(Map map) {
+		return dao.selectToken(map);
+	}
+
+	@Override
+	public Map questionEmail(Map map) {
+		return dao.questionEmail(map);
+	}
 }
