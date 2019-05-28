@@ -50,21 +50,20 @@ margin-left: 5%;
 					</div>
 				</div>
 				<div class="submit-form" id="serchlist">
-					<form id="form-submit" action="" method="get">
+					<!-- <form id="form-submit" action="" method="get"> -->
 						<div class="row">
 							<div class="col-md-10 second-item">
 								<fieldset>
-									<input name="location" type="text" class="form-control"
-										id="location" placeholder="키워드를 입력하세요." required="">
+									<input name="location" type="text" class="form-control" id="location" placeholder="키워드를 입력하세요." required="" >
 								</fieldset>
 							</div>
 							<div class="col-md-2">
 								<fieldset>
-									<button type="submit" id="form-submit" class="btn">검색</button>
+									<button type="reset" id="form-submit" class="btn">검색</button>
 								</fieldset>
 							</div>
 						</div>
-					</form>
+					<!-- </form> -->
 				</div>
 			</div>
 		</div>
@@ -182,8 +181,33 @@ margin-left: 5%;
 	</div>
 </section>
 <script>
+
+
+
+
+
 $(document).ready(function(){
-    $(document).on("mouseover",".img_wrap2",function(event){
+	$('#form-submit').click(function(){
+		var filter = $("#location").val();
+		//vintage
+		if(filter.includes("vi")){
+			
+		}else if(true){
+			
+		}
+		
+
+		$('.img_wrap2').hide();
+		
+		
+		 
+		
+		
+		
+	});
+	
+	
+	$(document).on("mouseover",".img_wrap2",function(event){
     	//$('.img_wrap img').css("height",$('.img_wrap').css('width'));
     	//$('.img_wrap2 img').css("height",$('.img_wrap2').css('width'));
     	
@@ -205,4 +229,3 @@ $(document).ready(function(){
 	});
 }); // end of ready()
 </script>
-<script src="<c:url value='js/Main.js'/>"></script> --%>

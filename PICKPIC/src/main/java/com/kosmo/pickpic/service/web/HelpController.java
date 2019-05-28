@@ -224,6 +224,7 @@ public class HelpController {
 	//문의사항
 	@RequestMapping("/help/qna/List.pic")///문의하기로 넘어가는 컨트롤러
 	public String qna_list(@RequestParam Map map,Model model,HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage) throws Exception{
+		System.out.println(map.toString());
 		int totalRecordCount= questionService.getTotalRecord(map);
 		int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
 		int start =(nowPage-1)*pageSize+1;

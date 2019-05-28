@@ -129,7 +129,7 @@ text-align: left;
             <!-- 하루 사이 생성된 경우 new 표시 -->
             <c:if test="${recode.PRB_POST_DATE  >= (todayString-1)}" var="pa">
                <div class="col-xs-3 element-item img_wrap2 new ">
-                  <img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
+                  <img src="${recode.PRP_IMAGE_PATH }" alt="안나와" />
                   <div class="innerText">
 
                      <p class="tt" style="margin-top: 20%">

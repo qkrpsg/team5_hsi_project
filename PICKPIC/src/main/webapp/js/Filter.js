@@ -43,6 +43,10 @@ $(document).ready(function(){
          });
         });
       
+        
+        
+        
+        
         $('.img_wrap2').click(function(event){
            var innerTextW =   $('.innerText').css('width').replace('px','');
            var innerTextH =   $('.innerText').css('height').replace('px','');

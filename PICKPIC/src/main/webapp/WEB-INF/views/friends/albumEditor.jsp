@@ -278,7 +278,8 @@
             html ="";
             let imgCount=0;
             $.each(data, function(index, element) {
-               html +='<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
+            
+            	 html ='<div class="col-lg-2 col-md-4 col-sm-6 noMnP" id="div_'+index+'" flag="false" >'
 				+ '<div class=" photo_wrap" id="photo_wrap_'+index+'">'
 				+ '<div class="photo" >'
 				+ '<div class="photo_center_wrap" >'
@@ -296,35 +297,24 @@
 				+ '" onclick="javascript:selectItem(this)">선택</button>'
 				+ '</div></div></div>'
 				+ '</div></div>';
-				
-              /*  html += '<div class="col-xs-3 element-item img_wrap2 '+element['F_NAME']+'" >'
-                  +'<img src="'+element['PPB_IMAGE_PATH']+'" alt="안나와" />'
-                  +'<div class="innerText" >'
-                  +'</div>'
-                  +'</div>'; */
-               
-                  imgCount++;
-	                    
-                  $('#preview').html(html);
-                  const can = "canvas_" + index;
-                  const canvas = document.getElementById(can);
-                  const ctx = canvas.getContext("2d");
-                  console.log(element);
-                  var img = new Image();
-                  img.src = element['PPB_IMAGE_PATH'];
-                  console.log(img.src);
-                  // Set image src
-                  img.onload = function(e) {
-                	  canvas.width = img.width;
-                	  canvas.height = img.height;
-                	  ctx.drawImage(img, 0, 0,img.width,img.height);
-                	  canvas.removeAttribute("data-caman-id"); 
-                  };
-                  /* idArray[idArray.length] = index;
-                  index++;
-                  console.log('index3 : '+ index); */
-                  /* console.log(e.target.result); */
-                  $('#imgCount').html('0 / '+ imgCount);
+				 
+
+                $('#preview').append(html); 
+                imgCount++;
+                $('#imgCount').html('0 / '+ imgCount);
+
+                const can = "canvas_"+index;
+	            const canvas = document.getElementById(can);
+	            const ctx = canvas.getContext("2d");
+	            var img = new Image();
+	            img.src = element['PPB_IMAGE_PATH']; //이값은 위에서 실행해야한다
+	            // Set image src
+	            img.onload = function(e) {
+		          	  canvas.width = img.width;
+		          	  canvas.height = img.height;
+		          	  ctx.drawImage(img, 0, 0,img.width,img.height);
+		          	  canvas.removeAttribute("data-caman-id"); 
+		        };
             });
          },
          error : function(data) {
