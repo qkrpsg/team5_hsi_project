@@ -11,6 +11,14 @@
 .bbd{
 width: 100%;
 }
+@media screen and (max-width:1000px) and (min-width:0px){
+.l_pkp_sub_wrap{
+width: 100%;
+margin: 1%;
+}
+}
+
+
 </style>
 
 

@@ -199,6 +199,7 @@ public class HelpController {
 		map.put("start",start);
 		map.put("end", end);
 		List<NoticeDTO> list= noticeService.selectList(map);
+		
 		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/help/notice/List.pic?");
 		model.addAttribute("list", list);
 		model.addAttribute("nowPage", nowPage);
