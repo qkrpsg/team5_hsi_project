@@ -48,5 +48,26 @@
 		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
 	</insert>
 	
+	<!-- 기본 필터 등록 -->
+	<insert id="defaultFilterInsert1" parameterType="java.util.Map">
+		INSERT INTO filter_storage 
+		VALUES (func_generator,seq_fs_index.NEXTVAL,(SELECT f_id FROM filter WHERE f_name='none'),(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))
+	</insert>
+	<insert id="defaultFilterInsert2" parameterType="java.util.Map">
+		INSERT INTO filter_storage 
+		VALUES (func_generator,seq_fs_index.NEXTVAL,(SELECT f_id FROM filter WHERE f_name='orangepeel'),(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))
+	</insert>
+	<insert id="defaultFilterInsert3" parameterType="java.util.Map">
+		INSERT INTO filter_storage 
+		VALUES (func_generator,seq_fs_index.NEXTVAL,(SELECT f_id FROM filter WHERE f_name='love'),(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))
+	</insert>
+	<insert id="defaultFilterInsert4" parameterType="java.util.Map">
+		INSERT INTO filter_storage 
+		VALUES (func_generator,seq_fs_index.NEXTVAL,(SELECT f_id FROM filter WHERE f_name='grungy'),(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))
+	</insert>
+	<insert id="defaultFilterInsert5" parameterType="java.util.Map">
+		INSERT INTO filter_storage 
+		VALUES (func_generator,seq_fs_index.NEXTVAL,(SELECT f_id FROM filter WHERE f_name='hemingway'),(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email}))
+	</insert>
 </mapper>
 

@@ -85,4 +85,9 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	public PickRoadPlaceDTO roadOnePlace(Map map) {
 		return dao.roadOnePlace(map);
 	}
+
+	@Override
+	public int defaultFilterInsert(Map map) {
+		return dao.defaultFilterInsert(map);
+	}
 }

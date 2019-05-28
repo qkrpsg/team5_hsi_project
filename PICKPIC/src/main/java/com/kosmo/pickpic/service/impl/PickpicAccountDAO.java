@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.amazonaws.services.dynamodbv2.model.Select;
 import com.kosmo.pickpic.service.PickRoadPlaceDTO;
 import com.kosmo.pickpic.service.PickpicAccountDTO;
 import com.kosmo.pickpic.service.PickpicAccountService;
@@ -152,6 +153,13 @@ public class PickpicAccountDAO implements PickpicAccountService {
 		System.out.println(DTOUtil.convertDTOToMap(dto).toString());
 		return dto;
 	}
-	
-	
+
+	@Override
+	public int defaultFilterInsert(Map map) {
+		template.insert("defaultFilterInsert1", map);
+		template.insert("defaultFilterInsert2", map);
+		template.insert("defaultFilterInsert3", map);
+		template.insert("defaultFilterInsert4", map);
+		return template.insert("defaultFilterInsert5", map);
+	}
 }

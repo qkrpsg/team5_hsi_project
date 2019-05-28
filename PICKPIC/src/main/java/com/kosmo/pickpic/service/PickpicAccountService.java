@@ -14,6 +14,8 @@ public interface PickpicAccountService {
 	int securityUpdate(Map map);
 	
 	int loginHistoryInsert(Map map);
+	//계정 생성시 기본 필터 제공
+	int defaultFilterInsert(Map map);
 	
 	//마이페이지 픽플레이스, 픽로드, 보유필터 데이터
 	PickpicAccountDTO myPageInfo(Map map);
@@ -27,4 +29,5 @@ public interface PickpicAccountService {
 	List<Map> roadplace(Map map);
 	//픽로드 플레이스 1개
 	PickRoadPlaceDTO roadOnePlace(Map map);
+	
 } 

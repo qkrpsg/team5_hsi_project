@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -149,7 +150,6 @@ public class UserController {
 		// base64 디코더를 이용하여 이미지 데이터를  byte 코드로 변환
 		byte[] byteImg;
 		byteImg = Base64.decodeBase64(rstStrImg); 
-		//???
 		ByteArrayInputStream bis = new ByteArrayInputStream(byteImg);
 		BufferedImage image = null;
 		// BufferedImage형식으로 변환후 저장
@@ -185,13 +185,7 @@ public class UserController {
 		if(accountService.accountInsert(map) == 1 ? true : false) {
 			if(accountService.securityInsert(map) == 1 ? true : false) {
 				accountService.loginHistoryInsert(map);
-				
-//				response.setContentType("text/html; charset=UTF-8");
-//		        PrintWriter out = response.getWriter();
-//		        out.println("<script>alert('가입 성공! 가입시 입력한 이메일을 통하여 이메일 인증해주세요!');</script>");
-//		        out.flush();
-//		        out.close();
-//				return "/home";
+				accountService.defaultFilterInsert(map);
 			}//as테이블 insert 성공시 
 		}//ppa테이블 insert 성공시
 		return "home.tiles";
