@@ -31,6 +31,10 @@
 	<update id="PickRoadBoardUpdate" parameterType="java.util.Map">
 		UPDATE pickroad_board SET prb_view= prb_view +1  WHERE prb_index=#{prb_index }
 	</update>
+	<!-- 픽플 게시판에 조회수 업데잍ㄴ -->
+	<update id="pickPlaceBoardUpdate" parameterType="java.util.Map">
+	UPDATE pickplace_board SET ppb_count= ppb_count +1  WHERE ppb_index=#{ppb_index }
+	</update>
 	
 	<!-- 필터보관함에 필터 저장 -->
 	<insert id="FilterStorageInsert" parameterType="java.util.Map">
@@ -100,10 +104,21 @@
 	<select id="ppbBestList" resultType="PickPlaceBoardDTO">
 		SELECT * FROM (
 			SELECT ppb.*, rownum FROM(
-				SELECT ppbd.*, f.f_name FROM pickplace_board ppbd JOIN filter f ON ppbd.f_id=f.f_id ORDER BY ppb_pick DESC
+				SELECT ppbd.*, f.f_name FROM pickplace_board ppbd JOIN filter f ON ppbd.f_id=f.f_id ORDER BY ppb_count DESC
 			) ppb
-		) WHERE rownum BETWEEN 1 AND 6
+		) WHERE rownum BETWEEN 1 AND 3
 	</select>
+	<!-- 픽플레이스 베ㅐ스트 픽 -->
+	<select id="PickPlaceBest" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT * FROM (
+			SELECT ppb.*, rownum FROM(
+				SELECT ppbd.*, f.f_name FROM pickplace_board ppbd JOIN filter f ON ppbd.f_id=f.f_id ORDER BY ppb_count DESC
+			) ppb
+		) WHERE rownum BETWEEN 1 AND 3
+	</select>
+	
+	
+	
 	
 	<!-- 필퍼 판먜쑤 ,,,,,,, -->
 	<select id="filterbest" parameterType="java.util.Map" resultType="java.util.Map">

@@ -92,6 +92,7 @@ margin-left: 5%;
 		<div class="grid">
 
 			<c:forEach var="list" items="${list }" varStatus="loop">
+			
 				<div class="col-xs-3 element-item img_wrap2 ${list.F_NAME }">
 					<img src="<c:url value='${list.PPB_IMAGE_PATH }' />" alt="안나와" />
 					<div class="innerText">
@@ -121,92 +122,40 @@ margin-left: 5%;
 				</div>
 			</div>
 		</div>
-
+  
 		<div class="row">
+         <div class="col-md-12">
+       <c:forEach  var="bestplace" items="${bestplace }" varStatus="loop">
+      
 
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="featured-item">
-					<div class="thumb">
-						<img
-							src="<c:url value='/resources/images/test/featured_item_1.jpg'/>"
-							alt="">
-						<div class="date-content">
-							<h6>C1</h6>
-							<span>픽 20</span>
-						</div>
-					</div>
-					<div class="down-content">
-						<div class="row">
-							<div class="col-md-6 first-button">
-								<div class="text-button">
-									<a href="<c:url value='/test/my_page.pic'/>">픽보관함 담기</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="text-button">
-									<a href="<c:url value='/test/place_view.pic'/>">상세보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+         <div class="col-md-4 " style="float: left">
+            <div class="featured-item">
+            
+               <div class="thumb">
+                  
+                  <img src="${bestplace.PPB_IMAGE_PATH }" />
+                  <div class="date-content">
+                     <h6>픽</h6>
+                     <span>${bestplace.PPB_COUNT }</span>
+                  </div>
+               </div>
+               <div class="down-content">
+                  <div class="row">
+                     
+                     <div class=" col-md-12">
+                        <div class="text-button" >
+                           <a href="<c:url value='/friends/place_view.pic?ppb_index=${bestplace.PPB_INDEX }&ppb_addr1=${bestplace.PPB_ADDR1 }'/>"><span style="font-size: 20px;font-weight: bold">보러가기</span></a>
+                        </div>
+                     </div>
+                  </div>
+                  </div>
+               
+               </div>
+            
+            </div>
+         
+               </c:forEach >
+			
 
 		</div>
 
