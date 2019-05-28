@@ -48,5 +48,11 @@ public class PickPlaceBoardDAO implements PickPlaceBoardService {
 		return template.selectOne("PpbSelectOne",map);
 	}
 
+	@Override
+	public int pickPlaceBoardUpdate(Map map) {
+		// TODO Auto-generated method stub
+		return template.update("pickRoadBoardUpdate",map) ;
+	}
+
 	
 }

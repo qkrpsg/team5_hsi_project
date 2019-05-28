@@ -39,4 +39,10 @@ public class PickPlaceBoardServiceImpl implements PickPlaceBoardService {
 	public Map ppbSelectOne(Map map) {
 		return dao.ppbSelectOne(map);
 	}
+
+	@Override
+	public int pickPlaceBoardUpdate(Map map) {
+		// TODO Auto-generated method stub
+		return dao.pickPlaceBoardUpdate(map);
+	}
 }
