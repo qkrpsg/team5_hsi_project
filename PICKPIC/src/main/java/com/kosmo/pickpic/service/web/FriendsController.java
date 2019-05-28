@@ -117,7 +117,7 @@ public class FriendsController {
 	public String placeView(@RequestParam Map map, Model model, Principal principal) throws Exception {
 		// 웹 크롤링
 		System.out.println(map.get("ppb_addr1"));
-		String addr = map.get("ppb_addr1").toString().substring(0,5);
+		String addr = map.get("ppb_addr1").toString().substring(3,6) ;
 		System.out.println("addr"+addr);
 		try {
 
@@ -130,11 +130,12 @@ public class FriendsController {
 			Elements contents = doc.select("._related_keyword_ul li");
 			String[] a = new String[contents.size()];
 			System.out.println("contents::::"+contents);
+		
 			String text = "";
 			for(Element content : contents) {
 				text +=	content.text() + ",";
 			}
-			text = text.substring(0, text.length());
+			text = text.substring(0, text.length() );
 			
 			String[] text_split = text.split(",");
 			
@@ -146,6 +147,7 @@ public class FriendsController {
 			for(int i = 0;i<text_split.length;i++) {
 				list.add(text_split[i]);
 			}
+			
 			model.addAttribute("list_c",list);
 			 
 			
@@ -517,6 +519,7 @@ public class FriendsController {
 	@RequestMapping("/friends/route.pic")
 	public String textarea(@RequestParam Map map, ServletRequest request, Principal principal, Model model)
 			throws Exception {
+		System.out.println("위도랑 경도가있나요?"+map.toString());
 		System.out.println("noInsert" + map.get("noInsert"));
 		if (map.get("noInsert") == null) {
 			System.out.println("맵에 뭐가 ? : " + map.toString());
