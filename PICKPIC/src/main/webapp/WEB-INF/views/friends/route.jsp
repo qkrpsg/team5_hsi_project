@@ -64,7 +64,7 @@ padding: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }   
 .tt{
-margin-left:2%;
+margin-left:5%;
 
 font-size: 25px;
 color: white;
@@ -131,14 +131,8 @@ text-align: left;
                <div class="col-xs-3 element-item img_wrap2 new ">
                   <img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
                   <div class="innerText">
-                     <p class="tt" style="margin-top: 20%">
+                     <p class="tt" style="margin-top: 30%">
                         <span>${recode.PRB_TITLE}</span>
-                     </p>
-                     <p class="tt">
-                        <span>${recode.PRB_CONTENT}</span>
-                     </p>
-                     <p class="tt">
-                        <span>조회수: ${recode.PRB_VIEW }</span>
                      </p>
                   </div>
                   <div class="hi">
@@ -151,14 +145,8 @@ text-align: left;
                <div class="col-xs-3 element-item img_wrap2 new2">
                   <img src="<c:url value='${recode.PRP_IMAGE_PATH }' />" alt="안나와" />
                   <div class="innerText">
-                     <p class="tt" style="margin-top: 20%">
+                     <p class="tt" style="margin-top: 30%">
                         <span>${recode.PRB_TITLE }</span>
-                     </p>
-                     <p class="tt">
-                        <span>${recode.PRB_CONTENT }</span>
-                     </p>
-                     <p class="tt">
-                        <span>조회수: ${recode.PRB_VIEW }</span>
                      </p>
 
                   </div>
