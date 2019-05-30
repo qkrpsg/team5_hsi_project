@@ -244,159 +244,320 @@
 	});
 	
 	/* 필터 선택시 이미지에 필터 적용*/
-	var toggle=false;
-	var filterNameAfter;
-	function filterOn(item) {
-		/* 
-		console.log(toggle);
-		console.log(typeof(toggle));
-		 */
-		var filterName = $(item).attr("id");
-		 console.log(filterName);
-		var img = new Image();	
-		/* 
-		console.log(filterName != filterNameAfter);
-		 */
-		if(filterName != filterNameAfter){
-			console.log("!="+toggle);
-			Caman('#canvas', img, function() {this.revert();});	
-			toggle = !toggle;
-			console.log("2!="+toggle);
-		}
-		
-		switch (filterName) {
-		case 'vintage':
-			$('.filter1').val(filterName);
-			console.log("v="+toggle);
-			if(!toggle){
-				Caman('#canvas', img, function() {this.revert();});		
-			}
-			else{
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.vintage().render();});
-			}
-			
-			toggle = !toggle;	
-			console.log("v2="+toggle);
-			
-			break;
-		case 'lomo':
-			$('.filter1').val(filterName);
-			console.log("l="+toggle);
-			if(!toggle)
-				Caman('#canvas', img, function() {this.revert();});		
-			else
-				Caman('#canvas', img, function() {this.lomo().render();});
-			toggle = !toggle;	
-			console.log("l2="+toggle);
-			
-			break;
-		case 'clarity':
-			$('.filter1').val(filterName);
-			console.log("c="+toggle);
-			if(!toggle){
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.revert();});		
-			}
-			else{
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.clarity().render();});
-			}
-			toggle = !toggle;	
-			console.log("c2="+toggle);
-			
-			break;
-		case 'sincity':
-			$('.filter1').val(filterName);
-			/* 안됨 */
-			console.log("s="+toggle);
-			if(!toggle){
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.revert();});		
-			}
-			else{
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.sinCity().render();});
-			}
-			toggle = !toggle;	
-			console.log("s2="+toggle);
-			
-			break;
-		case 'crossprocess':
-			$('.filter1').val(filterName);
-			/* 안됨 */
-			console.log("c="+toggle);
-			if(!toggle){
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.revert();});		
-			}
-			else{
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.crossProcess().render();});
-			}
-			toggle = !toggle;	
-			console.log("c2="+toggle);
-			
-			break;
-		case 'pinhole':
-			$('.filter1').val(filterName);
-			console.log("p="+toggle);
-			if(!toggle){
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.revert();});		
-			}
-			else{
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.pinhole().render();});
-			}
-			toggle = !toggle;	
-			console.log("p2="+toggle);
-			
-			break;
-		case 'nostalgia':
-			$('.filter1').val(filterName);
-			console.log("n="+toggle);
-			if(!toggle){
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.revert();});		
-			}
-			else{
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.nostalgia().render();});
-			}
-			toggle = !toggle;	
-			console.log("n2="+toggle);
-			
-			break;
-		case 'hermajesty':
-			$('.filter1').val(filterName);
-			/* 안됨 */
-			console.log("h="+toggle);
-			if(!toggle){
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.revert();});		
-			}
-			else{
-				console.log(toggle);
-				Caman('#canvas', img, function() {this.herMajesty().render();});
-			}
-			toggle = !toggle;	
-			console.log("h2="+toggle);
-			
-			break;
-		default:
-			$('.filter1').val(filterName);
-			console.log("dr="+toggle);
-			Caman('#canvas', img, function() {
-				this.revert();
-			});
-			toggle = !toggle;
-			console.log("dr2="+toggle);
-			
-		}
-		filterNameAfter = $(item).attr("id");
+	   var toggle=false;
+	   var filterNameAfter;
+	   function filterOn(item) {
+	      /* 
+	      console.log(toggle);
+	      console.log(typeof(toggle));
+	       */
+	      var filterName = $(item).attr("id");
+	       console.log(filterName);
+	      var img = new Image();   
+	      /* 
+	      console.log(filterName != filterNameAfter);
+	       */
+	      if(filterName != filterNameAfter){
+	         console.log("!="+toggle);
+	         Caman('#canvas', img, function() {this.revert();});   
+	         toggle = !toggle;
+	         console.log("2!="+toggle);
+	      }
+	      
+	      switch (filterName) {
+	      case 'vintage':
+	         $('.filter1').val(filterName);
+	         console.log("v="+toggle);
+	         if(!toggle){
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.vintage().render();});
+	         }
+	         
+	         toggle = !toggle;   
+	         console.log("v2="+toggle);
+	         
+	         break;
+	      case 'lomo':
+	         $('.filter1').val(filterName);
+	         console.log("l="+toggle);
+	         if(!toggle)
+	            Caman('#canvas', img, function() {this.revert();});      
+	         else
+	            Caman('#canvas', img, function() {this.lomo().render();});
+	         toggle = !toggle;   
+	         console.log("l2="+toggle);
+	         
+	         break;
+	      case 'clarity':
+	         $('.filter1').val(filterName);
+	         console.log("c="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.clarity().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("c2="+toggle);
+	         
+	         break;
+	      case 'sincity':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("s="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.sinCity().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("s2="+toggle);
+	         
+	         break;
+	      case 'crossprocess':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("c="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.crossProcess().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("c2="+toggle);
+	         
+	         break;
+	      case 'pinhole':
+	         $('.filter1').val(filterName);
+	         console.log("p="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.pinhole().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("p2="+toggle);
+	         
+	         break;
+	      case 'nostalgia':
+	         $('.filter1').val(filterName);
+	         console.log("n="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.nostalgia().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("n2="+toggle);
+	         
+	         break;
+	      case 'hermajesty':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.herMajesty().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'orangepeel':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.orangePeel().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'oldboot':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.oldBoot().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'love':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.love().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'jarques':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.jarques().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'hazydays':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.hazyDays().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'grungy':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.grungy().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'glowingsun':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.glowingSun().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'concentrate':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.concentrate().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'hemingway':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.revert();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.hemingway().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      case 'sunrise':
+	         $('.filter1').val(filterName);
+	         /* 안됨 */
+	         console.log("h="+toggle);
+	         if(!toggle){
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.sunrise();});      
+	         }
+	         else{
+	            console.log(toggle);
+	            Caman('#canvas', img, function() {this.concentrate().render();});
+	         }
+	         toggle = !toggle;   
+	         console.log("h2="+toggle);
+	         
+	         break;
+	      default:
+	         $('.filter1').val(filterName);
+	         console.log("dr="+toggle);
+	         Caman('#canvas', img, function() {
+	            this.revert();
+	         });
+	         toggle = !toggle;
+	         console.log("dr2="+toggle);
+	         
+	      }
+	      filterNameAfter = $(item).attr("id");
 
-	}
+	   }
+	   
 	
 	var imageSummit = function() {
 		var imgCan = document.getElementById('canvas');
@@ -423,7 +584,7 @@
 			success : function(data) {
 				console.log('성공했습니다');
 				console.log(data);
-				location.href = "<c:url value='/user/myPage.pic' />";
+				location.href = "<c:url value='/friends/place_list.pic' />";
 			},
 			error : function(data) {
 				console.log('실패했습니다');

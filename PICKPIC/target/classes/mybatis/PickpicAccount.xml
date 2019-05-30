@@ -32,21 +32,34 @@
 	</insert>
 
 	<!-- 초기 계정정보 인증 테이블에 등록 -->
-	<insert id="AuthSecurityInsert" parameterType="java.util.Map">
-		INSERT INTO auth_security(as_id, as_index, ppa_id, as_key)
-		VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}), #{as_key})
-	</insert>
-	
-	<!-- 인증 성공시 인증 완료상태로 전환 -->
-	<update id="AuthSecurityUpdate" parameterType="java.util.Map">
-		UPDATE auth_security SET as_enabled_flag=#{as_enabled_flag} WHERE as_key=#{as_key} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
-	</update>
-	
-	<!-- 로그인 기록 등록 -->
-	<insert id="LoginHistoryInsert" parameterType="java.util.Map">
-		INSERT INTO login_history(lh_id, lh_index, ppa_id) 
-		VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
-	</insert>
+   <insert id="AuthSecurityInsert" parameterType="java.util.Map">
+      INSERT INTO auth_security(as_id, as_index, ppa_id, as_key)
+      VALUES(func_generator, seq_ppa_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}), #{as_key})
+   </insert>
+   
+   <!-- 인증 성공시 인증 완료상태로 전환 -->
+   <update id="AuthSecurityUpdate" parameterType="java.util.Map">
+      UPDATE auth_security SET as_enabled_flag=#{as_enabled_flag} WHERE as_key=#{as_key} AND ppa_id=(SELECT ppa_id FROM pickpic_account WHERE ppa_email=#{ppa_email})
+   </update>
+   
+   <!-- 로그인 기록 등록 -->
+   <insert id="LoginHistoryInsert" parameterType="java.util.Map">
+      INSERT INTO login_history(lh_id, lh_index, ppa_id) 
+      VALUES(func_generator, seq_lh_index.NEXTVAL, (SELECT ppa_id FROM pickpic_account WHERE ppa_email = #{ppa_email}))
+   </insert>
+   
+   <!-- 토큰 저장 -->
+   <update id="UpdateToken" parameterType="java.util.Map">
+      UPDATE pickpic_account SET ppa_token = #{ppa_token} WHERE ppa_email = #{ppa_email} and ppa_password = #{ppa_password}
+   </update>
+   
+   <select id="SelectToken" parameterType="java.util.Map" resultType="java.util.Map">
+      SELECT ppa_token FROM pickpic_account WHERE ppa_email=#{PPA_EMAIL}
+   </select>
+   
+   <select id="questionEmail" parameterType="java.util.Map" resultType="java.util.Map">
+      SELECT ppa_email FROM question q JOIN pickpic_account ppa ON q.ppa_id=ppa.ppa_id WHERE q_index=#{q_index} 
+   </select>
 	
 </mapper>
 

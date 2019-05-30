@@ -12,8 +12,10 @@ public interface PickpicAccountService {
 	int accountInsert(Map map);
 	int securityInsert(Map map);
 	int securityUpdate(Map map);
-	
-	int loginHistoryInsert(Map map);
+	   int loginHistoryInsert(Map map);
+	   int updateToken(Map map);
+	   Map selectToken(Map map);
+	   Map questionEmail(Map map);
 	
 	//마이페이지 픽플레이스, 픽로드, 보유필터 데이터
 	PickpicAccountDTO myPageInfo(Map map);

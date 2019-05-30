@@ -24,6 +24,17 @@ float: left;
 
 }
 
+/*미디어 쿼리*/
+@media screen and (max-width:1000px) and (min-width:0px) {
+body {
+font-family:NANUMSQUAREROUNDB;
+font-size: 15px;
+margin-left: 10%;
+margin-right: 10%;
+
+}
+
+}
 
 </style>
 

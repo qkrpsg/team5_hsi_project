@@ -46,7 +46,7 @@
 					<!-- 등록일 -->
 					<input type="hidden" name="ppu_register_date" id="Q_POST_DATE"/>
 					<!-- 글쓰기 썸머노트 -->
-					<textarea id="summernote" name="Q_CONTENT" id="Q_CONTENT">상세 내용을 작성하세요.</textarea>        
+					<textarea id="summernote" name="Q_CONTENT" id="Q_CONTENT" placeholder="상세 내용을 작성하세요."></textarea>        
 					
 					<div class="form-group text-center">
 						

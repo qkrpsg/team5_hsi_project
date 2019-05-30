@@ -75,6 +75,7 @@ public class UserController {
 		//아이디와 닉네임을 세션에 저장
 		PickpicAccountDTO user = accountService.oneUser(map);
 		session.setAttribute("ppa_id", user.getPpa_id());
+		System.out.println("빨리 조업하곳기팓ㄱ!");
 		session.setAttribute("ppa_email", user.getPpa_email());
 		session.setAttribute("ppa_nickname", user.getPpa_nickname());
 		

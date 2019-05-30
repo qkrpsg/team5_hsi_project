@@ -137,7 +137,6 @@
                       												<c:set var="list2"  value="${list.PPB_POST_DATE }"/> 
                                         <p><font style="vertical-align: inherit;">${fn:substring(list2,0,11) }</font></p>
                                     </div>
-                                    <div class="customer-rating"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">보관함 담기</font></font></div>
                                 </div>
 						<hr>
 						

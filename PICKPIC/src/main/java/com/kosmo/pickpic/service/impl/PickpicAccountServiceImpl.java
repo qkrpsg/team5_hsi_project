@@ -85,4 +85,18 @@ public class PickpicAccountServiceImpl implements PickpicAccountService {
 	public PickRoadPlaceDTO roadOnePlace(Map map) {
 		return dao.roadOnePlace(map);
 	}
+	   @Override
+	   public int updateToken(Map map) {
+	      return dao.updateToken(map);
+	   }
+
+	   @Override
+	   public Map selectToken(Map map) {
+	      return dao.selectToken(map);
+	   }
+
+	   @Override
+	   public Map questionEmail(Map map) {
+	      return dao.questionEmail(map);
+	   }
 }

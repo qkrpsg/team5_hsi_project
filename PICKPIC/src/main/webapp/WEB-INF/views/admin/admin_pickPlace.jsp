@@ -39,7 +39,7 @@
 			<c:forEach var="item" items="${place }" varStatus="loop">
 				<div class="box-body_wrap col-md-3 col-sm-6">
 					<div class="box-body element-item img_wrap2">
-						<img class="img-responsive pp-image" src="<c:url value='${item.ppb_image_path }'/>" alt="Photo">
+						<img class="img-responsive pp-image" src='https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image${item.ppb_image_path }' alt="Photo">
 						<p></p>
 						<button type="button" class="btn btn-default btn-xs pp-view">
 							<i class="fa fa-share"> 게시물 보기</i>
@@ -51,7 +51,7 @@
 					<div class="box-footer box-comments">
 						<div class="box-comment">
 							<div class="user-block">
-								<img class="img-circle pp-profile" src='${item.ppa_profile_path }' alt="User Image">
+								<img class="img-circle pp-profile" src='https://s3.ap-northeast-2.amazonaws.com/img.pickpic.com/pickpic/image${item.ppa_profile_path }' alt="User Image">
 								<span class="username pp-name">${item.ppa_nickname }</span> 
 								<span class="description pp-post">${item.ppb_post_date }</span>
 							</div>

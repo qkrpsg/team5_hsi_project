@@ -95,9 +95,15 @@ public class FriendsController {
 	
 	
 	@RequestMapping("/friends/place_list.pic")
-	public String plaList(@RequestParam Map map, Model model, Principal principal) throws Exception {
+	public String plaList(@RequestParam Map map, Model model, Principal principal, HttpSession session) throws Exception {
+		
+		
 		//여기서 작업 시작
 		map.put("ppa_email", principal.getName());
+		
+		PickpicAccountDTO user = adminService.oneUser(map);
+		session.setAttribute("ppa_nickname", user.getPpa_nickname());
+		
 
 		List<Map> list = ppbService.selectList(map);
 		List<Map> afterList = new Vector<Map>();

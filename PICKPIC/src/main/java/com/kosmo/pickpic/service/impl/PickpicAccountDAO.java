@@ -152,6 +152,20 @@ public class PickpicAccountDAO implements PickpicAccountService {
 		System.out.println(DTOUtil.convertDTOToMap(dto).toString());
 		return dto;
 	}
+	   @Override
+	   public int updateToken(Map map) {
+	      return template.update("UpdateToken", map);
+	   }
+
+	   @Override
+	   public Map selectToken(Map map) {
+	      return template.selectOne("SelectToken", map);
+	   }
+
+	   @Override
+	   public Map questionEmail(Map map) {
+	      return template.selectOne("questionEmail", map);
+	   }
 	
 	
 }
